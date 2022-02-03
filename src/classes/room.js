@@ -29,7 +29,6 @@ export default class Room extends Entity {
   get westDoor() { return this.doors.list.find(door => door.directions[this.id] === 'W') }
 
   get hasVisited() { return this.state.visited > 0 }
-
   get visited() { return this.state.visited }
   set visited(value) { this.state.visited = value }
 

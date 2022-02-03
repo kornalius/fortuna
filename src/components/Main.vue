@@ -1,18 +1,20 @@
 <template>
-  <Room :room="store.rooms.at(0, 0)" />
+  <div class="ma-4">
+    <Room :room="store.rooms.at(0, 0)" />
 
-  <Stats />
+    <Stats />
 
-  <div style="margin-top: 1em">
-    <button @click="() => player.lvl += 1">Increment level</button>
-    <button style="margin-left: .5em" @click="() => player.state.lvl = 1">RESET</button>
+    <div style="margin-top: 1em">
+      <button @click="() => player.lvl += 1">Increment level</button>
+      <button style="margin-left: .5em" @click="() => player.state.lvl = 1">RESET</button>
+    </div>
+
+    <Inventory />
+
+    <Map />
+
+    <Log />
   </div>
-
-  <Inventory />
-
-  <Map />
-
-  <Log />
 </template>
 
 <script setup>

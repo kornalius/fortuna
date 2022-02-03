@@ -13,12 +13,13 @@
 import { computed } from 'vue';
 import { store } from '../store';
 import Item from '../classes/items/item';
+import random from 'lodash/random'
 
 const items = computed(() => store.player.items)
 
 const addItem = () => {
   store.items.update(new Item({
-    qty: Math.floor(Math.random() * 20) + 1,
+    qty: random(20),
     locationStore: 'player',
   }))
 }

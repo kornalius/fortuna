@@ -1,15 +1,11 @@
 <template>
-  <Main />
+  <v-app>
+    <v-main>
+      <Main />
+    </v-main>
+  </v-app>
 </template>
 
 <script setup>
 import Main from './components/Main.vue'
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-</style>

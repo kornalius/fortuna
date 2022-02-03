@@ -1,6 +1,7 @@
-import Room from '../classes/room';
-import Item from '../classes/items/item';
-import { newDoor } from '../utils';
+import Room from '../classes/room'
+import Item from '../classes/items/item'
+import { newDoor } from '../utils'
+import random from 'lodash/random'
 
 export default () => {
   const room = new Room({
@@ -11,9 +12,9 @@ export default () => {
 
   const doors = [newDoor({}, room, 'S')]
 
-  const items = Array(Math.floor(Math.random() * 5) + 1).fill(0).map(() => (
+  const items = Array(random(5)).fill(0).map(() => (
     new Item({
-      qty: Math.floor(Math.random() * 20) + 1,
+      qty: random(20),
       locationId: room.id,
       locationStore: 'rooms',
     })

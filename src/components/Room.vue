@@ -1,27 +1,51 @@
 <template>
-  <h1>Room - {{ room?.name }}</h1>
+  <v-card>
+    <v-card-title>
+      Room - {{ room?.name }}
+    </v-card-title>
 
-  <h3>Doors</h3>
+    <v-card-text class="pa-0">
+      <v-container class="mx-0">
+        <h3>Doors</h3>
 
-  <div v-for="door in doors" :key="door.id">
-    {{ door.name }} {{ door.qty }} [{{ door.isOpened }}]
-    <button style="margin-left: .5em" @click="door.toggle()">{{ door.isOpened ? 'CLOSE' : 'OPEN' }}</button>
-  </div>
+        <v-row v-for="door in doors" :key="door.id">
+          <v-col cols="auto">
+            {{ door.name }} {{ door.qty }} [{{ door.isOpened }}]
+          </v-col>
+          <v-col>
+            <v-btn
+              size="x-small"
+              @click="door.toggle()"
+            >
+              {{ door.isOpened ? 'CLOSE' : 'OPEN' }}
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
 
-  <h3>Items</h3>
+      <v-container class="mx-0">
+        <h3>Items</h3>
 
-  <button @click="addItem">Add Item</button>
+        <v-btn size="small" @click="addItem">Add Item</v-btn>
 
-  <div v-for="item in items" :key="item.id">
-    {{ item.name }} ({{ item.qty }})
-    <button @click="item.remove()">X</button>
-  </div>
+        <v-row v-for="item in items" :key="item.id">
+          <v-col cols="auto">
+            {{ item.name }} ({{ item.qty }})
+          </v-col>
+          <v-col>
+            <v-btn size="x-small" @click="item.remove()">X</v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script setup>
 import { computed } from 'vue';
 import { store } from '../store';
 import Item from '../classes/items/item';
+import random from 'lodash/random'
 
 const props = defineProps({
   room: { type: Object },
@@ -32,7 +56,7 @@ const doors = computed(() => props.room?.doors || [])
 
 const addItem = () => {
   store.items.update(new Item({
-    qty: Math.floor(Math.random() * 20) + 1,
+    qty: random(20),
     locationId: props.room?.id,
     locationStore: 'rooms',
   }))
