@@ -1,4 +1,4 @@
-import { loadRoom } from '../utils';
+import { loadRoom } from '@/utils'
 
 const modules = import.meta.glob('./*.js')
 

@@ -4,14 +4,20 @@ import { store } from '../../store';
 
 export default class Door extends Item {
   setupInstance(data) {
+    let keyId
+
+    if (data.key) {
+      keyId = data.key.id
+    }
+
     return {
       name: 'Door',
       opened: false,
       locked: false,
-      lockable: true,
-      blocked: false,
       directions: {},
+      keyId,
       ...data,
+      key: undefined,
     }
   }
 
@@ -21,29 +27,47 @@ export default class Door extends Item {
   get isLocked() { return this.state.locked }
   get isUnlocked() { return !this.state.locked }
 
-  get isLockable() { return this.state.lockable }
-  set isLockable(value) { this.state.lockable = value }
-
-  get isBlocked() { return this.state.blocked }
-  set isBlocked(value) { this.state.blocked = value }
-
   get directions() { return this.state.directions }
 
   get roomIds() { return Object.keys(this.directions) }
   get rooms() { return this.roomIds.map(id => store.rooms.get(id)) }
 
-  open() {
-    if (this.isClosed && !this.isBlocked) {
-      this.state.opened = true
-      log('Door has been opened')
+  get keyId() { return this.state.keyId }
+  get key() {
+    return this.state.keyId
+      ? store.player.get(this.state.keyId)
+      : undefined
+  }
+  set key(value) {
+    if (value) {
+      this.state.keyId = value.id
+    } else {
+      this.state.keyId = undefined
     }
+  }
+
+  open() {
+    // try to unlock it first
+    this.unlock()
+    if (this.isLocked) {
+      log('The door is locked', this)
+      return
+    }
+    if (this.isClosed) {
+      this.state.opened = true
+      log('You open the door', this)
+      return
+    }
+    log('The door is already opened', this)
   }
 
   close() {
     if (this.isOpened) {
       this.state.opened = false
-      log('Door has been closed')
+      log('You close the door', this)
+      return
     }
+    log('The door is already closed', this)
   }
 
   toggle() {
@@ -54,27 +78,16 @@ export default class Door extends Item {
     }
   }
 
-  lock() {
-    if (this.isUnlocked && this.isLockable) {
-      this.state.locked = true
-    }
-  }
-
   unlock() {
     if (this.isLocked) {
+      if (this.keyId && !store.player.has(this.keyId)) {
+        log('This door needs a key', this)
+        return
+      }
       this.state.locked = false
+      log('Door has been unlocked', this)
+      return
     }
-  }
-
-  block() {
-    if (!this.isBlocked) {
-      this.state.blocked = true
-    }
-  }
-
-  unblock() {
-    if (this.isBlocked) {
-      this.state.blocked = false
-    }
+    log('The door is not locked', this)
   }
 }

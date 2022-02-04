@@ -3,10 +3,17 @@ import { store } from '../store';
 
 export default class Relation extends Entity {
   setupInstance(data) {
+    let npcId
+
+    if (data.npc) {
+      npcId = data.npc.id
+    }
+
     return {
-      npcId: undefined,
       lvl: 0,
+      npcId,
       ...data,
+      npc: undefined,
     }
   }
 

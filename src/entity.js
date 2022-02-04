@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
-import { v4 } from 'uuid';
-import { store } from './store';
+import { v4 } from 'uuid'
+import { store } from '@/store'
 
 class Entity {
   constructor(data) {

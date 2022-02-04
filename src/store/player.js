@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
-import { store } from './index';
 import clamp from 'lodash/clamp'
+import { store } from './index'
 
 export default class Player {
   storeName = 'player'
@@ -10,9 +10,11 @@ export default class Player {
     hp: this.baseHp,
     xp: 0,
     lvl: 1,
+    roomId: undefined,
   })
 
   get name() { return this.state.name }
+  set name(value) { this.state.name = value }
 
   get hp() { return this.state.hp }
   set hp(value) { this.state.hp = clamp(value, 0, this.maxHp) }
@@ -38,7 +40,38 @@ export default class Player {
 
   get canMove() { return this.carryWeight <= this.maxWeight }
 
+  get room() {
+    return this.state.roomId
+      ? store.rooms.get(this.state.roomId)
+      : undefined
+  }
+  set room(value) {
+    if (value) {
+      this.state.roomId = value.id
+    } else {
+      this.state.roomId = undefined
+    }
+  }
+
+  /**
+   * Get item from inventory
+   *
+   * @param id
+   */
+  get(id) {
+    return this.items.find(i => i.id === id)
+  }
+
+  /**
+   * Does the player carry this item
+   *
+   * @param id
+   */
+  has(id) {
+    return !!this.get(id)
+  }
+
   rename(name) {
-    this.state.name = name
+    this.name = name
   }
 }

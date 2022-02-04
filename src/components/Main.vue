@@ -1,13 +1,8 @@
 <template>
   <div class="ma-4">
-    <Room :room="store.rooms.at(0, 0)" />
+    <Room :room="store.player.room" />
 
     <Stats />
-
-    <div style="margin-top: 1em">
-      <button @click="() => player.lvl += 1">Increment level</button>
-      <button style="margin-left: .5em" @click="() => player.state.lvl = 1">RESET</button>
-    </div>
 
     <Inventory />
 
@@ -26,6 +21,8 @@ import Map from './Map.vue';
 import Log from './Log.vue';
 
 const { player, items, doors, logs } = store
+
+console.log(player)
 
 player.rename('Bob')
 

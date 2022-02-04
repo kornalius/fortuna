@@ -3,14 +3,24 @@ import { store } from '../../store';
 
 export default class Item extends Entity {
   setupInstance(data) {
+    let locationId
+    let locationStore
+
+    if (data.location) {
+      locationId = data.location.id
+      locationStore = data.location.store
+    }
+
     return {
       name: 'Item',
       qty: 0,
       weight: 0,
-      locationId: undefined,
-      locationStore: undefined,
+      locationId,
+      locationStore,
       icon: undefined,
+      img: undefined,
       ...data,
+      location: undefined,
     }
   }
 
@@ -48,4 +58,11 @@ export default class Item extends Entity {
 
   get icon() { return this.state.icon }
   set icon(value) { this.state.icon = value }
+
+  get img() { return this.state.img }
+  set img(value) { this.state.img = value }
+
+  rename(name) {
+    this.name = name
+  }
 }

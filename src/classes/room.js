@@ -1,5 +1,5 @@
-import Entity from '../entity';
-import { store } from '../store';
+import Entity from '@/entity';
+import { store } from '@/store';
 
 export default class Room extends Entity {
   setupInstance(data) {
@@ -8,6 +8,7 @@ export default class Room extends Entity {
       x: 0,
       y: 0,
       visited: 0,
+      img: undefined,
       ...data,
     }
   }
@@ -23,14 +24,17 @@ export default class Room extends Entity {
 
   get doors() { return store.doors.list.filter(i => i.roomIds.includes(this.id)) }
 
-  get northDoor() { return this.doors.list.find(door => door.directions[this.id] === 'N') }
-  get southDoor() { return this.doors.list.find(door => door.directions[this.id] === 'S') }
-  get eastDoor() { return this.doors.list.find(door => door.directions[this.id] === 'E') }
-  get westDoor() { return this.doors.list.find(door => door.directions[this.id] === 'W') }
+  get northDoor() { return this.doors.find(door => door.directions[this.id] === 'N') }
+  get southDoor() { return this.doors.find(door => door.directions[this.id] === 'S') }
+  get eastDoor() { return this.doors.find(door => door.directions[this.id] === 'E') }
+  get westDoor() { return this.doors.find(door => door.directions[this.id] === 'W') }
 
   get hasVisited() { return this.state.visited > 0 }
   get visited() { return this.state.visited }
   set visited(value) { this.state.visited = value }
+
+  get img() { return this.state.img }
+  set img(value) { this.state.img = value }
 
   canExit(direction) {
     if (!store.player.canMove) {
@@ -51,10 +55,12 @@ export default class Room extends Entity {
     }
   }
 
-  enter(door) {
+  enter() {
     this.visited += 1
+    this.player.room = this
   }
 
-  exit(door) {
+  exit() {
+    this.player.room = undefined
   }
 }

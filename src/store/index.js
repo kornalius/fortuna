@@ -5,7 +5,8 @@ import Doors from './doors'
 import Rooms from './rooms'
 import Relations from './relations'
 import Npcs from './npcs'
-import Logs from './logs';
+import Logs from './logs'
+import Game from './game'
 
 export const models = {
   config: Config,
@@ -16,6 +17,7 @@ export const models = {
   relations: Relations,
   npcs: Npcs,
   logs: Logs,
+  game: Game,
 }
 
 export const store = {}

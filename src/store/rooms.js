@@ -1,4 +1,4 @@
-import Entities from '../entities'
+import Entities from '@/entities'
 
 export default class Rooms extends Entities {
   storeName = 'rooms'

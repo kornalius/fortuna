@@ -1,7 +1,7 @@
-import Room from '../classes/room'
-import Item from '../classes/items/item'
-import { newDoor } from '../utils'
 import random from 'lodash/random'
+import Room from '@/classes/room'
+import Item from '@/classes/items/item'
+import { newDoor } from '@/utils'
 
 export default () => {
   const room = new Room({

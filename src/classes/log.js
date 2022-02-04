@@ -3,13 +3,22 @@ import { store } from '../store';
 
 export default class Log extends Entity {
   setupInstance(data) {
+    let targetId
+    let targetStore
+
+    if (data.target) {
+      targetId = data.target.id
+      targetStore = data.target.store
+    }
+
     return {
       timestamp: Date.now(),
       message: '',
-      targetId: undefined,
-      targetStore: undefined,
+      targetId,
+      targetStore,
       level: 0,
       ...data,
+      target: undefined,
     }
   }
 

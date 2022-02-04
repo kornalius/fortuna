@@ -42,10 +42,10 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { store } from '../store';
-import Item from '../classes/items/item';
+import { computed } from 'vue'
 import random from 'lodash/random'
+import { store } from '@/store'
+import Item from '@/classes/items/item'
 
 const props = defineProps({
   room: { type: Object },
