@@ -6,7 +6,7 @@
           <n-image v-if="room.img"
             style="max-height: 300px;"
             object-fit="cover"
-            :src="`/rooms/${room.img}`"
+            :src="`/images/rooms/${room.img}`"
           />
         </div>
 
