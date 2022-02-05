@@ -1,44 +1,71 @@
 <template>
-  <v-card>
-    <v-card-title>
-      Room - {{ room?.name }}
-    </v-card-title>
+  <n-card :title="`Room - ${room?.name}`">
+    <div class="pa2">
+      <h3>Doors</h3>
 
-    <v-card-text class="pa-0">
-      <v-container class="mx-0">
-        <h3>Doors</h3>
+      <n-grid
+        v-for="door in doors"
+        :key="door.id"
+        cols="4"
+      >
+        <n-gi>
+          {{ door.name }} {{ door.qty }} [{{ door.isOpened }}] [{{ door.isLocked }}]
+        </n-gi>
+        <n-gi>
+          <n-button
+            type="info"
+            size="tiny"
+            @click="door.toggle()"
+          >
+            {{ door.isOpened ? 'CLOSE' : 'OPEN' }}
+          </n-button>
 
-        <v-row v-for="door in doors" :key="door.id">
-          <v-col cols="auto">
-            {{ door.name }} {{ door.qty }} [{{ door.isOpened }}]
-          </v-col>
-          <v-col>
-            <v-btn
-              size="x-small"
-              @click="door.toggle()"
-            >
-              {{ door.isOpened ? 'CLOSE' : 'OPEN' }}
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
+          <n-button
+            class="ml2"
+            type="info"
+            size="tiny"
+            @click="door.unlock()"
+          >
+            {{ door.isLocked ? 'UNLOCK' : 'LOCK' }}
+          </n-button>
+        </n-gi>
+      </n-grid>
+    </div>
 
-      <v-container class="mx-0">
-        <h3>Items</h3>
+    <div class="ma2">
+      <h3>Items</h3>
 
-        <v-btn size="small" @click="addItem">Add Item</v-btn>
+      <n-button
+        class="mb2"
+        type="warning"
+        size="small"
+        @click="addItem"
+      >
+        Add Item
+      </n-button>
 
-        <v-row v-for="item in items" :key="item.id">
-          <v-col cols="auto">
-            {{ item.name }} ({{ item.qty }})
-          </v-col>
-          <v-col>
-            <v-btn size="x-small" @click="item.remove()">X</v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card-text>
-  </v-card>
+      <n-grid
+        v-for="item in items"
+        :key="item.id"
+        cols="6"
+      >
+        <n-gi>
+          {{ item.name }} ({{ item.qty }})
+        </n-gi>
+        <n-gi>
+          <n-button
+            type="error"
+            size="tiny"
+            secondary
+            round
+            @click="item.remove()"
+          >
+            X
+          </n-button>
+        </n-gi>
+      </n-grid>
+    </div>
+  </n-card>
 </template>
 
 <script setup>

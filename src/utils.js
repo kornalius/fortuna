@@ -1,6 +1,6 @@
-import { store } from './store';
-import Log from './classes/log';
-import Door from './classes/items/door';
+import { reactive } from 'vue'
+import { store } from './store'
+import Log from './classes/log'
 
 export const log = (message, target) => {
   store.logs.update(new Log({ message, target }))
@@ -19,42 +19,27 @@ export const loadRoom = (f) => {
   }
 }
 
-export const newDoor = (data, room, direction) => {
-  const directions = {
-    [room.id]: direction
+export const mixin = (cl, o) => {
+  if (Array.isArray(o)) {
+    o.forEach(oo => mixin(cl, oo))
+    return
   }
 
-  let r
-  switch (direction) {
-    case 'N':
-      r = store.rooms.at(room.x, room.y - 1)
-      if (r) {
-        directions[r.id] = 'S'
-      }
-      break
-    case 'S':
-      r = store.rooms.at(room.x, room.y + 1)
-      if (r) {
-        directions[r.id] = 'N'
-      }
-      break
-    case 'W':
-      r = store.rooms.at(room.x - 1, room.y)
-      if (r) {
-        directions[r.id] = 'E'
-      }
-      break
-    case 'E':
-      r = store.rooms.at(room.x + 1, room.y)
-      if (r) {
-        directions[r.id] = 'W'
-      }
-      break
-    default:
-  }
-
-  return new Door({
-    ...data,
-    directions,
+  Object.keys(o).forEach(k => {
+    const d = Object.getOwnPropertyDescriptor(o, k)
+    if (d.get || d.set) {
+      Object.defineProperty(cl.prototype, k, {
+        get: d.get,
+        set: d.set,
+      })
+    } else if (k === 'state' && typeof d.value === 'object') {
+      Object.defineProperty(cl.prototype, k, {
+        enumerable: true,
+        writable: true,
+        value: reactive({ ...cl.prototype[k], ...d.value}),
+      })
+    } else {
+      cl.prototype[k] = d.value
+    }
   })
 }

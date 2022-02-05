@@ -1,37 +1,26 @@
 import { reactive } from 'vue'
-import clamp from 'lodash/clamp'
 import { store } from './index'
+import { mixin } from '@/utils'
+import Level from '@/mixins/level'
+import Buffable from '@/mixins/buffable'
+import Hp from '@/mixins/hp'
+import Xp from '@/mixins/xp'
 
 export default class Player {
   storeName = 'player'
 
-  state = reactive({
-    name: '',
-    hp: this.baseHp,
-    xp: 0,
-    lvl: 1,
-    roomId: undefined,
-  })
+  constructor() {
+    this.state = reactive({
+      ...this.state,
+      name: '',
+      hp: this.maxHp,
+      xp: 0,
+      roomId: undefined,
+    })
+  }
 
   get name() { return this.state.name }
   set name(value) { this.state.name = value }
-
-  get hp() { return this.state.hp }
-  set hp(value) { this.state.hp = clamp(value, 0, this.maxHp) }
-  get baseHp() { return store.config.baseHp }
-  get highestHp() { return store.config.highestHp }
-  get maxHp() {
-    return Math.floor(this.baseHp + (this.highestHp - this.baseHp) * this.lvl / this.highestLvl)
-  }
-
-  get lvl() { return this.state.lvl }
-  set lvl(value) { this.state.lvl = clamp(value, 1, this.highestLvl) }
-  get highestLvl() { return store.config.highestLvl }
-
-  get xp() { return this.state.xp }
-  set xp(value) { this.state.xp = Math.max(0, value) }
-  get nextXp() { return 100 * Math.pow(this.lvl, 2) }
-  get canLevelUp() { return this.xp > this.nextXp }
 
   get items() { return store.items.list.filter(i => i.locationStore === 'player') }
 
@@ -75,3 +64,5 @@ export default class Player {
     this.name = name
   }
 }
+
+mixin(Player, [Level, Buffable, Hp, Xp])

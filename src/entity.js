@@ -5,6 +5,7 @@ import { store } from '@/store'
 class Entity {
   constructor(data) {
     this.state = reactive({
+      ...this.state,
       id: v4(),
       store: undefined,
       ...this.setupInstance(data)

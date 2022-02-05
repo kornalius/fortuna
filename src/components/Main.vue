@@ -22,8 +22,6 @@ import Log from './Log.vue';
 
 const { player, items, doors, logs } = store
 
-console.log(player)
-
 player.rename('Bob')
 
 setTimeout(() => {

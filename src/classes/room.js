@@ -1,5 +1,6 @@
-import Entity from '@/entity';
-import { store } from '@/store';
+import Entity from '@/entity'
+import { store } from '@/store'
+import Door from '@/classes/items/door'
 
 export default class Room extends Entity {
   setupInstance(data) {
@@ -62,5 +63,45 @@ export default class Room extends Entity {
 
   exit() {
     this.player.room = undefined
+  }
+
+  addDoor = (data, direction) => {
+    const directions = {
+      [this.id]: direction
+    }
+
+    let r
+    switch (direction) {
+      case 'N':
+        r = store.rooms.at(this.x, this.y - 1)
+        if (r) {
+          directions[r.id] = 'S'
+        }
+        break
+      case 'S':
+        r = store.rooms.at(this.x, this.y + 1)
+        if (r) {
+          directions[r.id] = 'N'
+        }
+        break
+      case 'W':
+        r = store.rooms.at(this.x - 1, this.y)
+        if (r) {
+          directions[r.id] = 'E'
+        }
+        break
+      case 'E':
+        r = store.rooms.at(this.x + 1, this.y)
+        if (r) {
+          directions[r.id] = 'W'
+        }
+        break
+      default:
+    }
+
+    return new Door({
+      ...data,
+      directions,
+    })
   }
 }

@@ -1,7 +1,6 @@
 import random from 'lodash/random'
 import Room from '@/classes/room'
 import Item from '@/classes/items/item'
-import { newDoor } from '@/utils'
 
 export default () => {
   const room = new Room({
@@ -10,7 +9,7 @@ export default () => {
     y: 0,
   })
 
-  const doors = [newDoor({}, room, 'S')]
+  const doors = [room.addDoor({ locked: true }, 'S')]
 
   const items = Array(random(5)).fill(0).map(() => (
     new Item({
