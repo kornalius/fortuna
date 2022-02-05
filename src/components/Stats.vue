@@ -1,7 +1,5 @@
 <template>
-  <n-card title="Stats" style="width: 250px;">
-    <h3>{{ player.name }}</h3>
-
+  <n-card style="width: 250px;">
     <div class="flex items-center mb1" style="color: #ff0;">
       <v-icon icon="noto:glowing-star" width="20" />
       <span class="ml2">{{ player.lvl }}</span>

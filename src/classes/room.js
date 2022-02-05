@@ -1,17 +1,18 @@
 import Entity from '@/entity'
 import { store } from '@/store'
 import Door from '@/classes/items/door'
+import Item from '@/classes/items/item';
 
 export default class Room extends Entity {
   setupInstance(data) {
-    return {
+    return super.setupInstance({
       name: 'Room',
       x: 0,
       y: 0,
       visited: 0,
       img: undefined,
       ...data,
-    }
+    })
   }
 
   get name() { return this.state.name }
@@ -65,7 +66,7 @@ export default class Room extends Entity {
     this.player.room = undefined
   }
 
-  addDoor = (data, direction) => {
+  addDoor(data, direction) {
     const directions = {
       [this.id]: direction
     }
@@ -99,9 +100,29 @@ export default class Room extends Entity {
       default:
     }
 
-    return new Door({
+    const door = new Door({
       ...data,
       directions,
     })
+
+    store.doors.update(door)
+
+    return door
+  }
+
+  addItem(data) {
+    if (Array.isArray(data)) {
+      return data.map(d => this.addItem(d))
+    }
+
+    if (data instanceof Item) {
+      store.items.update({ ...data, location: this })
+      return data
+    } else {
+      const i = new Item(data)
+      store.items.update(i)
+      i.location = this
+      return i
+    }
   }
 }

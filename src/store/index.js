@@ -25,3 +25,5 @@ export const store = {}
 Object.keys(models).forEach(k => {
   store[k] = new models[k]()
 })
+
+window.store = store

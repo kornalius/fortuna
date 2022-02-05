@@ -6,19 +6,6 @@ export const log = (message, target) => {
   store.logs.update(new Log({ message, target }))
 }
 
-export const loadRoom = (f) => {
-  const { room, items, doors } = f()
-  if (room) {
-    store.rooms.update(room)
-  }
-  if (doors) {
-    store.doors.update(doors)
-  }
-  if (items) {
-    store.items.update(items)
-  }
-}
-
 export const mixin = (cl, o) => {
   if (Array.isArray(o)) {
     o.forEach(oo => mixin(cl, oo))

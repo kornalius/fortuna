@@ -1,24 +1,29 @@
 <template>
-  <div class="ma-4">
-    <Room :room="store.player.room" />
+  <div class="flex h-100">
+    <div class="flex flex-column w-100">
+      <div class="flex h-100">
+        <Room :room="store.player.room" />
+      </div>
+    </div>
 
-    <Stats />
+    <div class="flex flex-column">
+      <Stats />
 
-    <Inventory />
+      <div class="flex h-100">
+        <Inventory />
+      </div>
 
-    <Map />
-
-    <Log />
+      <Map />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { store } from '../store'
-import Room from './Room.vue';
+import Room from './Room.vue'
 import Stats from './Stats.vue'
-import Inventory from './Inventory.vue';
-import Map from './Map.vue';
-import Log from './Log.vue';
+import Inventory from './Inventory.vue'
+import Map from './Map.vue'
 
 const { player, items, doors, logs } = store
 

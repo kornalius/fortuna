@@ -9,12 +9,12 @@ export default class Relation extends Entity {
       npcId = data.npc.id
     }
 
-    return {
+    return super.setupInstance({
       lvl: 0,
       npcId,
       ...data,
       npc: undefined,
-    }
+    })
   }
 
   get lvl() { return this.state.lvl }

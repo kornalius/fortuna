@@ -1,14 +1,29 @@
 <template>
-  <h1>Logs</h1>
-
   <div v-for="log in logs" :key="log.id">
-    [{{ new Date(log.timestamp).toLocaleString() }}] {{ log.message }}
+    <span v-for="(l, i) in innerLogs(log)" :key="`${log.id}-${i}`">
+      <item-component
+        v-if="l instanceof Item"
+        :value="l"
+      />
+      <span v-else v-text="l.message" />
+    </span>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { store } from '../store';
+import { computed } from 'vue'
+import { store } from '../store'
+import ItemComponent from './Item.vue'
+import Item from '@/classes/items/item'
 
-const logs = computed(() => store.logs.list)
+const size = 100
+
+const logs = computed(() => {
+  const l = store.logs.list.length
+  return store.logs.list
+    .sort((a, b) => a.timestamp < b.timestamp)
+    .slice(l - size)
+})
+
+const innerLogs = log => Array.isArray(log) ? log : [log]
 </script>

@@ -8,11 +8,13 @@ export default {
   get hasBuffs() { return this.state.buffs.length > 0 },
 
   addBuff(target, name, value) {
-    this.state.buffs.push({ targetId: target.id, targetStore: target.store, name, value })
+    this.state.buffs.push({ targetId: target?.id, targetStore: target?.store, name, value })
   },
 
   removeBuff(target, name) {
-    this.state.buffs = this.state.buffs.filter(b => b.targetId === target.id && (!name || b.name === name))
+    this.state.buffs = this.state.buffs.filter(b => (
+      (!target || b.targetId === target.id) && (!name || b.name === name)
+    ))
   },
 
   hasBuffsFor(target, name) {
@@ -20,12 +22,12 @@ export default {
   },
 
   buffsFor(target, name) {
-    return this.state.buffs.filter(b => b.targetId === target.id && (!name || b.name === name))
+    return this.state.buffs.filter(b => (
+      (!target || b.targetId === target.id) && (!name || b.name === name)
+    ))
   },
 
   sumOfBuffs(target, name) {
-    return this.state.buffs.reduce((acc, b) => (
-      acc + b.targetId === target.id && (!name || b.name === name) ? b.value : 0
-    ), 0)
+    return this.buffsFor(target, name).reduce((acc, b) => acc + b.value, 0)
   }
 }

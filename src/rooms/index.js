@@ -1,9 +1,9 @@
-import { loadRoom } from '@/utils'
+import { store } from '@/store'
 
 const modules = import.meta.glob('./*.js')
 
 for (const path in modules) {
   modules[path]().then((mod) => {
-    loadRoom(mod.default)
+    store.rooms.update(new mod.default())
   })
 }

@@ -12,21 +12,20 @@ export default class Door extends Item {
       keyId = data.key.id
     }
 
-    return {
+    return super.setupInstance({
       name: 'Door',
       locked: false,
       directions: {},
       keyId,
       ...data,
       key: undefined,
-    }
+    })
   }
 
   get directions() { return this.state.directions }
 
   get roomIds() { return Object.keys(this.directions) }
   get rooms() { return this.roomIds.map(id => store.rooms.get(id)) }
-
 }
 
 mixin(Door, [Openable, Lockable])

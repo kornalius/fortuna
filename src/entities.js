@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-class Entities {
+export default class Entities {
   storeName = 'entity'
 
   state = reactive({})
@@ -15,6 +15,7 @@ class Entities {
     } else {
       item.state.store = this.storeName
       this.state[item.id] = item
+      item.mounted()
     }
   }
 
@@ -26,5 +27,3 @@ class Entities {
     }
   }
 }
-
-export default Entities

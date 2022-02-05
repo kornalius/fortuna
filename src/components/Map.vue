@@ -1,5 +1,7 @@
 <template>
-  <h1>Map</h1>
+  <n-card>
+    <h3>Map</h3>
+  </n-card>
 </template>
 
 <script setup>

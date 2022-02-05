@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 import { v4 } from 'uuid'
 import { store } from '@/store'
 
-class Entity {
+export default class Entity {
   constructor(data) {
     this.state = reactive({
       ...this.state,
@@ -22,6 +22,7 @@ class Entity {
   remove() {
     store[this.store].remove(this.id)
   }
-}
 
-export default Entity
+  mounted() {
+  }
+}

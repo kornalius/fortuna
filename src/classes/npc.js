@@ -2,15 +2,16 @@ import Entity from '../entity'
 import { store } from '../store'
 import { mixin } from '@/utils'
 import Level from '@/mixins/level'
+import Buffable from '@/mixins/buffable'
 import Hp from '@/mixins/hp'
 
 export default class Npc extends Entity {
   setupInstance(data) {
-    return {
+    return super.setupInstance({
       name: 'Npc',
       hp: this.maxHp,
       ...data,
-    }
+    })
   }
 
   get name() { return this.state.name }
@@ -37,5 +38,4 @@ export default class Npc extends Entity {
   }
 }
 
-mixin(Npc, Level)
-mixin(Npc, Hp)
+mixin(Npc, [Level, Buffable, Hp])

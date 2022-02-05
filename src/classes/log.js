@@ -11,7 +11,7 @@ export default class Log extends Entity {
       targetStore = data.target.store
     }
 
-    return {
+    return super.setupInstance({
       timestamp: Date.now(),
       message: '',
       targetId,
@@ -19,7 +19,7 @@ export default class Log extends Entity {
       level: 0,
       ...data,
       target: undefined,
-    }
+    })
   }
 
   get timestamp() { return this.state.timestamp }
