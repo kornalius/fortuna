@@ -5,6 +5,19 @@ export default {
   state: {
     locked: false,
     keyId: undefined,
+    actions: [
+      door => (
+        door.isLocked
+          ? {
+            label: 'Unlock',
+            key: 'unlock',
+            icon: 'fa-solid:lock-open',
+            disabled: false,
+            click: () => door.unlock(),
+          }
+          : undefined
+      ),
+    ],
   },
 
   get isLocked() { return this.state.locked },

@@ -1,15 +1,20 @@
 import { reactive } from 'vue'
 import { v4 } from 'uuid'
 import { store } from '@/store'
+import { mixState } from '@/utils'
 
 export default class Entity {
   constructor(data) {
-    this.state = reactive({
-      ...this.state,
-      id: v4(),
-      store: undefined,
-      ...this.setupInstance(data)
-    })
+    this.state = reactive(
+      mixState(
+        {
+          ...this.state,
+          id: v4(),
+          store: undefined,
+        },
+        this.setupInstance(data)
+      )
+    )
   }
 
   setupInstance(data) {

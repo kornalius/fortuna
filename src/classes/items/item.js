@@ -1,5 +1,7 @@
 import Entity from '@/entity'
 import { store } from '@/store'
+import { mixin } from '@/utils'
+import Actions from '@/mixins/actions'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -29,7 +31,9 @@ export default class Item extends Entity {
   get stackable() { return false }
 
   get locationId() { return this.state.locationId }
+  set locationId(value) { this.state.locationId = value }
   get locationStore() { return this.state.locationStore }
+  set locationStore(value) { this.state.locationStore = value }
   get location() {
     return this.state.locationStore && this.state.locationId
       ? store[this.state.locationStore].get(this.state.locationId)
@@ -62,3 +66,5 @@ export default class Item extends Entity {
     this.name = name
   }
 }
+
+mixin(Item, [Actions])

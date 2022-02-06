@@ -5,6 +5,7 @@ import Level from '@/mixins/level'
 import Buffable from '@/mixins/buffable'
 import Hp from '@/mixins/hp'
 import Xp from '@/mixins/xp'
+import Item from '@/classes/items/item';
 
 export default class Player {
   storeName = 'player'
@@ -15,7 +16,6 @@ export default class Player {
       name: '',
       hp: this.maxHp,
       xp: 0,
-      roomId: undefined,
     })
   }
 
@@ -28,19 +28,6 @@ export default class Player {
   get carryWeight() { return this.items.reduce((acc, item) => acc + item.weight, 0) }
 
   get canMove() { return this.carryWeight <= this.maxWeight }
-
-  get room() {
-    return this.state.roomId
-      ? store.rooms.get(this.state.roomId)
-      : undefined
-  }
-  set room(value) {
-    if (value) {
-      this.state.roomId = value.id
-    } else {
-      this.state.roomId = undefined
-    }
-  }
 
   /**
    * Get item from inventory
@@ -62,6 +49,22 @@ export default class Player {
 
   rename(name) {
     this.name = name
+  }
+
+  addItem(data) {
+    if (Array.isArray(data)) {
+      return data.map(d => this.addItem(d))
+    }
+
+    if (data instanceof Item) {
+      store.items.update({ ...data, locationStore: 'player' })
+      return data
+    } else {
+      const i = new Item(data)
+      store.items.update(i)
+      i.locationStore = 'player'
+      return i
+    }
   }
 }
 

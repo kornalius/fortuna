@@ -2,7 +2,7 @@
   <div class="flex h-100">
     <div class="flex flex-column w-100">
       <div class="flex h-100">
-        <Room :room="store.player.room" />
+        <Room :room="store.game.room" />
       </div>
     </div>
 

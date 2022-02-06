@@ -1,0 +1,10 @@
+@keyframes glow {
+  from {
+    text-shadow: 0 0 0;
+  }
+  to {
+    color: rgba(255, 255, 255, .75);
+    text-shadow: 0 0 50px #34b3c1,
+      0 0 50px #4dbbc7;
+  }
+}

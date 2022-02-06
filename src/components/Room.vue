@@ -2,44 +2,18 @@
   <n-card :title="`Room - ${room?.name}`">
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
-        <div class="flex self-center">
+        <div class="flex self-center relative">
+          <door v-if="northDoor" :door="northDoor" position="north" />
+          <door v-if="southDoor" :door="southDoor" position="south" />
+          <door v-if="eastDoor" :door="eastDoor" position="east" />
+          <door v-if="westDoor" :door="westDoor" position="west" />
+
           <n-image v-if="room.img"
             style="max-height: 300px;"
             object-fit="cover"
             :src="`/images/rooms/${room.img}`"
           />
         </div>
-
-        <h3>Doors</h3>
-
-        <n-grid
-          v-for="door in doors"
-          :key="door.id"
-          cols="4"
-        >
-          <n-gi>
-            {{ door.name }} {{ door.qty }} [{{ door.isOpened }}] [{{ door.isLocked }}]
-          </n-gi>
-
-          <n-gi>
-            <n-button
-              type="info"
-              size="tiny"
-              @click="door.toggle()"
-            >
-              {{ door.isOpened ? 'CLOSE' : 'OPEN' }}
-            </n-button>
-
-            <n-button
-              class="ml2"
-              type="info"
-              size="tiny"
-              @click="door.unlock()"
-            >
-              {{ door.isLocked ? 'UNLOCK' : 'LOCK' }}
-            </n-button>
-          </n-gi>
-        </n-grid>
 
         <h3>Items</h3>
 
@@ -49,7 +23,7 @@
               class="mb2"
               type="warning"
               size="small"
-              @click="addItem"
+              @click="() => room.addItem({ qty: random(20) })"
             >
               Add Item
             </n-button>
@@ -92,9 +66,8 @@
 <script setup>
 import { computed } from 'vue'
 import random from 'lodash/random'
-import { store } from '@/store'
-import Item from '@/classes/items/item'
 import Log from '@/components/Log.vue'
+import Door from '@/components/Door.vue'
 
 const props = defineProps({
   room: { type: Object },
@@ -103,13 +76,10 @@ const props = defineProps({
 const items = computed(() => props.room?.items || [])
 const doors = computed(() => props.room?.doors || [])
 
-const addItem = () => {
-  store.items.update(new Item({
-    qty: random(20),
-    locationId: props.room?.id,
-    locationStore: 'rooms',
-  }))
-}
+const northDoor = computed(() => props.room?.northDoor)
+const southDoor = computed(() => props.room?.southDoor)
+const eastDoor = computed(() => props.room?.eastDoor)
+const westDoor = computed(() => props.room?.westDoor)
 </script>
 
 <style scoped>

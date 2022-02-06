@@ -6,6 +6,7 @@ export default class Game {
   storeName = 'game'
 
   state = reactive({
+    roomId: undefined,
     started: false,
     paused: false,
     sounds: {},
@@ -18,12 +19,25 @@ export default class Game {
     ]);
   }
 
+  get room() {
+    return this.state.roomId
+      ? store.rooms.get(this.state.roomId)
+      : undefined
+  }
+  set room(value) {
+    if (value) {
+      this.state.roomId = value.id
+    } else {
+      this.state.roomId = undefined
+    }
+  }
+
   get isStarted() { return this.state.started }
   get isPaused() { return this.state.paused }
 
   start() {
     this.state.started = true
-    store.player.room = store.rooms.at(0, 0)
+    store.rooms.at(0, 0).enter()
   }
 
   pause() {

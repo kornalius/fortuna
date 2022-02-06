@@ -2,14 +2,15 @@
   <n-config-provider :theme="darkTheme" style="height: 100%;">
     <Main v-if="game.isStarted" />
 
-    <n-modal
-      :show="showDialog"
-      style="width: 600px;"
-      role="dialog"
-      aria-modal="true"
-    >
-      <Menu />
-    </n-modal>
+    <div v-show="showDialog">
+      <div class="title smoke">FORTUNA</div>
+      <img src="/images/menu-background.png" class="background-image"  alt="" />
+      <div class="bg background-anim">
+        <n-modal :show="showDialog" role="dialog" aria-modal="true">
+          <Menu />
+        </n-modal>
+      </div>
+    </div>
   </n-config-provider>
 </template>
 
@@ -31,6 +32,12 @@ const showDialog = computed(() => game.isPaused || game.isStarted === false)
   font-weight: normal;
   font-style: normal;
 }
+@font-face{
+  font-family: hacked;
+  src: url('/fonts/Hacked.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 #app {
   height: 100%;
 }
@@ -41,6 +48,32 @@ body {
 }
 </style>
 
+<style scoped>
+.title {
+  font-family: hacked,sans-serif;
+  font-size: 80px;
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  z-index: 1;
+  /*animation: glow 2s ease-in-out infinite alternate;*/
+}
+</style>
+
 <style lang="scss">
-@import "/public/scanlines.scss";
+@import "/public/styles/scanlines";
+@import "/public/styles/menu-background";
+@import "/public/styles/glow";
+@import "/public/styles/smoke-background";
+
+.background-anim {
+  position: absolute;
+}
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 </style>

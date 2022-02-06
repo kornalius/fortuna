@@ -1,7 +1,9 @@
 import Entity from '@/entity'
 import { store } from '@/store'
+import { log, mixin } from '@/utils'
 import Door from '@/classes/items/door'
-import Item from '@/classes/items/item';
+import Items from '@/mixins/items'
+import Actions from '@/mixins/actions'
 
 export default class Room extends Entity {
   setupInstance(data) {
@@ -11,6 +13,7 @@ export default class Room extends Entity {
       y: 0,
       visited: 0,
       img: undefined,
+      music: undefined,
       ...data,
     })
   }
@@ -19,8 +22,6 @@ export default class Room extends Entity {
 
   get x() { return this.state.x }
   get y() { return this.state.y }
-
-  get items() { return store.items.list.filter(i => i.location === this) }
 
   get npcs() { return store.npcs.list.filter(i => i.location === this) }
 
@@ -38,8 +39,20 @@ export default class Room extends Entity {
   get img() { return this.state.img }
   set img(value) { this.state.img = value }
 
+  get music() { return this.state.music }
+  set music(value) { this.state.music = value }
+
+  canEnter(fromRoom) {
+    if (!store.player.canMove) {
+      log('You cannot move')
+      return false
+    }
+    return true
+  }
+
   canExit(direction) {
     if (!store.player.canMove) {
+      log('You cannot move')
       return false
     }
 
@@ -57,13 +70,33 @@ export default class Room extends Entity {
     }
   }
 
-  enter() {
+  enter(fromRoom) {
+    if (!this.canEnter(fromRoom)) {
+      return false
+    }
+
+    if (fromRoom) {
+      if (fromRoom.music) {
+        store.game.stopSound(fromRoom.music)
+      }
+    }
     this.visited += 1
-    this.player.room = this
+    if (store.game.room !== this) {
+      store.game.room = this
+    }
+    if (this.music) {
+      store.game.playSound(this.music)
+    }
+    return true
   }
 
-  exit() {
-    this.player.room = undefined
+  exit(toRoom) {
+    if (!this.canExit(toRoom)) {
+      return false
+    }
+
+    store.game.room = undefined
+    return true
   }
 
   addDoor(data, direction) {
@@ -109,20 +142,6 @@ export default class Room extends Entity {
 
     return door
   }
-
-  addItem(data) {
-    if (Array.isArray(data)) {
-      return data.map(d => this.addItem(d))
-    }
-
-    if (data instanceof Item) {
-      store.items.update({ ...data, location: this })
-      return data
-    } else {
-      const i = new Item(data)
-      store.items.update(i)
-      i.location = this
-      return i
-    }
-  }
 }
+
+mixin(Room, [Items, Actions])
