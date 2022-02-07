@@ -3,7 +3,6 @@ import Player from './player'
 import Items from './items'
 import Doors from './doors'
 import Rooms from './rooms'
-import Relations from './relations'
 import Npcs from './npcs'
 import Logs from './logs'
 import Game from './game'
@@ -14,7 +13,6 @@ export const models = {
   items: Items,
   doors: Doors,
   rooms: Rooms,
-  relations: Relations,
   npcs: Npcs,
   logs: Logs,
   game: Game,
