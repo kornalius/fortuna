@@ -20,6 +20,17 @@ export default class Item extends Entity {
       locationId,
       locationStore,
       icon: undefined,
+      actions: [
+        () => ({
+          label: 'Examine',
+          key: 'examine',
+          icon: 'emojione:eye',
+          click: () => console.log('examine'),
+        }),
+      ],
+      actionsOrder: [
+        'examine',
+      ],
       ...data,
       location: undefined,
     }

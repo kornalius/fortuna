@@ -29,10 +29,16 @@ export default {
     return typeof a === 'function' ? a(this) : a
   },
 
-  execAction(key) {
+  exec(key, options = {}) {
     const action = this.actionToObject(this.actions.find(a => this.actionToObject(a)?.key === key))
     if (action && action.click) {
-      action.click(this)
+      store.game.exec({
+        key,
+        target: this,
+        location: this.location,
+        ...options,
+        fn: () => action.click(this)
+      })
     }
   },
 }

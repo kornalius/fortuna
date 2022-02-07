@@ -1,6 +1,5 @@
-import random from 'lodash/random'
 import Room from '@/classes/room'
-import { log } from '@/utils'
+import { color, log } from '@/utils'
 
 export default class IntroRoom extends Room {
   constructor(data) {
@@ -16,17 +15,16 @@ export default class IntroRoom extends Room {
   mounted() {
     super.mounted()
 
-    this.addDoor({ locked: true }, 'S')
-
-    this.addItem({ qty: random(20) })
+    this.switch = this.addItem({ name: 'Switch', icon: 'heroicons-solid:light-bulb', qty: 1 })
   }
 
   enter(fromRoom) {
     super.enter(fromRoom)
-    log('Welcome to Fortuna')
+    log(`Welcome to ${color('red', 'Fortuna')}`)
+    log()
     log('A text adventure game, spiced up with elements of Roleplaying games.')
     log([
-      'This is the tutorial room.',
+      `${color('blue', 'This is the tutorial room.')}`,
       'You will need to get out of here by interacting with different items in the room.'
     ])
     log([
@@ -35,5 +33,12 @@ export default class IntroRoom extends Room {
       'You use extend your hands in front of you and walk forward until you touch the wall, at least it feels like gypsum.',
       'You lounge the wall until your fingers touch a bump that feels like metal about the size of a credit card.',
     ])
+  }
+
+  onAction(action) {
+    super.onAction(action)
+    if (action.key === 'examine' && action.target === this.switch) {
+      this.addDoor({ locked: true }, 'S')
+    }
   }
 }

@@ -13,7 +13,6 @@ export default class Room extends Entity {
       y: 0,
       visited: 0,
       img: undefined,
-      music: undefined,
       ...data,
     })
   }
@@ -38,9 +37,6 @@ export default class Room extends Entity {
 
   get img() { return this.state.img }
   set img(value) { this.state.img = value }
-
-  get music() { return this.state.music }
-  set music(value) { this.state.music = value }
 
   canEnter(fromRoom) {
     if (!store.player.canMove) {
@@ -75,18 +71,11 @@ export default class Room extends Entity {
       return false
     }
 
-    if (fromRoom) {
-      if (fromRoom.music) {
-        store.game.stopSound(fromRoom.music)
-      }
-    }
     this.visited += 1
     if (store.game.room !== this) {
       store.game.room = this
     }
-    if (this.music) {
-      store.game.playSound(this.music)
-    }
+
     return true
   }
 
@@ -141,6 +130,9 @@ export default class Room extends Entity {
     store.doors.update(door)
 
     return door
+  }
+
+  onAction(action) {
   }
 }
 

@@ -1,28 +1,30 @@
 <template>
   <n-dropdown
     trigger="click"
-    :options="door.dropdownOptions"
+    :options="value.dropdownOptions"
     :render-icon="renderDropdownIcon"
     @select="handleSelect"
   >
     <n-button
-      :style="style"
       quaternary
-      size="large"
+      size="small"
     >
       <div class="relative">
-        <v-icon
-          :icon="`bi:door-${door?.isOpened ? 'open' : 'closed'}-fill`"
-          width="44"
-          color="#926839"
-        />
-        <v-icon
-          v-if="door.isLocked"
-          class="lock"
-          icon="fa-solid:lock"
-          width="16"
-          color="#000"
-        />
+        <div class="inline-flex items-end">
+          <v-icon
+            :icon="`bi:door-${value?.isOpened ? 'open' : 'closed'}-fill`"
+            width="20"
+            color="#926839"
+          />
+          <v-icon
+            v-if="value.isLocked"
+            class="lock"
+            icon="fa-solid:lock"
+            width="10"
+            color="#000"
+          />
+          <span class="ml1">{{ label }}</span>
+        </div>
       </div>
     </n-button>
   </n-dropdown>
@@ -33,26 +35,23 @@ import { computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
 
 const props = defineProps({
-  door: { type: Object },
+  value: { type: Object },
   position: { type: String },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: option.icon })
+const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20 })
 
 const handleSelect = key => {
-  props.door.execAction(key)
+  props.value.exec(key)
 }
 
-const style = computed(() => {
-  switch (props.position) {
-    case 'north':
-      return 'position: absolute; top: 0; left: 47%;'
-    case 'south':
-      return 'position: absolute; bottom: 0; left: 47%;'
-    case 'east':
-      return 'position: absolute; right: 0; top: 47%; '
-    case 'west':
-      return 'position: absolute; left: 0; top: 47%;'
+const label = computed(() => {
+  switch (props.value.direction) {
+    case 'N': return 'North'
+    case 'S': return 'South'
+    case 'E': return 'East'
+    case 'W': return 'West'
+    default: return ''
   }
 })
 </script>
@@ -60,7 +59,7 @@ const style = computed(() => {
 <style scoped>
 .lock {
   position: absolute;
-  top: 33%;
-  left: 33%;
+  top: 5px;
+  left: 5px;
 }
 </style>

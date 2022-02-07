@@ -85,4 +85,17 @@ export default class Game {
       this.stopSound(name)
     }
   }
+
+  exec(action) {
+    if (action.fn) {
+      action.fn()
+    }
+    this.onAction(action)
+    if (action.location) {
+      action.location.onAction(action)
+    }
+  }
+
+  onAction(action) {
+  }
 }

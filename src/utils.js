@@ -56,3 +56,5 @@ export const mixin = (cl, o) => {
     }
   })
 }
+
+export const color = (color, text) => `<span class="${color}">${text}</span>`
