@@ -1,5 +1,4 @@
 import Entity from '../entity'
-import { store } from '../store';
 
 export default class Log extends Entity {
   setupInstance(data) {
