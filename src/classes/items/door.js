@@ -50,7 +50,8 @@ export default class Door extends Item {
 
   roomForDirection (d) {
     const od = oppositeDirection(d)
-    return this.roomIds.find(id => this.directions[id] === od)
+    const id = this.roomIds.find(id => this.directions[id] === od)
+    return store.rooms.get(id)
   }
 
   enter() {

@@ -1,6 +1,7 @@
 import Entity from '@/entity'
 import { store } from '@/store'
-import { mixin } from '@/utils'
+import { log, mixin } from '@/utils'
+import Name from '@/mixins/name'
 import Actions from '@/mixins/actions'
 import Pickable from '@/mixins/pickable'
 import Dropable from '@/mixins/dropable'
@@ -24,11 +25,11 @@ export default class Item extends Entity {
       locationStore,
       icon: undefined,
       actions: [
-        () => ({
+        item => ({
           label: 'Examine',
           key: 'examine',
           icon: 'emojione:eye',
-          click: () => console.log('examine'),
+          click: () => item.examine(),
         }),
       ],
       actionsOrder: [
@@ -38,9 +39,6 @@ export default class Item extends Entity {
       location: undefined,
     }
   }
-
-  get name() { return this.state.name }
-  set name(value) { this.state.name = value }
 
   get stackable() { return false }
 
@@ -76,9 +74,9 @@ export default class Item extends Entity {
   get icon() { return this.state.icon }
   set icon(value) { this.state.icon = value }
 
-  rename(name) {
-    this.name = name
+  examine() {
+    log(`You examine the ${this.name} but find nothing particulary odd about it.`)
   }
 }
 
-mixin(Item, [Actions, Pickable, Dropable, Usable])
+mixin(Item, [Name, Actions, Pickable, Dropable, Usable])

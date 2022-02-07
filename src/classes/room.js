@@ -13,6 +13,7 @@ export default class Room extends Entity {
       y: 0,
       visited: 0,
       img: undefined,
+      icon: '',
       ...data,
     })
   }
@@ -37,6 +38,9 @@ export default class Room extends Entity {
 
   get img() { return this.state.img }
   set img(value) { this.state.img = value }
+
+  get icon() { return this.state.icon }
+  set icon(value) { this.state.icon = value }
 
   canEnter(fromRoom) {
     if (!store.player.canMove) {

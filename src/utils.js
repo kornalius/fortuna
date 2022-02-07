@@ -4,7 +4,10 @@ import Log from './classes/log'
 import merge from 'lodash/merge';
 
 export const log = (message, level = 0) => {
-  store.logs.update(new Log({ message, level }))
+  store.logs.update(new Log({
+    message: Array.isArray(message) ? message : [message],
+    level,
+  }))
 }
 
 export const oppositeDirection = d => {

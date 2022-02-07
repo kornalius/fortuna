@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import { store } from './index'
 import { mixin } from '@/utils'
 import Item from '@/classes/items/item';
+import Name from '@/mixins/name'
 import Level from '@/mixins/level'
 import Buffable from '@/mixins/buffable'
 import Hp from '@/mixins/hp'
@@ -21,14 +22,7 @@ export default class Player {
     })
   }
 
-  get name() { return this.state.name }
-  set name(value) { this.state.name = value }
-
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
-
-  rename(name) {
-    this.name = name
-  }
 
   addItem(data) {
     if (Array.isArray(data)) {
@@ -36,15 +30,17 @@ export default class Player {
     }
 
     if (data instanceof Item) {
-      store.items.update({ ...data, locationStore: 'player' })
+      data.locationId = undefined
+      data.locationStore = this.storeName
+      store.items.update(data)
       return data
     } else {
       const i = new Item(data)
+      i.locationStore = this.storeName
       store.items.update(i)
-      i.locationStore = 'player'
       return i
     }
   }
 }
 
-mixin(Player, [Level, Buffable, Items, Hp, Xp, Carry])
+mixin(Player, [Name, Level, Buffable, Items, Hp, Xp, Carry])

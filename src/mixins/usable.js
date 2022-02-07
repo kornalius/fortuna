@@ -19,7 +19,7 @@ export default {
   },
 
   get isUsable() { return this.state.usable },
-  set usable(value) { this.state.usabled = value },
+  set usable(value) { this.state.usable = value },
 
   get canUse() {
     return true

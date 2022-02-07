@@ -1,9 +1,12 @@
 <template>
-  <div v-for="log in logs" :key="log.id" class="line">
+  <div
+    v-for="log in logs"
+    :key="log.id"
+    :class="{ line: true, important: log.isImportant }"
+  >
     <span
-      v-for="(msg, i) in innerMsgs(log)"
+      v-for="(msg, i) in log.message"
       :key="`${log.id}-${i}`"
-      :class="{ important: log.isImportant }"
       class="mr2"
       v-html="msg"
     />
@@ -11,19 +14,20 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { store } from '../store'
 
-const size = 100
-
 const logs = computed(() => {
-  const l = store.logs.list.length
   return store.logs.list
     .sort((a, b) => a.timestamp < b.timestamp)
-    .slice(l - size)
+    .slice(-store.config.logSize)
 })
 
-const innerMsgs = log => Array.isArray(log.message) ? log.message : [log.message]
+const emit = defineEmits(['change'])
+
+watch(logs, () => {
+  emit('change')
+}, { immediate: true })
 </script>
 
 <style scoped>

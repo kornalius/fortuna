@@ -1,6 +1,6 @@
 import { store } from '@/store'
 
-const modules = import.meta.glob('./*.js')
+const modules = import.meta.glob('./**.js')
 
 for (const path in modules) {
   modules[path]().then((mod) => {

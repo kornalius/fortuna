@@ -42,8 +42,8 @@
       </div>
 
       <div class="relative flex h-100">
-        <div class="scrollable">
-          <log />
+        <div ref="scroller" class="scrollable">
+          <log @change="logsChanged" />
         </div>
       </div>
     </div>
@@ -51,10 +51,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import Log from '@/components/Log.vue'
 import Door from '@/components/Door.vue'
 import Item from '@/components/Item.vue'
+
+const scroller = ref()
 
 const props = defineProps({
   room: { type: Object },
@@ -62,6 +64,14 @@ const props = defineProps({
 
 const items = computed(() => props.room?.items || [])
 const doors = computed(() => props.room?.doors || [])
+
+const logsChanged = () => {
+  if (scroller?.value) {
+    setTimeout(() => {
+      scroller.value.scrollTop = scroller.value.scrollHeight
+    }, 100);
+  }
+}
 </script>
 
 <style scoped>

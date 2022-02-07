@@ -36,15 +36,17 @@ export default class Game {
   get isStarted() { return this.state.started }
   get isPaused() { return this.state.paused }
 
-  get minimapRoomSize() { return 32 }
+  get width() { return max(store.rooms.list.map(r => r.x )) }
+  get height() { return max(store.rooms.list.map(r => r.y )) }
 
-  get width() { return max(store.rooms.map(r => r.x )) }
-  get height() { return max(store.rooms.map(r => r.y )) }
-
-  get minimapWidth() { return this.width * this.minimapRoomSize }
-  get minimapHeight() { return this.height * this.minimapRoomSize }
+  get minimapWidth() { return (this.width || 1) * store.config.minimapRoomSize }
+  get minimapHeight() { return (this.height || 1) * store.config.minimapRoomSize }
 
   start() {
+    if (this.state.paused) {
+      window.location.reload()
+      return
+    }
     this.state.started = true
     store.rooms.at(0, 0).enter()
   }

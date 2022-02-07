@@ -9,6 +9,12 @@ export default class Entities {
 
   get(id) { return this.state[id] }
 
+  clear() {
+    Object.keys(this.state).forEach(k => {
+      delete this.state[k]
+    })
+  }
+
   update(item) {
     if (Array.isArray(item)) {
       item.forEach(d => this.update(d))

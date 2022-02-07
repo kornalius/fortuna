@@ -31,12 +31,13 @@ export default {
     }
 
     if (data instanceof Item) {
-      store.items.update({ ...data, location: this })
+      data.location = this
+      store.items.update(data)
       return data
     } else {
       const i = new Item(data)
-      store.items.update(i)
       i.location = this
+      store.items.update(i)
       return i
     }
   },

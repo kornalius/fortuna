@@ -3,7 +3,7 @@
     <Main v-if="game.isStarted" />
 
     <div v-show="showDialog">
-      <div class="title smoke">FORTUNA</div>
+      <div v-if="!game.isStarted" class="title smoke">FORTUNA</div>
       <img src="/images/menu-background.png" class="background-image"  alt="" />
       <div class="bg background-anim">
         <n-modal :show="showDialog" role="dialog" aria-modal="true">
