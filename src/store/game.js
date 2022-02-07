@@ -1,14 +1,15 @@
 import { reactive } from 'vue'
 import { Howl } from 'howler'
+import max from 'lodash/max'
 import { store } from '@/store'
 
 export default class Game {
   storeName = 'game'
 
   state = reactive({
-    roomId: undefined,
     started: false,
     paused: false,
+    roomId: undefined,
     sounds: {},
   })
 
@@ -34,6 +35,14 @@ export default class Game {
 
   get isStarted() { return this.state.started }
   get isPaused() { return this.state.paused }
+
+  get minimapRoomSize() { return 32 }
+
+  get width() { return max(store.rooms.map(r => r.x )) }
+  get height() { return max(store.rooms.map(r => r.y )) }
+
+  get minimapWidth() { return this.width * this.minimapRoomSize }
+  get minimapHeight() { return this.height * this.minimapRoomSize }
 
   start() {
     this.state.started = true
@@ -87,10 +96,15 @@ export default class Game {
   }
 
   exec(action) {
+    // call action function
     if (action.fn) {
       action.fn()
     }
+
+    // game onAction
     this.onAction(action)
+
+    // room onAction
     if (action.location) {
       action.location.onAction(action)
     }
