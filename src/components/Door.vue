@@ -3,6 +3,7 @@
     trigger="click"
     :options="value.dropdownOptions"
     :render-icon="renderDropdownIcon"
+    :render-label="renderDropdownLabel"
     @select="handleSelect"
   >
     <n-button
@@ -39,7 +40,8 @@ const props = defineProps({
   position: { type: String },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20 })
+const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })
+const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = key => {
   props.value.exec(key)

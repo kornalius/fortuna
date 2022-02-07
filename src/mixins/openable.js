@@ -17,30 +17,48 @@ export default {
   get isOpened() { return this.state.opened },
   get isClosed() { return !this.state.opened },
 
+  get canOpen() {
+    return true
+  },
+
   open() {
+    if (!this.canOpen) {
+      return false
+    }
     if (this.isLocked) {
-      return log('The door is locked', this)
+      log('The door is locked')
+      return false
     }
     if (this.isClosed) {
       this.state.opened = true
-      return log('You open the door', this)
+      log('You open the door')
+      return false
     }
-    log('The door is already opened', this)
+    log('The door is already opened')
+    return true
+  },
+
+  get canClose() {
+    return this.isOpened
   },
 
   close() {
+    if (!this.canClose) {
+      return false
+    }
     if (this.isOpened) {
       this.state.opened = false
-      return log('You close the door', this)
+      log('You close the door')
+      return false
     }
-    log('The door is already closed', this)
+    log('The door is already closed')
+    return true
   },
 
   toggle() {
     if (this.isClosed) {
-      this.open()
-    } else {
-      this.close()
+      return this.open()
     }
+    return this.close()
   },
 }

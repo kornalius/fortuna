@@ -2,6 +2,9 @@ import Entity from '@/entity'
 import { store } from '@/store'
 import { mixin } from '@/utils'
 import Actions from '@/mixins/actions'
+import Pickable from '@/mixins/pickable'
+import Dropable from '@/mixins/dropable'
+import Usable from '@/mixins/usable'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -78,4 +81,4 @@ export default class Item extends Entity {
   }
 }
 
-mixin(Item, [Actions])
+mixin(Item, [Actions, Pickable, Dropable, Usable])

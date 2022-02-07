@@ -98,7 +98,9 @@ export default class Game {
   exec(action) {
     // call action function
     if (action.fn) {
-      action.fn()
+      if (action.fn() === false) {
+        return false
+      }
     }
 
     // game onAction
@@ -108,6 +110,8 @@ export default class Game {
     if (action.location) {
       action.location.onAction(action)
     }
+
+    return true
   }
 
   onAction(action) {

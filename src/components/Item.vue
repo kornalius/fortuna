@@ -3,6 +3,7 @@
     trigger="click"
     :options="value.dropdownOptions"
     :render-icon="renderDropdownIcon"
+    :render-label="renderDropdownLabel"
     @select="handleSelect"
   >
     <n-button strong quaternary>
@@ -12,7 +13,7 @@
           :icon="value.icon"
           width="20"
         />
-        {{ value.name }}
+        <span class="ml2">{{ value.name }}</span>
       </div>
     </n-button>
   </n-dropdown>
@@ -26,7 +27,8 @@ const props = defineProps({
   value: { type: Object },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20 })
+const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })
+const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = key => {
   props.value.exec(key)

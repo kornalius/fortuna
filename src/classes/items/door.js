@@ -34,6 +34,9 @@ export default class Door extends Item {
         'unlock',
       ],
       keyId,
+      usable: false,
+      pickable: false,
+      dropable: false,
       ...data,
       key: undefined,
     })

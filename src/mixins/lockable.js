@@ -1,5 +1,5 @@
-import { store } from '@/store'
 import { log } from '@/utils'
+import { store } from '@/store'
 
 export default {
   state: {
@@ -37,16 +37,25 @@ export default {
     }
   },
 
+  get canUnlock() {
+    return true
+  },
+
   unlock() {
+    if (!this.canUnlock) {
+      return false
+    }
+
     if (this.isLocked) {
       if (this.keyId && !store.player.has(this.keyId)) {
-        log('This door needs a key', this)
-        return
+        log('This door needs a key')
+        return false
       }
       this.state.locked = false
-      log('Door has been unlocked', this)
-      return
+      log('Door has been unlocked')
+      return true
     }
-    log('The door is not locked', this)
+    log('The door is not locked')
+    return true
   },
 }

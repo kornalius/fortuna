@@ -3,6 +3,7 @@
     <span
       v-for="(msg, i) in innerMsgs(log)"
       :key="`${log.id}-${i}`"
+      :class="{ important: log.isImportant }"
       class="mr2"
       v-html="msg"
     />
@@ -27,6 +28,11 @@ const innerMsgs = log => Array.isArray(log.message) ? log.message : [log.message
 
 <style scoped>
 .line {
-  line-height: 1.75em;
+  line-height: 2em;
+  margin-bottom: 1em;
+}
+.important {
+  font-weight: bolder;
+  font-size: 1.25em;
 }
 </style>

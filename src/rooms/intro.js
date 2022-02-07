@@ -15,13 +15,20 @@ export default class IntroRoom extends Room {
   mounted() {
     super.mounted()
 
-    this.switch = this.addItem({ name: 'Switch', icon: 'heroicons-solid:light-bulb', qty: 1 })
+    this.switch = this.addItem({
+      name: 'Switch',
+      icon: 'heroicons-solid:light-bulb',
+      qty: 1,
+      off: true,
+      pickable: false,
+      dropable: false,
+      usable: false,
+    })
   }
 
   enter(fromRoom) {
     super.enter(fromRoom)
-    log(`Welcome to ${color('red', 'Fortuna')}`)
-    log()
+    log(`Welcome to ${color('red', 'Fortuna')}`, 1)
     log('A text adventure game, spiced up with elements of Roleplaying games.')
     log([
       `${color('blue', 'This is the tutorial room.')}`,
@@ -37,8 +44,59 @@ export default class IntroRoom extends Room {
 
   onAction(action) {
     super.onAction(action)
-    if (action.key === 'examine' && action.target === this.switch) {
-      this.addDoor({ locked: true }, 'S')
+    if (action.target === this.switch) {
+      switch (action.key) {
+        case 'examine':
+          if (this.switch.state.off) {
+            log('You feel the switch and concludes it is a normal switch with nothing special about it')
+            this.switch.usable = true
+          } else {
+            log(
+              'The switch looks quite normal, nothing special about it other than the little button in the middle'
+            )
+          }
+          break
+
+        case 'use':
+          this.switch.state.off = false
+          log([
+            'The room becomes lit, you are blinded by the sudden switch from darkness to light.',
+            'Your eyes take some time to adjust and you can now see the room in all it\'s glory.',
+          ])
+          this.addDoor({ locked: true }, 'S')
+          this.bottle = this.addItem({
+            name: 'Bottle',
+            icon: 'fa-solid:prescription-bottle-alt',
+            qty: 1,
+          })
+          log([
+            'While your eyes inspect the room, you look down and see a half empty bottle of pills',
+            'is lying on the floor. Pills are dispersed on the floor near it.',
+          ])
+          break
+
+        default:
+      }
+    } else if (action.target === this.bottle) {
+      switch (action.key) {
+        case 'examine':
+          if (!store.player.has(this.bottle)) {
+            log('You read the sticker on the bottle, it seems to belong to, YOU?')
+          } else {
+            log('A bottle of prescribed pills to your name')
+          }
+          break
+
+        case 'pickup':
+          log([
+            'You pickup the bottle and stash it in your pockets. You will need to investigate',
+            'this a little further down the road because you clearly don\'t remember being',
+            'prescribed pills',
+          ])
+          break
+
+        default:
+      }
     }
   }
 }

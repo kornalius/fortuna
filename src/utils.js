@@ -3,8 +3,8 @@ import { store } from './store'
 import Log from './classes/log'
 import merge from 'lodash/merge';
 
-export const log = (message, target) => {
-  store.logs.update(new Log({ message, target }))
+export const log = (message, level = 0) => {
+  store.logs.update(new Log({ message, level }))
 }
 
 export const oppositeDirection = d => {
@@ -40,7 +40,8 @@ export const mixin = (cl, o) => {
 
   Object.keys(o).forEach(k => {
     const d = Object.getOwnPropertyDescriptor(o, k)
-    if (d.get || d.set) {
+    const cd = Object.getOwnPropertyDescriptor(cl.prototype, k)
+    if ((d.get || d.set) && !cd) {
       Object.defineProperty(cl.prototype, k, {
         get: d.get,
         set: d.set,
@@ -51,7 +52,7 @@ export const mixin = (cl, o) => {
         writable: true,
         value: reactive(mixState(cl.prototype[k], d.value)),
       })
-    } else {
+    } else if (!cd) {
       cl.prototype[k] = d.value
     }
   })

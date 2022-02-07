@@ -1,11 +1,13 @@
 import { reactive } from 'vue'
 import { store } from './index'
 import { mixin } from '@/utils'
+import Item from '@/classes/items/item';
 import Level from '@/mixins/level'
 import Buffable from '@/mixins/buffable'
 import Hp from '@/mixins/hp'
 import Xp from '@/mixins/xp'
-import Item from '@/classes/items/item';
+import Items from '@/mixins/items'
+import Carry from '@/mixins/carry'
 
 export default class Player {
   storeName = 'player'
@@ -22,30 +24,7 @@ export default class Player {
   get name() { return this.state.name }
   set name(value) { this.state.name = value }
 
-  get items() { return store.items.list.filter(i => i.locationStore === 'player') }
-
-  get maxWeight() { return 10 * Math.pow(this.lvl, 2)  }
-  get carryWeight() { return this.items.reduce((acc, item) => acc + item.weight, 0) }
-
-  get canMove() { return this.carryWeight <= this.maxWeight }
-
-  /**
-   * Get item from inventory
-   *
-   * @param id
-   */
-  get(id) {
-    return this.items.find(i => i.id === id)
-  }
-
-  /**
-   * Does the player carry this item
-   *
-   * @param id
-   */
-  has(id) {
-    return !!this.get(id)
-  }
+  get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
   rename(name) {
     this.name = name
@@ -68,4 +47,4 @@ export default class Player {
   }
 }
 
-mixin(Player, [Level, Buffable, Hp, Xp])
+mixin(Player, [Level, Buffable, Items, Hp, Xp, Carry])
