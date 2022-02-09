@@ -1,8 +1,20 @@
 <template>
   <n-card style="width: 400px">
     <n-button
+      v-if="store.game.isPaused"
       class="mv3"
       type="primary"
+      strong
+      secondary
+      block
+      @click="() => store.game.resume()"
+    >
+      Resume
+    </n-button>
+
+    <n-button
+      class="mv3"
+      type="error"
       strong
       secondary
       block

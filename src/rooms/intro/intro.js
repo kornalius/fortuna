@@ -1,6 +1,7 @@
 import Room from '@/classes/room'
 import { color, log } from '@/utils'
-import LightSwitch from '@/classes/items/lightSwitch';
+import LightSwitch from '@/classes/items/lightSwitch'
+import Server from '@/classes/items/server'
 
 export default class IntroRoom extends Room {
   constructor(data) {
@@ -18,6 +19,7 @@ export default class IntroRoom extends Room {
     super.mounted()
 
     this.switch = this.addItem(new LightSwitch({ usable: false }))
+    this.server = this.addItem(new Server({}))
   }
 
   enter(fromRoom) {

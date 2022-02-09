@@ -41,6 +41,10 @@ const showDialog = computed(() => game.isPaused || game.isStarted === false)
 #app {
   height: 100%;
 }
+::selection {
+  color: white;
+  background: #2293E1;
+}
 body {
   font-family: nokia,sans-serif;
   height: 100vh;

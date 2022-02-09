@@ -22,7 +22,10 @@ export default {
    * @param id
    */
   has(id) {
-    return !!this.get(id)
+    if (typeof id === 'string') {
+      return !!this.get(id)
+    }
+    return this.items.includes(id)
   },
 
   addItem(data) {

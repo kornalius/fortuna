@@ -1,7 +1,8 @@
 import { reactive } from 'vue'
+import merge from 'lodash/merge'
+import random from 'lodash/random'
 import { store } from './store'
 import Log from './classes/log'
-import merge from 'lodash/merge';
 
 export const log = (message, level = 0) => {
   store.logs.update(new Log({
@@ -62,3 +63,5 @@ export const mixin = (cl, o) => {
 }
 
 export const color = (color, text) => `<span class="${color}">${text}</span>`
+
+export const operationTimeout = size => random(size * store.config.operationBaseDelay)

@@ -6,7 +6,7 @@ export default {
     pickable: true,
     actions: [
       item => (
-        item.isPickable
+        item.isPickable && !item.isInInventory
           ? {
             label: 'Pickup',
             key: 'pickup',

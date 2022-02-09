@@ -1,12 +1,11 @@
 import { log } from '@/utils'
-import { store } from '@/store'
 
 export default {
   state: {
     dropable: true,
     actions: [
       item => (
-        item.isDropable && store.player.has(item)
+        item.isDropable && item.isInInventory
           ? {
             label: 'Drop',
             key: 'drop',

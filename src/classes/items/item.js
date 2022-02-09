@@ -19,7 +19,8 @@ export default class Item extends Entity {
 
     return {
       name: 'Item',
-      qty: 0,
+      description: 'An item',
+      qty: 1,
       weight: 0,
       locationId,
       locationStore,
@@ -61,6 +62,9 @@ export default class Item extends Entity {
     }
   }
 
+  get description() { return this.state.description }
+  set description(value) { this.state.description = value }
+
   get weight() { return this.state.weight }
   set weight(value) { this.state.weight = value }
 
@@ -73,6 +77,8 @@ export default class Item extends Entity {
 
   get icon() { return this.state.icon }
   set icon(value) { this.state.icon = value }
+
+  get isInInventory() { return store.player.has(this) }
 
   examine() {
     log(`You examine the ${this.name} but find nothing particulary odd about it.`)

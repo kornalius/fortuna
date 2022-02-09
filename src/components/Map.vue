@@ -1,7 +1,7 @@
 <template>
   <n-card>
-    <div class="container">
-      <div ref="scroller" :style="style">
+    <div ref="container" class="container">
+      <div :style="style">
         <div
           v-for="room in rooms"
           :key="room.id"
@@ -27,8 +27,10 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { store } from '@/store'
+
+const container = ref()
 
 const rooms = computed(() => store.rooms.list.filter(r => r.visited > 0))
 const doors = computed(() => store.doors.list)
@@ -47,21 +49,30 @@ const styleForRoom = room => ({
   height: `${store.config.minimapRoomSize}px`,
 })
 
-watch(gameRoom, () => {
-
-}, { immediate: true })
+onMounted(() => {
+  watch(gameRoom, () => {
+    const { minimapRoomSize, minimapMargins } = store.config
+    if (container?.value) {
+      const r = container.value.getBoundingClientRect()
+      const x = gameRoom.value.x * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)
+      const y = gameRoom.value.y * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)
+      container.value.scrollLeft = Math.max(0, x - r.width * 0.5)
+      container.value.scrollTop = Math.max(0, y - r.height * 0.5)
+    }
+  }, { immediate: true })
+})
 </script>
 
 <style scoped>
 .container {
   position: relative;
   overflow: auto;
-  width: 200px;
+  width: 260px;
   height: 200px;
 }
 .room {
   position: absolute;
-  border: 1px solid white;
+  border: 2px solid white;
 }
 .door {
   position: absolute;
@@ -69,30 +80,30 @@ watch(gameRoom, () => {
   transform-origin: center;
 }
 .active {
-  border: 2px solid red;
+  border: 3px solid #F1AF0D;
 }
 .north {
   width: 12px;
   height: 4px;
   top: -2px;
-  left: 33%;
+  left: 8px;
 }
 .south {
   width: 12px;
   height: 4px;
   bottom: -2px;
-  left: 33%;
+  left: 8px;
 }
 .east {
   width: 4px;
   height: 12px;
   right: -2px;
-  top: 25%;
+  top: 8px;
 }
 .west {
   width: 4px;
   height: 12px;
   left: -2px;
-  top: 25%;
+  top: 8px;
 }
 </style>

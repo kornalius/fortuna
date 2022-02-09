@@ -2,8 +2,10 @@
   <n-card>
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
-        <div class="flex self-center relative">
-          <n-image v-if="room.img"
+        <div class="flex self-center relative w-100">
+          <server v-if="store.player.server" :value="store.player.server" />
+
+          <n-image v-else-if="room.img"
             style="max-height: 300px;"
             object-fit="cover"
             :src="`/images/rooms/${room.img}`"
@@ -55,6 +57,8 @@ import { computed, ref } from 'vue'
 import Log from '@/components/Log.vue'
 import Door from '@/components/Door.vue'
 import Item from '@/components/Item.vue'
+import Server from '@/components/Server.vue'
+import { store } from '@/store'
 
 const scroller = ref()
 
