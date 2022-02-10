@@ -11,7 +11,7 @@ export default class Software extends File {
       equippable: true,
       decryptable: false,
       viewable: false,
-      viewerType: undefined,
+      viewerType: null,
       ...data,
     })
   }

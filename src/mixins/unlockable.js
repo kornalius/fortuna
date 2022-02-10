@@ -5,7 +5,7 @@ export default {
   state: {
     unlockable: true,
     locked: false,
-    keyId: undefined,
+    keyId: null,
     actions: [
       door => (
         door.canUnlock()
@@ -37,7 +37,7 @@ export default {
     if (value) {
       this.state.keyId = value.id
     } else {
-      this.state.keyId = undefined
+      this.state.keyId = null
     }
   },
 

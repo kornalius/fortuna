@@ -4,7 +4,7 @@
 
     <div v-show="showDialog">
       <div v-if="!game.isStarted" class="title smoke">FORTUNA</div>
-      <img src="/images/menu-background.png" class="background-image"  alt="" />
+      <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
       <div class="bg background-anim">
         <n-modal :show="showDialog" role="dialog" aria-modal="true">
           <Menu />
@@ -35,6 +35,12 @@ const showDialog = computed(() => game.isPaused || game.isStarted === false)
 @font-face{
   font-family: hacked;
   src: url('/fonts/Hacked.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: pixeled;
+  src: url('/fonts/Pixeltype.ttf');
   font-weight: normal;
   font-style: normal;
 }

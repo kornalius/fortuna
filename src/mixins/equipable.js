@@ -4,7 +4,7 @@ export default {
   state: {
     equippable: false,
     equipped: false,
-    equipType: undefined,
+    equipType: null,
     actions: [
       item => (
         item.canEquip()

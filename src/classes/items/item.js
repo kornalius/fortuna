@@ -24,7 +24,7 @@ export default class Item extends Entity {
       weight: 0,
       locationId,
       locationStore,
-      icon: undefined,
+      icon: null,
       actions: [
         item => ({
           label: 'Examine',
@@ -37,7 +37,6 @@ export default class Item extends Entity {
         'examine',
       ],
       ...data,
-      location: undefined,
     }
   }
 
@@ -57,8 +56,8 @@ export default class Item extends Entity {
       this.state.locationId = value.id
       this.state.locationStore = value.store
     } else {
-      this.state.locationId = undefined
-      this.state.locationStore = undefined
+      this.state.locationId = null
+      this.state.locationStore = null
     }
   }
 

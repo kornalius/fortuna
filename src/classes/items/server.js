@@ -1,5 +1,3 @@
-import first from 'lodash/first'
-import last from 'lodash/last'
 import Item from './item'
 import { store } from '@/store'
 import { log, operationTimeout, checkSoftware } from '@/utils'
@@ -13,7 +11,7 @@ export default class Server extends Item {
       disconnecting: false,
       pickable: false,
       usable: false,
-      type: undefined,
+      type: null,
       protected: false,
       scanned: false,
       authenticated: false,
@@ -88,36 +86,36 @@ export default class Server extends Item {
   get isScanned() { return this.state.scanned }
   set scanned(value) { this.state.scanned = value }
 
-  get isScanning() { return this.installedScanner?.isBusy }
+  get isScanning() { return store.player.installedScanner?.isBusy || false }
   set scanning(value) { this.setBusy(store.player.installedScanner, value) }
 
   get isAuthenticated() { return this.state.authenticated }
   set authenticated(value) { this.state.authenticated = value }
 
-  get isAuthenticating() { return this.installedAuthenticator?.isBusy }
+  get isAuthenticating() { return store.player.installedAuthenticator?.isBusy || false }
   set authenticating(value) { this.setBusy(store.player.installedAuthenticator, value) }
 
   get isProtected() { return this.state.protected }
   set protected(value) { this.state.protected = value }
 
-  get isCracking() { return this.installedCracker?.isBusy }
+  get isCracking() { return store.player.installedCracker?.isBusy || false }
   set cracking(value) { this.setBusy(store.player.installedCracker, value) }
 
-  get isConnecting() { return this.installedConnector?.isBusy }
+  get isConnecting() { return store.player.installedConnector?.isBusy || false }
   set connecting(value) { this.setBusy(store.player.installedConnector, value) }
 
   get isConnected() { return store.player.server === this }
   get isDisconnected() { return store.player.server !== this }
 
-  get isDisconnecting() { return this.disconnecting }
+  get isDisconnecting() { return this.state.disconnecting }
   set disconnecting(value) { this.state.disconnecting = value }
 
   get isBusy() {
-    return !!(this.isScanning
+    return this.isScanning
       || this.isConnecting
       || this.isDisconnecting
       || this.isAuthenticating
-      || this.isCracking)
+      || this.isCracking
   }
 
   get display() { return this.state.display }
@@ -133,6 +131,12 @@ export default class Server extends Item {
       }
       return false
     }
+    if (this.isConnected) {
+      if (showMessage) {
+        log(`You need to be disconnected from ${this.name} to perform a port scan`)
+      }
+      return false
+    }
     return checkSoftware.call(this, store.player.installedScanner, showMessage && 'scanner')
   }
 
@@ -143,7 +147,7 @@ export default class Server extends Item {
       }
       return false
     }
-    if (store.player.server === this) {
+    if (this.isConnected) {
       if (showMessage) {
         log(`You are already connected to the server ${this.name}`)
       }
@@ -165,7 +169,7 @@ export default class Server extends Item {
       }
       return false
     }
-    if (store.player.server !== this) {
+    if (!this.isConnected) {
       if (showMessage) {
         log(`You need to be connected to the server ${this.name}`)
       }
@@ -182,7 +186,7 @@ export default class Server extends Item {
       }
       return false
     }
-    if (store.player.server !== this) {
+    if (!this.isConnected) {
       if (showMessage) {
         log(`You are not connected to the server ${this.name}`)
       }
@@ -192,7 +196,7 @@ export default class Server extends Item {
   }
 
   canCrack(showMessage) {
-    if (store.player.server !== this) {
+    if (!this.isConnected) {
       if (showMessage) {
         log(`You need to be connected to the server ${this.name} first`)
       }
@@ -226,6 +230,7 @@ export default class Server extends Item {
     return new Promise(resolve => {
       setTimeout(() => {
         this.connecting = false
+        this.clear()
         store.player.server = this
         log(`You have successfully connected to the server ${this.name}`)
         resolve(true)
@@ -242,7 +247,7 @@ export default class Server extends Item {
     return new Promise(resolve => {
       setTimeout(() => {
         this.disconnecting = false
-        store.player.server = undefined
+        store.player.server = null
         log(`You have successfully disconnected from the server ${this.name}`)
         resolve(true)
       }, operationTimeout(this.version))
@@ -290,48 +295,18 @@ export default class Server extends Item {
     if (Array.isArray(text)) {
       this.print(text.join(' '))
     } else {
-      this.buffer.push(text)
+      if (typeof text === 'string') {
+        text.split('').forEach(c => this.buffer.push(c))
+      }
+      this.buffer.push('<br>')
     }
   }
 
   processBuffer() {
-    if (this.buffer?.length > 0) {
-      // get the first line in buffer
-      const f = first(this.buffer)
-
-      // carriage return
-      if (f === undefined) {
-        // add a new display line
-        this.display.push('<br>')
-
-        // remove first buffer line
-        this.buffer.splice(0, 1)
-      }
-
-      // characters remaining
-      else if (f.length) {
-        const c = f[0]
-
-        // if no display lines
-        if (this.display.length === 0) {
-          this.display.push('')
-        }
-
-        // get last line on display
-        let l = last(this.display)
-
-        // append character to last line
-        this.display[this.display.length - 1] = `${l}${c}`
-
-        // remove first character
-        this.buffer[0] = f.substring(1)
-      } else {
-        // add a new display line
-        this.display.push('')
-
-        // remove first buffer line
-        this.buffer.splice(0, 1)
-      }
+    if (this.buffer.length > 0) {
+      const c = this.buffer[0]
+      this.display.push(c)
+      this.buffer.splice(0, 1)
     }
   }
 

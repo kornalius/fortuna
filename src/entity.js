@@ -10,7 +10,7 @@ export default class Entity {
         {
           ...this.state,
           id: v4(),
-          store: undefined,
+          store: null,
         },
         this.setupInstance(data)
       )

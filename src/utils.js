@@ -76,6 +76,12 @@ export function checkSoftware(software, showMessage) {
     }
     return false
   }
+  if (software?.isBusy) {
+    if (showMessage) {
+      log(`${software.name} is locked while an operation is running on it`)
+    }
+    return false
+  }
   if ((software?.version || 0) < this.version) {
     if (showMessage) {
       log(`You need an installed ${showMessage} v${this.version} software to execute this operation`)

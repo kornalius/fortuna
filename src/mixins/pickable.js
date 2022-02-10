@@ -43,7 +43,7 @@ export default {
     if (!this.canPickup(true)) {
       return false
     }
-    this.locationId = undefined
+    this.locationId = null
     this.locationStore = store.player.storeName
     log(`You pickup the ${this.name}`)
     return true

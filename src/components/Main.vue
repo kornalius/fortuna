@@ -2,7 +2,7 @@
   <div class="flex h-100">
     <div class="flex flex-column w-100">
       <div class="flex h-100">
-        <Room :room="store.game.room" />
+        <Room :value="store.game.room" />
       </div>
     </div>
 
@@ -24,12 +24,4 @@ import Room from './Room.vue'
 import Stats from './Stats.vue'
 import Inventory from './Inventory.vue'
 import Map from './Map.vue'
-
-const { player, items, doors, logs } = store
-
-player.rename('Bob')
-
-setTimeout(() => {
-  player.rename('Alain')
-}, 1000)
 </script>

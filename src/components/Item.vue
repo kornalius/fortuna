@@ -54,7 +54,7 @@
 
           <div class="flex w-100">
             <div class="flex items-center">
-              <v-icon :icon="weightIcon" width="15" />
+              <v-icon :icon="weightIcon" width="16" />
               <span class="ml1 mt1">{{ value.weight }}</span>
             </div>
           </div>
@@ -111,8 +111,8 @@ const weightIcon = computed(() => {
 <style scoped>
 .badge {
   border-radius: 50%;
-  padding: 0 2px;
-  min-width: 1.5em;
+  padding: 3px 0 1px 1px;
+  min-width: 1.75em;
   font-size: smaller;
   color: #333;
   background: #F19936;

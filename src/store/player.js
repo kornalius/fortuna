@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import { store } from './index'
 import { mixin } from '@/utils'
-import Item from '@/classes/items/item';
+import Item from '@/classes/items/item'
 import Name from '@/mixins/name'
 import Level from '@/mixins/level'
 import Buffable from '@/mixins/buffable'
@@ -24,7 +24,7 @@ export default class Player {
       // maximum disk space available to store files in inventory
       disk: store.config.baseDisk,
       // currentyle connected server
-      serverId: undefined,
+      serverId: null,
     })
   }
 
@@ -60,11 +60,7 @@ export default class Player {
   get server() { return store.items.get(this.serverId) }
   set server(value) { this.serverId = value?.id }
 
-  get isConnectedToServer() { return this.server !== undefined }
-
-  isEquipped(item) {
-    return this.equippedItems.includes(item)
-  }
+  get isConnectedToServer() { return !!this.server }
 
   hasEquippedOfType(type) {
     return this.equippedItems.find(i => i.equipType === type)
@@ -80,7 +76,7 @@ export default class Player {
     }
 
     if (data instanceof Item) {
-      data.locationId = undefined
+      data.locationId = null
       data.locationStore = this.storeName
       store.items.update(data)
       return data

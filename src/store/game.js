@@ -9,7 +9,7 @@ export default class Game {
   state = reactive({
     started: false,
     paused: false,
-    roomId: undefined,
+    roomId: null,
     sounds: {},
   })
 
@@ -29,7 +29,7 @@ export default class Game {
     if (value) {
       this.state.roomId = value.id
     } else {
-      this.state.roomId = undefined
+      this.state.roomId = null
     }
   }
 
@@ -42,13 +42,20 @@ export default class Game {
   get minimapWidth() { return (this.width || 1) * store.config.minimapRoomSize }
   get minimapHeight() { return (this.height || 1) * store.config.minimapRoomSize }
 
-  start() {
+  async start() {
     if (this.state.paused) {
       window.location.reload()
       return
     }
     this.state.started = true
-    store.rooms.at(0, 0).enter()
+    const room = store.rooms.at(0, 0)
+    if (room) {
+      await this.exec({
+        key: 'enter',
+        target: room,
+        fn: async () => room.enter()
+      })
+    }
   }
 
   pause() {

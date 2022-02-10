@@ -5,7 +5,7 @@ import { store } from '@/store'
 export default {
   state: {
     viewed: false,
-    content: undefined,
+    content: null,
     type: 'txt',
     actions: [
       item => (

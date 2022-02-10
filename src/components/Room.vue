@@ -2,21 +2,21 @@
   <n-card>
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
-        <div class="flex self-center relative w-100">
+        <div class="flex self-center relative w-100" style="height: 300px;">
           <server
             v-if="store.player.isConnectedToServer"
             :value="store.player.server"
           />
 
-          <n-image v-else-if="room.img"
-            style="max-height: 300px;"
-            object-fit="cover"
-            :src="`/images/rooms/${room.img}`"
+          <img v-else-if="value.img"
+            class="image"
+            :src="`/images/rooms/${value.img}`"
+            :alt="value.img"
           />
         </div>
 
         <div class="flex ph1 mv2 items-center title-bar">
-          {{ room?.name }}
+          {{ value?.name }}
         </div>
 
         <div class="flex items-center mb2">
@@ -66,11 +66,11 @@ import { store } from '@/store'
 const scroller = ref()
 
 const props = defineProps({
-  room: { type: Object },
+  value: { type: Object },
 })
 
-const items = computed(() => props.room?.items || [])
-const doors = computed(() => props.room?.doors || [])
+const items = computed(() => props.value?.items || [])
+const doors = computed(() => props.value?.doors || [])
 
 const logsChanged = () => {
   if (scroller?.value) {
@@ -82,6 +82,16 @@ const logsChanged = () => {
 </script>
 
 <style scoped>
+.image {
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 .scrollable {
   overflow-y: auto;
   position: absolute;

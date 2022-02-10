@@ -23,34 +23,42 @@ export default class IntroRoom extends Room {
     this.server = this.addItem(new Server({}))
 
     store.player.addItem([
-      new Software({ name: 'The Scanner', deletable: false, equipType: 'scanner' }),
-      new Software({ name: 'The Connector', deletable: false, equipType: 'connector' }),
-    ])
-  }
-
-  enter(fromRoom) {
-    super.enter(fromRoom)
-
-    if (!this.visited) {
-      log(`Welcome to ${color('red', 'Fortuna')}`, 1)
-      log('A text adventure game, spiced up with elements of Roleplaying games.')
-      log([
-        `${color('blue', 'This is the tutorial room.')}`,
-        'You will need to get out of here by interacting with different items in the room.'
-      ])
-    }
-    log([
-      'It is very dark in here.',
-      'You cannot quite see.',
-      'You use extend your hands in front of you and walk forward until you touch the wall, at least it feels like gypsum.',
-      'You lounge the wall until your fingers touch a bump that feels like metal about the size of a credit card.',
+      new Software({
+        name: 'The Scanner',
+        deletable: false,
+        equipType: 'scanner',
+        equipped: true,
+        weight: 12,
+      }),
+      new Software({
+        name: 'The Connector',
+        deletable: false,
+        equipType: 'connector',
+        equipped: true,
+        weight: 20,
+      }),
     ])
   }
 
   onAction(action) {
     super.onAction(action)
 
-    if (action.target === this.switch) {
+    if (action.key === 'enter') {
+      if (this.visited === 1) {
+        log(`Welcome to ${color('red', 'Fortuna')}`, 1)
+        log('A text adventure game, spiced up with elements of Roleplaying games.')
+        log([
+          `${color('blue', 'This is the tutorial room.')}`,
+          'You will need to get out of here by interacting with different items in the room.'
+        ])
+      }
+      log([
+        'It is very dark in here.',
+        'You cannot quite see.',
+        'You use extend your hands in front of you and walk forward until you touch the wall, at least it feels like gypsum.',
+        'You lounge the wall until your fingers touch a bump that feels like metal about the size of a credit card.',
+      ])
+    } else if (action.target === this.switch) {
       switch (action.key) {
         case 'examine':
           if (this.switch.isOff) {

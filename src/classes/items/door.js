@@ -14,6 +14,10 @@ export default class Door extends Item {
 
     return super.setupInstance({
       name: 'Door',
+      keyId,
+      usable: false,
+      pickable: false,
+      dropable: false,
       directions: {},
       actions: [
         item => (
@@ -33,12 +37,7 @@ export default class Door extends Item {
         'toggleOpen',
         'unlock',
       ],
-      keyId,
-      usable: false,
-      pickable: false,
-      dropable: false,
       ...data,
-      key: undefined,
     })
   }
 
@@ -71,7 +70,11 @@ export default class Door extends Item {
 
     const room = this.roomForDirection(this.direction)
     if (room) {
-      room.enter()
+      await store.game.exec({
+        key: 'enter',
+        target: room,
+        fn: async () => room.enter()
+      })
       return true
     }
     return false

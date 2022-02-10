@@ -16,7 +16,7 @@ export default class File extends Item {
       dropable: false,
       unlockable: false,
       usable: false,
-      busy: undefined,
+      busy: false,
       ...data,
     })
   }

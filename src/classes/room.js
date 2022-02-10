@@ -12,7 +12,7 @@ export default class Room extends Entity {
       x: 0,
       y: 0,
       visited: 0,
-      img: undefined,
+      img: null,
       icon: '',
       ...data,
     })
