@@ -7,24 +7,24 @@ export default {
     equipType: undefined,
     actions: [
       item => (
-        item.isEquippable && !item.isEquipped
+        item.canEquip()
           ? {
             label: item.equipWord,
-            key: 'equip',
+            key: item.equipKey,
             icon: item.equipIcon,
             disabled: false,
-            click: () => item.equip(),
+            click: item.equipClick,
           }
           : undefined
       ),
       item => (
-        item.isEquippable && item.isEquipped
+        item.canUnequip()
           ? {
             label: item.unequipWord,
-            key: 'unequip',
+            key: item.unequipKey,
             icon: item.unequipIcon,
             disabled: false,
-            click: () => item.unequip(),
+            click: item.unequipClick,
           }
           : undefined
       ),
@@ -40,54 +40,93 @@ export default {
   get equipType() { return this.state.equipType },
   set equipType(value) { this.state.equipType = value },
 
-  get canEquip() {
-    return this.isEquippable
-  },
-
-  get canUnequip() {
-    return true
-  },
-
   get equipIcon() { return this.isSoftware ? 'whh:savetodrive' : 'bx:bxs-t-shirt' },
   get unequipIcon() { return this.isSoftware ? 'entypo:uninstall' : 'Unequip' },
 
   get equipWord() { return this.isSoftware ? 'Install' : 'Equip' },
   get unequipWord() { return this.isSoftware ? 'Uninstall' : 'Unequip' },
 
+  get equipKey() { return this.isSoftware ? 'install' : 'equip' },
+  get unequipKey() { return this.isSoftware ? 'uninstall' : 'unequip' },
+
   get equippedWord() { return this.isSoftware ? 'installed' : 'equipped' },
   get unequippedWord() { return this.isSoftware ? 'uninstalled' : 'unequipped' },
 
-  equip(target) {
-    if (!this.canEquip || !target.canEquip(this)) {
-      return false
-    }
-    if (!this.isEquipped) {
-      this.equipped = true
-      if (!this.isFile && !this.isSoftware) {
-        log(`You have ${this.equippedWord} the ${this.name}`)
-      }
-      return true
-    }
-    if (!this.isFile && !this.isSoftware) {
-      log(`${this.name} is already ${this.equippedWord}`)
-    }
-    return false
+  get equipClick() {
+    return this.isSoftware ? async () => this.install() : async () => this.equip()
   },
 
-  unequip(target) {
-    if (!this.canUnequip || !target.canUnequip(this)) {
+  get unequipClick() {
+    return this.isSoftware ? async () => this.uninstall() : async () => this.unequip()
+  },
+
+  canEquip(showMessage) {
+    if (!this.isEquippable) {
+      if (showMessage) {
+        log(`${this.name} cannot be ${this.equippedWord}`)
+      }
       return false
     }
     if (this.isEquipped) {
-      this.equipped = false
-      if (!this.isFile && !this.isSoftware) {
-        log(`You have ${this.unequippedWord} the ${this.name}`)
+      if (showMessage) {
+        log(`${this.name} is already ${this.equippedWord}`)
       }
-      return true
+      return false
     }
-    if (!this.isFile && !this.isSoftware) {
-      log(`${this.name} is already ${this.unequippedWord}`)
+    if (store.player.hasEquippedOfType(this.equipType)) {
+      if (showMessage) {
+        log(`You have already have a ${this.equipType} ${this.equippedWord}`)
+      }
+      return false
     }
-    return false
+    // for files and softwares
+    if (this.isBusy) {
+      if (showMessage) {
+        log(`${this.name} is locked while an operation is running on it`)
+      }
+      return false
+    }
+    return true
+  },
+
+  canUnequip(showMessage) {
+    if (!this.isEquippable) {
+      if (showMessage) {
+        log(`${this.name} cannot be ${this.unequippedWord}`)
+      }
+      return false
+    }
+    if (!this.isEquipped) {
+      if (showMessage) {
+        log(`${this.name} is not ${this.equippedWord}`)
+      }
+      return false
+    }
+    // for files and softwares
+    if (this.isBusy) {
+      if (showMessage) {
+        log(`${this.name} is locked while an operation is running on it`)
+      }
+      return false
+    }
+    return true
+  },
+
+  async equip() {
+    if (!this.canEquip(true)) {
+      return false
+    }
+    this.equipped = true
+    log(`You have ${this.equippedWord} ${this.name}`)
+    return true
+  },
+
+  async unequip() {
+    if (!this.canUnequip(true)) {
+      return false
+    }
+    this.equipped = false
+    log(`You have ${this.unequippedWord} the ${this.name}`)
+    return true
   },
 }

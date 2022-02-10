@@ -1,6 +1,6 @@
 import Entity from '@/entity'
 import { store } from '@/store'
-import { log, mixin } from '@/utils'
+import { mixin } from '@/utils'
 import Door from '@/classes/items/door'
 import Items from '@/mixins/items'
 import Actions from '@/mixins/actions'
@@ -42,36 +42,12 @@ export default class Room extends Entity {
   get icon() { return this.state.icon }
   set icon(value) { this.state.icon = value }
 
-  canEnter(fromRoom) {
-    if (!store.player.canMove) {
-      log('You cannot move')
-      return false
-    }
-    return true
-  }
-
-  canExit(direction) {
-    if (!store.player.canMove) {
-      log('You cannot move')
-      return false
-    }
-
-    switch (direction) {
-      case 'N':
-        return this.northDoor?.isOpened
-      case 'S':
-        return this.southDoor?.isOpened
-      case 'E':
-        return this.eastDoor?.isOpened
-      case 'W':
-        return this.westDoor?.isOpened
-      default:
-        return false
-    }
+  canEnter(fromRoom, showMessage) {
+    return store.player.canMove(showMessage)
   }
 
   enter(fromRoom) {
-    if (!this.canEnter(fromRoom)) {
+    if (!this.canEnter(fromRoom, true)) {
       return false
     }
 
@@ -80,15 +56,6 @@ export default class Room extends Entity {
       store.game.room = this
     }
 
-    return true
-  }
-
-  exit(toRoom) {
-    if (!this.canExit(toRoom)) {
-      return false
-    }
-
-    store.game.room = undefined
     return true
   }
 

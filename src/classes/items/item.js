@@ -30,7 +30,7 @@ export default class Item extends Entity {
           label: 'Examine',
           key: 'examine',
           icon: 'emojione:eye',
-          click: () => item.examine(),
+          click: async () => item.examine(),
         }),
       ],
       actionsOrder: [
@@ -69,19 +69,25 @@ export default class Item extends Entity {
   set weight(value) { this.state.weight = value }
 
   get qty() { return this.state.qty }
-  set qty(value) {
-    this.state.qty = this.stackable
-      ? Math.max(0, value)
-      : 1
-  }
+  set qty(value) { this.state.qty = this.stackable ? Math.max(0, value) : 1 }
 
   get icon() { return this.state.icon }
   set icon(value) { this.state.icon = value }
 
   get isInInventory() { return store.player.has(this) }
 
-  examine() {
-    log(`You examine the ${this.name} but find nothing particulary odd about it.`)
+  // set the software busy state
+  setBusy(software, value) {
+    if (software) {
+      software.busy = value
+    }
+  }
+
+  onAction(action) {
+  }
+
+  async examine() {
+    log(`You examine the ${this.name} but find nothing particular about it.`)
   }
 }
 

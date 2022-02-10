@@ -5,14 +5,14 @@ export default {
     dropable: true,
     actions: [
       item => (
-        item.isDropable && item.isInInventory
+        item.isDropable && item.isInInventory && item.canDrop()
           ? {
             label: 'Drop',
             key: 'drop',
             icon: 'fa-solid:hand-holding',
             class: 'rotate-180 mt2',
             disabled: false,
-            click: () => item.drop(),
+            click: async () => item.drop(),
           }
           : undefined
       ),
@@ -22,19 +22,27 @@ export default {
   get isDropable() { return this.state.dropable },
   set dropable(value) { this.state.dropable = value },
 
-  get canDrop() {
+  canDrop(showMessage) {
+    if (!this.isDropable) {
+      if (showMessage) {
+        log(`${this.name} cannot be dropped`)
+      }
+      return false
+    }
+    if (!store.player.has(this)) {
+      if (showMessage) {
+        log(`${this.name} needs to be in your inventory first`)
+      }
+      return false
+    }
     return true
   },
 
-  drop() {
-    if (!this.canDrop) {
+  async drop() {
+    if (!this.canDrop(true)) {
       return false
     }
-    if (!this.isDropable) {
-      log(`You cannot drop the ${this.name}`)
-      return false
-    }
-    this.location = game.store.room
+    this.location = store.game.room
     log(`You drop the ${this.name}`)
     return true
   },

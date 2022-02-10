@@ -3,7 +3,10 @@
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
         <div class="flex self-center relative w-100">
-          <server v-if="store.player.server" :value="store.player.server" />
+          <server
+            v-if="store.player.isConnectedToServer"
+            :value="store.player.server"
+          />
 
           <n-image v-else-if="room.img"
             style="max-height: 300px;"
@@ -22,7 +25,7 @@
           <span
             v-for="item in items"
             :key="item.id"
-            class="inline"
+            class="inline mr1"
           >
             <item :value="item" />
           </span>
@@ -34,7 +37,7 @@
           <span
             v-for="door in doors"
             :key="door.id"
-            class="inline"
+            class="inline mr1"
           >
             <door :value="door" />
           </span>

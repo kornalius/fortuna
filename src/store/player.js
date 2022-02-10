@@ -30,7 +30,8 @@ export default class Player {
 
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
-  get installedSoftwares() { return this.items.filter(i => i.isSoftware && i.equipped) }
+  get installedSoftwares() { return this.items.filter(i => i.isSoftware && i.isEquipped) }
+  get equippedItems() { return this.items.filter(i => i.isEquipped) }
   get files() { return this.items.filter(i => i.isFile) }
 
   get ram() { return this.state.ram }
@@ -43,8 +44,6 @@ export default class Player {
   get diskFree() { return this.state.disk - this.diskUsed }
   get diskUsed() { return this.files.reduce((acc, i) => acc + i.weight, 0) }
 
-  get equippedItems() { return this.items.filter(i => i.isEquipped) }
-
   get installedViewer() { return this.installedSoftware(i => i.isViewer) }
   get installedDecrypter() { return this.installedSoftware(i => i.isDecrypter) }
   get installedCracker() { return this.installedSoftware(i => i.isCracker) }
@@ -56,21 +55,7 @@ export default class Player {
   get installedAuthenticator() { return this.installedSoftware(i => i.isAuthenticator) }
 
   get serverId() { return this.state.serverId }
-  set serverId(value) {
-    if (this.state.serverId && !value) {
-      const server = store.items.get(this.state.serverId)
-      if (server) {
-        server.onDisconnect()
-      }
-    }
-    this.state.serverId = value
-    if (value) {
-      const server = store.items.get(value)
-      if (server) {
-        server.onConnect()
-      }
-    }
-  }
+  set serverId(value) { this.state.serverId = value }
 
   get server() { return store.items.get(this.serverId) }
   set server(value) { this.serverId = value?.id }
@@ -105,14 +90,6 @@ export default class Player {
       store.items.update(i)
       return i
     }
-  }
-
-  canEquip(item) {
-    return !this.hasEquippedOfType(item.equipType)
-  }
-
-  canUnequip(item) {
-    return true
   }
 }
 

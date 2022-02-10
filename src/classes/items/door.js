@@ -2,7 +2,7 @@ import Item from './item'
 import { log, mixin, oppositeDirection } from '@/utils'
 import { store } from '@/store'
 import Openable from '@/mixins/openable'
-import Lockable from '@/mixins/lockable'
+import Unlockable from '@/mixins/unlockable'
 
 export default class Door extends Item {
   setupInstance(data) {
@@ -16,14 +16,14 @@ export default class Door extends Item {
       name: 'Door',
       directions: {},
       actions: [
-        door => (
-          door.isOpened
+        item => (
+          item.canEnter()
             ? {
               label: 'Enter',
               key: 'enter',
               icon: 'whh:enteralt',
               disabled: false,
-              click: () => door.enter(),
+              click: async () => item.enter(),
             }
             : undefined
         ),
@@ -54,16 +54,28 @@ export default class Door extends Item {
     return store.rooms.get(id)
   }
 
-  enter() {
+  canEnter(showMessage) {
     if (!this.isOpened) {
-      return log('The door is not opened')
+      if (showMessage) {
+        log('The door is not opened')
+      }
+      return false
+    }
+    return true
+  }
+
+  async enter() {
+    if (!this.canEnter(true)) {
+      return false
     }
 
     const room = this.roomForDirection(this.direction)
     if (room) {
       room.enter()
+      return true
     }
+    return false
   }
 }
 
-mixin(Door, [Openable, Lockable])
+mixin(Door, [Openable, Unlockable])

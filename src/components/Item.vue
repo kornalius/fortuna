@@ -9,24 +9,25 @@
     <n-popover :delay="1000" style="width: 250px" trigger="hover" placement="top">
       <template #trigger>
         <n-button strong quaternary :style="buttonStyle">
-          <div class="inline-flex items-end">
+          <div class="inline-flex items-center">
             <v-icon
               v-if="value.icon"
               :icon="value.icon"
               width="20"
+              height="20"
             />
 
-            <span class="ml2">{{ name }}</span>
+            <span :class="[value.qty > 1 ? 'ml3' : 'ml2']" v-html="name" />
 
             <v-icon v-if="value.isBusy" class="ml2" icon="eos-icons:loading" width="20" />
 
-            <div v-if="value.isInInventory" class="qty">{{ value.qty }}</div>
+            <div v-if="value.qty > 1" class="qty">{{ value.qty }}</div>
 
             <v-icon
               v-if="value.isInInventory && value.isEquipped"
               icon="bx:bxs-check-circle"
               class="equipped"
-              width="16"
+              width="14"
             />
           </div>
         </n-button>
@@ -44,7 +45,7 @@
         <n-gi span="4">
           <n-grid cols="6">
             <n-gi span="5">
-              <span>{{ name }}</span>
+              <span v-html="name" />
             </n-gi>
             <n-gi span="1">
               <div class="badge">{{ value.qty }}</div>
@@ -76,15 +77,16 @@ const props = defineProps({
 const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
-const handleSelect = key => {
-  props.value.exec(key)
+const handleSelect = async key => {
+  await props.value.exec(key)
 }
 
 const buttonStyle = computed(() => {
+  const s = ['padding-left: 2px; padding-right: 2px;']
   if (props.value.isInInventory) {
-    return 'padding-left: 0; display: flex; width: 100%; justify-content: start'
+    s.push('display: flex; width: 100%; justify-content: start;')
   }
-  return ''
+  return s.join(' ')
 })
 
 const showVersion = computed(() => (
@@ -92,7 +94,7 @@ const showVersion = computed(() => (
 ))
 
 const name = computed(() => (
-  `${props.value.name}${showVersion.value ? ` v${props.value.version}` : ''}`
+  `${props.value.name}${showVersion.value ? ` <span class="blue f7">v${props.value.version}</span>` : ''}`
 ))
 
 const weightIcon = computed(() => {
@@ -109,8 +111,9 @@ const weightIcon = computed(() => {
 <style scoped>
 .badge {
   border-radius: 50%;
-  padding: 2px;
-  min-width: 2em;
+  padding: 0 2px;
+  min-width: 1.5em;
+  font-size: smaller;
   color: #333;
   background: #F19936;
   display: inline-flex;
@@ -120,7 +123,7 @@ const weightIcon = computed(() => {
 .qty {
   position: absolute;
   bottom: 2px;
-  right: 2px;
+  left: 21px;
   display: inline-flex;
   font-size: small;
   color: #F19936;
@@ -128,8 +131,10 @@ const weightIcon = computed(() => {
 }
 .equipped {
   position: absolute;
-  top: 2px;
-  right: 4px;
+  bottom: 0;
+  left: -1px;
+  background-color: #333;
+  border-radius: 50%;
   color: #CBE54A;
 }
 </style>

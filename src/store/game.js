@@ -97,21 +97,26 @@ export default class Game {
     }
   }
 
-  exec(action) {
+  async exec(action) {
     // call action function
     if (action.fn) {
-      if (action.fn() === false) {
+      if (await action.fn() === false) {
         return false
       }
     }
 
-    // game onAction
-    this.onAction(action)
+    // item onAction
+    if (action.target) {
+      action.target.onAction(action)
+    }
 
     // room onAction
     if (action.location) {
       action.location.onAction(action)
     }
+
+    // game onAction
+    this.onAction(action)
 
     return true
   }

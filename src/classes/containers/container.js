@@ -1,7 +1,7 @@
 import Entity from '@/entity'
 import { mixin } from '@/utils'
 import Openable from '@/mixins/openable'
-import Lockable from '@/mixins/lockable'
+import Unlockable from '@/mixins/unlockable'
 import Items from '@/mixins/items'
 
 export default class Container extends Entity {
@@ -13,4 +13,4 @@ export default class Container extends Entity {
   }
 }
 
-mixin(Container, [Items, Openable, Lockable])
+mixin(Container, [Items, Openable, Unlockable])

@@ -13,7 +13,7 @@ export default {
             icon: 'fa-solid:hand-lizard',
             class: 'rotate-270',
             disabled: false,
-            click: () => item.pickup(),
+            click: async () => item.pickup(),
           }
           : undefined
       ),
@@ -23,16 +23,24 @@ export default {
   get isPickable() { return this.state.pickable },
   set pickable(value) { this.state.pickable = value },
 
-  get canPickup() {
+  canPickup(showMessage) {
+    if (!this.isPickable) {
+      if (showMessage) {
+        log(`${this.name} cannot be picked`)
+      }
+      return false
+    }
+    if (store.player.has(this)) {
+      if (showMessage) {
+        log(`${this.name} is already in your inventory`)
+      }
+      return false
+    }
     return true
   },
 
-  pickup() {
-    if (!this.canPickup) {
-      return false
-    }
-    if (!this.isPickable) {
-      log(`You cannot pickup the ${this.name}`)
+  async pickup() {
+    if (!this.canPickup(true)) {
       return false
     }
     this.locationId = undefined

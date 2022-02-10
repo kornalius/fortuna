@@ -15,6 +15,14 @@
         />
       </div>
     </div>
+
+    <n-button
+      class="disconnect"
+      type="error"
+      @click="() => value.disconnect()"
+    >
+      <v-icon icon="websymbol:logout" width="24" />
+    </n-button>
   </div>
 </template>
 
@@ -51,6 +59,11 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
+  top: 0;
+}
+.disconnect {
+  position: absolute;
+  right: 0;
   top: 0;
 }
 </style>

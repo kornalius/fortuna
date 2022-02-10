@@ -2,6 +2,7 @@ import Room from '@/classes/room'
 import { color, log } from '@/utils'
 import LightSwitch from '@/classes/items/lightSwitch'
 import Server from '@/classes/items/server'
+import Software from '@/classes/items/software'
 
 export default class IntroRoom extends Room {
   constructor(data) {
@@ -20,6 +21,11 @@ export default class IntroRoom extends Room {
 
     this.switch = this.addItem(new LightSwitch({ usable: false }))
     this.server = this.addItem(new Server({}))
+
+    store.player.addItem([
+      new Software({ name: 'The Scanner', deletable: false, equipType: 'scanner' }),
+      new Software({ name: 'The Connector', deletable: false, equipType: 'connector' }),
+    ])
   }
 
   enter(fromRoom) {

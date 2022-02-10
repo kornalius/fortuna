@@ -41,7 +41,7 @@
             :type="filter === 'isSoftware' ? 'primary' : undefined"
             @click="setFilter('isSoftware')"
           >
-            <v-icon icon="fluent:tetris-app-32-filled" width="24" />
+            <v-icon icon="whh:software" width="24" />
           </n-button>
         </n-button-group>
       </div>

@@ -2,7 +2,7 @@ import first from 'lodash/first'
 import last from 'lodash/last'
 import Item from './item'
 import { store } from '@/store'
-import { log, operationTimeout } from '@/utils'
+import { log, operationTimeout, checkSoftware } from '@/utils'
 
 export default class Server extends Item {
   setupInstance(data) {
@@ -10,6 +10,7 @@ export default class Server extends Item {
       name: 'Server',
       icon: 'whh:server',
       version: 1,
+      disconnecting: false,
       pickable: false,
       usable: false,
       type: undefined,
@@ -20,57 +21,57 @@ export default class Server extends Item {
       buffer: [],
       actions: [
         item => (
-          !item.isScanned
+          item.canScan()
             ? {
               label: 'Scan',
               key: 'scan',
               icon: 'mdi:cube-scan',
               disabled: false,
-              click: () => item.scan(),
+              click: async () => item.scan(),
             }
             : undefined
         ),
         item => (
-          item.isScanned && store.player.server !== item
+          item.canConnect()
             ? {
               label: 'Connect',
               key: 'connect',
               icon: 'mdi:lan-connect',
               disabled: false,
-              click: () => item.connect(),
+              click: async () => item.connect(),
             }
             : undefined
         ),
         item => (
-          store.player.server === item
-            ? {
-              label: 'Disconnect',
-              key: 'disconnect',
-              icon: 'mdi:lan-disconnect',
-              disabled: false,
-              click: () => item.disconnect(),
-            }
-            : undefined
-        ),
-        item => (
-          item.isScanned && !item.isProtected && store.player.server === item
+          item.canAuthenticate()
             ? {
               label: 'Authenticate',
               key: 'authenticate',
               icon: 'ph:password-bold',
               disabled: false,
-              click: () => item.authenticate(),
+              click: async () => item.authenticate(),
             }
             : undefined
         ),
         item => (
-          item.isProtected && !item.authenticated && store.player.server === item
+          item.canCrack()
             ? {
               label: 'Crack password',
               key: 'crack',
               icon: 'cib:hackaday',
               disabled: false,
-              click: () => item.crack(),
+              click: async () => item.crack(),
+            }
+            : undefined
+        ),
+        item => (
+          item.canDisconnect()
+            ? {
+              label: 'Disconnect',
+              key: 'disconnect',
+              icon: 'mdi:lan-disconnect',
+              disabled: false,
+              click: async () => item.disconnect(),
             }
             : undefined
         ),
@@ -87,28 +88,37 @@ export default class Server extends Item {
   get isScanned() { return this.state.scanned }
   set scanned(value) { this.state.scanned = value }
 
-  get isAuthenticated() { return this.state.authenticated }
-  set authenticated(value) { this.state.authenticated = value }
-
-  get isProtected() { return this.state.protected }
-  set protected(value) { this.state.protected = value }
-
   get isScanning() { return this.installedScanner?.isBusy }
   set scanning(value) { this.setBusy(store.player.installedScanner, value) }
 
-  get isConnecting() { return this.installedConnector?.isBusy }
-  set connecting(value) { this.setBusy(store.player.installedConnector, value) }
-
-  get isDisconnecting() { return this.installedConnector?.isBusy }
-  set disconnecting(value) { this.setBusy(store.player.installedConnector, value) }
+  get isAuthenticated() { return this.state.authenticated }
+  set authenticated(value) { this.state.authenticated = value }
 
   get isAuthenticating() { return this.installedAuthenticator?.isBusy }
   set authenticating(value) { this.setBusy(store.player.installedAuthenticator, value) }
 
+  get isProtected() { return this.state.protected }
+  set protected(value) { this.state.protected = value }
+
   get isCracking() { return this.installedCracker?.isBusy }
   set cracking(value) { this.setBusy(store.player.installedCracker, value) }
 
-  get isBusy() { return this.isScanning || this.isConnecting || this.isAuthenticating || this.isCracking }
+  get isConnecting() { return this.installedConnector?.isBusy }
+  set connecting(value) { this.setBusy(store.player.installedConnector, value) }
+
+  get isConnected() { return store.player.server === this }
+  get isDisconnected() { return store.player.server !== this }
+
+  get isDisconnecting() { return this.disconnecting }
+  set disconnecting(value) { this.state.disconnecting = value }
+
+  get isBusy() {
+    return !!(this.isScanning
+      || this.isConnecting
+      || this.isDisconnecting
+      || this.isAuthenticating
+      || this.isCracking)
+  }
 
   get display() { return this.state.display }
   set display(value) { this.state.display = value }
@@ -116,156 +126,159 @@ export default class Server extends Item {
   get buffer() { return this.state.buffer }
   set buffer(value) { this.state.buffer = value }
 
-  get canScan() {
-    if (this.isBusy) {
-      log(`Server ${this.name} is locked while an operation is running on it`)
-      return false
-    }
+  canScan(showMessage) {
     if (this.isScanned) {
-      log(`Server ${this.name} has already been scanned`)
+      if (showMessage) {
+        log(`Server ${this.name} has already been scanned`)
+      }
       return false
     }
-    return true
+    return checkSoftware.call(this, store.player.installedScanner, showMessage && 'scanner')
   }
 
-  get canConnect() {
-    if (this.isBusy) {
-      log(`Server ${this.name} is locked while an operation is running on it`)
-      return false
-    }
+  canConnect(showMessage) {
     if (!this.isScanned) {
-      log(`Server ${this.name} needs to be scanned for opened ports first`)
+      if (showMessage) {
+        log(`Server ${this.name} needs to be scanned for opened ports first`)
+      }
       return false
     }
     if (store.player.server === this) {
-      log(`You are already connected to the server ${this.name}`)
+      if (showMessage) {
+        log(`You are already connected to the server ${this.name}`)
+      }
       return false
     }
-    return true
+    return checkSoftware.call(this, store.player.installedConnector, showMessage && 'connector')
   }
 
-  get canAuthenticate() {
-    if (this.isBusy) {
-      log(`Server ${this.name} is locked while an operation is running on it`)
-      return false
-    }
+  canAuthenticate(showMessage) {
     if (this.isAuthenticated) {
-      log(`You are already authenticated on server ${this.name}`)
+      if (showMessage) {
+        log(`You are already authenticated on server ${this.name}`)
+      }
       return false
     }
     if (this.isProtected) {
-      log(`The server ${this.name} is protected`)
+      if (showMessage) {
+        log(`The server ${this.name} is protected`)
+      }
       return false
     }
     if (store.player.server !== this) {
-      log(`You need to be connected to the server ${this.name}`)
+      if (showMessage) {
+        log(`You need to be connected to the server ${this.name}`)
+      }
       return false
     }
-    return true
+    return checkSoftware.call(this, store.player.installedAuthenticator, showMessage && 'authenticator')
+
   }
 
-  get canDisconnect() {
+  canDisconnect(showMessage) {
     if (this.isBusy) {
-      log(`Server ${this.name} is locked while an operation is running on it`)
+      if (showMessage) {
+        log(`${this.name} is locked while an operation is running on it`)
+      }
       return false
     }
     if (store.player.server !== this) {
-      log(`You are not connected to the server ${this.name}`)
+      if (showMessage) {
+        log(`You are not connected to the server ${this.name}`)
+      }
       return false
     }
     return true
   }
 
-  get canCrack() {
-    if (this.isBusy) {
-      log(`Server ${this.name} is locked while an operation is running on it`)
-      return false
-    }
+  canCrack(showMessage) {
     if (store.player.server !== this) {
-      log(`You need to be connected to the server ${this.name} first`)
+      if (showMessage) {
+        log(`You need to be connected to the server ${this.name} first`)
+      }
       return false
     }
-    return true
+    return checkSoftware.call(this, store.player.installedCracker, showMessage && 'cracker')
   }
 
-  setBusy(software, value) {
-    if (software) {
-      software.busy = value
-    }
-  }
-
-  scan() {
-    if (!this.canScan) {
-      log(`You cannot scan the server ${this.name}`)
+  async scan() {
+    if (!this.canScan(true)) {
       return false
     }
     this.scanning = true
     log(`Scanning server ${this.name}...`)
-    setTimeout(() => {
-      this.scanning = false
-      this.scanned = true
-      log(`You have successfully scanned the server ${this.name}`)
-    }, operationTimeout(this.version))
-    return true
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.scanning = false
+        this.scanned = true
+        log(`You have successfully scanned the server ${this.name}`)
+        resolve(true)
+      }, operationTimeout(this.version))
+    })
   }
 
-  connect() {
+  async connect() {
     if (!this.canConnect) {
-      log(`You cannot connect to the server ${this.name}`)
       return false
     }
     this.connecting = true
     log(`Connecting to the server ${this.name}...`)
-    setTimeout(() => {
-      this.connecting = false
-      store.player.server = this
-      log(`You have successfully connected to the server ${this.name}`)
-    }, operationTimeout(this.version))
-    return true
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.connecting = false
+        store.player.server = this
+        log(`You have successfully connected to the server ${this.name}`)
+        resolve(true)
+      }, operationTimeout(this.version))
+    })
   }
 
-  disconnect() {
+  async disconnect() {
     if (!this.canDisconnect) {
-      log(`You cannot disconnect from the server ${this.name}`)
       return false
     }
     this.disconnecting = true
     log(`Disconnecting from the server ${this.name}...`)
-    setTimeout(() => {
-      this.disconnecting = false
-      log(`You have successfully disconnected from the server ${this.name}`)
-    }, operationTimeout(this.version))
-    return true
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.disconnecting = false
+        store.player.server = undefined
+        log(`You have successfully disconnected from the server ${this.name}`)
+        resolve(true)
+      }, operationTimeout(this.version))
+    })
   }
 
-  authenticate() {
+  async authenticate() {
     if (!this.canAuthenticate) {
-      log(`You cannot authenticate on the server ${this.name}`)
       return false
     }
     this.authenticating = true
     log(`Authenticating on server ${this.name}...`)
-    setTimeout(() => {
-      this.authenticating = false
-      this.authenticated = true
-      log(`You have successfully authenticated the server ${this.name}`)
-    }, operationTimeout(this.version))
-    return true
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.authenticating = false
+        this.authenticated = true
+        log(`You have successfully authenticated the server ${this.name}`)
+        resolve(true)
+      }, operationTimeout(this.version))
+    })
   }
 
-  crack() {
+  async crack() {
     if (!this.canCrack) {
-      log(`You cannot crack the server ${this.name}`)
       return false
     }
     this.cracking = true
     log(`Cracking server ${this.name}...`)
-    setTimeout(() => {
-      this.cracking = false
-      this.protected = false
-      log(`You have successfully cracked the server ${this.name}`)
-    }, operationTimeout(this.version))
-    return true
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.cracking = false
+        this.protected = false
+        log(`You have successfully cracked the server ${this.name}`)
+        resolve(true)
+      }, operationTimeout(this.version))
+    })
   }
 
   clear() {
@@ -322,13 +335,13 @@ export default class Server extends Item {
     }
   }
 
-  onConnect() {
-    this.print('Welcome to this nice amazing super cool server')
-    this.print()
-    this.print(['This', 'is', 'a', 'line'])
-    this.print('Another line')
-  }
-
-  onDisconnect() {
+  onAction(action) {
+    super.onAction(action)
+    if (action.key === 'connect') {
+      this.print('Welcome to this nice amazing super cool server')
+      this.print()
+      this.print(['This', 'is', 'a', 'line'])
+      this.print('Another line')
+    }
   }
 }

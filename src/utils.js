@@ -64,4 +64,23 @@ export const mixin = (cl, o) => {
 
 export const color = (color, text) => `<span class="${color}">${text}</span>`
 
-export const operationTimeout = size => random(size * store.config.operationBaseDelay)
+export const operationTimeout = size => (
+  random(size * (store.config.operationBaseDelay * 1.5))
+    + store.config.operationBaseDelay
+)
+
+export function checkSoftware(software, showMessage) {
+  if (this.isBusy) {
+    if (showMessage) {
+      log(`${this.name} is locked while an operation is running on it`)
+    }
+    return false
+  }
+  if ((software?.version || 0) < this.version) {
+    if (showMessage) {
+      log(`You need an installed ${showMessage} v${this.version} software to execute this operation`)
+    }
+    return false
+  }
+  return true
+}

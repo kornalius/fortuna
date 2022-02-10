@@ -20,7 +20,7 @@ export default class Config {
     // speed at which the server log characters are process in buffers
     serverSpeed: 25,
     // file, software and server operation base delay time
-    operationBaseDelay: 2500,
+    operationBaseDelay: 1500,
   })
 
   get baseHp() { return this.state.baseHp }

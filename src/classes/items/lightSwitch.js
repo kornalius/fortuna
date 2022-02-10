@@ -27,7 +27,7 @@ export default class LightSwitch extends Item {
   }
 
   toggle() {
-    if (!this.canUse) {
+    if (!this.canUse(true)) {
       log(`You cannot toggle the ${this.name}`)
       return false
     }

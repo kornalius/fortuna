@@ -43,8 +43,8 @@ const props = defineProps({
 const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
-const handleSelect = key => {
-  props.value.exec(key)
+const handleSelect = async key => {
+  await props.value.exec(key)
 }
 
 const label = computed(() => {

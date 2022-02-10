@@ -4,58 +4,68 @@ export default {
   state: {
     opened: false,
     actions: [
-      door => ({
-        label: door.isOpened ? 'Close' : 'Open',
-        key: 'toggleOpen',
-        icon: door.isOpened ? 'fa-solid:door-closed' : 'fa-solid:door-open',
-        disabled: false,
-        click: () => door.toggle(),
-      }),
+      door => (
+        door.canOpen()
+          ? {
+            label: door.isOpened ? 'Close' : 'Open',
+            key: 'toggleOpen',
+            icon: door.isOpened ? 'fa-solid:door-closed' : 'fa-solid:door-open',
+            disabled: false,
+            click: async () => door.toggle(),
+          }
+          : undefined
+      ),
     ],
   },
 
   get isOpened() { return this.state.opened },
   get isClosed() { return !this.state.opened },
 
-  get canOpen() {
-    return true
-  },
-
-  open() {
-    if (!this.canOpen) {
+  canOpen(showMessage) {
+    if (this.isOpened) {
+      if (showMessage) {
+        log(`${this.name} is already opened`)
+      }
       return false
     }
     if (this.isLocked) {
-      log('The door is locked')
+      if (showMessage) {
+        log('The door is locked')
+      }
       return false
     }
+    return true
+  },
+
+  canClose(showMessage) {
     if (this.isClosed) {
-      this.state.opened = true
-      log('You open the door')
+      if (showMessage) {
+        log(`${this.name} is already closed`)
+      }
       return false
     }
-    log('The door is already opened')
     return true
   },
 
-  get canClose() {
-    return this.isOpened
-  },
-
-  close() {
-    if (!this.canClose) {
+  async open() {
+    if (!this.canOpen(true)) {
       return false
     }
-    if (this.isOpened) {
-      this.state.opened = false
-      log('You close the door')
-      return false
-    }
-    log('The door is already closed')
+    this.state.opened = true
+    log('You open the door')
     return true
   },
 
-  toggle() {
+  async close() {
+    if (!this.canClose(true)) {
+      return false
+    }
+    this.state.opened = false
+    log('You close the door')
+    return true
+  },
+
+  async toggle() {
     if (this.isClosed) {
       return this.open()
     }
