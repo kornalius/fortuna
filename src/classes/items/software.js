@@ -12,6 +12,8 @@ export default class Software extends File {
       decryptable: false,
       viewable: false,
       viewerType: null,
+      actions: [],
+      actionsOrder: [],
       ...data,
     })
   }

@@ -35,7 +35,7 @@
             :type="filter === 'isFile' ? 'primary' : undefined"
             @click="setFilter('isFile')"
           >
-            <v-icon icon="bi:file-earmark-text-fill" width="24" />
+            <v-icon icon="mdi:file" width="24" />
           </n-button>
           <n-button
             :type="filter === 'isSoftware' ? 'primary' : undefined"

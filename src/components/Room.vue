@@ -2,7 +2,7 @@
   <n-card>
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
-        <div class="flex self-center relative w-100" style="height: 300px;">
+        <div class="top flex self-center relative w-100">
           <server
             v-if="store.player.isConnectedToServer"
             :value="store.player.server"
@@ -19,7 +19,7 @@
           {{ value?.name }}
         </div>
 
-        <div class="flex items-center mb2">
+        <div class="flex flex-wrap items-center mb2">
           <span class="yellow mr2">YOU SEE:</span>
 
           <span
@@ -27,11 +27,11 @@
             :key="item.id"
             class="inline mr1"
           >
-            <item :value="item" />
+            <Item :value="item" />
           </span>
         </div>
 
-        <div class="flex items-center mb3">
+        <div class="flex flex-wrap items-center mb3">
           <span class="yellow mr2">EXITS:</span>
 
           <span
@@ -82,6 +82,10 @@ const logsChanged = () => {
 </script>
 
 <style scoped>
+.top {
+  width: 1000px;
+  min-height: 300px;
+}
 .image {
   object-fit: cover;
   position: absolute;

@@ -3,6 +3,7 @@ import { color, log } from '@/utils'
 import LightSwitch from '@/classes/items/lightSwitch'
 import Server from '@/classes/items/server'
 import Software from '@/classes/items/software'
+import File from '@/classes/items/file'
 
 export default class IntroRoom extends Room {
   constructor(data) {
@@ -20,7 +21,50 @@ export default class IntroRoom extends Room {
     super.mounted()
 
     this.switch = this.addItem(new LightSwitch({ usable: false }))
-    this.server = this.addItem(new Server({}))
+    this.server = this.addItem(new Server())
+    this.server.addItem([
+      new File({
+        name: 'Plots.txt',
+        version: 1,
+        weight: 10,
+        content: 'Some sexy plot for a cool project!',
+      }),
+      new File({
+        name: 'Email (from shawn@gmail.com).txt',
+        version: 1,
+        weight: 20,
+        content: [
+          'Bob, there is something I\'d like to discuss with you!',
+          '',
+          'Regards,',
+          'Shawn'
+        ].join('\n'),
+      }),
+      new File({
+        name: 'Image #1.img',
+        version: 1,
+        weight: 32,
+        type: 'img',
+      }),
+      new File({
+        name: 'Image #2.img',
+        version: 1,
+        weight: 64,
+        type: 'img',
+      }),
+      new File({
+        name: 'Image #3.img',
+        version: 1,
+        weight: 64,
+        type: 'img',
+      }),
+      new File({
+        name: 'Image #4.img',
+        version: 1,
+        weight: 64,
+        type: 'img',
+      }),
+    ])
 
     store.player.addItem([
       new Software({
@@ -34,6 +78,13 @@ export default class IntroRoom extends Room {
         name: 'The Connector',
         deletable: false,
         equipType: 'connector',
+        equipped: true,
+        weight: 20,
+      }),
+      new Software({
+        name: 'The Downloader',
+        deletable: false,
+        equipType: 'downloader',
         equipped: true,
         weight: 20,
       }),

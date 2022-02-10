@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-100 h-100">
-    <div class="relative flex w-100 h-100">
+  <div class="flex flex-column w-100 h-100">
+    <div class="relative flex w-100 h-100" style="height: 300px;">
       <img
         class="crt"
         src="/images/crt.png"
@@ -20,6 +20,18 @@
       </div>
     </div>
 
+    <div class="flex flex-wrap items-center mt1">
+      <span class="yellow mr2">FILES:</span>
+
+      <span
+        v-for="item in value.files"
+        :key="item.id"
+        class="inline mr1"
+      >
+        <Item :value="item" />
+      </span>
+    </div>
+
     <n-button
       class="disconnect"
       size="small"
@@ -35,6 +47,7 @@
 import { computed, onMounted } from 'vue'
 import random from 'lodash/random'
 import { store } from '@/store'
+import Item from '@/components/Item.vue'
 
 const props = defineProps({
   value: { type: Object },
@@ -153,7 +166,7 @@ onMounted(() => {
   background: #F5BB06;
   width: 8px;
   height: 16px;
-  animation: blink .5s linear infinite;
+  animation: blink .75s linear infinite;
   z-index: 1;
 }
 .char {
@@ -175,7 +188,7 @@ onMounted(() => {
 .disconnect {
   position: absolute;
   right: 6px;
-  bottom: 4px;
+  top: 266px;
   width: 0;
   z-index: 3;
 }

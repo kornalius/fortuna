@@ -1,4 +1,5 @@
 import Item from './item'
+import File from './file'
 import { store } from '@/store'
 import { log, operationTimeout, checkSoftware } from '@/utils'
 
@@ -80,6 +81,9 @@ export default class Server extends Item {
 
   get isServer() { return true }
 
+  get items() { return store.items.list.filter(i => i.location === this) }
+  get files() { return this.items.filter(i => i.isFile || i.isSoftware) }
+
   get version() { return this.state.version }
   set version(value) { this.state.version = value }
 
@@ -123,6 +127,23 @@ export default class Server extends Item {
 
   get buffer() { return this.state.buffer }
   set buffer(value) { this.state.buffer = value }
+
+  addItem(data) {
+    if (Array.isArray(data)) {
+      return data.map(d => this.addItem(d))
+    }
+
+    if (data instanceof Item) {
+      data.location = this
+      store.items.update(data)
+      return data
+    } else {
+      const i = new File(data)
+      i.location = this
+      store.items.update(i)
+      return i
+    }
+  }
 
   canScan(showMessage) {
     if (this.isScanned) {

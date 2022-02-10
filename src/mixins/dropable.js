@@ -5,7 +5,7 @@ export default {
     dropable: true,
     actions: [
       item => (
-        item.isDropable && item.isInInventory && item.canDrop()
+        item.canDrop()
           ? {
             label: 'Drop',
             key: 'drop',

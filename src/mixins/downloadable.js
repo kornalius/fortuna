@@ -44,7 +44,7 @@ export default {
       }
       return false
     }
-    return checkSoftware.call(this, store.player.installedDownloader,showMessage && 'downloader')
+    return checkSoftware.call(this, store.player.installedDownloader, showMessage && 'downloader')
   },
 
   async download() {

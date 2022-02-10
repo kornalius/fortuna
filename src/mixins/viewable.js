@@ -22,7 +22,7 @@ export default {
     ],
   },
 
-  get isViewable() { return !isEmpty(this.state.content) },
+  get isViewable() { return !isEmpty(this.state.content) || this.isImageFile },
 
   get type() { return this.state.type },
   set type(value) { this.state.type = value },
@@ -32,6 +32,19 @@ export default {
 
   get isTextFile() { return this.type === 'txt' },
   get isImageFile() { return this.type === 'img' },
+
+  get icon() {
+    if (this.isViewable) {
+      if (this.isTextFile) {
+        return 'mdi:file-document'
+      }
+      if (this.isImageFile) {
+        return 'mdi:file-image'
+      }
+      return 'mdi:file-eye'
+    }
+    return 'mdi:file-question'
+  },
 
   get isViewed() { return this.state.viewed },
   set viewed(value) { this.state.viewed = value },

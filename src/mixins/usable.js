@@ -5,7 +5,7 @@ export default {
     usable: true,
     actions: [
       item => (
-        item.isUsable
+        item.canUse()
           ? {
             label: 'Use',
             key: 'use',

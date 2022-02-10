@@ -10,7 +10,7 @@ export default class File extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'File',
-      icon: 'whh:server',
+      icon: 'fa-solid:file',
       version: 1,
       pickable: false,
       dropable: false,

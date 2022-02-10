@@ -6,7 +6,7 @@
     :render-label="renderDropdownLabel"
     @select="handleSelect"
   >
-    <n-popover :delay="1000" style="width: 250px" trigger="hover" placement="top">
+    <n-popover :delay="1000" style="min-width: 250px" trigger="hover" placement="top">
       <template #trigger>
         <n-button strong quaternary :style="buttonStyle">
           <div class="inline-flex items-center">
@@ -17,7 +17,12 @@
               height="20"
             />
 
-            <span :class="[value.qty > 1 ? 'ml3' : 'ml2']" v-html="name" />
+            <span
+              :class="[
+                value.qty > 1 ? 'ml3' : 'ml2',
+              ]"
+              v-html="name"
+            />
 
             <v-icon v-if="value.isBusy" class="ml2" icon="eos-icons:loading" width="20" />
 
@@ -82,7 +87,7 @@ const handleSelect = async key => {
 }
 
 const buttonStyle = computed(() => {
-  const s = ['padding-left: 2px; padding-right: 2px;']
+  const s = ['padding: 0 2px;']
   if (props.value.isInInventory) {
     s.push('display: flex; width: 100%; justify-content: start;')
   }
@@ -90,7 +95,7 @@ const buttonStyle = computed(() => {
 })
 
 const showVersion = computed(() => (
-  props.value.isFile || props.value.isSoftware || props.value.isServer
+  props.value.isSoftware || props.value.isServer
 ))
 
 const name = computed(() => (
