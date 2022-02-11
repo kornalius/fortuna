@@ -58,7 +58,7 @@ export default {
     }
     if (store.player.installedViewer?.viewerType !== this.type) {
       if (showMessage) {
-        log(`You need a ${this.type} viewer to view the content of ${this.name}`)
+        log(`You need a ${this.type} viewer to view the content of ${this.name.toLowerCase()}`)
       }
       return false
     }

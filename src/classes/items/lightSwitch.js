@@ -29,7 +29,7 @@ export default class LightSwitch extends Item {
 
   async toggle() {
     if (!this.canUse(true)) {
-      log(`You cannot toggle the ${this.name}`)
+      log(`You cannot toggle the ${this.name.toLowerCase()}`)
       return false
     }
 

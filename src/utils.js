@@ -3,7 +3,13 @@ import merge from 'lodash/merge'
 import random from 'lodash/random'
 import { store } from './store'
 import Log from './classes/log'
+import { fileNouns, adjectives, filetypes, maleNames, lastNames, femaleNames } from '@/words'
 
+/**
+ * Adds a log message to the logs store
+ * @param message
+ * @param level
+ */
 export const log = (message, level = 0) => {
   store.logs.update(new Log({
     message: Array.isArray(message) ? message : [message],
@@ -11,6 +17,11 @@ export const log = (message, level = 0) => {
   }))
 }
 
+/**
+ * Returns the opposite direction of 'd'
+ * @param d
+ * @returns {string}
+ */
 export const oppositeDirection = d => {
   switch (d) {
     case 'N':
@@ -36,6 +47,11 @@ export const mixState = (s, t) => {
   return merge({}, s, t, m)
 }
 
+/**
+ * Mix properties from 'o' with a class 'cl' prototype. It handles 'state' object in a specific way.
+ * @param cl
+ * @param o
+ */
 export const mixin = (cl, o) => {
   if (Array.isArray(o)) {
     o.forEach(oo => mixin(cl, oo))
@@ -62,13 +78,33 @@ export const mixin = (cl, o) => {
   })
 }
 
+/**
+ * Generate an html tag with the color class with inner text
+ * @param color
+ * @param text
+ * @returns {string}
+ */
 export const color = (color, text) => `<span class="${color}">${text}</span>`
 
-export const operationTimeout = size => (
-  random(size * (store.config.operationBaseDelay * 1.5))
+/**
+ * Returns a random operation timeout time in ms
+ * @param size
+ * @returns {number|*}
+ */
+export const operationTimeout = size => {
+  if (localStorage.getItem('DEV_MODE') === 'true') {
+    return 0
+  }
+  return random(size * (store.config.operationBaseDelay * 1.5))
     + store.config.operationBaseDelay
-)
+}
 
+/**
+ * Checks if the server is not busy and software is not busy and its version can operate on server
+ * @param software
+ * @param showMessage
+ * @returns {boolean}
+ */
 export function checkSoftware(software, showMessage) {
   if (this.isBusy) {
     if (showMessage) {
@@ -91,6 +127,11 @@ export function checkSoftware(software, showMessage) {
   return true
 }
 
+/**
+ * Call a function on the item, its location and the game itself
+ * @param name
+ * @returns {Promise<void>}
+ */
 export async function emit(name) {
   // self
   if (this[name]) {
@@ -107,3 +148,16 @@ export async function emit(name) {
     await store.game[name](this)
   }
 }
+
+/**
+ * Picks a random element in an array
+ * @param array
+ * @returns {*}
+ */
+export const pickRandom = array => array[random(array.length - 1)]
+
+export const randomFilename = () => `${pickRandom(adjectives)}-${pickRandom(fileNouns)}.${pickRandom(filetypes)}`
+
+export const randomMaleName = () => `${pickRandom(maleNames)} ${pickRandom(lastNames)}`
+
+export const randomFemaleName = () => `${pickRandom(femaleNames)} ${pickRandom(lastNames)}`

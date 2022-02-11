@@ -40,7 +40,7 @@ export default {
     }
     if (store.player.diskFree < this.weight) {
       if (showMessage) {
-        log(`Not enough free disk space left to download ${this.name}`)
+        log(`Not enough free disk space left to download ${this.name.toLowerCase()}`)
       }
       return false
     }
@@ -52,12 +52,12 @@ export default {
       return false
     }
     this.downloading = true
-    log(`Downloading file ${this.name}...`)
+    log(`Downloading file ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.downloading = false
         store.player.addItem(this)
-        log(`You have successfully downloaded the file ${this.name}`)
+        log(`You have successfully downloaded the file ${this.name.toLowerCase()}`)
         await emit.call(this, 'onDownload')
         resolve(true)
       }, operationTimeout(this.weight))

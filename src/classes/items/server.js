@@ -1,13 +1,19 @@
+import shuffle from 'lodash/shuffle'
+import compact from 'lodash/compact'
 import Item from './item'
 import File from './file'
-import { mixin } from '@/utils'
+import { mixin, randomFilename } from '@/utils'
 import { store } from '@/store'
-import Scannable from '@/mixins/scannable'
-import Connectable from '@/mixins/connectable'
-import Authenticable from '@/mixins/authenticable'
-import Crackable from '@/mixins/crackable'
+import Scannable from '@/mixins/softwares/scannable'
+import Connectable from '@/mixins/softwares/connectable'
+import Authenticable from '@/mixins/softwares/authenticable'
+import Crackable from '@/mixins/softwares/crackable'
+import Visitable from '@/mixins/visitable'
+import random from 'lodash/random';
 
 export default class Server extends Item {
+  fileOrders = []
+
   setupInstance(data) {
     return super.setupInstance({
       name: 'Server',
@@ -25,7 +31,18 @@ export default class Server extends Item {
   get isServer() { return true }
 
   get items() { return store.items.list.filter(i => i.location === this) }
-  get files() { return this.items.filter(i => i.isFile || i.isSoftware) }
+
+  // get files() { return this.items.filter(i => i.isFile || i.isSoftware) }
+
+  get files() {
+    const files = this.items.filter(i => i.isFile || i.isSoftware)
+    files.forEach(f => {
+      if (!this.fileOrders.includes(f.id)) {
+        this.fileOrders.push(f.id)
+      }
+    })
+    return compact(this.fileOrders.map(id => files.find(f => f.id === id)))
+  }
 
   get version() { return this.state.version }
   set version(value) { this.state.version = value }
@@ -84,6 +101,30 @@ export default class Server extends Item {
       this.buffer.splice(0, 1)
     }
   }
+
+  onConnect() {
+    if (this.firstVisit) {
+      this.generateRandomDummyFiles(random(5, 25))
+      const a = this.files
+      // leave here, files needs to be computed first
+      this.fileOrders = shuffle(this.fileOrders)
+    }
+  }
+
+  generateRandomDummyFiles(count) {
+    for(let i = 0; i < count; i++) {
+      const name = randomFilename()
+      const type = name.substring(name.indexOf('.') + 1)
+      this.addItem(new File({
+        name,
+        size: random(1, store.config.maxFileSize),
+        type,
+        viewable: false,
+        downloadable: false,
+        deletable: false,
+      }))
+    }
+  }
 }
 
-mixin(Server, [Scannable, Connectable, Authenticable, Crackable])
+mixin(Server, [Scannable, Connectable, Authenticable, Crackable, Visitable])

@@ -33,16 +33,16 @@ export default class Software extends File {
 
   async equip() {
     if (!this.canEquip(true)) {
-      log(`You cannot install ${this.name}`)
+      log(`You cannot install ${this.name.toLowerCase()}`)
       return false
     }
     this.busy = true
-    log(`Installing ${this.name}...`)
+    log(`Installing ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.busy = false
         await this.equip(store.player)
-        log(`You have successfully installed ${this.name}`)
+        log(`You have successfully installed ${this.name.toLowerCase()}`)
         await emit.call(this, 'onEquip')
         resolve(true)
       }, operationTimeout(this.weight))
@@ -51,16 +51,16 @@ export default class Software extends File {
 
   async unequip() {
     if (!this.canUnequip(true)) {
-      log(`You cannot uninstall ${this.name}`)
+      log(`You cannot uninstall ${this.name.toLowerCase()}`)
       return false
     }
     this.busy = true
-    log(`Uninstalling ${this.name}...`)
+    log(`Uninstalling ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.busy = false
         await this.unequip(store.player)
-        log(`You have successfully uninstalled ${this.name}`)
+        log(`You have successfully uninstalled ${this.name.toLowerCase()}`)
         await emit.call(this, 'onUnequip')
         resolve(true)
       }, operationTimeout(this.weight))

@@ -56,12 +56,12 @@ export default {
       return false
     }
     this.decrypting = true
-    log(`Decrypting file ${this.name}...`)
+    log(`Decrypting file ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.decrypting = false
         this.crypted = false
-        log(`You have successfully decrypted the file ${this.name}`)
+        log(`You have successfully decrypted the file ${this.name.toLowerCase()}`)
         await emit.call(this, 'onDecrypt')
         resolve(true)
       }, operationTimeout(this.version))

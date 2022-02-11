@@ -34,7 +34,7 @@ export default {
     }
     if (this.isConnected) {
       if (showMessage) {
-        log(`You need to be disconnected from ${this.name} to perform a port scan`)
+        log(`You need to be disconnected from ${this.name.toLowerCase()} to perform a port scan`)
       }
       return false
     }
@@ -46,12 +46,12 @@ export default {
       return false
     }
     this.scanning = true
-    log(`Scanning server ${this.name}...`)
+    log(`Scanning ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.scanning = false
         this.scanned = true
-        log(`You have successfully scanned the server ${this.name}`)
+        log(`You have successfully scanned ${this.name.toLowerCase()}`)
         await emit.call(this, 'onScan')
         resolve(true)
       }, operationTimeout(this.version))

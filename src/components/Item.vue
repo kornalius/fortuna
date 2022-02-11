@@ -8,7 +8,12 @@
   >
     <n-popover :delay="1000" style="min-width: 250px" trigger="hover" placement="top">
       <template #trigger>
-        <n-button strong quaternary :style="buttonStyle">
+        <n-button
+          :style="buttonStyle"
+          strong
+          quaternary
+          @mouseover="() => value.hovered = false"
+        >
           <div class="inline-flex items-center">
             <v-icon
               v-if="value.icon"
@@ -34,28 +39,39 @@
               class="equipped"
               width="14"
             />
+
+            <v-icon
+              v-if="value.isInInventory && value.isNew"
+              icon="bx:bxs-badge"
+              class="new"
+              width="14"
+              type="error"
+            />
           </div>
         </n-button>
       </template>
 
-      <n-grid cols="6">
-        <n-gi span="2">
+      <div class="flex w-100">
+        <div class="flex items-center">
           <v-icon
             v-if="value.icon"
+            class="pr2 pb2"
             :icon="value.icon"
             width="44"
+            height="44"
           />
-        </n-gi>
+        </div>
 
-        <n-gi span="4">
-          <n-grid cols="6">
-            <n-gi span="5">
-              <span v-html="name" />
-            </n-gi>
-            <n-gi span="1">
+        <div class="flex flex-column w-100">
+          <div class="flex w-100">
+            <div class="flex flex-grow-1 items-center">
+              <span class="pr2" v-html="name" />
+            </div>
+
+            <div class="inline-flex items-center">
               <div class="badge">{{ value.qty }}</div>
-            </n-gi>
-          </n-grid>
+            </div>
+          </div>
 
           <div class="flex w-100">
             <div class="flex items-center">
@@ -63,8 +79,8 @@
               <span class="ml1 mt1">{{ value.weight }}</span>
             </div>
           </div>
-        </n-gi>
-      </n-grid>
+        </div>
+      </div>
 
       <span>{{ value.description }}</span>
     </n-popover>
@@ -91,7 +107,10 @@ const handleSelect = async key => {
 
 const buttonStyle = computed(() => {
   const s = ['padding: 0 2px;']
-  if (props.value.isInInventory) {
+  if (props.value.isFile) {
+    s.push('font-size: 12px; color: #F19936;')
+  }
+  if (props.value.isInInventory || props.value.isFile) {
     s.push('display: flex; width: 100%; justify-content: start;')
   }
   return s.join(' ')
@@ -144,5 +163,11 @@ const weightIcon = computed(() => {
   background-color: #333;
   border-radius: 50%;
   color: #CBE54A;
+}
+.new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #D12E2E;
 }
 </style>

@@ -35,7 +35,7 @@ export default {
     if (!this.canUse(true)) {
       return false
     }
-    log(`You use the ${this.name}`)
+    log(`You use the ${this.name.toLowerCase()}`)
     await emit.call(this, 'onUse')
     return true
   },

@@ -21,6 +21,10 @@ export default class Config {
     serverSpeed: 50,
     // file, software and server operation base delay time
     operationBaseDelay: 1500,
+    // maximum file size allowed to be randomly generated
+    maxFileSize: 1000,
+    // dummy file types to be randomly generated
+    dummyFileTypes: ['doc', 'qrt', 'rpt', 'cod', 'hdr', 'tab', 'dum', 'unk'],
   })
 
   get baseHp() { return this.state.baseHp }
@@ -40,5 +44,9 @@ export default class Config {
   get serverSpeed() { return this.state.serverSpeed }
 
   get operationBaseDelay() { return this.state.operationBaseDelay }
+
+  get maxFileSize() { return this.state.maxFileSize }
+
+  get dummyFileTypes() { return this.state.dummyFileTypes }
 
 }

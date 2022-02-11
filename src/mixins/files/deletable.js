@@ -46,12 +46,12 @@ export default {
       return false
     }
     this.deleting = true
-    log(`Deleting file ${this.name}...`)
+    log(`Deleting file ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.deleting = false
         this.remove()
-        log(`You have successfully deleted the file ${this.name}`)
+        log(`You have successfully deleted the file ${this.name.toLowerCase()}`)
         await emit.call(this, 'onDel')
         resolve(true)
       }, operationTimeout(this.weight))

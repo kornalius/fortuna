@@ -42,13 +42,13 @@ export default {
   canConnect(showMessage) {
     if (!this.isScanned) {
       if (showMessage) {
-        log(`Server ${this.name} needs to be scanned for opened ports first`)
+        log(`${this.name} needs to be scanned for opened ports first`)
       }
       return false
     }
     if (this.isConnected) {
       if (showMessage) {
-        log(`You are already connected to the server ${this.name}`)
+        log(`You are already connected to ${this.name.toLowerCase()}`)
       }
       return false
     }
@@ -60,13 +60,14 @@ export default {
       return false
     }
     this.connecting = true
-    log(`Connecting to the server ${this.name}...`)
+    log(`Connecting to ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.connecting = false
         this.clear()
         store.player.server = this
-        log(`You have successfully connected to the server ${this.name}`)
+        this.visited += 1
+        log(`You have successfully connected to ${this.name.toLowerCase()}`)
         await emit.call(this, 'onConnect')
         resolve(true)
       }, operationTimeout(this.version))
@@ -84,7 +85,7 @@ export default {
     }
     if (!this.isConnected) {
       if (showMessage) {
-        log(`You are not connected to the server ${this.name}`)
+        log(`You are not connected to ${this.name.toLowerCase()}`)
       }
       return false
     }
@@ -96,12 +97,12 @@ export default {
       return false
     }
     this.disconnecting = true
-    log(`Disconnecting from the server ${this.name}...`)
+    log(`Disconnecting from ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.disconnecting = false
         store.player.server = null
-        log(`You have successfully disconnected from the server ${this.name}`)
+        log(`You have successfully disconnected from ${this.name}`)
         await emit.call(this, 'onDisconnect')
         resolve(true)
       }, operationTimeout(this.version))

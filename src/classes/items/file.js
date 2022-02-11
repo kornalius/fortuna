@@ -1,10 +1,10 @@
 import Item from './item'
 import { mixin } from '@/utils'
-import Viewable from '@/mixins/viewable'
-import Deletable from '@/mixins/deletable'
-import Decryptable from '@/mixins/decryptable'
-import Downloadable from '@/mixins/downloadable'
-import Uploadable from '@/mixins/uploadable'
+import Viewable from '@/mixins/files/viewable'
+import Deletable from '@/mixins/files/deletable'
+import Decryptable from '@/mixins/softwares/decryptable'
+import Downloadable from '@/mixins/files/downloadable'
+import Uploadable from '@/mixins/files/uploadable'
 
 export default class File extends Item {
   setupInstance(data) {

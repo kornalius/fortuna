@@ -28,19 +28,19 @@ export default {
   canAuthenticate(showMessage) {
     if (this.isAuthenticated) {
       if (showMessage) {
-        log(`You are already authenticated on server ${this.name}`)
+        log(`You are already authenticated on ${this.name.toLowerCase()}`)
       }
       return false
     }
     if (this.isProtected) {
       if (showMessage) {
-        log(`The server ${this.name} is protected`)
+        log(`${this.name} is protected`)
       }
       return false
     }
     if (!this.isConnected) {
       if (showMessage) {
-        log(`You need to be connected to the server ${this.name}`)
+        log(`You need to be connected to ${this.name.toLowerCase()}`)
       }
       return false
     }
@@ -52,12 +52,12 @@ export default {
       return false
     }
     this.authenticating = true
-    log(`Authenticating on server ${this.name}...`)
+    log(`Authenticating on ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.authenticating = false
         this.authenticated = true
-        log(`You have successfully authenticated the server ${this.name}`)
+        log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
         await emit.call(this, 'onAuthenticate')
         resolve(true)
       }, operationTimeout(this.version))

@@ -44,7 +44,7 @@ export default {
     }
     if (!this.isConnected) {
       if (showMessage) {
-        log(`You need to be connected to the server ${this.name} first`)
+        log(`You need to be connected to ${this.name.toLowerCase()} first`)
       }
       return false
     }
@@ -56,12 +56,12 @@ export default {
       return false
     }
     this.cracking = true
-    log(`Cracking server ${this.name}...`)
+    log(`Cracking ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.cracking = false
         this.protected = false
-        log(`You have successfully cracked the server ${this.name}`)
+        log(`You have successfully cracked ${this.name.toLowerCase()}`)
         await emit.call(this, 'onCrack')
         resolve(true)
       }, operationTimeout(this.version))

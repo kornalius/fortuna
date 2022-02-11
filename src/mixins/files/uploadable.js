@@ -52,12 +52,12 @@ export default {
       return false
     }
     this.uploading = true
-    log(`Uploading file ${this.name}...`)
+    log(`Uploading file ${this.name.toLowerCase()}...`)
     return new Promise(resolve => {
       setTimeout(async () => {
         this.uploading = false
         store.player.server.addItem(this)
-        log(`You have successfully uploaded the file ${this.name}`)
+        log(`You have successfully uploaded the file ${this.name.toLowerCase()}`)
         await emit.call(this, 'onUpload')
         resolve(true)
       }, operationTimeout(this.weight))

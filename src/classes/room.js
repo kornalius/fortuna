@@ -4,6 +4,7 @@ import { store } from '@/store'
 import Door from '@/classes/items/door'
 import Items from '@/mixins/items'
 import Actions from '@/mixins/actions'
+import Visitable from '@/mixins/visitable'
 
 export default class Room extends Entity {
   setupInstance(data) {
@@ -11,7 +12,6 @@ export default class Room extends Entity {
       name: 'Room',
       x: 0,
       y: 0,
-      visited: 0,
       img: null,
       icon: '',
       ...data,
@@ -31,10 +31,6 @@ export default class Room extends Entity {
   get southDoor() { return this.doors.find(door => door.directions[this.id] === 'S') }
   get eastDoor() { return this.doors.find(door => door.directions[this.id] === 'E') }
   get westDoor() { return this.doors.find(door => door.directions[this.id] === 'W') }
-
-  get hasVisited() { return this.state.visited > 0 }
-  get visited() { return this.state.visited }
-  set visited(value) { this.state.visited = value }
 
   get img() { return this.state.img }
   set img(value) { this.state.img = value }
@@ -127,4 +123,4 @@ export default class Room extends Entity {
   }
 }
 
-mixin(Room, [Items, Actions])
+mixin(Room, [Items, Actions, Visitable])

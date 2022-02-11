@@ -89,20 +89,15 @@ const logsChanged = () => {
 .image {
   object-fit: cover;
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }
 .scrollable {
-  overflow-y: auto;
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .title-bar {
   background-color: #4561B4;

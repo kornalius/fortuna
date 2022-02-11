@@ -58,7 +58,7 @@ export default {
       return false
     }
     this.opened = true
-    log(`You opened ${this.name}`)
+    log(`You opened ${this.name.toLowerCase()}`)
     await emit.call(this, 'onOpen')
     return true
   },
@@ -86,7 +86,7 @@ export default {
       return false
     }
     this.opened = false
-    log(`You closed ${this.name}`)
+    log(`You closed ${this.name.toLowerCase()}`)
     await emit.call(this, 'onClose')
     return true
   },

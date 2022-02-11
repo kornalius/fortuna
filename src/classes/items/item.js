@@ -1,6 +1,6 @@
 import Entity from '@/entity'
-import { store } from '@/store'
 import { emit, log, mixin } from '@/utils'
+import { store } from '@/store'
 import Name from '@/mixins/name'
 import Actions from '@/mixins/actions'
 import Pickable from '@/mixins/pickable'
@@ -25,6 +25,7 @@ export default class Item extends Entity {
       locationId,
       locationStore,
       icon: null,
+      hovered: true,
       actions: [
         item => ({
           label: 'Examine',
@@ -75,6 +76,9 @@ export default class Item extends Entity {
 
   get isInInventory() { return store.player.has(this) }
 
+  get isNew() { return this.state.hovered }
+  set hovered(value) { this.state.hovered = value }
+
   // set the software busy state
   setBusy(software, value) {
     if (software) {
@@ -83,7 +87,7 @@ export default class Item extends Entity {
   }
 
   async examine() {
-    log(`You examine the ${this.name} but find nothing particular about it.`)
+    log(`You examine the ${this.name.toLowerCase()} but find nothing particular about it.`)
     await emit.call(this, 'onExamine')
   }
 

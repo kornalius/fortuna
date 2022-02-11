@@ -45,7 +45,7 @@ export default {
     }
     this.locationId = null
     this.locationStore = store.player.storeName
-    log(`You pickup the ${this.name}`)
+    log(`You pickup the ${this.name.toLowerCase()}`)
     await emit.call(this, 'onPickup')
     return true
   },
