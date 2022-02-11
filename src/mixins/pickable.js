@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -46,6 +46,9 @@ export default {
     this.locationId = null
     this.locationStore = store.player.storeName
     log(`You pickup the ${this.name}`)
+    await emit.call(this, 'onPickup')
     return true
   },
+
+  async onPickup() {},
 }

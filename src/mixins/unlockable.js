@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -69,6 +69,9 @@ export default {
     }
     this.state.locked = false
     log('Door has been unlocked')
+    await emit.call(this, 'onUnlock')
     return true
   },
+
+  async onUnlock() {},
 }

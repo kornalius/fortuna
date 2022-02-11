@@ -1,6 +1,6 @@
 import Entity from '@/entity'
 import { store } from '@/store'
-import { log, mixin } from '@/utils'
+import { emit, log, mixin } from '@/utils'
 import Name from '@/mixins/name'
 import Actions from '@/mixins/actions'
 import Pickable from '@/mixins/pickable'
@@ -82,12 +82,12 @@ export default class Item extends Entity {
     }
   }
 
-  onAction(action) {
-  }
-
   async examine() {
     log(`You examine the ${this.name} but find nothing particular about it.`)
+    await emit.call(this, 'onExamine')
   }
+
+  async onExamine() {}
 }
 
 mixin(Item, [Name, Actions, Pickable, Dropable, Usable])

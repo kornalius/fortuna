@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { log, emit } from '@/utils'
 
 export default {
   state: {
@@ -10,10 +10,10 @@ export default {
         item.canEquip()
           ? {
             label: item.equipWord,
-            key: item.equipKey,
+            key: 'equip',
             icon: item.equipIcon,
             disabled: false,
-            click: item.equipClick,
+            click: async () => item.equip(),
           }
           : undefined
       ),
@@ -21,10 +21,10 @@ export default {
         item.canUnequip()
           ? {
             label: item.unequipWord,
-            key: item.unequipKey,
+            key: 'unequip',
             icon: item.unequipIcon,
             disabled: false,
-            click: item.unequipClick,
+            click: async () => item.unequip(),
           }
           : undefined
       ),
@@ -46,19 +46,8 @@ export default {
   get equipWord() { return this.isSoftware ? 'Install' : 'Equip' },
   get unequipWord() { return this.isSoftware ? 'Uninstall' : 'Unequip' },
 
-  get equipKey() { return this.isSoftware ? 'install' : 'equip' },
-  get unequipKey() { return this.isSoftware ? 'uninstall' : 'unequip' },
-
   get equippedWord() { return this.isSoftware ? 'installed' : 'equipped' },
   get unequippedWord() { return this.isSoftware ? 'uninstalled' : 'unequipped' },
-
-  get equipClick() {
-    return this.isSoftware ? async () => this.install() : async () => this.equip()
-  },
-
-  get unequipClick() {
-    return this.isSoftware ? async () => this.uninstall() : async () => this.unequip()
-  },
 
   canEquip(showMessage) {
     if (!this.isEquippable) {
@@ -89,6 +78,18 @@ export default {
     return true
   },
 
+  async equip() {
+    if (!this.canEquip(true)) {
+      return false
+    }
+    this.equipped = true
+    log(`You have ${this.equippedWord} ${this.name}`)
+    await emit.call(this, 'onEquip')
+    return true
+  },
+
+  async onEquip() {},
+
   canUnequip(showMessage) {
     if (!this.isEquippable) {
       if (showMessage) {
@@ -112,21 +113,15 @@ export default {
     return true
   },
 
-  async equip() {
-    if (!this.canEquip(true)) {
-      return false
-    }
-    this.equipped = true
-    log(`You have ${this.equippedWord} ${this.name}`)
-    return true
-  },
-
   async unequip() {
     if (!this.canUnequip(true)) {
       return false
     }
     this.equipped = false
     log(`You have ${this.unequippedWord} the ${this.name}`)
+    await emit.call(this, 'onEquip')
     return true
   },
+
+  async onUnequip() {},
 }

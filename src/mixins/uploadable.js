@@ -1,4 +1,4 @@
-import { checkSoftware, log, operationTimeout } from '@/utils'
+import { checkSoftware, emit, log, operationTimeout } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -54,12 +54,15 @@ export default {
     this.uploading = true
     log(`Uploading file ${this.name}...`)
     return new Promise(resolve => {
-      setTimeout(() => {
+      setTimeout(async () => {
         this.uploading = false
         store.player.server.addItem(this)
         log(`You have successfully uploaded the file ${this.name}`)
+        await emit.call(this, 'onUpload')
         resolve(true)
       }, operationTimeout(this.weight))
     })
   },
+
+  async onUpload() {},
 }

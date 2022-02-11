@@ -1,4 +1,4 @@
-import { checkSoftware, log, operationTimeout } from '@/utils'
+import { checkSoftware, emit, log, operationTimeout } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -54,12 +54,15 @@ export default {
     this.downloading = true
     log(`Downloading file ${this.name}...`)
     return new Promise(resolve => {
-      setTimeout(() => {
+      setTimeout(async () => {
         this.downloading = false
         store.player.addItem(this)
         log(`You have successfully downloaded the file ${this.name}`)
+        await emit.call(this, 'onDownload')
         resolve(true)
       }, operationTimeout(this.weight))
     })
   },
+
+  async onDownload() {},
 }

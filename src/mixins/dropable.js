@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { emit, log } from '@/utils'
 
 export default {
   state: {
@@ -44,6 +44,9 @@ export default {
     }
     this.location = store.game.room
     log(`You drop the ${this.name}`)
+    await emit.call(this, 'onDrop')
     return true
   },
+
+  async onDrop() {},
 }

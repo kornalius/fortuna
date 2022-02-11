@@ -1,4 +1,6 @@
 import compact from 'lodash/compact'
+import uniqBy from 'lodash/uniqBy'
+import reverse from 'lodash/reverse'
 
 export default {
   state: {
@@ -24,23 +26,17 @@ export default {
         orderedOptions.push(a)
       }
     })
-    return orderedOptions
+    // take the latest key added
+    const uniques = uniqBy(reverse(orderedOptions), 'key')
+    // reverse it back to original order
+    return reverse(uniques)
   },
 
   actionToObject(a) {
     return typeof a === 'function' ? a(this) : a
   },
 
-  async exec(key, options = {}) {
-    const action = this.actionToObject(this.actions.find(a => this.actionToObject(a)?.key === key))
-    if (action && action.click) {
-      return store.game.exec({
-        key,
-        target: this,
-        location: this.location,
-        ...options,
-        fn: async () => action.click(this)
-      })
-    }
+  findAction(key) {
+    return this.actionToObject(this.actions.find(a => this.actionToObject(a)?.key === key))
   },
 }

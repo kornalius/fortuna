@@ -1,4 +1,4 @@
-import { checkSoftware, log, operationTimeout } from '@/utils'
+import { checkSoftware, emit, log, operationTimeout } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -48,12 +48,15 @@ export default {
     this.deleting = true
     log(`Deleting file ${this.name}...`)
     return new Promise(resolve => {
-      setTimeout(() => {
+      setTimeout(async () => {
         this.deleting = false
         this.remove()
         log(`You have successfully deleted the file ${this.name}`)
+        await emit.call(this, 'onDel')
         resolve(true)
       }, operationTimeout(this.weight))
     })
   },
+
+  async onDel() {},
 }

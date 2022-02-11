@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty'
-import { checkSoftware, log } from '@/utils'
+import { checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -73,6 +73,9 @@ export default {
     log(`File: ${this.name}`, 1)
     log('---------------------------------')
     log(this.content)
+    await emit.call(this, 'onView')
     return true
-  }
+  },
+
+  async onView() {},
 }

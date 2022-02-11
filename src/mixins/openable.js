@@ -1,7 +1,9 @@
-import { log } from '@/utils'
+import { emit, log } from '@/utils'
 
 export default {
   state: {
+    openable: true,
+    closable: true,
     opened: false,
     actions: [
       door => (
@@ -11,17 +13,31 @@ export default {
             key: 'toggleOpen',
             icon: door.isOpened ? 'fa-solid:door-closed' : 'fa-solid:door-open',
             disabled: false,
-            click: async () => door.toggle(),
+            click: async () => door.open(),
           }
           : undefined
       ),
     ],
   },
 
+  get isOpenable() { return this.state.openable },
+  set openable(value) { this.state.openable = value },
+
   get isOpened() { return this.state.opened },
+  set opened(value) { this.state.opened = value },
+
+  get isClosable() { return this.state.closeable },
+  set closeable(value) { this.state.closeable = value },
+
   get isClosed() { return !this.state.opened },
 
   canOpen(showMessage) {
+    if (!this.isOpenable) {
+      if (showMessage) {
+        log(`${this.name} cannot be opened`)
+      }
+      return false
+    }
     if (this.isOpened) {
       if (showMessage) {
         log(`${this.name} is already opened`)
@@ -30,17 +46,7 @@ export default {
     }
     if (this.isLocked) {
       if (showMessage) {
-        log('The door is locked')
-      }
-      return false
-    }
-    return true
-  },
-
-  canClose(showMessage) {
-    if (this.isClosed) {
-      if (showMessage) {
-        log(`${this.name} is already closed`)
+        log(`${this.name} is locked`)
       }
       return false
     }
@@ -51,8 +57,27 @@ export default {
     if (!this.canOpen(true)) {
       return false
     }
-    this.state.opened = true
-    log('You open the door')
+    this.opened = true
+    log(`You opened ${this.name}`)
+    await emit.call(this, 'onOpen')
+    return true
+  },
+
+  async onOpen() {},
+
+  canClose(showMessage) {
+    if (!this.isClosable) {
+      if (showMessage) {
+        log(`${this.name} cannot be closed`)
+      }
+      return false
+    }
+    if (this.isClosed) {
+      if (showMessage) {
+        log(`${this.name} is already closed`)
+      }
+      return false
+    }
     return true
   },
 
@@ -60,15 +85,11 @@ export default {
     if (!this.canClose(true)) {
       return false
     }
-    this.state.opened = false
-    log('You close the door')
+    this.opened = false
+    log(`You closed ${this.name}`)
+    await emit.call(this, 'onClose')
     return true
   },
 
-  async toggle() {
-    if (this.isClosed) {
-      return this.open()
-    }
-    return this.close()
-  },
+  async onClose() {},
 }

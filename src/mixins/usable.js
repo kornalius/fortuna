@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { emit, log } from '@/utils'
 
 export default {
   state: {
@@ -36,6 +36,9 @@ export default {
       return false
     }
     log(`You use the ${this.name}`)
+    await emit.call(this, 'onUse')
     return true
   },
+
+  async onUse() {},
 }

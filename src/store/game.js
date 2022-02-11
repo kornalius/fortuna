@@ -50,11 +50,7 @@ export default class Game {
     this.state.started = true
     const room = store.rooms.at(0, 0)
     if (room) {
-      await this.exec({
-        key: 'enter',
-        target: room,
-        fn: async () => room.enter()
-      })
+      await room.enter()
     }
   }
 
@@ -102,32 +98,5 @@ export default class Game {
     } else {
       this.stopSound(name)
     }
-  }
-
-  async exec(action) {
-    // call action function
-    if (action.fn) {
-      if (await action.fn() === false) {
-        return false
-      }
-    }
-
-    // item onAction
-    if (action.target) {
-      action.target.onAction(action)
-    }
-
-    // room onAction
-    if (action.location) {
-      action.location.onAction(action)
-    }
-
-    // game onAction
-    this.onAction(action)
-
-    return true
-  }
-
-  onAction(action) {
   }
 }

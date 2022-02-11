@@ -90,3 +90,20 @@ export function checkSoftware(software, showMessage) {
   }
   return true
 }
+
+export async function emit(name) {
+  // self
+  if (this[name]) {
+    await this[name]()
+  }
+
+  // location
+  if (this.location && this.location[name]) {
+    await this.location[name].call(this.location, this)
+  }
+
+  // game
+  if (store.game[name]) {
+    await store.game[name](this)
+  }
+}

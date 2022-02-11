@@ -1,4 +1,4 @@
-import { checkSoftware, log, operationTimeout } from '@/utils'
+import { checkSoftware, emit, log, operationTimeout } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -58,12 +58,15 @@ export default {
     this.decrypting = true
     log(`Decrypting file ${this.name}...`)
     return new Promise(resolve => {
-      setTimeout(() => {
+      setTimeout(async () => {
         this.decrypting = false
         this.crypted = false
         log(`You have successfully decrypted the file ${this.name}`)
-        resolve()
+        await emit.call(this, 'onDecrypt')
+        resolve(true)
       }, operationTimeout(this.version))
     })
   },
+
+  async onDecrypt() {},
 }

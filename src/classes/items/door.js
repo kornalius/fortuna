@@ -1,5 +1,5 @@
 import Item from './item'
-import { log, mixin, oppositeDirection } from '@/utils'
+import { emit, log, mixin, oppositeDirection } from '@/utils'
 import { store } from '@/store'
 import Openable from '@/mixins/openable'
 import Unlockable from '@/mixins/unlockable'
@@ -15,19 +15,18 @@ export default class Door extends Item {
     return super.setupInstance({
       name: 'Door',
       keyId,
-      usable: false,
       pickable: false,
       dropable: false,
       directions: {},
       actions: [
         item => (
-          item.canEnter()
+          item.canUse()
             ? {
-              label: 'Enter',
-              key: 'enter',
+              label: 'Use',
+              key: 'use',
               icon: 'whh:enteralt',
               disabled: false,
-              click: async () => item.enter(),
+              click: async () => item.use(),
             }
             : undefined
         ),
@@ -53,29 +52,31 @@ export default class Door extends Item {
     return store.rooms.get(id)
   }
 
-  canEnter(showMessage) {
+  canUse(showMessage) {
     if (!this.isOpened) {
       if (showMessage) {
         log('The door is not opened')
       }
       return false
     }
+    if (this.isLocked) {
+      if (showMessage) {
+        log(`${this.name} is locked`)
+      }
+      return false
+    }
     return true
   }
 
-  async enter() {
-    if (!this.canEnter(true)) {
+  async use() {
+    if (!this.canUse(true)) {
       return false
     }
 
     const room = this.roomForDirection(this.direction)
     if (room) {
-      await store.game.exec({
-        key: 'enter',
-        target: room,
-        fn: async () => room.enter()
-      })
-      return true
+      await room.enter()
+      await emit.call(this, 'onUse')
     }
     return false
   }

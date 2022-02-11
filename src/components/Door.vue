@@ -44,7 +44,10 @@ const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, cla
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = async key => {
-  await props.value.exec(key)
+  const action = props.value.findAction(key)
+  if (action && action.click) {
+    await action.click(this)
+  }
 }
 
 const label = computed(() => {

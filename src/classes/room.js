@@ -1,6 +1,6 @@
 import Entity from '@/entity'
+import { mixin, emit } from '@/utils'
 import { store } from '@/store'
-import { mixin } from '@/utils'
 import Door from '@/classes/items/door'
 import Items from '@/mixins/items'
 import Actions from '@/mixins/actions'
@@ -46,18 +46,41 @@ export default class Room extends Entity {
     return store.player.canMove(showMessage)
   }
 
-  enter(fromRoom) {
+  async enter(fromRoom) {
     if (!this.canEnter(fromRoom, true)) {
       return false
     }
 
     this.visited += 1
     if (store.game.room !== this) {
+      const prevRoom = store.game.room;
+      if (prevRoom) {
+        prevRoom.exit(this)
+      }
       store.game.room = this
+      await emit.call(this, 'onEnter')
+      return true
+    }
+    return false
+  }
+
+  async onEnter(fromRoom) {}
+
+  canExit(toRoom, showMessage) {
+    return store.player.canMove(showMessage)
+  }
+
+  async exit(toRoom) {
+    if (!this.canExit(toRoom, true)) {
+      return false
     }
 
+    store.game.room = null
+    await emit.call(this, 'onExit')
     return true
   }
+
+  async onExit() {}
 
   addDoor(data, direction) {
     const directions = {
@@ -101,9 +124,6 @@ export default class Room extends Entity {
     store.doors.update(door)
 
     return door
-  }
-
-  onAction(action) {
   }
 }
 
