@@ -7,8 +7,10 @@
     @select="handleSelect"
   >
     <n-button
-      quaternary
+      :style="buttonStyle"
       size="small"
+      quaternary
+      @mouseover.once="() => value.hovered = true"
     >
       <div class="relative">
         <div class="inline-flex items-end">
@@ -27,6 +29,14 @@
           <span class="ml1">{{ label }}</span>
         </div>
       </div>
+
+      <v-icon
+        v-if="value.isNew"
+        icon="bx:bxs-badge"
+        class="new"
+        width="14"
+        type="error"
+      />
     </n-button>
   </n-dropdown>
 </template>
@@ -59,6 +69,11 @@ const label = computed(() => {
     default: return ''
   }
 })
+
+const buttonStyle = computed(() => {
+  const s = ['padding: 0 2px;']
+  return s.join(' ')
+})
 </script>
 
 <style scoped>
@@ -66,5 +81,11 @@ const label = computed(() => {
   position: absolute;
   top: 5px;
   left: 5px;
+}
+.new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #D12E2E;
 }
 </style>

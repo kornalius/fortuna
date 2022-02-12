@@ -18,7 +18,7 @@ export default class Config {
     // number of buffered lines in server log
     serverLogSize: 50,
     // speed at which the server log characters are process in buffers
-    serverSpeed: 50,
+    serverSpeed: 25,
     // file, software and server operation base delay time
     operationBaseDelay: 1500,
     // maximum file size allowed to be randomly generated

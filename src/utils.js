@@ -18,6 +18,19 @@ export const log = (message, level = 0) => {
 }
 
 /**
+ * Adds log messages to the logs store
+ * @param messages
+ */
+export const logs = (...messages) => {
+  messages.forEach(message => {
+    store.logs.update(new Log({
+      message: Array.isArray(message) ? message : [message],
+      level: 0,
+    }))
+  })
+}
+
+/**
  * Returns the opposite direction of 'd'
  * @param d
  * @returns {string}
@@ -42,6 +55,9 @@ export const mixState = (s, t) => {
   Object.keys({ ...s, ...t }).forEach(k => {
     if (Array.isArray(s?.[k]) || Array.isArray(t?.[k])) {
       m[k] = [...(s?.[k] || []), ...(t?.[k] || [])]
+      // if (k === 'actions') {
+      //   console.log(s.name || t.name, '->', { s: s[k], t: t[k], m: m[k] })
+      // }
     }
   })
   return merge({}, s, t, m)
@@ -92,9 +108,12 @@ export const color = (color, text) => `<span class="${color}">${text}</span>`
  * @returns {number|*}
  */
 export const operationTimeout = size => {
-  if (localStorage.getItem('DEV_MODE') === 'true') {
+  if (!size) {
     return 0
   }
+  // if (localStorage.getItem('DEV_MODE') === 'true') {
+  //   return 0
+  // }
   return random(size * (store.config.operationBaseDelay * 1.5))
     + store.config.operationBaseDelay
 }
@@ -118,7 +137,7 @@ export function checkSoftware(software, showMessage) {
     }
     return false
   }
-  if ((software?.version || 0) < this.version) {
+  if (software && software.version < this.version) {
     if (showMessage) {
       log(`You need an installed ${showMessage} v${this.version} software to execute this operation`)
     }

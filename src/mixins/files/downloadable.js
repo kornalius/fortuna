@@ -1,9 +1,9 @@
-import { checkSoftware, emit, log, operationTimeout } from '@/utils'
+import { checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
   state: {
-    downloadable: true,
+    downloadable: false,
     actions: [
       item => (
         item.canDownload()
@@ -21,9 +21,6 @@ export default {
 
   get isDownloadable() { return this.state.downloadable },
   set downloadable(value) { this.state.downloadable = value },
-
-  get isDownloading() { return store.player.installedDownloader?.busy },
-  set downloading(value) { this.setBusy(store.player.installedDownloader, value) },
 
   canDownload(showMessage) {
     if (!this.isDownloadable) {
@@ -44,24 +41,19 @@ export default {
       }
       return false
     }
-    return checkSoftware.call(this, store.player.installedDownloader, showMessage && 'downloader')
+    return checkSoftware.call(this, store.player.installedFtp, showMessage)
   },
 
   async download() {
     if (!this.canDownload(true)) {
       return false
     }
-    this.downloading = true
     log(`Downloading file ${this.name.toLowerCase()}...`)
-    return new Promise(resolve => {
-      setTimeout(async () => {
-        this.downloading = false
-        store.player.addItem(this)
-        log(`You have successfully downloaded the file ${this.name.toLowerCase()}`)
-        await emit.call(this, 'onDownload')
-        resolve(true)
-      }, operationTimeout(this.weight))
-    })
+    return this.operate('download', async () => {
+      log(`You have successfully downloaded the file ${this.name.toLowerCase()}`)
+      await emit.call(this, 'onDownload')
+      store.player.addItem(this)
+    }, this.weight)
   },
 
   async onDownload() {},

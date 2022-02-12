@@ -83,7 +83,7 @@ export default {
       return false
     }
     this.equipped = true
-    log(`You have ${this.equippedWord} ${this.name.toLowerCase()}`)
+    log(`You have equipped ${this.name.toLowerCase()}`)
     await emit.call(this, 'onEquip')
     return true
   },
@@ -118,7 +118,7 @@ export default {
       return false
     }
     this.equipped = false
-    log(`You have ${this.unequippedWord} the ${this.name.toLowerCase()}`)
+    log(`You have unequipped ${this.name.toLowerCase()}`)
     await emit.call(this, 'onEquip')
     return true
   },

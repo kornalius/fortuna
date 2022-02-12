@@ -68,6 +68,7 @@ const setFilter = name => {
 
 <style scoped>
 .scrollable {
+  overflow-x: hidden;
   overflow-y: auto;
   height: 100%;
   position: absolute;

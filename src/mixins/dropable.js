@@ -43,6 +43,7 @@ export default {
       return false
     }
     this.location = store.game.room
+    this.hovered = false
     log(`You drop the ${this.name.toLowerCase()}`)
     await emit.call(this, 'onDrop')
     return true

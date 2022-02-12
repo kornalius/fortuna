@@ -1,4 +1,4 @@
-import { checkSoftware, emit, log, operationTimeout } from '@/utils'
+import { checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -23,9 +23,6 @@ export default {
   get isDecryptable() { return this.state.decryptable },
   set decryptable(value) { this.state.decryptable = value },
 
-  get isDecrypting() { return store.player.installedDecrypter?.busy },
-  set decrypting(value) { this.setBusy(store.player.installedDecrypter, value) },
-
   get isCrypted() { return store.player.crypted },
   set crypted(value) { this.state.crypted = value },
 
@@ -48,24 +45,19 @@ export default {
       }
       return false
     }
-    return checkSoftware.call(this, store.player.installedDecrypter,showMessage && 'decrypter')
+    return checkSoftware.call(this, store.player.installedDecrypter,showMessage)
   },
 
   async decrypt() {
     if (!this.canDecrypt(true)) {
       return false
     }
-    this.decrypting = true
     log(`Decrypting file ${this.name.toLowerCase()}...`)
-    return new Promise(resolve => {
-      setTimeout(async () => {
-        this.decrypting = false
-        this.crypted = false
-        log(`You have successfully decrypted the file ${this.name.toLowerCase()}`)
-        await emit.call(this, 'onDecrypt')
-        resolve(true)
-      }, operationTimeout(this.version))
-    })
+    return this.operate('decrypt', async () => {
+      log(`You have successfully decrypted the file ${this.name.toLowerCase()}`)
+      await emit.call(this, 'onDecrypt')
+      this.crypted = false
+    }, this.version)
   },
 
   async onDecrypt() {},

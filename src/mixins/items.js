@@ -35,11 +35,13 @@ export default {
 
     if (data instanceof Item) {
       data.location = this
+      data.hovered = false
       store.items.update(data)
       return data
     } else {
       const i = new Item(data)
       i.location = this
+      i.hovered = false
       store.items.update(i)
       return i
     }

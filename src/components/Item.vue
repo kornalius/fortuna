@@ -10,28 +10,17 @@
       <template #trigger>
         <n-button
           :style="buttonStyle"
-          strong
           quaternary
-          @mouseover="() => value.hovered = false"
+          strong
+          @mouseover.once="() => value.hovered = true"
         >
-          <div class="inline-flex items-center">
+          <div class="flex flex-grow-1 items-center">
             <v-icon
               v-if="value.icon"
               :icon="value.icon"
               width="20"
               height="20"
             />
-
-            <span
-              :class="[
-                value.qty > 1 ? 'ml3' : 'ml2',
-              ]"
-              v-html="name"
-            />
-
-            <v-icon v-if="value.isBusy" class="ml2" icon="eos-icons:loading" width="20" />
-
-            <div v-if="value.qty > 1" class="qty">{{ value.qty }}</div>
 
             <v-icon
               v-if="value.isInInventory && value.isEquipped"
@@ -40,8 +29,39 @@
               width="14"
             />
 
+            <div class="flex flex-column w-100">
+              <div
+                :class="[
+                  value.qty > 1 ? 'ml3' : 'ml2',
+                ]"
+                v-html="name"
+              />
+
+              <n-progress
+                v-if="value.isBusy"
+                class="mt1 w-100"
+                :class="[
+                  value.qty > 1 ? 'ml3' : 'ml2',
+                ]"
+                type="line"
+                status="error"
+                :percentage="value.operation.pos / value.operation.total * 100"
+                :height="2"
+                :show-indicator="false"
+              />
+            </div>
+
+<!--            <v-icon-->
+<!--              v-if="value.isBusy && !value.operation"-->
+<!--              class="ml2"-->
+<!--              icon="eos-icons:loading"-->
+<!--              width="20"-->
+<!--            />-->
+
+            <div v-if="value.qty > 1" class="qty">{{ value.qty }}</div>
+
             <v-icon
-              v-if="value.isInInventory && value.isNew"
+              v-if="value.isNew"
               icon="bx:bxs-badge"
               class="new"
               width="14"
@@ -107,7 +127,7 @@ const handleSelect = async key => {
 
 const buttonStyle = computed(() => {
   const s = ['padding: 0 2px;']
-  if (props.value.isFile) {
+  if (props.value.isFile && props.value.isOnServer) {
     s.push('font-size: 12px; color: #F19936;')
   }
   if (props.value.isInInventory || props.value.isFile) {

@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty'
-import { checkSoftware, emit, log } from '@/utils'
+import { checkSoftware, emit, log, logs } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -22,7 +22,7 @@ export default {
     ],
   },
 
-  get isViewable() { return !isEmpty(this.state.content) || this.isImageFile },
+  get isViewable() { return !isEmpty(this.state.content) },
 
   get type() { return this.state.type },
   set type(value) { this.state.type = value },
@@ -62,7 +62,7 @@ export default {
       }
       return false
     }
-    return checkSoftware.call(this, store.player.installedViewer,  showMessage && 'viewer')
+    return checkSoftware.call(this, store.player.installedViewer,  showMessage)
   },
 
   async view() {
@@ -70,9 +70,17 @@ export default {
       return false
     }
     this.viewed = true
-    log(`File: ${this.name}`, 1)
-    log('---------------------------------')
-    log(this.content)
+    const toPrint = [
+      '',
+      `File: ${this.name}`,
+      '---------------------------------',
+      ...this.content.split('\n'),
+    ]
+    if (this.isOnServer) {
+      this.location.print(...toPrint)
+    } else {
+      logs(...toPrint)
+    }
     await emit.call(this, 'onView')
     return true
   },

@@ -5,6 +5,18 @@ import { mixState } from '@/utils'
 
 export default class Entity {
   constructor(data) {
+    const newData = this.setupInstance(data)
+
+    // take all functions from newData and add them to this
+    Object.keys(newData).forEach(k => {
+      const d = Object.getOwnPropertyDescriptor(newData, k)
+      const td = Object.getOwnPropertyDescriptor(this, k)
+      if (!td && typeof d.value === 'function') {
+        this[k] = d.value
+        delete newData[k]
+      }
+    })
+
     this.state = reactive(
       mixState(
         {
@@ -12,7 +24,7 @@ export default class Entity {
           id: v4(),
           store: null,
         },
-        this.setupInstance(data)
+        newData
       )
     )
   }

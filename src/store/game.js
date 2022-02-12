@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import { Howl } from 'howler'
 import max from 'lodash/max'
 import { store } from '@/store'
+import { emit } from '@/utils'
 
 export default class Game {
   storeName = 'game'
@@ -98,5 +99,13 @@ export default class Game {
     } else {
       this.stopSound(name)
     }
+  }
+
+  async levelUp() {
+    store.player.lvl += 1
+    await emit('onLevelUp')
+  }
+
+  onLevelUp() {
   }
 }

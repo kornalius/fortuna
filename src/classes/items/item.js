@@ -25,14 +25,19 @@ export default class Item extends Entity {
       locationId,
       locationStore,
       icon: null,
-      hovered: true,
+      hovered: false,
+      examinable: true,
       actions: [
-        item => ({
-          label: 'Examine',
-          key: 'examine',
-          icon: 'emojione:eye',
-          click: async () => item.examine(),
-        }),
+        item => (
+          item.canExamine()
+            ? {
+              label: 'Examine',
+              key: 'examine',
+              icon: 'emojione:eye',
+              click: async () => item.examine(),
+            }
+            : undefined
+        ),
       ],
       actionsOrder: [
         'examine',
@@ -65,6 +70,9 @@ export default class Item extends Entity {
   get description() { return this.state.description }
   set description(value) { this.state.description = value }
 
+  get isExaminable() { return this.state.examinable }
+  set examinable(value) { this.state.examinable = value }
+
   get weight() { return this.state.weight }
   set weight(value) { this.state.weight = value }
 
@@ -76,14 +84,17 @@ export default class Item extends Entity {
 
   get isInInventory() { return store.player.has(this) }
 
-  get isNew() { return this.state.hovered }
+  get isNew() { return !this.state.hovered }
   set hovered(value) { this.state.hovered = value }
 
-  // set the software busy state
-  setBusy(software, value) {
-    if (software) {
-      software.busy = value
+  canExamine(showMessage) {
+    if (!this.isExaminable) {
+      if (showMessage) {
+        log(`${this.name} cannot be examined`)
+      }
+      return false
     }
+    return true
   }
 
   async examine() {

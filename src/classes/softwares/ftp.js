@@ -1,14 +1,14 @@
 import Software from '@/classes/items/software'
 
-export default class Decrypter extends Software {
+export default class Ftp extends Software {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Decrypter',
-      equipType: 'decrypter',
+      name: 'FTP',
+      equipType: 'ftp',
       usable: false,
       ...data,
     })
   }
 
-  get isDecrypter() { return true }
+  get isFTP() { return true }
 }

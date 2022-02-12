@@ -29,7 +29,7 @@
           <div class="flex flex-grow-1 relative">
             <div class="scrollable">
               <div
-                v-for="item in value.files"
+                v-for="item in value.visibleFiles"
                 :key="item.id"
                 class="inline mr1"
               >
@@ -53,10 +53,12 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import random from 'lodash/random'
 import { store } from '@/store'
 import Item from '@/components/Item.vue'
+
+const scroller = ref()
 
 const props = defineProps({
   value: { type: Object },
@@ -76,6 +78,14 @@ const process = () => {
 onMounted(() => {
   process()
 })
+
+watch(displayed, () => {
+  if (scroller?.value) {
+    setTimeout(() => {
+      scroller.value.scrollTop = scroller.value.scrollHeight
+    }, 100);
+  }
+}, { immediate: true, deep: true })
 </script>
 
 <style>

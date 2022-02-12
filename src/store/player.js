@@ -47,12 +47,8 @@ export default class Player {
   get installedViewer() { return this.installedSoftware(i => i.isViewer) }
   get installedDecrypter() { return this.installedSoftware(i => i.isDecrypter) }
   get installedCracker() { return this.installedSoftware(i => i.isCracker) }
-  get installedDownloader() { return this.installedSoftware(i => i.isDownloader) }
-  get installedUploader() { return this.installedSoftware(i => i.isUploader) }
+  get installedFtp() { return this.installedSoftware(i => i.isFtp) }
   get installedDeleter() { return this.installedSoftware(i => i.isDeleter) }
-  get installedScanner() { return this.installedSoftware(i => i.isScanner) }
-  get installedConnector() { return this.installedSoftware(i => i.isConnector) }
-  get installedAuthenticator() { return this.installedSoftware(i => i.isAuthenticator) }
 
   get serverId() { return this.state.serverId }
   set serverId(value) { this.state.serverId = value }
@@ -78,11 +74,13 @@ export default class Player {
     if (data instanceof Item) {
       data.locationId = null
       data.locationStore = this.storeName
+      data.hovered = false
       store.items.update(data)
       return data
     } else {
       const i = new Item(data)
       i.locationStore = this.storeName
+      i.hovered = false
       store.items.update(i)
       return i
     }
