@@ -110,4 +110,12 @@ export default class Player {
   }
 }
 
-mixin(Player, [Name, Level, Buffable, Items, Hp, Xp, Carry])
+mixin(Player, [
+  Name,
+  Level,
+  Buffable,
+  Items,
+  Hp,
+  Xp,
+  Carry,
+])

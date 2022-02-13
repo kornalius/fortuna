@@ -82,4 +82,7 @@ export default class Door extends Item {
   }
 }
 
-mixin(Door, [Openable, Unlockable])
+mixin(Door, [
+  Openable,
+  Unlockable,
+])

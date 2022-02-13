@@ -13,4 +13,8 @@ export default class Container extends Entity {
   }
 }
 
-mixin(Container, [Items, Openable, Unlockable])
+mixin(Container, [
+  Items,
+  Openable,
+  Unlockable,
+])

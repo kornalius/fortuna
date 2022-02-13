@@ -6,7 +6,6 @@ import Item from './item'
 import File from './file'
 import { store } from '@/store'
 import Version from '@/mixins/version'
-import Operation from '@/mixins/operation'
 import Visitable from '@/mixins/visitable'
 
 export default class Server extends Item {
@@ -398,4 +397,7 @@ export default class Server extends Item {
   }
 }
 
-mixin(Server, [Version, Operation, Visitable])
+mixin(Server, [
+  Version,
+  Visitable,
+])

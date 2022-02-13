@@ -4,12 +4,14 @@ import { store } from '@/store'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
 import Icon from '@/mixins/icon'
+import Operation from '@/mixins/operation'
 import Hovered from '@/mixins/hovered'
 import Location from '@/mixins/location'
 import Actions from '@/mixins/actions'
 import Pickable from '@/mixins/pickable'
 import Dropable from '@/mixins/dropable'
 import Usable from '@/mixins/usable'
+import Activable from '@/mixins/activable'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -77,4 +79,16 @@ export default class Item extends Entity {
   async onExamine() {}
 }
 
-mixin(Item, [Name, Description, Hovered, Icon, Location, Actions, Pickable, Dropable, Usable])
+mixin(Item, [
+  Name,
+  Description,
+  Operation,
+  Hovered,
+  Icon,
+  Location,
+  Actions,
+  Pickable,
+  Dropable,
+  Usable,
+  Activable,
+])

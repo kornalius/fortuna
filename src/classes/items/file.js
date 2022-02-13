@@ -1,7 +1,6 @@
 import Item from './item'
 import { mixin } from '@/utils'
 import Version from '@/mixins/version'
-import Operation from '@/mixins/operation'
 import Viewable from '@/mixins/files/viewable'
 import Deletable from '@/mixins/files/deletable'
 import Decryptable from '@/mixins/files/decryptable'
@@ -31,4 +30,11 @@ export default class File extends Item {
   set hidden(value) { this.state.hidden = value }
 }
 
-mixin(File, [Version, Operation, Viewable, Deletable, Decryptable, Downloadable, Uploadable])
+mixin(File, [
+  Version,
+  Viewable,
+  Deletable,
+  Decryptable,
+  Downloadable,
+  Uploadable,
+])

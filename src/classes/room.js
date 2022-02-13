@@ -138,4 +138,11 @@ export default class Room extends Entity {
   }
 }
 
-mixin(Room, [Name, Icon, Image, Items, Actions, Visitable])
+mixin(Room, [
+  Name,
+  Icon,
+  Image,
+  Items,
+  Actions,
+  Visitable,
+])

@@ -55,4 +55,7 @@ export default class Software extends File {
   }
 }
 
-mixin(Software, [Equippable, Usable])
+mixin(Software, [
+  Equippable,
+  Usable,
+])

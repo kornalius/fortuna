@@ -119,4 +119,16 @@ export default class Npc extends Entity {
   async onBye() { }
 }
 
-mixin(Npc, [Name, Description, Actions, Image, Hovered, Location, Items, Level, Buffable, Hp, Carry])
+mixin(Npc, [
+  Name,
+  Description,
+  Actions,
+  Image,
+  Hovered,
+  Location,
+  Items,
+  Level,
+  Buffable,
+  Hp,
+  Carry,
+])
