@@ -15,6 +15,8 @@ import Activable from '@/mixins/activable'
 import Consumable from '@/mixins/consumable'
 import Destructable from '@/mixins/destructable'
 import Examinable from '@/mixins/examinable'
+import Pushable from '@/mixins/pushable'
+import Pullable from '@/mixins/pullable'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -72,4 +74,6 @@ mixin(Item, [
   Consumable,
   Destructable,
   Examinable,
+  Pushable,
+  Pullable,
 ])
