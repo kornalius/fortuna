@@ -114,8 +114,28 @@ export const tall = [
   'tall', 'high', 'lofty', 'eminent', 'prominent',
 ]
 
+export const strong = [
+  'strong', 'though', 'powerful', 'sturdy', 'rugged', 'robust',
+]
+
+export const weak = [
+  'weak', 'wimpy', 'fragile', 'gentle', 'puny', 'flimsy',
+]
+
 export const poor = [
   'poor', 'needy', 'penniless', 'broke', 'insolvent',
+]
+
+export const greetings = [
+  'hello', 'hi', 'hey', 'you there',
+]
+
+export const farewells = [
+  'bye', 'see ya', 'take care',
+]
+
+export const pleased = [
+  'pleased', 'happy', 'glad',
 ]
 
 export const adequate = [
@@ -198,4 +218,49 @@ export const traits = [
   'curious', 'studious', 'mysterious', 'rough', 'silent', 'skeptic', 'immature', 'materialistic', 'dreamy',
   'creative', 'romantic', 'frivolous', 'aloof', 'introvert', 'extrovert', 'leader', 'follower',
   'emotional', 'emotionless', 'humorous', 'grim', 'selfsufficent', 'dependent', 'logical', 'illogical',
+]
+
+export const jobs = [
+  'anesthesiologist', 'archivist', 'assembler', 'astronaut', 'astronomer', 'attorney', 'bartender', 'biologist', 'broker',
+  'captain', 'carpenter', 'cashier', 'chemist', 'coach', 'concierge', 'cook', 'courier', 'dental hygienist', 'dentist',
+  'dispatcher', 'doctor', 'economist', 'electrician', 'housekeeper', 'janitor', 'journalist', 'lawer', 'librarian', 'machinists',
+  'marketer', 'merchant', 'meteorologist', 'microbiologist', 'nurse', 'painter', 'paramedic', 'physician', 'physicist',
+  'physiologist', 'pilot', 'plumber', 'psychiatric', 'publicist', 'receptionist', 'reporter', 'researcher', 'secretary',
+  'therapist', 'toxicologist', 'veterinary', 'welder',
+]
+
+export const jobLevels = [
+  'advanced', 'apprentice', 'assistant', 'certified', 'chief', 'executive', 'graduate', 'intern', 'lead', 'registered',
+  'retired', 'senior', 'student',
+]
+
+export const jobDomains = [
+  'account', 'administrative', 'advertising', 'aerodynamical', 'aeromechanical', 'aeronautical', 'aerospacial', 'agricultural',
+  'application', 'assembly', 'atmospheric', 'automotive', 'billing', 'biological', 'biomedical', 'building', 'business',
+  'cargo', 'chemical', 'civil', 'climate', 'clinical', 'command', 'communication', 'component', 'computational fluid',
+  'computation', 'computer', 'construction', 'contract', 'cooperative', 'corporate', 'crew', 'customer', 'data', 'database',
+  'department', 'digital', 'distribution', 'district', 'document', 'drafting', 'dynamics', 'education', 'electrical', 'electronics',
+  'energy', 'environmental', 'equipment', 'experiment', 'extravehicular', 'facility', 'federal', 'field', 'financial', 'flight',
+  'forensic', 'genetic', 'geological', 'global', 'ground', 'guidance', 'hardware', 'hazardous', 'help', 'human factors',
+  'industrial', 'information technology', 'instrumentation', 'integration', 'interactive', 'intranet', 'inventory', 'installation',
+  'investment', 'laboratory', 'launch site', 'licensing', 'life', 'logistics', 'manufacturing', 'marketing', 'marine', 'material',
+  'mathematical', 'media', 'medical', 'merchandise', 'microbial', 'mission', 'national', 'naval', 'navigation', 'network',
+  'neuroscience', 'office', 'operation', 'optical', 'orbital', 'orders', 'payload', 'performance', 'pharmaceutical', 'photography',
+  'physics', 'planetary', 'plant', 'policies', 'power', 'process', 'product', 'production', 'program', 'project', 'propulsion',
+  'protection', 'prototype', 'public affairs', 'public relations', 'purchases', 'quality assurance', 'quality control', 'regional',
+  'reliability', 'rentals', 'remote sensing', 'research', 'resource', 'retail', 'robotics', 'route', 'sales', 'schedule', 'science',
+  'scientific', 'security', 'semiconductor', 'sensing', 'service', 'shipping', 'shuttle', 'simulator', 'site', 'social', 'software',
+  'space farming', 'space station', 'spacecraft', 'spacesuit', 'staff', 'station', 'stock', 'store', 'storage', 'structures',
+  'suppliers', 'surface', 'system', 'tactical', 'technical', 'technological', 'telecommunications', 'test', 'thermal', 'tool',
+  'traffic', 'trajectory', 'transaction', 'transportation', 'travel', 'warehouse',
+]
+
+export const jobTitles = [
+  'administrator', 'advisor', 'advocate', 'agent', 'ambassador', 'analyst', 'architect', 'buyer', 'coder', 'collector',
+  'commander', 'communicator', 'consultant', 'controller', 'coordinator', 'counselor', 'curator', 'designer', 'developer',
+  'director', 'engineer', 'estimator', 'examiner', 'expeditor', 'forecaster', 'generalist', 'inspector', 'integrator',
+  'interpreter', 'investigator', 'manager', 'mechanic', 'messenger', 'officer', 'operator', 'personel', 'planner',
+  'president', 'processor', 'producer', 'programmer', 'recruiter', 'regulator', 'representative', 'researcher', 'scheduler',
+  'scientist', 'specialist', 'strategist', 'superintendent', 'technician', 'technologist', 'tester', 'trainer',
+  'verificator', 'worker',
 ]
