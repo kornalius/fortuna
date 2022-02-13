@@ -65,16 +65,15 @@ export default class Door extends Item {
       }
       return false
     }
-    return true
+    return store.game.room.canExit(showMessage);
   }
 
   async use() {
     if (!this.canUse(true)) {
       return false
     }
-
     const room = this.roomForDirection(this.direction)
-    if (room) {
+    if (room && room.canEnter(true)) {
       await room.enter()
       await emit.call(this, 'onUse')
     }

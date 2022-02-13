@@ -44,7 +44,10 @@
         class="disconnect"
         size="small"
         type="warning"
-        @click="() => value.disconnect()"
+        @click="() => {
+          store.game.playSound('click')
+          value.disconnect()
+        }"
       >
         <v-icon icon="websymbol:logout" width="16" />
       </n-button>

@@ -110,16 +110,16 @@ export default class Dialog extends Entity {
   }
 
   async say() {
-    if (this.canSay()) {
-      store.player.dialog = this
-      this.sayCount += 1
-      await emit.call(this, 'onSay')
-      return true
+    if (!this.canSay()) {
+      return false
     }
-    return false
+    store.player.dialog = this
+    this.sayCount += 1
+    await emit.call(this, 'onSay')
+    return true
   }
 
-  async onSay() { }
+  async onSay() {}
 
   canAnswer(code) {
     const answer = this.getAnswer(code)
@@ -147,12 +147,12 @@ export default class Dialog extends Entity {
     return false
   }
 
-  async onAnswer(code) { }
+  async onAnswer(code) {}
 
   async bye() {
     await emit.call(this, 'onBye')
     store.player.dialog = null
   }
 
-  async onBye() { }
+  async onBye() {}
 }

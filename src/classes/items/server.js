@@ -178,6 +178,7 @@ export default class Server extends Item {
       const c = this.buffer[0]
       this.display.push(c)
       this.buffer.splice(0, 1)
+      store.game.playSound('print', 0.2)
     }
   }
 
@@ -205,6 +206,7 @@ export default class Server extends Item {
       this.clear()
       store.player.server = this
       this.visited += 1
+      store.game.playSound('boot-sound')
       log(`You have successfully connected to ${this.name.toLowerCase()}`)
       await emit.call(this, 'onConnect')
     })

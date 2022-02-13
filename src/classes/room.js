@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin, emit } from '@/utils'
+import { mixin, emit, log } from '@/utils'
 import { store } from '@/store'
 import Door from '@/classes/items/door'
 import Npc from '@/classes/npc'
@@ -34,10 +34,6 @@ export default class Room extends Entity {
   get eastDoor() { return this.doors.find(door => door.directions[this.id] === 'E') }
   get westDoor() { return this.doors.find(door => door.directions[this.id] === 'W') }
 
-  canEnter(fromRoom, showMessage) {
-    return store.player.canMove(showMessage)
-  }
-
   addNpc(data) {
     if (Array.isArray(data)) {
       return data.map(d => this.addDialog(d))
@@ -55,6 +51,10 @@ export default class Room extends Entity {
       store.npcs.update(i)
       return i
     }
+  }
+
+  canEnter(fromRoom, showMessage) {
+    return store.player.canMove(showMessage)
   }
 
   async enter(fromRoom) {
@@ -78,6 +78,12 @@ export default class Room extends Entity {
   async onEnter(fromRoom) {}
 
   canExit(toRoom, showMessage) {
+    if (store.player.isConnectedToServer) {
+      if (showMessage) {
+        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`)
+      }
+      return false
+    }
     return store.player.canMove(showMessage)
   }
 
@@ -85,7 +91,7 @@ export default class Room extends Entity {
     if (!this.canExit(toRoom, true)) {
       return false
     }
-
+    store.game.playSound('walk')
     store.game.room = null
     await emit.call(this, 'onExit')
     return true

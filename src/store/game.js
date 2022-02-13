@@ -4,6 +4,25 @@ import max from 'lodash/max'
 import { store } from '@/store'
 import { emit } from '@/utils'
 
+const soundFiles = {
+  'test-music': 'music/test-music.mp3',
+
+  'test-sound': 'sfx/test-sound.wav',
+  'boot-sound': 'sfx/boot-sound.wav',
+  'keyboard': 'sfx/keyboard.wav',
+  'switch': 'sfx/switch.wav',
+  'button': { src: 'sfx/button.wav', volume: 0.5 },
+  'print': 'sfx/print.wav',
+  'unlock': 'sfx/unlock.wav',
+  'open-door': 'sfx/open-door.wav',
+  'close-door': 'sfx/close-door.wav',
+  'open-drawer': 'sfx/open-drawer.wav',
+  'close-drawer': 'sfx/close-drawer.wav',
+  'walk': 'sfx/walk.wav',
+  'pickup': 'sfx/pickup.wav',
+  'click': 'sfx/click.wav',
+}
+
 export default class Game {
   storeName = 'game'
 
@@ -13,13 +32,6 @@ export default class Game {
     roomId: null,
     sounds: {},
   })
-
-  constructor() {
-    this.state.sounds = this.loadSound([
-      { 'test-music': 'music/test-music.mp3' },
-      { 'test-sound': 'sfx/test-sound.wav' },
-    ]);
-  }
 
   get room() {
     return this.state.roomId
@@ -63,21 +75,25 @@ export default class Game {
     this.state.paused = false
   }
 
-  loadSound(sound) {
-    if (Array.isArray(sound)) {
-      return sound.reduce((acc, s) => ({ ...acc, ...this.loadSound(s) }), {})
-    }
-
-    const name = Object.keys(sound)[0]
-
-    return {
-      [name]: new Howl({
-        src: [`/sounds/${sound[name]}`],
+  loadSound(name) {
+    if (typeof soundFiles[name] !== 'string') {
+      return new Howl({
+        ...soundFiles[name],
+        src:  [`/sounds/${soundFiles[name].src}`],
       })
+    } else {
+      return new Howl({ src: [`/sounds/${soundFiles[name]}`] })
     }
   }
 
-  playSound(name) {
+  playSound(name, volume) {
+    if (!this.state.sounds[name]) {
+      this.state.sounds[name] = this.loadSound(name)
+      this.state.sounds[name].once('load', () => this.state.sounds[name].play())
+    }
+    if (volume) {
+      this.state.sounds[name].volume(volume)
+    }
     this.state.sounds[name].play()
   }
 

@@ -11,6 +11,19 @@ export default {
     // destroyed so far
     destroyed: 0,
     removeWhenDestroyed: true,
+    actions: [
+      item => (
+        item.canDestroy()
+          ? {
+            label: 'Destroy',
+            key: 'destroy',
+            icon: 'whh:breakable',
+            disabled: false,
+            click: async () => item.destroy(),
+          }
+          : undefined
+      ),
+    ],
   },
 
   get isDestructable() { return this.state.destructable > 0 },
@@ -65,5 +78,5 @@ export default {
     return true
   },
 
-  async onDestroy(amount) { }
+  async onDestroy(amount) {}
 }

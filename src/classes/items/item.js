@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { emit, log, mixin } from '@/utils'
+import { mixin } from '@/utils'
 import { store } from '@/store'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
@@ -14,6 +14,7 @@ import Usable from '@/mixins/usable'
 import Activable from '@/mixins/activable'
 import Consumable from '@/mixins/consumable'
 import Destructable from '@/mixins/destructable'
+import Examinable from '@/mixins/examinable'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -26,7 +27,6 @@ export default class Item extends Entity {
       weight: 0,
       locationId,
       locationStore,
-      examinable: true,
       actions: [
         item => (
           item.canExamine()
@@ -48,9 +48,6 @@ export default class Item extends Entity {
 
   get stackable() { return false }
 
-  get isExaminable() { return this.state.examinable }
-  set examinable(value) { this.state.examinable = value }
-
   get weight() { return this.state.weight }
   set weight(value) { this.state.weight = value }
 
@@ -58,27 +55,6 @@ export default class Item extends Entity {
   set qty(value) { this.state.qty = this.stackable ? Math.max(0, value) : 1 }
 
   get isInInventory() { return store.player.has(this) }
-
-  canExamine(showMessage) {
-    if (!this.isExaminable) {
-      if (showMessage) {
-        log(`${this.name} cannot be examined`)
-      }
-      return false
-    }
-    return true
-  }
-
-  async examine() {
-    if (!this.canExamine(true)) {
-      return false
-    }
-    log(`You examine the ${this.name.toLowerCase()} but find nothing particular about it.`)
-    await emit.call(this, 'onExamine')
-    return true
-  }
-
-  async onExamine() {}
 }
 
 mixin(Item, [
@@ -95,4 +71,5 @@ mixin(Item, [
   Activable,
   Consumable,
   Destructable,
+  Examinable,
 ])

@@ -6,6 +6,30 @@ export default {
     disactivable: false,
     activationDelay: 1,
     active: false,
+    actions: [
+      item => (
+        item.canActivate()
+          ? {
+            label: 'Activate',
+            key: 'activate',
+            icon: 'mdi:toggle-switch-outline',
+            disabled: false,
+            click: async () => item.activate(),
+          }
+          : undefined
+      ),
+      item => (
+        item.canDisactivate()
+          ? {
+            label: 'Deactivate',
+            key: 'disactivate',
+            icon: 'mdi:toggle-switch-off-outline',
+            disabled: false,
+            click: async () => item.disactivate(),
+          }
+          : undefined
+      ),
+    ],
   },
 
   get isActivable() { return this.state.activable },
@@ -21,7 +45,7 @@ export default {
   set activationDelay(value) { this.state.activationDelay = value },
 
   canActivate(showMessage) {
-    if (this.isActivable) {
+    if (!this.isActivable) {
       if (showMessage) {
         log(`${this.name} cannot be activated`)
       }
@@ -49,9 +73,15 @@ export default {
   },
 
   canDisactivate(showMessage) {
+    if (!this.isDisactivable) {
+      if (showMessage) {
+        log(`${this.name} cannot be deactivated`)
+      }
+      return false
+    }
     if (!this.isActive) {
       if (showMessage) {
-        log(`${this.name} is already disactivated`)
+        log(`${this.name} is already deactivated`)
       }
       return false
     }
@@ -70,7 +100,7 @@ export default {
     return true
   },
 
-  async onActivate() { },
+  async onActivate() {},
 
   async toggleActivate() {
     if (this.isActive) {

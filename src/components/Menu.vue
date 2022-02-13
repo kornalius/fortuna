@@ -7,7 +7,10 @@
       strong
       secondary
       block
-      @click="() => store.game.resume()"
+      @click="() => {
+        store.game.playSound('button')
+        store.game.resume()
+      }"
     >
       Resume
     </n-button>
@@ -18,7 +21,10 @@
       strong
       secondary
       block
-      @click="() => store.game.start()"
+      @click="() => {
+        store.game.playSound('button')
+        store.game.start()
+      }"
     >
       New Game
     </n-button>
@@ -29,6 +35,9 @@
       strong
       secondary
       block
+      @click="() => {
+        store.game.playSound('button')
+      }"
     >
       Options
     </n-button>
@@ -39,6 +48,9 @@
       strong
       secondary
       block
+      @click="() => {
+        store.game.playSound('button')
+      }"
     >
       Credits
     </n-button>

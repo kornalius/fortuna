@@ -1,10 +1,12 @@
 import { emit, log } from '@/utils'
+import { store } from '@/store'
 
 export default {
   state: {
     openable: true,
     closable: true,
     opened: false,
+    drawer: false,
     actions: [
       door => (
         door.canOpen()
@@ -57,6 +59,7 @@ export default {
     if (!this.canOpen(true)) {
       return false
     }
+    store.game.playSound(this.state.drawer ? 'open-drawer' : 'open-door')
     this.opened = true
     log(`You opened ${this.name.toLowerCase()}`)
     await emit.call(this, 'onOpen')
@@ -85,6 +88,7 @@ export default {
     if (!this.canClose(true)) {
       return false
     }
+    store.game.playSound(this.state.drawer ? 'close-drawer' : 'close-door')
     this.opened = false
     log(`You closed ${this.name.toLowerCase()}`)
     await emit.call(this, 'onClose')

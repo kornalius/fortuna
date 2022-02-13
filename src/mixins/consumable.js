@@ -11,6 +11,19 @@ export default {
     // consumed so far
     consumed: 0,
     removeWhenConsumed: true,
+    actions: [
+      item => (
+        item.canConsume()
+          ? {
+            label: 'Consume',
+            key: 'consume',
+            icon: 'emojione-monotone:fork-and-knife',
+            disabled: false,
+            click: async () => item.consume(),
+          }
+          : undefined
+      ),
+    ],
   },
 
   get isConsumable() { return this.state.consumable > 0 },
@@ -65,5 +78,5 @@ export default {
     return true
   },
 
-  async onConsume(amount) { }
+  async onConsume(amount) {}
 }

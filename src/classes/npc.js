@@ -83,6 +83,18 @@ export default class Npc extends Entity {
       }
       return false
     }
+    if (store.player.isInDialog && store.player.dialog.npc !== this) {
+      if (showMessage) {
+        log(`You are already in discussion with ${store.player.dialog.npc.name}`)
+      }
+      return false
+    }
+    if (store.player.isConnectedToServer) {
+      if (showMessage) {
+        log(`Disconnect from ${store.player.server.toLowerCase()} first`)
+      }
+      return false
+    }
     return true
   }
 
@@ -95,7 +107,7 @@ export default class Npc extends Entity {
     return true
   }
 
-  async onTalk() { }
+  async onTalk() {}
 
   canSay(code) {
     return !!this.getDialog(code)
@@ -112,11 +124,11 @@ export default class Npc extends Entity {
     return false
   }
 
-  async onSay(dialog) { }
+  async onSay(dialog) {}
 
-  async onAnswer(dialog, code) { }
+  async onAnswer(dialog, code) {}
 
-  async onBye() { }
+  async onBye() {}
 }
 
 mixin(Npc, [

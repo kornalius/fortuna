@@ -114,7 +114,7 @@ export default class IntroRoom extends Room {
     this.addNpc({
       name: 'Simon Smith',
       icon: 'emojione:old-man-medium-light-skin-tone',
-      img: 'old-man.png',
+      img: 'old-man2.png',
       description: 'An old grumpy man',
       talkable: true,
 

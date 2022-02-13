@@ -25,7 +25,10 @@
               class="flex w-100 mv1"
               tertiary
               v-text="answer.text"
-              @click="() => value.answer(answer.code)"
+              @click="() => {
+                store.game.playSound('button')
+                value.answer(answer.code)
+              }"
             />
           </div>
         </div>
@@ -35,6 +38,8 @@
 </template>
 
 <script setup>
+import { store } from '@/store'
+
 const props = defineProps({
   value: { type: Object },
 })
