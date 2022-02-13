@@ -1,11 +1,16 @@
-import { emit, log } from '@/utils';
+import random from 'lodash/random'
+import { emit, log } from '@/utils'
 
 export default {
   state: {
     // total to consume
     consumable: 0,
     consumeDelay: 1,
-    consumed: 0
+    // to be consumed every action
+    consumeAmount: 1,
+    // consumed so far
+    consumed: 0,
+    removeWhenConsumed: true,
   },
 
   get isConsumable() { return this.state.consumable > 0 },
@@ -14,10 +19,25 @@ export default {
   get isConsumed() { return this.state.consumed >= this.state.consumable },
   set consumed(value) { this.state.consumed = value },
 
+  get consumeAmount() { return this.state.consumeAmount },
+  set consumeAmount(value) { this.state.consumeAmount = value },
+
+  get consumeDelay() { return this.state.consumeDelay },
+  set consumeDelay(value) { this.state.consumeDelay = value },
+
+  get removeWhenConsumed() { return this.state.removeWhenConsumed },
+  set removeWhenConsumed(value) { this.state.removeWhenConsumed = value },
+
   canConsume(showMessage) {
+    if (this.isConsumable) {
+      if (showMessage) {
+        log(`${this.name} cannot not consumable`)
+      }
+      return false
+    }
     if (this.isConsumed) {
       if (showMessage) {
-        log(`${this.name} has already been consumed`)
+        log(`${this.name} has already been fully consumed`)
       }
       return false
     }
@@ -30,11 +50,20 @@ export default {
     }
     log(`Consuming ${this.name.toLowerCase()}...`)
     await this.operate('consume', async () => {
-      log(`You have eaten ${this.name.toLowerCase()}`)
-      await emit.call(this, 'onConsume')
+      const dmg = random(this.consumeAmount)
+      this.consumed += dmg
+      if (this.isConsumed) {
+        log(`You have fully consumed ${this.name.toLowerCase()}`)
+      } else {
+        log(`You have consumed ${dmg} from ${this.name.toLowerCase()}`)
+      }
+      await emit.call(this, 'onConsume', dmg)
+      if (this.isConsumed && this.removeWhenConsumed) {
+        this.remove()
+      }
     }, this.consumeDelay)
     return true
   },
 
-  async onConsume() { }
+  async onConsume(amount) { }
 }

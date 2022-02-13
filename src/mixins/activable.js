@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils';
+import { emit, log } from '@/utils'
 
 export default {
   state: {
@@ -17,7 +17,16 @@ export default {
   get isActive() { return this.state.active },
   set active(value) { this.state.active = value },
 
+  get activationDelay() { return this.state.activationDelay },
+  set activationDelay(value) { this.state.activationDelay = value },
+
   canActivate(showMessage) {
+    if (this.isActivable) {
+      if (showMessage) {
+        log(`${this.name} cannot be activated`)
+      }
+      return false
+    }
     if (this.isActive) {
       if (showMessage) {
         log(`${this.name} is already active`)
