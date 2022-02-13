@@ -12,6 +12,7 @@ import Pickable from '@/mixins/pickable'
 import Dropable from '@/mixins/dropable'
 import Usable from '@/mixins/usable'
 import Activable from '@/mixins/activable'
+import Consumable from '@/mixins/consumable'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -91,4 +92,5 @@ mixin(Item, [
   Dropable,
   Usable,
   Activable,
+  Consumable,
 ])
