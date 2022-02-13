@@ -23,8 +23,10 @@ export default class Player {
       ram: store.config.baseRam,
       // maximum disk space available to store files in inventory
       disk: store.config.baseDisk,
-      // currentyle connected server
+      // currently connected server
       serverId: null,
+      // current dialog being displayed
+      dialogId: null,
     })
   }
 
@@ -54,9 +56,29 @@ export default class Player {
   set serverId(value) { this.state.serverId = value }
 
   get server() { return store.items.get(this.serverId) }
-  set server(value) { this.serverId = value?.id }
+  set server(value) {
+    if (value) {
+      this.state.serverId = value.id
+    } else {
+      this.state.serverId = null
+    }
+  }
 
   get isConnectedToServer() { return !!this.server }
+
+  get dialogId() { return this.state.dialogId }
+  set dialogId(value) { this.state.dialogId = value }
+
+  get dialog() { return store.dialogs.get(this.dialogId) }
+  set dialog(value) {
+    if (value) {
+      this.state.dialogId = value.id
+    } else {
+      this.state.dialogId = null
+    }
+  }
+
+  get isInDialog() { return !!this.dialog }
 
   hasEquippedOfType(type) {
     return this.equippedItems.find(i => i.equipType === type)
@@ -79,6 +101,7 @@ export default class Player {
       return data
     } else {
       const i = new Item(data)
+      i.locationId = null
       i.locationStore = this.storeName
       i.hovered = false
       store.items.update(i)

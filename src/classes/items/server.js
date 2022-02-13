@@ -5,6 +5,7 @@ import { checkSoftware, emit, log, mixin, randomFilename } from '@/utils'
 import Item from './item'
 import File from './file'
 import { store } from '@/store'
+import Version from '@/mixins/version'
 import Operation from '@/mixins/operation'
 import Visitable from '@/mixins/visitable'
 
@@ -15,7 +16,6 @@ export default class Server extends Item {
     return super.setupInstance({
       name: 'Server',
       icon: 'whh:server',
-      version: 1,
       pickable: false,
       usable: false,
       type: null,
@@ -84,9 +84,6 @@ export default class Server extends Item {
 
   get visibleFiles() { return this.files.filter(f => f.isVisible) }
 
-  get version() { return this.state.version }
-  set version(value) { this.state.version = value }
-
   get isConnected() { return store.player.server === this }
   get isDisconnected() { return store.player.server !== this }
 
@@ -145,7 +142,7 @@ export default class Server extends Item {
       return data.map(d => this.addItem(d))
     }
 
-    if (data instanceof Item) {
+    if (data instanceof File) {
       data.location = this
       data.hovered = false
       store.items.update(data)
@@ -401,4 +398,4 @@ export default class Server extends Item {
   }
 }
 
-mixin(Server, [Operation, Visitable])
+mixin(Server, [Version, Operation, Visitable])

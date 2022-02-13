@@ -3,14 +3,19 @@
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
         <div class="top flex self-center relative w-100">
-          <server
+          <Server
             v-if="store.player.isConnectedToServer"
             :value="store.player.server"
           />
 
+          <Dialog
+            v-else-if="store.player.isInDialog"
+            :value="store.player.dialog"
+          />
+
           <img v-else-if="value.img"
             class="image"
-            :src="`/images/rooms/${value.img}`"
+            :src="value.img"
             :alt="value.img"
           />
         </div>
@@ -21,6 +26,14 @@
 
         <div class="flex flex-wrap items-center mb2">
           <span class="yellow mr2">YOU SEE:</span>
+
+          <span
+            v-for="npc in npcs"
+            :key="npc.id"
+            class="inline mr1"
+          >
+            <Npc :value="npc" />
+          </span>
 
           <span
             v-for="item in items"
@@ -59,8 +72,10 @@
 import { computed, ref } from 'vue'
 import Log from '@/components/Log.vue'
 import Door from '@/components/Door.vue'
+import Npc from '@/components/Npc.vue'
 import Item from '@/components/Item.vue'
 import Server from '@/components/Server.vue'
+import Dialog from '@/components/Dialog.vue'
 import { store } from '@/store'
 
 const scroller = ref()
@@ -70,6 +85,7 @@ const props = defineProps({
 })
 
 const items = computed(() => props.value?.items || [])
+const npcs = computed(() => props.value?.npcs || [])
 const doors = computed(() => props.value?.doors || [])
 
 const logsChanged = () => {

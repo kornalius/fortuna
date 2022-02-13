@@ -149,22 +149,28 @@ export function checkSoftware(software, showMessage) {
 /**
  * Call a function on the item, its location and the game itself
  * @param name
+ * @param args
  * @returns {Promise<void>}
  */
-export async function emit(name) {
+export async function emit(name, ...args) {
   // self
   if (this[name]) {
-    await this[name]()
+    await this[name](...args)
   }
 
   // location
-  if (this.location && this.location[name]) {
-    await this.location[name].call(this.location, this)
+  if (this !== this.location && this.location && this.location[name]) {
+    await this.location[name].call(this.location, this, ...args)
+  }
+
+  // player
+  if (this !== store.player && store.player[name]) {
+    await store.player[name](this, ...args)
   }
 
   // game
-  if (store.game[name]) {
-    await store.game[name](this)
+  if (this !== store.game && store.game[name]) {
+    await store.game[name](this, ...args)
   }
 }
 
