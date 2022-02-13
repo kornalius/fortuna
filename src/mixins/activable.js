@@ -34,7 +34,7 @@ export default {
     log(`Activating ${this.name.toLowerCase()}...`)
     await this.operate('activate', async () => {
       log(`You have activated ${this.name.toLowerCase()}`)
-      await emit.call(this, 'onExamine')
+      await emit.call(this, 'onActivate')
     }, this.activationDelay)
     return true
   },
@@ -56,10 +56,12 @@ export default {
     log(`Disactivating ${this.name.toLowerCase()}...`)
     await this.operate('disactivate', async () => {
       log(`You have disactivated ${this.name.toLowerCase()}`)
-      await emit.call(this, 'onExamine')
+      await emit.call(this, 'onActivate')
     }, this.activationDelay)
     return true
   },
+
+  async onActivate() { },
 
   async toggleActivate() {
     if (this.isActive) {
