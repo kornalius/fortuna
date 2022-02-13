@@ -126,10 +126,10 @@ export default class Dialog extends Entity {
     if (!answer) {
       return false
     }
-    if (!answer.disabled) {
-      return true
+    if (typeof answer.disabled === 'function') {
+      return answer.disabled.call(this)
     }
-    return answer.disabled.call(this)
+    return answer.disabled !== true
   }
 
   async answer(code) {
