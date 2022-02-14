@@ -8,8 +8,7 @@ const soundFiles = {
   'test-music': 'music/test-music.mp3',
 
   'test-sound': 'sfx/test-sound.wav',
-  'boot-sound': 'sfx/boot-sound.wav',
-  'keyboard': 'sfx/keyboard.wav',
+  'keyboard': { src: 'sfx/keyboard.wav', loop: true },
   'switch': 'sfx/switch.wav',
   'button': { src: 'sfx/button.wav', volume: 0.5 },
   'print': 'sfx/transmission.wav',
@@ -21,6 +20,10 @@ const soundFiles = {
   'walk': 'sfx/walk.wav',
   'pickup': 'sfx/pickup.wav',
   'click': 'sfx/click.wav',
+  'power-down': 'sfx/power-down.wav',
+  'boot-sound': 'sfx/boot-sound.wav',
+  'hd': { src: 'sfx/hd.wav', loop: true },
+  'machine-sound': { src: 'sfx/machine-sound.wav', loop: true },
 }
 
 export default class Game {

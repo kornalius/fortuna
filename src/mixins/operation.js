@@ -10,30 +10,33 @@ export default {
   set operation(value) { this.state.operation = value },
 
   async operate(name, cb, baseDelay) {
-    return new Promise(resolve => {
-      const time = operationTimeout(baseDelay)
+    const time = operationTimeout(baseDelay)
 
-      this.operation = {
-        name,
-        pos: 0,
-        total: 100,
-        interval: setInterval(() => {
+    this.operation = {
+      name,
+      pos: 0,
+      total: 100,
+    }
+
+    let t = Math.floor(time * 0.1)
+    const promises = []
+    for (let i = 0; i < 10; i++) {
+      promises.push(new Promise(resolve => {
+        setTimeout(async () => {
           if (this.operation) {
             this.operation.pos += 10
-            this.onOperation(this.operation)
+            await this.onOperation(this.operation)
           }
-        }, Math.floor(time * 0.1)),
-      }
+          resolve()
+        }, t * i)
+      }))
+    }
 
-      setTimeout(async () => {
-        if (this.operation) {
-          clearInterval(this.operation.interval)
-        }
-        this.operation = null
-        cb.call(this)
-        resolve(true)
-      }, time)
-    })
+    await Promise.all(promises)
+
+    this.operation = null
+
+    return cb.call(this)
   },
 
   onOperation(operation) { }

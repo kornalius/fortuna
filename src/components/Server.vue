@@ -12,19 +12,19 @@
       <div class="flex w-100 ph5 pv4">
         <div class="relative inline-flex w-100">
           <div ref="scroller" class="scrollable">
-            <span
+            <div
               v-for="(c, index) of displayed"
               :key="index"
-              class="char"
+              :class="{ chartext: true, char: true, cr: c === '<br>' }"
               v-html="c"
             />
-            <span class="caret">&nbsp;&nbsp;</span>
+            <div class="caret" :style="caretStyle(value.caret)" />
           </div>
         </div>
 
         <div class="flex flex-column files">
           <div class="flex pb1">
-            <span class="char tc w-100">---- FILES ON SERVER ----</span>
+            <span class="chartext tc w-100">---- FILES ON SERVER ----</span>
           </div>
           <div class="flex flex-grow-1 relative">
             <div class="scrollable">
@@ -72,6 +72,51 @@ const props = defineProps({
 const displayed = computed(() => (
   props.value?.display || []
 ))
+
+const charToPos = index => {
+  let p = 0
+  let x = 0
+  let y = 0
+
+  while (p < index) {
+    if (displayed.value[p] === '<br>') {
+      x = -1
+      y += 1
+    }
+    x += 1
+    p += 1
+  }
+
+  return { x, y }
+}
+
+const caretStyle = index => {
+  const pos = charToPos(index)
+  return {
+    left: `${pos.x * 10}px`,
+    top: `${pos.y * 23}px`,
+  }
+}
+
+const posToChar = (x, y) => {
+  let p = 0
+  let nx = 0
+  let ny = 0
+
+  while (p < displayed.value.length) {
+    if (displayed.value[p] === '<br>') {
+      nx = -1
+      ny += 1
+    }
+    nx += 1
+    if (nx === x && ny === y) {
+      break
+    }
+    p += 1
+  }
+
+  return p
+}
 
 const process = () => {
   setTimeout(() => {
@@ -122,18 +167,27 @@ watch(displayed, () => {
 }
 .caret {
   background: #F5BB06;
+  position: absolute;
   width: 8px;
-  height: 16px;
+  height: 22px;
   animation: blink .75s linear infinite;
   z-index: 1;
 }
-.char {
+.chartext {
   font-family: pixeled,sans-serif;
   font-size: 24px;
-  line-height: .5em;
+  line-height: 20px;
   color: #F5BB06;
   animation: textShadow 1.6s infinite;
   z-index: 1;
+}
+.char {
+  display: inline-block;
+  text-align: center;
+  width: 10px;
+}
+.cr {
+  display: inline;
 }
 .scrollable {
   position: absolute;

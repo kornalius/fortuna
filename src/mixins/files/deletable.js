@@ -42,8 +42,12 @@ export default {
     if (!this.canDel(true)) {
       return false
     }
+    if (this.isOnServer) {
+      store.game.playSound('hd')
+    }
     log(`Deleting file ${this.name.toLowerCase()}...`)
     return this.operate('del', async () => {
+      store.game.stopSound('hd')
       this.remove()
       log(`You have successfully deleted the file ${this.name.toLowerCase()}`)
       await emit.call(this, 'onDel')

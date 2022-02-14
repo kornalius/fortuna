@@ -8,6 +8,15 @@ import Viewer from '@/classes/softwares/viewer'
 import Deleter from '@/classes/softwares/deleter'
 
 class IntroServer extends Server {
+  constructor(data) {
+    super({
+      ...data,
+      name: 'Intro server',
+      crackable: true,
+      protected: true,
+    });
+  }
+
   mounted() {
     super.mounted()
 
@@ -82,15 +91,6 @@ class IntroServer extends Server {
         weight: 1,
       }),
     ])
-  }
-
-  async onConnect() {
-    await super.onConnect()
-
-    this.print('Welcome to this nice amazing super cool server')
-    this.print()
-    this.print(['This', 'is', 'a', 'line'])
-    this.print('Another line')
   }
 }
 
@@ -186,7 +186,8 @@ export default class IntroRoom extends Room {
         }
       },
     }))
-    this.server = this.addItem(new IntroServer())
+
+    this.addItem(new IntroServer())
   }
 
   async onEnter() {

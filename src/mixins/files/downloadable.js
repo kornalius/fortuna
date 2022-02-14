@@ -48,8 +48,10 @@ export default {
     if (!this.canDownload(true)) {
       return false
     }
+    store.game.playSound('hd')
     log(`Downloading file ${this.name.toLowerCase()}...`)
     return this.operate('download', async () => {
+      store.game.stopSound('hd')
       log(`You have successfully downloaded the file ${this.name.toLowerCase()}`)
       await emit.call(this, 'onDownload')
       store.player.addItem(this)

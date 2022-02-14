@@ -1,12 +1,13 @@
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
 import random from 'lodash/random'
-import { checkSoftware, emit, log, mixin, randomFilename } from '@/utils'
+import { checkSoftware, emit, log, mixin, pickRandom, randomFilename } from '@/utils'
 import Item from './item'
 import File from './file'
 import { store } from '@/store'
 import Version from '@/mixins/version'
 import Visitable from '@/mixins/visitable'
+import { femaleNames, maleNames, passwords } from '@/words';
 
 export default class Server extends Item {
   fileOrders = []
@@ -26,6 +27,9 @@ export default class Server extends Item {
       cracking: true,
       protected: true,
       listing: false,
+      caret: 0,
+      username: null,
+      password: null,
       actions: [
         item => (
           item.canConnect()
@@ -57,6 +61,17 @@ export default class Server extends Item {
               icon: 'mdi:cube-scan',
               disabled: false,
               click: async () => item.list(),
+            }
+            : undefined
+        ),
+        item => (
+          item.canCrack()
+            ? {
+              label: 'Crack authentication',
+              key: 'crack',
+              icon: 'mdi:cube-scan',
+              disabled: false,
+              click: async () => item.crack(),
             }
             : undefined
         ),
@@ -103,11 +118,20 @@ export default class Server extends Item {
   get isListing() { return this.state.listing }
   set listing(value) { this.state.listing = value }
 
+  get username() { return this.state.username }
+  set username(value) { this.state.username = value }
+
+  get password() { return this.state.password }
+  set password(value) { this.state.password = value }
+
   get display() { return this.state.display }
   set display(value) { this.state.display = value }
 
   get buffer() { return this.state.buffer }
   set buffer(value) { this.state.buffer = value }
+
+  get caret() { return this.state.caret }
+  set caret(value) { this.state.caret = value }
 
   get isBusy() {
     return this.isAuthenticating
@@ -136,6 +160,13 @@ export default class Server extends Item {
     ]
   }
 
+  get welcome() {
+    return [
+      `Welcome ${this.username}`,
+      '',
+    ]
+  }
+
   addItem(data) {
     if (Array.isArray(data)) {
       return data.map(d => this.addItem(d))
@@ -158,6 +189,7 @@ export default class Server extends Item {
   clear() {
     this.display = []
     this.buffer = []
+    this.caret = 0
   }
 
   print(...args) {
@@ -168,18 +200,79 @@ export default class Server extends Item {
         if (typeof text === 'string') {
           text.split('').forEach(c => this.buffer.push(c))
         }
+      }
+    })
+  }
+
+  println(...args) {
+    args.forEach(text => {
+      if (Array.isArray(text)) {
+        this.println(text.join(' '))
+      } else {
+        if (typeof text === 'string') {
+          text.split('').forEach(c => this.buffer.push(c))
+        }
         this.buffer.push('<br>')
       }
     })
   }
 
+  /**
+   * Move caret by <count> characters
+   *
+   * @param count
+   */
+  moveBy(count) {
+    this.caret += count
+  }
+
+  moveToEnd() {
+    this.caret = this.display.length
+  }
+
+  /**
+   * Erase <count> characters backward
+   *
+   * @param count
+   */
+  erase(count) {
+    this.caret -= 1
+    const l = this.caret - count
+    while (this.caret > l) {
+      this.display.splice(this.caret, 1)
+      this.caret -= 1
+    }
+    this.caret += 1
+  }
+
   processBuffer() {
     if (this.buffer.length > 0) {
       const c = this.buffer[0]
-      this.display.push(c)
+      if (this.caret < this.display.length) {
+        if (this.display[this.caret] === '<br>') {
+          this.display.splice(this.caret, 0, c)
+        } else {
+          this.display[this.caret] = c
+        }
+      } else {
+        this.display.push(c)
+      }
       this.buffer.splice(0, 1)
+      this.caret += 1
       store.game.playSound('print', 0.2)
     }
+  }
+
+  async waitBufferEmpty() {
+    return new Promise(resolve => {
+      let interval
+      interval = setInterval(() => {
+        if (this.buffer.length === 0) {
+          clearInterval(interval)
+          resolve()
+        }
+      }, 10)
+    })
   }
 
   canConnect(showMessage) {
@@ -213,15 +306,39 @@ export default class Server extends Item {
   }
 
   async onConnect() {
+    store.game.playSound('machine-sound')
+
+    if (!this.username) {
+      this.username = pickRandom(pickRandom([femaleNames, maleNames]))
+    }
+
+    if (!this.password) {
+      this.password = pickRandom(passwords)
+    }
+
     if (this.firstVisit) {
-      this.print(...this.bootSequence)
+      if (localStorage.getItem('DEV_MODE') !== 'true') {
+        this.println(...this.bootSequence)
+      }
       this.generateRandomDummyFiles(random(5, 25))
       const a = this.files
       // leave here, files needs to be computed first
       this.fileOrders = shuffle(this.fileOrders)
     }
-    this.print(...this.bootOS)
-    this.list()
+
+    if (localStorage.getItem('DEV_MODE') !== 'true') {
+      this.println(...this.bootOS)
+    }
+
+    this.println('Enter login information below...')
+    this.println('Username:')
+    this.println('Password:')
+
+    await this.waitBufferEmpty()
+
+    this.moveBy(-11)
+
+    return this.authenticate()
   }
 
   canDisconnect(showMessage) {
@@ -246,6 +363,8 @@ export default class Server extends Item {
     }
     return this.operate('disconnect', async () => {
       store.player.server = null
+      store.game.stopSound('machine-sound')
+      store.game.playSound('power-down')
       log(`You have successfully disconnected from ${this.name}`)
       await emit.call(this, 'onDisconnect')
     })
@@ -285,17 +404,22 @@ export default class Server extends Item {
     if (!this.canAuthenticate) {
       return false
     }
-    log(`Authenticating on ${this.name.toLowerCase()}...`)
-    this.authenticating = true
-    return this.operate('autenticate', async () => {
-      this.authenticated = true
-      this.authenticating = false
-      log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
-      await emit.call(this, 'onAuthenticate')
-    }, this.version)
+    if (!this.isProtected) {
+      log(`Authenticating on ${this.name.toLowerCase()}...`)
+      this.authenticating = true
+      return this.operate('authenticate', async () => {
+        this.authenticated = true
+        this.authenticating = false
+        log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
+        await emit.call(this, 'onAuthenticate')
+      }, this.version)
+    }
   }
 
-  async onAuthenticate() {}
+  async onAuthenticate() {
+    this.println('You have successfully authenticated')
+    this.println(...this.welcome)
+  }
 
   canCrack(showMessage) {
     if (this.isBusy) {
@@ -330,12 +454,23 @@ export default class Server extends Item {
     if (!this.canCrack(true)) {
       return false
     }
+    await this.waitBufferEmpty()
+    this.cracking = true
+    this.authenticating = true
+    this.state.crackedname = undefined
+    this.state.crackedpwd = undefined
+    store.game.playSound('keyboard')
     log(`Cracking ${this.name.toLowerCase()}...`)
     return this.operate('crack', async () => {
+      store.game.stopSound('keyboard')
       this.protected = false
+      this.authenticated = true
+      this.authenticating = false
       log(`You have successfully cracked ${this.name.toLowerCase()}`)
       await emit.call(this, 'onCrack')
-    }, this.version)
+      log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
+      await emit.call(this, 'onAuthenticate')
+    }, this.version * 3)
   }
 
   async onCrack() {}
@@ -353,6 +488,12 @@ export default class Server extends Item {
       }
       return false
     }
+    if (!this.isAuthenticated) {
+      if (showMessage) {
+        log(`You need to be authenticated to ${this.name.toLowerCase()} first`)
+      }
+      return false
+    }
     return true
   }
 
@@ -361,14 +502,34 @@ export default class Server extends Item {
       return false
     }
     this.listing = true
+    store.game.playSound('hd')
     return this.operate('list', async () => {
+      store.game.stopSound('hd')
       this.files.forEach(file => { file.hidden = false })
       this.listing = false
       await emit.call(this, 'onList')
     }, 3)
   }
 
-  onOperation(operation) {
+  async onList() {}
+
+  fillLetters(count, arr, word) {
+    const len = arr.length
+    for (let i = 0; i < count; i++) {
+      let found = false
+      let c = 0
+      while (!found && c < len * 5) {
+        const x = random(len - 1)
+        if (arr[x] !== word[x]) {
+          arr[x] = word[x]
+          found = true
+        }
+        c += 1
+      }
+    }
+  }
+
+  async onOperation(operation) {
     if (operation.name === 'list') {
       let x = 0
       const count = Math.floor(this.files.length / 10)
@@ -378,10 +539,47 @@ export default class Server extends Item {
           x += 1
         }
       })
+    } else if (operation.name === 'authenticate') {
+      if (operation.pos === 10) {
+        this.print(this.state.username)
+        this.moveBy(10)
+      } else if (operation.pos === 100) {
+        this.println(this.state.password)
+      }
+    } else if (operation.name === 'crack') {
+      if (operation.pos <= 50) {
+        const len = this.username.length
+        const count = Math.ceil(operation.pos / 50 * len)
+        if (this.state.crackedname) {
+          await this.waitBufferEmpty()
+          this.erase(len)
+        } else {
+          this.state.crackedname = new Array(len)
+          this.state.crackedname.fill('*')
+        }
+        this.fillLetters(count, this.state.crackedname, this.username)
+        this.print(this.state.crackedname.join(''))
+      } else {
+        const len = this.password.length
+        const count = Math.ceil(operation.pos / 50 * len)
+        if (this.state.crackedpwd) {
+          await this.waitBufferEmpty()
+          this.erase(len)
+        } else {
+          this.moveBy(10)
+          this.state.crackedpwd = new Array(len)
+          this.state.crackedpwd.fill(' ')
+        }
+        this.fillLetters(count, this.state.crackedpwd, this.password)
+        this.print(this.state.crackedpwd.join(''))
+        if (operation.pos === 100) {
+          await this.waitBufferEmpty()
+          this.moveToEnd()
+          this.println('')
+        }
+      }
     }
   }
-
-  async onList() {}
 
   generateRandomDummyFiles(count) {
     for(let i = 0; i < count; i++) {

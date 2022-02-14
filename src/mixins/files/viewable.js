@@ -77,7 +77,14 @@ export default {
       ...this.content.split('\n'),
     ]
     if (this.isOnServer) {
-      this.location.print(...toPrint)
+      if (this.isOnServer) {
+        store.game.playSound('hd')
+      }
+      return this.operate('view', async () => {
+        store.game.stopSound('hd')
+        this.location.println(...toPrint)
+        await emit.call(this, 'onView')
+      }, this.weight)
     } else {
       logs(...toPrint)
     }

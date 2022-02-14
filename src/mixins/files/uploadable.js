@@ -48,8 +48,10 @@ export default {
     if (!this.canUpload(true)) {
       return false
     }
+    store.game.playSound('hd')
     log(`Uploading file ${this.name.toLowerCase()}...`)
     return this.operate('upload', async () => {
+      store.game.stopSound('hd')
       log(`You have successfully uploaded the file ${this.name.toLowerCase()}`)
       await emit.call(this, 'onUpload')
       store.player.server.addItem(this)

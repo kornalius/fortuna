@@ -264,3 +264,18 @@ export const jobTitles = [
   'scientist', 'specialist', 'strategist', 'superintendent', 'technician', 'technologist', 'tester', 'trainer',
   'verificator', 'worker',
 ]
+
+export const passwords = [
+  '4HxdMTvD92', 'JthhJQMdaF', 'AzL92SrabE', 'DDRw4RGDw4', 'jdSHDrdCDh', 'KctB9cSmFS', 'DmguUTYV9C', 'eJpC8nJ2Dr', 'smabqqt7Na',
+  'quP7DbVF6d', 'aJUYu5cCeT', '6FTzcrRyqT', 'y7PGyfpnHH', 'gP3MZN48tq', 'RfANVaKapK', 'mzbRaUcBtu', 'aR8t5fmmTk', 'Bhw92HVPdw',
+  '4433qC9gE2', 'nsPsPqBz35', 'X2qRSvp3tU', 'fQy4YSc8tv', 'UZGGHMnZKy', 'NEsKPXMJKy', '5RKhM6Mck3', 'mgt7ppXNgp', 'NuLJpVMMbw',
+  'WdgaAcqYKG', 'YXgpgDmyW3', 'N5aJjSef2j', 'df6FA4kXpa', 'rws6EHqzKa', 'nshaKwuetc', 'pcwBWhH4qw', 'EV4XJ2xJn2', 'uFzAXDpAd6',
+  'MGh8m3TTx9', 'RGPtKFHpFE', 'hmkqbE46TG', '3RysYuJpF6', 'qp3EnKLWgh', 'BzntnqcWuc', 'sR54DC759E', 'Hs7C7C524m', 'jagsgUkEve',
+  'BZLR69Z8gm', 'M3aBCJX893', 'C37cHct9YB', '8LFeHNXrRB', 'TAKCMaQrRC', 'sgT6pncZGb', 'L5B2NRWcYh', 'L5qP8azAcH', 'VMegNYyLVt',
+  'NpjUYfBudL', '7QBXd8VNdV', 'mmjed8f5FW', 'bXTM3FcDaS', 'maLa22Eakr', 'dqpzkh2pa7', 'wxDQysfwqX', 'MkNfdMSUNb', 'LCMCfrBrQh',
+  '35Pau75Vw7', 'NwyfVpap5H', 'Qeb3T5KSGC', 'ApHyZVfcHq', 'MfwxyuySDr', 'essKXxGFU3', 'RQF3AsrvSp', 'xRNGrppEYk', 'VKayeND2Cr',
+  'bfnKyFPsD4', 's7esAkzraW', 'BQFDwE84tk', 'wW6JgpzLJj', 'qMqdeaqNmP', 'FvvLqQBZbJ', 'aZGq9778sL', '3WKzJh3X35', 'kTwXvNzEjV',
+  'RbY5e73gmG', 'qb4p352HpB', 'EsP33Sr5HN', '4dGXdZEPxB', 'BeKQY4UKf2', 'A6A4P9jtqY', '8d7vnVVd3s', 'ugVtQf5b3B', '2zCf6DKcPa',
+  'uNn4E8fQ4Z', 'nVPUd6pw53', '4Z4JuQmCsP', '4FW7zWpBSX', 'JdRSLn8GeL', 'FrcjnMunCM', 'SktTnQn6ft', 'qeWdjVsYxv', 'm7872KaMqK',
+  'HfjQaruqTY',
+]
