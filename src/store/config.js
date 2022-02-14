@@ -25,6 +25,10 @@ export default class Config {
     maxFileSize: 1000,
     // dummy file types to be randomly generated
     dummyFileTypes: ['doc', 'qrt', 'rpt', 'cod', 'hdr', 'tab', 'dum', 'unk'],
+    // max distance in feet between 2 combattants
+    maxDistance: 70,
+    // min distance in feet between 2 combattants
+    minDistance: 1,
   })
 
   get baseHp() { return this.state.baseHp }
@@ -49,4 +53,6 @@ export default class Config {
 
   get dummyFileTypes() { return this.state.dummyFileTypes }
 
+  get maxDistance() { return this.state.maxDistance }
+  get minDistance() { return this.state.minDistance }
 }

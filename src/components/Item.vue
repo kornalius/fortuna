@@ -38,7 +38,7 @@
               />
 
               <n-progress
-                v-if="value.isBusy"
+                v-if="value.operation"
                 class="mt1 w-100"
                 :class="[
                   value.qty > 1 ? 'ml3' : 'ml2',

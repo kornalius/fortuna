@@ -5,6 +5,7 @@ import Doors from './doors'
 import Rooms from './rooms'
 import Npcs from './npcs'
 import Dialogs from './dialogs'
+import Combats from './combats'
 import Logs from './logs'
 import Game from './game'
 
@@ -16,6 +17,7 @@ export const models = {
   rooms: Rooms,
   npcs: Npcs,
   dialogs: Dialogs,
+  combats: Combats,
   logs: Logs,
   game: Game,
 }

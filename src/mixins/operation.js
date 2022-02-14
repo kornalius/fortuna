@@ -18,13 +18,17 @@ export default {
         pos: 0,
         total: 100,
         interval: setInterval(() => {
-          this.operation.pos += 10
-          this.onOperation(this.operation)
+          if (this.operation) {
+            this.operation.pos += 10
+            this.onOperation(this.operation)
+          }
         }, Math.floor(time * 0.1)),
       }
 
       setTimeout(async () => {
-        clearInterval(this.operation.interval)
+        if (this.operation) {
+          clearInterval(this.operation.interval)
+        }
         this.operation = null
         cb.call(this)
         resolve(true)

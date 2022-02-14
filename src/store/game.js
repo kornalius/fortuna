@@ -12,7 +12,7 @@ const soundFiles = {
   'keyboard': 'sfx/keyboard.wav',
   'switch': 'sfx/switch.wav',
   'button': { src: 'sfx/button.wav', volume: 0.5 },
-  'print': 'sfx/print.wav',
+  'print': 'sfx/transmission.wav',
   'unlock': 'sfx/unlock.wav',
   'open-door': 'sfx/open-door.wav',
   'close-door': 'sfx/close-door.wav',

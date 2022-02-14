@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { store } from './index'
-import { mixin } from '@/utils'
+import { log, mixin } from '@/utils'
 import Item from '@/classes/items/item'
 import Name from '@/mixins/name'
 import Level from '@/mixins/level'
@@ -66,6 +66,10 @@ export default class Player {
 
   get isConnectedToServer() { return !!this.server }
 
+  get isInDialog() { return !!this.dialog }
+
+  get isInCombat() { return !!this.combat }
+
   get dialogId() { return this.state.dialogId }
   set dialogId(value) { this.state.dialogId = value }
 
@@ -77,8 +81,6 @@ export default class Player {
       this.state.dialogId = null
     }
   }
-
-  get isInDialog() { return !!this.dialog }
 
   hasEquippedOfType(type) {
     return this.equippedItems.find(i => i.equipType === type)
@@ -107,6 +109,40 @@ export default class Player {
       store.items.update(i)
       return i
     }
+  }
+
+  canAnswer(showMessage) {
+    if (!this.isInDialog) {
+      if (showMessage) {
+        log('You are not talking to anyone')
+      }
+      return false
+    }
+    return true
+  }
+
+  /**
+   * Respond with an answer to the current dialog
+   *
+   * @param code
+   * @returns {Promise<void>}
+   */
+  async answer(code) {
+    if (!this.canAnswer(true)) {
+      return false
+    }
+    return this.dialog.answer(code)
+  }
+
+  canCombat(npc, showMessage) {
+    return npc.canCombat(showMessage)
+  }
+
+  async combat(npc) {
+    if (!this.canCombat(npc, true)) {
+      return false
+    }
+    return npc.combat()
   }
 }
 

@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 
 export default class Entities {
-  storeName = 'entity'
+  storeName = 'entities'
 
   state = reactive({})
 

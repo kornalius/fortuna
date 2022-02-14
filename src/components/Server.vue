@@ -56,12 +56,14 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import random from 'lodash/random'
 import { store } from '@/store'
 import Item from '@/components/Item.vue'
 
 const scroller = ref()
+
+let timeout
 
 const props = defineProps({
   value: { type: Object },
@@ -82,12 +84,16 @@ onMounted(() => {
   process()
 })
 
+onUnmounted(() => {
+  clearTimeout(timeout)
+})
+
 watch(displayed, () => {
-  if (scroller?.value) {
-    setTimeout(() => {
+  timeout = setTimeout(() => {
+    if (scroller?.value) {
       scroller.value.scrollTop = scroller.value.scrollHeight
-    }, 100);
-  }
+    }
+  }, 100);
 }, { immediate: true, deep: true })
 </script>
 

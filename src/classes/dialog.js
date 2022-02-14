@@ -105,12 +105,12 @@ export default class Dialog extends Entity {
     return false
   }
 
-  canSay() {
+  canSay(showMessage) {
     return true
   }
 
   async say() {
-    if (!this.canSay()) {
+    if (!this.canSay(true)) {
       return false
     }
     store.player.dialog = this
@@ -121,9 +121,12 @@ export default class Dialog extends Entity {
 
   async onSay() {}
 
-  canAnswer(code) {
+  canAnswer(code, showMessage) {
     const answer = this.getAnswer(code)
     if (!answer) {
+      if (showMessage) {
+        log(`Could not find a valid answer with the code ${code}`)
+      }
       return false
     }
     if (typeof answer.disabled === 'function') {
@@ -133,7 +136,7 @@ export default class Dialog extends Entity {
   }
 
   async answer(code) {
-    if (this.canAnswer(code)) {
+    if (this.canAnswer(code, true)) {
       const answer = this.getAnswer(code)
       this.answerCount[code] += 1
       await emit.call(this, 'onAnswer', code)
