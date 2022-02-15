@@ -1,4 +1,5 @@
 import { emit, log } from '@/utils'
+import { store } from '@/store';
 
 export default {
   state: {
@@ -35,6 +36,18 @@ export default {
       }
       return false
     }
+    if (this.isSoftware && this.isEquipped) {
+      if (showMessage) {
+        log(`${this.name} needs to be uninstalled first`)
+      }
+      return false
+    }
+    if (this.isEquipped) {
+      if (showMessage) {
+        log(`${this.name} needs to be unequipped first`)
+      }
+      return false
+    }
     return true
   },
 
@@ -42,9 +55,10 @@ export default {
     if (!this.canDrop(true)) {
       return false
     }
+    store.game.playSound('drop')
     this.location = store.game.room
     this.hovered = false
-    log(`You drop the ${this.name.toLowerCase()}`)
+    log(`You drop ${this.name.toLowerCase()}`)
     await emit.call(this, 'onDrop')
     return true
   },

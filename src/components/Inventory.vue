@@ -13,36 +13,65 @@
       </div>
       <div class="flex">
         <n-button-group>
-          <n-button
-            :type="filter === undefined ? 'primary' : undefined"
-            @click="setFilter(undefined)"
-          >
-            <v-icon icon="ci:check-all" width="24" />
-          </n-button>
-          <n-button
-            :type="filter === 'isWeapon' ? 'primary' : undefined"
-            @click="setFilter('isWeapon')"
-          >
-            <v-icon icon="whh:gun" width="24" />
-          </n-button>
-          <n-button
-            :type="filter === 'isArmor' ? 'primary' : undefined"
-            @click="setFilter('isArmor')"
-          >
-            <v-icon icon="bx:bxs-t-shirt" width="24" />
-          </n-button>
-          <n-button
-            :type="filter === 'isFile' ? 'primary' : undefined"
-            @click="setFilter('isFile')"
-          >
-            <v-icon icon="mdi:file" width="24" />
-          </n-button>
-          <n-button
-            :type="filter === 'isSoftware' ? 'primary' : undefined"
-            @click="setFilter('isSoftware')"
-          >
-            <v-icon icon="whh:software" width="24" />
-          </n-button>
+          <n-popover trigger="hover" placement="bottom">
+            <template #trigger>
+              <n-button
+                :type="filter === undefined ? 'primary' : undefined"
+                @click="setFilter(undefined)"
+              >
+                <v-icon icon="ci:check-all" width="24" />
+              </n-button>
+            </template>
+            <span>All</span>
+          </n-popover>
+
+          <n-popover trigger="hover" placement="bottom">
+            <template #trigger>
+              <n-button
+                :type="filter === 'isWeapon' ? 'primary' : undefined"
+                @click="setFilter('isWeapon')"
+              >
+                <v-icon icon="whh:gun" width="24" />
+              </n-button>
+            </template>
+            <span>Weapons</span>
+          </n-popover>
+
+          <n-popover trigger="hover" placement="bottom">
+            <template #trigger>
+              <n-button
+                :type="filter === 'isArmor' ? 'primary' : undefined"
+                @click="setFilter('isArmor')"
+              >
+                <v-icon icon="bx:bxs-t-shirt" width="24" />
+              </n-button>
+            </template>
+            <span>Armors</span>
+          </n-popover>
+
+          <n-popover trigger="hover" placement="bottom">
+            <template #trigger>
+              <n-button
+                :type="filter === 'isFile' ? 'primary' : undefined"
+                @click="setFilter('isFile')"
+              >
+                <v-icon icon="mdi:file" width="24" />
+              </n-button>
+            </template>
+            <span>Files</span>
+          </n-popover>
+
+          <n-popover trigger="hover" placement="bottom">
+            <template #trigger>
+              <n-button
+                :type="filter === 'isSoftware' ? 'primary' : undefined"
+                @click="setFilter('isSoftware')"
+              >
+                <v-icon icon="whh:software" width="24" />
+              </n-button>
+            </template>
+            <span>Softwares</span>
+          </n-popover>
         </n-button-group>
       </div>
     </div>

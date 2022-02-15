@@ -1,4 +1,4 @@
-import Software from '@/classes/items/software'
+import Software from '@/classes/softwares/software'
 
 export default class Viewer extends Software {
   setupInstance(data) {

@@ -198,7 +198,7 @@ watch(displayed, () => {
 }
 .disconnect {
   position: absolute;
-  right: 3px;
+  right: 5px;
   top: 266px;
   width: 0;
   z-index: 3;

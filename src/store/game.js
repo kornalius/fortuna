@@ -3,28 +3,7 @@ import { Howl } from 'howler'
 import max from 'lodash/max'
 import { store } from '@/store'
 import { emit } from '@/utils'
-
-const soundFiles = {
-  'test-music': 'music/test-music.mp3',
-
-  'test-sound': 'sfx/test-sound.wav',
-  'keyboard': { src: 'sfx/keyboard.wav', loop: true },
-  'switch': 'sfx/switch.wav',
-  'button': { src: 'sfx/button.wav', volume: 0.5 },
-  'print': 'sfx/transmission.wav',
-  'unlock': 'sfx/unlock.wav',
-  'open-door': 'sfx/open-door.wav',
-  'close-door': 'sfx/close-door.wav',
-  'open-drawer': 'sfx/open-drawer.wav',
-  'close-drawer': 'sfx/close-drawer.wav',
-  'walk': 'sfx/walk.wav',
-  'pickup': 'sfx/pickup.wav',
-  'click': 'sfx/click.wav',
-  'power-down': 'sfx/power-down.wav',
-  'boot-sound': 'sfx/boot-sound.wav',
-  'hd': { src: 'sfx/hd.wav', loop: true },
-  'machine-sound': { src: 'sfx/machine-sound.wav', loop: true },
-}
+import { soundFiles } from '@/sounds'
 
 export default class Game {
   storeName = 'game'

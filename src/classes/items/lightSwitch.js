@@ -7,6 +7,7 @@ export default class LightSwitch extends Item {
       name: 'Light switch',
       off: true,
       icon: 'heroicons-solid:light-bulb',
+      usable: true,
       pickable: false,
       dropable: false,
       ...data,
@@ -32,9 +33,13 @@ export default class LightSwitch extends Item {
       log(`You cannot toggle the ${this.name.toLowerCase()}`)
       return false
     }
-
     this.isOn = !this.isOn
     await emit.call(this, 'onUse')
     return true
+  }
+
+  async onUse() {
+    console.log('onUse')
+    store.game.playSound('switch')
   }
 }

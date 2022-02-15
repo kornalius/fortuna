@@ -1,4 +1,4 @@
-import Software from '@/classes/items/software'
+import Software from '@/classes/softwares/software'
 import { store } from '@/store';
 import { emit, log } from '@/utils';
 
@@ -19,6 +19,9 @@ export default class Cracker extends Software {
             }
             : undefined
         ),
+      ],
+      actionsOrder: [
+        'crack'
       ],
       ...data,
     })

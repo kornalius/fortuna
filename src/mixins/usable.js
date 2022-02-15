@@ -2,7 +2,7 @@ import { emit, log } from '@/utils'
 
 export default {
   state: {
-    usable: true,
+    usable: false,
     actions: [
       item => (
         item.canUse()

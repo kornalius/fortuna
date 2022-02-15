@@ -64,17 +64,6 @@ export default class Server extends Item {
             }
             : undefined
         ),
-        item => (
-          item.canCrack()
-            ? {
-              label: 'Crack authentication',
-              key: 'crack',
-              icon: 'mdi:cube-scan',
-              disabled: false,
-              click: async () => item.crack(),
-            }
-            : undefined
-        ),
       ],
       ...data,
     })
@@ -306,7 +295,7 @@ export default class Server extends Item {
   }
 
   async onConnect() {
-    store.game.playSound('machine-sound')
+    store.game.playSound('hum')
 
     if (!this.username) {
       this.username = pickRandom(pickRandom([femaleNames, maleNames]))
@@ -363,7 +352,7 @@ export default class Server extends Item {
     }
     return this.operate('disconnect', async () => {
       store.player.server = null
-      store.game.stopSound('machine-sound')
+      store.game.stopSound('hum')
       store.game.playSound('power-down')
       log(`You have successfully disconnected from ${this.name}`)
       await emit.call(this, 'onDisconnect')
@@ -501,8 +490,8 @@ export default class Server extends Item {
     if (!this.canList(true)) {
       return false
     }
-    this.listing = true
     store.game.playSound('hd')
+    this.listing = true
     return this.operate('list', async () => {
       store.game.stopSound('hd')
       this.files.forEach(file => { file.hidden = false })

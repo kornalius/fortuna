@@ -62,6 +62,12 @@ export default {
       }
       return false
     }
+    if (!store.player.has(this)) {
+      if (showMessage) {
+        log(`${this.name} needs to be in your inventory first`)
+      }
+      return false
+    }
     if (store.player.hasEquippedOfType(this.equipType)) {
       if (showMessage) {
         log(`You have already have a ${this.equipType} ${this.equippedWord}`)

@@ -15,6 +15,7 @@ export default class Door extends Item {
     return super.setupInstance({
       name: 'Door',
       keyId,
+      usable: true,
       pickable: false,
       dropable: false,
       directions: {},

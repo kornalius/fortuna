@@ -2,25 +2,33 @@
   <n-card>
     <div ref="container" class="container">
       <div :style="style">
-        <div
+        <n-popover
           v-for="room in rooms"
           :key="room.id"
-          class="room flex items-center justify-center"
-          :class="{ active: room === store.game.room }"
-          :style="styleForRoom(room)"
+          trigger="hover"
+          placement="top"
         >
-          <v-icon
-            v-if="room.icon"
-            :icon="room.icon"
-            width="32"
-            color="white"
-          />
+          <template #trigger>
+            <div
+              class="room flex items-center justify-center"
+              :class="{ active: room === store.game.room }"
+              :style="styleForRoom(room)"
+            >
+              <v-icon
+                v-if="room.icon"
+                :icon="room.icon"
+                width="32"
+                color="white"
+              />
 
-          <div v-if="room.northDoor" class="north door" />
-          <div v-if="room.southDoor" class="south door" />
-          <div v-if="room.eastDoor" class="east door" />
-          <div v-if="room.westDoor" class="west door" />
-        </div>
+              <div v-if="room.northDoor" class="north door" />
+              <div v-if="room.southDoor" class="south door" />
+              <div v-if="room.eastDoor" class="east door" />
+              <div v-if="room.westDoor" class="west door" />
+            </div>
+          </template>
+          <span>{{ room.name }}</span>
+        </n-popover>
       </div>
     </div>
   </n-card>

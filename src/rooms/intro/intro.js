@@ -6,6 +6,7 @@ import File from '@/classes/items/file'
 import FTP from '@/classes/softwares/ftp'
 import Viewer from '@/classes/softwares/viewer'
 import Deleter from '@/classes/softwares/deleter'
+import Cracker from '@/classes/softwares/cracker'
 
 class IntroServer extends Server {
   constructor(data) {
@@ -31,6 +32,7 @@ class IntroServer extends Server {
         weight: 2,
         content: 'Some sexy plot for a cool project!',
       }),
+
       new File({
         name: 'Email (from shawn@gmail.com).txt',
         version: 1,
@@ -48,30 +50,6 @@ class IntroServer extends Server {
           'Shawn'
         ].join('\n'),
       }),
-      new File({
-        name: 'Image #1.img',
-        version: 1,
-        weight: 32,
-        type: 'img',
-      }),
-      new File({
-        name: 'Image #2.img',
-        version: 1,
-        weight: 64,
-        type: 'img',
-      }),
-      new File({
-        name: 'Image #3.img',
-        version: 1,
-        weight: 64,
-        type: 'img',
-      }),
-      new File({
-        name: 'Image #4.img',
-        version: 1,
-        weight: 64,
-        type: 'img',
-      }),
     ])
 
     player.addItem([
@@ -87,6 +65,11 @@ class IntroServer extends Server {
       }),
       new Deleter({
         name: 'Del',
+        equipped: true,
+        weight: 1,
+      }),
+      new Cracker({
+        name: 'CrackerJack',
         equipped: true,
         weight: 1,
       }),
@@ -146,24 +129,30 @@ export default class IntroRoom extends Room {
 
     this.addItem(new LightSwitch({
       usable: false,
+
       onExamine() {
         if (this.isOff) {
           log('You feel the switch and concludes it is a normal switch with nothing special about it')
           this.usable = true
         }
       },
+
       onUse() {
         if (this.isOff) {
           this.isOn = true
+
           log([
             'The room becomes lit, you are blinded by the sudden switch from darkness to light.',
             'Your eyes take some time to adjust and you can now see the room in all it\'s glory.',
           ])
+
           game.room.addDoor({ locked: true }, 'S')
+
           game.room.addItem({
             name: 'Bottle',
             icon: 'fa-solid:prescription-bottle-alt',
             qty: 1,
+
             onPickup() {
               log([
                 'You stash it in your pockets. You will need to investigate',
@@ -171,6 +160,7 @@ export default class IntroRoom extends Room {
                 'prescribed pills',
               ])
             },
+
             onExamine() {
               if (!player.has(this)) {
                 log('You read the sticker on the bottle, it seems to belong to, YOU?')
@@ -179,6 +169,7 @@ export default class IntroRoom extends Room {
               }
             }
           })
+
           log([
             'While your eyes inspect the room, you look down and see a half empty bottle of pills',
             'is lying on the floor. Pills are dispersed on the floor near it.',

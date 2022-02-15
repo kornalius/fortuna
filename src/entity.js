@@ -12,7 +12,12 @@ export default class Entity {
       const d = Object.getOwnPropertyDescriptor(newData, k)
       const td = Object.getOwnPropertyDescriptor(this, k)
       if (!td && typeof d.value === 'function') {
-        this[k] = d.value
+        this[k] = function () {
+          if (typeof this.constructor.prototype[k] === 'function') {
+            this.constructor.prototype[k].call(this)
+          }
+          return d.value.call(this)
+        }
         delete newData[k]
       }
     })

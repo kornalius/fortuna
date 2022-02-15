@@ -54,7 +54,7 @@ const showDialog = computed(() => game.isPaused || game.isStarted === false)
 body {
   font-family: nokia,sans-serif;
   height: 100vh;
-  background: #333;
+  background: #18181c;
 }
 </style>
 

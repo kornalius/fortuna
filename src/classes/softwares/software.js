@@ -1,7 +1,8 @@
-import File from './file'
+import File from '../items/file'
 import { log, mixin, emit } from '@/utils'
 import Equippable from '@/mixins/equipable'
 import Usable from '@/mixins/usable'
+import { store } from '@/store';
 
 export default class Software extends File {
   setupInstance(data) {
@@ -11,6 +12,12 @@ export default class Software extends File {
       equippable: true,
       decryptable: false,
       viewable: false,
+      pickable: true,
+      dropable: true,
+      actionsOrder: [
+        'equip',
+        'unequip',
+      ],
       ...data,
     })
   }
@@ -34,8 +41,10 @@ export default class Software extends File {
     if (!this.canEquip(true)) {
       return false
     }
+    store.game.playSound('hd2')
     log(`Installing ${this.name.toLowerCase()}...`)
     return this.operate('equip', async () => {
+      store.game.stopSound('hd2')
       this.equipped = true
       log(`You have successfully installed ${this.name.toLowerCase()}`)
       await emit.call(this, 'onEquip')
@@ -46,8 +55,10 @@ export default class Software extends File {
     if (!this.canUnequip(true)) {
       return false
     }
+    store.game.playSound('hd2')
     log(`Uninstalling ${this.name.toLowerCase()}...`)
     return this.operate('unequip', async () => {
+      store.game.stopSound('hd2')
       this.equipped = false
       log(`You have successfully uninstalled ${this.name.toLowerCase()}`)
       await emit.call(this, 'onUnequip')
