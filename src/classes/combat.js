@@ -12,11 +12,13 @@ export const moves = [
     label: 'Dodge',
     color: '',
     defense: true,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 3,
-    AP: 2,
-    FT: 0,
+    move: false,
+    atk: 0,
+    def: 3,
+    ap: 2,
+    ft: 0,
     mods: ['dex']
   },
   {
@@ -25,11 +27,13 @@ export const moves = [
     label: 'Roll',
     color: '',
     defense: true,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 3,
-    AP: 3,
-    FT: -6,
+    move: false,
+    atk: 0,
+    def: 3,
+    ap: 3,
+    ft: -6,
     mods: ['dex']
   },
   {
@@ -38,11 +42,13 @@ export const moves = [
     label: 'Cover',
     color: '',
     defense: true,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 5,
-    AP: 3,
-    FT: 0,
+    move: false,
+    atk: 0,
+    def: 5,
+    ap: 3,
+    ft: 0,
     mods: ['dex']
   },
   {
@@ -51,11 +57,13 @@ export const moves = [
     label: 'Deflect',
     color: '',
     defense: true,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 8,
-    AP: 4,
-    FT: 0,
+    move: false,
+    atk: 0,
+    def: 8,
+    ap: 4,
+    ft: 0,
     mods: ['dex']
   },
   {
@@ -64,11 +72,13 @@ export const moves = [
     label: 'Deflect',
     color: '',
     defense: true,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 8,
-    AP: 4,
-    FT: 0,
+    move: false,
+    atk: 0,
+    def: 8,
+    ap: 4,
+    ft: 0,
     mods: ['dex']
   },
 
@@ -80,11 +90,13 @@ export const moves = [
     label: 'Slash',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    ATK: 3,
-    DEF: 0,
-    AP: 2,
-    FT: 0,
+    move: false,
+    atk: 3,
+    def: 0,
+    ap: 2,
+    ft: 0,
     mods: ['str']
   },
   {
@@ -93,11 +105,13 @@ export const moves = [
     label: 'Bash',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    ATK: 5,
-    DEF: 0,
-    AP: 3,
-    FT: 0,
+    move: false,
+    atk: 5,
+    def: 0,
+    ap: 3,
+    ft: 0,
     mods: ['str']
   },
   {
@@ -106,11 +120,13 @@ export const moves = [
     label: 'Charge',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    ATK: 8,
-    DEF: 0,
-    AP: 4,
-    FT: 0,
+    move: false,
+    atk: 8,
+    def: 0,
+    ap: 4,
+    ft: 0,
     mods: ['str']
   },
   {
@@ -119,11 +135,13 @@ export const moves = [
     label: 'Spin',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    ATK: 10,
-    DEF: 0,
-    AP: 5,
-    FT: 0,
+    move: false,
+    atk: 10,
+    def: 0,
+    ap: 5,
+    ft: 0,
     mods: ['str']
   },
 
@@ -135,11 +153,13 @@ export const moves = [
     label: 'Punch',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    ATK: 3,
-    DEF: 0,
-    AP: 2,
-    FT: 0,
+    move: false,
+    atk: 3,
+    def: 0,
+    ap: 2,
+    ft: 0,
     mods: ['str']
   },
   {
@@ -148,11 +168,13 @@ export const moves = [
     label: 'Sucker Punch',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    ATK: 5,
-    DEF: 0,
-    AP: 3,
-    FT: 0,
+    move: false,
+    atk: 5,
+    def: 0,
+    ap: 3,
+    ft: 0,
     mods: ['str']
   },
   {
@@ -161,12 +183,13 @@ export const moves = [
     label: 'Kick',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    adversary: true,
-    ATK: 1,
-    DEF: 0,
-    AP: 2,
-    FT: 2,
+    move: false,
+    atk: 1,
+    def: 0,
+    ap: 2,
+    ft: 2,
     mods: ['str']
   },
   {
@@ -175,12 +198,13 @@ export const moves = [
     label: 'Push',
     color: '',
     defense: false,
+    offense: true,
     melee: true,
-    adversary: true,
-    ATK: 0,
-    DEF: 0,
-    AP: 1,
-    FT: 2,
+    move: false,
+    atk: 0,
+    def: 0,
+    ap: 1,
+    ft: 2,
     mods: ['str']
   },
 
@@ -192,11 +216,13 @@ export const moves = [
     label: 'Shoot',
     color: '',
     defense: false,
+    offense: true,
     melee: false,
-    ATK: 5,
-    DEF: 0,
-    AP: 2,
-    FT: 0,
+    move: false,
+    atk: 5,
+    def: 0,
+    ap: 2,
+    ft: 0,
     mods: ['dex']
   },
   {
@@ -205,11 +231,13 @@ export const moves = [
     label: 'Kneel',
     color: '',
     defense: false,
+    offense: true,
     melee: false,
-    ATK: 8,
-    DEF: 0,
-    AP: 3,
-    FT: 0,
+    move: false,
+    atk: 8,
+    def: 0,
+    ap: 3,
+    ft: 0,
     mods: ['dex']
   },
   {
@@ -218,11 +246,13 @@ export const moves = [
     label: 'Trickshot',
     color: '',
     defense: false,
+    offense: true,
     melee: false,
-    ATK: 10,
-    DEF: 0,
-    AP: 4,
-    FT: 0,
+    move: false,
+    atk: 10,
+    def: 0,
+    ap: 4,
+    ft: 0,
     mods: ['dex']
   },
   {
@@ -231,11 +261,13 @@ export const moves = [
     label: 'Reload',
     color: '',
     defense: false,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 0,
-    AP: 3,
-    FT: 0,
+    move: false,
+    atk: 0,
+    def: 0,
+    ap: 3,
+    ft: 0,
     mods: []
   },
   {
@@ -244,11 +276,13 @@ export const moves = [
     label: 'Unjam',
     color: '',
     defense: false,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 0,
-    AP: 4,
-    FT: 0,
+    move: false,
+    atk: 0,
+    def: 0,
+    ap: 4,
+    ft: 0,
     mods: []
   },
 
@@ -260,11 +294,28 @@ export const moves = [
     label: 'Advance',
     color: '',
     defense: false,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 0,
-    AP: 1,
-    FT: -2,
+    move: true,
+    atk: 0,
+    def: 0,
+    ap: 1,
+    ft: -2,
+    mods: []
+  },
+  {
+    name: 'back',
+    icon: '',
+    label: 'Move back',
+    color: '',
+    defense: false,
+    offense: false,
+    melee: false,
+    move: true,
+    atk: 0,
+    def: 0,
+    ap: 1,
+    ft: -2,
     mods: []
   },
   {
@@ -273,11 +324,13 @@ export const moves = [
     label: 'Charge',
     color: '',
     defense: false,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 0,
-    AP: 3,
-    FT: -6,
+    move: true,
+    atk: 0,
+    def: 0,
+    ap: 3,
+    ft: -6,
     mods: []
   },
   {
@@ -286,11 +339,13 @@ export const moves = [
     label: 'Retreat',
     color: '',
     defense: false,
+    offense: false,
     melee: false,
-    ATK: 0,
-    DEF: 0,
-    AP: 1,
-    FT: 2,
+    move: true,
+    atk: 0,
+    def: 0,
+    ap: 1,
+    ft: 2,
     mods: []
   },
 ]
@@ -306,20 +361,22 @@ export default class Combat extends Entity {
         pos: random(10, 35),
         moves: [],
         stats: {
-          AP: 0,
-          ATK: 0,
-          DEF: 0,
-          FT: 0,
+          ap: 0,
+          atk: 0,
+          def: 0,
+          ft: 0,
+          retreat: false,
         },
       },
       him: {
         pos: random(10, 35),
         moves: [],
         stats: {
-          AP: 0,
-          ATK: 0,
-          DEF: 0,
-          FT: 0,
+          ap: 0,
+          atk: 0,
+          def: 0,
+          ft: 0,
+          retreat: false,
         },
       },
       // current active player 1: YOU, 2: HIM
@@ -371,38 +428,44 @@ export default class Combat extends Entity {
   get isYourTurn() { return this.current === YOU }
   get isHisTurn() { return this.current === HIM }
 
-  get attack() {
-    return 0
-  }
-
-  get defense() {
-    return 0
-  }
-
-  get stateKey() { return this.isYourTurn ? 'you' : 'him' }
+  get defensiveMoves() { return moves.filter(m => m.defense) }
+  get offensiveMoves() { return moves.filter(m => m.offense) }
+  get rangedMoves() { return moves.filter(m => m.offense && m.melee === false) }
+  get meleeMoves() { return moves.filter(m => m.offense && m.melee) }
+  get displacementMoves() { return moves.filter(m => m.move) }
+  get pushMoves() { return moves.filter(m => m.name === 'push' || m.name === 'kick') }
 
   get distance() { return this.you.pos + this.him.pos }
 
-  canEndCombat(showMessage) {
-    return true
-  }
+  getMove(name) { return moves.find(m => m.name === name) }
 
-  async endCombat() {
-    if (!this.canEndCombat(true)) {
-      return false
-    }
-    this.ended = true
-    store.player.combat = null
-    await emit.call(this, 'onEndCombat')
-    if (store.player.hp <= 0) {
-      await this.lose()
-    } else if (this.npc.hp <= 0) {
-      await this.win()
-    }
-    return true
-  }
+  isDefensiveMove(name) { return this.defensiveMoves.includes(this.getMove(name)) }
+  isOffensiveMove(name) { return this.offensiveMoves.includes(this.getMove(name)) }
+  isRangedMove(name) { return this.rangedMoves.includes(this.getMove(name)) }
+  isMeleeMove(name) { return this.meleeMoves.includes(this.getMove(name)) }
+  isDisplacementMove(name) { return this.displacementMoves.includes(this.getMove(name)) }
+  isPushMove(name) { return this.pushMoves.includes(this.getMove(name)) }
 
-  async onEndCombat() {}
+  get isInMeleeRange() { return this.distance <= 1 }
+
+  get attackerStateKey() { return this.isYourTurn ? 'you' : 'him' }
+  get defenderStateKey() { return this.isYourTurn ? 'him' : 'you' }
+  get attackerState() { return this[this.attackerStateKey] }
+  get defenderState() { return this[this.defenderStateKey] }
+
+  get currentInstance() { return this.isYourTurn ? store.player : this.npc }
+  get attackerInstance() { return this.isYourTurn ? store.player : this.npc }
+  get defenderInstance() { return !this.isYourTurn ? store.player : this.npc }
+  get weapon() { return this.isInMeleeRange ? this.currentInstance.meleeWeapon : this.currentInstance.rangeWeapon }
+  get armors() { return this.currentInstance.equippedArmors }
+  get armorsDef() { return this.armors.reduce((acc, a) => acc + a.def, 0) }
+  get movesDef() { return this.attackerState.moves.reduce((acc, a) => acc + a.def, 0) }
+  get lvl() { return this.currentInstance.lvl }
+  get hp() { return this.currentInstance.hp }
+  get str() { return this.currentInstance.str }
+  get dex() { return this.currentInstance.dex }
+  get int() { return this.currentInstance.int }
+  get ap() { return this.currentInstance.ap }
 
   toggleCurrent() {
     if (this.isYourTurn) {
@@ -413,7 +476,7 @@ export default class Combat extends Entity {
   }
 
   clearMoves() {
-    this[this.stateKey].moves = []
+    this[this.attackerStateKey].moves = []
   }
 
   async nextTurn() {
@@ -438,61 +501,319 @@ export default class Combat extends Entity {
     return true
   }
 
-  async advance(distance) {
+  async advance(distance, state = this.attackerState) {
     if (!this.canAdvance(distance, true)) {
       return false
     }
-    const key = this.stateKey
     const min = store.config.minDistance
     let x = distance
     while (this.distance > min && x > 0) {
-      this[key].pos -= 1
+      state.pos -= 1
       x -= 1
     }
+    await emit.call(this, 'onAdvance')
     return true
   }
 
-  canRetreat(distance, showMessage) {
+  async onAdvance() {}
+
+  canMoveBack(distance, showMessage) {
     if (this.distance >= store.config.maxDistance) {
       if (showMessage) {
-        log('You cannot retreat further')
+        log('You cannot move further back')
       }
       return false
     }
     return true
   }
 
-  async retreat(distance) {
-    if (!this.canRetreat(distance, true)) {
+  async moveBack(distance, state = this.attackerState) {
+    if (!this.canMoveBack(distance, true)) {
       return false
     }
-    const key = this.stateKey
     const max = store.config.maxDistance
     let x = distance
     while (this.distance < max && x > 0) {
-      this[key].pos += 1
+      state.pos += 1
       x -= 1
     }
+    await emit.call(this, 'onMoveBack')
     return true
   }
+
+  async onMoveBack() {}
 
   async ai() {
 
   }
 
+  canRetreat(showMessage) {
+    if (this.distance < store.config.maxDistance) {
+      if (showMessage) {
+        log('You are not far enough to retreat')
+      }
+      return false
+    }
+    return true
+  }
+
+  async retreat() {
+    if (!this.canRetreat(true)) {
+      return false
+    }
+    this.attackerState.retreat = true
+    return true
+  }
+
+  canEndCombat(showMessage) {
+    return store.player.hp <= 0
+      || this.npc.hp <= 0
+      || this.you.retreat
+      || this.him.retreat
+  }
+
+  async endCombat() {
+    if (!this.canEndCombat(true)) {
+      return false
+    }
+
+    this.ended = true
+    store.player.combat = null
+
+    if (this.forceRetreat) {
+      log(`${this.attackerInstance.name} has retreated from the battle`)
+      await emit.call(this, 'onRetreat')
+      return true
+    }
+
+    await emit.call(this, 'onEndCombat')
+
+    if (store.player.hp <= 0) {
+      await this.lose()
+    } else if (this.npc.hp <= 0) {
+      await this.win()
+    }
+
+    return true
+  }
+
+  async onEndCombat() {}
+
   async win() {
     this.won = true
+    log('You have won the battle')
     await emit.call(this, 'onWin')
-    return this.endCombat()
   }
 
   async onWin() {}
 
   async lose() {
     this.won = false
+    log('You have lost the battle')
     await emit.call(this, 'onLose')
-    return this.endCombat()
   }
 
   async onLose() {}
+
+  /**
+   * Calculate the attack score for a move
+   *
+   * @param name
+   * @returns {number|*}
+   */
+  attack(name) {
+    const m = this.getMove(name)
+    if (m) {
+      const am = this.isInMeleeRange ? this.str : this.int
+      const a = am + m.atk + this.weapon.atk
+      return a + random(a)
+    }
+    return 0
+  }
+
+  /**
+   * Calculate the defence score for a move
+   *
+   * @param name
+   * @returns {number|*}
+   */
+  defense(name) {
+    const m = this.getMove(name)
+    if (m) {
+      const d = this.dex + m.def + this.armorsDef + this.movesDef
+      return d + random(d)
+    }
+    return 0
+  }
+
+  /**
+   * Can we add the defensive move to the queue
+   *
+   * @param name
+   * @param showMessage
+   * @returns {boolean}
+   */
+  canAddMove(name, showMessage) {
+    const m = this.getMove(name)
+    if (!m) {
+      if (showMessage) {
+        log(`${name} is an invalid move name`)
+      }
+      return false
+    }
+    // already in your current defensive moves
+    if (this.attackerState.moves.includes(name)) {
+      if (showMessage) {
+        log(`Defensive move ${m.label.toLowerCase()} is already queue`)
+      }
+      return false
+    }
+    // if it's not a defensive move
+    if (!m.defense) {
+      if (showMessage) {
+        log(`${m.label} is not a defensive move`)
+      }
+      return false
+    }
+    // is there enough action points left to execute this move
+    if (!this.isYourTurn ? this.you.ap - m.ap < 0 : this.him.ap - m.ap < 0) {
+      if (showMessage) {
+        log(`Not enough action points to use ${m.label.toLowerCase()}`)
+      }
+      return false
+    }
+    return true
+  }
+
+  async applyMoveDisplacements(name, state = this.attackerState) {
+    const m = this.getMove(name)
+    if (m.ft < 0) {
+      await this.moveBack(Math.abs(m.ft), state)
+      return true
+    } else if (m.ft > 0) {
+      await this.advance(m.ft, state)
+      return true
+    }
+    return false
+  }
+
+  /**
+   * Add a defensive move for the next turn
+   *
+   * @param name
+   * @returns {Promise<void>}
+   */
+  async addMove(name) {
+    if (!this.canAddMove(name, true)) {
+      return false
+    }
+    const m = this.getMove(name)
+    this.attackerState.moves.push(name)
+    this.attackerState.ap -= m.ap
+    await this.applyMoveDisplacements(name)
+    return true
+  }
+
+  canExecuteMove(name, showMessage) {
+    const m = this.getMove(name)
+    if (!m) {
+      if (showMessage) {
+        log(`${name} is an invalid move name`)
+      }
+      return false
+    }
+    // if it's not a offensive move
+    if (m.defense) {
+      if (showMessage) {
+        log(`${m.label} is not a offensive move`)
+      }
+      return false
+    }
+    // can only use range attack in range mode
+    if (m.melee && !this.isInMeleeRange) {
+      if (showMessage) {
+        log(`${m.label} is a melee move, you need to use a range move`)
+      }
+      return false
+    }
+    // can only use melee attack in melee mode
+    if (!m.melee && this.isInMeleeRange) {
+      if (showMessage) {
+        log(`${m.label} is a range move, you need to use a melee move`)
+      }
+      return false
+    }
+    // is there enough action points left to execute this move
+    if (this.isYourTurn ? this.you.ap - m.ap < 0 : this.him.ap - m.ap < 0) {
+      if (showMessage) {
+        log(`Not enough action points to use ${m.label.toLowerCase()}`)
+      }
+      return false
+    }
+    return true
+  }
+
+  /**
+   * Execute an offensive move
+   *
+   * @param name
+   * @returns {Promise<boolean|void>}
+   */
+  async executeMove(name) {
+    if (this.isDefensiveMove(name)) {
+      return this.addMove(name)
+    }
+    if (!this.canExecuteMove(name, true)) {
+      return false
+    }
+    const m = this.getMove(name)
+
+    this.attackerState.ap -= m.ap
+
+    const atk = this.attack(name)
+    const def = this.defense(name)
+    const dmg = atk > def
+
+    await this.applyMoveDisplacements(name, this.defenderState)
+
+    log(`${this.attackerInstance.name} attacks ${this.defenderInstance.name} for ${dmg} damages`)
+
+    if (dmg > 0) {
+      await this.damage(dmg)
+    } else {
+      await this.block(Math.abs(dmg))
+    }
+
+    // this will check first if it needs to end the combat
+    await this.endCombat()
+    return true
+  }
+
+  /**
+   * Apply damage to opponent
+   *
+   * @param dmg
+   * @returns {Promise<void>}
+   */
+  async damage(dmg) {
+    const opponent = this.defenderInstance
+    opponent.hp -= dmg
+    log(`${this.attackerInstance.name} dealt ${dmg} damages to ${this.defenderInstance.name}`)
+    await emit.call(this, 'onDamage', dmg)
+  }
+
+  async onDamage(dmg) {}
+
+  /**
+   * Defender successfully blocked the attack
+   *
+   * @param dmg
+   * @returns {Promise<void>}
+   */
+  async block(dmg) {
+    log(`${this.defenderInstance.name} blocked ${dmg} damages from ${this.attackerInstance.name}`)
+    await emit.call(this, 'onBlock', dmg)
+  }
+
+  async onBlock(dmg) {}
 }

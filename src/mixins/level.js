@@ -9,5 +9,4 @@ export default {
   get lvl() { return this.state.lvl },
   set lvl(value) { this.state.lvl = clamp(value, 1, this.highestLvl) },
   get highestLvl() { return store.config.highestLvl },
-  get canLevelUp() { return this.xp > this.nextXp },
 }

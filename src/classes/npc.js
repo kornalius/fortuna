@@ -22,6 +22,10 @@ export default class Npc extends Entity {
     return super.setupInstance({
       name: 'Npc',
       hp: this.maxHp,
+      str: store.config.baseStr,
+      dex: store.config.baseDex,
+      int: store.config.baseInt,
+      ap: store.config.baseAp,
       talkable: false,
       known: false,
       aggresive: false,
@@ -55,10 +59,29 @@ export default class Npc extends Entity {
 
   get name() { return this.isKnown ? this.state.name : '???' }
 
+  get str() { return this.state.str }
+  set str(value) { this.state.str = value }
+
+  get dex() { return this.state.dex }
+  set dex(value) { this.state.dex = value }
+
+  get int() { return this.state.int }
+  set int(value) { this.state.int = value }
+
+  get ap() { return Math.ceil(this.state.ap + (0.25 * this.lvl)) }
+  set ap(value) { this.state.ap = value }
+
   get isKnown() { return this.state.known }
   set known(value) { this.state.known = value }
 
   get items() { return store.items.list.filter(i => i.location === this) }
+
+  get equippedItems() { return this.items.filter(i => i.isEquipped) }
+
+  get equippedWeapons() { return this.equippedItems.filter(i => i.isWeapon) }
+  get equippedArmors() { return this.equippedItems.filter(i => i.isArmor) }
+  get rangeWeapon() { return this.equippedWeapons.find(i => i.isRange) }
+  get meleeWeapon() { return this.equippedWeapons.find(i => i.isMelee) }
 
   get dialogs() { return store.dialogs.list.filter(d => d.npc === this) }
 

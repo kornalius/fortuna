@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { store } from './index'
-import { log, mixin } from '@/utils'
+import { emit, log, mixin } from '@/utils'
 import Item from '@/classes/items/item'
 import Name from '@/mixins/name'
 import Level from '@/mixins/level'
@@ -19,6 +19,10 @@ export default class Player {
       name: '',
       hp: this.maxHp,
       xp: 0,
+      str: store.config.baseStr,
+      dex: store.config.baseDex,
+      int: store.config.baseInt,
+      ap: store.config.baseAp,
       // maximum ram space available to install softwares
       ram: store.config.baseRam,
       // maximum disk space available to store files in inventory
@@ -30,10 +34,28 @@ export default class Player {
     })
   }
 
+  get str() { return this.state.str }
+  set str(value) { this.state.str = value }
+
+  get dex() { return this.state.dex }
+  set dex(value) { this.state.dex = value }
+
+  get int() { return this.state.int }
+  set int(value) { this.state.int = value }
+
+  get ap() { return Math.ceil(this.state.ap + (0.25 * this.lvl)) }
+  set ap(value) { this.state.ap = value }
+
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
-  get installedSoftwares() { return this.items.filter(i => i.isSoftware && i.isEquipped) }
   get equippedItems() { return this.items.filter(i => i.isEquipped) }
+
+  get equippedWeapons() { return this.equippedItems.filter(i => i.isWeapon) }
+  get equippedArmors() { return this.equippedItems.filter(i => i.isArmor) }
+  get rangeWeapon() { return this.equippedWeapons.find(i => i.isRange) }
+  get meleeWeapon() { return this.equippedWeapons.find(i => i.isMelee) }
+
+  get installedSoftwares() { return this.equippedItems.filter(i => i.isSoftware) }
   get files() { return this.items.filter(i => i.isFile) }
 
   get ram() { return this.state.ram }
@@ -144,6 +166,26 @@ export default class Player {
     }
     return npc.combat()
   }
+
+  canLevelUp(showMessage) {
+    if (this.xp < this.nextXp) {
+      if (showMessage) {
+        log('You cannot level up just yet. Not enough experience')
+      }
+      return false
+    }
+    return true
+  }
+
+  async levelUp() {
+    if (!this.canLevelUp(true)) {
+      return false
+    }
+    store.player.lvl += 1
+    await emit.call(this, 'onLevelUp')
+  }
+
+  async onLevelUp() {}
 }
 
 mixin(Player, [
