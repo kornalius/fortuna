@@ -19,7 +19,7 @@ export const moves = [
     def: 3,
     ap: 2,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'roll',
@@ -34,7 +34,7 @@ export const moves = [
     def: 3,
     ap: 3,
     ft: -6,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'cover',
@@ -49,7 +49,7 @@ export const moves = [
     def: 5,
     ap: 3,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'deflect',
@@ -64,7 +64,7 @@ export const moves = [
     def: 8,
     ap: 4,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'deflect',
@@ -79,7 +79,7 @@ export const moves = [
     def: 8,
     ap: 4,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
 
   // Melee
@@ -97,7 +97,7 @@ export const moves = [
     def: 0,
     ap: 2,
     ft: 0,
-    mods: ['str']
+    mods: ['str'],
   },
   {
     name: 'bash',
@@ -112,7 +112,7 @@ export const moves = [
     def: 0,
     ap: 3,
     ft: 0,
-    mods: ['str']
+    mods: ['str'],
   },
   {
     name: 'charge',
@@ -127,7 +127,7 @@ export const moves = [
     def: 0,
     ap: 4,
     ft: 0,
-    mods: ['str']
+    mods: ['str'],
   },
   {
     name: 'spin',
@@ -142,7 +142,7 @@ export const moves = [
     def: 0,
     ap: 5,
     ft: 0,
-    mods: ['str']
+    mods: ['str'],
   },
 
   // Bare hands
@@ -160,7 +160,7 @@ export const moves = [
     def: 0,
     ap: 2,
     ft: 0,
-    mods: ['str']
+    mods: ['str'],
   },
   {
     name: 'sucker',
@@ -175,7 +175,7 @@ export const moves = [
     def: 0,
     ap: 3,
     ft: 0,
-    mods: ['str']
+    mods: ['str'],
   },
   {
     name: 'kick',
@@ -190,7 +190,7 @@ export const moves = [
     def: 0,
     ap: 2,
     ft: 2,
-    mods: ['str']
+    mods: ['str'],
   },
   {
     name: 'push',
@@ -205,7 +205,7 @@ export const moves = [
     def: 0,
     ap: 1,
     ft: 2,
-    mods: ['str']
+    mods: ['str'],
   },
 
   // Ranged
@@ -223,7 +223,7 @@ export const moves = [
     def: 0,
     ap: 2,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'kneel',
@@ -238,7 +238,7 @@ export const moves = [
     def: 0,
     ap: 3,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'trick',
@@ -253,7 +253,7 @@ export const moves = [
     def: 0,
     ap: 4,
     ft: 0,
-    mods: ['dex']
+    mods: ['dex'],
   },
   {
     name: 'reload',
@@ -268,7 +268,7 @@ export const moves = [
     def: 0,
     ap: 3,
     ft: 0,
-    mods: []
+    mods: [],
   },
   {
     name: 'unjam',
@@ -283,7 +283,7 @@ export const moves = [
     def: 0,
     ap: 4,
     ft: 0,
-    mods: []
+    mods: [],
   },
 
   // Moves
@@ -301,7 +301,7 @@ export const moves = [
     def: 0,
     ap: 1,
     ft: -2,
-    mods: []
+    mods: [],
   },
   {
     name: 'back',
@@ -316,7 +316,7 @@ export const moves = [
     def: 0,
     ap: 1,
     ft: -2,
-    mods: []
+    mods: [],
   },
   {
     name: 'charge',
@@ -346,7 +346,8 @@ export const moves = [
     def: 0,
     ap: 1,
     ft: 2,
-    mods: []
+    mods: [],
+    fn: 'retreat',
   },
 ]
 
@@ -562,8 +563,12 @@ export default class Combat extends Entity {
       return false
     }
     this.attackerState.retreat = true
+    log(`${this.attackerInstance.name} has retreated from the battle`)
+    await emit.call(this, 'onRetreat')
     return true
   }
+
+  async onRetreat() {}
 
   canEndCombat(showMessage) {
     return store.player.hp <= 0
@@ -579,12 +584,6 @@ export default class Combat extends Entity {
 
     this.ended = true
     store.player.combat = null
-
-    if (this.forceRetreat) {
-      log(`${this.attackerInstance.name} has retreated from the battle`)
-      await emit.call(this, 'onRetreat')
-      return true
-    }
 
     await emit.call(this, 'onEndCombat')
 
@@ -624,8 +623,8 @@ export default class Combat extends Entity {
   attack(name) {
     const m = this.getMove(name)
     if (m) {
-      const am = this.isInMeleeRange ? this.str : this.int
-      const a = am + m.atk + this.weapon.atk
+      const mods = m.mods.reduce((acc, m) => acc + this[m], 0)
+      const a = mods + m.atk + this.weapon.atk
       return a + random(a)
     }
     return 0
@@ -640,7 +639,8 @@ export default class Combat extends Entity {
   defense(name) {
     const m = this.getMove(name)
     if (m) {
-      const d = this.dex + m.def + this.armorsDef + this.movesDef
+      const mods = m.mods.reduce((acc, m) => acc + this[m], 0)
+      const d = mods + m.def + this.armorsDef + this.movesDef
       return d + random(d)
     }
     return 0
@@ -763,29 +763,39 @@ export default class Combat extends Entity {
     if (this.isDefensiveMove(name)) {
       return this.addMove(name)
     }
+
     if (!this.canExecuteMove(name, true)) {
       return false
     }
+
     const m = this.getMove(name)
+
+    if (typeof m.fn === 'function') {
+      if (!this[m.fn]()) {
+        return false
+      }
+    }
 
     this.attackerState.ap -= m.ap
 
-    const atk = this.attack(name)
-    const def = this.defense(name)
-    const dmg = atk > def
-
     await this.applyMoveDisplacements(name, this.defenderState)
 
-    log(`${this.attackerInstance.name} attacks ${this.defenderInstance.name} for ${dmg} damages`)
+    if (m.offense) {
+      const atk = this.attack(name)
+      const def = this.defense(name)
+      const dmg = atk > def
 
-    if (dmg > 0) {
-      await this.damage(dmg)
-    } else {
-      await this.block(Math.abs(dmg))
+      log(`${this.attackerInstance.name} attacks ${this.defenderInstance.name} for ${dmg} damages`)
+
+      if (dmg > 0) {
+        await this.damage(dmg)
+      } else {
+        await this.block(Math.abs(dmg))
+      }
+
+      // this will check first if it needs to end the combat
+      await this.endCombat()
     }
-
-    // this will check first if it needs to end the combat
-    await this.endCombat()
     return true
   }
 
