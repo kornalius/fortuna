@@ -25,7 +25,7 @@ export default class Npc extends Entity {
       str: store.config.baseStr,
       dex: store.config.baseDex,
       int: store.config.baseInt,
-      ap: store.config.baseAp,
+      ap: this.maxAp,
       talkable: false,
       known: false,
       aggresive: false,
@@ -68,8 +68,10 @@ export default class Npc extends Entity {
   get int() { return this.state.int }
   set int(value) { this.state.int = value }
 
-  get ap() { return Math.ceil(this.state.ap + (0.25 * this.lvl)) }
+  get ap() { return this.state.ap }
   set ap(value) { this.state.ap = value }
+
+  get maxAp() { return Math.ceil(store.config.baseAp + (0.25 * this.lvl)) }
 
   get isKnown() { return this.state.known }
   set known(value) { this.state.known = value }
@@ -80,8 +82,6 @@ export default class Npc extends Entity {
 
   get equippedWeapons() { return this.equippedItems.filter(i => i.isWeapon) }
   get equippedArmors() { return this.equippedItems.filter(i => i.isArmor) }
-  get rangeWeapon() { return this.equippedWeapons.find(i => i.isRange) }
-  get meleeWeapon() { return this.equippedWeapons.find(i => i.isMelee) }
 
   get dialogs() { return store.dialogs.list.filter(d => d.npc === this) }
 
@@ -123,7 +123,13 @@ export default class Npc extends Entity {
     }
     if (store.player.isInDialog && store.player.dialog.npc !== this) {
       if (showMessage) {
-        log(`You are already in discussion with ${store.player.dialog.npc.name}`)
+        log(`You are already in discussion with ${this.name}`)
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log(`You are already in combat with ${store.player.combat.npc.name}`)
       }
       return false
     }
@@ -172,9 +178,27 @@ export default class Npc extends Entity {
   async onBye() {}
 
   canCombat(showMessage) {
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log(`You are already in discussion with ${store.player.dialog.npc.name}`)
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log(`You are already in combat with ${store.player.combat.npc.name}`)
+      }
+      return false
+    }
     if (!this.isAggresive) {
       if (showMessage) {
         log(`${this.name} is not aggresive towards you, there are no reasons for conflict`)
+      }
+      return false
+    }
+    if (this.isDead) {
+      if (showMessage) {
+        log(`${this.name} is dead, you cannot fight`)
       }
       return false
     }
@@ -188,11 +212,13 @@ export default class Npc extends Entity {
     store.player.combat = store.combats.update(new Combat({
       npcId: this.id,
     }))
-    await emit.call(this, 'onCombat')
+    if (await store.player.combat.startCombat()) {
+    } else {
+      store.player.combat.remove()
+      store.player.combat = null
+    }
     return true
   }
-
-  async onCombat() {}
 }
 
 mixin(Npc, [

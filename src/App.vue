@@ -77,6 +77,15 @@ body {
 @import "/public/styles/glow";
 @import "/public/styles/smoke-background";
 @import "/public/styles/misconvergence";
+@import "/public/styles/blur-out";
+@import "/public/styles/heartbeat";
+@import "/public/styles/wobble-bottom";
+@import "/public/styles/jello-vertical";
+@import "/public/styles/drop-rotate";
+@import "/public/styles/split-diagonal";
+@import "/public/styles/bounce-top";
+@import "/public/styles/swirl-out";
+@import "/public/styles/puff-out";
 
 .background-anim {
   position: absolute;

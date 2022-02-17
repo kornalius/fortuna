@@ -17,11 +17,12 @@ export default class Entities {
 
   update(item) {
     if (Array.isArray(item)) {
-      item.forEach(d => this.update(d))
+      return item.map(d => this.update(d))
     } else {
       item.state.store = this.storeName
       this.state[item.id] = item
       item.mounted()
+      return item
     }
   }
 

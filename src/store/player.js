@@ -16,13 +16,13 @@ export default class Player {
   constructor() {
     this.state = reactive({
       ...this.state,
-      name: '',
+      name: 'You',
       hp: this.maxHp,
       xp: 0,
       str: store.config.baseStr,
       dex: store.config.baseDex,
       int: store.config.baseInt,
-      ap: store.config.baseAp,
+      ap: this.maxAp,
       // maximum ram space available to install softwares
       ram: store.config.baseRam,
       // maximum disk space available to store files in inventory
@@ -31,6 +31,8 @@ export default class Player {
       serverId: null,
       // current dialog being displayed
       dialogId: null,
+      // current combat being displayed
+      combatId: null,
     })
   }
 
@@ -43,17 +45,16 @@ export default class Player {
   get int() { return this.state.int }
   set int(value) { this.state.int = value }
 
-  get ap() { return Math.ceil(this.state.ap + (0.25 * this.lvl)) }
+  get ap() { return this.state.ap }
   set ap(value) { this.state.ap = value }
+  get maxAp() { return Math.ceil(store.config.baseAp + (0.25 * this.lvl)) }
 
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
   get equippedItems() { return this.items.filter(i => i.isEquipped) }
 
-  get equippedWeapons() { return this.equippedItems.filter(i => i.isWeapon) }
+  get equippedWeapon() { return this.equippedItems.find(i => i.isWeapon) }
   get equippedArmors() { return this.equippedItems.filter(i => i.isArmor) }
-  get rangeWeapon() { return this.equippedWeapons.find(i => i.isRange) }
-  get meleeWeapon() { return this.equippedWeapons.find(i => i.isMelee) }
 
   get installedSoftwares() { return this.equippedItems.filter(i => i.isSoftware) }
   get files() { return this.items.filter(i => i.isFile) }
@@ -90,8 +91,6 @@ export default class Player {
 
   get isInDialog() { return !!this.dialog }
 
-  get isInCombat() { return !!this.combat }
-
   get dialogId() { return this.state.dialogId }
   set dialogId(value) { this.state.dialogId = value }
 
@@ -101,6 +100,20 @@ export default class Player {
       this.state.dialogId = value.id
     } else {
       this.state.dialogId = null
+    }
+  }
+
+  get isInCombat() { return !!this.combat }
+
+  get combatId() { return this.state.combatId }
+  set combatId(value) { this.state.combatId = value }
+
+  get combat() { return store.combats.get(this.combatId) }
+  set combat(value) {
+    if (value) {
+      this.state.combatId = value.id
+    } else {
+      this.state.combatId = null
     }
   }
 
@@ -154,17 +167,6 @@ export default class Player {
       return false
     }
     return this.dialog.answer(code)
-  }
-
-  canCombat(npc, showMessage) {
-    return npc.canCombat(showMessage)
-  }
-
-  async combat(npc) {
-    if (!this.canCombat(npc, true)) {
-      return false
-    }
-    return npc.combat()
   }
 
   canLevelUp(showMessage) {

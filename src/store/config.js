@@ -15,6 +15,7 @@ export default class Config {
     highestLvl: 50,
     baseRam: 100,
     baseDisk: 1000,
+    maxHand: 4,
 
     // Minimap
 
@@ -41,21 +42,20 @@ export default class Config {
     // dummy file types to be randomly generated
     dummyFileTypes: ['doc', 'qrt', 'rpt', 'cod', 'hdr', 'tab', 'dum', 'unk'],
 
-    // Combat
-
-    // max distance in feet between 2 combattants
-    maxDistance: 70,
-    // min distance in feet between 2 combattants
-    minDistance: 1,
+    // timeout for the kill card animation
+    killCardDelay: 1000,
   })
 
   get baseHp() { return this.state.baseHp }
   get highestHp() { return this.state.highestHp }
   get highestLvl() { return this.state.highestLvl }
 
+  get baseAp() { return this.state.baseAp }
   get baseStr() { return this.state.baseStr }
   get baseDex() { return this.state.baseDex }
   get baseInt() { return this.state.baseInt }
+
+  get maxHand() { return this.state.maxHand }
 
   get baseRam() { return this.state.baseRam }
   get baseDisk() { return this.state.baseDisk }
@@ -74,6 +74,5 @@ export default class Config {
 
   get dummyFileTypes() { return this.state.dummyFileTypes }
 
-  get maxDistance() { return this.state.maxDistance }
-  get minDistance() { return this.state.minDistance }
+  get killCardDelay() { return this.state.killCardDelay }
 }

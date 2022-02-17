@@ -2,13 +2,30 @@
   <n-card class="card">
     <n-popover trigger="hover" placement="left">
       <template #trigger>
-        <div class="flex items-center mb1" style="color: #ff0;">
-          <v-icon icon="noto:glowing-star" width="20" />
-          <span class="ml2">{{ player.lvl }}</span>
+        <div class="flex items-center justify-between mb1" style="color: #ff0;">
+          <div class="inline flex items-center">
+            <v-icon icon="noto:glowing-star" width="20" />
+            <span class="ml2">{{ player.lvl }}</span>
+          </div>
+
+          <div class="inline flex items-center">
+            <v-icon icon="mdi:arm-flex" color="#DAA02B" width="24" />
+            <span class="ml2">{{ player.str }}</span>
+          </div>
+
+          <div class="inline flex items-center">
+            <v-icon icon="flat-color-icons:sports-mode" width="24" />
+            <span class="ml2">{{ player.dex }}</span>
+          </div>
+
+          <div class="inline flex items-center">
+            <v-icon icon="noto:brain" width="24" />
+            <span class="ml2">{{ player.int }}</span>
+          </div>
         </div>
       </template>
 
-      <span>LEVEL: {{ player.lvl }}</span>
+      <span>LEVEL: {{ player.lvl }}, STR: {{ player.str}}, DEX: {{ player.dex }}, INT: {{ player.int }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">

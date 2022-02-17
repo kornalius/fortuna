@@ -1,0 +1,12 @@
+// animation: drop-rotate .5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+@keyframes drop-rotate {
+  0% {
+    transform: rotate(45deg) scale(200%);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0) scale(100%);
+    opacity: 1;
+  }
+}

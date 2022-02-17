@@ -13,6 +13,11 @@
             :value="store.player.dialog"
           />
 
+          <Combat
+            v-else-if="store.player.isInCombat"
+            :value="store.player.combat"
+          />
+
           <img v-else-if="value.img"
             class="image"
             :src="value.img"
@@ -76,6 +81,7 @@ import Npc from '@/components/Npc.vue'
 import Item from '@/components/Item.vue'
 import Server from '@/components/Server.vue'
 import Dialog from '@/components/Dialog.vue'
+import Combat from '@/components/Combat.vue'
 import { store } from '@/store'
 
 const scroller = ref()
@@ -85,7 +91,7 @@ const props = defineProps({
 })
 
 const items = computed(() => props.value?.items || [])
-const npcs = computed(() => props.value?.npcs || [])
+const npcs = computed(() => (props.value?.npcs || []).filter(npc => !npc.isDead))
 const doors = computed(() => props.value?.doors || [])
 
 const logsChanged = () => {

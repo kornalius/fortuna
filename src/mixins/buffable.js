@@ -28,6 +28,6 @@ export default {
   },
 
   sumOfBuffs(target, name) {
-    return this.buffsFor(target, name).reduce((acc, b) => acc + b.value, 0)
+    return this.buffsFor(target, name).reduce((acc, b) => acc + b.value, 0) || 0
   }
 }

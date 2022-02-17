@@ -1,353 +1,57 @@
+import { v4 } from 'uuid'
 import random from 'lodash/random'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log } from '@/utils'
+import { emit, log, pickRandom } from '@/utils'
 
-export const moves = [
-  // Defensive
-
+export const actions = [
   {
     name: 'dodge',
-    icon: '',
+    icon: 'fluent:arrow-forward-24-filled',
     label: 'Dodge',
+    description: 'Dodge the ennemy\'s attack',
     color: '',
-    defense: true,
-    offense: false,
-    melee: false,
-    move: false,
+    defensive: true,
     atk: 0,
     def: 3,
     ap: 2,
-    ft: 0,
-    mods: ['dex'],
-  },
-  {
-    name: 'roll',
-    icon: '',
-    label: 'Roll',
-    color: '',
-    defense: true,
-    offense: false,
-    melee: false,
-    move: false,
-    atk: 0,
-    def: 3,
-    ap: 3,
-    ft: -6,
     mods: ['dex'],
   },
   {
     name: 'cover',
-    icon: '',
+    icon: 'fa6-solid:arrow-turn-down',
     label: 'Cover',
+    description: 'Take cover behind a terrain feature',
     color: '',
-    defense: true,
-    offense: false,
-    melee: false,
-    move: false,
+    defensive: true,
     atk: 0,
     def: 5,
     ap: 3,
-    ft: 0,
     mods: ['dex'],
   },
   {
     name: 'deflect',
-    icon: '',
+    icon: 'fluent:arrow-bounce-16-filled',
     label: 'Deflect',
+    description: 'Use your strength and dexterity to deflect the oncoming attack',
     color: '',
-    defense: true,
-    offense: false,
-    melee: false,
-    move: false,
+    defensive: true,
     atk: 0,
     def: 8,
     ap: 4,
-    ft: 0,
-    mods: ['dex'],
+    mods: ['str', 'dex'],
   },
   {
-    name: 'deflect',
-    icon: '',
-    label: 'Deflect',
+    name: 'attack',
+    icon: 'fa-solid:fist-raised',
+    label: 'Attack',
+    description: 'Attack with your equipped weapon',
     color: '',
-    defense: true,
-    offense: false,
-    melee: false,
-    move: false,
-    atk: 0,
-    def: 8,
-    ap: 4,
-    ft: 0,
-    mods: ['dex'],
-  },
-
-  // Melee
-
-  {
-    name: 'slash',
-    icon: '',
-    label: 'Slash',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 3,
-    def: 0,
-    ap: 2,
-    ft: 0,
-    mods: ['str'],
-  },
-  {
-    name: 'bash',
-    icon: '',
-    label: 'Bash',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 5,
-    def: 0,
-    ap: 3,
-    ft: 0,
-    mods: ['str'],
-  },
-  {
-    name: 'charge',
-    icon: '',
-    label: 'Charge',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 8,
-    def: 0,
-    ap: 4,
-    ft: 0,
-    mods: ['str'],
-  },
-  {
-    name: 'spin',
-    icon: '',
-    label: 'Spin',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 10,
-    def: 0,
-    ap: 5,
-    ft: 0,
-    mods: ['str'],
-  },
-
-  // Bare hands
-
-  {
-    name: 'punch',
-    icon: '',
-    label: 'Punch',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 3,
-    def: 0,
-    ap: 2,
-    ft: 0,
-    mods: ['str'],
-  },
-  {
-    name: 'sucker',
-    icon: '',
-    label: 'Sucker Punch',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 5,
-    def: 0,
-    ap: 3,
-    ft: 0,
-    mods: ['str'],
-  },
-  {
-    name: 'kick',
-    icon: '',
-    label: 'Kick',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 1,
-    def: 0,
-    ap: 2,
-    ft: 2,
-    mods: ['str'],
-  },
-  {
-    name: 'push',
-    icon: '',
-    label: 'Push',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: true,
-    move: false,
-    atk: 0,
-    def: 0,
-    ap: 1,
-    ft: 2,
-    mods: ['str'],
-  },
-
-  // Ranged
-
-  {
-    name: 'shoot',
-    icon: '',
-    label: 'Shoot',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: false,
-    move: false,
+    defensive: false,
     atk: 5,
     def: 0,
     ap: 2,
-    ft: 0,
-    mods: ['dex'],
-  },
-  {
-    name: 'kneel',
-    icon: '',
-    label: 'Kneel',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: false,
-    move: false,
-    atk: 8,
-    def: 0,
-    ap: 3,
-    ft: 0,
-    mods: ['dex'],
-  },
-  {
-    name: 'trick',
-    icon: '',
-    label: 'Trickshot',
-    color: '',
-    defense: false,
-    offense: true,
-    melee: false,
-    move: false,
-    atk: 10,
-    def: 0,
-    ap: 4,
-    ft: 0,
-    mods: ['dex'],
-  },
-  {
-    name: 'reload',
-    icon: '',
-    label: 'Reload',
-    color: '',
-    defense: false,
-    offense: false,
-    melee: false,
-    move: false,
-    atk: 0,
-    def: 0,
-    ap: 3,
-    ft: 0,
-    mods: [],
-  },
-  {
-    name: 'unjam',
-    icon: '',
-    label: 'Unjam',
-    color: '',
-    defense: false,
-    offense: false,
-    melee: false,
-    move: false,
-    atk: 0,
-    def: 0,
-    ap: 4,
-    ft: 0,
-    mods: [],
-  },
-
-  // Moves
-
-  {
-    name: 'advance',
-    icon: '',
-    label: 'Advance',
-    color: '',
-    defense: false,
-    offense: false,
-    melee: false,
-    move: true,
-    atk: 0,
-    def: 0,
-    ap: 1,
-    ft: -2,
-    mods: [],
-  },
-  {
-    name: 'back',
-    icon: '',
-    label: 'Move back',
-    color: '',
-    defense: false,
-    offense: false,
-    melee: false,
-    move: true,
-    atk: 0,
-    def: 0,
-    ap: 1,
-    ft: -2,
-    mods: [],
-  },
-  {
-    name: 'charge',
-    icon: '',
-    label: 'Charge',
-    color: '',
-    defense: false,
-    offense: false,
-    melee: false,
-    move: true,
-    atk: 0,
-    def: 0,
-    ap: 3,
-    ft: -6,
-    mods: []
-  },
-  {
-    name: 'retreat',
-    icon: '',
-    label: 'Retreat',
-    color: '',
-    defense: false,
-    offense: false,
-    melee: false,
-    move: true,
-    atk: 0,
-    def: 0,
-    ap: 1,
-    ft: 2,
-    mods: [],
-    fn: 'retreat',
+    mods: ['str'],
   },
 ]
 
@@ -358,36 +62,25 @@ export default class Combat extends Entity {
   setupInstance(data) {
     return super.setupInstance({
       npcId: null,
-      you: {
-        pos: random(10, 35),
-        moves: [],
-        stats: {
-          ap: 0,
-          atk: 0,
-          def: 0,
-          ft: 0,
-          retreat: false,
-        },
+      stats: {
+        ap: 0,
+        atk: 0,
+        def: 0,
       },
-      him: {
-        pos: random(10, 35),
-        moves: [],
-        stats: {
-          ap: 0,
-          atk: 0,
-          def: 0,
-          ft: 0,
-          retreat: false,
-        },
-      },
-      // current active player 1: YOU, 2: HIM
-      current: YOU,
+      defenseQueue: null,
+      retreat: false,
+      // side active player 1: YOU, 2: HIM
+      side: YOU,
       // current turn
       turn: 1,
       // has the combat ended
       ended: false,
       // did you win the battle?
       won: false,
+      // your play hand
+      hand: [],
+      // selected action
+      selected: [],
       ...data,
     })
   }
@@ -417,164 +110,152 @@ export default class Combat extends Entity {
   get won() { return this.state.won }
   set won(value) { this.state.won = value }
 
-  get you() { return this.state.you }
-  set you(value) { this.state.you = value }
+  get stats() { return this.state.stats }
+  set stats(value) { this.state.stats = value }
 
-  get him() { return this.state.him }
-  set him(value) { this.state.him = value }
+  get defenseQueue() { return this.state.defenseQueue }
+  set defenseQueue(value) { this.state.defenseQueue = value }
 
-  get current() { return this.state.current }
-  set current(value) { this.state.current = value }
+  get retreat() { return this.state.retreat }
+  set retreat(value) { this.state.retreat = value }
 
-  get isYourTurn() { return this.current === YOU }
-  get isHisTurn() { return this.current === HIM }
+  get side() { return this.state.side }
+  set side(value) { this.state.side = value }
 
-  get defensiveMoves() { return moves.filter(m => m.defense) }
-  get offensiveMoves() { return moves.filter(m => m.offense) }
-  get rangedMoves() { return moves.filter(m => m.offense && m.melee === false) }
-  get meleeMoves() { return moves.filter(m => m.offense && m.melee) }
-  get displacementMoves() { return moves.filter(m => m.move) }
-  get pushMoves() { return moves.filter(m => m.name === 'push' || m.name === 'kick') }
+  get isYourTurn() { return this.side === YOU }
 
-  get distance() { return this.you.pos + this.him.pos }
-
-  getMove(name) { return moves.find(m => m.name === name) }
-
-  isDefensiveMove(name) { return this.defensiveMoves.includes(this.getMove(name)) }
-  isOffensiveMove(name) { return this.offensiveMoves.includes(this.getMove(name)) }
-  isRangedMove(name) { return this.rangedMoves.includes(this.getMove(name)) }
-  isMeleeMove(name) { return this.meleeMoves.includes(this.getMove(name)) }
-  isDisplacementMove(name) { return this.displacementMoves.includes(this.getMove(name)) }
-  isPushMove(name) { return this.pushMoves.includes(this.getMove(name)) }
-
-  get isInMeleeRange() { return this.distance <= 1 }
-
-  get attackerStateKey() { return this.isYourTurn ? 'you' : 'him' }
-  get defenderStateKey() { return this.isYourTurn ? 'him' : 'you' }
-  get attackerState() { return this[this.attackerStateKey] }
-  get defenderState() { return this[this.defenderStateKey] }
-
-  get currentInstance() { return this.isYourTurn ? store.player : this.npc }
+  get sideInstance() { return this.isYourTurn ? store.player : this.npc }
   get attackerInstance() { return this.isYourTurn ? store.player : this.npc }
-  get defenderInstance() { return !this.isYourTurn ? store.player : this.npc }
-  get weapon() { return this.isInMeleeRange ? this.currentInstance.meleeWeapon : this.currentInstance.rangeWeapon }
-  get armors() { return this.currentInstance.equippedArmors }
-  get armorsDef() { return this.armors.reduce((acc, a) => acc + a.def, 0) }
-  get movesDef() { return this.attackerState.moves.reduce((acc, a) => acc + a.def, 0) }
-  get lvl() { return this.currentInstance.lvl }
-  get hp() { return this.currentInstance.hp }
-  get str() { return this.currentInstance.str }
-  get dex() { return this.currentInstance.dex }
-  get int() { return this.currentInstance.int }
-  get ap() { return this.currentInstance.ap }
+  get defenderInstance() { return this.isYourTurn ? this.npc : store.player }
+
+  get armorsDef() { return this.defenderInstance.equippedArmors.reduce((acc, a) => acc + a.def, 0) }
+
+  get ap() { return this.sideInstance.ap }
+  set ap(value) { this.sideInstance.ap = value }
+  get maxAp() { return this.sideInstance.maxAp }
+
+  get hand() { return this.state.hand }
+  set hand(value) { this.state.hand = value }
+
+  get selected() { return this.state.selected }
+  set selected(value) { this.state.selected = value }
+
+  get hasDefensiveSelected() {
+    return this.selected.find(id => {
+      const h = this.getHandAction(id)
+      if (h) {
+        const a = this.getAction(h.name)
+        return a?.defensive
+      }
+      return false
+    })
+  }
+
+  getAction(name) { return actions.find(m => m.name === name) }
+
+  getHand(id) {
+    return this.hand.find(h => h.id === id)
+  }
+
+  getHandAction(id) {
+    const h = this.getHand(id)
+    if (h) {
+      return this.getAction(h.name)
+    }
+    return undefined
+  }
+
+  isSelected(id) { return this.selected.includes(id) }
+
+  hasAPFor(ap) {
+    return this.ap - ap >= 0
+  }
 
   toggleCurrent() {
     if (this.isYourTurn) {
-      this.current = HIM
+      this.side = HIM
     } else {
-      this.current = YOU
+      this.side = YOU
     }
   }
 
-  clearMoves() {
-    this[this.attackerStateKey].moves = []
-  }
-
   async nextTurn() {
+    log('Next turn started')
     this.turn += 1
     this.toggleCurrent()
-    this.clearMoves()
+    this.defenseQueue = null
     await emit.call(this, 'onTurn')
-    if (this.isHisTurn) {
+
+    if (this.isYourTurn) {
+      this.ap = this.maxAp
+      if (this.canDrawAction()) {
+        await this.drawAction()
+      }
+    } else {
+      this.ap += 1
       await this.ai()
     }
   }
 
   async onTurn() {}
 
-  canAdvance(distance, showMessage) {
-    if (this.distance <= store.config.minDistance) {
-      if (showMessage) {
-        log('You cannot advance anymore')
-      }
-      return false
-    }
-    return true
-  }
-
-  async advance(distance, state = this.attackerState) {
-    if (!this.canAdvance(distance, true)) {
-      return false
-    }
-    const min = store.config.minDistance
-    let x = distance
-    while (this.distance > min && x > 0) {
-      state.pos -= 1
-      x -= 1
-    }
-    await emit.call(this, 'onAdvance')
-    return true
-  }
-
-  async onAdvance() {}
-
-  canMoveBack(distance, showMessage) {
-    if (this.distance >= store.config.maxDistance) {
-      if (showMessage) {
-        log('You cannot move further back')
-      }
-      return false
-    }
-    return true
-  }
-
-  async moveBack(distance, state = this.attackerState) {
-    if (!this.canMoveBack(distance, true)) {
-      return false
-    }
-    const max = store.config.maxDistance
-    let x = distance
-    while (this.distance < max && x > 0) {
-      state.pos += 1
-      x -= 1
-    }
-    await emit.call(this, 'onMoveBack')
-    return true
-  }
-
-  async onMoveBack() {}
-
   async ai() {
-
+    return new Promise(resolve => {
+      setTimeout(async () => {
+        if (this.ap === this.maxAp) {
+          await this.executeAction(['attack'])
+          this.ap = 0
+        }
+        await emit.call(this, 'onAi')
+        setTimeout(async () => {
+          resolve()
+        }, 500)
+      }, 1500)
+    })
   }
+
+  async onAi() {}
 
   canRetreat(showMessage) {
-    if (this.distance < store.config.maxDistance) {
-      if (showMessage) {
-        log('You are not far enough to retreat')
-      }
-      return false
-    }
     return true
   }
 
-  async retreat() {
+  async attemptRetreat() {
     if (!this.canRetreat(true)) {
       return false
     }
-    this.attackerState.retreat = true
-    log(`${this.attackerInstance.name} has retreated from the battle`)
-    await emit.call(this, 'onRetreat')
+    this.retreat = true
+    log('You attempt a retreat')
     return true
   }
 
-  async onRetreat() {}
+  canStartCombat(showMessage) {
+    return true
+  }
+
+  async startCombat() {
+    if (!this.canStartCombat(true)) {
+      return false
+    }
+
+    // Reset Action Points
+    this.npc.ap = this.npc.maxAp
+    store.player.ap = store.player.maxAp
+
+    // Draw player's hand
+    await Promise.all(new Array(store.config.maxHand).fill('').map(() => this.drawAction()))
+
+    await emit.call(this, 'onStartCombat')
+
+    return true
+  }
+
+  async onStartCombat() {}
 
   canEndCombat(showMessage) {
-    return store.player.hp <= 0
-      || this.npc.hp <= 0
-      || this.you.retreat
-      || this.him.retreat
+    return this.attackerInstance.hp <= 0
+      || this.defenderInstance.hp <= 0
+      || this.retreat
   }
 
   async endCombat() {
@@ -587,10 +268,18 @@ export default class Combat extends Entity {
 
     await emit.call(this, 'onEndCombat')
 
-    if (store.player.hp <= 0) {
-      await this.lose()
-    } else if (this.npc.hp <= 0) {
-      await this.win()
+    this.won = false
+
+    if (store.player.hp > 0) {
+      this.won = true
+      log('You have won the battle')
+      await emit.call(this, 'onWin')
+    } else if (this.npc.hp > 0) {
+      log('You have lost the battle')
+      await emit.call(this, 'onLose')
+    } else if (this.retreat) {
+      log('You have successfully retreated from battle')
+      await emit.call(this, 'onRetreat')
     }
 
     return true
@@ -598,192 +287,185 @@ export default class Combat extends Entity {
 
   async onEndCombat() {}
 
-  async win() {
-    this.won = true
-    log('You have won the battle')
-    await emit.call(this, 'onWin')
-  }
-
   async onWin() {}
-
-  async lose() {
-    this.won = false
-    log('You have lost the battle')
-    await emit.call(this, 'onLose')
-  }
 
   async onLose() {}
 
+  async onRetreat() {}
+
   /**
-   * Calculate the attack score for a move
+   * Calculate the attack score for an action
    *
    * @param name
    * @returns {number|*}
    */
   attack(name) {
-    const m = this.getMove(name)
-    if (m) {
-      const mods = m.mods.reduce((acc, m) => acc + this[m], 0)
-      const a = mods + m.atk + this.weapon.atk
-      return a + random(a)
+    const a = this.getAction(name)
+    if (a) {
+      const mods = a.mods.reduce((acc, a) => acc + (this.attackerInstance[a] || 0), 0)
+      const dmg = a.atk + (this.attackerInstance.equippedWeapon?.atk || 1) + mods
+      return dmg + random(dmg)
     }
     return 0
   }
 
   /**
-   * Calculate the defence score for a move
+   * Calculate the defence score for an action
    *
    * @param name
    * @returns {number|*}
    */
   defense(name) {
-    const m = this.getMove(name)
-    if (m) {
-      const mods = m.mods.reduce((acc, m) => acc + this[m], 0)
-      const d = mods + m.def + this.armorsDef + this.movesDef
-      return d + random(d)
+    const a = this.getAction(name)
+    if (a) {
+      const mods = a.mods.reduce((acc, a) => acc + (this.defenderInstance[a] || 0), 0)
+      const def = a.def + this.armorsDef + mods
+      console.log(mods, def)
+      return def + random(def)
     }
     return 0
   }
 
+  canSelect(id, showMessage) {
+    const a = this.getHandAction(id)
+    if (!a) {
+      if (showMessage) {
+        log(`${name} is an invalid move name`)
+      }
+      return false
+    }
+    // if already has selected this action
+    if (this.isSelected(id)) {
+      if (showMessage) {
+        log(`You have already selected this action`)
+      }
+      return false
+    }
+    // if defensive action and already in your has a defense action queued
+    if (a.defensive && this.defenseQueue) {
+      if (showMessage) {
+        log(`There is already a defensive move readied`)
+      }
+      return false
+    }
+    // if defensive action and already has a defense selected
+    if (a.defensive && this.hasDefensiveSelected) {
+      if (showMessage) {
+        log(`You already have a defensive action selected`)
+      }
+      return false
+    }
+    // is there enough action points left to select this move
+    if (!this.hasAPFor(a.ap)) {
+      if (showMessage) {
+        log(`Not enough action points to select ${a.label.toLowerCase()}`)
+      }
+      return false
+    }
+    return true
+  }
+
   /**
-   * Can we add the defensive move to the queue
+   * Add an action to selected actions
    *
-   * @param name
+   * @param id
+   * @returns {Promise<boolean|void>}
+   */
+  async select(id) {
+    if (!this.canSelect(id, true)) {
+      return false
+    }
+    this.selected.push(id)
+    const a = this.getHandAction(id)
+    this.ap -= a.ap
+    await emit.call(this, 'onSelect', a)
+    return true
+  }
+
+  async onSelect(action) {}
+
+  canUnselect(id, showMessage) {
+    const a = this.getHandAction(id)
+    if (!a) {
+      if (showMessage) {
+        log(`${id} is an invalid hand action id`)
+      }
+      return false
+    }
+    // if does not have this action selected
+    if (!this.isSelected(id)) {
+      if (showMessage) {
+        log('You have not selected this action')
+      }
+      return false
+    }
+    return true
+  }
+
+  /**
+   * Add an action to selected actions
+   *
+   * @param id
+   * @returns {Promise<boolean|void>}
+   */
+  async unselect(id) {
+    if (!this.canUnselect(id, true)) {
+      return false
+    }
+    const i = this.selected.findIndex(h => h.id === id)
+    this.selected.splice(i, 1)
+    const a = this.getHandAction(id)
+    this.ap += a.ap
+    await emit.call(this, 'onUnselect', a)
+    return true
+  }
+
+  async onUnselect(action) {}
+
+  async toggleSelect(id) {
+    if (this.isSelected(id)) {
+      return this.unselect(id)
+    }
+    return this.select(id)
+  }
+
+  /**
+   * Check if all selected actions can be executed
+   *
+   * @param selection
    * @param showMessage
    * @returns {boolean}
    */
-  canAddMove(name, showMessage) {
-    const m = this.getMove(name)
-    if (!m) {
-      if (showMessage) {
-        log(`${name} is an invalid move name`)
+  canExecute(selection, showMessage) {
+    const sel = selection || this.selected
+    for (let id of sel) {
+      const a = this.getHandAction(id)
+      if (!a) {
+        if (showMessage) {
+          log('You do not have this card in your hand')
+        }
+        return false
       }
-      return false
-    }
-    // already in your current defensive moves
-    if (this.attackerState.moves.includes(name)) {
-      if (showMessage) {
-        log(`Defensive move ${m.label.toLowerCase()} is already queue`)
-      }
-      return false
-    }
-    // if it's not a defensive move
-    if (!m.defense) {
-      if (showMessage) {
-        log(`${m.label} is not a defensive move`)
-      }
-      return false
-    }
-    // is there enough action points left to execute this move
-    if (!this.isYourTurn ? this.you.ap - m.ap < 0 : this.him.ap - m.ap < 0) {
-      if (showMessage) {
-        log(`Not enough action points to use ${m.label.toLowerCase()}`)
-      }
-      return false
     }
     return true
   }
 
-  async applyMoveDisplacements(name, state = this.attackerState) {
-    const m = this.getMove(name)
-    if (m.ft < 0) {
-      await this.moveBack(Math.abs(m.ft), state)
-      return true
-    } else if (m.ft > 0) {
-      await this.advance(m.ft, state)
-      return true
-    }
-    return false
-  }
+  async executeAction(name) {
+    const a = this.getAction(name)
 
-  /**
-   * Add a defensive move for the next turn
-   *
-   * @param name
-   * @returns {Promise<void>}
-   */
-  async addMove(name) {
-    if (!this.canAddMove(name, true)) {
-      return false
-    }
-    const m = this.getMove(name)
-    this.attackerState.moves.push(name)
-    this.attackerState.ap -= m.ap
-    await this.applyMoveDisplacements(name)
-    return true
-  }
-
-  canExecuteMove(name, showMessage) {
-    const m = this.getMove(name)
-    if (!m) {
-      if (showMessage) {
-        log(`${name} is an invalid move name`)
-      }
-      return false
-    }
-    // if it's not a offensive move
-    if (m.defense) {
-      if (showMessage) {
-        log(`${m.label} is not a offensive move`)
-      }
-      return false
-    }
-    // can only use range attack in range mode
-    if (m.melee && !this.isInMeleeRange) {
-      if (showMessage) {
-        log(`${m.label} is a melee move, you need to use a range move`)
-      }
-      return false
-    }
-    // can only use melee attack in melee mode
-    if (!m.melee && this.isInMeleeRange) {
-      if (showMessage) {
-        log(`${m.label} is a range move, you need to use a melee move`)
-      }
-      return false
-    }
-    // is there enough action points left to execute this move
-    if (this.isYourTurn ? this.you.ap - m.ap < 0 : this.him.ap - m.ap < 0) {
-      if (showMessage) {
-        log(`Not enough action points to use ${m.label.toLowerCase()}`)
-      }
-      return false
-    }
-    return true
-  }
-
-  /**
-   * Execute an offensive move
-   *
-   * @param name
-   * @returns {Promise<boolean|void>}
-   */
-  async executeMove(name) {
-    if (this.isDefensiveMove(name)) {
-      return this.addMove(name)
-    }
-
-    if (!this.canExecuteMove(name, true)) {
-      return false
-    }
-
-    const m = this.getMove(name)
-
-    if (typeof m.fn === 'function') {
-      if (!this[m.fn]()) {
+    if (typeof a.fn === 'function') {
+      if (!this[a.fn]()) {
         return false
       }
     }
 
-    this.attackerState.ap -= m.ap
-
-    await this.applyMoveDisplacements(name, this.defenderState)
-
-    if (m.offense) {
+    if (a.defensive) {
+      // Queue a defensive action
+      this.defenseQueue = a
+    } else {
       const atk = this.attack(name)
       const def = this.defense(name)
-      const dmg = atk > def
+      const dmg = atk - def
 
       log(`${this.attackerInstance.name} attacks ${this.defenderInstance.name} for ${dmg} damages`)
 
@@ -792,10 +474,37 @@ export default class Combat extends Entity {
       } else {
         await this.block(Math.abs(dmg))
       }
-
-      // this will check first if it needs to end the combat
-      await this.endCombat()
     }
+  }
+  /**
+   * Execute selected actions
+   *
+   * @param selection
+   * @returns {Promise<boolean|void>}
+   */
+  async execute(selection) {
+    const sel = selection || this.selected
+    if (!this.canExecute(sel, true)) {
+      return false
+    }
+
+    for (let id of sel) {
+      const h = this.getHand(id)
+      await this.executeAction(h.name)
+    }
+
+    if (!this.isYourTurn) {
+      this.ap = 0
+    }
+
+    await this.destroySelected()
+    this.selected = []
+
+    // this will check first if it needs to end the combat
+    if (!(await this.endCombat())) {
+      await this.nextTurn()
+    }
+
     return true
   }
 
@@ -806,8 +515,7 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async damage(dmg) {
-    const opponent = this.defenderInstance
-    opponent.hp -= dmg
+    this.defenderInstance.hp -= dmg
     log(`${this.attackerInstance.name} dealt ${dmg} damages to ${this.defenderInstance.name}`)
     await emit.call(this, 'onDamage', dmg)
   }
@@ -826,4 +534,48 @@ export default class Combat extends Entity {
   }
 
   async onBlock(dmg) {}
+
+  canDrawAction(showMessage) {
+    if (this.hand.length >= store.config.maxHand) {
+      if (showMessage) {
+        log('You cannot draw another card, your hand is full')
+      }
+      return false
+    }
+    return true
+  }
+
+  async drawAction() {
+    if (!this.canDrawAction(true)) {
+      return false
+    }
+    setTimeout(async () => {
+      const a = pickRandom(actions)
+      this.hand.push({
+        id: v4(),
+        name: a.name,
+        kill: false,
+      })
+      await emit.call(this, 'onDrawAction', a)
+    }, 100)
+    return true
+  }
+
+  async onDrawAction(action) {}
+
+  async destroySelected() {
+    await Promise.all(this.selected.map(id => (
+      new Promise(resolve => {
+        const h = this.getHand(id)
+        h.kill = true
+        setTimeout(() => {
+          const i = this.hand.indexOf(h)
+          if (i !== -1) {
+            this.hand.splice(i, 1)
+          }
+          resolve()
+        }, store.config.killCardDelay)
+      }))
+    ))
+  }
 }

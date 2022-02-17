@@ -100,6 +100,7 @@ export default class IntroRoom extends Room {
       img: 'old-man2.png',
       description: 'An old grumpy man',
       talkable: true,
+      aggresive: true,
 
       mounted() {
         this.addDialog([

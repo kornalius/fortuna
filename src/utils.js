@@ -160,7 +160,7 @@ export async function emit(name, ...args) {
 
   // location
   if (this !== this.location && this.location && this.location[name]) {
-    await this.location[name].call(this.location, this, ...args)
+    await this.location[name](this, ...args)
   }
 
   // player
