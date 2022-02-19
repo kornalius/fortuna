@@ -24,6 +24,7 @@ export default class Room extends Entity {
   get y() { return this.state.y }
 
   get npcs() { return store.npcs.list.filter(i => i.location === this) }
+  get aggresiveNpcs() { return this.npcs.filter(npc => npc.isAggresive && !npc.isDead) }
 
   get doors() { return store.doors.list.filter(i => i.roomIds.includes(this.id)) }
 
@@ -62,13 +63,15 @@ export default class Room extends Entity {
       return false
     }
 
-    this.visited += 1
     if (store.game.room !== this) {
       const prevRoom = store.game.room;
       if (prevRoom) {
-        prevRoom.exit(this)
+        if (!prevRoom.exit(this)) {
+          return false
+        }
       }
       store.game.room = this
+      this.visited += 1
       await emit.call(this, 'onEnter')
       return true
     }
@@ -81,6 +84,24 @@ export default class Room extends Entity {
     if (store.player.isConnectedToServer) {
       if (showMessage) {
         log(`Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`)
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot leave the room while in discussion')
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot leave the room while in combat')
+      }
+      return false
+    }
+    if (this.aggresiveNpcs.length) {
+      if (showMessage) {
+        log('You cannot leave the room while there are still ennemies in it')
       }
       return false
     }

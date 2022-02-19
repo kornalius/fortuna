@@ -1,5 +1,4 @@
 import { reactive } from 'vue'
-import { v4 } from 'uuid'
 import { store } from '@/store'
 import { mixState } from '@/utils'
 
@@ -26,7 +25,7 @@ export default class Entity {
       mixState(
         {
           ...this.state,
-          id: v4(),
+          id: nanoid(),
           store: null,
         },
         newData

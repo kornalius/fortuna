@@ -46,7 +46,7 @@ export default class Player {
   set int(value) { this.state.int = value }
 
   get ap() { return this.state.ap }
-  set ap(value) { this.state.ap = value }
+  set ap(value) { this.state.ap = Math.max(0, Math.min(value, this.maxAp)) }
   get maxAp() { return Math.ceil(store.config.baseAp + (0.25 * this.lvl)) }
 
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }

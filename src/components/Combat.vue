@@ -1,12 +1,23 @@
 <template>
-  <div class="flex w-100" style="height: 300px;">
+  <div class="flex w-100" style="height: 300px; overflow: hidden;">
+    <span class="turn-label">{{ turnLabel }}</span>
+
     <div class="flex flex-column h-100" style="width: 225px; margin-right: 3em;">
-      <img
-        v-if="value.npc?.img"
-        style="max-height: 258px;"
-        :src="value.npc.img"
-        :alt="value.npc.img"
-      />
+      <div class="relative">
+        <img
+          v-if="value.npc?.img"
+          style="max-height: 258px;"
+          :src="value.npc.img"
+          :alt="value.npc.img"
+        />
+        <div class="hit relative">
+          <img
+            src="/images/hit-effect.png"
+            alt="hit-effect"
+          />
+          <span class="hit-label">18</span>
+        </div>
+      </div>
 
       <div class="flex flex-grow-1">
         <n-popover trigger="hover" placement="bottom">
@@ -47,16 +58,16 @@
 
     <div class="flex flex-grow-1" />
 
-    <div class="player-side flex flex-column flex-grow-1 items-end">
+    <div class="player-side flex flex-column flex-grow-1 items-end relative">
       <div class="hand flex flex-grow-1 items-end">
         <Action
-          v-for="(h, index) in value.hand"
-          :key="`hand-${index}`"
-          :value="value.getAction(h.name)"
+          v-for="h in value.hand"
+          :key="`hand-card-${h.id}`"
+          :value="h"
+          :combat="value"
           :selected="value.isSelected(h.id)"
-          :kill="h.kill"
-          :disabled="!value.isYourTurn"
-          @click="toggleSelect(h.id)"
+          :disabled="disabled"
+          @click="(id) => value.toggleSelect(id)"
         />
       </div>
 
@@ -78,20 +89,20 @@
         </n-popover>
 
         <n-button
-          :disabled="!value.isYourTurn"
+          :disabled="disabled"
           type="success"
           tertiary
-          @click="execute"
+          @click="() => value.execute()"
         >
           <span>{{ goButtonLabel }}</span>
         </n-button>
 
         <n-button
           class="ml2"
-          :disabled="!value.isYourTurn"
+          :disabled="disabled"
           type="error"
           tertiary
-          @click="retreat"
+          @click="() => value.attemptRetreat()"
         >
           <span>Retreat</span>
         </n-button>
@@ -112,21 +123,15 @@ const props = defineProps({
 const npcAp = computed(() => new Array(props.value.npc.maxAp).fill(''))
 const playerAp = computed(() => new Array(store.player.maxAp).fill(''))
 
-const retreat = () => {
-  props.value.attemptRetreat()
-}
-
-const execute = () => {
-  props.value.execute()
-}
-
-const toggleSelect = name => {
-  props.value.toggleSelect(name)
-}
+const turnLabel = computed(() => (
+  !props.value.isYourTurn ? 'Opponent\'s Turn' : 'Your Turn'
+))
 
 const goButtonLabel = computed(() => (
   props.value.selected.length > 0 ? 'Execute' : 'End Turn'
 ))
+
+const disabled = computed(() => !props.value.isYourTurn || props.value.isAnimatingTurn)
 </script>
 
 <style scoped>
@@ -136,5 +141,36 @@ const goButtonLabel = computed(() => (
 .ap {
   margin: 0 2px;
   height: 30px;
+}
+.turn-label {
+  pointer-events: none;
+  font-size: 48px;
+  color: #F19936;
+  text-shadow: #333 2px 2px 8px;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+}
+.hit {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.hit-label {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  color: #D12E2E;
+  font-size: 32px;
+  text-shadow: #333 1px 1px 4px;
+  z-index: 2;
 }
 </style>

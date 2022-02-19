@@ -65,9 +65,19 @@
       </div>
 
       <div class="relative flex h-100">
+        <img
+          class="screen"
+          src="/images/screen.png"
+          alt="screen"
+        />
         <div ref="scroller" class="scrollable">
           <log @change="logsChanged" />
         </div>
+        <img
+          class="glare"
+          src="/images/glare.png"
+          alt="glare"
+        />
       </div>
     </div>
   </n-card>
@@ -120,6 +130,7 @@ const logsChanged = () => {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  padding: 1em;
 }
 .title-bar {
   background-color: #4561B4;
@@ -130,5 +141,23 @@ const logsChanged = () => {
 .divider {
   background: transparent;
   border-bottom: 3px dashed #4561B4;
+}
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .5;
+  pointer-events: none;
+}
+.glare {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 65%;
+  opacity: .35;
+  z-index: 1;
+  pointer-events: none;
 }
 </style>

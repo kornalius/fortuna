@@ -1,0 +1,16 @@
+// animation: text-tracking-top .8s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+
+@keyframes text-tracking-top {
+  0% {
+    transform: translateZ(0) translateY(0) scale(100%);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    letter-spacing: 1em;
+    transform: translateZ(300px) translateY(-200px) scale(200%);
+    opacity: 0;
+  }
+}

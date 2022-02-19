@@ -86,6 +86,10 @@ body {
 @import "/public/styles/bounce-top";
 @import "/public/styles/swirl-out";
 @import "/public/styles/puff-out";
+@import "/public/styles/slide-in-left";
+@import "/public/styles/slide-out-right";
+@import "/public/styles/text-tracking-top";
+@import "/public/styles/text-tracking-bottom";
 
 .background-anim {
   position: absolute;

@@ -1,6 +1,7 @@
 import { reactive } from 'vue'
 import merge from 'lodash/merge'
 import random from 'lodash/random'
+import shuffle from 'lodash/shuffle'
 import { store } from './store'
 import Log from './classes/log'
 import { fileNouns, adjectives, filetypes, maleNames, lastNames, femaleNames } from '@/words'
@@ -180,6 +181,18 @@ export async function emit(name, ...args) {
  * @returns {*}
  */
 export const pickRandom = array => array[random(array.length - 1)]
+
+export const arrayFromFrequencies = (array, key, frequencies) => {
+  const newArray = new Array(100)
+  let y = 0
+  array.forEach(a => {
+    const c = frequencies[a[key]]
+    for (let x = 0; x < c; x++) {
+      newArray[y++] = a
+    }
+  })
+  return shuffle(newArray)
+}
 
 export const randomFilename = () => `${pickRandom(adjectives)}-${pickRandom(fileNouns)}.${pickRandom(filetypes)}`
 

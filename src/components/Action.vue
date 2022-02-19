@@ -1,24 +1,28 @@
 <template>
   <n-card
-    :class="cardClass"
+    :class="{
+      card: true,
+      [`card-${value.id}`]: true,
+      selected,
+      disabled,
+    }"
     :bordered="false"
-    :content-style="cardStyle"
-    @mousenter="mouseenter"
-    @mouseleave="mouseleave"
+    :content-style="contentStyle"
+    @mousenter="() => { hovered = true }"
+    @mouseleave="() => { hovered = false }"
     @click.stop="click"
   >
     <div class="flex flex-column flex-grow-1 h-100" style="overflow: hidden;">
       <div class="flex flex-grow-1 items-center" style="max-height: 32px;">
         <div class="flex flex-grow-1 justify-center">
-          <span class="label">{{ value.label.toUpperCase() }}</span>
+          <span class="label">{{ action?.label.toUpperCase() }}</span>
         </div>
       </div>
 
       <div class="flex flex-column self-center">
-
         <v-icon
           class="icon"
-          :icon="value.icon"
+          :icon="action?.icon"
           width="48"
           height="48"
         />
@@ -53,52 +57,45 @@
               width="20"
               height="20"
             />
-            <span class="ap">{{ value.ap }}</span>
+            <span class="ap">{{ action?.ap }}</span>
           </div>
         </div>
       </div>
 
       <div class="flex flex-grow-1 items-start">
-        <span class="description">{{ kill }} {{ value.description }}</span>
+        <span class="description">{{ action?.description }}</span>
       </div>
     </div>
   </n-card>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const props = defineProps({
   value: { type: Object },
+  combat: { type: Object },
   selected: { type: Boolean },
   disabled: { type: Boolean },
-  kill: { type: Boolean },
 })
 
 const emit = defineEmits(['click'])
 
+const action = ref()
+
+watch([() => props.value, () => props.combat], () => {
+  action.value = props.combat?.getAction(props.value?.name)
+}, { immediate: true })
+
 const hovered = ref()
 
-const score = computed(() => props.value.atk || props.value.def)
+const score = computed(() => action.value?.atk || action.value?.def)
 
 const scoreIcon = computed(() => (
-  props.value.def ? 'bxs:shield' : 'jam:sword-f'
+  action.value?.def ? 'bxs:shield' : 'jam:sword-f'
 ))
 
-const cardClass = computed(() => {
-  const classes = [
-    'card'
-  ]
-  if (props.kill) {
-    classes.push('blur-out')
-  }
-  if (props.disabled) {
-    classes.push('disabled')
-  }
-  return classes.join(' ')
-})
-
-const cardStyle = computed(() => {
+const contentStyle = computed(() => {
   const style = [
     'padding: 4px',
     'background: whitesmoke',
@@ -110,17 +107,9 @@ const cardStyle = computed(() => {
   return style.join(';')
 })
 
-const mouseenter = () => {
-  hovered.value = false
-}
-
-const mouseleave = () => {
-  hovered.value = false
-}
-
 const click = () => {
   if (!props.disabled) {
-    emit('click', props.value.name)
+    emit('click', props.value.id)
   }
 }
 </script>
@@ -132,10 +121,12 @@ const click = () => {
   margin-left: -3em;
   background: transparent;
   cursor: pointer;
-  animation: drop-rotate .25s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 .card.disabled {
   filter: sepia(100%) brightness(50%);
+}
+.card.selected {
+  margin-bottom: 2em;
 }
 .card:hover {
   box-shadow: black 0 0 24px;
@@ -186,8 +177,5 @@ const click = () => {
   word-break: break-word;
   white-space: break-spaces;
   overflow: hidden;
-}
-.blur-out {
-  animation: blur-out .5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 </style>

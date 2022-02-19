@@ -39,10 +39,9 @@
 
             <v-icon
               v-if="value.isNew"
-              icon="bx:bxs-badge"
+              icon="noto-v1:white-exclamation-mark"
               class="new"
-              width="14"
-              type="error"
+              width="16"
             />
           </div>
         </n-button>
@@ -117,6 +116,9 @@ const name = computed(() => props.value.name)
   position: absolute;
   top: 0;
   right: 0;
-  color: #D12E2E;
+  padding: 2px;
+  background-color: #333;
+  border-radius: 50%;
+  color: #F19936;
 }
 </style>

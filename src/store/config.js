@@ -42,6 +42,8 @@ export default class Config {
     // dummy file types to be randomly generated
     dummyFileTypes: ['doc', 'qrt', 'rpt', 'cod', 'hdr', 'tab', 'dum', 'unk'],
 
+    // new card delay
+    newCardDelay: 500,
     // timeout for the kill card animation
     killCardDelay: 1000,
   })
@@ -74,5 +76,6 @@ export default class Config {
 
   get dummyFileTypes() { return this.state.dummyFileTypes }
 
+  get newCardDelay() { return this.state.newCardDelay }
   get killCardDelay() { return this.state.killCardDelay }
 }

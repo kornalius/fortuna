@@ -2,7 +2,6 @@
 
 @keyframes blur-out {
   0% {
-    transform: translateZ(0);
     -webkit-filter: blur(0.01);
     filter: blur(0.01);
   }

@@ -39,7 +39,6 @@ export default class LightSwitch extends Item {
   }
 
   async onUse() {
-    console.log('onUse')
     store.game.playSound('switch')
   }
 }

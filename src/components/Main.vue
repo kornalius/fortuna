@@ -21,9 +21,21 @@
 </template>
 
 <script setup>
+// import { onMounted } from 'vue'
+// import anime from 'animejs'
 import { store } from '../store'
 import Room from './Room.vue'
 import Stats from './Stats.vue'
 import Inventory from './Inventory.vue'
 import Map from './Map.vue'
+
+// onMounted(() => {
+//   anime({
+//     targets: '.new',
+//     loop: true,
+//     scale: 1.2,
+//     direction: 'alternate',
+//     duration: 500,
+//   })
+// })
 </script>

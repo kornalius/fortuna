@@ -3,6 +3,7 @@
     v-for="log in logs"
     :key="log.id"
     :class="{ line: true, important: log.isImportant }"
+    v-bind="$attrs"
   >
     <span
       v-for="(msg, i) in log.message"
@@ -32,7 +33,7 @@ watch(logs, () => {
 
 <style scoped>
 .line {
-  line-height: 2em;
+  line-height: 1.75em;
   margin-bottom: 1em;
 }
 .important {

@@ -1,8 +1,8 @@
-import { v4 } from 'uuid'
 import random from 'lodash/random'
+import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log, pickRandom } from '@/utils'
+import { arrayFromFrequencies, emit, log, pickRandom } from '@/utils'
 
 export const actions = [
   {
@@ -54,6 +54,13 @@ export const actions = [
     mods: ['str'],
   },
 ]
+
+export const actionFrequencies = {
+  dodge: 30,
+  cover: 20,
+  deflect: 10,
+  attack: 40,
+}
 
 const YOU = 1
 const HIM = 2
@@ -181,10 +188,22 @@ export default class Combat extends Entity {
 
   async nextTurn() {
     log('Next turn started')
+
     this.turn += 1
     this.toggleCurrent()
     this.defenseQueue = null
     await emit.call(this, 'onTurn')
+
+    this.isAnimatingTurn = true
+    await anime.timeline({
+      targets: '.turn-label',
+      duration: 750,
+      endDelay: 250,
+    })
+      .add({ opacity: [0, 1], translateX: [-1000, 0] })
+      .add({ opacity: [1, 0], translateX: [0, 2000] }, 2000)
+      .finished
+    this.isAnimatingTurn = false
 
     if (this.isYourTurn) {
       this.ap = this.maxAp
@@ -200,17 +219,16 @@ export default class Combat extends Entity {
   async onTurn() {}
 
   async ai() {
-    return new Promise(resolve => {
+    return new Promise(async resolve => {
+      if (this.ap === this.maxAp) {
+        await this.executeAction('attack')
+        this.ap = 0
+      }
+      await emit.call(this, 'onAi')
       setTimeout(async () => {
-        if (this.ap === this.maxAp) {
-          await this.executeAction(['attack'])
-          this.ap = 0
-        }
-        await emit.call(this, 'onAi')
-        setTimeout(async () => {
-          resolve()
-        }, 500)
-      }, 1500)
+        await this.nextTurn()
+        resolve()
+      }, 500)
     })
   }
 
@@ -320,7 +338,6 @@ export default class Combat extends Entity {
     if (a) {
       const mods = a.mods.reduce((acc, a) => acc + (this.defenderInstance[a] || 0), 0)
       const def = a.def + this.armorsDef + mods
-      console.log(mods, def)
       return def + random(def)
     }
     return 0
@@ -412,7 +429,7 @@ export default class Combat extends Entity {
     if (!this.canUnselect(id, true)) {
       return false
     }
-    const i = this.selected.findIndex(h => h.id === id)
+    const i = this.selected.indexOf(id)
     this.selected.splice(i, 1)
     const a = this.getHandAction(id)
     this.ap += a.ap
@@ -450,7 +467,7 @@ export default class Combat extends Entity {
     return true
   }
 
-  async executeAction(name) {
+  async executeAction(name, id) {
     const a = this.getAction(name)
 
     if (typeof a.fn === 'function') {
@@ -469,13 +486,44 @@ export default class Combat extends Entity {
 
       log(`${this.attackerInstance.name} attacks ${this.defenderInstance.name} for ${dmg} damages`)
 
-      if (dmg > 0) {
+      if (dmg > 0 && id) {
+        const hitLabelEl = document.querySelector('.hit-label')
+        hitLabelEl.textContent = dmg.toString()
+
+        anime.set('.hit', {
+          scale: 0,
+          opacity: 0,
+        })
+
+        await anime({
+          duration: 1000,
+          targets: `.card-${id}`,
+          translateX: -1000,
+          opacity: 0,
+        }).finished
+
+        await anime.timeline({
+          easing: 'spring(1, 80, 10, 20)'
+        })
+          .add({
+            targets: `.hit`,
+            scale: 1,
+            opacity: 1,
+          })
+          .add({
+            targets: `.hit`,
+            scale: 0,
+            opacity: 0,
+          })
+          .finished
+
         await this.damage(dmg)
       } else {
         await this.block(Math.abs(dmg))
       }
     }
   }
+
   /**
    * Execute selected actions
    *
@@ -490,7 +538,7 @@ export default class Combat extends Entity {
 
     for (let id of sel) {
       const h = this.getHand(id)
-      await this.executeAction(h.name)
+      await this.executeAction(h.name, id)
     }
 
     if (!this.isYourTurn) {
@@ -549,33 +597,46 @@ export default class Combat extends Entity {
     if (!this.canDrawAction(true)) {
       return false
     }
-    setTimeout(async () => {
-      const a = pickRandom(actions)
-      this.hand.push({
-        id: v4(),
-        name: a.name,
-        kill: false,
-      })
-      await emit.call(this, 'onDrawAction', a)
-    }, 100)
-    return true
+    const a = pickRandom(arrayFromFrequencies(actions, 'name', actionFrequencies))
+    const h = {
+      id: nanoid(),
+      name: a.name,
+    }
+    this.hand.push(h)
+    await emit.call(this, 'onDrawAction', a)
+    anime.set(`.card-${h.id}`, {
+      translateY: 500,
+    })
+    await anime({
+      targets: `.card-${h.id}`,
+      keyframes: [
+        { rotate: 45, scale: 2, translateX: random(-250, 250), translateY: 500 },
+        { rotate: 0, scale: 1, translateX: 0, translateY: 0 },
+      ],
+      easing: 'cubicBezier(.5, .05, .1, .3)',
+      duration: 500,
+    }).finished
   }
 
   async onDrawAction(action) {}
 
+  async destroyHandAction(id) {
+    await anime({
+      targets: `.card-${id}`,
+      keyframes: [
+        { rotate: random(25, 65), scale: 1, translateX: random(-250, 250), translateY: -500 },
+      ],
+      easing: 'cubicBezier(.5, .05, .1, .3)',
+      duration: 500,
+    }).finished
+
+    const i = this.hand.findIndex(h => h.id === id)
+    if (i !== -1) {
+      this.hand.splice(i, 1)
+    }
+  }
+
   async destroySelected() {
-    await Promise.all(this.selected.map(id => (
-      new Promise(resolve => {
-        const h = this.getHand(id)
-        h.kill = true
-        setTimeout(() => {
-          const i = this.hand.indexOf(h)
-          if (i !== -1) {
-            this.hand.splice(i, 1)
-          }
-          resolve()
-        }, store.config.killCardDelay)
-      }))
-    ))
+    await Promise.all(this.selected.map(id => this.destroyHandAction(id)))
   }
 }

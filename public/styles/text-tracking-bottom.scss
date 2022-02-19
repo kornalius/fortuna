@@ -1,0 +1,16 @@
+// animation: text-tracking-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+@keyframes text-tracking-bottom {
+  0% {
+    letter-spacing: 1em;
+    transform: translateZ(400px) translateY(300px) scale(200%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateZ(0) translateY(0) scale(100%);
+    opacity: 1;
+  }
+}
