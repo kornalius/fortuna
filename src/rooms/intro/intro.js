@@ -56,7 +56,7 @@ class IntroServer extends Server {
       new FTP({
         name: 'ZModem',
         deletable: true,
-        equipped: true,
+        installed: true,
         weight: 11,
       }),
       new Viewer({
@@ -65,12 +65,12 @@ class IntroServer extends Server {
       }),
       new Deleter({
         name: 'Del',
-        equipped: true,
+        installed: true,
         weight: 1,
       }),
       new Cracker({
         name: 'CrackerJack',
-        equipped: true,
+        installed: true,
         weight: 1,
       }),
     ])

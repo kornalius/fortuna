@@ -36,15 +36,15 @@ export default {
       }
       return false
     }
-    if (this.isSoftware && this.isEquipped) {
+    if (this.isSoftware && this.isInstalled) {
       if (showMessage) {
         log(`${this.name} needs to be uninstalled first`)
       }
       return false
     }
-    if (this.isEquipped) {
+    if (this.isInstalled) {
       if (showMessage) {
-        log(`${this.name} needs to be unequipped first`)
+        log(`${this.name} needs to be uninstalled first`)
       }
       return false
     }

@@ -10,12 +10,13 @@ export default class Config {
     baseStr: 1,
     baseDex: 1,
     baseInt: 1,
-    baseAp: 4,
+    baseShields: 4,
+    baseDice: 5,
+    baseRolls: 3,
     highestHp: 100,
     highestLvl: 50,
     baseRam: 100,
     baseDisk: 1000,
-    maxHand: 4,
 
     // Minimap
 
@@ -42,22 +43,37 @@ export default class Config {
     // dummy file types to be randomly generated
     dummyFileTypes: ['doc', 'qrt', 'rpt', 'cod', 'hdr', 'tab', 'dum', 'unk'],
 
-    // new card delay
-    newCardDelay: 500,
-    // timeout for the kill card animation
-    killCardDelay: 1000,
+    // battle dice faces
+    battleDice: [
+      { value: 'A', icon: 'jam:sword-f' },
+      { value: 'D', icon: 'bxs:shield', color: '#6C852B' },
+      { value: 'H', icon: 'bxs:heart', color: '#A02A1A' },
+      { value: 'B', icon: 'fa-solid:bomb', color: '#222' },
+      { value: 'X', icon: 'bi:lightning-fill', color: '#F19936' },
+      { value: '_', icon: '' },
+    ],
+
+    // Npc battle dice
+    npcBattleDice: [
+      { value: 'A', icon: 'jam:sword-f' },
+      { value: 'D', icon: 'bxs:shield', color: '#6C852B' },
+      { value: '_', icon: '' },
+      { value: '_', icon: '' },
+      { value: '_', icon: '' },
+      { value: '_', icon: '' },
+    ],
   })
 
   get baseHp() { return this.state.baseHp }
   get highestHp() { return this.state.highestHp }
   get highestLvl() { return this.state.highestLvl }
 
-  get baseAp() { return this.state.baseAp }
+  get baseShields() { return this.state.baseShields }
+  get baseDice() { return this.state.baseDice }
+  get baseRolls() { return this.state.baseRolls }
   get baseStr() { return this.state.baseStr }
   get baseDex() { return this.state.baseDex }
   get baseInt() { return this.state.baseInt }
-
-  get maxHand() { return this.state.maxHand }
 
   get baseRam() { return this.state.baseRam }
   get baseDisk() { return this.state.baseDisk }
@@ -76,6 +92,6 @@ export default class Config {
 
   get dummyFileTypes() { return this.state.dummyFileTypes }
 
-  get newCardDelay() { return this.state.newCardDelay }
-  get killCardDelay() { return this.state.killCardDelay }
+  get battleDice() { return this.state.battleDice }
+  get npcBattleDice() { return this.state.npcBattleDice }
 }

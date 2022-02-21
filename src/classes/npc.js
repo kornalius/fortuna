@@ -1,3 +1,4 @@
+import random from 'lodash/random'
 import Entity from '../entity'
 import { emit, log, mixin } from '@/utils'
 import { store } from '@/store'
@@ -22,15 +23,12 @@ export default class Npc extends Entity {
     return super.setupInstance({
       name: 'Npc',
       hp: this.maxHp,
-      str: store.config.baseStr,
-      dex: store.config.baseDex,
-      int: store.config.baseInt,
-      ap: this.maxAp,
       talkable: false,
       known: false,
       aggresive: false,
       locationId,
       locationStore,
+      dice: this.baseDice,
       actions: [
         item => (
           item.canTalk()
@@ -59,28 +57,16 @@ export default class Npc extends Entity {
 
   get name() { return this.isKnown ? this.state.name : '???' }
 
-  get str() { return this.state.str }
-  set str(value) { this.state.str = value }
-
-  get dex() { return this.state.dex }
-  set dex(value) { this.state.dex = value }
-
-  get int() { return this.state.int }
-  set int(value) { this.state.int = value }
-
-  get ap() { return this.state.ap }
-  set ap(value) { this.state.ap = Math.max(0, Math.min(value, this.maxAp)) }
-  get maxAp() { return Math.ceil(store.config.baseAp + (0.25 * this.lvl)) }
+  get maxHp() {
+    return Math.floor(
+      (this.baseHp + (this.highestHp - this.baseHp) * this.lvl / this.highestLvl) * 0.5
+    )
+  }
 
   get isKnown() { return this.state.known }
   set known(value) { this.state.known = value }
 
   get items() { return store.items.list.filter(i => i.location === this) }
-
-  get equippedItems() { return this.items.filter(i => i.isEquipped) }
-
-  get equippedWeapons() { return this.equippedItems.filter(i => i.isWeapon) }
-  get equippedArmors() { return this.equippedItems.filter(i => i.isArmor) }
 
   get dialogs() { return store.dialogs.list.filter(d => d.npc === this) }
 
@@ -89,6 +75,33 @@ export default class Npc extends Entity {
 
   get isAggresive() { return this.state.aggresive }
   set aggresive(value) { this.state.aggresive = value }
+
+  get dice() { return this.state.dice }
+  set dice(value) { this.state.dice = value }
+  get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) }
+
+  get baseDice() {
+    return new Array(this.maxDice).fill(0)
+      .map(() => ({ faces: store.config.npcBattleDice, value: random(1, 6) }))
+      .filter(d => store.config.npcBattleDice[d.value - 1].value !== '_')
+      .sort((a, b) => (
+        a.value < b.value ? -1 : 1
+      ))
+  }
+
+  get swordDice() {
+    return this.dice.filter(d => store.config.npcBattleDice[d.value - 1].value === 'A')
+  }
+  get swordDiceIndexes() {
+    return this.swordDice.map(d => this.dice.indexOf(d))
+  }
+
+  get shieldDice() {
+    return this.dice.filter(d => store.config.npcBattleDice[d.value - 1].value === 'D')
+  }
+  get shieldDiceIndexes() {
+    return this.shieldDice.map(d => this.dice.indexOf(d))
+  }
 
   getDialog(code) { return this.dialogs.find(d => d.code === code) }
 

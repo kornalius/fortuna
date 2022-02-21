@@ -277,6 +277,24 @@ export default class Server extends Item {
       }
       return false
     }
+    if (store.player.isConnectedToServer) {
+      if (showMessage) {
+        log(`You cannot use this while connected to ${store.player.server.name.toLowerCase()}`)
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot use this while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot use this while in conversation')
+      }
+      return false
+    }
     return true
   }
 

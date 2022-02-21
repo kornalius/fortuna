@@ -4,7 +4,7 @@ export default class Decrypter extends Software {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Decrypter',
-      equipType: 'decrypter',
+      installType: 'decrypter',
       usable: false,
       ...data,
     })

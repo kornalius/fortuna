@@ -6,7 +6,7 @@ export default class Cracker extends Software {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Cracker',
-      equipType: 'cracker',
+      installType: 'cracker',
       actions: [
         item => (
           item.canCrack()

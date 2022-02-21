@@ -4,7 +4,7 @@ export default class Ftp extends Software {
   setupInstance(data) {
     return super.setupInstance({
       name: 'FTP',
-      equipType: 'ftp',
+      installType: 'ftp',
       usable: false,
       ...data,
     })

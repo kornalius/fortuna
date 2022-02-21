@@ -3,7 +3,6 @@
     v-for="log in logs"
     :key="log.id"
     :class="{ line: true, important: log.isImportant }"
-    v-bind="$attrs"
   >
     <span
       v-for="(msg, i) in log.message"

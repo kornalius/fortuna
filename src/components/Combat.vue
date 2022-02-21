@@ -1,110 +1,91 @@
 <template>
   <div class="flex w-100" style="height: 300px; overflow: hidden;">
-    <span class="turn-label">{{ turnLabel }}</span>
-
-    <div class="flex flex-column h-100" style="width: 225px; margin-right: 3em;">
+    <div class="flex flex-column h-100" style="max-width: 228px">
       <div class="relative">
         <img
           v-if="value.npc?.img"
-          style="max-height: 258px;"
+          style="max-height: 228px;"
           :src="value.npc.img"
           :alt="value.npc.img"
         />
-        <div class="hit relative">
+        <div class="npc-hit relative">
           <img
             src="/images/hit-effect.png"
             alt="hit-effect"
           />
-          <span class="hit-label">18</span>
+          <span class="npc-hit-label">0</span>
         </div>
       </div>
 
-      <div class="flex flex-grow-1">
-        <n-popover trigger="hover" placement="bottom">
-          <template #trigger>
-            <div class="flex flex-grow-1 items-center mb1" style="color: #b44;">
-              <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
-              <n-progress
-                type="line"
-                status="error"
-                border-radius="12px 0 12px 0"
-                fill-border-radius="12px 0 12px 0"
-                :percentage="value.npc.hp / value.npc.maxHp * 100"
-                :height="8"
-                :show-indicator="false"
-              />
-            </div>
-          </template>
-          <span>HP: {{ value.npc.hp }} / {{ value.npc.maxHp }}</span>
-        </n-popover>
+      <n-popover trigger="hover" placement="bottom">
+        <template #trigger>
+          <div class="flex flex-grow-1 items-center" style="color: #b44;">
+            <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
+            <n-progress
+              type="line"
+              status="error"
+              border-radius="12px 0 12px 0"
+              fill-border-radius="12px 0 12px 0"
+              :percentage="value.npc.hp / value.npc.maxHp * 100"
+              :height="8"
+              :show-indicator="false"
+            />
+          </div>
+        </template>
+        <span>HP: {{ value.npc.hp }} / {{ value.npc.maxHp }}</span>
+      </n-popover>
 
-        <n-popover trigger="hover" placement="bottom">
-          <template #trigger>
-            <div class="action-points ml2 flex items-center justify-center">
-              <v-icon
-                v-for="(_, index) in npcAp"
-                :key="`${index}-${value.npc.id}`"
-                class="ap"
-                :icon="index < value.npc.ap ? 'fa:dot-circle-o' : 'fa:circle-o'"
-                width="16"
-                height="16"
-              />
-            </div>
-          </template>
-          <span>AP: {{ value.npc.ap }} / {{ value.npc.maxAp }}</span>
-        </n-popover>
+      <div class="flex relative items-center">
+        <Die
+          v-for="(die, index) in store.player.combat.npc.dice"
+          :key="`npc-die-${index}`"
+          :class="`npc-die-${index}`"
+          :faces="die.faces"
+          :face="die.value"
+          size="small"
+        />
       </div>
     </div>
 
     <div class="flex flex-grow-1" />
 
-    <div class="player-side flex flex-column flex-grow-1 items-end relative">
-      <div class="hand flex flex-grow-1 items-end">
-        <Action
-          v-for="h in value.hand"
-          :key="`hand-card-${h.id}`"
-          :value="h"
-          :combat="value"
-          :selected="value.isSelected(h.id)"
-          :disabled="disabled"
-          @click="(id) => value.toggleSelect(id)"
+    <div class="player-side flex flex-column flex-grow-1 relative">
+      <div class="flex relative h-100 items-center">
+        <Die
+          v-for="(die, index) in store.player.dice"
+          :key="`player-die-${index}`"
+          :class="`player-die-${index}`"
+          :faces="die.faces"
+          :face="die.value"
+          :selected="store.player.combat.isSelected(index)"
+          @click="store.player.combat.toggleSelect(index)"
         />
       </div>
 
       <div class="actions flex w-100 pv1">
         <n-popover trigger="hover" placement="bottom">
           <template #trigger>
-            <div class="action-points flex items-center justify-center w-100">
+            <div class="flex items-center w-100">
               <v-icon
-                v-for="(_, index) in playerAp"
+                v-for="(_, index) in playerShields"
                 :key="`${index}-${store.player.id}`"
-                class="ap"
-                :icon="index < store.player.ap ? 'fa:dot-circle-o' : 'fa:circle-o'"
-                width="16"
-                height="16"
+                class="shield"
+                :icon="index < store.player.shields ? 'bxs:shield' : 'ci:dot-02-s'"
+                width="24"
+                height="24"
               />
             </div>
           </template>
-          <span>AP: {{ store.player.ap }} / {{ store.player.maxAp }}</span>
+          <span>Defense: {{ store.player.shields }} / {{ store.player.maxShields }}</span>
         </n-popover>
 
         <n-button
           :disabled="disabled"
           type="success"
           tertiary
-          @click="() => value.execute()"
+          @click="executeOrReroll"
         >
-          <span>{{ goButtonLabel }}</span>
-        </n-button>
-
-        <n-button
-          class="ml2"
-          :disabled="disabled"
-          type="error"
-          tertiary
-          @click="() => value.attemptRetreat()"
-        >
-          <span>Retreat</span>
+          <span>{{ executeOrRerollLabel }}</span>
         </n-button>
       </div>
     </div>
@@ -114,55 +95,45 @@
 <script setup>
 import { computed } from 'vue'
 import { store } from '@/store'
-import Action from '@/components/Action.vue'
+import Die from '@/components/Die.vue'
 
 const props = defineProps({
   value: { type: Object },
 })
 
-const npcAp = computed(() => new Array(props.value.npc.maxAp).fill(''))
-const playerAp = computed(() => new Array(store.player.maxAp).fill(''))
+const playerShields = computed(() => new Array(store.player.maxShields).fill(''))
 
-const turnLabel = computed(() => (
-  !props.value.isYourTurn ? 'Opponent\'s Turn' : 'Your Turn'
+const disabled = computed(() => false)
+
+const canReroll = computed(() => store.player.combat.canReroll())
+
+const executeOrRerollLabel = computed(() => (
+  canReroll.value ? 'Reroll' : 'End Turn'
 ))
 
-const goButtonLabel = computed(() => (
-  props.value.selected.length > 0 ? 'Execute' : 'End Turn'
-))
-
-const disabled = computed(() => !props.value.isYourTurn || props.value.isAnimatingTurn)
+const executeOrReroll = async () => {
+  if (canReroll.value) {
+    return store.player.combat.reroll()
+  }
+  return store.player.combat.endTurn()
+}
 </script>
 
 <style scoped>
-.hand {
-  margin-left: 3em;
-}
-.ap {
-  margin: 0 2px;
+.shield {
   height: 30px;
+  color: #6C852B;
+  filter: drop-shadow(2px 1px 1px #ddd);
 }
-.turn-label {
+.npc-hit {
   pointer-events: none;
-  font-size: 48px;
-  color: #F19936;
-  text-shadow: #333 2px 2px 8px;
-  text-align: center;
-  position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  opacity: 0;
-}
-.hit {
   position: absolute;
   top: 15%;
   left: 0;
   opacity: 0;
   z-index: 1;
 }
-.hit-label {
+.npc-hit-label {
   position: absolute;
   top: 35%;
   left: 0;

@@ -1,5 +1,13 @@
 <template>
   <n-card class="card">
+    <div class="player-hit relative">
+      <img
+        src="/images/hit-effect.png"
+        alt="hit-effect"
+      />
+      <span class="player-hit-label">0</span>
+    </div>
+
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center justify-between mb1" style="color: #ff0;">
@@ -103,37 +111,6 @@
 
       <span>[RAM] Used: {{ player.ramUsed }}, Free: {{ player.ramFree }}, Total: {{ player.ram }}</span>
     </n-popover>
-
-<!--    <div class="mt2">-->
-<!--      <n-button-->
-<!--        type="primary"-->
-<!--        size="small"-->
-<!--        @click="() => player.lvl += 1"-->
-<!--      >-->
-<!--        + Level-->
-<!--      </n-button>-->
-
-<!--      <n-button-->
-<!--        class="ml2"-->
-<!--        type="info"-->
-<!--        size="small"-->
-<!--        @click="() => player.xp += 10"-->
-<!--      >-->
-<!--        + Xp-->
-<!--      </n-button>-->
-
-<!--      <n-button-->
-<!--        class="ml2"-->
-<!--        type="secondary"-->
-<!--        size="small"-->
-<!--        @click="() => {-->
-<!--          player.state.lvl = 1-->
-<!--          player.state.xp = 0-->
-<!--        }"-->
-<!--      >-->
-<!--        Reset-->
-<!--      </n-button>-->
-<!--    </div>-->
   </n-card>
 </template>
 
@@ -146,5 +123,24 @@ const { player } = store
 <style scoped>
 .card {
   cursor: default;
+}
+.player-hit {
+  pointer-events: none;
+  position: absolute;
+  top: 5%;
+  left: 18%;
+  opacity: 0;
+  z-index: 1;
+}
+.player-hit-label {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  color: #D12E2E;
+  font-size: 32px;
+  text-shadow: #333 1px 1px 4px;
+  z-index: 2;
 }
 </style>

@@ -71,7 +71,7 @@
           alt="screen"
         />
         <div ref="scroller" class="scrollable">
-          <log @change="logsChanged" />
+          <Log @change="logsChanged" />
         </div>
         <img
           class="glare"
@@ -148,7 +148,7 @@ const logsChanged = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: .5;
+  opacity: .25;
   pointer-events: none;
 }
 .glare {

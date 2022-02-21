@@ -4,7 +4,7 @@ export default class Viewer extends Software {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Viewer',
-      equipType: 'viewer',
+      installType: 'viewer',
       usable: false,
       viewerType: 'txt',
       ...data,

@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import clamp from 'lodash/clamp'
 import { store } from './index'
 import { emit, log, mixin } from '@/utils'
 import Item from '@/classes/items/item'
@@ -22,7 +23,8 @@ export default class Player {
       str: store.config.baseStr,
       dex: store.config.baseDex,
       int: store.config.baseInt,
-      ap: this.maxAp,
+      rolls: this.maxRolls,
+      shields: 0,
       // maximum ram space available to install softwares
       ram: store.config.baseRam,
       // maximum disk space available to store files in inventory
@@ -33,6 +35,7 @@ export default class Player {
       dialogId: null,
       // current combat being displayed
       combatId: null,
+      dice: this.baseDice,
     })
   }
 
@@ -45,18 +48,17 @@ export default class Player {
   get int() { return this.state.int }
   set int(value) { this.state.int = value }
 
-  get ap() { return this.state.ap }
-  set ap(value) { this.state.ap = Math.max(0, Math.min(value, this.maxAp)) }
-  get maxAp() { return Math.ceil(store.config.baseAp + (0.25 * this.lvl)) }
+  get shields() { return this.state.shields }
+  set shields(value) { this.state.shields = clamp(value, 0, this.maxShields) }
+  get maxShields() { return Math.floor(store.config.baseShields + (0.25 * this.lvl)) }
+
+  get rolls() { return this.state.rolls }
+  set rolls(value) { this.state.rolls = clamp(value, 0, this.maxRolls) }
+  get maxRolls() { return Math.floor(store.config.baseRolls + (0.25 * this.lvl)) }
 
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
-  get equippedItems() { return this.items.filter(i => i.isEquipped) }
-
-  get equippedWeapon() { return this.equippedItems.find(i => i.isWeapon) }
-  get equippedArmors() { return this.equippedItems.filter(i => i.isArmor) }
-
-  get installedSoftwares() { return this.equippedItems.filter(i => i.isSoftware) }
+  get installedSoftwares() { return this.items.filter(i => i.isSoftware && i.isInstalled) }
   get files() { return this.items.filter(i => i.isFile) }
 
   get ram() { return this.state.ram }
@@ -117,8 +119,18 @@ export default class Player {
     }
   }
 
-  hasEquippedOfType(type) {
-    return this.equippedItems.find(i => i.equipType === type)
+  get dice() { return this.state.dice }
+  set dice(value) { this.state.dice = value }
+  get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) }
+
+  get baseDice() {
+    return new Array(this.maxDice).fill(0).map(() => (
+      { faces: store.config.battleDice, value: 1 }
+    ))
+  }
+
+  hasInstalledSoftwareOfType(type) {
+    return this.installedSoftwares.find(i => i.installType === type)
   }
 
   installedSoftware(expr) {

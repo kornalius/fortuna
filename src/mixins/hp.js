@@ -11,8 +11,8 @@ export default {
   get baseHp() { return store.config.baseHp },
   get highestHp() { return store.config.highestHp },
   get maxHp() {
-    return Math.floor(this.baseHp
-      + (this.highestHp - this.baseHp) * this.lvl / this.highestLvl
+    return Math.floor(
+      this.baseHp + (this.highestHp - this.baseHp) * this.lvl / this.highestLvl
     )
   },
 

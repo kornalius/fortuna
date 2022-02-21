@@ -28,9 +28,9 @@
             />
 
             <v-icon
-              v-if="value.isInInventory && value.isEquipped"
+              v-if="value.isInInventory && value.isInstalled"
               icon="bx:bxs-check-circle"
-              class="equipped"
+              class="installed"
               width="14"
             />
 
@@ -180,7 +180,7 @@ const weightIcon = computed(() => {
   color: #F19936;
   text-align: end;
 }
-.equipped {
+.installed {
   position: absolute;
   bottom: 0;
   left: -1px;

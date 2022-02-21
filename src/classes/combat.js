@@ -2,91 +2,21 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { arrayFromFrequencies, emit, log, pickRandom } from '@/utils'
-
-export const actions = [
-  {
-    name: 'dodge',
-    icon: 'fluent:arrow-forward-24-filled',
-    label: 'Dodge',
-    description: 'Dodge the ennemy\'s attack',
-    color: '',
-    defensive: true,
-    atk: 0,
-    def: 3,
-    ap: 2,
-    mods: ['dex'],
-  },
-  {
-    name: 'cover',
-    icon: 'fa6-solid:arrow-turn-down',
-    label: 'Cover',
-    description: 'Take cover behind a terrain feature',
-    color: '',
-    defensive: true,
-    atk: 0,
-    def: 5,
-    ap: 3,
-    mods: ['dex'],
-  },
-  {
-    name: 'deflect',
-    icon: 'fluent:arrow-bounce-16-filled',
-    label: 'Deflect',
-    description: 'Use your strength and dexterity to deflect the oncoming attack',
-    color: '',
-    defensive: true,
-    atk: 0,
-    def: 8,
-    ap: 4,
-    mods: ['str', 'dex'],
-  },
-  {
-    name: 'attack',
-    icon: 'fa-solid:fist-raised',
-    label: 'Attack',
-    description: 'Attack with your equipped weapon',
-    color: '',
-    defensive: false,
-    atk: 5,
-    def: 0,
-    ap: 2,
-    mods: ['str'],
-  },
-]
-
-export const actionFrequencies = {
-  dodge: 30,
-  cover: 20,
-  deflect: 10,
-  attack: 40,
-}
-
-const YOU = 1
-const HIM = 2
+import { emit, log } from '@/utils'
 
 export default class Combat extends Entity {
   setupInstance(data) {
     return super.setupInstance({
       npcId: null,
-      stats: {
-        ap: 0,
-        atk: 0,
-        def: 0,
-      },
-      defenseQueue: null,
-      retreat: false,
-      // side active player 1: YOU, 2: HIM
-      side: YOU,
       // current turn
       turn: 1,
+      // rolls left for the turn
+      rolls: store.player.maxRolls,
       // has the combat ended
       ended: false,
       // did you win the battle?
       won: false,
-      // your play hand
-      hand: [],
-      // selected action
+      // selected dice
       selected: [],
       ...data,
     })
@@ -111,139 +41,86 @@ export default class Combat extends Entity {
   get turn() { return this.state.turn }
   set turn(value) { this.state.turn = value }
 
+  get rolls() { return this.state.rolls }
+  set rolls(value) { this.state.rolls = value }
+
   get ended() { return this.state.ended }
   set ended(value) { this.state.ended = value }
 
   get won() { return this.state.won }
   set won(value) { this.state.won = value }
 
-  get stats() { return this.state.stats }
-  set stats(value) { this.state.stats = value }
-
-  get defenseQueue() { return this.state.defenseQueue }
-  set defenseQueue(value) { this.state.defenseQueue = value }
-
-  get retreat() { return this.state.retreat }
-  set retreat(value) { this.state.retreat = value }
-
-  get side() { return this.state.side }
-  set side(value) { this.state.side = value }
-
-  get isYourTurn() { return this.side === YOU }
-
-  get sideInstance() { return this.isYourTurn ? store.player : this.npc }
-  get attackerInstance() { return this.isYourTurn ? store.player : this.npc }
-  get defenderInstance() { return this.isYourTurn ? this.npc : store.player }
-
-  get armorsDef() { return this.defenderInstance.equippedArmors.reduce((acc, a) => acc + a.def, 0) }
-
-  get ap() { return this.sideInstance.ap }
-  set ap(value) { this.sideInstance.ap = value }
-  get maxAp() { return this.sideInstance.maxAp }
-
-  get hand() { return this.state.hand }
-  set hand(value) { this.state.hand = value }
-
   get selected() { return this.state.selected }
   set selected(value) { this.state.selected = value }
 
-  get hasDefensiveSelected() {
-    return this.selected.find(id => {
-      const h = this.getHandAction(id)
-      if (h) {
-        const a = this.getAction(h.name)
-        return a?.defensive
-      }
-      return false
-    })
-  }
-
-  getAction(name) { return actions.find(m => m.name === name) }
-
-  getHand(id) {
-    return this.hand.find(h => h.id === id)
-  }
-
-  getHandAction(id) {
-    const h = this.getHand(id)
-    if (h) {
-      return this.getAction(h.name)
-    }
-    return undefined
-  }
-
-  isSelected(id) { return this.selected.includes(id) }
-
-  hasAPFor(ap) {
-    return this.ap - ap >= 0
-  }
-
-  toggleCurrent() {
-    if (this.isYourTurn) {
-      this.side = HIM
-    } else {
-      this.side = YOU
-    }
-  }
+  get hasSelected() { return this.selected.length > 0 }
 
   async nextTurn() {
     log('Next turn started')
 
     this.turn += 1
-    this.toggleCurrent()
-    this.defenseQueue = null
-    await emit.call(this, 'onTurn')
+    await emit.call(this, 'onTurn', this.turn)
 
-    this.isAnimatingTurn = true
-    await anime.timeline({
-      targets: '.turn-label',
-      duration: 750,
-      endDelay: 250,
-    })
-      .add({ opacity: [0, 1], translateX: [-1000, 0] })
-      .add({ opacity: [1, 0], translateX: [0, 2000] }, 2000)
-      .finished
-    this.isAnimatingTurn = false
+    store.player.shields = 0
+    store.player.rolls = store.player.maxRolls
 
-    if (this.isYourTurn) {
-      this.ap = this.maxAp
-      if (this.canDrawAction()) {
-        await this.drawAction()
+    await this.roll([])
+  }
+
+  async onTurn(turn) {}
+
+  canReroll(showMessage) {
+    if (!this.hasSelected) {
+      if (showMessage) {
+        log('You need to select dice to reroll first')
       }
-    } else {
-      this.ap += 1
-      await this.ai()
+      return false
     }
-  }
-
-  async onTurn() {}
-
-  async ai() {
-    return new Promise(async resolve => {
-      if (this.ap === this.maxAp) {
-        await this.executeAction('attack')
-        this.ap = 0
+    if (store.player.rolls <= 0) {
+      if (showMessage) {
+        log('You cannot reroll anymore')
       }
-      await emit.call(this, 'onAi')
-      setTimeout(async () => {
-        await this.nextTurn()
-        resolve()
-      }, 500)
-    })
-  }
-
-  async onAi() {}
-
-  canRetreat(showMessage) {
+      return false
+    }
     return true
   }
 
-  async attemptRetreat() {
-    if (!this.canRetreat(true)) {
+  /**
+   * Reroll selected dice
+   * @returns {Promise<void>}
+   */
+  async reroll() {
+    if (!this.canReroll(true)) {
       return false
     }
-    this.retreat = true
-    log('You attempt a retreat')
+    return this.roll(this.selected)
+  }
+
+  async roll(indexes) {
+    store.player.rolls -= 1
+
+    if (indexes.length === 0) {
+      for (let i = 0; i < store.player.dice.length; i++) {
+        indexes.push(i)
+      }
+    }
+
+    this.selected = []
+
+    await Promise.all(indexes.map(i => new Promise(async resolve => {
+      const die = store.player.dice[i]
+      const count = random(5, 10)
+      for (let c = 0; c < count; c++) {
+        await new Promise(resolve => {
+          setTimeout(() => {
+            die.value = random(1, 6)
+            resolve()
+          }, 100)
+        })
+      }
+      resolve()
+    })))
+
     return true
   }
 
@@ -256,14 +133,13 @@ export default class Combat extends Entity {
       return false
     }
 
-    // Reset Action Points
-    this.npc.ap = this.npc.maxAp
-    store.player.ap = store.player.maxAp
-
-    // Draw player's hand
-    await Promise.all(new Array(store.config.maxHand).fill('').map(() => this.drawAction()))
+    this.turn = 1
+    store.player.shields = 0
+    store.player.rolls = store.player.maxRolls
 
     await emit.call(this, 'onStartCombat')
+
+    await this.roll([])
 
     return true
   }
@@ -271,9 +147,7 @@ export default class Combat extends Entity {
   async onStartCombat() {}
 
   canEndCombat(showMessage) {
-    return this.attackerInstance.hp <= 0
-      || this.defenderInstance.hp <= 0
-      || this.retreat
+    return this.npc.hp <= 0 || store.player.hp <= 0
   }
 
   async endCombat() {
@@ -283,7 +157,6 @@ export default class Combat extends Entity {
 
     this.ended = true
     store.player.combat = null
-
     await emit.call(this, 'onEndCombat')
 
     this.won = false
@@ -292,14 +165,11 @@ export default class Combat extends Entity {
       this.won = true
       log('You have won the battle')
       await emit.call(this, 'onWin')
-    } else if (this.npc.hp > 0) {
-      log('You have lost the battle')
-      await emit.call(this, 'onLose')
-    } else if (this.retreat) {
-      log('You have successfully retreated from battle')
-      await emit.call(this, 'onRetreat')
+      return true
     }
 
+    log('You have lost the battle')
+    await emit.call(this, 'onLose')
     return true
   }
 
@@ -309,244 +179,127 @@ export default class Combat extends Entity {
 
   async onLose() {}
 
-  async onRetreat() {}
-
-  /**
-   * Calculate the attack score for an action
-   *
-   * @param name
-   * @returns {number|*}
-   */
-  attack(name) {
-    const a = this.getAction(name)
-    if (a) {
-      const mods = a.mods.reduce((acc, a) => acc + (this.attackerInstance[a] || 0), 0)
-      const dmg = a.atk + (this.attackerInstance.equippedWeapon?.atk || 1) + mods
-      return dmg + random(dmg)
-    }
-    return 0
+  isSelected(index) {
+    return this.selected.includes(index)
   }
 
-  /**
-   * Calculate the defence score for an action
-   *
-   * @param name
-   * @returns {number|*}
-   */
-  defense(name) {
-    const a = this.getAction(name)
-    if (a) {
-      const mods = a.mods.reduce((acc, a) => acc + (this.defenderInstance[a] || 0), 0)
-      const def = a.def + this.armorsDef + mods
-      return def + random(def)
-    }
-    return 0
-  }
-
-  canSelect(id, showMessage) {
-    const a = this.getHandAction(id)
-    if (!a) {
+  canSelect(index, showMessage) {
+    if (store.player.rolls <= 0) {
       if (showMessage) {
-        log(`${name} is an invalid move name`)
+        log('You have no rerolls left')
       }
       return false
     }
-    // if already has selected this action
-    if (this.isSelected(id)) {
+    if (this.isSelected(index)) {
       if (showMessage) {
-        log(`You have already selected this action`)
-      }
-      return false
-    }
-    // if defensive action and already in your has a defense action queued
-    if (a.defensive && this.defenseQueue) {
-      if (showMessage) {
-        log(`There is already a defensive move readied`)
-      }
-      return false
-    }
-    // if defensive action and already has a defense selected
-    if (a.defensive && this.hasDefensiveSelected) {
-      if (showMessage) {
-        log(`You already have a defensive action selected`)
-      }
-      return false
-    }
-    // is there enough action points left to select this move
-    if (!this.hasAPFor(a.ap)) {
-      if (showMessage) {
-        log(`Not enough action points to select ${a.label.toLowerCase()}`)
+        log('This die is already selected')
       }
       return false
     }
     return true
   }
 
-  /**
-   * Add an action to selected actions
-   *
-   * @param id
-   * @returns {Promise<boolean|void>}
-   */
-  async select(id) {
-    if (!this.canSelect(id, true)) {
+  async select(index) {
+    if (!this.canSelect(index, true)) {
       return false
     }
-    this.selected.push(id)
-    const a = this.getHandAction(id)
-    this.ap -= a.ap
-    await emit.call(this, 'onSelect', a)
+    this.selected.push(index)
+    await emit.call(this, 'onSelect', index)
     return true
   }
 
-  async onSelect(action) {}
+  async onSelect(index) {}
 
-  canUnselect(id, showMessage) {
-    const a = this.getHandAction(id)
-    if (!a) {
+  canUnselect(index, showMessage) {
+    if (!this.isSelected(index)) {
       if (showMessage) {
-        log(`${id} is an invalid hand action id`)
-      }
-      return false
-    }
-    // if does not have this action selected
-    if (!this.isSelected(id)) {
-      if (showMessage) {
-        log('You have not selected this action')
+        log('This die is not selected')
       }
       return false
     }
     return true
   }
 
-  /**
-   * Add an action to selected actions
-   *
-   * @param id
-   * @returns {Promise<boolean|void>}
-   */
-  async unselect(id) {
-    if (!this.canUnselect(id, true)) {
+  async unselect(index) {
+    if (!this.canUnselect(index, true)) {
       return false
     }
-    const i = this.selected.indexOf(id)
+    const i = this.selected.indexOf(index)
     this.selected.splice(i, 1)
-    const a = this.getHandAction(id)
-    this.ap += a.ap
-    await emit.call(this, 'onUnselect', a)
+    await emit.call(this, 'onUnselect', index)
     return true
   }
 
-  async onUnselect(action) {}
+  async onUnselect(index) {}
 
-  async toggleSelect(id) {
-    if (this.isSelected(id)) {
-      return this.unselect(id)
+  async toggleSelect(index) {
+    if (this.isSelected(index)) {
+      return this.unselect(index)
     }
-    return this.select(id)
+    return this.select(index)
   }
 
-  /**
-   * Check if all selected actions can be executed
-   *
-   * @param selection
-   * @param showMessage
-   * @returns {boolean}
-   */
-  canExecute(selection, showMessage) {
-    const sel = selection || this.selected
-    for (let id of sel) {
-      const a = this.getHandAction(id)
-      if (!a) {
-        if (showMessage) {
-          log('You do not have this card in your hand')
-        }
-        return false
-      }
-    }
+  canEndTurn(showMessage) {
     return true
   }
 
-  async executeAction(name, id) {
-    const a = this.getAction(name)
-
-    if (typeof a.fn === 'function') {
-      if (!this[a.fn]()) {
-        return false
-      }
-    }
-
-    if (a.defensive) {
-      // Queue a defensive action
-      this.defenseQueue = a
-    } else {
-      const atk = this.attack(name)
-      const def = this.defense(name)
-      const dmg = atk - def
-
-      log(`${this.attackerInstance.name} attacks ${this.defenderInstance.name} for ${dmg} damages`)
-
-      if (dmg > 0 && id) {
-        const hitLabelEl = document.querySelector('.hit-label')
-        hitLabelEl.textContent = dmg.toString()
-
-        anime.set('.hit', {
-          scale: 0,
-          opacity: 0,
-        })
-
-        await anime({
-          duration: 1000,
-          targets: `.card-${id}`,
-          translateX: -1000,
-          opacity: 0,
-        }).finished
-
-        await anime.timeline({
-          easing: 'spring(1, 80, 10, 20)'
-        })
-          .add({
-            targets: `.hit`,
-            scale: 1,
-            opacity: 1,
-          })
-          .add({
-            targets: `.hit`,
-            scale: 0,
-            opacity: 0,
-          })
-          .finished
-
-        await this.damage(dmg)
-      } else {
-        await this.block(Math.abs(dmg))
-      }
-    }
-  }
-
   /**
-   * Execute selected actions
+   * Execute dice actions
    *
-   * @param selection
    * @returns {Promise<boolean|void>}
    */
-  async execute(selection) {
-    const sel = selection || this.selected
-    if (!this.canExecute(sel, true)) {
+  async endTurn() {
+    if (!this.canEndTurn(true)) {
       return false
     }
 
-    for (let id of sel) {
-      const h = this.getHand(id)
-      await this.executeAction(h.name, id)
+    const attacks = []
+    const defends = []
+    const lifes = []
+    const bombs = []
+    const busts = []
+
+    for (let i = 0; i < store.player.dice.length; i++) {
+      const die = store.player.dice[i]
+
+      switch (store.config.battleDice[die.value - 1].value) {
+        case 'A': // sword
+          attacks.push(i)
+          break
+        case 'D': // shield
+          defends.push(i)
+          break
+        case 'H': // heart
+          lifes.push(i)
+          break
+        case 'B': // bomb
+          bombs.push(i)
+          break
+        case 'X': // shield buster
+          busts.push(i)
+          break
+        default:
+      }
     }
 
-    if (!this.isYourTurn) {
-      this.ap = 0
+    if (defends.length) {
+      await this.defend(defends)
     }
-
-    await this.destroySelected()
-    this.selected = []
+    if (busts.length) {
+      await this.bustShield(busts)
+    }
+    if (attacks.length) {
+      await this.attack(attacks)
+    }
+    if (bombs.length) {
+      await this.damage(bombs)
+    }
+    if (this.npc.swordDice.length) {
+      await this.npcAttack(this.npc.swordDiceIndexes)
+    }
+    if (lifes.length) {
+      await this.gainLife(lifes)
+    }
 
     // this will check first if it needs to end the combat
     if (!(await this.endCombat())) {
@@ -556,87 +309,167 @@ export default class Combat extends Entity {
     return true
   }
 
-  /**
-   * Apply damage to opponent
-   *
-   * @param dmg
-   * @returns {Promise<void>}
-   */
-  async damage(dmg) {
-    this.defenderInstance.hp -= dmg
-    log(`${this.attackerInstance.name} dealt ${dmg} damages to ${this.defenderInstance.name}`)
-    await emit.call(this, 'onDamage', dmg)
-  }
-
-  async onDamage(dmg) {}
-
-  /**
-   * Defender successfully blocked the attack
-   *
-   * @param dmg
-   * @returns {Promise<void>}
-   */
-  async block(dmg) {
-    log(`${this.defenderInstance.name} blocked ${dmg} damages from ${this.attackerInstance.name}`)
-    await emit.call(this, 'onBlock', dmg)
-  }
-
-  async onBlock(dmg) {}
-
-  canDrawAction(showMessage) {
-    if (this.hand.length >= store.config.maxHand) {
-      if (showMessage) {
-        log('You cannot draw another card, your hand is full')
-      }
-      return false
-    }
-    return true
-  }
-
-  async drawAction() {
-    if (!this.canDrawAction(true)) {
-      return false
-    }
-    const a = pickRandom(arrayFromFrequencies(actions, 'name', actionFrequencies))
-    const h = {
-      id: nanoid(),
-      name: a.name,
-    }
-    this.hand.push(h)
-    await emit.call(this, 'onDrawAction', a)
-    anime.set(`.card-${h.id}`, {
-      translateY: 500,
+  async highlightDice(name, dice) {
+    return anime.timeline({
+      duration: 1000,
+      targets: dice.map(i => `.${name}-die-${i}`),
     })
-    await anime({
-      targets: `.card-${h.id}`,
-      keyframes: [
-        { rotate: 45, scale: 2, translateX: random(-250, 250), translateY: 500 },
-        { rotate: 0, scale: 1, translateX: 0, translateY: 0 },
-      ],
-      easing: 'cubicBezier(.5, .05, .1, .3)',
-      duration: 500,
-    }).finished
+      .add({ scale: 1.25 })
+      .add({ scale: 1 }, 500)
+      .finished
   }
 
-  async onDrawAction(action) {}
+  async showDamage(name, dmg) {
+    const hitLabelEl = document.querySelector(`.${name}-hit-label`)
+    hitLabelEl.textContent = dmg.toString()
 
-  async destroyHandAction(id) {
-    await anime({
-      targets: `.card-${id}`,
-      keyframes: [
-        { rotate: random(25, 65), scale: 1, translateX: random(-250, 250), translateY: -500 },
-      ],
-      easing: 'cubicBezier(.5, .05, .1, .3)',
-      duration: 500,
-    }).finished
+    anime.set(`.${name}-hit`, {
+      scale: 0,
+      opacity: 0,
+    })
 
-    const i = this.hand.findIndex(h => h.id === id)
-    if (i !== -1) {
-      this.hand.splice(i, 1)
+    return anime.timeline({
+      targets: `.${name}-hit`,
+      easing: 'spring(1, 80, 10, 20)'
+    })
+      .add({
+        scale: 1,
+        opacity: 1,
+      })
+      .add({
+        scale: 0,
+        opacity: 0,
+      })
+      .finished
+  }
+
+  /**
+   * Apply attack dice to opponent
+   *
+   * @param dice
+   * @returns {Promise<void>}
+   */
+  async attack(dice) {
+    const dmg = dice.length - this.npc.shieldDice.length
+    await this.highlightDice('player', dice)
+    if (dmg > 0) {
+      log(`${store.player.name} attack for ${dmg} damage`)
+      await this.showDamage('npc', dmg)
+      this.npc.hp -= dmg
+      await emit.call(this, 'onAttack', dmg)
     }
   }
 
-  async destroySelected() {
-    await Promise.all(this.selected.map(id => this.destroyHandAction(id)))
+  async onAttack(dmg) {}
+
+  /**
+   * Apply defend dice
+   *
+   * @param dice
+   * @returns {Promise<void>}
+   */
+  async defend(dice) {
+    const shields = dice.length
+    await this.highlightDice('player', dice)
+    if (shields > 0) {
+      const o = store.player.shields
+      store.player.shields += shields
+      const v = store.player.shields - o
+      if (v > 0) {
+        log(`${store.player.name} gains ${v} shield(s)`)
+        await emit.call(this, 'onDefend', dice, v)
+      }
+    }
   }
+
+  async onDefend(shields) {}
+
+  /**
+   * Apply heart dice
+   *
+   * @param dice
+   * @returns {Promise<void>}
+   */
+  async gainLife(dice) {
+    const hearts = dice.length
+    await this.highlightDice('player', dice)
+    if (hearts > 0) {
+      const o = store.player.hp
+      store.player.hp += dice.length
+      const v = store.player.hp - o
+      if (v > 0) {
+        log(`${store.player.name} gains ${v} life`)
+        await emit.call(this, 'onGainLife', v)
+      }
+    }
+  }
+
+  async onGainLife(hearts) {}
+
+  /**
+   * Apply bomb dice
+   *
+   * @param dice
+   * @returns {Promise<void>}
+   */
+  async damage(dice) {
+    const dmg = dice.length - store.player.shields
+    store.player.shields -= dice.length
+    await this.highlightDice('player', dice)
+    if (dmg > 0) {
+      log(`${store.player.name} receive ${dmg} damage(s)`)
+      await this.showDamage('player', dmg)
+      store.player.hp -= dmg
+      await emit.call(this, 'onDamage', dice, dmg)
+    }
+  }
+
+  async onDamage(dice, dmg) {}
+
+  /**
+   * Apply npc attack dice
+   *
+   * @param dice
+   * @returns {Promise<void>}
+   */
+  async npcAttack(dice) {
+    const dmg = dice.length - store.player.shields
+    store.player.shields -= dice.length
+    await this.highlightDice('npc', dice)
+    if (dmg > 0) {
+      log(`${this.npc.name} hits for ${dmg} damage(s)`)
+      await this.showDamage('player', dmg)
+      store.player.hp -= dmg
+      await emit.call(this, 'onNpcAttack', dmg)
+    }
+  }
+
+  async onNpcAttack(dmg) {}
+
+  /**
+   * Apply shield buster dice
+   *
+   * @param dice
+   * @returns {Promise<void>}
+   */
+  async bustShield(dice) {
+    const shields = dice.length
+    await this.highlightDice('player', dice)
+    if (shields > 0) {
+      const npcShields = this.npc.shieldDice.length;
+      const v = npcShields - shields < 0
+        ? npcShields
+        : npcShields - shields
+      if (v > 0) {
+        log(`${store.player.name} bust ${v} shield(s)`)
+        for (let c = 0; c < v; c++) {
+          const i = this.npc.shieldDiceIndexes[0]
+          this.npc.dice.splice(i, 1)
+        }
+        await emit.call(this, 'onBustShield', v)
+      }
+    }
+  }
+
+  async onBustShield(dmg) {}
 }

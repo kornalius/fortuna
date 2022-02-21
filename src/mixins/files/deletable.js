@@ -29,7 +29,7 @@ export default {
       }
       return false
     }
-    if (this.isEquipped) {
+    if (this.isInstalled) {
       if (showMessage) {
         log(`${this.name} needs to be uninstalled first`)
       }
