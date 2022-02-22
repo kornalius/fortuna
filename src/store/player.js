@@ -8,6 +8,7 @@ import Level from '@/mixins/level'
 import Buffable from '@/mixins/buffable'
 import Hp from '@/mixins/hp'
 import Xp from '@/mixins/xp'
+import Credits from '@/mixins/credits'
 import Items from '@/mixins/items'
 import Carry from '@/mixins/carry'
 
@@ -208,6 +209,7 @@ mixin(Player, [
   Name,
   Level,
   Buffable,
+  Credits,
   Items,
   Hp,
   Xp,

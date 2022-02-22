@@ -13,6 +13,7 @@ import Location from '@/mixins/location'
 import Level from '@/mixins/level'
 import Buffable from '@/mixins/buffable'
 import Hp from '@/mixins/hp'
+import Credits from '@/mixins/credits'
 import Items from '@/mixins/items'
 import Carry from '@/mixins/carry'
 
@@ -241,6 +242,7 @@ mixin(Npc, [
   Image,
   Hovered,
   Location,
+  Credits,
   Items,
   Level,
   Buffable,

@@ -22,7 +22,7 @@
           </div>
 
           <div class="inline flex items-center">
-            <v-icon icon="flat-color-icons:sports-mode" width="24" />
+            <v-icon icon="fxemoji:running" width="24" />
             <span class="ml2">{{ player.dex }}</span>
           </div>
 
@@ -30,10 +30,19 @@
             <v-icon icon="noto:brain" width="24" />
             <span class="ml2">{{ player.int }}</span>
           </div>
+
+          <div class="inline flex items-center">
+            <v-icon icon="noto-v1:credit-card" width="24" />
+            <span class="ml2">{{ player.credits }}</span>
+          </div>
         </div>
       </template>
 
-      <span>LEVEL: {{ player.lvl }}, STR: {{ player.str}}, DEX: {{ player.dex }}, INT: {{ player.int }}</span>
+      <span>LEVEL: {{ player.lvl }}, </span>
+      <span>STR: {{ player.str}}, </span>
+      <span>DEX: {{ player.dex }}, </span>
+      <span>INT: {{ player.int }}, </span>
+      <span>CREDITS: {{ player.credits }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
