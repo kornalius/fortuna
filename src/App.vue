@@ -90,6 +90,7 @@ body {
 @import "/public/styles/slide-out-right";
 @import "/public/styles/text-tracking-top";
 @import "/public/styles/text-tracking-bottom";
+@import "/public/styles/glitch";
 
 .background-anim {
   position: absolute;
@@ -114,5 +115,9 @@ body {
   -webkit-border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:vertical:active {
+}
+
+.n-button:hover {
+  animation: glitch .25s
 }
 </style>

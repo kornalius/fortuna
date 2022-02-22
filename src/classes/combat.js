@@ -348,10 +348,17 @@ export default class Combat extends Entity {
    */
   async attack(dice) {
     const dmg = dice.length - this.npc.shieldDice.length
-    await this.highlightDice('player', dice)
+
     store.game.playSound('swing')
+    await this.highlightDice('player', dice)
+
     if (dmg > 0) {
-      await delay(250)
+      const si = this.npc.shieldDiceIndexes
+      if (si.length) {
+        store.game.playSound('sword-hit')
+      }
+      await this.highlightDice('npc', si)
+
       log(`${store.player.name} attack for ${dmg} damage`)
       await this.showDamage('npc', dmg)
       this.npc.hp -= dmg
@@ -414,16 +421,20 @@ export default class Combat extends Entity {
   async npcAttack(dice) {
     if (this.npc.hp > 0) {
       const dmg = dice.length - store.player.shieldDice.length
-      await this.highlightDice('npc', dice)
+
       store.game.playSound('swing')
+      await this.highlightDice('npc', dice)
+
+      if (store.player.shieldDice.length) {
+        store.game.playSound('sword-hit')
+      }
+      await this.highlightDice('player', store.player.shieldDiceIndexes)
+
       if (dmg > 0) {
-        await delay(250)
         log(`${this.npc.name} hits for ${dmg} damage(s)`)
         await this.showDamage('player', dmg)
         store.player.hp -= dmg
         await emit.call(this, 'onNpcAttack', dmg)
-      } else {
-        store.game.playSound('pole-hit')
       }
     }
   }
