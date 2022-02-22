@@ -118,7 +118,7 @@ const sizeClass = computed(() => ({
 }))
 
 const dieFaceStyle = computed(() => (
-  props.selected ? 'outline: 4px solid rgba(241, 153, 54, .85)' : ''
+  props.selected ? 'outline: 2px solid #E79940; box-shadow: inset 0 0 8px #E79940' : ''
 ))
 
 onMounted(() => {
@@ -132,6 +132,7 @@ onMounted(() => {
   height: 48px;
   margin: 10px;
   perspective: 600px;
+  perspective-origin: 300% 300%;
 }
 .wrapper.small {
   width: 24px;
@@ -140,6 +141,7 @@ onMounted(() => {
 }
 
 .die {
+  cursor: pointer;
   position: relative;
   width: 100%;
   height: 100%;
@@ -149,6 +151,7 @@ onMounted(() => {
   transition: transform 200ms;
 }
 .die.small {
+  cursor: unset;
   transform: translateZ(-12px);
 }
 
@@ -156,17 +159,15 @@ onMounted(() => {
   position: absolute;
   width: 48px;
   height: 48px;
-  background: #4C4D6D;
+  background: #5B5C94;
   opacity: .95;
-  border: 2px solid #aaa;
-  box-shadow: 0 0 8px #444666;
+  box-shadow: inset 0 0 12px #111;
 }
 .die-face.small  {
   width: 24px;
   height: 24px;
-  border: 1px solid #aaa;
   border-radius: 4px;
-  box-shadow: 0 0 4px #444666;
+  box-shadow: inset 0 0 8px #111;
 }
 
 .content  {

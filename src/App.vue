@@ -100,4 +100,19 @@ body {
   height: 100%;
   object-fit: fill;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(150, 150, 150, .5);
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: rgba(50, 50, 50, .5);
+  -webkit-border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:vertical:active {
+}
 </style>

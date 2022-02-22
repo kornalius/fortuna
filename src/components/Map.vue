@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <n-card style="opacity: .95">
     <div ref="container" class="container">
       <div :style="style">
         <n-popover

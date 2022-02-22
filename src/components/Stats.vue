@@ -1,5 +1,5 @@
 <template>
-  <n-card class="card">
+  <n-card class="card" style="opacity: .95">
     <div class="player-hit relative">
       <img
         src="/images/hit-effect.png"

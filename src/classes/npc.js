@@ -81,12 +81,13 @@ export default class Npc extends Entity {
   get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) }
 
   get baseDice() {
-    return new Array(this.maxDice).fill(0)
+    const dice = new Array(this.maxDice - 1).fill(0)
       .map(() => ({ faces: store.config.npcBattleDice, value: random(1, 6) }))
       .filter(d => store.config.npcBattleDice[d.value - 1].value !== '_')
-      .sort((a, b) => (
-        a.value < b.value ? -1 : 1
-      ))
+    dice.push({ faces: store.config.npcBattleDice, value: 1 })
+    return dice.sort((a, b) => (
+      a.value < b.value ? -1 : 1
+    ))
   }
 
   get swordDice() {

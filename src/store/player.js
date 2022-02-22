@@ -24,7 +24,6 @@ export default class Player {
       dex: store.config.baseDex,
       int: store.config.baseInt,
       rolls: this.maxRolls,
-      shields: 0,
       // maximum ram space available to install softwares
       ram: store.config.baseRam,
       // maximum disk space available to store files in inventory
@@ -47,10 +46,6 @@ export default class Player {
 
   get int() { return this.state.int }
   set int(value) { this.state.int = value }
-
-  get shields() { return this.state.shields }
-  set shields(value) { this.state.shields = clamp(value, 0, this.maxShields) }
-  get maxShields() { return Math.floor(store.config.baseShields + (0.25 * this.lvl)) }
 
   get rolls() { return this.state.rolls }
   set rolls(value) { this.state.rolls = clamp(value, 0, this.maxRolls) }
@@ -127,6 +122,13 @@ export default class Player {
     return new Array(this.maxDice).fill(0).map(() => (
       { faces: store.config.battleDice, value: 1 }
     ))
+  }
+
+  get shieldDice() {
+    return this.dice.filter(d => store.config.battleDice[d.value - 1].value === 'D')
+  }
+  get shieldDiceIndexes() {
+    return this.shieldDice.map(d => this.dice.indexOf(d))
   }
 
   hasInstalledSoftwareOfType(type) {

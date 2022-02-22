@@ -10,7 +10,6 @@ export default class Config {
     baseStr: 1,
     baseDex: 1,
     baseInt: 1,
-    baseShields: 4,
     baseDice: 5,
     baseRolls: 3,
     highestHp: 100,
@@ -68,7 +67,6 @@ export default class Config {
   get highestHp() { return this.state.highestHp }
   get highestLvl() { return this.state.highestLvl }
 
-  get baseShields() { return this.state.baseShields }
   get baseDice() { return this.state.baseDice }
   get baseRolls() { return this.state.baseRolls }
   get baseStr() { return this.state.baseStr }

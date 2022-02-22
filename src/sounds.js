@@ -38,4 +38,20 @@ export const soundFiles = {
   'hum': { src: 'sfx/hum.wav', loop: true, volume: 0.5 },
   'print': { src: 'sfx/transmission.wav' },
   'power-down': { src: 'sfx/power-down.wav' },
+
+  // Dice
+  'dice-roll': { src: 'sfx/dice-roll.wav' },
+
+  // Hits
+  'hit': { src: 'sfx/hit.wav' },
+  'swing': { src: 'sfx/swing.wav' },
+  'sword-hit': { src: 'sfx/sword-hit.wav' },
+  'pole-hit': { src: 'sfx/pole-hit.wav' },
+  'metal-hit': { src: 'sfx/metal-hit.wav' },
+
+  // Bombs
+  'bomb': { src: 'sfx/bomb.wav' },
+
+  // Powers
+  'upgrade': { src: 'sfx/upgrade.wav' },
 }

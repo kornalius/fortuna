@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <n-card style="opacity: .95">
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
         <div class="top flex self-center relative w-100">
@@ -148,7 +148,7 @@ const logsChanged = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: .25;
+  opacity: .1;
   pointer-events: none;
 }
 .glare {

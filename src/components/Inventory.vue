@@ -1,5 +1,5 @@
 <template>
-  <n-card>
+  <n-card style="opacity: .95">
     <div class="flex flex-column h-100">
       <div class="relative flex h-100">
         <div class="scrollable">

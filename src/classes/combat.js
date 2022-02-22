@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log } from '@/utils'
+import { emit, log, delay } from '@/utils'
 
 export default class Combat extends Entity {
   setupInstance(data) {
@@ -61,8 +61,9 @@ export default class Combat extends Entity {
     this.turn += 1
     await emit.call(this, 'onTurn', this.turn)
 
-    store.player.shields = 0
     store.player.rolls = store.player.maxRolls
+
+    await delay(250)
 
     await this.roll([])
   }
@@ -97,6 +98,10 @@ export default class Combat extends Entity {
   }
 
   async roll(indexes) {
+    await delay(250)
+
+    store.game.playSound('dice-roll')
+
     store.player.rolls -= 1
 
     if (indexes.length === 0) {
@@ -111,12 +116,8 @@ export default class Combat extends Entity {
       const die = store.player.dice[i]
       const count = random(5, 10)
       for (let c = 0; c < count; c++) {
-        await new Promise(resolve => {
-          setTimeout(() => {
-            die.value = random(1, 6)
-            resolve()
-          }, 100)
-        })
+        await delay(50)
+        die.value = random(1, 6)
       }
       resolve()
     })))
@@ -134,7 +135,6 @@ export default class Combat extends Entity {
     }
 
     this.turn = 1
-    store.player.shields = 0
     store.player.rolls = store.player.maxRolls
 
     await emit.call(this, 'onStartCombat')
@@ -254,7 +254,6 @@ export default class Combat extends Entity {
     }
 
     const attacks = []
-    const defends = []
     const lifes = []
     const bombs = []
     const busts = []
@@ -265,9 +264,6 @@ export default class Combat extends Entity {
       switch (store.config.battleDice[die.value - 1].value) {
         case 'A': // sword
           attacks.push(i)
-          break
-        case 'D': // shield
-          defends.push(i)
           break
         case 'H': // heart
           lifes.push(i)
@@ -282,9 +278,6 @@ export default class Combat extends Entity {
       }
     }
 
-    if (defends.length) {
-      await this.defend(defends)
-    }
     if (busts.length) {
       await this.bustShield(busts)
     }
@@ -319,7 +312,7 @@ export default class Combat extends Entity {
       .finished
   }
 
-  async showDamage(name, dmg) {
+  async showDamage(name, dmg, fx = true) {
     const hitLabelEl = document.querySelector(`.${name}-hit-label`)
     hitLabelEl.textContent = dmg.toString()
 
@@ -328,9 +321,13 @@ export default class Combat extends Entity {
       opacity: 0,
     })
 
+    if (fx) {
+      store.game.playSound('hit')
+    }
+
     return anime.timeline({
       targets: `.${name}-hit`,
-      easing: 'spring(1, 80, 10, 20)'
+      easing: 'spring(1, 80, 10, 20)',
     })
       .add({
         scale: 1,
@@ -352,7 +349,9 @@ export default class Combat extends Entity {
   async attack(dice) {
     const dmg = dice.length - this.npc.shieldDice.length
     await this.highlightDice('player', dice)
+    store.game.playSound('swing')
     if (dmg > 0) {
+      await delay(250)
       log(`${store.player.name} attack for ${dmg} damage`)
       await this.showDamage('npc', dmg)
       this.npc.hp -= dmg
@@ -361,28 +360,6 @@ export default class Combat extends Entity {
   }
 
   async onAttack(dmg) {}
-
-  /**
-   * Apply defend dice
-   *
-   * @param dice
-   * @returns {Promise<void>}
-   */
-  async defend(dice) {
-    const shields = dice.length
-    await this.highlightDice('player', dice)
-    if (shields > 0) {
-      const o = store.player.shields
-      store.player.shields += shields
-      const v = store.player.shields - o
-      if (v > 0) {
-        log(`${store.player.name} gains ${v} shield(s)`)
-        await emit.call(this, 'onDefend', dice, v)
-      }
-    }
-  }
-
-  async onDefend(shields) {}
 
   /**
    * Apply heart dice
@@ -399,6 +376,8 @@ export default class Combat extends Entity {
       const v = store.player.hp - o
       if (v > 0) {
         log(`${store.player.name} gains ${v} life`)
+        store.game.playSound('upgrade')
+        await delay(500)
         await emit.call(this, 'onGainLife', v)
       }
     }
@@ -413,12 +392,12 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async damage(dice) {
-    const dmg = dice.length - store.player.shields
-    store.player.shields -= dice.length
+    const dmg = dice.length
     await this.highlightDice('player', dice)
     if (dmg > 0) {
       log(`${store.player.name} receive ${dmg} damage(s)`)
-      await this.showDamage('player', dmg)
+      store.game.playSound('bomb')
+      await this.showDamage('player', dmg, false)
       store.player.hp -= dmg
       await emit.call(this, 'onDamage', dice, dmg)
     }
@@ -433,14 +412,19 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async npcAttack(dice) {
-    const dmg = dice.length - store.player.shields
-    store.player.shields -= dice.length
-    await this.highlightDice('npc', dice)
-    if (dmg > 0) {
-      log(`${this.npc.name} hits for ${dmg} damage(s)`)
-      await this.showDamage('player', dmg)
-      store.player.hp -= dmg
-      await emit.call(this, 'onNpcAttack', dmg)
+    if (this.npc.hp > 0) {
+      const dmg = dice.length - store.player.shieldDice.length
+      await this.highlightDice('npc', dice)
+      store.game.playSound('swing')
+      if (dmg > 0) {
+        await delay(250)
+        log(`${this.npc.name} hits for ${dmg} damage(s)`)
+        await this.showDamage('player', dmg)
+        store.player.hp -= dmg
+        await emit.call(this, 'onNpcAttack', dmg)
+      } else {
+        store.game.playSound('pole-hit')
+      }
     }
   }
 
@@ -453,20 +437,23 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async bustShield(dice) {
-    const shields = dice.length
-    await this.highlightDice('player', dice)
-    if (shields > 0) {
-      const npcShields = this.npc.shieldDice.length;
-      const v = npcShields - shields < 0
-        ? npcShields
-        : npcShields - shields
-      if (v > 0) {
-        log(`${store.player.name} bust ${v} shield(s)`)
-        for (let c = 0; c < v; c++) {
-          const i = this.npc.shieldDiceIndexes[0]
-          this.npc.dice.splice(i, 1)
+    if (this.npc.hp > 0) {
+      const busters = dice.length
+      await this.highlightDice('player', dice)
+      if (busters > 0) {
+        const npcShields = this.npc.shieldDice.length;
+        const v = npcShields - busters <= 0
+          ? npcShields
+          : npcShields - busters
+        if (v > 0) {
+          store.game.playSound('metal-hit')
+          log(`${store.player.name} bust ${v} shield(s)`)
+          for (let c = 0; c < v; c++) {
+            const i = this.npc.shieldDiceIndexes[0]
+            this.npc.dice.splice(i, 1)
+          }
+          await emit.call(this, 'onBustShield', v)
         }
-        await emit.call(this, 'onBustShield', v)
       }
     }
   }

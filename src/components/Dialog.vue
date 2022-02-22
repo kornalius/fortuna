@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-100" style="height: 300px;">
+  <div class="flex w-100" style="height: 300px; opacity: .95;">
     <div class="flex h-100" style="width: 300px">
       <img
         v-if="value.npc?.img"

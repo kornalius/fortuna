@@ -1,9 +1,16 @@
 <template>
-  <div class="flex w-100" style="height: 300px; overflow: hidden;">
+  <div class="flex w-100" style="height: 300px; overflow: hidden; opacity: .95;">
+    <img v-if="value.npc.location.img"
+      class="image"
+      :src="value.npc.location.img"
+      :alt="value.npc.location.img"
+    />
+
     <div class="flex flex-column h-100" style="max-width: 228px">
       <div class="relative">
         <img
           v-if="value.npc?.img"
+          class="npc-image"
           style="max-height: 228px;"
           :src="value.npc.img"
           :alt="value.npc.img"
@@ -19,7 +26,7 @@
 
       <n-popover trigger="hover" placement="bottom">
         <template #trigger>
-          <div class="flex flex-grow-1 items-center" style="color: #b44;">
+          <div class="flex flex-grow-1 items-center" style="color: #b44; z-index: 1">
             <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
             <n-progress
               type="line"
@@ -62,23 +69,7 @@
         />
       </div>
 
-      <div class="actions flex w-100 pv1">
-        <n-popover trigger="hover" placement="bottom">
-          <template #trigger>
-            <div class="flex items-center w-100">
-              <v-icon
-                v-for="(_, index) in playerShields"
-                :key="`${index}-${store.player.id}`"
-                class="shield"
-                :icon="index < store.player.shields ? 'bxs:shield' : 'ci:dot-02-s'"
-                width="24"
-                height="24"
-              />
-            </div>
-          </template>
-          <span>Defense: {{ store.player.shields }} / {{ store.player.maxShields }}</span>
-        </n-popover>
-
+      <div class="actions flex justify-end w-100 pv1">
         <n-button
           :disabled="disabled"
           type="success"
@@ -101,8 +92,6 @@ const props = defineProps({
   value: { type: Object },
 })
 
-const playerShields = computed(() => new Array(store.player.maxShields).fill(''))
-
 const disabled = computed(() => false)
 
 const canReroll = computed(() => store.player.combat.canReroll())
@@ -120,10 +109,20 @@ const executeOrReroll = async () => {
 </script>
 
 <style scoped>
-.shield {
-  height: 30px;
-  color: #6C852B;
-  filter: drop-shadow(2px 1px 1px #ddd);
+.image {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px) brightness(40%);
+  z-index: 0;
+}
+.npc-image {
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #4561B4, #9BA3BD);
 }
 .npc-hit {
   pointer-events: none;

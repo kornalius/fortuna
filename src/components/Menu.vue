@@ -1,5 +1,5 @@
 <template>
-  <n-card style="width: 400px">
+  <n-card style="width: 400px; opacity: .95;">
     <n-button
       v-if="store.game.isPaused"
       class="mv3"

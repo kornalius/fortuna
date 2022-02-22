@@ -199,3 +199,11 @@ export const randomFilename = () => `${pickRandom(adjectives)}-${pickRandom(file
 export const randomMaleName = () => `${pickRandom(maleNames)} ${pickRandom(lastNames)}`
 
 export const randomFemaleName = () => `${pickRandom(femaleNames)} ${pickRandom(lastNames)}`
+
+export const delay = time => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
+}
