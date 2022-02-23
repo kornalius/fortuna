@@ -7,9 +7,12 @@ import { emit, log, delay } from '@/utils'
 export default class Combat extends Entity {
   setupInstance(data) {
     return super.setupInstance({
+      processing: false,
       npcId: null,
       // current turn
       turn: 1,
+      // current turn bonus to apply
+      bonus: 0,
       // rolls left for the turn
       rolls: store.player.maxRolls,
       // has the combat ended
@@ -18,9 +21,44 @@ export default class Combat extends Entity {
       won: false,
       // selected dice
       selected: [],
+      // combos
+      combos: [
+        {
+          faces: { 'A': 5 },
+          expr: matches => {
+            this.bonus = 5 + matches['A']
+          }
+        },
+        {
+          faces: { 'D': 5 },
+          expr: matches => {
+            this.bonus = 5 + matches['D']
+          }
+        },
+        {
+          faces: { 'H': 5 },
+          expr: () => {
+            store.player.hp = store.player.maxHp
+            return 0
+          }
+        },
+        {
+          faces: { 'B': 5 },
+          expr: () => {
+            this.npc.hp = 0
+            return 0
+          }
+        },
+      ],
+      // combos gained via items during combat
+      bonusCombos: [],
       ...data,
     })
   }
+
+  get processing() { return this.state.processing }
+  set processing(value) { this.state.processing = value }
+
 
   get npcId() { return this.state.npcId }
   set npcId(value) { this.state.npcId = value }
@@ -41,6 +79,9 @@ export default class Combat extends Entity {
   get turn() { return this.state.turn }
   set turn(value) { this.state.turn = value }
 
+  get bonus() { return this.state.bonus }
+  set bonus(value) { this.state.bonus = value }
+
   get rolls() { return this.state.rolls }
   set rolls(value) { this.state.rolls = value }
 
@@ -52,20 +93,39 @@ export default class Combat extends Entity {
 
   get selected() { return this.state.selected }
   set selected(value) { this.state.selected = value }
-
   get hasSelected() { return this.selected.length > 0 }
 
+  get combos() { return this.state.combos }
+
+  get bonusCombos() { return this.state.bonusCombos }
+  set bonusCombos(value) { this.state.bonusCombos = value }
+
+  addBonusCombo(combo, turns = -1) {
+    this.bonusCombos.push({ ...combo, turns })
+  }
+
   async nextTurn() {
+    this.processing = true
     log('Next turn started')
 
+    this.bonus = 0
     this.turn += 1
     await emit.call(this, 'onTurn', this.turn)
 
     store.player.rolls = store.player.maxRolls
 
+    // decrement turns left for bonus combos
+    this.bonusCombos.forEach(c => {
+      if (c.turns !== -1) {
+        c.turns -= 1
+      }
+    })
+    this.bonusCombos = this.bonusCombos.filter(c => c.turns === 0)
+
     await delay(250)
 
     await this.roll([])
+    this.processing = false
   }
 
   async onTurn(turn) {}
@@ -98,6 +158,7 @@ export default class Combat extends Entity {
   }
 
   async roll(indexes) {
+    this.processing = true
     await delay(250)
 
     store.game.playSound('dice-roll')
@@ -122,11 +183,46 @@ export default class Combat extends Entity {
       resolve()
     })))
 
+    this.processing = false
+
     return true
   }
 
+  /**
+   * Validates if the faces of a combo are all matching the dice
+   *
+   * @param combo
+   * @returns {object}
+   */
+  validateCombo(combo) {
+    const bd = store.config.battleDice
+    const faces = Object.keys(combo.faces)
+    let matches = {}
+    faces.forEach(key => {
+      const c = store.player.dice.filter(d => bd[d.value - 1].value === key)
+      if (c >= combo.faces[key]) {
+        matches[key] = c
+      }
+    })
+    return Object.keys(matches).length === faces.length ? matches : {}
+  }
+
+  /**
+   * Find matching combos and bonusCombos based on the current dice roll faces
+   *
+   * @returns {Promise<void>}
+   */
+  async checkCombos() {
+    [...this.combos, ...this.bonusCombos].forEach(c => {
+      const matches = this.validateCombo(c)
+      if (Object.keys(matches).length > 0) {
+        c.expr(matches)
+      }
+    })
+  }
+
   canStartCombat(showMessage) {
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('combat', showMessage));
   }
 
   async startCombat() {
@@ -161,6 +257,10 @@ export default class Combat extends Entity {
 
     this.won = false
 
+    // remove combat buffs
+    store.player.removeBuff('dice')
+    store.player.removeBuff('roll')
+
     if (store.player.hp > 0) {
       this.won = true
       log('You have won the battle')
@@ -184,6 +284,9 @@ export default class Combat extends Entity {
   }
 
   canSelect(index, showMessage) {
+    if (this.processing) {
+      return false
+    }
     if (store.player.rolls <= 0) {
       if (showMessage) {
         log('You have no rerolls left')
@@ -253,6 +356,10 @@ export default class Combat extends Entity {
       return false
     }
 
+    this.processing = true
+
+    await this.checkCombos()
+
     const attacks = []
     const lifes = []
     const bombs = []
@@ -298,6 +405,8 @@ export default class Combat extends Entity {
     if (!(await this.endCombat())) {
       await this.nextTurn()
     }
+
+    this.processing = false
 
     return true
   }
@@ -352,13 +461,13 @@ export default class Combat extends Entity {
     store.game.playSound('swing')
     await this.highlightDice('player', dice)
 
-    if (dmg > 0) {
-      const si = this.npc.shieldDiceIndexes
-      if (si.length) {
-        store.game.playSound('sword-hit')
-      }
+    const si = this.npc.shieldDiceIndexes
+    if (si.length) {
+      store.game.playSound('sword-hit')
       await this.highlightDice('npc', si)
+    }
 
+    if (dmg > 0) {
       log(`${store.player.name} attack for ${dmg} damage`)
       await this.showDamage('npc', dmg)
       this.npc.hp -= dmg
@@ -427,8 +536,8 @@ export default class Combat extends Entity {
 
       if (store.player.shieldDice.length) {
         store.game.playSound('sword-hit')
+        await this.highlightDice('player', store.player.shieldDiceIndexes)
       }
-      await this.highlightDice('player', store.player.shieldDiceIndexes)
 
       if (dmg > 0) {
         log(`${this.npc.name} hits for ${dmg} damage(s)`)

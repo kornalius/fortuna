@@ -52,7 +52,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('open', showMessage));
   },
 
   async open() {

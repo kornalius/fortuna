@@ -295,7 +295,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('connect', showMessage));
   }
 
   async connect() {
@@ -361,7 +361,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('disconnect', showMessage));
   }
 
   async disconnect() {
@@ -404,7 +404,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('authenticate', showMessage));
   }
 
   async authenticate() {
@@ -453,8 +453,10 @@ export default class Server extends Item {
       }
       return false
     }
+    if (this.checkRequirements && !this.checkRequirements('crack', showMessage)) {
+      return false
+    }
     return checkSoftware.call(this, store.player.installedCracker,showMessage)
-
   }
 
   async crack() {
@@ -501,7 +503,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('list', showMessage));
   }
 
   async list() {

@@ -60,7 +60,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('unlock', showMessage));
   },
 
   async unlock() {

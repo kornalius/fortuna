@@ -37,32 +37,36 @@ export default class Player {
       combatId: null,
       dice: this.baseDice,
     })
+
+    setInterval(() => this.processBuffs(), 1000)
   }
 
-  get str() { return this.state.str }
+  get str() { return this.state.str + this.sumOfBuffs('str') }
   set str(value) { this.state.str = value }
 
-  get dex() { return this.state.dex }
+  get dex() { return this.state.dex + this.sumOfBuffs('dex') }
   set dex(value) { this.state.dex = value }
 
-  get int() { return this.state.int }
+  get int() { return this.state.int + this.sumOfBuffs('int') }
   set int(value) { this.state.int = value }
 
   get rolls() { return this.state.rolls }
   set rolls(value) { this.state.rolls = clamp(value, 0, this.maxRolls) }
-  get maxRolls() { return Math.floor(store.config.baseRolls + (0.25 * this.lvl)) }
+  get maxRolls() {
+    return Math.floor(store.config.baseRolls + (0.25 * this.lvl)) + this.sumOfBuffs('roll')
+  }
 
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
   get installedSoftwares() { return this.items.filter(i => i.isSoftware && i.isInstalled) }
   get files() { return this.items.filter(i => i.isFile) }
 
-  get ram() { return this.state.ram }
+  get ram() { return this.state.ram + this.sumOfBuffs('ram') }
   set ram(value) { this.state.ram = value }
   get ramFree() { return this.state.ram - this.ramUsed }
   get ramUsed() { return this.installedSoftwares .reduce((acc, i) => acc + i.weight, 0) }
 
-  get disk() { return this.state.disk }
+  get disk() { return this.state.disk + this.sumOfBuffs('disk') }
   set disk(value) { this.state.disk = value }
   get diskFree() { return this.state.disk - this.diskUsed }
   get diskUsed() { return this.files.reduce((acc, i) => acc + i.weight, 0) }
@@ -117,7 +121,7 @@ export default class Player {
 
   get dice() { return this.state.dice }
   set dice(value) { this.state.dice = value }
-  get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) }
+  get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) + this.sumOfBuffs('dice') }
 
   get baseDice() {
     return new Array(this.maxDice).fill(0).map(() => (

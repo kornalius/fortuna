@@ -106,7 +106,7 @@ export default class Dialog extends Entity {
   }
 
   canSay(showMessage) {
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('say', showMessage));
   }
 
   async say() {
@@ -131,6 +131,9 @@ export default class Dialog extends Entity {
     }
     if (typeof answer.disabled === 'function') {
       return answer.disabled.call(this)
+    }
+    if (this.checkRequirements && !this.checkRequirements('answer', showMessage)) {
+      return false
     }
     return answer.disabled !== true
   }

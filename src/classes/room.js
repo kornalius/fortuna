@@ -56,6 +56,7 @@ export default class Room extends Entity {
 
   canEnter(fromRoom, showMessage) {
     return store.player.canMove(showMessage)
+      && !(this.checkRequirements && !this.checkRequirements('enter', showMessage));
   }
 
   async enter(fromRoom) {
@@ -106,6 +107,7 @@ export default class Room extends Entity {
       return false
     }
     return store.player.canMove(showMessage)
+      && !(this.checkRequirements && !this.checkRequirements('exit', showMessage));
   }
 
   async exit(toRoom) {

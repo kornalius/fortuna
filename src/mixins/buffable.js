@@ -7,27 +7,35 @@ export default {
   set buffs(value) { this.state.buffs = value },
   get hasBuffs() { return this.state.buffs.length > 0 },
 
-  addBuff(target, name, value) {
-    this.state.buffs.push({ targetId: target?.id, targetStore: target?.store, name, value })
+  addBuff(name, value, time = 0) {
+    this.state.buffs.push({ name, value, time, startTime: Date.now() })
   },
 
-  removeBuff(target, name) {
-    this.state.buffs = this.state.buffs.filter(b => (
-      (!target || b.targetId === target.id) && (!name || b.name === name)
-    ))
+  removeBuff(name) {
+    this.state.buffs = this.state.buffs.filter(b => b.name === name)
   },
 
-  hasBuffsFor(target, name) {
-    return this.buffsFor(target, name).length > 0
+  processBuffs() {
+    const toRemove = []
+    this.buffs.forEach(b => {
+      if (Date.now() - b.startTime <= 0) {
+        toRemove.push(b)
+      }
+    })
+    if (toRemove.length > 0) {
+      this.state.buffs = this.state.buffs.filter(b => !toRemove.includes(b))
+    }
   },
 
-  buffsFor(target, name) {
-    return this.state.buffs.filter(b => (
-      (!target || b.targetId === target.id) && (!name || b.name === name)
-    ))
+  hasBuffsFor(name) {
+    return this.buffsFor(name).length > 0
   },
 
-  sumOfBuffs(target, name) {
-    return this.buffsFor(target, name).reduce((acc, b) => acc + b.value, 0) || 0
+  buffsFor(name) {
+    return this.state.buffs.filter(b => b.name === name)
+  },
+
+  sumOfBuffs(name) {
+    return this.buffsFor(name).reduce((acc, b) => acc + b.value, 0) || 0
   }
 }

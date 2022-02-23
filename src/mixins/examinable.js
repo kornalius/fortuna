@@ -19,7 +19,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('examine', showMessage));
   },
 
   async examine() {

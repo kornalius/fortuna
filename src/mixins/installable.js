@@ -73,7 +73,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('install', showMessage));
   },
 
   async install() {
@@ -112,7 +112,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('uninstall', showMessage));
   },
 
   async uninstall() {

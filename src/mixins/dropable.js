@@ -48,7 +48,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('drop', showMessage));
   },
 
   async drop() {

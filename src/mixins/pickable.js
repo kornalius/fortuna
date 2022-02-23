@@ -36,7 +36,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('pickup', showMessage));
   },
 
   async pickup() {

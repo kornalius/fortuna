@@ -54,7 +54,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('consume', showMessage));
   },
 
   async consume() {

@@ -57,7 +57,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('activate', showMessage));
   },
 
   async activate() {
@@ -85,7 +85,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('disactivate', showMessage));
   },
 
   async disactivate() {

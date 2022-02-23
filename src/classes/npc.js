@@ -153,7 +153,7 @@ export default class Npc extends Entity {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('talk', showMessage));
   }
 
   async talk() {

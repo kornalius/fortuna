@@ -58,6 +58,8 @@
 
     <div class="player-side flex flex-column flex-grow-1 relative">
       <div class="flex relative h-100 items-center">
+        <span class="bonus-label">0</span>
+
         <Die
           v-for="(die, index) in store.player.dice"
           :key="`player-die-${index}`"
@@ -92,7 +94,7 @@ const props = defineProps({
   value: { type: Object },
 })
 
-const disabled = computed(() => false)
+const disabled = computed(() => props.value.processing)
 
 const canReroll = computed(() => store.player.combat.canReroll())
 

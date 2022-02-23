@@ -42,7 +42,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirements && !this.checkRequirements('push', showMessage));
   },
 
   async push() {
