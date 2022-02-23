@@ -2,7 +2,8 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log, delay } from '@/utils'
+import { emit, log, delay, mixin } from '@/utils'
+import Requirements from '@/mixins/requirements'
 
 export default class Combat extends Entity {
   setupInstance(data) {
@@ -222,7 +223,7 @@ export default class Combat extends Entity {
   }
 
   canStartCombat(showMessage) {
-    return !(this.checkRequirements && !this.checkRequirements('combat', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('combat', showMessage));
   }
 
   async startCombat() {
@@ -580,3 +581,7 @@ export default class Combat extends Entity {
 
   async onBustShield(dmg) {}
 }
+
+mixin(Combat, [
+  Requirements,
+])

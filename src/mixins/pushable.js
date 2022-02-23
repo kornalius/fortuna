@@ -7,16 +7,19 @@ export default {
     pushed: false,
     actions: [
       item => (
-        item.canPush()
+        item.isPushable && !item.isPushed
           ? {
-            label: 'Push',
+            label: item.pushLabel,
             key: 'push',
             icon: 'system-uicons:push-right',
-            disabled: false,
+            disabled: !item.canPush(),
             click: async () => item.push(),
           }
           : undefined
       ),
+    ],
+    requirements: [
+      { name: 'push', str: 1 },
     ],
   },
 
@@ -28,6 +31,10 @@ export default {
 
   get pushDelay() { return this.state.pushDelay },
   set pushDelay(value) { this.state.pushDelay = value },
+
+  get pushLabel() {
+    return `Push ${this.requirementsLabelFor('push')}`
+  },
 
   canPush(showMessage) {
     if (!this.isPushable) {
@@ -42,7 +49,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('push', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('push', showMessage));
   },
 
   async push() {

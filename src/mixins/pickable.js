@@ -6,13 +6,13 @@ export default {
     pickable: true,
     actions: [
       item => (
-        item.canPickup()
+        item.isPickable && !store.player.has(item)
           ? {
-            label: 'Pickup',
+            label: item.pickupLabel,
             key: 'pickup',
             icon: 'fa-solid:hand-lizard',
             class: 'rotate-270',
-            disabled: false,
+            disabled: !item.canPickup(),
             click: async () => item.pickup(),
           }
           : undefined
@@ -22,6 +22,10 @@ export default {
 
   get isPickable() { return this.state.pickable },
   set pickable(value) { this.state.pickable = value },
+
+  get pickupLabel() {
+    return `Pickup ${this.requirementsLabelFor('pickup')}`
+  },
 
   canPickup(showMessage) {
     if (!this.isPickable) {
@@ -36,7 +40,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('pickup', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('pickup', showMessage));
   },
 
   async pickup() {

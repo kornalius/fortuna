@@ -8,23 +8,23 @@ export default {
     installType: null,
     actions: [
       item => (
-        item.canInstall()
+        item.isInstallable
           ? {
-            label: 'Install',
+            label: item.installLabel,
             key: 'install',
             icon: 'whh:savetodrive',
-            disabled: false,
+            disabled: !item.canInstall(),
             click: async () => item.install(),
           }
-          : undefined
+        : undefined
       ),
       item => (
-        item.canUninstall()
+        item.isInstallable
           ? {
-            label: 'Uninstall',
+            label: item.uninstallLabel,
             key: 'uninstall',
             icon: 'entypo:uninstall',
-            disabled: false,
+            disabled: !item.canUninstall(),
             click: async () => item.uninstall(),
           }
           : undefined
@@ -40,6 +40,14 @@ export default {
 
   get installType() { return this.state.installType },
   set installType(value) { this.state.installType = value },
+
+  get installLabel() {
+    return `Install ${this.requirementsLabelFor('install')}`
+  },
+
+  get uninstallLabel() {
+    return `Uninstall ${this.requirementsLabelFor('uninstall')}`
+  },
 
   canInstall(showMessage) {
     if (!this.isInstallable) {
@@ -73,7 +81,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('install', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('install', showMessage));
   },
 
   async install() {
@@ -112,7 +120,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('uninstall', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('uninstall', showMessage));
   },
 
   async uninstall() {

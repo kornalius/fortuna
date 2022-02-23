@@ -13,16 +13,19 @@ export default {
     removeWhenDestroyed: true,
     actions: [
       item => (
-        item.canDestroy()
+        item.isDestructable
           ? {
-            label: 'Destroy',
+            label: item.destroyLabel,
             key: 'destroy',
             icon: 'whh:breakable',
-            disabled: false,
+            disabled: !item.canDestroy(),
             click: async () => item.destroy(),
           }
           : undefined
       ),
+    ],
+    requirements: [
+      { name: 'destroy', str: 1 },
     ],
   },
 
@@ -41,6 +44,10 @@ export default {
   get removeWhenDestroyed() { return this.state.removeWhenDestroyed },
   set removeWhenDestroyed(value) { this.state.removeWhenDestroyed = value },
 
+  get destroyLabel() {
+    return `Destroy ${this.requirementsLabelFor('destroy')}`
+  },
+
   canDestroy(showMessage) {
     if (this.isDestructable) {
       if (showMessage) {
@@ -54,7 +61,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('destroy', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('destroy', showMessage));
   },
 
   async destroy() {

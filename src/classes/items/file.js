@@ -1,6 +1,7 @@
 import Item from './item'
 import { mixin } from '@/utils'
 import Version from '@/mixins/version'
+import Examinable from '@/mixins/examinable'
 import Viewable from '@/mixins/files/viewable'
 import Deletable from '@/mixins/files/deletable'
 import Decryptable from '@/mixins/files/decryptable'
@@ -32,6 +33,7 @@ export default class File extends Item {
 
 mixin(File, [
   Version,
+  Examinable,
   Viewable,
   Deletable,
   Decryptable,

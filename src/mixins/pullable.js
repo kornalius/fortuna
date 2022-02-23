@@ -7,20 +7,23 @@ export default {
     pulled: false,
     actions: [
       item => (
-        item.canPull()
+        item.isPullable && !item.isPulled
           ? {
-            label: 'Push',
+            label: item.pullLabel,
             key: 'pull',
             icon: 'system-uicons:push-left',
-            disabled: false,
+            disabled: !item.canPull(),
             click: async () => item.pull(),
           }
           : undefined
       ),
     ],
+    requirements: [
+      { name: 'pull', str: 1 },
+    ],
   },
 
-  get isPushable() { return this.state.pullable },
+  get isPullable() { return this.state.pullable },
   set pullable(value) { this.state.pullable = value },
 
   get isPulled() { return this.state.pulled },
@@ -29,8 +32,12 @@ export default {
   get pullDelay() { return this.state.pullDelay },
   set pullDelay(value) { this.state.pullDelay = value },
 
+  get pullLabel() {
+    return `Pull ${this.requirementsLabelFor('pull')}`
+  },
+
   canPull(showMessage) {
-    if (!this.isPushable) {
+    if (!this.isPullable) {
       if (showMessage) {
         log(`${this.name} cannot be pulled`)
       }
@@ -42,7 +49,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('pull', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('pull', showMessage));
   },
 
   async pull() {

@@ -4,6 +4,22 @@ export default {
   state: {
     examinable: true,
     examined: 0,
+    actions: [
+      item => (
+        item.isExaminable
+          ? {
+            label: item.examineLabel,
+            key: 'examine',
+            icon: 'emojione:eye',
+            disabled: !item.canExamine(),
+            click: async () => item.examine(),
+          }
+          : undefined
+      ),
+    ],
+    actionsOrder: [
+      'examine',
+    ],
   },
 
   get isExaminable() { return this.state.examinable },
@@ -12,6 +28,10 @@ export default {
   get examined() { return this.state.examined },
   set examined(value) { this.state.examined = value },
 
+  get examineLabel() {
+    return `Examine ${this.requirementsLabelFor('examine')}`
+  },
+
   canExamine(showMessage) {
     if (!this.isExaminable) {
       if (showMessage) {
@@ -19,7 +39,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('examine', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('examine', showMessage));
   },
 
   async examine() {

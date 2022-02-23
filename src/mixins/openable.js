@@ -8,14 +8,14 @@ export default {
     opened: false,
     drawer: false,
     actions: [
-      door => (
-        door.canOpen()
+      item => (
+        item.isOpenable && !item.isOpened
           ? {
-            label: door.isOpened ? 'Close' : 'Open',
+            label: item.openLabel,
             key: 'toggleOpen',
-            icon: door.isOpened ? 'fa-solid:door-closed' : 'fa-solid:door-open',
-            disabled: false,
-            click: async () => door.open(),
+            icon: item.isOpened ? 'fa-solid:door-closed' : 'fa-solid:door-open',
+            disabled: !item.canOpen(),
+            click: async () => item.open(),
           }
           : undefined
       ),
@@ -32,6 +32,12 @@ export default {
   set closeable(value) { this.state.closeable = value },
 
   get isClosed() { return !this.state.opened },
+
+  get openLabel() {
+    return !this.isOpened
+      ? `Open ${this.requirementsLabelFor('open')}`
+      : `Close ${this.requirementsLabelFor('close')}`
+  },
 
   canOpen(showMessage) {
     if (!this.isOpenable) {
@@ -52,7 +58,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('open', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('open', showMessage));
   },
 
   async open() {
@@ -81,7 +87,7 @@ export default {
       }
       return false
     }
-    return true
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('close', showMessage));
   },
 
   async close() {

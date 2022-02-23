@@ -9,12 +9,12 @@ export default {
     type: 'txt',
     actions: [
       item => (
-        item.canView()
+        item.isViewable
           ? {
-            label: 'View',
+            label: item.viewLabel,
             key: 'view',
             icon: 'healthicons:magnifying-glass',
-            disabled: false,
+            disabled: !item.canView(),
             click: async () => item.view(),
           }
           : undefined
@@ -49,6 +49,10 @@ export default {
   get isViewed() { return this.state.viewed },
   set viewed(value) { this.state.viewed = value },
 
+  get viewLabel() {
+    return `View ${this.requirementsLabelFor('view')}`
+  },
+
   canView(showMessage) {
     if (!this.isViewable) {
       if (showMessage) {
@@ -60,6 +64,9 @@ export default {
       if (showMessage) {
         log(`You need a ${this.type} viewer to view the content of ${this.name.toLowerCase()}`)
       }
+      return false
+    }
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('view', showMessage)) {
       return false
     }
     return checkSoftware.call(this, store.player.installedViewer,  showMessage)

@@ -8,27 +8,31 @@ export default {
     active: false,
     actions: [
       item => (
-        item.canActivate()
-          ? {
-            label: 'Activate',
+        item.isActivable && !item.isActive
+        ? {
+            label: item.activateLabel,
             key: 'activate',
             icon: 'mdi:toggle-switch-outline',
-            disabled: false,
+            disabled: !item.canActivate(),
             click: async () => item.activate(),
           }
-          : undefined
+        : undefined
       ),
       item => (
-        item.canDisactivate()
+        item.isDisactivable && item.isActive
           ? {
-            label: 'Deactivate',
+            label: item.disactivateLabel,
             key: 'disactivate',
             icon: 'mdi:toggle-switch-off-outline',
-            disabled: false,
+            disabled: !item.canDisactivate(),
             click: async () => item.disactivate(),
           }
           : undefined
       ),
+    ],
+    requirements: [
+      { name: 'activate', dex: 1 },
+      { name: 'disactivate', dex: 1 },
     ],
   },
 
@@ -44,6 +48,14 @@ export default {
   get activationDelay() { return this.state.activationDelay },
   set activationDelay(value) { this.state.activationDelay = value },
 
+  get activateLabel() {
+    return `Activate ${this.requirementsLabelFor('activate')}`
+  },
+
+  get disactivateLabel() {
+    return `Disactivate ${this.requirementsLabelFor('disactivate')}`
+  },
+
   canActivate(showMessage) {
     if (!this.isActivable) {
       if (showMessage) {
@@ -57,7 +69,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('activate', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('activate', showMessage));
   },
 
   async activate() {
@@ -85,7 +97,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('disactivate', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('disactivate', showMessage));
   },
 
   async disactivate() {

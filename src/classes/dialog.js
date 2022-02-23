@@ -1,6 +1,7 @@
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log } from '@/utils'
+import { emit, log, mixin } from '@/utils'
+import Requirements from '@/mixins/requirements'
 
 export default class Dialog extends Entity {
   byeAnswer = {
@@ -106,7 +107,7 @@ export default class Dialog extends Entity {
   }
 
   canSay(showMessage) {
-    return !(this.checkRequirements && !this.checkRequirements('say', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('say', showMessage));
   }
 
   async say() {
@@ -132,7 +133,7 @@ export default class Dialog extends Entity {
     if (typeof answer.disabled === 'function') {
       return answer.disabled.call(this)
     }
-    if (this.checkRequirements && !this.checkRequirements('answer', showMessage)) {
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('answer', showMessage)) {
       return false
     }
     return answer.disabled !== true
@@ -162,3 +163,7 @@ export default class Dialog extends Entity {
 
   async onBye() {}
 }
+
+mixin(Dialog, [
+  Requirements,
+])

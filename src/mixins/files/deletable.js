@@ -6,12 +6,12 @@ export default {
     deletable: false,
     actions: [
       item => (
-        item.canDel()
+        item.isDeletable
           ? {
-            label: 'Delete',
+            label: item.deleteLabel,
             key: 'delete',
             icon: 'fluent:delete-24-filled',
-            disabled: false,
+            disabled: !item.canDel(),
             click: async () => item.del(),
           }
           : undefined
@@ -21,6 +21,10 @@ export default {
 
   get isDeletable() { return this.state.deletable },
   set deletable(value) { this.state.deletable = value },
+
+  get deleteLabel() {
+    return `Delete ${this.requirementsLabelFor('delete')}`
+  },
 
   canDel(showMessage) {
     if (!this.isDeletable) {
@@ -33,6 +37,9 @@ export default {
       if (showMessage) {
         log(`${this.name} needs to be uninstalled first`)
       }
+      return false
+    }
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('del', showMessage)) {
       return false
     }
     return checkSoftware.call(this, store.player.installedDeleter,showMessage)

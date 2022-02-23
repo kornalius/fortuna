@@ -7,17 +7,20 @@ export default {
     locked: false,
     keyId: null,
     actions: [
-      door => (
-        door.canUnlock()
+      item => (
+        item.isUnlockable && item.isLocked
           ? {
-            label: 'Unlock',
+            label: item.unlockLabel,
             key: 'unlock',
             icon: 'fa-solid:lock-open',
-            disabled: false,
-            click: async () => door.unlock(),
+            disabled: !item.canUnlock(),
+            click: async () => item.unlock(),
           }
           : undefined
       ),
+    ],
+    requirements: [
+      { name: 'unlock', dex: 1 },
     ],
   },
 
@@ -41,6 +44,10 @@ export default {
     }
   },
 
+  get unlockLabel() {
+    return `Unlock ${this.requirementsLabelFor('unlock')}`
+  },
+
   canUnlock(showMessage) {
     if (!this.isUnlockable) {
       if (showMessage) {
@@ -60,7 +67,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('unlock', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('unlock', showMessage));
   },
 
   async unlock() {

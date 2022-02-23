@@ -5,21 +5,28 @@ export default {
     usable: false,
     actions: [
       item => (
-        item.canUse()
+        item.isUsable
           ? {
-            label: 'Use',
+            label: item.useLabel,
             key: 'use',
             icon: 'fa-solid:hand-pointer',
-            disabled: false,
+            disabled: !item.canUse(),
             click: async () => item.use(),
           }
           : undefined
       ),
     ],
+    requirements: [
+      { name: 'use', dex: 1 },
+    ],
   },
 
   get isUsable() { return this.state.usable },
   set usable(value) { this.state.usable = value },
+
+  get useLabel() {
+    return `Use ${this.requirementsLabelFor('use')}`
+  },
 
   canUse(showMessage) {
     if (!this.isUsable) {
@@ -28,7 +35,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('use', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('use', showMessage));
   },
 
   async use() {

@@ -21,19 +21,17 @@ export default class Door extends Item {
       directions: {},
       actions: [
         item => (
-          item.canUse()
-            ? {
-              label: 'Use',
-              key: 'use',
-              icon: 'whh:enteralt',
-              disabled: false,
-              click: async () => item.use(),
-            }
-            : undefined
+          {
+            label: item.useLabel,
+            key: 'use',
+            icon: 'whh:enteralt',
+            disabled: !item.canUse(),
+            click: async () => item.use(),
+          }
         ),
       ],
       actionsOrder: [
-        'enter',
+        'use',
         'toggleOpen',
         'unlock',
       ],
@@ -46,6 +44,10 @@ export default class Door extends Item {
 
   get roomIds() { return Object.keys(this.directions) }
   get rooms() { return this.roomIds.map(id => store.rooms.get(id)) }
+
+  get useLabel() {
+    return `Enter ${this.requirementsLabelFor('use')}`
+  }
 
   roomForDirection (d) {
     const od = oppositeDirection(d)

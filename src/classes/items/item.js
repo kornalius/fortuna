@@ -17,6 +17,7 @@ import Destructable from '@/mixins/destructable'
 import Examinable from '@/mixins/examinable'
 import Pushable from '@/mixins/pushable'
 import Pullable from '@/mixins/pullable'
+import Requirements from '@/mixins/requirements'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -29,21 +30,6 @@ export default class Item extends Entity {
       weight: 0,
       locationId,
       locationStore,
-      actions: [
-        item => (
-          item.canExamine()
-            ? {
-              label: 'Examine',
-              key: 'examine',
-              icon: 'emojione:eye',
-              click: async () => item.examine(),
-            }
-            : undefined
-        ),
-      ],
-      actionsOrder: [
-        'examine',
-      ],
       ...data,
     }
   }
@@ -76,4 +62,5 @@ mixin(Item, [
   Examinable,
   Pushable,
   Pullable,
+  Requirements,
 ])

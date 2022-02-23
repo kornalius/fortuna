@@ -13,12 +13,12 @@ export default {
     removeWhenConsumed: true,
     actions: [
       item => (
-        item.canConsume()
+        item.isConsumable
           ? {
-            label: 'Consume',
+            label: item.consumeLabel,
             key: 'consume',
             icon: 'emojione-monotone:fork-and-knife',
-            disabled: false,
+            disabled: !item.canConsume(),
             click: async () => item.consume(),
           }
           : undefined
@@ -41,6 +41,10 @@ export default {
   get removeWhenConsumed() { return this.state.removeWhenConsumed },
   set removeWhenConsumed(value) { this.state.removeWhenConsumed = value },
 
+  get consumeLabel() {
+    return `Consume ${this.requirementsLabelFor('consume')}`
+  },
+
   canConsume(showMessage) {
     if (this.isConsumable) {
       if (showMessage) {
@@ -54,7 +58,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('consume', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('consume', showMessage));
   },
 
   async consume() {

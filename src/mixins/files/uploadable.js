@@ -6,12 +6,12 @@ export default {
     uploadable: false,
     actions: [
       item => (
-        item.canUpload()
-          ? {
-            label: 'Upload',
+        item.isUploadable && store.player.has(item)
+        ? {
+            label: item.uploadLabel,
             key: 'upload',
             icon: 'oi:data-transfer-upload',
-            disabled: false,
+            disabled: !item.canUpload(),
             click: async () => item.upload(),
           }
           : undefined
@@ -21,6 +21,10 @@ export default {
 
   get isUploadable() { return this.state.uploadable },
   set uploadable(value) { this.state.uploadable = value },
+
+  get uploadLabel() {
+    return `Upload ${this.requirementsLabelFor('upload')}`
+  },
 
   canUpload(showMessage) {
     if (!this.isUploadable) {
@@ -39,6 +43,9 @@ export default {
       if (showMessage) {
         log(`${this.name} must be on your disk first`)
       }
+      return false
+    }
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('upload', showMessage)) {
       return false
     }
     return checkSoftware.call(this, store.player.installedFtp, showMessage)

@@ -7,14 +7,14 @@ export default {
     crypted: false,
     actions: [
       item => (
-        item.canDecrypt()
+        item.isDecryptable && item.isCrypted
           ? {
-            label: 'Decrypt',
-            key: 'decrypt',
-            icon: 'carbon:encryption',
-            disabled: false,
-            click: async () => item.decrypt(),
-          }
+              label: item.decryptLabel,
+              key: 'decrypt',
+              icon: 'carbon:encryption',
+              disabled: !item.canDecrypt(),
+              click: async () => item.decrypt(),
+            }
           : undefined
       ),
     ],
@@ -25,6 +25,10 @@ export default {
 
   get isCrypted() { return store.player.crypted },
   set crypted(value) { this.state.crypted = value },
+
+  get decryptLabel() {
+    return `Decrypt ${this.requirementsLabelFor('decrypt')}`
+  },
 
   canDecrypt(showMessage) {
     if (!this.isDecryptable) {
@@ -43,6 +47,9 @@ export default {
       if (showMessage) {
         log(`${this.name} must be on your disk first`)
       }
+      return false
+    }
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('decrypt', showMessage)) {
       return false
     }
     return checkSoftware.call(this, store.player.installedDecrypter,showMessage)

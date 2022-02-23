@@ -5,6 +5,7 @@ import { checkSoftware, emit, log, mixin, pickRandom, randomFilename } from '@/u
 import Item from './item'
 import File from './file'
 import { store } from '@/store'
+import Examinable from '@/mixins/examinable'
 import Version from '@/mixins/version'
 import Visitable from '@/mixins/visitable'
 import { femaleNames, maleNames, passwords } from '@/words';
@@ -32,37 +33,31 @@ export default class Server extends Item {
       password: null,
       actions: [
         item => (
-          item.canConnect()
-            ? {
-              label: 'Use',
-              key: 'connect',
-              icon: 'mdi:lan-connect',
-              disabled: false,
-              click: async () => item.connect(),
-            }
-            : undefined
+          {
+            label: 'Use',
+            key: 'connect',
+            icon: 'mdi:lan-connect',
+            disabled: !item.canConnect(),
+            click: async () => item.connect(),
+          }
         ),
         item => (
-          item.canAuthenticate()
-            ? {
-              label: 'Authenticate',
-              key: 'authenticate',
-              icon: 'ph:password-bold',
-              disabled: false,
-              click: async () => item.authenticate(),
-            }
-            : undefined
+          {
+            label: 'Authenticate',
+            key: 'authenticate',
+            icon: 'ph:password-bold',
+            disabled: !item.canAuthenticate(),
+            click: async () => item.authenticate(),
+          }
         ),
         item => (
-          item.canList()
-            ? {
-              label: 'List files',
-              key: 'list',
-              icon: 'mdi:cube-scan',
-              disabled: false,
-              click: async () => item.list(),
-            }
-            : undefined
+          {
+            label: 'List files',
+            key: 'list',
+            icon: 'mdi:cube-scan',
+            disabled: !item.canList(),
+            click: async () => item.list(),
+          }
         ),
       ],
       ...data,
@@ -295,7 +290,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('connect', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('connect', showMessage));
   }
 
   async connect() {
@@ -361,7 +356,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('disconnect', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('disconnect', showMessage));
   }
 
   async disconnect() {
@@ -404,7 +399,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('authenticate', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('authenticate', showMessage));
   }
 
   async authenticate() {
@@ -453,7 +448,7 @@ export default class Server extends Item {
       }
       return false
     }
-    if (this.checkRequirements && !this.checkRequirements('crack', showMessage)) {
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('crack', showMessage)) {
       return false
     }
     return checkSoftware.call(this, store.player.installedCracker,showMessage)
@@ -503,7 +498,7 @@ export default class Server extends Item {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('list', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('list', showMessage));
   }
 
   async list() {
@@ -607,6 +602,7 @@ export default class Server extends Item {
 }
 
 mixin(Server, [
+  Examinable,
   Version,
   Visitable,
 ])

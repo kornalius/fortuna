@@ -6,12 +6,12 @@ export default {
     downloadable: false,
     actions: [
       item => (
-        item.canDownload()
-          ? {
-            label: 'Download',
+        item.isDownloadable && item.isOnServer
+        ? {
+            label: item.downloadLabel,
             key: 'download',
             icon: 'oi:data-transfer-download',
-            disabled: false,
+            disabled: !item.canDownload(),
             click: async () => item.download(),
           }
           : undefined
@@ -21,6 +21,10 @@ export default {
 
   get isDownloadable() { return this.state.downloadable },
   set downloadable(value) { this.state.downloadable = value },
+
+  get downloadLabel() {
+    return `Download ${this.requirementsLabelFor('download')}`
+  },
 
   canDownload(showMessage) {
     if (!this.isDownloadable) {
@@ -39,6 +43,9 @@ export default {
       if (showMessage) {
         log(`Not enough free disk space left to download ${this.name.toLowerCase()}`)
       }
+      return false
+    }
+    if (this.checkRequirementsFor && !this.checkRequirementsFor('download', showMessage)) {
       return false
     }
     return checkSoftware.call(this, store.player.installedFtp, showMessage)

@@ -8,14 +8,17 @@ export default class Software extends File {
     return super.setupInstance({
       name: 'Software',
       icon: 'whh:software',
+      examinable: true,
       installable: true,
       decryptable: false,
       viewable: false,
       pickable: true,
       dropable: true,
       actionsOrder: [
+        'examine',
         'install',
         'uninstall',
+        'delete',
       ],
       ...data,
     })

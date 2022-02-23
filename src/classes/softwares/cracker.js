@@ -9,15 +9,13 @@ export default class Cracker extends Software {
       installType: 'cracker',
       actions: [
         item => (
-          item.canCrack()
-            ? {
-              label: 'Use',
-              key: 'crack',
-              icon: 'cib:hackaday',
-              disabled: false,
-              click: async () => item.crack(),
-            }
-            : undefined
+          {
+            label: 'Use',
+            key: 'crack',
+            icon: 'cib:hackaday',
+            disabled: !item.canCrack(),
+            click: async () => item.crack(),
+          }
         ),
       ],
       actionsOrder: [

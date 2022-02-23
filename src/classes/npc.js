@@ -16,6 +16,7 @@ import Hp from '@/mixins/hp'
 import Credits from '@/mixins/credits'
 import Items from '@/mixins/items'
 import Carry from '@/mixins/carry'
+import Requirements from '@/mixins/requirements'
 
 export default class Npc extends Entity {
   setupInstance(data) {
@@ -32,24 +33,22 @@ export default class Npc extends Entity {
       dice: this.baseDice,
       actions: [
         item => (
-          item.canTalk()
-            ? {
-              label: 'Talk',
-              key: 'talk',
-              icon: 'vs:kakaotalk',
-              click: async () => item.talk(),
-            }
-            : undefined
+          {
+            label: 'Talk',
+            key: 'talk',
+            icon: 'vs:kakaotalk',
+            disabled: !item.canTalk(),
+            click: async () => item.talk(),
+          }
         ),
         item => (
-          item.canCombat()
-            ? {
-              label: 'Combat',
-              key: 'combat',
-              icon: 'mdi:axe-battle',
-              click: async () => item.combat(),
-            }
-            : undefined
+          {
+            label: 'Combat',
+            key: 'combat',
+            icon: 'mdi:axe-battle',
+            disabled: !item.canCombat(),
+            click: async () => item.combat(),
+          }
         ),
       ],
       ...data,
@@ -153,7 +152,7 @@ export default class Npc extends Entity {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('talk', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('talk', showMessage));
   }
 
   async talk() {
@@ -248,4 +247,5 @@ mixin(Npc, [
   Buffable,
   Hp,
   Carry,
+  Requirements,
 ])

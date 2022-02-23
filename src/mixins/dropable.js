@@ -6,13 +6,13 @@ export default {
     dropable: true,
     actions: [
       item => (
-        item.canDrop()
+        item.isDropable && store.player.has(item)
           ? {
-            label: 'Drop',
+            label: item.dropLabel,
             key: 'drop',
             icon: 'fa-solid:hand-holding',
             class: 'rotate-180 mt2',
-            disabled: false,
+            disabled: !item.canDrop(),
             click: async () => item.drop(),
           }
           : undefined
@@ -22,6 +22,10 @@ export default {
 
   get isDropable() { return this.state.dropable },
   set dropable(value) { this.state.dropable = value },
+
+  get dropLabel() {
+    return `Drop ${this.requirementsLabelFor('drop')}`
+  },
 
   canDrop(showMessage) {
     if (!this.isDropable) {
@@ -48,7 +52,7 @@ export default {
       }
       return false
     }
-    return !(this.checkRequirements && !this.checkRequirements('drop', showMessage));
+    return !(this.checkRequirementsFor && !this.checkRequirementsFor('drop', showMessage));
   },
 
   async drop() {

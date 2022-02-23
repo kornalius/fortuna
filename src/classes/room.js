@@ -9,6 +9,7 @@ import Image from '@/mixins/image'
 import Items from '@/mixins/items'
 import Actions from '@/mixins/actions'
 import Visitable from '@/mixins/visitable'
+import Requirements from '@/mixins/requirements'
 
 export default class Room extends Entity {
   setupInstance(data) {
@@ -56,7 +57,7 @@ export default class Room extends Entity {
 
   canEnter(fromRoom, showMessage) {
     return store.player.canMove(showMessage)
-      && !(this.checkRequirements && !this.checkRequirements('enter', showMessage));
+      && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));
   }
 
   async enter(fromRoom) {
@@ -107,7 +108,7 @@ export default class Room extends Entity {
       return false
     }
     return store.player.canMove(showMessage)
-      && !(this.checkRequirements && !this.checkRequirements('exit', showMessage));
+      && !(this.checkRequirementsFor && !this.checkRequirementsFor('exit', showMessage));
   }
 
   async exit(toRoom) {
@@ -174,4 +175,5 @@ mixin(Room, [
   Items,
   Actions,
   Visitable,
+  Requirements,
 ])
