@@ -22,6 +22,8 @@ export default class Combat extends Entity {
       won: false,
       // selected dice
       selected: [],
+      // done action dice
+      done: [],
       // combos
       combos: [
         {
@@ -125,6 +127,8 @@ export default class Combat extends Entity {
 
     await delay(250)
 
+    this.done = []
+
     await this.roll([])
     this.processing = false
   }
@@ -186,6 +190,9 @@ export default class Combat extends Entity {
 
     this.processing = false
 
+    store.player.processBuffs(false, true)
+    this.npc.processBuffs(false, true)
+
     return true
   }
 
@@ -231,8 +238,12 @@ export default class Combat extends Entity {
       return false
     }
 
+    this.bonus = 0
     this.turn = 1
     store.player.rolls = store.player.maxRolls
+
+    this.done = []
+    this.selected = []
 
     await emit.call(this, 'onStartCombat')
 
@@ -279,6 +290,10 @@ export default class Combat extends Entity {
   async onWin() {}
 
   async onLose() {}
+
+  isDone(index) {
+    return this.done.includes(index)
+  }
 
   isSelected(index) {
     return this.selected.includes(index)
@@ -388,19 +403,27 @@ export default class Combat extends Entity {
 
     if (busts.length) {
       await this.bustShield(busts)
+      this.done = [...this.done, ...busts]
     }
     if (attacks.length) {
       await this.attack(attacks)
+      this.done = [...this.done, ...attacks]
     }
     if (bombs.length) {
       await this.damage(bombs)
+      this.done = [...this.done, ...bombs]
     }
     if (this.npc.swordDice.length) {
       await this.npcAttack(this.npc.swordDiceIndexes)
+      this.done = [...this.done, ...store.player.shieldDiceIndexes]
     }
     if (lifes.length) {
       await this.gainLife(lifes)
+      this.done = [...this.done, ...lifes]
     }
+
+    store.player.processBuffs(true)
+    this.npc.processBuffs(true)
 
     // this will check first if it needs to end the combat
     if (!(await this.endCombat())) {

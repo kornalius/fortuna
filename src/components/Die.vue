@@ -90,6 +90,7 @@ const props = defineProps({
   faces: { type: Array },
   face: { type: Number },
   selected: { type: Boolean },
+  done: { type: Boolean },
   size: { type: String },
 })
 
@@ -117,9 +118,16 @@ const sizeClass = computed(() => ({
   large: props.size === 'large',
 }))
 
-const dieFaceStyle = computed(() => (
-  props.selected ? 'outline: 2px solid #E79940; box-shadow: inset 0 0 8px #E79940' : ''
-))
+const dieFaceStyle = computed(() => {
+  const style = []
+  if (props.selected) {
+    style.push('outline: 3px solid #E79940; box-shadow: inset 0 0 10px #E79940;')
+  }
+  if (props.done) {
+    style.push('filter: brightness(.5) grayscale(75%)')
+  }
+  return style.join('; ')
+})
 
 onMounted(() => {
   setFace(props.face)
@@ -147,7 +155,7 @@ onMounted(() => {
   height: 100%;
   z-index: 2;
   transform-style: preserve-3d;
-  transform: translateZ(-25px);
+  transform: translateZ(-24px);
   transition: transform 200ms;
 }
 .die.small {
@@ -159,15 +167,15 @@ onMounted(() => {
   position: absolute;
   width: 48px;
   height: 48px;
-  background: #5B5C94;
-  opacity: .95;
+  background: #ddd;
+  border-radius: 3px;
   box-shadow: inset 0 0 12px #111;
 }
 .die-face.small  {
   width: 24px;
   height: 24px;
-  border-radius: 4px;
-  box-shadow: inset 0 0 8px #111;
+  border-radius: 2px;
+  box-shadow: inset 0 0 4px #111;
 }
 
 .content  {
@@ -183,19 +191,19 @@ onMounted(() => {
   padding: 8px;
   width: 100%;
   height: 100%;
-  filter: drop-shadow(2px 1px 1px #ddd);
+  -webkit-filter: drop-shadow(-1px -1px 1px #333) drop-shadow(1px 1px 1px #fff);
 }
 .icon.small {
   padding: 2px;
-  filter: drop-shadow(1px 1px 0 #ddd);
+  -webkit-filter: drop-shadow(-1px -1px 0 #333) drop-shadow(1px 1px 0  #fff);
 }
 
-.die-face-1 { transform: rotateY(0deg) translateZ(25px); }
-.die-face-2 { transform: rotateY(180deg) translateZ(25px); }
-.die-face-3 { transform: rotateY(90deg) translateZ(25px); }
-.die-face-4 { transform: rotateY(-90deg) translateZ(25px); }
-.die-face-5 { transform: rotateX(90deg) translateZ(25px); }
-.die-face-6 { transform: rotateX(-90deg) translateZ(25px); }
+.die-face-1 { transform: rotateY(0deg) translateZ(24px); }
+.die-face-2 { transform: rotateY(180deg) translateZ(24px); }
+.die-face-3 { transform: rotateY(90deg) translateZ(24px); }
+.die-face-4 { transform: rotateY(-90deg) translateZ(24px); }
+.die-face-5 { transform: rotateX(90deg) translateZ(24px); }
+.die-face-6 { transform: rotateX(-90deg) translateZ(24px); }
 
 .die-face-1.small { transform: rotateY(0deg) translateZ(12px); }
 .die-face-2.small { transform: rotateY(180deg) translateZ(12px); }
@@ -204,12 +212,12 @@ onMounted(() => {
 .die-face-5.small { transform: rotateX(90deg) translateZ(12px); }
 .die-face-6.small { transform: rotateX(-90deg) translateZ(12px); }
 
-.show-1 { transform: translateZ(-25px) rotateY(0deg); }
-.show-2 { transform: translateZ(-25px) rotateY(-180deg); }
-.show-3 { transform: translateZ(-25px) rotateY(-90deg); }
-.show-4 { transform: translateZ(-25px) rotateY(90deg); }
-.show-5 { transform: translateZ(-25px) rotateX(-90deg); }
-.show-6 { transform: translateZ(-25px) rotateX(90deg); }
+.show-1 { transform: translateZ(-24px) rotateY(0deg); }
+.show-2 { transform: translateZ(-24px) rotateY(-180deg); }
+.show-3 { transform: translateZ(-24px) rotateY(-90deg); }
+.show-4 { transform: translateZ(-24px) rotateY(90deg); }
+.show-5 { transform: translateZ(-24px) rotateX(-90deg); }
+.show-6 { transform: translateZ(-24px) rotateX(90deg); }
 
 .show-1.small { transform: translateZ(-12px) rotateY(0deg); }
 .show-2.small { transform: translateZ(-12px) rotateY(-180deg); }

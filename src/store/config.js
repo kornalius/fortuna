@@ -44,7 +44,7 @@ export default class Config {
 
     // battle dice faces
     battleDice: [
-      { value: 'A', icon: 'jam:sword-f' },
+      { value: 'A', icon: 'jam:sword-f', color: '#888' },
       { value: 'D', icon: 'bxs:shield', color: '#6C852B' },
       { value: 'H', icon: 'bxs:heart', color: '#A02A1A' },
       { value: 'B', icon: 'fa-solid:bomb', color: '#222' },
@@ -54,7 +54,7 @@ export default class Config {
 
     // Npc battle dice
     npcBattleDice: [
-      { value: 'A', icon: 'jam:sword-f' },
+      { value: 'A', icon: 'jam:sword-f', color: '#888' },
       { value: 'D', icon: 'bxs:shield', color: '#6C852B' },
       { value: '_', icon: '' },
       { value: '_', icon: '' },

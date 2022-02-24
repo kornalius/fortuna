@@ -11,7 +11,8 @@
           />
         </div>
       </div>
-      <div class="flex">
+
+      <div class="flex flex-grow-1 justify-center">
         <n-button-group>
           <n-popover trigger="hover" placement="bottom">
             <template #trigger>
@@ -28,25 +29,13 @@
           <n-popover trigger="hover" placement="bottom">
             <template #trigger>
               <n-button
-                :type="filter === 'isWeapon' ? 'primary' : undefined"
-                @click="setFilter('isWeapon')"
+                :type="filter === 'isBattle' ? 'primary' : undefined"
+                @click="setFilter('isBattle')"
               >
-                <v-icon icon="whh:gun" width="24" />
+                <v-icon icon="fa6-solid:dice-d6" width="24" />
               </n-button>
             </template>
             <span>Weapons</span>
-          </n-popover>
-
-          <n-popover trigger="hover" placement="bottom">
-            <template #trigger>
-              <n-button
-                :type="filter === 'isArmor' ? 'primary' : undefined"
-                @click="setFilter('isArmor')"
-              >
-                <v-icon icon="bx:bxs-t-shirt" width="24" />
-              </n-button>
-            </template>
-            <span>Armors</span>
           </n-popover>
 
           <n-popover trigger="hover" placement="bottom">

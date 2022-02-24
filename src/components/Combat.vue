@@ -26,7 +26,7 @@
 
       <n-popover trigger="hover" placement="bottom">
         <template #trigger>
-          <div class="flex flex-grow-1 items-center" style="color: #b44; z-index: 1">
+          <div class="npc-stats-hp flex flex-grow-1 items-center" style="color: #b44; z-index: 1">
             <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
             <n-progress
               type="line"
@@ -56,39 +56,50 @@
 
     <div class="flex flex-grow-1" />
 
-    <div class="player-side flex flex-column flex-grow-1 relative">
-      <div class="flex relative h-100 items-center">
-        <span class="bonus-label">0</span>
+    <div class="player-side flex flex-column flex-grow-1 relative ph2">
+      <div class="flex flex-column flex-grow-1 items-center">
+        <div style="height: 60px">
+          <span
+            v-if="value.bonus !== 0"
+            class="bonus-label"
+          >
+            {{ value.bonus }}
+          </span>
+        </div>
 
-        <Die
-          v-for="(die, index) in store.player.dice"
-          :key="`player-die-${index}`"
-          :class="`player-die-${index}`"
-          :faces="die.faces"
-          :face="die.value"
-          :selected="store.player.combat.isSelected(index)"
-          @click="store.player.combat.toggleSelect(index)"
-        />
-      </div>
+        <div class="flex relative h-100 items-center">
+          <Die
+            v-for="(die, index) in store.player.dice"
+            :key="`player-die-${index}`"
+            :class="`player-die-${index}`"
+            :faces="die.faces"
+            :face="die.value"
+            :selected="store.player.combat.isSelected(index)"
+            :done="store.player.combat.isDone(index)"
+            @click="store.player.combat.toggleSelect(index)"
+          />
+        </div>
 
-      <div class="actions flex justify-end w-100 pv1">
-        <n-button
-          :disabled="disabled"
-          type="success"
-          tertiary
-          @click="executeOrReroll"
-        >
-          <span>{{ executeOrRerollLabel }}</span>
-        </n-button>
+        <div class="actions flex justify-end w-100 pv1">
+          <n-button
+            :disabled="disabled"
+            type="success"
+            tertiary
+            @click="executeOrReroll"
+          >
+            <span>{{ executeOrRerollLabel }}</span>
+          </n-button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { store } from '@/store'
 import Die from '@/components/Die.vue'
+import { bleed } from '@/particles'
 
 const props = defineProps({
   value: { type: Object },
@@ -108,6 +119,13 @@ const executeOrReroll = async () => {
   }
   return store.player.combat.endTurn()
 }
+
+watch(() => props.value.npc.hp, (newValue, oldValue) => {
+  if (newValue < oldValue) {
+    const r = document.querySelector('.npc-stats-hp').getBoundingClientRect()
+   bleed(r.left + (props.value.npc.hp / props.value.npc.maxHp * (r.width - 20)), r.top, {}, bleed)
+  }
+})
 </script>
 
 <style scoped>
@@ -122,7 +140,7 @@ const executeOrReroll = async () => {
   z-index: 0;
 }
 .npc-image {
-  border: 5px solid;
+  border: 8px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #4561B4, #9BA3BD);
 }
@@ -144,5 +162,8 @@ const executeOrReroll = async () => {
   font-size: 32px;
   text-shadow: #333 1px 1px 4px;
   z-index: 2;
+}
+.bonus-label {
+  font-size: 30px;
 }
 </style>

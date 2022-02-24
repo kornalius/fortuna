@@ -106,7 +106,24 @@
         </div>
       </div>
 
-      <span>{{ value.description }}</span>
+      <div>
+        <span>{{ value.description }}</span>
+      </div>
+
+      <div class="flex mt1 w-100">
+        <div class="flex items-center">
+          <div
+            v-for="buff in groupedBuffs"
+            :key="`buffs-${buff.name}`"
+            class="inline flex items-center"
+          >
+            <v-icon :icon="buff.icon" width="16" height="16" />
+            <span class="ml1 mr2">{{ `${buff.value < 0 ? '-' : '+'}${buff.value}` }}</span>
+          </div>
+        </div>
+      </div>
+
+      <span v-if="!value.hasUnlimitedUses" class="uses-left ml1">{{ value.uses }} left</span>
     </n-popover>
   </n-dropdown>
 </template>
@@ -114,6 +131,7 @@
 <script setup>
 import { computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
+import { buffIcon, buffNames } from '@/buffs'
 
 const props = defineProps({
   value: { type: Object },
@@ -157,6 +175,17 @@ const weightIcon = computed(() => {
   }
   return 'mdi:weight'
 })
+
+const groupedBuffs = computed(() => {
+  const buffs = []
+  buffNames().forEach(name => {
+    const sum = props.value.sumOfBuffs(name)
+    if (sum !== 0) {
+      buffs.push({ name, value: sum, icon: buffIcon(name) })
+    }
+  })
+  return buffs
+})
 </script>
 
 <style scoped>
@@ -195,6 +224,14 @@ const weightIcon = computed(() => {
   padding: 2px;
   background-color: #333;
   border-radius: 50%;
+}
+.uses-left {
+  position: absolute;
+  bottom: -14px;
+  right: 4px;
+  padding: 0 4px;
+  background-color: #333;
+  border-radius: 8px;
   color: #F19936;
 }
 </style>

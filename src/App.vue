@@ -55,6 +55,7 @@ body {
   font-family: nokia,sans-serif;
   height: 100vh;
   background: #18181c;
+  overflow: hidden;
 }
 </style>
 

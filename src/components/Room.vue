@@ -1,5 +1,5 @@
 <template>
-  <n-card style="opacity: .95">
+  <n-card style="opacity: .98">
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
         <div class="top flex self-center relative w-100">
