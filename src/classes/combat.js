@@ -493,8 +493,8 @@ export default class Combat extends Entity {
 
     if (dmg > 0) {
       log(`${store.player.name} attack for ${dmg} damage`)
-      await this.showDamage('npc', dmg)
       this.npc.hp -= dmg
+      await this.showDamage('npc', dmg)
       await emit.call(this, 'onAttack', dmg)
     }
   }
@@ -537,8 +537,8 @@ export default class Combat extends Entity {
     if (dmg > 0) {
       log(`${store.player.name} receive ${dmg} damage(s)`)
       store.game.playSound('bomb')
-      await this.showDamage('player', dmg, false)
       store.player.hp -= dmg
+      await this.showDamage('player', dmg, false)
       await emit.call(this, 'onDamage', dice, dmg)
     }
   }
@@ -565,8 +565,8 @@ export default class Combat extends Entity {
 
       if (dmg > 0) {
         log(`${this.npc.name} hits for ${dmg} damage(s)`)
-        await this.showDamage('player', dmg)
         store.player.hp -= dmg
+        await this.showDamage('player', dmg)
         await emit.call(this, 'onNpcAttack', dmg)
       }
     }

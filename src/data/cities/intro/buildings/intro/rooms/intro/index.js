@@ -1,81 +1,8 @@
 import Room from '@/classes/room'
 import { color, log } from '@/utils'
 import LightSwitch from '@/classes/items/lightSwitch'
-import Server from '@/classes/items/server'
-import File from '@/classes/items/file'
-import FTP from '@/classes/softwares/ftp'
-import Viewer from '@/classes/softwares/viewer'
-import Deleter from '@/classes/softwares/deleter'
-import Cracker from '@/classes/softwares/cracker'
-
-class IntroServer extends Server {
-  constructor(data) {
-    super({
-      ...data,
-      name: 'Intro server',
-      crackable: true,
-      protected: true,
-    });
-  }
-
-  mounted() {
-    super.mounted()
-
-    const { player } = store
-
-    this.addItem([
-      new File({
-        name: 'Plots.txt',
-        version: 1,
-        downloadable: true,
-        uploadable: true,
-        weight: 2,
-        content: 'Some sexy plot for a cool project!',
-      }),
-
-      new File({
-        name: 'Email (from shawn@gmail.com).txt',
-        version: 1,
-        weight: 4,
-        downloadable: true,
-        content: [
-          'Date: Fri, Oct 11',
-          'From: shawn@gmail.com',
-          'To: bob@gmail.com',
-          'Subject: Important, please answer quick',
-          '---------------------------------------',
-          'Bob, there is something I\'d like to discuss with you!',
-          '',
-          'Regards,',
-          'Shawn'
-        ].join('\n'),
-      }),
-    ])
-
-    player.addItem([
-      new FTP({
-        name: 'ZModem',
-        deletable: true,
-        installed: true,
-        weight: 11,
-      }),
-      new Viewer({
-        name: 'Viewer',
-        weight: 3,
-      }),
-      new Deleter({
-        name: 'Del',
-        installed: true,
-        weight: 1,
-      }),
-      new Cracker({
-        name: 'CrackerJack',
-        installed: true,
-        weight: 1,
-      }),
-    ])
-  }
-}
+import { IntroServer } from './servers'
+import { store } from '@/store'
 
 export default class IntroRoom extends Room {
   constructor(data) {
@@ -85,14 +12,12 @@ export default class IntroRoom extends Room {
       icon: 'bx:bxs-flag-checkered',
       x: 0,
       y: 0,
-      img: 'intro-room.png'
+      img: 'intro-room.png',
     });
   }
 
   mounted() {
     super.mounted()
-
-    const { game, player } = store
 
     this.addNpc({
       name: 'Simon Smith',
@@ -147,9 +72,9 @@ export default class IntroRoom extends Room {
             'Your eyes take some time to adjust and you can now see the room in all it\'s glory.',
           ])
 
-          game.room.addDoor({ locked: true }, 'S')
+          store.game.room.addDoor({ locked: true }, 'S')
 
-          game.room.addItem({
+          store.game.room.addItem({
             name: 'Bottle',
             icon: 'fa-solid:prescription-bottle-alt',
             qty: 1,
@@ -163,7 +88,7 @@ export default class IntroRoom extends Room {
             },
 
             onExamine() {
-              if (!player.has(this)) {
+              if (!store.player.has(this)) {
                 log('You read the sticker on the bottle, it seems to belong to, YOU?')
               } else {
                 log('A bottle of prescribed pills to your name')
@@ -185,7 +110,7 @@ export default class IntroRoom extends Room {
   async onEnter() {
     await super.onEnter()
 
-    if (this.visited === 1) {
+    if (this.firstVisit) {
       log(`Welcome to ${ color('red', 'Fortuna') }`, 1)
       log('A text adventure game, spiced up with elements of Roleplaying games.')
       log([

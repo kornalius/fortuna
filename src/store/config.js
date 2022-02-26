@@ -4,6 +4,10 @@ export default class Config {
   storeName = 'config'
 
   state = reactive({
+    // World
+
+    startCityName: 'Introduction City',
+
     // Player
 
     baseHp: 10,
@@ -63,6 +67,8 @@ export default class Config {
     ],
   })
 
+  get startCityName() { return this.state.startCityName }
+
   get baseHp() { return this.state.baseHp }
   get highestHp() { return this.state.highestHp }
   get highestLvl() { return this.state.highestLvl }
@@ -92,4 +98,6 @@ export default class Config {
 
   get battleDice() { return this.state.battleDice }
   get npcBattleDice() { return this.state.npcBattleDice }
+
+  async reset() {}
 }

@@ -13,36 +13,36 @@
         <div class="flex items-center justify-between mb1" style="color: #ff0;">
           <div class="stats-lvl inline flex items-center">
             <v-icon icon="noto:glowing-star" width="20" />
-            <span class="ml2">{{ player.lvl }}</span>
+            <span class="ml2">{{ store.player.lvl }}</span>
           </div>
 
           <div class="stats-str inline flex items-center">
             <v-icon icon="mdi:arm-flex" color="#DAA02B" width="24" />
-            <span class="ml2">{{ player.str }}</span>
+            <span class="ml2">{{ store.player.str }}</span>
           </div>
 
           <div class="stats-dex inline flex items-center">
             <v-icon icon="fxemoji:running" width="24" />
-            <span class="ml2">{{ player.dex }}</span>
+            <span class="ml2">{{ store.player.dex }}</span>
           </div>
 
           <div class="stats-int inline flex items-center">
             <v-icon icon="noto:brain" width="24" />
-            <span class="ml2">{{ player.int }}</span>
+            <span class="ml2">{{ store.player.int }}</span>
           </div>
 
           <div class="stats-credits inline flex items-center">
             <v-icon icon="noto-v1:credit-card" width="24" />
-            <span class="ml2">{{ player.credits }}</span>
+            <span class="ml2">{{ store.player.credits }}</span>
           </div>
         </div>
       </template>
 
-      <span>LEVEL: {{ player.lvl }}, </span>
-      <span>STR: {{ player.str}}, </span>
-      <span>DEX: {{ player.dex }}, </span>
-      <span>INT: {{ player.int }}, </span>
-      <span>CREDITS: {{ player.credits }}</span>
+      <span>LEVEL: {{ store.player.lvl }}, </span>
+      <span>STR: {{ store.player.str}}, </span>
+      <span>DEX: {{ store.player.dex }}, </span>
+      <span>INT: {{ store.player.int }}, </span>
+      <span>CREDITS: {{ store.player.credits }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -54,14 +54,14 @@
             status="error"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="player.hp / player.maxHp * 100"
+            :percentage="store.player.hp / store.player.maxHp * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>HP: {{ player.hp }} / {{ player.maxHp }}</span>
+      <span>HP: {{ store.player.hp }} / {{ store.player.maxHp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -73,14 +73,14 @@
             color="#F19936"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="player.xp / player.nextXp * 100"
+            :percentage="store.player.xp / store.player.nextXp * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>XP: {{ player.xp }} / {{ player.nextXp }}</span>
+      <span>XP: {{ store.player.xp }} / {{ store.player.nextXp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -92,14 +92,14 @@
             color="#2293E1"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="player.diskUsed / player.disk * 100"
+            :percentage="store.player.diskUsed / store.player.disk * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>[DISK] Used: {{ player.diskUsed }}, Free: {{ player.diskFree }}, Total: {{ player.disk }}</span>
+      <span>[DISK] Used: {{ store.player.diskUsed }}, Free: {{ store.player.diskFree }}, Total: {{ store.player.disk }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -111,14 +111,14 @@
             color="#CBE54A"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="player.ramUsed / player.ram * 100"
+            :percentage="store.player.ramUsed / store.player.ram * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>[RAM] Used: {{ player.ramUsed }}, Free: {{ player.ramFree }}, Total: {{ player.ram }}</span>
+      <span>[RAM] Used: {{ store.player.ramUsed }}, Free: {{ store.player.ramFree }}, Total: {{ store.player.ram }}</span>
     </n-popover>
 
     <div class="flex mt2 w-100" style="height: 24px;">
@@ -151,20 +151,18 @@ import { store } from '@/store'
 import { bleed, life } from '@/particles'
 import { buffIcon, buffLabel } from '@/buffs'
 
-const { player } = store
-
-watch(() => player.hp, (newValue, oldValue) => {
+watch(() => store.player.hp, (newValue, oldValue) => {
   const r = document.querySelector('.stats-hp').getBoundingClientRect()
   if (newValue < oldValue) {
-    bleed(r.left + (player.hp / player.maxHp * (r.width - 20)), r.top)
+    bleed(r.left + (store.player.hp / store.player.maxHp * (r.width - 20)), r.top + 8)
   } else if (newValue > oldValue) {
-    life(r.left + (player.hp / player.maxHp * (r.width - 20)), r.top)
+    life(r.left + (store.player.hp / store.player.maxHp * (r.width - 20)), r.top + 4)
   }
 })
 
 const buffs = computed(() => {
   const buffs = []
-  player.buffs.forEach(b => {
+  store.player.buffs.forEach(b => {
     buffs.push({
       name: buffLabel(b.name),
       icon: buffIcon(b.name),

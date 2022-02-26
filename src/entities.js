@@ -9,7 +9,9 @@ export default class Entities {
 
   get(id) { return this.state[id] }
 
-  clear() {
+  findByName(name) { return this.list.find(e => e.name === name) }
+
+  async reset() {
     Object.keys(this.state).forEach(k => {
       delete this.state[k]
     })

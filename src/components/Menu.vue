@@ -16,6 +16,22 @@
     </n-button>
 
     <n-button
+      v-if="!store.game.isStarted && store.game.hasSave"
+      class="mv3"
+      type="primary"
+      strong
+      secondary
+      block
+      @click="() => {
+        store.game.playSound('button')
+        store.game.load()
+        store.game.start()
+      }"
+    >
+      Continue
+    </n-button>
+
+    <n-button
       class="mv3"
       type="error"
       strong
@@ -23,10 +39,24 @@
       block
       @click="() => {
         store.game.playSound('button')
-        store.game.start()
+        store.game.restart()
       }"
     >
-      New Game
+      {{ store.game.isStarted ? 'Restart' : 'New Game' }}
+    </n-button>
+
+    <n-button
+      v-if="store.game.isStarted"
+      class="mv3"
+      strong
+      secondary
+      block
+      @click="() => {
+        store.game.playSound('button')
+        store.game.save()
+      }"
+    >
+      Save Game
     </n-button>
 
     <n-button
@@ -37,6 +67,7 @@
       block
       @click="() => {
         store.game.playSound('button')
+        store.game.showOptions = true
       }"
     >
       Options

@@ -41,17 +41,17 @@
         </template>
         <span>HP: {{ value.npc.hp }} / {{ value.npc.maxHp }}</span>
       </n-popover>
+    </div>
 
-      <div class="flex relative items-center">
-        <Die
-          v-for="(die, index) in store.player.combat.npc.dice"
-          :key="`npc-die-${index}`"
-          :class="`npc-die-${index}`"
-          :faces="die.faces"
-          :face="die.value"
-          size="small"
-        />
-      </div>
+    <div class="flex flex-column relative items-center ml2">
+      <Die
+        v-for="(die, index) in store.player.combat.npc.dice"
+        :key="`npc-die-${index}`"
+        :class="`npc-die-${index}`"
+        :faces="die.faces"
+        :face="die.value"
+        size="small"
+      />
     </div>
 
     <div class="flex flex-grow-1" />
@@ -123,7 +123,7 @@ const executeOrReroll = async () => {
 watch(() => props.value.npc.hp, (newValue, oldValue) => {
   if (newValue < oldValue) {
     const r = document.querySelector('.npc-stats-hp').getBoundingClientRect()
-   bleed(r.left + (props.value.npc.hp / props.value.npc.maxHp * (r.width - 20)), r.top, {}, bleed)
+   bleed(r.left + (props.value.npc.hp / props.value.npc.maxHp * (r.width - 20)), r.top + 8)
   }
 })
 </script>

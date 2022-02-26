@@ -300,7 +300,7 @@ export default class Server extends Item {
     return this.operate('connect', async () => {
       this.clear()
       store.player.server = this
-      this.visited += 1
+      await this.visit()
       store.game.playSound('boot-sound')
       log(`You have successfully connected to ${this.name.toLowerCase()}`)
       await emit.call(this, 'onConnect')

@@ -3,7 +3,9 @@ import { mixin, emit, log } from '@/utils'
 import { store } from '@/store'
 import Door from '@/classes/items/door'
 import Npc from '@/classes/npc'
+import Location from '@/mixins/location'
 import Name from '@/mixins/name'
+import Position from '@/mixins/position'
 import Icon from '@/mixins/icon'
 import Image from '@/mixins/image'
 import Items from '@/mixins/items'
@@ -15,30 +17,25 @@ export default class Room extends Entity {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Room',
-      x: 0,
-      y: 0,
       ...data,
     })
   }
 
-  get x() { return this.state.x }
-  get y() { return this.state.y }
-
-  get npcs() { return store.npcs.list.filter(i => i.location === this) }
-  get aggresiveNpcs() { return this.npcs.filter(npc => npc.isAggresive && !npc.isDead) }
+  get img() { return `images/rooms/${this.state.img}` }
 
   get doors() { return store.doors.list.filter(i => i.roomIds.includes(this.id)) }
-
-  get img() { return `images/rooms/${this.state.img}` }
 
   get northDoor() { return this.doors.find(door => door.directions[this.id] === 'N') }
   get southDoor() { return this.doors.find(door => door.directions[this.id] === 'S') }
   get eastDoor() { return this.doors.find(door => door.directions[this.id] === 'E') }
   get westDoor() { return this.doors.find(door => door.directions[this.id] === 'W') }
 
+  get npcs() { return store.npcs.list.filter(i => i.location === this) }
+  get aggresiveNpcs() { return this.npcs.filter(npc => npc.isAggresive && !npc.isDead) }
+
   addNpc(data) {
     if (Array.isArray(data)) {
-      return data.map(d => this.addDialog(d))
+      return data.map(d => this.addNpc(d))
     }
 
     if (data instanceof Npc) {
@@ -56,6 +53,18 @@ export default class Room extends Entity {
   }
 
   canEnter(fromRoom, showMessage) {
+    if (store.game.city !== this.location?.location) {
+      if (showMessage) {
+        log(`You need to be in city ${this.location.location.name}`)
+      }
+      return false
+    }
+    if (store.game.building !== this.location) {
+      if (showMessage) {
+        log(`You need to be in building ${this.location.name}`)
+      }
+      return false
+    }
     return store.player.canMove(showMessage)
       && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));
   }
@@ -73,7 +82,7 @@ export default class Room extends Entity {
         }
       }
       store.game.room = this
-      this.visited += 1
+      await this.visit()
       await emit.call(this, 'onEnter')
       return true
     }
@@ -169,7 +178,9 @@ export default class Room extends Entity {
 }
 
 mixin(Room, [
+  Location,
   Name,
+  Position,
   Icon,
   Image,
   Items,

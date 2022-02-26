@@ -5,7 +5,6 @@ import anime from 'animejs'
 import 'vfonts/FiraCode.css'
 import { Icon } from '@iconify/vue'
 import './store'
-import './rooms'
 import App from './App.vue'
 
 window.nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyz', 10)

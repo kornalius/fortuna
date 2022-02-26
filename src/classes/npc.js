@@ -31,6 +31,8 @@ export default class Npc extends Entity {
       locationId,
       locationStore,
       dice: this.baseDice,
+      // fixed set of dice
+      battleDice: [],
       actions: [
         item => (
           {
@@ -80,7 +82,17 @@ export default class Npc extends Entity {
   set dice(value) { this.state.dice = value }
   get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) }
 
+  get battleDice() { return this.state.battleDice }
+  set battleDice(value) { this.state.battleDice = value }
+
   get baseDice() {
+    if (this.battleDice && this.battleDice.length) {
+      const dice = [...this.battleDice]
+        .filter(d => store.config.npcBattleDice[d.value - 1].value !== '_')
+      return dice.sort((a, b) => (
+        a.value < b.value ? -1 : 1
+      ))
+    }
     const dice = new Array(this.maxDice - 1).fill(0)
       .map(() => ({ faces: store.config.npcBattleDice, value: random(1, 6) }))
       .filter(d => store.config.npcBattleDice[d.value - 1].value !== '_')

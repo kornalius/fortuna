@@ -29,18 +29,6 @@
           <n-popover trigger="hover" placement="bottom">
             <template #trigger>
               <n-button
-                :type="filter === 'isBattle' ? 'primary' : undefined"
-                @click="setFilter('isBattle')"
-              >
-                <v-icon icon="fa6-solid:dice-d6" width="24" />
-              </n-button>
-            </template>
-            <span>Weapons</span>
-          </n-popover>
-
-          <n-popover trigger="hover" placement="bottom">
-            <template #trigger>
-              <n-button
                 :type="filter === 'isFile' ? 'primary' : undefined"
                 @click="setFilter('isFile')"
               >
@@ -61,6 +49,39 @@
             </template>
             <span>Softwares</span>
           </n-popover>
+
+          <n-popover trigger="hover" placement="bottom">
+            <template #trigger>
+              <n-button
+                :type="filter === 'isBattle' ? 'primary' : undefined"
+                @click="setFilter('isBattle')"
+              >
+                <v-icon icon="fa6-solid:dice-d6" width="24" />
+              </n-button>
+            </template>
+            <span>Battle</span>
+          </n-popover>
+
+          <n-dropdown
+            trigger="click"
+            :options="sortOptions"
+            :render-icon="renderDropdownIcon"
+            :render-label="renderDropdownLabel"
+            @select="setSort"
+          >
+            <n-popover
+              :delay="1000"
+              trigger="hover"
+              placement="bottom"
+            >
+              <template #trigger>
+                <n-button>
+                  <v-icon icon="bi:sort-down" width="24" />
+                </n-button>
+              </template>
+              <span>Sort Inventory</span>
+            </n-popover>
+          </n-dropdown>
         </n-button-group>
       </div>
     </div>
@@ -68,19 +89,65 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, h, ref } from 'vue'
 import { store } from '@/store'
 import Item from '@/components/Item.vue'
+import { Icon } from '@iconify/vue'
 
 const filter = ref()
+const sort = ref()
 
 const items = computed(() =>
   store.player.items
     .filter(i => !filter.value || i[filter.value])
+    .sort((a, b) => {
+      if (sort.value) {
+        const key = sort.value
+        if (a[key] < b[key]) {
+          return -1
+        } else if (a[key] > b[key]) {
+          return 1
+        }
+      }
+      return 0
+    })
 )
 
 const setFilter = name => {
   filter.value = name
+}
+
+const sortOptions = ref([
+  { key: '', label: 'None' },
+  { key: 'name', label: 'Name' },
+  { key: 'weight', label: 'Weight' },
+  { key: 'qty', label: 'Quantity' },
+])
+
+const sortIcon = key => {
+  switch (key) {
+    case 'name': return 'clarity:tag-solid'
+    case 'weight': return 'mdi:weight'
+    case 'qty': return 'ant-design:number-outlined'
+    default: return ''
+  }
+}
+
+const renderDropdownIcon = option => (
+  sort.value === option.key || (sort.value === undefined && option.key === '')
+    ? h(Icon, { icon: 'bi:check-lg', width: 20, color: '#63e2b7' })
+    : h('span', { style: 'width: 24px' })
+)
+
+const renderDropdownLabel = option => (
+  h('div', { class: 'flex items-center' }, [
+    h('span', { class: 'flex mr2' }, option.label),
+    h(Icon, { icon: sortIcon(option.key), width: 20, color: '#888' }),
+  ])
+)
+
+const setSort = async key => {
+  sort.value = key === '' ? undefined : key
 }
 </script>
 

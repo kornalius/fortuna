@@ -5,18 +5,18 @@ export const domParticles = new DomParticles()
 
 export const bleed = (x, y, emitterOptions = {}, particleOptions = {}) => {
   domParticles.addEmitter({
-    maxEmissions: 10,
+    maxEmissions: 25,
     ttl: 500,
-    emitEvery: 25,
-    position: { x, y, z: 2 },
+    emitEvery: 15,
+    position: { x, y, z: 1 },
     ...emitterOptions,
     particleOptions: {
       ttl: 600,
       content: '',
       style: {
         background: '#D12E2E',
-        width: '15px',
-        height: '15px',
+        width: '20px',
+        height: '20px',
         scale: [1, 0.25],
         'border-radius': '50%',
       },

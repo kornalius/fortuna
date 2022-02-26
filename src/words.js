@@ -65,6 +65,12 @@ export const lastNames = [
   'swift', 'upton', 'von', 'walker', 'weber', 'welch', 'williams', 'ziemann',
 ]
 
+export const nickNames = [
+  'Ice', 'Cheat', 'Brash', 'Spark', 'Night', 'Thrill', 'Elite', 'Boost', 'Risk', 'Virus', 'Hide', 'Beam', 'Game', 'Prime', 'Beast',
+  'Zero', 'Agile', 'Signal', 'Chaos', 'Arch', 'Zen', 'Brick', 'Hollow', 'Venom', 'Boot', 'Ink', 'Print', 'Ego', 'Echo', 'Bold',
+  'Dark', 'Dare', 'Hack', 'Flaky', 'Cable', 'Baud', 'Bait', 'Glove', 'Bone', 'Luck', 'Edge', 'Bit', 'Byte', 'Bash', 'Net', 'Wire',
+]
+
 export const bigAdjectives = [
   'big', 'colossal', 'fat', 'gigantic', 'great', 'huge', 'immense', 'large', 'mammoth', 'massive', 'tall',
 ]

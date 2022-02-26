@@ -16,8 +16,13 @@ export default class Player {
   storeName = 'player'
 
   constructor() {
-    this.state = reactive({
-      ...this.state,
+    this._mixinState = { ...this.state }
+    this.state = reactive({ ...this._mixinState, ...this.defaultState })
+    setInterval(() => this.processBuffs(), 1000)
+  }
+
+  get defaultState() {
+    return {
       name: 'You',
       hp: this.maxHp,
       xp: 0,
@@ -36,9 +41,7 @@ export default class Player {
       // current combat being displayed
       combatId: null,
       dice: this.baseDice,
-    })
-
-    setInterval(() => this.processBuffs(), 1000)
+    }
   }
 
   get str() { return this.state.str + this.sumOfBuffs('str') }
@@ -136,6 +139,15 @@ export default class Player {
     return this.shieldDice.map(d => this.dice.indexOf(d))
   }
 
+  async reset() {
+    Object.keys(this._mixinState).forEach(k => {
+      this.state[k] = this._mixinState[k]
+    })
+    Object.keys(this.defaultState).forEach(k => {
+      this.state[k] = this.defaultState[k]
+    })
+  }
+
   hasInstalledSoftwareOfType(type) {
     return this.installedSoftwares.find(i => i.installType === type)
   }
@@ -207,6 +219,40 @@ export default class Player {
   }
 
   async onLevelUp() {}
+
+  unserialize() {
+    return {
+      name: this.name,
+      hp: this.hp,
+      xp: this.xp,
+      str: this.str,
+      dex: this.dex,
+      int: this.int,
+      rolls: this.rolls,
+      ram: this.ram,
+      disk: this.disk,
+      serverId: this.serverId,
+      dialogId: this.dialogId,
+      combatId: this.combatId,
+      dice: this.dice,
+    }
+  }
+
+  serialize(data) {
+    this.name = data.name
+    this.hp = data.hp
+    this.xp = data.xp
+    this.str = data.str
+    this.dex = data.dex
+    this.int = data.int
+    this.rolls = data.rolls
+    this.ram = data.ram
+    this.disk = data.disk
+    this.serverId = data.serverId
+    this.dialogId = data.dialogId
+    this.combatId = data.combatId
+    this.dice = data.dice
+  }
 }
 
 mixin(Player, [

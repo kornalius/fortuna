@@ -1,29 +1,76 @@
 import { reactive } from 'vue'
 import { Howl } from 'howler'
 import max from 'lodash/max'
-import { store } from '@/store'
+import { reset, store } from '@/store'
 import { soundFiles } from '@/sounds'
 
 export default class Game {
   storeName = 'game'
 
-  state = reactive({
-    started: false,
-    paused: false,
-    roomId: null,
-    sounds: {},
-  })
+  constructor() {
+    this.state = reactive({ ...this.defaultState })
+  }
+
+  get defaultState() {
+    return {
+      started: false,
+      paused: false,
+      cityId: null,
+      buildingId: null,
+      roomId: null,
+      sounds: {},
+      showOptions: false,
+      volume: 0.1,
+    }
+  }
+
+  get hasSave() { return typeof localStorage.getItem('game') === 'string' }
+
+  get roomId() { return this.state.roomId }
+  set roomId(value) { this.state.roomId = value }
 
   get room() {
-    return this.state.roomId
-      ? store.rooms.get(this.state.roomId)
+    return this.roomId
+      ? store.rooms.get(this.roomId)
       : undefined
   }
   set room(value) {
     if (value) {
-      this.state.roomId = value.id
+      this.roomId = value.id
     } else {
-      this.state.roomId = null
+      this.roomId = null
+    }
+  }
+
+  get cityId() { return this.state.cityId }
+  set cityId(value) { this.state.cityId = value }
+
+  get city() {
+    return this.cityId
+      ? store.cities.get(this.cityId)
+      : undefined
+  }
+  set city(value) {
+    if (value) {
+      this.cityId = value.id
+    } else {
+      this.cityId = null
+    }
+  }
+
+  get buildingId() { return this.state.buildingId }
+  set buildingId(value) { this.state.buildingId = value }
+
+  get building() {
+    return this.buildingId
+      ? store.buildings.get(this.buildingId)
+      : undefined
+  }
+  set building(value) {
+    if (value) {
+      this.buildingId = value.id
+    } else {
+      this.buildingId = null
     }
   }
 
@@ -36,15 +83,23 @@ export default class Game {
   get minimapWidth() { return (this.width || 1) * store.config.minimapRoomSize }
   get minimapHeight() { return (this.height || 1) * store.config.minimapRoomSize }
 
+  get showOptions() { return this.state.showOptions }
+  set showOptions(value) { this.state.showOptions = value }
+
+  get volume() { return this.state.volume }
+  set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }
+
   async start() {
     if (this.state.paused) {
       window.location.reload()
       return
     }
     this.state.started = true
-    const room = store.rooms.at(0, 0)
-    if (room) {
-      await room.enter()
+    if (!this.city) {
+      const city = store.cities.findByName(store.config.startCityName)
+      if (city) {
+        await city.enter()
+      }
     }
   }
 
@@ -96,5 +151,57 @@ export default class Game {
     } else {
       this.stopSound(name)
     }
+  }
+
+  async load() {
+    const data = JSON.parse(localStorage.getItem('game'))
+
+    if (data) {
+      this.serialize(data.game)
+      store.player.serialize(data.player)
+    }
+  }
+
+  async save() {
+    const data = {
+      game: this.unserialize(),
+      player: store.player.unserialize(),
+    }
+
+    localStorage.setItem('game', JSON.stringify(data))
+  }
+
+  async delete() {
+    localStorage.removeItem('game')
+  }
+
+  async reset() {
+    Object.keys(this.defaultState).forEach(k => {
+      if (k !== 'sounds') {
+        this.state[k] = this.defaultState[k]
+      }
+    })
+  }
+
+  async restart() {
+    await this.delete()
+    await reset()
+    await this.start()
+  }
+
+  unserialize() {
+    return {
+      cityId: this.cityId,
+      buildingId: this.buildingId,
+      roomId: this.roomId,
+      volume: this.volume,
+    }
+  }
+
+  serialize(data) {
+    this.cityId = data.cityId
+    this.buildingId = data.buildingId
+    this.roomId = data.roomId
+    this.volume = data.volume
   }
 }

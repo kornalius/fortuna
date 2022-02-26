@@ -105,17 +105,16 @@ const npcs = computed(() => (props.value?.npcs || []).filter(npc => !npc.isDead)
 const doors = computed(() => props.value?.doors || [])
 
 const logsChanged = () => {
-  if (scroller?.value) {
-    setTimeout(() => {
+  setTimeout(() => {
+    if (scroller?.value) {
       scroller.value.scrollTop = scroller.value.scrollHeight
-    }, 100);
-  }
+    }
+  }, 100);
 }
 </script>
 
 <style scoped>
 .top {
-  width: 1000px;
   min-height: 300px;
 }
 .image {

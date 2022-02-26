@@ -1,13 +1,17 @@
 <template>
   <n-config-provider :theme="darkTheme" style="height: 100%;">
-    <Main v-if="game.isStarted" />
+    <Main v-if="store.game.isStarted" />
 
-    <div v-show="showDialog">
-      <div v-if="!game.isStarted" class="title smoke">FORTUNA</div>
+    <div v-show="showDialog || showOptions">
+      <div v-if="!store.game.isStarted" class="title smoke">FORTUNA</div>
       <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
       <div class="bg background-anim">
         <n-modal :show="showDialog" role="dialog" aria-modal="true">
           <Menu />
+        </n-modal>
+
+        <n-modal :show="showOptions" role="dialog" aria-modal="true">
+          <Options />
         </n-modal>
       </div>
     </div>
@@ -15,14 +19,45 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, watch } from 'vue'
 import Main from '@/components/Main.vue'
 import Menu from '@/components/Menu.vue'
+import Options from '@/components/Options.vue'
 import { store } from '@/store'
 import { darkTheme } from 'naive-ui'
-const { game } = store
 
-const showDialog = computed(() => game.isPaused || game.isStarted === false)
+const showDialog = computed(() => store.game.isPaused || store.game.isStarted === false)
+const showOptions = computed(() => store.game.showOptions)
+
+watch(() => store.game.volume, newValue => {
+  Howler.volume(newValue)
+}, { immediate: true })
+
+const keyup = e => {
+  if (e.keyCode === 27) {
+    if (store.game.showOptions) {
+      store.game.showOptions = false
+      return
+    }
+    if (store.game.isStarted) {
+      if (!store.game.isPaused) {
+        store.game.pause()
+      } else {
+        store.game.resume()
+      }
+    }
+  }
+  e.stopImmediatePropagation()
+  e.preventDefault()
+}
+
+onMounted(() => {
+  window.document.addEventListener('keyup', keyup)
+})
+
+onUnmounted(() => {
+  window.document.removeEventListener('keyup', keyup)
+})
 </script>
 
 <style>
@@ -92,6 +127,7 @@ body {
 @import "/public/styles/text-tracking-top";
 @import "/public/styles/text-tracking-bottom";
 @import "/public/styles/glitch";
+@import "/public/styles/click";
 
 .background-anim {
   position: absolute;
@@ -119,6 +155,10 @@ body {
 }
 
 .n-button:hover {
-  animation: glitch .25s
+  animation: glitch .1s
+}
+
+.n-button:active {
+  animation: click .15s
 }
 </style>

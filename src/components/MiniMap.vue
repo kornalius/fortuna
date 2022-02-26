@@ -38,32 +38,36 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { store } from '@/store'
 
+const { minimapRoomSize, minimapMargins } = store.config
+
+const props = defineProps({
+  building: { type: Object },
+})
+
 const container = ref()
 
-const rooms = computed(() => store.rooms.list.filter(r => r.visited > 0))
-const doors = computed(() => store.doors.list)
+const rooms = computed(() => (
+  store.rooms.list.filter(r => r.hasVisited && r.location === props.building)
+))
 
 const style = computed(() => ({
-  width: `${store.game.minimapWidth + store.config.minimapMargins * 2}px`,
-  height: `${store.game.minimapHeight + store.config.minimapMargins * 2}px`,
+  width: `${store.game.minimapWidth + minimapMargins * 2}px`,
+  height: `${store.game.minimapHeight + minimapMargins * 2}px`,
 }))
 
-const gameRoom = computed(() => store.game.room)
-
 const styleForRoom = room => ({
-  left: `${room.x * store.config.minimapRoomSize + store.config.minimapMargins}px`,
-  top: `${room.y * store.config.minimapRoomSize + store.config.minimapMargins}px`,
-  width: `${store.config.minimapRoomSize}px`,
-  height: `${store.config.minimapRoomSize}px`,
+  left: `${room.x * minimapRoomSize + minimapMargins}px`,
+  top: `${room.y * minimapRoomSize + minimapMargins}px`,
+  width: `${minimapRoomSize}px`,
+  height: `${minimapRoomSize}px`,
 })
 
 onMounted(() => {
-  watch(gameRoom, () => {
-    const { minimapRoomSize, minimapMargins } = store.config
-    if (container?.value) {
+  watch(() => store.game.room, room => {
+    if (room && container?.value) {
       const r = container.value.getBoundingClientRect()
-      const x = gameRoom.value.x * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)
-      const y = gameRoom.value.y * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)
+      const x = room.x * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)
+      const y = room.y * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)
       container.value.scrollLeft = Math.max(0, x - r.width * 0.5)
       container.value.scrollTop = Math.max(0, y - r.height * 0.5)
     }
@@ -84,7 +88,7 @@ onMounted(() => {
 }
 .door {
   position: absolute;
-  background-color: white;
+  background-color: black;
   transform-origin: center;
 }
 .active {
