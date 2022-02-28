@@ -99,7 +99,7 @@ import { ref, watch } from 'vue'
 import { store } from '@/store'
 
 const props = defineProps({
-  value: { type: Number, default: 5 },
+  value: { type: Number, default: 0 },
 })
 
 const pointsLeft = ref()
