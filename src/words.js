@@ -285,3 +285,27 @@ export const passwords = [
   'uNn4E8fQ4Z', 'nVPUd6pw53', '4Z4JuQmCsP', '4FW7zWpBSX', 'JdRSLn8GeL', 'FrcjnMunCM', 'SktTnQn6ft', 'qeWdjVsYxv', 'm7872KaMqK',
   'HfjQaruqTY',
 ]
+
+export const cityNames = [
+  'Frankden', 'Rapinne', 'Baitas', 'Dannes', 'Carenna', 'Linoha', 'Shoturt', 'Yenville', 'Duklean', 'Drukfort', 'Manward',
+  'Darkmuth', 'Easthom', 'Hartose', 'Luckstan', 'Blackmouth', 'Oxward', 'Domlaix', 'Milddem', 'Ponview', 'Boldale', 'Ibeko',
+]
+
+export const companyNames = [
+  'Anttaria', 'Welshgold', 'Burantemic', 'Intsys', 'TLD', 'Cairo', 'Calypso', 'Guerrero', 'Columods', 'Milan', 'Eaglebanks',
+  'Urawood', 'Happmann', 'Liberty', 'Turinpoint', 'Vulon', 'Exofall', 'Gander', 'WWSN', 'Pendragon', 'Cobra', 'Coral',
+  'Antares', 'Tonsonic', 'Ichidian', 'Paraway', ''
+]
+
+export const companySuffixes = [
+  'Power', 'Components', 'Chemicals', 'Corporation', 'Logistics', 'Cybernetics', 'Bionics', 'Inc', 'Systems', 'Security',
+  'Industrial', 'Dynamics', 'International', 'Limited', 'Industrial', 'Intelligence', 'Solutions', 'Global', 'Networks',
+]
+
+export const districtNames = [
+  'East', 'North', 'South', 'West', 'Upper', 'Lower', 'Little', 'High', 'Low',
+]
+
+export const districtSuffixes = [
+  'Square', 'Road', 'Park', 'Hill', 'Side', 'Plaza', 'Point', 'Valley'
+]

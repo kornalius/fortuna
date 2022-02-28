@@ -1,4 +1,5 @@
 import { emit, log } from '@/utils'
+import { store } from '@/store';
 
 export default {
   state: {
@@ -46,6 +47,18 @@ export default {
     if (this.isPushed) {
       if (showMessage) {
         log(`${this.name} is already pushed`)
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot push this while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot push this while in conversation')
       }
       return false
     }

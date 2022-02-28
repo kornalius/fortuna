@@ -57,7 +57,7 @@
             :key="door.id"
             class="inline mr1"
           >
-            <door :value="door" />
+            <Door :value="door" />
           </span>
         </div>
 

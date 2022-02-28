@@ -1,7 +1,9 @@
 import { reactive } from 'vue'
+import { serializeObject } from '@/utils'
 
 export default class Entities {
   storeName = 'entities'
+  model = null
 
   state = reactive({})
 
@@ -34,5 +36,17 @@ export default class Entities {
     } else {
       delete this.state[id]
     }
+  }
+
+  unserialize() {
+    return this.list.map(i => i.unserialize())
+  }
+
+  serialize(data) {
+    return data.forEach(d => {
+      const m = new this.model()
+      serializeObject(d, m.state)
+      this.update(m)
+    })
   }
 }

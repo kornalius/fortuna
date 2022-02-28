@@ -7,10 +7,8 @@ export default class IntroBuilding extends Building {
     super({
       ...data,
       name: 'Introduction Building',
-      icon: 'bx:bxs-flag-checkered',
-      x: 0,
-      y: 0,
-      img: 'intro-building.png',
+      x: 20,
+      y: 465,
       startRoomName: 'Introduction Room',
     });
   }
@@ -18,7 +16,9 @@ export default class IntroBuilding extends Building {
   mounted() {
     super.mounted()
 
-    this.addRoom(new IntroRoom())
-    this.addRoom(new IntroWinRoom())
+    this.addRoom([
+      new IntroRoom(),
+      new IntroWinRoom(),
+    ])
   }
 }

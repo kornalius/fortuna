@@ -4,6 +4,8 @@ import { emit, log, mixin } from '@/utils'
 import Requirements from '@/mixins/requirements'
 
 export default class Dialog extends Entity {
+  includeStateKeys = ['answers', 'answerCount']
+
   byeAnswer = {
     code: 'bye',
     text: 'Bye',
@@ -31,13 +33,13 @@ export default class Dialog extends Entity {
     let x = 0
     this.answers.forEach(a => {
       a.code = a.code || `${this.code}-${x}`
-      a.dialogId = this
+      a.dialogId = this.id
       a.npcId = this.npcId
       Object.defineProperty(a, 'dialog', {
-        get: function () { return store.dialogs.get(this.dialogId) }
+        get: function () { return store.dialogs.get(this.dialogId) }.bind(this)
       })
       Object.defineProperty(a, 'npc', {
-        get: function () { return store.npcs.get(this.npcId) }
+        get: function () { return store.npcs.get(this.npcId) }.bind(this)
       })
       x += 1
     })

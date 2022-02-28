@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import clamp from 'lodash/clamp'
 import { store } from './index'
-import { emit, log, mixin } from '@/utils'
+import { emit, log, mixin, unserializeObject } from '@/utils'
 import Item from '@/classes/items/item'
 import Name from '@/mixins/name'
 import Level from '@/mixins/level'
@@ -221,37 +221,7 @@ export default class Player {
   async onLevelUp() {}
 
   unserialize() {
-    return {
-      name: this.name,
-      hp: this.hp,
-      xp: this.xp,
-      str: this.str,
-      dex: this.dex,
-      int: this.int,
-      rolls: this.rolls,
-      ram: this.ram,
-      disk: this.disk,
-      serverId: this.serverId,
-      dialogId: this.dialogId,
-      combatId: this.combatId,
-      dice: this.dice,
-    }
-  }
-
-  serialize(data) {
-    this.name = data.name
-    this.hp = data.hp
-    this.xp = data.xp
-    this.str = data.str
-    this.dex = data.dex
-    this.int = data.int
-    this.rolls = data.rolls
-    this.ram = data.ram
-    this.disk = data.disk
-    this.serverId = data.serverId
-    this.dialogId = data.dialogId
-    this.combatId = data.combatId
-    this.dice = data.dice
+    return unserializeObject(this.state)
   }
 }
 

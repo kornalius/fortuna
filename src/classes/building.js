@@ -3,9 +3,9 @@ import { mixin, emit, log } from '@/utils'
 import { store } from '@/store'
 import Location from '@/mixins/location'
 import Name from '@/mixins/name'
+import Description from '@/mixins/description'
 import Position from '@/mixins/position'
 import Icon from '@/mixins/icon'
-import Image from '@/mixins/image'
 import Hidden from '@/mixins/hidden'
 import Hovered from '@/mixins/hovered'
 import Actions from '@/mixins/actions'
@@ -17,12 +17,23 @@ export default class Building extends Entity {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Building',
+      description: 'A building',
+      icon: 'clarity:building-solid',
       startRoomName: '',
+      actions: [
+        item => (
+          {
+            label: 'Enter',
+            key: 'enter',
+            icon: 'whh:enteralt',
+            disabled: !item.canEnter(),
+            click: async () => item.enter(),
+          }
+        ),
+      ],
       ...data,
     })
   }
-
-  get img() { return `images/cities/${this.state.img}` }
 
   get startRoomName() { return this.state.startRoomName }
   set startRoomName(value) { this.state.startRoomName = value }
@@ -53,6 +64,30 @@ export default class Building extends Entity {
       }
       return false
     }
+    if (store.game.building === this) {
+      if (showMessage) {
+        log(`You are already in this building`)
+      }
+      return false
+    }
+    if (store.player.isConnectedToServer) {
+      if (showMessage) {
+        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before entering this building`)
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot enter the building while in discussion')
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot enter the building while in combat')
+      }
+      return false
+    }
     return store.player.canMove(showMessage)
       && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));
   }
@@ -69,10 +104,15 @@ export default class Building extends Entity {
           return false
         }
       }
+
+      this.hidden = false
       store.game.building = this
       store.game.room = null
       await this.visit()
       await emit.call(this, 'onEnter')
+
+      store.game.showCity = null
+      store.game.showCityMap = false
 
       const room = store.rooms.findByName(this.startRoomName)
       if (room) {
@@ -131,9 +171,9 @@ export default class Building extends Entity {
 mixin(Building, [
   Location,
   Name,
+  Description,
   Position,
   Icon,
-  Image,
   Hidden,
   Hovered,
   Actions,

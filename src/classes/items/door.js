@@ -62,6 +62,18 @@ export default class Door extends Item {
       }
       return false
     }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot enter this door while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot enter this door while in conversation')
+      }
+      return false
+    }
     if (this.isLocked) {
       if (showMessage) {
         log(`${this.name} is locked`)

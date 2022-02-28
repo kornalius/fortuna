@@ -1,5 +1,6 @@
 import random from 'lodash/random'
 import { emit, log } from '@/utils'
+import { store } from '@/store';
 
 export default {
   state: {
@@ -58,6 +59,18 @@ export default {
     if (this.isDestroyed) {
       if (showMessage) {
         log(`${this.name} has already been destroyed`)
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot destroy this while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot destroy this while in conversation')
       }
       return false
     }

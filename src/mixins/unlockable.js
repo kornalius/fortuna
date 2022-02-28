@@ -67,6 +67,18 @@ export default {
       }
       return false
     }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot unlock this while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot unlock this while in conversation')
+      }
+      return false
+    }
     return !(this.checkRequirementsFor && !this.checkRequirementsFor('unlock', showMessage));
   },
 

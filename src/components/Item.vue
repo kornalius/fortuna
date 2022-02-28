@@ -15,6 +15,7 @@
       <template #trigger>
         <n-button
           :style="buttonStyle"
+          :disabled="disabled"
           quaternary
           strong
           @mouseover.once="() => value.hovered = true"
@@ -135,6 +136,7 @@ import { buffIcon, buffNames } from '@/buffs'
 
 const props = defineProps({
   value: { type: Object },
+  disabled: { type: Boolean },
 })
 
 const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })

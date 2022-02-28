@@ -2,9 +2,10 @@ import Entity from '@/entity'
 import { mixin, emit, log } from '@/utils'
 import { store } from '@/store'
 import Name from '@/mixins/name'
+import Description from '@/mixins/description'
+import Image from '@/mixins/image'
 import Position from '@/mixins/position'
 import Icon from '@/mixins/icon'
-import Image from '@/mixins/image'
 import Hidden from '@/mixins/hidden'
 import Hovered from '@/mixins/hovered'
 import Actions from '@/mixins/actions'
@@ -16,15 +17,28 @@ export default class City extends Entity {
   setupInstance(data) {
     return super.setupInstance({
       name: 'City',
+      description: 'A city',
+      icon: 'emojione-monotone:cityscape',
       startBuildingName: '',
+      actions: [
+        item => (
+          {
+            label: 'Enter',
+            key: 'enter',
+            icon: 'whh:enteralt',
+            disabled: !item.canEnter(),
+            click: async () => item.enter(),
+          }
+        ),
+      ],
       ...data,
     })
   }
 
+  get img() { return `images/cities/${this.state.img}` }
+
   get startBuildingName() { return this.state.startBuildingName }
   set startBuildingName(value) { this.state.startBuildingName = value }
-
-  get img() { return `images/cities/${this.state.img}` }
 
   get buildings() { return store.buildings.list.filter(i => i.location === this) }
 
@@ -50,7 +64,25 @@ export default class City extends Entity {
   canEnter(showMessage) {
     if (store.game.city === this) {
       if (showMessage) {
-        log(`You are already in ${this.location.name}`)
+        log(`You are already in ${this.name}`)
+      }
+      return false
+    }
+    if (store.player.isConnectedToServer) {
+      if (showMessage) {
+        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before entering this city`)
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot enter the city while in discussion')
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot enter the city while in combat')
       }
       return false
     }
@@ -70,15 +102,22 @@ export default class City extends Entity {
           return false
         }
       }
+
+      this.hidden = false
       store.game.city = this
       store.game.building = null
       store.game.room = null
       await this.visit()
       await emit.call(this, 'onEnter')
 
+      store.game.showProvince = false
+
       const building = store.buildings.findByName(this.startBuildingName)
       if (building) {
         await building.enter()
+      } else {
+        store.game.showCity = this
+        store.game.showCityMap = true
       }
 
       return true
@@ -138,6 +177,7 @@ export default class City extends Entity {
 
 mixin(City, [
   Name,
+  Description,
   Position,
   Icon,
   Image,

@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import merge from 'lodash/merge'
 import random from 'lodash/random'
 import shuffle from 'lodash/shuffle'
+import compact from 'lodash/compact'
 import { store } from './store'
 import Log from './classes/log'
 import { fileNouns, adjectives, filetypes, maleNames, lastNames, femaleNames } from '@/words'
@@ -205,5 +206,42 @@ export const delay = time => {
     setTimeout(() => {
       resolve()
     }, time)
+  })
+}
+
+export const allowedUnserializeTypes = [
+  'string',
+  'number',
+  'boolean',
+]
+
+export const unserializeElement = e => {
+  if (e === null || e === undefined || allowedUnserializeTypes.includes(typeof e)) {
+    return e
+  // } else if (typeof e === 'function') {
+  //   return e.toString()
+  } else if (Array.isArray(e)) {
+    return unserializeArray(e)
+  } else if (typeof e === 'object') {
+    return unserializeObject(e)
+  }
+  return undefined
+}
+
+export const unserializeObject = o => (
+  Object.keys(o).reduce((acc, k) => ({ ...acc, [k]: unserializeElement(o[k]) }), [])
+)
+
+export const unserializeArray = arr => compact(arr.map(a => unserializeElement(a)))
+
+export const serializeObject = (t, s) => {
+  Object.keys({ ...s, ...t }).forEach(k => {
+    if (Array.isArray(s?.[k]) && Array.isArray(t?.[k])) {
+      t[k] = [...s?.[k], ...t?.[k]]
+    } else if (typeof s?.[k] === 'object' && typeof t?.[k] === 'object') {
+      t[k] = { ...s?.[k], ...t?.[k] }
+    } else {
+      t[k] = s[k]
+    }
   })
 }

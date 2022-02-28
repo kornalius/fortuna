@@ -8,6 +8,7 @@
   >
     <n-button
       :style="buttonStyle"
+      :disabled="disabled"
       size="small"
       quaternary
       @mouseover.once="() => value.hovered = true"
@@ -46,6 +47,7 @@ import { Icon } from '@iconify/vue'
 
 const props = defineProps({
   value: { type: Object },
+  disabled: { type: Boolean },
   position: { type: String },
 })
 

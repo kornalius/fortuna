@@ -10,6 +10,7 @@
       <template #trigger>
         <n-button
           :style="buttonStyle"
+          :disabled="disabled"
           quaternary
           strong
           @mouseover.once="() => value.hovered = true"
@@ -91,6 +92,7 @@ import { Icon } from '@iconify/vue'
 
 const props = defineProps({
   value: { type: Object },
+  disabled: { type: Boolean },
 })
 
 const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })

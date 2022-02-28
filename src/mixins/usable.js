@@ -1,4 +1,5 @@
 import { emit, log } from '@/utils'
+import { store } from '@/store';
 
 export default {
   state: {
@@ -52,6 +53,12 @@ export default {
     if (store.player.isInCombat && !this.isBattle) {
       if (showMessage) {
         log(`${this.name} can only be used outside of combat`)
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot use this while in conversation')
       }
       return false
     }

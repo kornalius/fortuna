@@ -1,5 +1,13 @@
 <template>
   <div class="flex justify-center w-100 h-100">
+    <n-modal v-model:show="store.game.showProvince" role="dialog" aria-modal="true">
+      <Province />
+    </n-modal>
+
+    <n-modal v-model:show="store.game.showCityMap" role="dialog" aria-modal="true">
+      <CityMap :value="store.game.showCity"/>
+    </n-modal>
+
     <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
 
     <div class="flex h-100">
@@ -31,6 +39,8 @@ import Room from './Room.vue'
 import Stats from './Stats.vue'
 import Inventory from './Inventory.vue'
 import MiniMap from './MiniMap.vue'
+import Province from '@/components/Province.vue'
+import CityMap from '@/components/CityMap.vue'
 </script>
 
 <style scoped>

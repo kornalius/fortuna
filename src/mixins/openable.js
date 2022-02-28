@@ -58,6 +58,18 @@ export default {
       }
       return false
     }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot open this while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot open this while in conversation')
+      }
+      return false
+    }
     return !(this.checkRequirementsFor && !this.checkRequirementsFor('open', showMessage));
   },
 
@@ -84,6 +96,18 @@ export default {
     if (this.isClosed) {
       if (showMessage) {
         log(`${this.name} is already closed`)
+      }
+      return false
+    }
+    if (store.player.isInCombat) {
+      if (showMessage) {
+        log('You cannot close this while in combat')
+      }
+      return false
+    }
+    if (store.player.isInDialog) {
+      if (showMessage) {
+        log('You cannot close this while in conversation')
       }
       return false
     }

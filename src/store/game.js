@@ -3,6 +3,7 @@ import { Howl } from 'howler'
 import max from 'lodash/max'
 import { reset, store } from '@/store'
 import { soundFiles } from '@/sounds'
+import { unserializeObject } from '@/utils';
 
 export default class Game {
   storeName = 'game'
@@ -20,6 +21,9 @@ export default class Game {
       roomId: null,
       sounds: {},
       showOptions: false,
+      showProvince: false,
+      showCityMap: false,
+      showCity: null,
       volume: 0.1,
     }
   }
@@ -85,6 +89,15 @@ export default class Game {
 
   get showOptions() { return this.state.showOptions }
   set showOptions(value) { this.state.showOptions = value }
+
+  get showProvince() { return this.state.showProvince }
+  set showProvince(value) { this.state.showProvince = value }
+
+  get showCityMap() { return this.state.showCityMap }
+  set showCityMap(value) { this.state.showCityMap = value }
+
+  get showCity() { return this.state.showCity }
+  set showCity(value) { this.state.showCity = value }
 
   get volume() { return this.state.volume }
   set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }
@@ -163,11 +176,13 @@ export default class Game {
   }
 
   async save() {
-    const data = {
-      game: this.unserialize(),
-      player: store.player.unserialize(),
-    }
-
+    const data = {}
+    Object.keys(store).forEach(k => {
+      if (k !== 'config') {
+        console.log(k)
+        data[k] = store[k].unserialize()
+      }
+    })
     localStorage.setItem('game', JSON.stringify(data))
   }
 
@@ -190,18 +205,6 @@ export default class Game {
   }
 
   unserialize() {
-    return {
-      cityId: this.cityId,
-      buildingId: this.buildingId,
-      roomId: this.roomId,
-      volume: this.volume,
-    }
-  }
-
-  serialize(data) {
-    this.cityId = data.cityId
-    this.buildingId = data.buildingId
-    this.roomId = data.roomId
-    this.volume = data.volume
+    return unserializeObject(this.state)
   }
 }

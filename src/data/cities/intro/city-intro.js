@@ -6,11 +6,10 @@ export default class IntroCity extends City {
     super({
       ...data,
       name: 'Introduction City',
-      icon: 'bx:bxs-flag-checkered',
-      x: 0,
-      y: 0,
-      img: 'intro-city.png',
+      x: 330,
+      y: 380,
       startBuildingName: 'Introduction Building',
+      img: 'intro-city.png',
     });
   }
 

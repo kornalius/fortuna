@@ -146,7 +146,7 @@ export default class Npc extends Entity {
       }
       return false
     }
-    if (store.player.isInDialog && store.player.dialog.npc !== this) {
+    if (store.player.isInDialog) {
       if (showMessage) {
         log(`You are already in discussion with ${this.name}`)
       }
@@ -154,7 +154,7 @@ export default class Npc extends Entity {
     }
     if (store.player.isInCombat) {
       if (showMessage) {
-        log(`You are already in combat with ${store.player.combat.npc.name}`)
+        log(`You cannot talk to ${this.name} while in combat with ${store.player.combat.npc.name}`)
       }
       return false
     }
