@@ -24,6 +24,7 @@ export default class Game {
       showProvince: false,
       showCityMap: false,
       showCity: null,
+      showLevelUp: false,
       volume: 0.1,
     }
   }
@@ -98,6 +99,9 @@ export default class Game {
 
   get showCity() { return this.state.showCity }
   set showCity(value) { this.state.showCity = value }
+
+  get showLevelUp() { return this.state.showLevelUp }
+  set showLevelUp(value) { this.state.showLevelUp = value }
 
   get volume() { return this.state.volume }
   set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }

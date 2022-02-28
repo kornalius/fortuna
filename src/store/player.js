@@ -53,6 +53,8 @@ export default class Player {
   get int() { return this.state.int + this.sumOfBuffs('int') }
   set int(value) { this.state.int = value }
 
+  get levelUpPoints() { return this.lvl + Math.ceil(this.lvl * 0.25) }
+
   get rolls() { return this.state.rolls }
   set rolls(value) { this.state.rolls = clamp(value, 0, this.maxRolls) }
   get maxRolls() {
@@ -215,7 +217,9 @@ export default class Player {
       return false
     }
     store.player.lvl += 1
+    store.player.hp = store.player.maxHp
     await emit.call(this, 'onLevelUp')
+    store.game.showLevelUp = true
   }
 
   async onLevelUp() {}

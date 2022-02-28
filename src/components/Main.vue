@@ -5,7 +5,11 @@
     </n-modal>
 
     <n-modal v-model:show="store.game.showCityMap" role="dialog" aria-modal="true">
-      <CityMap :value="store.game.showCity"/>
+      <CityMap :value="store.game.showCity" />
+    </n-modal>
+
+    <n-modal :show="store.game.showLevelUp" role="dialog" aria-modal="true">
+      <LevelUp :value="store.game.levelUpPoints"/>
     </n-modal>
 
     <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
@@ -41,6 +45,7 @@ import Inventory from './Inventory.vue'
 import MiniMap from './MiniMap.vue'
 import Province from '@/components/Province.vue'
 import CityMap from '@/components/CityMap.vue'
+import LevelUp from '@/components/LevelUp.vue'
 </script>
 
 <style scoped>

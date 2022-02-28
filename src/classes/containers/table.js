@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin } from '@/utils'
+import { mixin, registerClass } from '@/utils'
 import Items from '@/mixins/items'
 
 export default class Table extends Entity {
@@ -12,3 +12,5 @@ export default class Table extends Entity {
 }
 
 mixin(Table, [Items])
+
+registerClass(Table)

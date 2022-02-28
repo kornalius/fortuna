@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin } from '@/utils'
+import { mixin, registerClass } from '@/utils'
 import Openable from '@/mixins/openable'
 import Unlockable from '@/mixins/unlockable'
 import Items from '@/mixins/items'
@@ -18,3 +18,5 @@ mixin(Container, [
   Openable,
   Unlockable,
 ])
+
+registerClass(Container)
