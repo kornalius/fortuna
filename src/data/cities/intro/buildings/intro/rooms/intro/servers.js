@@ -5,6 +5,7 @@ import Viewer from '@/classes/softwares/viewer'
 import Deleter from '@/classes/softwares/deleter'
 import Cracker from '@/classes/softwares/cracker'
 import { store } from '@/store'
+import { registerClass } from '@/utils'
 
 export class IntroServer extends Server {
   constructor(data) {
@@ -72,3 +73,5 @@ export class IntroServer extends Server {
     ])
   }
 }
+
+registerClass(IntroServer)

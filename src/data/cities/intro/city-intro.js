@@ -1,5 +1,6 @@
 import City from '@/classes/city'
 import IntroBuilding from './buildings/intro'
+import { registerClass } from '@/utils'
 
 export default class IntroCity extends City {
   constructor(data) {
@@ -19,3 +20,5 @@ export default class IntroCity extends City {
     this.addBuilding(new IntroBuilding())
   }
 }
+
+registerClass(IntroCity)

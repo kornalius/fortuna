@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin } from '@/utils'
+import { mixin, registerClass } from '@/utils'
 import { store } from '@/store'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
@@ -92,3 +92,5 @@ mixin(Item, [
   Pullable,
   Requirements,
 ])
+
+registerClass(Item)

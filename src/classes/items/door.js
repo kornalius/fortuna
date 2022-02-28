@@ -1,5 +1,5 @@
 import Item from './item'
-import { emit, log, mixin, oppositeDirection } from '@/utils'
+import { emit, log, mixin, oppositeDirection, registerClass } from '@/utils'
 import { store } from '@/store'
 import Openable from '@/mixins/openable'
 import Unlockable from '@/mixins/unlockable'
@@ -100,3 +100,5 @@ mixin(Door, [
   Openable,
   Unlockable,
 ])
+
+registerClass(Door)

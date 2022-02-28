@@ -1,4 +1,5 @@
 import Item from './item'
+import { registerClass } from '@/utils'
 
 export default class BattleItem extends Item {
   setupInstance(data) {
@@ -9,3 +10,5 @@ export default class BattleItem extends Item {
 
   get isBattle() { return true }
 }
+
+registerClass(BattleItem)

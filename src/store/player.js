@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import clamp from 'lodash/clamp'
 import { store } from './index'
-import { emit, log, mixin, unserializeObject } from '@/utils'
+import { emit, log, mixin, deserializeObject } from '@/utils'
 import Item from '@/classes/items/item'
 import Name from '@/mixins/name'
 import Level from '@/mixins/level'
@@ -220,8 +220,8 @@ export default class Player {
 
   async onLevelUp() {}
 
-  unserialize() {
-    return unserializeObject(this.state)
+  deserialize() {
+    return deserializeObject(this.state)
   }
 }
 

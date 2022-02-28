@@ -1,5 +1,5 @@
 import Item from './item'
-import { mixin } from '@/utils'
+import { mixin, registerClass } from '@/utils'
 import Version from '@/mixins/version'
 import Viewable from '@/mixins/files/viewable'
 import Deletable from '@/mixins/files/deletable'
@@ -36,3 +36,5 @@ mixin(File, [
   Downloadable,
   Uploadable,
 ])
+
+registerClass(File)

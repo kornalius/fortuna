@@ -209,30 +209,30 @@ export const delay = time => {
   })
 }
 
-export const allowedUnserializeTypes = [
+export const allowedDeserializeTypes = [
   'string',
   'number',
   'boolean',
 ]
 
-export const unserializeElement = e => {
-  if (e === null || e === undefined || allowedUnserializeTypes.includes(typeof e)) {
+export const deserializeElement = e => {
+  if (e === null || e === undefined || allowedDeserializeTypes.includes(typeof e)) {
     return e
   // } else if (typeof e === 'function') {
   //   return e.toString()
   } else if (Array.isArray(e)) {
-    return unserializeArray(e)
+    return deserializeArray(e)
   } else if (typeof e === 'object') {
-    return unserializeObject(e)
+    return deserializeObject(e)
   }
   return undefined
 }
 
-export const unserializeObject = o => (
-  Object.keys(o).reduce((acc, k) => ({ ...acc, [k]: unserializeElement(o[k]) }), [])
+export const deserializeObject = o => (
+  Object.keys(o).reduce((acc, k) => ({ ...acc, [k]: deserializeElement(o[k]) }), [])
 )
 
-export const unserializeArray = arr => compact(arr.map(a => unserializeElement(a)))
+export const deserializeArray = arr => compact(arr.map(a => deserializeElement(a)))
 
 export const serializeObject = (t, s) => {
   Object.keys({ ...s, ...t }).forEach(k => {
@@ -245,3 +245,12 @@ export const serializeObject = (t, s) => {
     }
   })
 }
+
+export const registeredClasses = {}
+
+export const registerClass = k => {
+  registeredClasses[k.prototype.constructor.name] = k
+}
+
+// Cannot put in log.js
+registerClass(Log)

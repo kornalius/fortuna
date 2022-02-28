@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { serializeObject } from '@/utils'
+import { registeredClasses, serializeObject } from '@/utils'
 
 export default class Entities {
   storeName = 'entities'
@@ -38,15 +38,29 @@ export default class Entities {
     }
   }
 
-  unserialize() {
-    return this.list.map(i => i.unserialize())
+  deserialize() {
+    return this.list.map(i => {
+      const Klass = registeredClasses[i.constructor.name]
+      if (!Klass) {
+        console.error(`Class ${i.constructor.name} has not been registered`)
+      }
+      return {
+        klass: i.constructor.name,
+        value: i.deserialize(),
+      }
+    })
   }
 
   serialize(data) {
     return data.forEach(d => {
-      const m = new this.model()
-      serializeObject(d, m.state)
-      this.update(m)
+      const Klass = registeredClasses[d.klass]
+      if (!Klass) {
+        console.error(`Class ${d.klass} has not been registered`)
+      } else {
+        const m = new Klass()
+        serializeObject(d.value, m.state)
+        this.update(m)
+      }
     })
   }
 }

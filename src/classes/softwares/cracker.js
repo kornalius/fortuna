@@ -1,6 +1,6 @@
 import Software from '@/classes/softwares/software'
-import { store } from '@/store';
-import { emit, log } from '@/utils';
+import { store } from '@/store'
+import { emit, log, registerClass } from '@/utils'
 
 export default class Cracker extends Software {
   setupInstance(data) {
@@ -50,3 +50,5 @@ export default class Cracker extends Software {
 
   async onCrack() {}
 }
+
+registerClass(Cracker)

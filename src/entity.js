@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { store } from '@/store'
-import { mixState, unserializeObject } from '@/utils'
+import { mixState, deserializeObject } from '@/utils'
 
 export default class Entity {
   constructor(data) {
@@ -44,8 +44,8 @@ export default class Entity {
     store[this.store].remove(this.id)
   }
 
-  unserialize() {
-    return unserializeObject(this.state)
+  deserialize() {
+    return deserializeObject(this.state)
   }
 
   mounted() {

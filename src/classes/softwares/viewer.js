@@ -1,4 +1,5 @@
 import Software from '@/classes/softwares/software'
+import { registerClass } from '@/utils'
 
 export default class Viewer extends Software {
   setupInstance(data) {
@@ -16,3 +17,5 @@ export default class Viewer extends Software {
   get viewerType() { return this.state.viewerType }
   set viewerType(value) { this.state.viewerType = value }
 }
+
+registerClass(Viewer)

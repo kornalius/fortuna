@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log, delay, mixin } from '@/utils'
+import { emit, log, delay, mixin, registerClass } from '@/utils'
 import Requirements from '@/mixins/requirements'
 
 export default class Combat extends Entity {
@@ -608,3 +608,5 @@ export default class Combat extends Entity {
 mixin(Combat, [
   Requirements,
 ])
+
+registerClass(Combat)

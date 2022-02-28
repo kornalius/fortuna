@@ -1,4 +1,5 @@
 import Software from '@/classes/softwares/software'
+import { registerClass } from '@/utils'
 
 export default class Deleter extends Software {
   setupInstance(data) {
@@ -12,3 +13,5 @@ export default class Deleter extends Software {
 
   get isDeleter() { return true }
 }
+
+registerClass(Deleter)

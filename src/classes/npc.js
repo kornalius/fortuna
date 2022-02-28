@@ -1,6 +1,6 @@
 import random from 'lodash/random'
 import Entity from '../entity'
-import { emit, log, mixin } from '@/utils'
+import { emit, log, mixin, registerClass } from '@/utils'
 import { store } from '@/store'
 import Dialog from '@/classes/dialog'
 import Combat from '@/classes/combat'
@@ -261,3 +261,5 @@ mixin(Npc, [
   Carry,
   Requirements,
 ])
+
+registerClass(Npc)

@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin, emit, log } from '@/utils'
+import { mixin, emit, log, registerClass } from '@/utils'
 import { store } from '@/store'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
@@ -187,3 +187,5 @@ mixin(City, [
   Visitable,
   Requirements,
 ])
+
+registerClass(City)

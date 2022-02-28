@@ -1,5 +1,5 @@
 import Room from '@/classes/room'
-import { color, log } from '@/utils'
+import { color, log, registerClass } from '@/utils'
 import LightSwitch from '@/classes/items/lightSwitch'
 import { IntroServer } from './servers'
 import { store } from '@/store'
@@ -127,3 +127,5 @@ export default class IntroRoom extends Room {
     ])
   }
 }
+
+registerClass(IntroRoom)

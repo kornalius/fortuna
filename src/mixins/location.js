@@ -31,7 +31,7 @@ export default {
     let locationId
     let locationStore
 
-    if (data.location) {
+    if (data?.location) {
       locationId = data.location.id
       locationStore = data.location.store
     }

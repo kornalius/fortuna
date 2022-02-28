@@ -1,14 +1,14 @@
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
 import random from 'lodash/random'
-import { checkSoftware, emit, log, mixin, pickRandom, randomFilename } from '@/utils'
+import { checkSoftware, emit, log, mixin, pickRandom, randomFilename, registerClass } from '@/utils'
 import Item from './item'
 import File from './file'
 import { store } from '@/store'
 import Examinable from '@/mixins/examinable'
 import Version from '@/mixins/version'
 import Visitable from '@/mixins/visitable'
-import { femaleNames, maleNames, passwords } from '@/words';
+import { femaleNames, maleNames, passwords } from '@/words'
 
 export default class Server extends Item {
   fileOrders = []
@@ -606,3 +606,5 @@ mixin(Server, [
   Version,
   Visitable,
 ])
+
+registerClass(Server)

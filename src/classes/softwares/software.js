@@ -1,5 +1,5 @@
 import File from '../items/file'
-import { mixin } from '@/utils'
+import { mixin, registerClass } from '@/utils'
 import Installable from '@/mixins/installable'
 import Usable from '@/mixins/usable'
 
@@ -44,3 +44,5 @@ mixin(Software, [
   Installable,
   Usable,
 ])
+
+registerClass(Software)

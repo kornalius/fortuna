@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin, emit, log } from '@/utils'
+import { mixin, emit, log, registerClass } from '@/utils'
 import { store } from '@/store'
 import Location from '@/mixins/location'
 import Name from '@/mixins/name'
@@ -180,3 +180,5 @@ mixin(Building, [
   Visitable,
   Requirements,
 ])
+
+registerClass(Building)

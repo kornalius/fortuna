@@ -1,6 +1,7 @@
 import Building from '@/classes/building'
 import IntroRoom from './rooms/intro'
 import IntroWinRoom from './rooms/intro-win'
+import { registerClass } from '@/utils'
 
 export default class IntroBuilding extends Building {
   constructor(data) {
@@ -22,3 +23,5 @@ export default class IntroBuilding extends Building {
     ])
   }
 }
+
+registerClass(IntroBuilding)

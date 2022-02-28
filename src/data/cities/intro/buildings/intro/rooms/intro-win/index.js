@@ -1,5 +1,5 @@
 import Room from '@/classes/room'
-import { log } from '@/utils'
+import { log, registerClass } from '@/utils'
 import { store } from '@/store'
 
 export default class IntroWinRoom extends Room {
@@ -20,3 +20,5 @@ export default class IntroWinRoom extends Room {
     store.game.pause()
   }
 }
+
+registerClass(IntroWinRoom)

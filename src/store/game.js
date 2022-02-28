@@ -3,7 +3,7 @@ import { Howl } from 'howler'
 import max from 'lodash/max'
 import { reset, store } from '@/store'
 import { soundFiles } from '@/sounds'
-import { unserializeObject } from '@/utils';
+import { serializeObject, deserializeObject } from '@/utils';
 
 export default class Game {
   storeName = 'game'
@@ -168,10 +168,17 @@ export default class Game {
 
   async load() {
     const data = JSON.parse(localStorage.getItem('game'))
-
     if (data) {
-      this.serialize(data.game)
-      store.player.serialize(data.player)
+      console.log('Loading game...')
+      serializeObject(data.game, store.game.state)
+      console.log('Loading player...')
+      serializeObject(data.player, store.player.state)
+      Object.keys(store).forEach(k => {
+        if (!['config', 'game', 'player'].includes(k)) {
+          console.log(`Loading ${k}...`)
+          store[k].serialize(data[k])
+        }
+      })
     }
   }
 
@@ -179,8 +186,8 @@ export default class Game {
     const data = {}
     Object.keys(store).forEach(k => {
       if (k !== 'config') {
-        console.log(k)
-        data[k] = store[k].unserialize()
+        console.log(`Saving ${k}...`)
+        data[k] = store[k].deserialize()
       }
     })
     localStorage.setItem('game', JSON.stringify(data))
@@ -204,7 +211,7 @@ export default class Game {
     await this.start()
   }
 
-  unserialize() {
-    return unserializeObject(this.state)
+  deserialize() {
+    return deserializeObject(this.state)
   }
 }

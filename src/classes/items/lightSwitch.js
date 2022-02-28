@@ -1,5 +1,5 @@
 import Item from './item'
-import { emit, log } from '@/utils'
+import { emit, log, registerClass } from '@/utils'
 
 export default class LightSwitch extends Item {
   setupInstance(data) {
@@ -42,3 +42,5 @@ export default class LightSwitch extends Item {
     store.game.playSound('switch')
   }
 }
+
+registerClass(LightSwitch)
