@@ -8,8 +8,8 @@ export default class IntroBuilding extends Building {
     super({
       ...data,
       name: 'Introduction Building',
-      x: 20,
-      y: 465,
+      x: 30,
+      y: 445,
       startRoomName: 'Introduction Room',
     });
   }

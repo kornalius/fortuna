@@ -1,23 +1,25 @@
 <template>
   <n-card style="opacity: .95; width: 966px; height: 800px;">
     <div ref="container" class="container">
-      <img
-        style="max-width: none;"
-        src="/images/province.png"
-        alt="province.png"
-        @mousemove="updateCoordinates"
-      />
-
-      <template
-        v-for="city in cities"
-        :key="city.id"
-        v-show="!city.hidden"
-      >
-        <City
-          :style="cityStyle(city)"
-          :value="city"
+      <div ref="content">
+        <img
+          style="max-width: none;"
+          src="/images/province.png"
+          alt="province.png"
+          @mousemove="updateCoordinates"
         />
-      </template>
+
+        <template
+          v-for="city in cities"
+          :key="city.id"
+          v-show="!city.hidden"
+        >
+          <City
+            :style="cityStyle(city)"
+            :value="city"
+          />
+        </template>
+      </div>
     </div>
 
     <span class="coordinates">{{ pos.x }}, {{ pos.y }}</span>
@@ -25,12 +27,18 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { store } from '@/store'
 import City from '@/components/City.vue'
+import useDrag from '@/composites/drag'
 
 const container = ref()
+const content = ref()
 const pos = ref({ x: 0, y: 0 })
+
+onMounted(() => {
+  useDrag(content.value, container.value)
+})
 
 const cityStyle = city => {
   const style = []
