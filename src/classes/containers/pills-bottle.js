@@ -2,6 +2,7 @@ import Container from '@/classes/containers/container'
 import { mixin, registerClass } from '@/utils'
 import Pickable from '@/mixins/pickable'
 import Dropable from '@/mixins/dropable'
+import { store } from '@/store';
 
 export default class PillsBottle extends Container {
   setupInstance(data) {
@@ -10,6 +11,14 @@ export default class PillsBottle extends Container {
       icon: 'fa-solid:prescription-bottle-alt',
       ...data,
     })
+  }
+
+  async onOpen() {
+    store.game.playSound('open-pills-bottle')
+  }
+
+  async onSearch() {
+    store.game.playSound('search-pills-bottle')
   }
 }
 

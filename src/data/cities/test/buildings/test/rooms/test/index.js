@@ -1,23 +1,23 @@
 import { color, log } from '@/utils'
 import Server from '@/classes/server/server'
-import IntroRoomServer from './servers'
+import TestRoomServer from './servers'
 import Npc from '@/classes/npcs/npc'
 import LightSwitch from '@/classes/items/lightSwitch'
-import IntroRoomLightSwitch from './items/light-switch'
+import TestRoomLightSwitch from './items/light-switch'
 import SimonSmith from './npcs/SimonSmith'
 
 export default {
-  name: 'Introduction Room',
-  code: 'IntroRoom',
+  name: 'Test Room',
+  code: 'TestRoom',
   icon: 'bx:bxs-flag-checkered',
   x: 0,
   y: 0,
-  img: 'intro-room.png',
+  img: 'test-room.png',
 
   mounted() {
     this.addNpc(new Npc(SimonSmith))
-    this.addItem(new LightSwitch(IntroRoomLightSwitch))
-    this.addItem(new Server(IntroRoomServer))
+    this.addItem(new LightSwitch(TestRoomLightSwitch))
+    this.addItem(new Server(TestRoomServer))
   },
 
   async onEnter() {

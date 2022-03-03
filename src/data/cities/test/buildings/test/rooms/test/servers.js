@@ -6,7 +6,7 @@ import Cracker from '@/classes/softwares/cracker'
 import { store } from '@/store'
 
 export default {
-  name: 'Intro server',
+  name: 'Test server',
   crackable: true,
   protected: true,
 

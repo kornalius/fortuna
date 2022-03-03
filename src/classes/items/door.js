@@ -94,6 +94,14 @@ export default class Door extends Item {
     }
     return false
   }
+
+  async onOpen() {
+    store.game.playSound('open-door')
+  }
+
+  async onClose() {
+    store.game.playSound('close-door')
+  }
 }
 
 mixin(Door, [

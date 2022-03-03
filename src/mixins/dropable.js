@@ -59,7 +59,6 @@ export default {
     if (!this.canDrop(true)) {
       return false
     }
-    store.game.playSound('drop')
     this.location = store.game.room
     this.hovered = false
     log(`You drop ${this.name.toLowerCase()}`)
@@ -67,5 +66,7 @@ export default {
     return true
   },
 
-  async onDrop() {},
+  async onDrop() {
+    store.game.playSound('drop')
+  },
 }

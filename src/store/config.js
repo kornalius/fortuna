@@ -10,7 +10,7 @@ export default class Config {
     startTime: '18:00',
     tickTime: 15,
     tickInterval: 60 * 1000,
-    startCityCode: 'IntroCity',
+    startCityCode: 'TestCity',
 
     // Player
 

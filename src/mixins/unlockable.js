@@ -86,12 +86,13 @@ export default {
     if (!this.canUnlock(true)) {
       return false
     }
-    store.game.playSound('unlock')
     this.state.locked = false
     log('Door has been unlocked')
     await emit.call(this, 'onUnlock')
     return true
   },
 
-  async onUnlock() {},
+  async onUnlock() {
+    store.game.playSound('unlock')
+  },
 }

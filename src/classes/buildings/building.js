@@ -164,13 +164,14 @@ export default class Building extends Entity {
     if (store.game.room) {
       await store.game.room.exit()
     }
-    store.game.playSound('walk')
     store.game.building = null
     await emit.call(this, 'onExit')
     return true
   }
 
-  async onExit() {}
+  async onExit() {
+    store.game.playSound('walk')
+  }
 }
 
 mixin(Building, [

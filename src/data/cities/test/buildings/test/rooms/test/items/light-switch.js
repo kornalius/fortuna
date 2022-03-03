@@ -1,6 +1,6 @@
 import { log } from '@/utils'
 import PillsBottle from '@/classes/containers/pills-bottle'
-import IntroRoomPillsBottle from './pills-bottle'
+import TestRoomPillsBottle from './pills-bottle'
 import { store } from '@/store'
 
 export default {
@@ -23,7 +23,7 @@ export default {
       ])
 
       store.game.room.addDoor({ locked: true }, 'S')
-      store.game.room.addItem(new PillsBottle(IntroRoomPillsBottle))
+      store.game.room.addItem(new PillsBottle(TestRoomPillsBottle))
 
       log([
         'While your eyes inspect the room, you look down and see a half empty bottle of pills',

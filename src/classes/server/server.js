@@ -301,13 +301,14 @@ export default class Server extends Item {
       this.clear()
       store.player.server = this
       await this.visit()
-      store.game.playSound('boot-sound')
       log(`You have successfully connected to ${this.name.toLowerCase()}`)
       await emit.call(this, 'onConnect')
     })
   }
 
   async onConnect() {
+    store.game.playSound('boot-sound')
+
     store.game.playSound('hum')
 
     if (!this.username) {
@@ -366,13 +367,14 @@ export default class Server extends Item {
     return this.operate('disconnect', async () => {
       store.player.server = null
       store.game.stopSound('hum')
-      store.game.playSound('power-down')
       log(`You have successfully disconnected from ${this.name}`)
       await emit.call(this, 'onDisconnect')
     })
   }
 
-  async onDisconnect() {}
+  async onDisconnect() {
+    store.game.playSound('power-down')
+  }
 
   canAuthenticate(showMessage) {
     if (this.isBusy) {

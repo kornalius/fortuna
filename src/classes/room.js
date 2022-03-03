@@ -129,13 +129,14 @@ export default class Room extends Entity {
     if (!this.canExit(toRoom, true)) {
       return false
     }
-    store.game.playSound('walk')
     store.game.room = null
     await emit.call(this, 'onExit')
     return true
   }
 
-  async onExit() {}
+  async onExit() {
+    store.game.playSound('walk')
+  }
 
   addDoor(data, direction) {
     const directions = {

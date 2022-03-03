@@ -8,13 +8,21 @@ export const soundFiles = {
   'button': { src: 'sfx/button.wav', volume: 0.5 },
   'click': { src: 'sfx/click.wav' },
 
-  // Doors + Containers
+  // Doors
 
   'unlock': { src: 'sfx/unlock.wav' },
   'open-door': { src: 'sfx/open-door.wav' },
   'close-door': { src: 'sfx/close-door.wav' },
+
+  // Drawers
+
   'open-drawer': { src: 'sfx/open-drawer.wav' },
   'close-drawer': { src: 'sfx/close-drawer.wav' },
+
+  // Pills Bottle
+
+  'open-pills-bottle': { src: 'sfx/open-pills-bottle.wav'},
+  'search-pills-bottle': { src: 'sfx/search-pills-bottle.wav'},
 
   // Walk
 

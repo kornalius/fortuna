@@ -47,7 +47,6 @@ export default {
     if (!this.canPickup(true)) {
       return false
     }
-    store.game.playSound('pickup')
     this.locationId = null
     this.locationStore = store.player.storeName
     this.hovered = false
@@ -56,5 +55,7 @@ export default {
     return true
   },
 
-  async onPickup() {},
+  async onPickup() {
+    store.game.playSound('pickup')
+  },
 }
