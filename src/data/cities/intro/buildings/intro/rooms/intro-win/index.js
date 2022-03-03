@@ -4,6 +4,7 @@ import { store } from '@/store'
 export default {
   name: 'Outside',
   icon: 'bx:bxs-landscape',
+  code: 'IntroRoomWin',
   x: 0,
   y: 1,
   img: 'intro-win.png',

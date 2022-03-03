@@ -25,8 +25,9 @@
           />
         </div>
 
-        <div class="flex ph1 mv2 items-center title-bar">
-          {{ value?.name }}
+        <div class="flex ph1 mv2 items-center justify-between title-bar">
+          <span>{{ value?.name }}</span>
+          <span>{{ store.game.dayString }}</span>
         </div>
 
         <div class="flex flex-wrap items-center mb2">
@@ -133,9 +134,10 @@ const logsChanged = () => {
 }
 .title-bar {
   background-color: #4561B4;
-  color: #111;
+  color: #cce;
   height: 24px;
   width: 100%;
+  text-shadow: 1px 1px 2px #111;
 }
 .divider {
   background: transparent;

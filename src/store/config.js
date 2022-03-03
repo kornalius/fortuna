@@ -6,6 +6,10 @@ export default class Config {
   state = reactive({
     // World
 
+    startDate: '2157-01-01',
+    startTime: '18:00',
+    tickTime: 15,
+    tickInterval: 60 * 1000,
     startCityCode: 'IntroCity',
 
     // Player
@@ -67,6 +71,10 @@ export default class Config {
     ],
   })
 
+  get startDate() { return this.state.startDate }
+  get startTime() { return this.state.startTime }
+  get tickTime() { return this.state.tickTime }
+  get tickInterval() { return this.state.tickInterval }
   get startCityCode() { return this.state.startCityCode }
 
   get baseHp() { return this.state.baseHp }

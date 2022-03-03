@@ -1,9 +1,9 @@
 import random from 'lodash/random'
 import Entity from '@/entity'
-import { emit, log, mixin, registerClass } from '@/utils'
-import { store } from '@/store'
 import Dialog from '@/classes/dialog'
 import Combat from '@/classes/combat'
+import { emit, log, mixin, registerClass } from '@/utils'
+import { store } from '@/store'
 import Code from '@/mixins/code'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
@@ -54,6 +54,11 @@ export default class Npc extends Entity {
           }
         ),
       ],
+      // Agenda to follow
+      // { start: '08:00', end: '16:00', roomId: 'id' },
+      // { start: '16:01', end: '07:59', roomCode: 'Home' },
+      // { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom' },
+      agenda: [],
       ...data,
     })
   }
@@ -116,6 +121,9 @@ export default class Npc extends Entity {
   get shieldDiceIndexes() {
     return this.shieldDice.map(d => this.dice.indexOf(d))
   }
+
+  get agenda() { return this.state.agenda }
+  set agenda(value) { this.state.agenda = value }
 
   getDialog(code) { return this.dialogs.find(d => d.code === code) }
 

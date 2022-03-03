@@ -20,11 +20,17 @@
 
 <script setup>
 import { computed, onMounted, onUnmounted, watch } from 'vue'
+import dayjs from 'dayjs'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import Main from '@/components/Main.vue'
 import Menu from '@/components/Menu.vue'
 import Options from '@/components/Options.vue'
 import { store } from '@/store'
 import { darkTheme } from 'naive-ui'
+
+dayjs.extend(isSameOrBefore)
+dayjs.extend(isSameOrAfter)
 
 const showDialog = computed(() => store.game.isPaused || store.game.isStarted === false)
 const showOptions = computed(() => store.game.showOptions)

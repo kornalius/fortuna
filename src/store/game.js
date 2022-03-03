@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import dayjs from 'dayjs'
 import { Howl } from 'howler'
 import max from 'lodash/max'
 import omit from 'lodash/omit'
@@ -27,8 +28,19 @@ export default class Game {
       showCity: null,
       showLevelUp: false,
       volume: 0.1,
+      date: store.config.startDate,
+      time: store.config.startTime,
     }
   }
+
+  get date() { return this.state.date }
+  set date(value) { return this.state.date = value }
+
+  get time() { return this.state.time }
+  set time(value) { return this.state.time = value }
+
+  get day() { return dayjs(`${this.date} ${this.time}`) }
+  get dayString() { return this.day.format('YYYY-MM-DD HH:mm') }
 
   get hasSave() { return typeof localStorage.getItem('game') === 'string' }
 
@@ -107,6 +119,17 @@ export default class Game {
   get volume() { return this.state.volume }
   set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }
 
+  startTick() {
+    this._interval = setInterval(() => {
+      this.tick()
+    }, store.config.tickInterval)
+  }
+
+  stopTick() {
+    clearInterval(this._interval)
+    this._interval = 0
+  }
+
   async start() {
     if (this.state.paused) {
       window.location.reload()
@@ -119,14 +142,35 @@ export default class Game {
         await city.enter()
       }
     }
+    this.startTick()
+  }
+
+  /**
+   * Tick to the next time / day
+   */
+  tick() {
+    const t = this.day.add(store.config.tickTime, 'minutes')
+    this.date = t.format('YYYY-MM-DD')
+    this.time = t.format('HH:mm')
+    store.npcs.processAgendas()
+    return t
+  }
+
+  isBetween(start, end) {
+    const t = this.day
+    const s = dayjs(start)
+    const e = dayjs(end)
+    return t.isSameOrAfter(s) && t.isSameOrBefore(e)
   }
 
   pause() {
     this.state.paused = true
+    this.stopTick()
   }
 
   resume() {
     this.state.paused = false
+    this.startTick()
   }
 
   loadSound(name) {

@@ -5,6 +5,10 @@ export default {
   description: 'An old grumpy man',
   talkable: true,
   aggresive: true,
+  agenda: [
+    { start: '00:00', end: '23:59', roomCode: 'IntroRoom' },
+    { date: store.config.startDate, start: '18:15', end: '18:29', roomCode: 'IntroRoomWin' },
+  ],
 
   mounted() {
     this.addDialog([
