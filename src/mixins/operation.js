@@ -1,4 +1,4 @@
-import { operationTimeout } from '@/utils';
+import { operationTimeout } from '@/utils'
 
 export default {
   state: {

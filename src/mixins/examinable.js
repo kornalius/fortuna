@@ -10,7 +10,7 @@ export default {
           ? {
             label: item.examineLabel,
             key: 'examine',
-            icon: 'emojione:eye',
+            icon: 'icomoon-free:eye',
             disabled: !item.canExamine(),
             click: async () => item.examine(),
           }

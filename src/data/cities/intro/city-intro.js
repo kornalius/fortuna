@@ -1,24 +1,15 @@
-import City from '@/classes/city'
+import Building from '@/classes/buildings/building'
 import IntroBuilding from './buildings/intro'
-import { registerClass } from '@/utils'
 
-export default class IntroCity extends City {
-  constructor(data) {
-    super({
-      ...data,
-      name: 'Introduction City',
-      x: 330,
-      y: 380,
-      startBuildingName: 'Introduction Building',
-      img: 'intro-city.png',
-    });
-  }
+export default {
+  name: 'Introduction City',
+  code: 'IntroCity',
+  x: 330,
+  y: 380,
+  startBuildingCode: 'IntroBuilding',
+  img: 'intro-city.png',
 
   mounted() {
-    super.mounted()
-
-    this.addBuilding(new IntroBuilding())
-  }
+    this.addBuilding(new Building(IntroBuilding))
+  },
 }
-
-registerClass(IntroCity)

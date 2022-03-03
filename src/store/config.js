@@ -6,7 +6,7 @@ export default class Config {
   state = reactive({
     // World
 
-    startCityName: 'Introduction City',
+    startCityCode: 'IntroCity',
 
     // Player
 
@@ -67,7 +67,7 @@ export default class Config {
     ],
   })
 
-  get startCityName() { return this.state.startCityName }
+  get startCityCode() { return this.state.startCityCode }
 
   get baseHp() { return this.state.baseHp }
   get highestHp() { return this.state.highestHp }

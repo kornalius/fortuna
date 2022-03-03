@@ -1,9 +1,10 @@
 import { reactive } from 'vue'
 import { Howl } from 'howler'
 import max from 'lodash/max'
+import omit from 'lodash/omit'
 import { reset, store } from '@/store'
 import { soundFiles } from '@/sounds'
-import { serializeObject, deserializeObject } from '@/utils';
+import { serializeObject, deserializeObject } from '@/utils'
 
 export default class Game {
   storeName = 'game'
@@ -113,7 +114,7 @@ export default class Game {
     }
     this.state.started = true
     if (!this.city) {
-      const city = store.cities.findByName(store.config.startCityName)
+      const city = store.cities.findByCode(store.config.startCityCode)
       if (city) {
         await city.enter()
       }
@@ -216,6 +217,6 @@ export default class Game {
   }
 
   deserialize() {
-    return deserializeObject(this.state)
+    return deserializeObject(omit(this.state, ['sounds']))
   }
 }

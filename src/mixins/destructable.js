@@ -1,6 +1,6 @@
 import random from 'lodash/random'
 import { emit, log } from '@/utils'
-import { store } from '@/store';
+import { store } from '@/store'
 
 export default {
   state: {

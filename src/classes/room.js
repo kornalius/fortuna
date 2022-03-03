@@ -2,7 +2,8 @@ import Entity from '@/entity'
 import { mixin, emit, log, registerClass } from '@/utils'
 import { store } from '@/store'
 import Door from '@/classes/items/door'
-import Npc from '@/classes/npc'
+import Npc from '@/classes/npcs/npc'
+import Code from '@/mixins/code'
 import Location from '@/mixins/location'
 import Name from '@/mixins/name'
 import Position from '@/mixins/position'
@@ -15,8 +16,12 @@ import Requirements from '@/mixins/requirements'
 
 export default class Room extends Entity {
   setupInstance(data) {
+    const { locationId, locationStore } = this.setupLocation(data)
+
     return super.setupInstance({
       name: 'Room',
+      locationId,
+      locationStore,
       ...data,
     })
   }
@@ -178,6 +183,7 @@ export default class Room extends Entity {
 }
 
 mixin(Room, [
+  Code,
   Location,
   Name,
   Position,

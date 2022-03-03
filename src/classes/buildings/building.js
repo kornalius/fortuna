@@ -2,6 +2,7 @@ import Entity from '@/entity'
 import { mixin, emit, log, registerClass } from '@/utils'
 import { store } from '@/store'
 import Location from '@/mixins/location'
+import Code from '@/mixins/code'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
 import Position from '@/mixins/position'
@@ -15,11 +16,15 @@ import Room from '@/classes/room'
 
 export default class Building extends Entity {
   setupInstance(data) {
+    const { locationId, locationStore } = this.setupLocation(data)
+
     return super.setupInstance({
       name: 'Building',
       description: 'A building',
       icon: 'clarity:building-solid',
-      startRoomName: '',
+      startRoomCode: null,
+      locationId,
+      locationStore,
       actions: [
         item => (
           {
@@ -35,8 +40,8 @@ export default class Building extends Entity {
     })
   }
 
-  get startRoomName() { return this.state.startRoomName }
-  set startRoomName(value) { this.state.startRoomName = value }
+  get startRoomCode() { return this.state.startRoomCode }
+  set startRoomCode(value) { this.state.startRoomCode = value }
 
   get buildings() { return store.buildings.list.filter(i => i.location === this) }
 
@@ -114,7 +119,7 @@ export default class Building extends Entity {
       store.game.showCity = null
       store.game.showCityMap = false
 
-      const room = store.rooms.findByName(this.startRoomName)
+      const room = store.rooms.findByCode(this.startRoomCode)
       if (room) {
         await room.enter()
       }
@@ -169,6 +174,7 @@ export default class Building extends Entity {
 }
 
 mixin(Building, [
+  Code,
   Location,
   Name,
   Description,

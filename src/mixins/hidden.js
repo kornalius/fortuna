@@ -1,4 +1,4 @@
-import { emit } from '@/utils';
+import { emit } from '@/utils'
 
 export default {
   state: {

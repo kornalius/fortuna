@@ -1,4 +1,4 @@
-import Item from './item'
+import Item from '../items/item'
 import { mixin, registerClass } from '@/utils'
 import Version from '@/mixins/version'
 import Viewable from '@/mixins/files/viewable'

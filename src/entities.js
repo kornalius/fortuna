@@ -11,6 +11,8 @@ export default class Entities {
 
   get(id) { return this.state[id] }
 
+  findByCode(code) { return this.list.find(e => e.code === code) }
+
   findByName(name) { return this.list.find(e => e.name === name) }
 
   async reset() {

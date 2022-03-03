@@ -1,4 +1,5 @@
 import { store } from '@/store'
+import Entity from '@/entity'
 import Item from '@/classes/items/item'
 
 export default {
@@ -33,7 +34,7 @@ export default {
       return data.map(d => this.addItem(d))
     }
 
-    if (data instanceof Item) {
+    if (data instanceof Entity) {
       data.location = this
       data.hovered = false
       store.items.update(data)

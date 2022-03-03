@@ -1,25 +1,16 @@
-import Server from '@/classes/items/server'
-import File from '@/classes/items/file'
+import File from '@/classes/server/file'
 import FTP from '@/classes/softwares/ftp'
 import Viewer from '@/classes/softwares/viewer'
 import Deleter from '@/classes/softwares/deleter'
 import Cracker from '@/classes/softwares/cracker'
 import { store } from '@/store'
-import { registerClass } from '@/utils'
 
-export class IntroServer extends Server {
-  constructor(data) {
-    super({
-      ...data,
-      name: 'Intro server',
-      crackable: true,
-      protected: true,
-    });
-  }
+export default {
+  name: 'Intro server',
+  crackable: true,
+  protected: true,
 
   mounted() {
-    super.mounted()
-
     this.addItem([
       new File({
         name: 'Plots.txt',
@@ -71,7 +62,5 @@ export class IntroServer extends Server {
         weight: 1,
       }),
     ])
-  }
+  },
 }
-
-registerClass(IntroServer)

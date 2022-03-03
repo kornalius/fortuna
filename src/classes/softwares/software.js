@@ -1,4 +1,4 @@
-import File from '../items/file'
+import File from '../server/file'
 import { mixin, registerClass } from '@/utils'
 import Installable from '@/mixins/installable'
 import Usable from '@/mixins/usable'

@@ -1,6 +1,7 @@
 import Entity from '../entity'
 import { store } from '@/store'
 import { emit, log, mixin, registerClass } from '@/utils'
+import Code from '@/mixins/code'
 import Requirements from '@/mixins/requirements'
 
 export default class Dialog extends Entity {
@@ -167,6 +168,7 @@ export default class Dialog extends Entity {
 }
 
 mixin(Dialog, [
+  Code,
   Requirements,
 ])
 

@@ -1,5 +1,5 @@
 import { log, emit } from '@/utils'
-import { store } from '@/store';
+import { store } from '@/store'
 
 export default {
   state: {

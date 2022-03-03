@@ -1,9 +1,10 @@
 import random from 'lodash/random'
-import Entity from '../entity'
+import Entity from '@/entity'
 import { emit, log, mixin, registerClass } from '@/utils'
 import { store } from '@/store'
 import Dialog from '@/classes/dialog'
 import Combat from '@/classes/combat'
+import Code from '@/mixins/code'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
 import Actions from '@/mixins/actions'
@@ -247,6 +248,7 @@ export default class Npc extends Entity {
 }
 
 mixin(Npc, [
+  Code,
   Name,
   Description,
   Actions,

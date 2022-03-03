@@ -1,6 +1,7 @@
 import Entity from '@/entity'
 import { mixin, emit, log, registerClass } from '@/utils'
 import { store } from '@/store'
+import Code from '@/mixins/code'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
 import Image from '@/mixins/image'
@@ -11,7 +12,7 @@ import Hovered from '@/mixins/hovered'
 import Actions from '@/mixins/actions'
 import Visitable from '@/mixins/visitable'
 import Requirements from '@/mixins/requirements'
-import Building from '@/classes/building'
+import Building from '@/classes/buildings/building'
 
 export default class City extends Entity {
   setupInstance(data) {
@@ -19,7 +20,7 @@ export default class City extends Entity {
       name: 'City',
       description: 'A city',
       icon: 'emojione-monotone:cityscape',
-      startBuildingName: '',
+      startBuildingCode: null,
       actions: [
         item => (
           {
@@ -37,8 +38,8 @@ export default class City extends Entity {
 
   get img() { return `images/cities/${this.state.img}` }
 
-  get startBuildingName() { return this.state.startBuildingName }
-  set startBuildingName(value) { this.state.startBuildingName = value }
+  get startBuildingCode() { return this.state.startBuildingCode }
+  set startBuildingCode(value) { this.state.startBuildingCode = value }
 
   get buildings() { return store.buildings.list.filter(i => i.location === this) }
 
@@ -112,7 +113,7 @@ export default class City extends Entity {
 
       store.game.showProvince = false
 
-      const building = store.buildings.findByName(this.startBuildingName)
+      const building = store.buildings.findByCode(this.startBuildingCode)
       if (building) {
         await building.enter()
       } else {
@@ -176,6 +177,7 @@ export default class City extends Entity {
 }
 
 mixin(City, [
+  Code,
   Name,
   Description,
   Position,

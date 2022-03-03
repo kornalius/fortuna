@@ -1,9 +1,12 @@
 import Entity from '@/entity'
 import { mixin, registerClass } from '@/utils'
 import { store } from '@/store'
+import Code from '@/mixins/code'
 import Name from '@/mixins/name'
 import Description from '@/mixins/description'
 import Icon from '@/mixins/icon'
+import Weight from '@/mixins/weight'
+import Qty from '@/mixins/qty'
 import Operation from '@/mixins/operation'
 import Hovered from '@/mixins/hovered'
 import Location from '@/mixins/location'
@@ -26,8 +29,6 @@ export default class Item extends Entity {
     return {
       name: 'Item',
       description: 'An item',
-      qty: 1,
-      weight: 0,
       locationId,
       locationStore,
       // buffs to apply to an player or npc stats { name, value, time, turns, rolls }
@@ -35,14 +36,6 @@ export default class Item extends Entity {
       ...data,
     }
   }
-
-  get stackable() { return false }
-
-  get weight() { return this.state.weight }
-  set weight(value) { this.state.weight = value }
-
-  get qty() { return this.state.qty }
-  set qty(value) { this.state.qty = this.stackable ? Math.max(0, value) : 1 }
 
   get isInInventory() { return store.player.has(this) }
 
@@ -74,11 +67,14 @@ export default class Item extends Entity {
 }
 
 mixin(Item, [
+  Code,
   Name,
   Description,
+  Icon,
+  Qty,
+  Weight,
   Operation,
   Hovered,
-  Icon,
   Location,
   Actions,
   Pickable,

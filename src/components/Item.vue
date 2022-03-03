@@ -94,12 +94,20 @@
             </div>
 
             <div class="inline-flex items-center">
-              <div class="badge">{{ value.qty }}</div>
+              <div
+                v-if="value.qty"
+                class="badge"
+              >
+                {{ value.qty }}
+              </div>
             </div>
           </div>
 
           <div class="flex w-100">
-            <div class="flex items-center">
+            <div
+              v-if="value.weight"
+              class="flex items-center"
+            >
               <v-icon :icon="weightIcon" width="16" />
               <span class="ml1 mt1">{{ value.weight }}</span>
             </div>
@@ -124,7 +132,7 @@
         </div>
       </div>
 
-      <span v-if="!value.hasUnlimitedUses" class="uses-left ml1">{{ value.uses }} left</span>
+      <span v-if="value.isUsable && !value.hasUnlimitedUses" class="uses-left ml1">{{ value.uses }} left</span>
     </n-popover>
   </n-dropdown>
 </template>
@@ -181,9 +189,11 @@ const weightIcon = computed(() => {
 const groupedBuffs = computed(() => {
   const buffs = []
   buffNames().forEach(name => {
-    const sum = props.value.sumOfBuffs(name)
-    if (sum !== 0) {
-      buffs.push({ name, value: sum, icon: buffIcon(name) })
+    if (props.value.sumOfBuffs) {
+      const sum = props.value.sumOfBuffs(name)
+      if (sum !== 0) {
+        buffs.push({ name, value: sum, icon: buffIcon(name) })
+      }
     }
   })
   return buffs
