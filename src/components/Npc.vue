@@ -6,7 +6,12 @@
     :render-label="renderDropdownLabel"
     @select="handleSelect"
   >
-    <n-popover :delay="1000" style="min-width: 250px" trigger="hover" placement="top">
+    <n-popover
+      style="min-width: 250px; max-width: 350px;"
+      :delay="1000"
+      trigger="hover"
+      placement="top"
+    >
       <template #trigger>
         <n-button
           :style="buttonStyle"

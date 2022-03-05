@@ -15,6 +15,7 @@ import Pushable from '@/mixins/pushable'
 import Pullable from '@/mixins/pullable'
 import Items from '@/mixins/items'
 import Requirements from '@/mixins/requirements'
+import { store } from '@/store'
 
 export default class Container extends Entity {
   setupInstance(data) {
@@ -28,6 +29,8 @@ export default class Container extends Entity {
       ...data,
     })
   }
+
+  get isInInventory() { return store.player.has(this) }
 }
 
 mixin(Container, [

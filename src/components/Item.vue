@@ -7,7 +7,7 @@
     @select="handleSelect"
   >
     <n-popover
-      style="min-width: 250px"
+      style="min-width: 250px; max-width: 350px;"
       :delay="1000"
       trigger="hover"
       :placement="value.isInInventory ? 'left' : 'top'"
@@ -95,7 +95,7 @@
 
             <div class="inline-flex items-center">
               <div
-                v-if="value.qty"
+                v-if="value.qty > 1"
                 class="badge"
               >
                 {{ value.qty }}

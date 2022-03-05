@@ -22,6 +22,15 @@
           />
           <span class="npc-hit-label">0</span>
         </div>
+        <div class="freezes">
+          <v-icon
+            v-for="i of freezes"
+            :key="`freeze-${i}`"
+            class="mr1"
+            icon="bi:snow"
+            width="20"
+          />
+        </div>
       </div>
 
       <n-popover trigger="hover" placement="bottom">
@@ -56,14 +65,45 @@
 
     <div class="flex flex-grow-1" />
 
+    <div class="combos flex flex-column relative">
+      <span class="mb2 ml1">COMBOS:</span>
+
+      <template
+        v-for="(combo, ci) in combos"
+        :key="`combo-${ci}`"
+      >
+        <div
+          class="combo flex items-center ph1 mb2"
+          :class="{ active: value.activeCombo(combo) }"
+        >
+          <div class="flex">
+            <Die
+              v-for="(die, index) in value.comboDice(combo)"
+              :key="`combo-${ci}-die-${index}`"
+              :class="`combo-${ci}-die-${index}`"
+              :faces="die.faces"
+              :face="die.value"
+              size="xsmall"
+            />
+          </div>
+          <span class="mh1">=</span>
+          <div class="flex">
+            <span>{{ value.comboLabel(combo) }}</span>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <div class="flex flex-grow-1" />
+
     <div class="player-side flex flex-column flex-grow-1 relative ph2">
       <div class="flex flex-column flex-grow-1 items-center">
         <div style="height: 60px">
           <span
-            v-if="value.bonus !== 0"
-            class="bonus-label"
+            v-if="currentMultiplier"
+            class="multiplier"
           >
-            {{ value.bonus }}
+            X {{ currentMultiplier }}
           </span>
         </div>
 
@@ -110,7 +150,7 @@ const disabled = computed(() => props.value.processing)
 const canReroll = computed(() => store.player.combat.canReroll())
 
 const executeOrRerollLabel = computed(() => (
-  canReroll.value ? 'Reroll' : 'End Turn'
+  canReroll.value ? `Reroll (${store.player.rolls})` : 'End Turn'
 ))
 
 const executeOrReroll = async () => {
@@ -126,6 +166,12 @@ watch(() => props.value.npc.hp, (newValue, oldValue) => {
    bleed(r.left + (props.value.npc.hp / props.value.npc.maxHp * (r.width - 20)), r.top + 8)
   }
 })
+
+const freezes = computed(() => new Array(props.value.npc.skipTurns).map((_, i) => i))
+
+const currentMultiplier = computed(() => props.value.currentMultiplier)
+
+const combos = computed(() => [...props.value.combos, ...props.value.bonusCombos])
 </script>
 
 <style scoped>
@@ -163,7 +209,18 @@ watch(() => props.value.npc.hp, (newValue, oldValue) => {
   text-shadow: #333 1px 1px 4px;
   z-index: 2;
 }
-.bonus-label {
+.multiplier {
   font-size: 30px;
+}
+.freezes {
+  position: absolute;
+  left: 10px;
+  bottom: 12px;
+  filter: drop-shadow(1px 1px 1px #333);
+}
+.combo.active {
+  border: 2px solid white;
+  border-radius: 4px;
+  animation: glowing 1s ease-in-out infinite alternate;
 }
 </style>

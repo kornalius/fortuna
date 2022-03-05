@@ -1,5 +1,4 @@
 import { reactive } from 'vue'
-import clamp from 'lodash/clamp'
 import { store } from './index'
 import { emit, log, mixin, deserializeObject } from '@/utils'
 import Item from '@/classes/items/item'
@@ -56,7 +55,7 @@ export default class Player {
   get levelUpPoints() { return this.lvl + Math.ceil(this.lvl * 0.25) }
 
   get rolls() { return this.state.rolls }
-  set rolls(value) { this.state.rolls = clamp(value, 0, this.maxRolls) }
+  set rolls(value) { this.state.rolls = Math.max(0, value) }
   get maxRolls() {
     return Math.floor(store.config.baseRolls + (0.25 * this.lvl)) + this.sumOfBuffs('roll')
   }
@@ -126,7 +125,9 @@ export default class Player {
 
   get dice() { return this.state.dice }
   set dice(value) { this.state.dice = value }
-  get maxDice() { return Math.floor(store.config.baseDice + (0.25 * this.lvl)) + this.sumOfBuffs('dice') }
+  get maxDice() {
+    return Math.floor(store.config.baseDice + (0.25 * this.lvl)) + this.sumOfBuffs('dice')
+  }
 
   get baseDice() {
     return new Array(this.maxDice).fill(0).map(() => (

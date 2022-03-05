@@ -13,7 +13,7 @@ export default class Combat extends Entity {
       // current turn
       turn: 1,
       // current turn bonus to apply
-      bonus: 0,
+      bonus: {},
       // rolls left for the turn
       rolls: store.player.maxRolls,
       // has the combat ended
@@ -27,41 +27,70 @@ export default class Combat extends Entity {
       // combos
       combos: [
         {
-          faces: { 'A': 5 },
-          expr: matches => {
-            this.bonus = 5 + matches['A']
-          }
+          faces: { 'A': 3 },
+          valueLabel: matches => (
+            `+${Math.max(0, (matches['A'] || 0) - 2)}`
+          ),
+          expr: async matches => {
+            this.bonus['A'] = matches['A'] - 2
+          },
         },
         {
-          faces: { 'D': 5 },
-          expr: matches => {
-            this.bonus = 5 + matches['D']
+          faces: { 'A': 5 },
+          valueLabel: () => (
+            `x2`
+          ),
+          expr: async () => {
+            this.multipliers['A'] = 2
+          },
+        },
+        {
+          faces: { 'D': 3 },
+          valueLabel: matches => (
+            `+${Math.max(0, (matches['D'] || 0) - 2)}`
+          ),
+          expr: async matches => {
+            this.bonus['D'] = matches['D'] - 2
           }
         },
         {
           faces: { 'H': 5 },
-          expr: () => {
+          valueLabel: () => `Full`,
+          expr: async () => {
             store.player.hp = store.player.maxHp
-            return 0
           }
         },
         {
           faces: { 'B': 5 },
-          expr: () => {
+          valueLabel: () => `Win`,
+          expr: async () => {
             this.npc.hp = 0
-            return 0
           }
         },
       ],
-      // combos gained via items during combat
+      /**
+       * Combos gained via items during combat
+       * {
+       *   faces: { 'A': 5 } // faces to match in hand, this is optional
+       *   expr: matches => {} // when matches, apply this function
+       *   turns: 0 // turns left
+       * }
+       */
       bonusCombos: [],
+      /**
+       * Faces multipliers
+       * {
+       *   'face': multiplier
+       * }
+       */
+      multipliers: {},
+      currentMultiplier: 0,
       ...data,
     })
   }
 
   get processing() { return this.state.processing }
   set processing(value) { this.state.processing = value }
-
 
   get npcId() { return this.state.npcId }
   set npcId(value) { this.state.npcId = value }
@@ -103,6 +132,12 @@ export default class Combat extends Entity {
   get bonusCombos() { return this.state.bonusCombos }
   set bonusCombos(value) { this.state.bonusCombos = value }
 
+  get multipliers() { return this.state.multipliers }
+  set multipliers(value) { this.state.multipliers = value }
+
+  get currentMultiplier() { return this.state.currentMultiplier }
+  set currentMultiplier(value) { this.state.currentMultiplier = value }
+
   addBonusCombo(combo, turns = -1) {
     this.bonusCombos.push({ ...combo, turns })
   }
@@ -111,7 +146,7 @@ export default class Combat extends Entity {
     this.processing = true
     log('Next turn started')
 
-    this.bonus = 0
+    this.bonus = {}
     this.turn += 1
     await emit.call(this, 'onTurn', this.turn)
 
@@ -134,6 +169,13 @@ export default class Combat extends Entity {
   }
 
   async onTurn(turn) {}
+
+  processBuffs() {
+    this.buffs.forEach(b => {
+      b.turns -= 1
+    })
+    this.buffs = this.buffs.filter(b => b.turns <= 0)
+  }
 
   canReroll(showMessage) {
     if (!this.hasSelected) {
@@ -203,16 +245,15 @@ export default class Combat extends Entity {
    * @returns {object}
    */
   validateCombo(combo) {
-    const bd = store.config.battleDice
-    const faces = Object.keys(combo.faces)
+    const faceKeys = Object.keys(combo.faces)
     let matches = {}
-    faces.forEach(key => {
-      const c = store.player.dice.filter(d => bd[d.value - 1].value === key)
-      if (c >= combo.faces[key]) {
-        matches[key] = c
+    faceKeys.forEach(key => {
+      const c = store.player.dice.filter(d => d.faces[d.value - 1].value === key)
+      if (c.length >= combo.faces[key]) {
+        matches[key] = c.length
       }
     })
-    return Object.keys(matches).length === faces.length ? matches : {}
+    return Object.keys(matches).length === faceKeys.length ? matches : {}
   }
 
   /**
@@ -221,12 +262,42 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async checkCombos() {
-    [...this.combos, ...this.bonusCombos].forEach(c => {
-      const matches = this.validateCombo(c)
-      if (Object.keys(matches).length > 0) {
-        c.expr(matches)
+    this.multipliers = {}
+    const combos = [...this.combos, ...this.bonusCombos]
+    for (let c of combos) {
+      if (!c.faces) {
+        await c.expr({})
+      } else {
+        const matches = this.validateCombo(c)
+        if (Object.keys(matches).length > 0) {
+          await c.expr(matches)
+        }
+      }
+    }
+  }
+
+  comboDice(combo) {
+    const dice = []
+    const bd = store.config.battleDice
+    Object.keys(combo.faces).forEach(face => {
+      for (let i = 0; i < combo.faces[face]; i++) {
+        dice.push({ faces: bd, value: bd.findIndex(d => d.value === face) + 1 })
       }
     })
+    return dice
+  }
+
+  comboLabel(combo) {
+    const matches = this.validateCombo(combo)
+    return combo.valueLabel(matches)
+  }
+
+  activeCombo(combo) {
+    if (this.processing) {
+      return false
+    }
+    const matches = this.validateCombo(combo)
+    return Object.keys(matches).length > 0
   }
 
   canStartCombat(showMessage) {
@@ -238,7 +309,7 @@ export default class Combat extends Entity {
       return false
     }
 
-    this.bonus = 0
+    this.bonus = {}
     this.turn = 1
     store.player.rolls = store.player.maxRolls
 
@@ -435,14 +506,34 @@ export default class Combat extends Entity {
     return true
   }
 
-  async highlightDice(name, dice) {
-    return anime.timeline({
-      duration: 1000,
-      targets: dice.map(i => `.${name}-die-${i}`),
+  async highlightDice(name, dice, multiplier) {
+    const promises = [
+      anime.timeline({
+        duration: 1000,
+        targets: dice.map(i => `.${name}-die-${i}`),
+      })
+        .add({ scale: 1.25 })
+        .add({ scale: 1 }, 500)
+        .finished
+    ]
+
+    if (multiplier) {
+      this.currentMultiplier = multiplier
+      promises.push(
+        anime.timeline({
+          duration: 1000,
+          targets: '.multiplier',
+        })
+          .add({ scale: 0 })
+          .add({ scale: 1.25 })
+          .add({ scale: 0 }, 500)
+          .finished
+      )
+    }
+
+    return Promise.all(promises).then(() => {
+      this.currentMultiplier = 0
     })
-      .add({ scale: 1.25 })
-      .add({ scale: 1 }, 500)
-      .finished
   }
 
   async showDamage(name, dmg, fx = true) {
@@ -480,10 +571,10 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async attack(dice) {
-    const dmg = dice.length - this.npc.shieldDice.length
+    const dmg = (dice.length - this.npc.shieldDice.length) * (this.multipliers['A'] || 1) + (this.bonus['A'] || 0)
 
     store.game.playSound('swing')
-    await this.highlightDice('player', dice)
+    await this.highlightDice('player', dice, this.multipliers['A'])
 
     const si = this.npc.shieldDiceIndexes
     if (si.length) {
@@ -509,11 +600,11 @@ export default class Combat extends Entity {
    */
   async gainLife(dice) {
     const hearts = dice.length
-    await this.highlightDice('player', dice)
+    await this.highlightDice('player', dice, this.multipliers['H'])
     if (hearts > 0) {
       const o = store.player.hp
       store.player.hp += dice.length
-      const v = store.player.hp - o
+      const v = (store.player.hp - o) * (this.multipliers['H'] || 1) + (this.bonus['H'] || 0)
       if (v > 0) {
         log(`${store.player.name} gains ${v} life`)
         store.game.playSound('upgrade')
@@ -552,15 +643,23 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async npcAttack(dice) {
+    // if skip turns left
+    if (this.npc.skipTurns > 0) {
+      this.npc.skipTurns -=1
+      return false
+    }
+
     if (this.npc.hp > 0) {
-      const dmg = dice.length - store.player.shieldDice.length
+      this.processing = true
+
+      const dmg = dice.length - (store.player.shieldDice.length * (this.multipliers['D'] || 1))  + (this.bonus['D'] || 0)
 
       store.game.playSound('swing')
       await this.highlightDice('npc', dice)
 
       if (store.player.shieldDice.length) {
         store.game.playSound('sword-hit')
-        await this.highlightDice('player', store.player.shieldDiceIndexes)
+        await this.highlightDice('player', store.player.shieldDiceIndexes, this.multipliers['D'])
       }
 
       if (dmg > 0) {
@@ -568,8 +667,12 @@ export default class Combat extends Entity {
         store.player.hp -= dmg
         await this.showDamage('player', dmg)
         await emit.call(this, 'onNpcAttack', dmg)
+        this.processing = false
+        return true
       }
+      this.processing = false
     }
+    return false
   }
 
   async onNpcAttack(dmg) {}
@@ -583,12 +686,12 @@ export default class Combat extends Entity {
   async bustShield(dice) {
     if (this.npc.hp > 0) {
       const busters = dice.length
-      await this.highlightDice('player', dice)
+      await this.highlightDice('player', dice, this.multipliers['X']) + (this.bonus['X'] || 0)
       if (busters > 0) {
         const npcShields = this.npc.shieldDice.length;
-        const v = npcShields - busters <= 0
+        const v = (npcShields - busters <= 0
           ? npcShields
-          : npcShields - busters
+          : npcShields - busters) * (this.multipliers['X'] || 1)
         if (v > 0) {
           store.game.playSound('metal-hit')
           log(`${store.player.name} bust ${v} shield(s)`)

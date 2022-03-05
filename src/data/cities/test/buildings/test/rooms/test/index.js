@@ -5,6 +5,9 @@ import Npc from '@/classes/npcs/npc'
 import LightSwitch from '@/classes/items/lightSwitch'
 import TestRoomLightSwitch from './items/light-switch'
 import SimonSmith from './npcs/SimonSmith'
+import Freeze from '@/classes/battles/freeze'
+import Kick from '@/classes/battles/kick'
+import Roll from '@/classes/battles/roll'
 
 export default {
   name: 'Test Room',
@@ -18,6 +21,9 @@ export default {
     this.addNpc(new Npc(SimonSmith))
     this.addItem(new LightSwitch(TestRoomLightSwitch))
     this.addItem(new Server(TestRoomServer))
+    this.addItem(new Freeze())
+    this.addItem(new Kick())
+    this.addItem(new Roll())
   },
 
   async onEnter() {

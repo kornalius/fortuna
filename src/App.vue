@@ -134,6 +134,7 @@ body {
 @import "/public/styles/text-tracking-bottom";
 @import "/public/styles/glitch";
 @import "/public/styles/click";
+@import "/public/styles/glowing";
 
 .background-anim {
   position: absolute;

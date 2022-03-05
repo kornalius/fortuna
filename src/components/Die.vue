@@ -115,6 +115,7 @@ watch(() => props.face, newValue => {
 
 const sizeClass = computed(() => ({
   small: props.size === 'small',
+  xsmall: props.size === 'xsmall',
   large: props.size === 'large',
 }))
 
@@ -147,6 +148,11 @@ onMounted(() => {
   height: 32px;
   margin: 4px;
 }
+.wrapper.xsmall {
+  width: 24px;
+  height: 24px;
+  margin: 2px;
+}
 
 .die {
   cursor: pointer;
@@ -162,6 +168,10 @@ onMounted(() => {
   cursor: unset;
   transform: translateZ(-16px);
 }
+.die.xsmall {
+  cursor: unset;
+  transform: translateZ(-8px);
+}
 
 .die-face  {
   position: absolute;
@@ -174,6 +184,12 @@ onMounted(() => {
 .die-face.small  {
   width: 32px;
   height: 32px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 6px #111;
+}
+.die-face.xsmall  {
+  width: 24px;
+  height: 24px;
   border-radius: 2px;
   box-shadow: inset 0 0 6px #111;
 }
@@ -195,7 +211,11 @@ onMounted(() => {
 }
 .icon.small {
   padding: 4px;
-  -webkit-filter: drop-shadow(-1px -1px 0 #333) drop-shadow(1px 1px 0  #fff);
+  -webkit-filter: drop-shadow(-1px -1px 0 #333) drop-shadow(1px 1px 0 #fff);
+}
+.icon.xsmall {
+  padding: 4px;
+  -webkit-filter: drop-shadow(-1px -1px 0 #333) drop-shadow(1px 1px 0 #ddd );
 }
 
 .die-face-1 { transform: rotateY(0deg) translateZ(24px); }
@@ -212,6 +232,13 @@ onMounted(() => {
 .die-face-5.small { transform: rotateX(90deg) translateZ(16px); }
 .die-face-6.small { transform: rotateX(-90deg) translateZ(16px); }
 
+.die-face-1.xsmall { transform: rotateY(0deg) translateZ(8px); }
+.die-face-2.xsmall { transform: rotateY(180deg) translateZ(8px); }
+.die-face-3.xsmall { transform: rotateY(90deg) translateZ(8px); }
+.die-face-4.xsmall { transform: rotateY(-90deg) translateZ(8px); }
+.die-face-5.xsmall { transform: rotateX(90deg) translateZ(8px); }
+.die-face-6.xsmall { transform: rotateX(-90deg) translateZ(8px); }
+
 .show-1 { transform: translateZ(-24px) rotateY(0deg); }
 .show-2 { transform: translateZ(-24px) rotateY(-180deg); }
 .show-3 { transform: translateZ(-24px) rotateY(-90deg); }
@@ -225,4 +252,11 @@ onMounted(() => {
 .show-4.small { transform: translateZ(-16px) rotateY(90deg); }
 .show-5.small { transform: translateZ(-16px) rotateX(-90deg); }
 .show-6.small { transform: translateZ(-16px) rotateX(90deg); }
+
+.show-1.xsmall { transform: translateZ(-8px) rotateY(0deg); }
+.show-2.xsmall { transform: translateZ(-8px) rotateY(-180deg); }
+.show-3.xsmall { transform: translateZ(-8px) rotateY(-90deg); }
+.show-4.xsmall { transform: translateZ(-8px) rotateY(90deg); }
+.show-5.xsmall { transform: translateZ(-8px) rotateX(-90deg); }
+.show-6.xsmall { transform: translateZ(-8px) rotateX(90deg); }
 </style>

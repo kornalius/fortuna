@@ -59,6 +59,8 @@ export default class Npc extends Entity {
       // { start: '16:01', end: '07:59', roomCode: 'Home' },
       // { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom' },
       agenda: [],
+      // turns to skip during battle
+      skipTurns: 0,
       ...data,
     })
   }
@@ -90,6 +92,9 @@ export default class Npc extends Entity {
 
   get battleDice() { return this.state.battleDice }
   set battleDice(value) { this.state.battleDice = value }
+
+  get skipTurns() { return this.state.skipTurns }
+  set skipTurns(value) { this.state.skipTurns = value }
 
   get baseDice() {
     if (this.battleDice && this.battleDice.length) {
@@ -250,6 +255,22 @@ export default class Npc extends Entity {
     } else {
       store.player.combat.remove()
       store.player.combat = null
+    }
+    return true
+  }
+
+  canMove(showMessage) {
+    if (store.player.isInCombat && store.player.combat.npc === this) {
+      if (showMessage) {
+        log(`${this.name} cannot move while in combat`)
+      }
+      return false
+    }
+    if (store.player.isInDialog && store.player.dialog.npc === this) {
+      if (showMessage) {
+        log(`${this.name} cannot move while in discussion`)
+      }
+      return false
     }
     return true
   }

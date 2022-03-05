@@ -62,4 +62,13 @@ export const soundFiles = {
 
   // Powers
   'upgrade': { src: 'sfx/upgrade.wav' },
+
+  // Fight
+  'kick': { src: 'sfx/kick.wav' },
+  'freeze': { src: 'sfx/freeze.wav' },
+  'slurp': { src: 'sfx/slurp.wav' },
+  'knife': { src: 'sfx/knife.wav' },
+  'gun': { src: 'sfx/gun.wav' },
+  'sparkle': { src: 'sfx/sparkle.wav' },
+  'tape': { src: 'sfx/tape.wav' },
 }
