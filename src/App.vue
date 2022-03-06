@@ -135,6 +135,7 @@ body {
 @import "/public/styles/glitch";
 @import "/public/styles/click";
 @import "/public/styles/glowing";
+@import "/public/styles/freeze";
 
 .background-anim {
   position: absolute;

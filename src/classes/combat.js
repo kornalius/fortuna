@@ -4,6 +4,7 @@ import Entity from '../entity'
 import { store } from '@/store'
 import { emit, log, delay, mixin, registerClass } from '@/utils'
 import Requirements from '@/mixins/requirements'
+import { multiplier as multiplierParticles } from '@/particles'
 
 export default class Combat extends Entity {
   setupInstance(data) {
@@ -38,7 +39,7 @@ export default class Combat extends Entity {
         {
           faces: { 'A': 5 },
           valueLabel: () => (
-            `x2`
+            'x2'
           ),
           expr: async () => {
             this.multipliers['A'] = 2
@@ -51,6 +52,15 @@ export default class Combat extends Entity {
           ),
           expr: async matches => {
             this.bonus['D'] = matches['D'] - 2
+          }
+        },
+        {
+          faces: { 'D': 5 },
+          valueLabel: () => (
+            'x2'
+          ),
+          expr: async () => {
+            this.multipliers['D'] = 2
           }
         },
         {
@@ -519,14 +529,19 @@ export default class Combat extends Entity {
 
     if (multiplier) {
       this.currentMultiplier = multiplier
+      anime.set('.multiplier', {
+        scale: 0,
+        opacity: 0,
+      })
+      const r = document.querySelector('.multiplier').getBoundingClientRect()
+      multiplierParticles(r.left + r.width * 0.5, r.top + r.height * 0.5)
       promises.push(
         anime.timeline({
-          duration: 1000,
+          duration: 1500,
           targets: '.multiplier',
         })
-          .add({ scale: 0 })
-          .add({ scale: 1.25 })
-          .add({ scale: 0 }, 500)
+          .add({ scale: 1.5, opacity: 1 })
+          .add({ scale: 0, opacity: 0 }, 500)
           .finished
       )
     }

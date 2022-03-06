@@ -28,7 +28,7 @@
             :key="`freeze-${i}`"
             class="mr1"
             icon="bi:snow"
-            width="20"
+            width="24"
           />
         </div>
       </div>
@@ -99,10 +99,7 @@
     <div class="player-side flex flex-column flex-grow-1 relative ph2">
       <div class="flex flex-column flex-grow-1 items-center">
         <div style="height: 60px">
-          <span
-            v-if="currentMultiplier"
-            class="multiplier"
-          >
+          <span class="multiplier">
             X {{ currentMultiplier }}
           </span>
         </div>
@@ -210,13 +207,18 @@ const combos = computed(() => [...props.value.combos, ...props.value.bonusCombos
   z-index: 2;
 }
 .multiplier {
-  font-size: 30px;
+  font-size: 40px;
+  opacity: 0;
+  scale: 0;
+  text-shadow: #333 1px 1px 4px;
+  z-index: 2;
 }
 .freezes {
   position: absolute;
   left: 10px;
   bottom: 12px;
   filter: drop-shadow(1px 1px 1px #333);
+  animation: freeze 1s ease-in-out infinite alternate;
 }
 .combo.active {
   border: 2px solid white;
