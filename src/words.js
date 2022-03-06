@@ -84,8 +84,8 @@ export const colorAdjectives = [
 ]
 
 export const adverbs = [
-  'very', 'extremely', 'exceedingly', 'exceptionally', 'extraordinarily', 'tremendously', 'immensely', 'intensely',
-  'abundantly', 'uncommonly', 'particularly', 'highly', 'remarkably', 'really', 'truly',
+  'very', 'extremely', 'exceptionally', 'extraordinarily', 'particularly', 'remarkably', 'really', 'truly', 'somewhat',
+  'espacially', 'rather', 'quite', 'moderately', 'mostly',
 ]
 
 export const hairColors = [
@@ -97,11 +97,11 @@ export const eyeColors = [
 ]
 
 export const skinColors = [
-  'black', 'brown', 'white', 'yellow',
+  'light', 'pale', 'dark', 'tan', 'brown', 'black',
 ]
 
 export const smallSizes = [
-  'skinny', 'lean', 'weak', 'little', 'miniature', 'tiny',
+  'skinny', 'lean', 'weak', 'little', 'tiny',
 ]
 
 export const normalSizes = [
@@ -109,7 +109,7 @@ export const normalSizes = [
 ]
 
 export const largeSizes = [
-  'fat', 'obese', 'brawny', 'muscular', 'big', 'colossal', 'huge', 'massive',
+  'fat', 'obese', 'brawny', 'big', 'colossal', 'massive',
 ]
 
 export const short = [
@@ -117,7 +117,7 @@ export const short = [
 ]
 
 export const tall = [
-  'tall', 'high', 'lofty', 'eminent', 'prominent',
+  'tall', 'lofty', 'prominent',
 ]
 
 export const strong = [
@@ -125,11 +125,15 @@ export const strong = [
 ]
 
 export const weak = [
-  'weak', 'wimpy', 'fragile', 'gentle', 'puny', 'flimsy',
+  'weak', 'wimpy', 'fragile', 'gentle', 'flimsy',
 ]
 
 export const poor = [
   'poor', 'needy', 'penniless', 'broke', 'insolvent',
+]
+
+export const rich = [
+  'upscale', 'wealthy', 'well-off', 'loaded', 'affluent',
 ]
 
 export const greetings = [
@@ -146,10 +150,6 @@ export const pleased = [
 
 export const adequate = [
   'acceptable', 'capable', 'adequate', 'fair', 'decent', 'satisfactory', 'sufficient', 'comfortable', 'passable',
-]
-
-export const rich = [
-  'upscale', 'wealthy', 'well-off', 'loaded', 'opulent', 'affluent',
 ]
 
 export const socialInterests = [
@@ -232,7 +232,13 @@ export const jobs = [
   'dispatcher', 'doctor', 'economist', 'electrician', 'housekeeper', 'janitor', 'journalist', 'lawer', 'librarian', 'machinists',
   'marketer', 'merchant', 'meteorologist', 'microbiologist', 'nurse', 'painter', 'paramedic', 'physician', 'physicist',
   'physiologist', 'pilot', 'plumber', 'psychiatric', 'publicist', 'receptionist', 'reporter', 'researcher', 'secretary',
-  'therapist', 'toxicologist', 'veterinary', 'welder',
+  'therapist', 'toxicologist', 'veterinary', 'welder','administrator', 'advisor', 'advocate', 'agent', 'ambassador', 'analyst',
+  'architect', 'buyer', 'coder', 'collector', 'commander', 'communicator', 'consultant', 'controller', 'coordinator', 'counselor',
+  'curator', 'designer', 'developer', 'director', 'engineer', 'estimator', 'examiner', 'expeditor', 'forecaster', 'generalist',
+  'inspector', 'integrator', 'interpreter', 'investigator', 'manager', 'mechanic', 'messenger', 'officer', 'operator', 'personel',
+  'planner', 'president', 'processor', 'producer', 'programmer', 'recruiter', 'regulator', 'representative', 'researcher',
+  'scheduler', 'scientist', 'specialist', 'strategist', 'superintendent', 'technician', 'technologist', 'tester', 'trainer',
+  'verificator', 'worker',
 ]
 
 export const jobLevels = [
@@ -259,16 +265,6 @@ export const jobDomains = [
   'space farming', 'space station', 'spacecraft', 'spacesuit', 'staff', 'station', 'stock', 'store', 'storage', 'structures',
   'suppliers', 'surface', 'system', 'tactical', 'technical', 'technological', 'telecommunications', 'test', 'thermal', 'tool',
   'traffic', 'trajectory', 'transaction', 'transportation', 'travel', 'warehouse',
-]
-
-export const jobTitles = [
-  'administrator', 'advisor', 'advocate', 'agent', 'ambassador', 'analyst', 'architect', 'buyer', 'coder', 'collector',
-  'commander', 'communicator', 'consultant', 'controller', 'coordinator', 'counselor', 'curator', 'designer', 'developer',
-  'director', 'engineer', 'estimator', 'examiner', 'expeditor', 'forecaster', 'generalist', 'inspector', 'integrator',
-  'interpreter', 'investigator', 'manager', 'mechanic', 'messenger', 'officer', 'operator', 'personel', 'planner',
-  'president', 'processor', 'producer', 'programmer', 'recruiter', 'regulator', 'representative', 'researcher', 'scheduler',
-  'scientist', 'specialist', 'strategist', 'superintendent', 'technician', 'technologist', 'tester', 'trainer',
-  'verificator', 'worker',
 ]
 
 export const passwords = [

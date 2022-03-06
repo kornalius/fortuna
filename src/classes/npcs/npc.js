@@ -66,6 +66,7 @@ export default class Npc extends Entity {
   }
 
   get name() { return this.isKnown ? this.state.name : '???' }
+  get description() { return this.isKnown ? this.state.description : '???' }
 
   get maxHp() {
     return Math.floor(

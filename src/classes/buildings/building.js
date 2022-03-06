@@ -36,6 +36,8 @@ export default class Building extends Entity {
           }
         ),
       ],
+      // opening hours [start_time, end_time]
+      hours: null,
       ...data,
     })
   }
@@ -44,6 +46,9 @@ export default class Building extends Entity {
   set startRoomCode(value) { this.state.startRoomCode = value }
 
   get buildings() { return store.buildings.list.filter(i => i.location === this) }
+
+  get hours() { return this.state.hours }
+  set hours(value) { this.state.hours = value }
 
   addRoom(data) {
     if (Array.isArray(data)) {
@@ -92,6 +97,23 @@ export default class Building extends Entity {
         log('You cannot enter the building while in combat')
       }
       return false
+    }
+    if (this.hours && this.hours.length === 2) {
+      const sd = [
+        store.game.date,
+        this.hours[0],
+      ].join(' ')
+      const ed = [
+        store.game.date,
+        this.hours[1],
+      ].join(' ')
+      const isBetween = store.game.isBetween(sd, ed)
+      if (!isBetween) {
+        if (showMessage) {
+          log(`This building is closed, it opens between ${this.hours[0]} and ${this.hours[1]}`)
+        }
+        return false
+      }
     }
     return store.player.canMove(showMessage)
       && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));

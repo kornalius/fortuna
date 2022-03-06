@@ -1,10 +1,13 @@
 import SimonSmithDialogs from './dialogs/SimonSmith'
+import { npc } from '@/generators'
+
+const n = npc({ old: true })
 
 export default {
   name: 'Simon Smith',
   icon: 'emojione:old-man-medium-light-skin-tone',
   img: 'old-man2.png',
-  description: 'An old grumpy man',
+  description: `Simon Smith${n.description(false)}`,
   talkable: true,
   aggresive: true,
   agenda: [
