@@ -14,7 +14,7 @@
 
       <div class="flex flex-grow-1 justify-center">
         <n-button-group>
-          <n-popover trigger="hover" placement="bottom">
+          <n-popover trigger="hover" placement="top">
             <template #trigger>
               <n-button
                 :type="filter === undefined ? 'primary' : undefined"
@@ -26,7 +26,7 @@
             <span>All</span>
           </n-popover>
 
-          <n-popover trigger="hover" placement="bottom">
+          <n-popover trigger="hover" placement="top">
             <template #trigger>
               <n-button
                 :type="filter === 'isFile' ? 'primary' : undefined"
@@ -38,7 +38,7 @@
             <span>Files</span>
           </n-popover>
 
-          <n-popover trigger="hover" placement="bottom">
+          <n-popover trigger="hover" placement="top">
             <template #trigger>
               <n-button
                 :type="filter === 'isSoftware' ? 'primary' : undefined"
@@ -50,7 +50,7 @@
             <span>Softwares</span>
           </n-popover>
 
-          <n-popover trigger="hover" placement="bottom">
+          <n-popover trigger="hover" placement="top">
             <template #trigger>
               <n-button
                 :type="filter === 'isBattle' ? 'primary' : undefined"
@@ -69,11 +69,7 @@
             :render-label="renderDropdownLabel"
             @select="setSort"
           >
-            <n-popover
-              :delay="1000"
-              trigger="hover"
-              placement="bottom"
-            >
+            <n-popover trigger="hover" placement="top">
               <template #trigger>
                 <n-button>
                   <v-icon icon="bi:sort-down" width="24" />

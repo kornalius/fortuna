@@ -1,5 +1,9 @@
 <template>
   <div class="flex justify-center w-100 h-100">
+    <n-modal :show="store.game.showKeypad" role="dialog" aria-modal="true">
+      <Keypad :value="store.game.keypadCode" title="SECURITY DOOR SYSTEM" />
+    </n-modal>
+
     <n-modal v-model:show="store.game.showProvince" role="dialog" aria-modal="true">
       <Province />
     </n-modal>
@@ -46,6 +50,7 @@ import MiniMap from './MiniMap.vue'
 import Province from '@/components/Province.vue'
 import CityMap from '@/components/CityMap.vue'
 import LevelUp from '@/components/LevelUp.vue'
+import Keypad from '@/components/Keypad.vue'
 </script>
 
 <style scoped>

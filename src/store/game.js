@@ -27,6 +27,8 @@ export default class Game {
       showCityMap: false,
       showCity: null,
       showLevelUp: false,
+      showKeypad: false,
+      keypadCode: '',
       volume: 0.1,
       date: store.config.startDate,
       time: store.config.startTime,
@@ -115,6 +117,12 @@ export default class Game {
 
   get showLevelUp() { return this.state.showLevelUp }
   set showLevelUp(value) { this.state.showLevelUp = value }
+
+  get showKeypad() { return this.state.showKeypad }
+  set showKeypad(value) { this.state.showKeypad = value }
+
+  get keypadCode() { return this.state.keypadCode }
+  set keypadCode(value) { this.state.keypadCode = value }
 
   get volume() { return this.state.volume }
   set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }

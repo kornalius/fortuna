@@ -217,7 +217,23 @@ export const intelligence = [
 ]
 
 export const motives = [
-  'money', 'love', 'fate', 'sickness', 'glory', 'revenge',
+  'obtain glory', 'get revenge', 'retrieve a lost item', 'find a thrilling life', 'be recognized',
+  'repay a debt', 'fix a mistake', 'answer a call to adventure', 'apologize', 'avenge a family member', 'avenge a friend',
+  'avoid responsibilities', 'be a better person', 'be a hero', 'be accepted by society', 'be admired', 'be more forgiven',
+  'be left alone', 'be loved', 'be remembered', 'be strong', 'become a leader', 'become famous', 'become rich and powerful',
+  'break an addiction', 'change the future', 'change the past', 'clear a family member\'s name', 'clear a friend\'s name',
+  'clear their name', 'create a safe world', 'destroy corruption', 'do the right thing', 'end the suffering of a family member',
+  'end the suffering of a friend', 'escape a bad situation', 'escape their destiny', 'explore the unexplored',
+  'find a dream job', 'find a job', 'find a lost friend', 'find a lost lover', 'find a new home', 'find a new passion',
+  'find a purpose', 'find a purpose in life', 'find excitement', 'find inspiration', 'find love', 'find out a secret',
+  'find out the fate of a family member', 'find out the fate of a friend', 'find out their true identity', 'find peace within',
+  'find romance', 'find true love', 'fix a mistake', 'forget their past', 'forgive somebody', 'fulfill a destiny',
+  'gain the approval of somebody', 'get away from their past', 'have a passionate relationship', 'have fun',
+  'lead a rebellion', 'live a quiet life', 'live dangerously', 'live forever', 'live in peace', 'make a difference',
+  'make friends', 'make people smile', 'make sure justice prevails', 'no longer be afraid', 'no longer be bored',
+  'overcome a disability', 'protect a family member', 'protect a friend', 'protect the peace', 'protect their family',
+  'protect their honor', 'reach perfection', 'reconcile with a person', 'redeem somebody', 'regain their honor',
+  'reunite with a family member', 'reunite with a lost friend', 'see the world', 'spread joy', 'take a new direction in life',
 ]
 
 export const traits = [
@@ -285,6 +301,66 @@ export const passwords = [
 export const cityNames = [
   'Frankden', 'Rapinne', 'Baitas', 'Dannes', 'Carenna', 'Linoha', 'Shoturt', 'Yenville', 'Duklean', 'Drukfort', 'Manward',
   'Darkmuth', 'Easthom', 'Hartose', 'Luckstan', 'Blackmouth', 'Oxward', 'Domlaix', 'Milddem', 'Ponview', 'Boldale', 'Ibeko',
+]
+
+export const cityAdjectives1 = [
+  'a true modern', 'a modest', 'a historic', 'an evergrowing' ,'an architectural', 'a technological', 'an extraordinary',
+  'a gorgeous', 'an ancient', 'a classic', 'a contemporary', 'a state-of-the-art', 'a fully modernized', 'a future oriented',
+  'a leading-edge',
+]
+
+export const cityAdjectives2 = [
+  'beauty', 'wonder', 'uniqueness', 'appearance', 'allure', 'grace', 'elegance', 'charm',
+]
+
+export const cityAdjectives3 = [
+  'metropolis', 'marvel', 'wonder', 'city', 'phenomenon', 'sight', 'curiosity', 'display of wonder', 'urban phenomenon',
+  'trade center',
+]
+
+export const citySkylineAdjectives = [
+  'riddled', 'packed', 'crowded', 'sprinkled', 'scattered', 'littered', 'growing', 'spreading',
+]
+
+export const cityBuildingAdjectives = [
+  'tall', 'impressive', 'modest', 'towering', 'soaring', 'giant', 'stylish', 'elaborate', 'various', 'distinct', 'unique',
+  'peculiar', 'similar', 'luxurious', 'elegant', 'impressive',
+]
+
+export const cityBuildings = [
+  'a new one seems to pop up every other week', 'many have clearly been built within the last decade',
+  'many show their age and a rich history', 'a lot of them seem to have evolved throughout the ages',
+  'more seem to be on their way', 'they look astonishingly beautiful all together',
+  'they each represent the many different aspects of the city', 'they clearly show what they represent to the city itself',
+  'they\'ve been designed to adorn the city and each other', 'they have aspects which represent their past, present and future',
+  'each was more impressive than the next', 'while modern now, their history still shined through',
+  'their history seemed to shine more now than ever', 'each seems to evolve with the times without losing their history',
+  'they all seem to be in perfect unison despite being different',
+  'they seem to be continuously evolving as new additions are added even now', 'there is no place on earth with anything like this',
+  'even from afar they manage to display their beauty', 'their beauty is only matched by each other',
+  'they seem to be reaching higher and higher each year',
+]
+
+export const cityCultures = [
+  'various cultures', 'new cultures', 'many new cultures', 'countless cultures', 'many different cultures',
+]
+
+export const cityRecognitions = [
+  'architecture', 'education', 'development', 'business', 'history', 'trade and relations', 'international relations',
+  'people', 'cuisine', 'rich resources', 'riches', 'trade resources', 'diverse materials', 'excellent climate',
+]
+
+export const cityQualities = [
+  'business is booming', 'life is great', 'culture is rising', 'the quality of life is high', 'technology is thriving',
+  'trade is at an all time high', 'recreation is impeccable', 'education is superb', 'parks and gardens are flourishing',
+  'health and services are faultless', 'daily life isn\'t too stressful', 'science and development is flourishing',
+  'employment is tremendous',
+]
+
+export const cityPlaces = [
+  'restaurants', 'bars', 'clubs', 'coffeehouses', 'bistros', 'bakeries', 'concession stands', 'diners', 'take-outs', 'sandwich bars',
+  'cafés', 'ethnic restaurants', 'gastropubs', 'theme restaurants', 'art galleries', 'parks', 'nature', 'sightseeing', 'libraries',
+  'concerts', 'musical activities', 'museums', 'tours', 'city exploring', 'theaters', 'arcades', 'amusement parks',
 ]
 
 export const companyNames = [

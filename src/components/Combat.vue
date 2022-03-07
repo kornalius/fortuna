@@ -66,14 +66,14 @@
     <div class="flex flex-grow-1" />
 
     <div class="combos flex flex-column relative">
-      <span class="mb2 ml1">COMBOS:</span>
+      <span class="mb1 ml1">COMBOS:</span>
 
       <template
         v-for="(combo, ci) in combos"
         :key="`combo-${ci}`"
       >
         <div
-          class="combo flex items-center ph1 mb2"
+          class="combo flex items-center ph1 mb1"
           :class="{ active: value.activeCombo(combo) }"
         >
           <div class="flex">

@@ -2,32 +2,73 @@ import random from 'lodash/random'
 import { pickRandom } from '@/utils'
 import {
   adverbs,
-  maleNames, femaleNames, lastNames,  nickNames,
-  eyeColors, hairColors, skinColors,
-  smallSizes, normalSizes, largeSizes,
-  strong, weak, short, tall,
-  poor, rich,
-  stateMoods, intelligence, traits,
-  jobs, jobLevels, jobDomains,
+  maleNames,
+  femaleNames,
+  lastNames,
+  nickNames,
+  eyeColors,
+  hairColors,
+  skinColors,
+  smallSizes,
+  normalSizes,
+  largeSizes,
+  strong,
+  weak,
+  short,
+  tall,
+  poor,
+  rich,
+  stateMoods,
+  intelligence,
+  traits,
+  motives,
+  jobs,
+  jobLevels,
+  jobDomains,
+  cityNames,
+  cityRecognitions,
+  cityAdjectives1,
+  cityAdjectives2,
+  cityAdjectives3,
+  cityBuildingAdjectives,
+  cityBuildings,
+  citySkylineAdjectives, cityQualities, cityCultures, cityPlaces,
 } from '@/words'
 import { capitalize } from 'lodash';
 
 export const city = () => {
-  // name
-  // population
+  const name = pickRandom(cityNames)
+  const population = random(300000, 4500000)
+  const description = `
+    ${name} is a ${random(cityAdjectives1)} ${random(cityAdjectives2)} ${random(cityAdjectives3)}.
+     The skyline is ${random(citySkylineAdjectives)} with ${random(cityBuildingAdjectives)} skyscrapers 
+     and ${random(cityBuildings)}. ${capitalize(random(cityCultures))} from all over the world come to it 
+     for its ${random(cityRecognitions)} and its numerous ${random(cityPlaces)}. It is known for its 
+     ${random(cityQualities)} and the city has grown through the years to unite more than ${population} 
+     people to this day. 
+   `
+  return {
+    name,
+    population,
+    description,
+  }
 }
 
 export const district = () => {
   // name
+  // description
 }
 
 export const building = () => {
   // name
+  // icon
+  // description
   // commercial domain
   // opening hours
 }
 
 export const room = () => {
+  // items
 }
 
 export const npc = ({ female, kid, old } = {}) => {
@@ -81,6 +122,7 @@ export const npc = ({ female, kid, old } = {}) => {
     }
   }
   const mood = pickRandom(stateMoods)
+  const moti = pickRandom(motives)
   const mind = pickRandom(intelligence)
   const trait = pickRandom(traits)
   const job = pickRandom(jobs)
@@ -95,6 +137,7 @@ export const npc = ({ female, kid, old } = {}) => {
     eyeColor,
     hairColor,
     skinColor,
+    motives: moti,
     build: `${pickRandom(adverbs)} ${build}`,
     size: `${pickRandom(adverbs)} ${size}`,
     strength: `${pickRandom(adverbs)} ${strength}`,
@@ -106,12 +149,13 @@ export const npc = ({ female, kid, old } = {}) => {
   }
 
   const id = female ? 'she' : 'he'
+  const his = female ? 'her' : 'his'
 
   return {
     ...npc,
     description: (name = true) => `${name ? `${capitalize(npc.firstname)} ${capitalize(npc.lastname)}` : ''}, 
      also known as "${capitalize(npc.nickname)}", is a ${npc.age} years old, ${npc.skinColor} skin, 
-     ${npc.eyeColor} eyes, ${npc.build} and ${npc.size}, ${npc.job}.
-     ${capitalize(id)} is ${npc.mind}, ${npc.trait} and a ${npc.mood} type of person.`,
+     ${npc.eyeColor} eyes, ${npc.build} and ${npc.size}, ${npc.job}. ${capitalize(his)} main motive in life is 
+     to ${npc.motives}. ${capitalize(id)} is ${npc.mind}, ${npc.trait} and a ${npc.mood} type of person.`,
   }
 }
