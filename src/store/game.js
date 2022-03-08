@@ -28,7 +28,7 @@ export default class Game {
       showCity: null,
       showLevelUp: false,
       showKeypad: false,
-      keypadCode: '',
+      keypadId: null,
       volume: 0.1,
       date: store.config.startDate,
       time: store.config.startTime,
@@ -121,8 +121,21 @@ export default class Game {
   get showKeypad() { return this.state.showKeypad }
   set showKeypad(value) { this.state.showKeypad = value }
 
-  get keypadCode() { return this.state.keypadCode }
-  set keypadCode(value) { this.state.keypadCode = value }
+  get keypadId() { return this.state.keypadId }
+  set keypadId(value) { this.state.keypadId = value }
+
+  get keypad() {
+    return this.keypadId
+      ? store.items.get(this.keypadId)
+      : undefined
+  }
+  set keypad(value) {
+    if (value) {
+      this.keypadId = value.id
+    } else {
+      this.keypadId = null
+    }
+  }
 
   get volume() { return this.state.volume }
   set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }

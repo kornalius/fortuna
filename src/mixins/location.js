@@ -19,11 +19,11 @@ export default {
   },
   set location(value) {
     if (value) {
-      this.state.locationId = value.id
-      this.state.locationStore = value.store
+      this.locationId = value.id
+      this.locationStore = value.store
     } else {
-      this.state.locationId = null
-      this.state.locationStore = null
+      this.locationId = null
+      this.locationStore = null
     }
   },
 

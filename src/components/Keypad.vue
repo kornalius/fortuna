@@ -160,10 +160,10 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
-import anime from 'animejs';
+import anime from 'animejs'
 
 const props = defineProps({
-  value: { type: String },
+  value: { type: Object },
   title: { type: String },
 })
 
@@ -173,40 +173,52 @@ const displayText = computed(() => (
   new Array(text.value.length).fill('*').join('')
 ))
 
-const correct = computed(() => text.value === props.value)
+const correct = ref(false)
 
-watch(correct, async newValue => {
-  if (newValue) {
-    await anime.timeline({
-      targets: `.success`,
-    })
-      .add({
-        scale: 2.75,
-        opacity: 1,
+watch(displayText, async newValue => {
+  if (newValue.length === 4) {
+    if (text.value === props.value.code) {
+      store.game.playSound('success')
+      correct.value = true
+      await anime.timeline({
+        targets: `.success`,
       })
-      .add({
-        scale: 0,
-        opacity: 0,
-      })
-      .finished
+        .add({
+          scale: 2.75,
+          opacity: 1,
+        })
+        .add({
+          scale: 0,
+          opacity: 0,
+        })
+        .finished
 
-    store.game.showKeypad = false
+      store.game.showKeypad = false
+      await props.value.success()
+    } else {
+      store.game.playSound('error_keypad')
+      text.value = ''
+    }
   }
 })
 
 const keyClick = key => {
+  store.game.playSound('keypad')
   text.value = `${text.value}${key}`
 }
 
 const reset = () => {
+  store.game.playSound('keypad')
   text.value = ''
 }
 
 const erase = () => {
+  store.game.playSound('keypad')
   text.value = text.value.substring(0, text.value.length - 1)
 }
 
 const cancel = () => {
+  store.game.playSound('keypad')
   store.game.showKeypad = false
 }
 </script>

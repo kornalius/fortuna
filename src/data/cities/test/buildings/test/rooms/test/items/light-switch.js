@@ -1,5 +1,6 @@
 import { log } from '@/utils'
 import PillsBottle from '@/classes/containers/pills-bottle'
+import Keypad from '@/classes/items/keypad'
 import TestRoomPillsBottle from './pills-bottle'
 import { store } from '@/store'
 
@@ -22,7 +23,8 @@ export default {
         'Your eyes take some time to adjust and you can now see the room in all it\'s glory.',
       ])
 
-      store.game.room.addDoor({ locked: true }, 'S')
+      const door = store.game.room.addDoor({ unlockable: false, locked: true }, 'S')
+      store.game.room.addItem(new Keypad({ code: '1234', doorId: door.id }))
       store.game.room.addItem(new PillsBottle(TestRoomPillsBottle))
 
       log([

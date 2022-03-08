@@ -84,12 +84,14 @@ export default class Player {
   get serverId() { return this.state.serverId }
   set serverId(value) { this.state.serverId = value }
 
-  get server() { return store.items.get(this.serverId) }
+  get server() {
+    return store.items.get(this.serverId)
+  }
   set server(value) {
     if (value) {
-      this.state.serverId = value.id
+      this.serverId = value.id
     } else {
-      this.state.serverId = null
+      this.serverId = null
     }
   }
 
@@ -100,12 +102,14 @@ export default class Player {
   get dialogId() { return this.state.dialogId }
   set dialogId(value) { this.state.dialogId = value }
 
-  get dialog() { return store.dialogs.get(this.dialogId) }
+  get dialog() {
+    return store.dialogs.get(this.dialogId)
+  }
   set dialog(value) {
     if (value) {
-      this.state.dialogId = value.id
+      this.dialogId = value.id
     } else {
-      this.state.dialogId = null
+      this.dialogId = null
     }
   }
 
@@ -114,12 +118,14 @@ export default class Player {
   get combatId() { return this.state.combatId }
   set combatId(value) { this.state.combatId = value }
 
-  get combat() { return store.combats.get(this.combatId) }
+  get combat() {
+    return store.combats.get(this.combatId)
+  }
   set combat(value) {
     if (value) {
-      this.state.combatId = value.id
+      this.combatId = value.id
     } else {
-      this.state.combatId = null
+      this.combatId = null
     }
   }
 

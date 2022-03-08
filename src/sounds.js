@@ -7,6 +7,7 @@ export const soundFiles = {
 
   'button': { src: 'sfx/button.wav', volume: 0.5 },
   'click': { src: 'sfx/click.wav' },
+  'success': { src: 'sfx/success.wav' },
 
   // Doors
 
@@ -36,6 +37,8 @@ export const soundFiles = {
   // Switches
 
   'switch': { src: 'sfx/switch.wav' },
+  'keypad': { src: 'sfx/keypad.wav' },
+  'error_keypad': { src: 'sfx/error_keypad.wav' },
 
   // Computer + Server
 

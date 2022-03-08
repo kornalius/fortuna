@@ -31,16 +31,18 @@ export default {
   get isUnlocked() { return !this.state.locked },
 
   get keyId() { return this.state.keyId },
+  set keyId(value) { this.state.keyId = value },
+
   get key() {
-    return this.state.keyId
-      ? store.player.get(this.state.keyId)
+    return this.keyId
+      ? store.items.get(this.keyId)
       : undefined
   },
   set key(value) {
     if (value) {
-      this.state.keyId = value.id
+      this.keyId = value.id
     } else {
-      this.state.keyId = null
+      this.keyId = null
     }
   },
 
@@ -86,7 +88,7 @@ export default {
     if (!this.canUnlock(true)) {
       return false
     }
-    this.state.locked = false
+    this.locked = false
     log('Door has been unlocked')
     await emit.call(this, 'onUnlock')
     return true

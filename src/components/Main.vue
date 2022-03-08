@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center w-100 h-100">
     <n-modal :show="store.game.showKeypad" role="dialog" aria-modal="true">
-      <Keypad :value="store.game.keypadCode" title="SECURITY DOOR SYSTEM" />
+      <Keypad :value="store.game.keypad" title="SECURITY DOOR SYSTEM" />
     </n-modal>
 
     <n-modal v-model:show="store.game.showProvince" role="dialog" aria-modal="true">

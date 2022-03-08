@@ -1,5 +1,5 @@
 import Item from './item'
-import { emit, log, mixin, registerClass } from '@/utils'
+import { log, mixin, registerClass } from '@/utils'
 import Switch from '@/mixins/switch'
 
 export default class LightSwitch extends Item {
@@ -13,12 +13,12 @@ export default class LightSwitch extends Item {
     })
   }
 
-  async examine() {
+  async onExamine() {
     log([
       'It\'s a normal looking light switch, nothing special about it other than the little button in the middle',
       this.isOn ? 'It is ON' : 'It is OFF',
     ])
-    await emit.call(this, 'onExamine')
+    return super.onExamine()
   }
 }
 
