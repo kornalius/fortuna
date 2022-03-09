@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { can } from '@/utils'
 
 export default {
   state: {
@@ -12,12 +12,11 @@ export default {
   },
 
   canMove(showMessage) {
-    if (this.carryWeight > this.maxWeight) {
-      if (showMessage) {
-        log('You are carrying too much, you cannot move')
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => this.carryWeight > this.maxWeight,
+        log: () => 'You are carrying too much, you cannot move'
+      },
+    ], showMessage)
   },
 }

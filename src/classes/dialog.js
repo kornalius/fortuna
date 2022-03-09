@@ -1,6 +1,6 @@
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log, mixin, registerClass } from '@/utils'
+import { can, emit, log, mixin, registerClass } from '@/utils'
 import Code from '@/mixins/code'
 import Requirements from '@/mixins/requirements'
 
@@ -29,6 +29,8 @@ export default class Dialog extends Entity {
       ...data,
     })
   }
+
+  get isDialog() { return true }
 
   setupAnswers() {
     let x = 0
@@ -110,7 +112,7 @@ export default class Dialog extends Entity {
   }
 
   canSay(showMessage) {
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('say', showMessage));
+    return can(this, [], showMessage, 'say')
   }
 
   async say() {
@@ -127,19 +129,18 @@ export default class Dialog extends Entity {
 
   canAnswer(code, showMessage) {
     const answer = this.getAnswer(code)
-    if (!answer) {
-      if (showMessage) {
-        log(`Could not find a valid answer with the code ${code}`)
-      }
-      return false
-    }
     if (typeof answer.disabled === 'function') {
       return answer.disabled.call(this)
     }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('answer', showMessage)) {
-      return false
-    }
-    return answer.disabled !== true
+    return can(this, [
+      {
+        expr: () => !answer,
+        log: () => `Could not find a valid answer with the code ${code}`
+      },
+      {
+        expr: () => answer.disabled === true
+      }
+    ], showMessage, 'answer')
   }
 
   async answer(code) {

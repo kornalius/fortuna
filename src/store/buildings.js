@@ -3,5 +3,12 @@ import Entities from '@/entities'
 export default class Buildings extends Entities {
   storeName = 'buildings'
 
-  at(x, y) { return this.list.find(r => r.x === x && r.y === y) }
+  // returns a list of buildings owner by the npc
+  ownedByNpc(npc) {
+    let n = npc
+    if (typeof npc === 'string') {
+      n = this.get(npc)
+    }
+    return this.list.filter(building => building.owners.includes(n))
+  }
 }

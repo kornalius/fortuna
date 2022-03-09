@@ -3,9 +3,13 @@ import Entity from '@/entity'
 import Item from '@/classes/items/item'
 
 export default {
-  state: {
-  },
+  state: {},
 
+  /**
+   * Return items in this location
+   *
+   * @returns {Entity[]}
+   */
   get items() { return store.items.list.filter(i => i.location === this) },
 
   /**
@@ -29,9 +33,25 @@ export default {
     return this.items.includes(id)
   },
 
+  /**
+   * Add item to the location
+   *
+   */
   addItem(data) {
     if (Array.isArray(data)) {
       return data.map(d => this.addItem(d))
+    }
+
+    // when stackable, only increase qty of inventory item that match the stackableCode
+    if (this.location?.isPlayer && data.stackableCode) {
+      const i = this.items.find(i => i.code === data.stackableCode)
+      if (i) {
+        i.qty += data.qty
+        if (data instanceof Entity) {
+          data.remove()
+        }
+      }
+      return data
     }
 
     if (data instanceof Entity) {

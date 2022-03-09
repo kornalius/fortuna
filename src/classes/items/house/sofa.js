@@ -11,6 +11,8 @@ export default class Sofa extends Item {
       ...data,
     })
   }
+
+  get canSleepOn() { return true }
 }
 
 registerClass(Sofa)

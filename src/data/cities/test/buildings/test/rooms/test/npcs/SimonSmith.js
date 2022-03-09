@@ -9,7 +9,6 @@ export default {
   img: 'old-man2.png',
   description: `Simon Smith${n.description(false)}`,
   talkable: true,
-  aggresive: true,
   agenda: [
     { start: '00:00', end: '23:59', roomCode: 'TestRoom' },
     { date: store.config.startDate, start: '18:15', end: '18:29', roomCode: 'TestRoomWin' },

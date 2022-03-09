@@ -246,6 +246,21 @@ export const serializeObject = (t, s) => {
   })
 }
 
+export const can = (self, checks, showMessage, actionName) => {
+  for (const check of checks) {
+    if (check.expr()) {
+      if (showMessage && check.log) {
+        log(check.log())
+      }
+      return false
+    }
+  }
+  if (actionName) {
+    return !(self.checkRequirementsFor && !self.checkRequirementsFor(actionName, showMessage))
+  }
+  return true
+}
+
 export const registeredClasses = {}
 
 export const registerClass = k => {

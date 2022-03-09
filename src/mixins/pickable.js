@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -23,33 +23,51 @@ export default {
   get isPickable() { return this.state.pickable },
   set pickable(value) { this.state.pickable = value },
 
+  /**
+   * Returns the pickup label with its requirements
+   *
+   * @returns {string}
+   */
   get pickupLabel() {
     return `Pickup ${this.requirementsLabelFor('pickup')}`
   },
 
   canPickup(showMessage) {
-    if (!this.isPickable) {
-      if (showMessage) {
-        log(`${this.name} cannot be picked`)
-      }
-      return false
-    }
-    if (store.player.has(this)) {
-      if (showMessage) {
-        log(`${this.name} is already in your inventory`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('pickup', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isPickable,
+        log: () => `${this.name} cannot be picked`
+      },
+      {
+        expr: () => store.player.has(this),
+        log: () => `${this.name} is already in your inventory`
+      },
+    ], showMessage, 'pickup')
   },
 
+  /**
+   * Pickup the item to the player's inventory
+   *
+   * @returns {Promise<boolean>}
+   */
   async pickup() {
     if (!this.canPickup(true)) {
       return false
     }
-    this.locationId = null
-    this.locationStore = store.player.storeName
+
+    // check if there are owners of this room/building present seeing you commit the crime of stealing!!!
+    const presentOwners = this.location.presentOwners;
+    if (presentOwners.length > 0) {
+      log(`You have been caugth stealing ${presentOwners.map(o => o.name).join(', ')}`)
+      presentOwners.forEach(o => { o.aggresive = true })
+    }
+
+    // change item location to be placed into your inventory
+    this.location = store.player
+
+    // mark item in your inventory as new
     this.hovered = false
+
     log(`You pickup ${this.name.toLowerCase()}`)
     await emit.call(this, 'onPickup')
     return true

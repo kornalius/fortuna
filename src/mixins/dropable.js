@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -28,31 +28,24 @@ export default {
   },
 
   canDrop(showMessage) {
-    if (!this.isDropable) {
-      if (showMessage) {
-        log(`${this.name} cannot be dropped`)
-      }
-      return false
-    }
-    if (!store.player.has(this)) {
-      if (showMessage) {
-        log(`${this.name} needs to be in your inventory first`)
-      }
-      return false
-    }
-    if (this.isSoftware && this.isInstalled) {
-      if (showMessage) {
-        log(`${this.name} needs to be uninstalled first`)
-      }
-      return false
-    }
-    if (this.isInstalled) {
-      if (showMessage) {
-        log(`${this.name} needs to be uninstalled first`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('drop', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isDropable,
+        log: () => `${this.name} cannot be dropped`
+      },
+      {
+        expr: () => !store.player.has(this),
+        log: () => `${this.name} needs to be in your inventory first`
+      },
+      {
+        expr: () => this.isSoftware && this.isInstalled,
+        log: () => `${this.name} needs to be uninstalled first`
+      },
+      {
+        expr: () => this.isInstalled,
+        log: () => `${this.name} needs to be uninstalled first`
+      },
+    ], showMessage, 'drop')
   },
 
   async drop() {

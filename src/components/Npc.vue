@@ -49,6 +49,13 @@
               class="new"
               width="16"
             />
+
+            <v-icon
+              v-if="value.isAggresive"
+              icon="fa6-solid:face-angry"
+              class="aggresive"
+              width="14"
+            />
           </div>
         </n-button>
       </template>
@@ -127,5 +134,14 @@ const name = computed(() => props.value.name)
   background-color: #333;
   border-radius: 50%;
   color: #F19936;
+}
+.aggresive {
+  position: absolute;
+  bottom: 2px;
+  left: 11px;
+  padding: 2px;
+  background-color: #333;
+  border-radius: 50%;
+  color: #D12E2E;
 }
 </style>

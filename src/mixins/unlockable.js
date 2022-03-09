@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -27,8 +27,10 @@ export default {
   get isUnlockable() { return this.state.unlockable },
   set unlockable(value) { this.state.unlockable = value },
 
+
   get isLocked() { return this.state.locked },
   get isUnlocked() { return !this.state.locked },
+  set locked(value) { this.state.locked = value },
 
   get keyId() { return this.state.keyId },
   set keyId(value) { this.state.keyId = value },
@@ -51,37 +53,28 @@ export default {
   },
 
   canUnlock(showMessage) {
-    if (!this.isUnlockable) {
-      if (showMessage) {
-        log(`${this.name} cannot be unlocked`)
-      }
-      return false
-    }
-    if (!this.isLocked) {
-      if (showMessage) {
-        log(`${this.name} is not locked`)
-      }
-      return false
-    }
-    if (this.keyId && !store.player.has(this.keyId)) {
-      if (showMessage) {
-        log(`${this.name} needs a key to be unlocked`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot unlock this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot unlock this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('unlock', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isUnlockable,
+        log: () => `${this.name} cannot be unlocked`
+      },
+      {
+        expr: () => !this.isLocked,
+        log: () => `${this.name} is not locked`
+      },
+      {
+        expr: () => this.keyId && !store.player.has(this.keyId),
+        log: () => `${this.name} needs a key to be unlocked`
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot unlock this while in combat'
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot unlock this while in conversation'
+      },
+    ], showMessage, 'unlock')
   },
 
   async unlock() {

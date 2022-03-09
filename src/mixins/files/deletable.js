@@ -1,4 +1,4 @@
-import { checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -27,22 +27,19 @@ export default {
   },
 
   canDel(showMessage) {
-    if (!this.isDeletable) {
-      if (showMessage) {
-        log(`${this.name} cannot be deleted`)
-      }
-      return false
-    }
-    if (this.isInstalled) {
-      if (showMessage) {
-        log(`${this.name} needs to be uninstalled first`)
-      }
-      return false
-    }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('del', showMessage)) {
-      return false
-    }
-    return checkSoftware.call(this, store.player.installedDeleter,showMessage)
+    return can(this, [
+      {
+        expr: () => !this.isDeletable,
+        log: () => `${this.name} cannot be deleted`
+      },
+      {
+        expr: () => this.isInstalled,
+        log: () => `${this.name} needs to be uninstalled first`
+      },
+      {
+        expr: () => !checkSoftware.call(this, store.player.installedDeleter,showMessage),
+      },
+    ], showMessage, 'del')
   },
 
   async del() {

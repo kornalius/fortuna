@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log, delay, mixin, registerClass } from '@/utils'
+import { emit, log, delay, mixin, registerClass, can } from '@/utils'
 import Requirements from '@/mixins/requirements'
 import { multiplier as multiplierParticles } from '@/particles'
 
@@ -98,6 +98,8 @@ export default class Combat extends Entity {
       ...data,
     })
   }
+
+  get isCombat() { return true }
 
   get processing() { return this.state.processing }
   set processing(value) { this.state.processing = value }
@@ -311,7 +313,7 @@ export default class Combat extends Entity {
   }
 
   canStartCombat(showMessage) {
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('combat', showMessage));
+    return can(this, [], showMessage, 'combat')
   }
 
   async startCombat() {
@@ -336,7 +338,11 @@ export default class Combat extends Entity {
   async onStartCombat() {}
 
   canEndCombat(showMessage) {
-    return this.npc.hp <= 0 || store.player.hp <= 0
+    return can(this, [
+      {
+        expr: () => this.npc.hp > 0 && store.player.hp > 0
+      },
+    ], showMessage)
   }
 
   async endCombat() {

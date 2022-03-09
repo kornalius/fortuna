@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin, emit, log, registerClass } from '@/utils'
+import { mixin, emit, registerClass, can } from '@/utils'
 import { store } from '@/store'
 import Location from '@/mixins/location'
 import Code from '@/mixins/code'
@@ -38,9 +38,13 @@ export default class Building extends Entity {
       ],
       // opening hours [start_time, end_time]
       hours: null,
+      // npc ids of owners
+      ownerIds: [],
       ...data,
     })
   }
+
+  get isBuilding() { return true }
 
   get startRoomCode() { return this.state.startRoomCode }
   set startRoomCode(value) { this.state.startRoomCode = value }
@@ -49,6 +53,28 @@ export default class Building extends Entity {
 
   get hours() { return this.state.hours }
   set hours(value) { this.state.hours = value }
+
+  get ownerIds() { return this.state.ownerIds }
+  set ownerIds(value) { this.state.ownerIds = value }
+
+  get owners() { return this.ownerIds.map(id => store.npcs.get(id)) }
+  set owners(value) { this.ownerIds = value.map(npc => npc.id) }
+
+  isOwnedBy(npc) {
+    let n = npc
+    if (typeof npc === 'string') {
+      n = this.get(npc)
+    }
+    return this.owners.includes(n)
+  }
+
+  addOwner(npc) {
+    if (!this.isOwnedBy(npc)) {
+      this.ownerIds.push(npc.id)
+      return true
+    }
+    return false
+  }
 
   addRoom(data) {
     if (Array.isArray(data)) {
@@ -68,36 +94,7 @@ export default class Building extends Entity {
   }
 
   canEnter(showMessage) {
-    if (store.game.city !== this.location) {
-      if (showMessage) {
-        log(`You need to be in city ${this.location.name} to enter this building`)
-      }
-      return false
-    }
-    if (store.game.building === this) {
-      if (showMessage) {
-        log(`You are already in this building`)
-      }
-      return false
-    }
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before entering this building`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot enter the building while in discussion')
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot enter the building while in combat')
-      }
-      return false
-    }
+    let isBetween = true
     if (this.hours && this.hours.length === 2) {
       const sd = [
         store.game.date,
@@ -107,16 +104,38 @@ export default class Building extends Entity {
         store.game.date,
         this.hours[1],
       ].join(' ')
-      const isBetween = store.game.isBetween(sd, ed)
-      if (!isBetween) {
-        if (showMessage) {
-          log(`This building is closed, it opens between ${this.hours[0]} and ${this.hours[1]}`)
-        }
-        return false
-      }
+      isBetween = store.game.isBetween(sd, ed)
     }
-    return store.player.canMove(showMessage)
-      && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));
+
+    return can(this, [
+      {
+        expr: () => store.game.city !== this.location,
+        log: () => `You need to be in city ${this.location.name} to enter this building`
+      },
+      {
+        expr: () => store.game.building === this,
+        log: () => `You are already in this building`
+      },
+      {
+        expr: () => store.player.isConnectedToServer,
+        log: () => `Please disconnect from ${store.player.server.name.toLowerCase()} before entering this building`
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot enter the building while in discussion'
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot enter the building while in combat'
+      },
+      {
+        expr: () => !isBetween,
+        log: () => `This building is closed, it opens between ${this.hours[0]} and ${this.hours[1]}`
+      },
+      {
+        expr: () => !store.player.canMove(showMessage),
+      }
+    ], showMessage, 'enter')
   }
 
   async enter() {
@@ -154,29 +173,23 @@ export default class Building extends Entity {
   async onEnter() {}
 
   canExit(showMessage) {
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot leave the room while in discussion')
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot leave the room while in combat')
-      }
-      return false
-    }
-    if (store.game.room && !store.game.room?.canExit(showMessage)) {
-      return false
-    }
-    return store.player.canMove(showMessage)
-      && !(this.checkRequirementsFor && !this.checkRequirementsFor('exit', showMessage));
+    return can(this, [
+      {
+        expr: () => store.player.isConnectedToServer,
+        log: () => `Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot leave the room while in discussion'
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot leave the room while in combat'
+      },
+      {
+        expr: () => store.game.room && !store.game.room?.canExit(showMessage),
+      },
+    ], showMessage, 'exit')
   }
 
   async exit() {

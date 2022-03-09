@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 
 export default {
   state: {
@@ -33,13 +33,12 @@ export default {
   },
 
   canExamine(showMessage) {
-    if (!this.isExaminable) {
-      if (showMessage) {
-        log(`${this.name} cannot be examined`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('examine', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isExaminable,
+        log: `${this.name} cannot be examined`
+      },
+    ], showMessage, 'examine')
   },
 
   async examine() {

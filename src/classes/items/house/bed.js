@@ -11,6 +11,8 @@ export default class Bed extends Item {
       ...data,
     })
   }
+
+  get canSleepOn() { return true }
 }
 
 registerClass(Bed)

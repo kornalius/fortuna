@@ -35,6 +35,8 @@ export default class Game {
     }
   }
 
+  get isGame() { return true }
+
   get date() { return this.state.date }
   set date(value) { return this.state.date = value }
 

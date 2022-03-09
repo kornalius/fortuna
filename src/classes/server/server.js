@@ -1,7 +1,7 @@
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
 import random from 'lodash/random'
-import { checkSoftware, emit, log, mixin, pickRandom, randomFilename, registerClass } from '@/utils'
+import { can, checkSoftware, emit, log, mixin, pickRandom, randomFilename, registerClass } from '@/utils'
 import Item from '../items/item'
 import File from './file'
 import { store } from '@/store'
@@ -260,37 +260,28 @@ export default class Server extends Item {
   }
 
   canConnect(showMessage) {
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is busy performing another operation`)
-      }
-      return false
-    }
-    if (this.isConnected) {
-      if (showMessage) {
-        log(`You are already connected to ${this.name.toLowerCase()}`)
-      }
-      return false
-    }
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`You cannot use this while connected to ${store.player.server.name.toLowerCase()}`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot use this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot use this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('connect', showMessage));
+    return can(this, [
+      {
+        expr: () => this.isBusy,
+        log: () => `${this.name} is busy performing another operation`
+      },
+      {
+        expr: () => this.isConnected,
+        log: () => `You are already connected to ${this.name.toLowerCase()}`
+      },
+      {
+        expr: () => store.player.isConnectedToServer,
+        log: () => `You cannot use this while connected to ${store.player.server.name.toLowerCase()}`
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot use this while in combat'
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot use this while in conversation'
+      },
+    ], showMessage, 'connect')
   }
 
   async connect() {
@@ -345,19 +336,16 @@ export default class Server extends Item {
   }
 
   canDisconnect(showMessage) {
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is busy performing another operation`)
-      }
-      return false
-    }
-    if (!this.isConnected) {
-      if (showMessage) {
-        log(`You are not connected to ${this.name.toLowerCase()}`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('disconnect', showMessage));
+    return can(this, [
+      {
+        expr: () => this.isBusy,
+        log: () => `${this.name} is busy performing another operation`
+      },
+      {
+        expr: () => !this.isConnected,
+        log: () => `You are not connected to ${this.name.toLowerCase()}`
+      },
+    ], showMessage, 'disconnect')
   }
 
   async disconnect() {
@@ -377,31 +365,24 @@ export default class Server extends Item {
   }
 
   canAuthenticate(showMessage) {
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is busy performing another operation`)
-      }
-      return false
-    }
-    if (this.isAuthenticated) {
-      if (showMessage) {
-        log(`You are already authenticated on ${this.name.toLowerCase()}`)
-      }
-      return false
-    }
-    if (this.isProtected) {
-      if (showMessage) {
-        log(`${this.name} is protected, try cracking it first`)
-      }
-      return false
-    }
-    if (!this.isConnected) {
-      if (showMessage) {
-        log(`You need to be connected to ${this.name.toLowerCase()}`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('authenticate', showMessage));
+    return can(this, [
+      {
+        expr: () => this.isBusy,
+        log: () => `${this.name} is busy performing another operation`
+      },
+      {
+        expr: () => this.isAuthenticated,
+        log: () => `You are already authenticated on ${this.name.toLowerCase()}`
+      },
+      {
+        expr: () => this.isProtected,
+        log: () => `${this.name} is protected, try cracking it first`
+      },
+      {
+        expr: () => !this.isConnected,
+        log: () => `You need to be connected to ${this.name.toLowerCase()}`
+      },
+    ], showMessage, 'authenticate')
   }
 
   async authenticate() {
@@ -426,34 +407,27 @@ export default class Server extends Item {
   }
 
   canCrack(showMessage) {
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is busy performing another operation`)
-      }
-      return false
-    }
-    if (!this.isConnected) {
-      if (showMessage) {
-        log(`You need to be connected to ${this.name.toLowerCase()} first`)
-      }
-      return false
-    }
-    if (!this.isCrackable) {
-      if (showMessage) {
-        log(`${this.name} is not crackable`)
-      }
-      return false
-    }
-    if (!this.isProtected) {
-      if (showMessage) {
-        log(`${this.name} is not protected`)
-      }
-      return false
-    }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('crack', showMessage)) {
-      return false
-    }
-    return checkSoftware.call(this, store.player.installedCracker,showMessage)
+    return can(this, [
+      {
+        expr: () => this.isBusy,
+        log: `${this.name} is busy performing another operation`
+      },
+      {
+        expr: () => !this.isConnected,
+        log: `You need to be connected to ${this.name.toLowerCase()} first`
+      },
+      {
+        expr: () => !this.isCrackable,
+        log: `${this.name} is not crackable`
+      },
+      {
+        expr: () => !this.isProtected,
+        log: `${this.name} is not protected`
+      },
+      {
+        expr: () => !checkSoftware.call(this, store.player.installedCracker, showMessage),
+      },
+    ], showMessage, 'crack')
   }
 
   async crack() {
@@ -482,25 +456,20 @@ export default class Server extends Item {
   async onCrack() {}
 
   canList(showMessage) {
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is busy performing another operation`)
-      }
-      return false
-    }
-    if (!this.isConnected) {
-      if (showMessage) {
-        log(`You need to be connected to ${this.name.toLowerCase()} to perform a listing`)
-      }
-      return false
-    }
-    if (!this.isAuthenticated) {
-      if (showMessage) {
-        log(`You need to be authenticated to ${this.name.toLowerCase()} first`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('list', showMessage));
+    return can(this, [
+      {
+        expr: () => this.isBusy,
+        log: `${this.name} is busy performing another operation`
+      },
+      {
+        expr: () => !this.isConnected,
+        log: `You need to be connected to ${this.name.toLowerCase()} to perform a listing`
+      },
+      {
+        expr: () => !this.isAuthenticated,
+        log: `You need to be authenticated to ${this.name.toLowerCase()} first`
+      },
+    ], showMessage, 'list')
   }
 
   async list() {

@@ -1,5 +1,5 @@
 import Item from './item'
-import { emit, log, mixin, oppositeDirection, registerClass } from '@/utils'
+import { can, emit, mixin, oppositeDirection, registerClass } from '@/utils'
 import { store } from '@/store'
 import Openable from '@/mixins/openable'
 import Unlockable from '@/mixins/unlockable'
@@ -56,31 +56,27 @@ export default class Door extends Item {
   }
 
   canUse(showMessage) {
-    if (!this.isOpened) {
-      if (showMessage) {
-        log('The door is not opened')
+    return can(this, [
+      {
+        expr: () => !this.isOpened,
+        log: () => 'The door is not opened'
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot enter this door while in combat'
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot enter this door while in conversation'
+      },
+      {
+        expr: () => this.isLocked,
+        log: () => `${this.name} is locked`
+      },
+      {
+        expr: () => !store.game.room.canExit(showMessage),
       }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot enter this door while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot enter this door while in conversation')
-      }
-      return false
-    }
-    if (this.isLocked) {
-      if (showMessage) {
-        log(`${this.name} is locked`)
-      }
-      return false
-    }
-    return store.game.room.canExit(showMessage);
+    ], showMessage)
   }
 
   async use() {

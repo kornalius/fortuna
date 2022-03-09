@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -38,31 +38,24 @@ export default {
   },
 
   canPull(showMessage) {
-    if (!this.isPullable) {
-      if (showMessage) {
-        log(`${this.name} cannot be pulled`)
-      }
-      return false
-    }
-    if (this.isPulled) {
-      if (showMessage) {
-        log(`${this.name} is already pulled`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot pull this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot pull this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('pull', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isPullable,
+        log: `${this.name} cannot be pulled`
+      },
+      {
+        expr: () => this.isPulled,
+        log: `${this.name} is already pulled`
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: 'You cannot pull this while in combat'
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: 'You cannot pull this while in conversation'
+      },
+    ], showMessage, 'pull')
   },
 
   async pull() {

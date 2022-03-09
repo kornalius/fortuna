@@ -1,5 +1,5 @@
 import random from 'lodash/random'
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 
 export default {
   state: {
@@ -46,19 +46,16 @@ export default {
   },
 
   canConsume(showMessage) {
-    if (this.isConsumable) {
-      if (showMessage) {
-        log(`${this.name} cannot not consumable`)
-      }
-      return false
-    }
-    if (this.isConsumed) {
-      if (showMessage) {
-        log(`${this.name} has already been fully consumed`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('consume', showMessage));
+    return can(this, [
+      {
+        expr: () => this.isConsumable,
+        log: `${this.name} cannot not consumable`
+      },
+      {
+        expr: () => this.isConsumed,
+        log: `${this.name} has already been fully consumed`
+      },
+    ], showMessage, 'consume')
   },
 
   async consume() {

@@ -1,4 +1,4 @@
-import { checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -27,28 +27,23 @@ export default {
   },
 
   canUpload(showMessage) {
-    if (!this.isUploadable) {
-      if (showMessage) {
-        log(`${this.name} cannot be uploaded`)
-      }
-      return false
-    }
-    if (!store.player.isConnectedToServer) {
-      if (showMessage) {
-        log('You need to be connected to a server first')
-      }
-      return false
-    }
-    if (!store.player.has(this)) {
-      if (showMessage) {
-        log(`${this.name} must be on your disk first`)
-      }
-      return false
-    }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('upload', showMessage)) {
-      return false
-    }
-    return checkSoftware.call(this, store.player.installedFtp, showMessage)
+    return can(this, [
+      {
+        expr: () => !this.isUploadable,
+        log: () => `${this.name} cannot be uploaded`
+      },
+      {
+        expr: () => !store.player.isConnectedToServer,
+        log: () => 'You need to be connected to a server first'
+      },
+      {
+        expr: () => !store.player.has(this),
+        log: () => `${this.name} must be on your disk first`
+      },
+      {
+        expr: () => checkSoftware.call(this, store.player.installedFtp, showMessage),
+      },
+    ], showMessage, 'upload')
   },
 
   async upload() {

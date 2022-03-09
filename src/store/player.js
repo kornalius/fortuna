@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 import { store } from './index'
-import { emit, log, mixin, deserializeObject } from '@/utils'
+import { emit, mixin, deserializeObject, can } from '@/utils'
 import Item from '@/classes/items/item'
 import Name from '@/mixins/name'
 import Level from '@/mixins/level'
@@ -42,6 +42,8 @@ export default class Player {
       dice: this.baseDice,
     }
   }
+
+  get isPlayer() { return true }
 
   get str() { return this.state.str + this.sumOfBuffs('str') }
   set str(value) { this.state.str = value }
@@ -187,13 +189,12 @@ export default class Player {
   }
 
   canAnswer(showMessage) {
-    if (!this.isInDialog) {
-      if (showMessage) {
-        log('You are not talking to anyone')
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => !this.isInDialog,
+        log: () => 'You are not talking to anyone'
+      },
+    ], showMessage)
   }
 
   /**
@@ -210,13 +211,12 @@ export default class Player {
   }
 
   canLevelUp(showMessage) {
-    if (this.xp < this.nextXp) {
-      if (showMessage) {
-        log('You cannot level up just yet. Not enough experience')
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => this.xp < this.nextXp,
+        log: () => 'You cannot level up just yet. Not enough experience'
+      },
+    ], showMessage)
   }
 
   async levelUp() {

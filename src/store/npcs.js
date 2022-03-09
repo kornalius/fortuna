@@ -30,6 +30,16 @@ export default class Npcs extends Entities {
           const isBetween = store.game.isBetween(sd, ed)
           if (isBetween && n.location !== room) {
             n.location = room
+          } else if (a.expr) {
+            const t = [
+              store.game.date,
+              store.game.time,
+            ].join(' ')
+
+            if (isBetween && (t === sd || t === ed)) {
+              // execute an expression at start or at end
+              a.expr(n, t === ed)
+            }
           }
         })
       }

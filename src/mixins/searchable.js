@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -34,31 +34,24 @@ export default {
   },
 
   canSearch(showMessage) {
-    if (!this.isSearchable) {
-      if (showMessage) {
-        log(`${this.name} cannot be searched`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log(`${this.name} can only be searched outside of combat`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot search this while in conversation')
-      }
-      return false
-    }
-    if (this.isOpenable && this.isClosed) {
-      if (showMessage) {
-        log(`${this.name} needs to be opened first before you can search it`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('search', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isSearchable,
+        log: `${this.name} cannot be searched`,
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: `${this.name} can only be searched outside of combat`,
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: 'You cannot search this while in conversation',
+      },
+      {
+        expr: () => this.isOpenable && this.isClosed,
+        log: `${this.name} needs to be opened first before you can search it`,
+      },
+    ], showMessage, 'search')
   },
 
   async search() {

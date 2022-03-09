@@ -18,7 +18,8 @@ export default {
   img: 'test-room.png',
 
   mounted() {
-    this.addNpc(new Npc(SimonSmith))
+    const npc = this.addNpc(new Npc(SimonSmith))
+    this.location.addOwner(npc)
     this.addItem(new LightSwitch(TestRoomLightSwitch))
     this.addItem(new Server(TestRoomServer))
     this.addItem(new Freeze())

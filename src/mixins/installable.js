@@ -1,4 +1,4 @@
-import { log, emit } from '@/utils'
+import { log, emit, can } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -50,38 +50,29 @@ export default {
   },
 
   canInstall(showMessage) {
-    if (!this.isInstallable) {
-      if (showMessage) {
-        log(`${this.name} cannot be installed`)
-      }
-      return false
-    }
-    if (this.isInstalled) {
-      if (showMessage) {
-        log(`${this.name} is already installed`)
-      }
-      return false
-    }
-    if (!store.player.has(this)) {
-      if (showMessage) {
-        log(`${this.name} needs to be in your inventory first`)
-      }
-      return false
-    }
-    if (store.player.hasInstalledSoftwareOfType(this.installType)) {
-      if (showMessage) {
-        log(`You have already have a ${this.installType} installed`)
-      }
-      return false
-    }
-    // for files and softwares
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is locked while an operation is running on it`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('install', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isInstallable,
+        log: () => `${this.name} cannot be installed`
+      },
+      {
+        expr: () => this.isInstalled,
+        log: () => `${this.name} is already installed`
+      },
+      {
+        expr: () => !store.player.has(this),
+        log: () => `${this.name} needs to be in your inventory first`
+      },
+      {
+        expr: () => store.player.hasInstalledSoftwareOfType(this.installType),
+        log: () => `You have already have a ${this.installType} installed`
+      },
+      // for files and softwares
+      {
+        expr: () => this.isBusy,
+        log: () => `${this.name} is locked while an operation is running on it`
+      },
+    ], showMessage, 'install')
   },
 
   async install() {
@@ -101,26 +92,21 @@ export default {
   async onInstall() {},
 
   canUninstall(showMessage) {
-    if (!this.isInstallable) {
-      if (showMessage) {
-        log(`${this.name} cannot be uninstalled`)
-      }
-      return false
-    }
-    if (!this.isInstalled) {
-      if (showMessage) {
-        log(`${this.name} is not installed`)
-      }
-      return false
-    }
-    // for files and softwares
-    if (this.isBusy) {
-      if (showMessage) {
-        log(`${this.name} is locked while an operation is running on it`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('uninstall', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isInstallable,
+        log: () => `${this.name} cannot be uninstalled`
+      },
+      {
+        expr: () => !this.isInstalled,
+        log: () => `${this.name} is not installed`
+      },
+      // for files and softwares
+      {
+        expr: () => this.isBusy,
+        log: () => `${this.name} is locked while an operation is running on it`
+      },
+    ], showMessage, 'uninstall')
   },
 
   async uninstall() {

@@ -1,4 +1,4 @@
-import { checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -31,28 +31,23 @@ export default {
   },
 
   canDecrypt(showMessage) {
-    if (!this.isDecryptable) {
-      if (showMessage) {
-        log(`${this.name} cannot be decrypted`)
-      }
-      return false
-    }
-    if (!this.isCrypted) {
-      if (showMessage) {
-        log(`${this.name} is not crypted`)
-      }
-      return false
-    }
-    if (!store.player.has(this)) {
-      if (showMessage) {
-        log(`${this.name} must be on your disk first`)
-      }
-      return false
-    }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('decrypt', showMessage)) {
-      return false
-    }
-    return checkSoftware.call(this, store.player.installedDecrypter,showMessage)
+    return can(this, [
+      {
+        expr: () => !this.isDecryptable,
+        log: () => `${this.name} cannot be decrypted`
+      },
+      {
+        expr: () => !this.isCrypted,
+        log: () => `${this.name} is not crypted`
+      },
+      {
+        expr: () => !store.player.has(this),
+        log: () => `${this.name} must be on your disk first`
+      },
+      {
+        expr: () => !checkSoftware.call(this, store.player.installedDecrypter,showMessage),
+      },
+    ], showMessage, 'decrypt')
   },
 
   async decrypt() {

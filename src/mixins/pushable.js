@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -38,31 +38,24 @@ export default {
   },
 
   canPush(showMessage) {
-    if (!this.isPushable) {
-      if (showMessage) {
-        log(`${this.name} cannot be pushed`)
-      }
-      return false
-    }
-    if (this.isPushed) {
-      if (showMessage) {
-        log(`${this.name} is already pushed`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot push this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot push this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('push', showMessage));
+    return can(this, [
+      {
+        expr: !this.isPushable,
+        log: `${this.name} cannot be pushed`
+      },
+      {
+        expr: this.isPushed,
+        log: `${this.name} is already pushed`
+      },
+      {
+        expr: store.player.isInCombat,
+        log: 'You cannot push this while in combat'
+      },
+      {
+        expr: store.player.isInDialog,
+        log: 'You cannot push this while in conversation'
+      },
+    ], showMessage, 'push')
   },
 
   async push() {

@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -36,33 +36,26 @@ export default {
   },
 
   canUse(showMessage) {
-    if (!this.isUsable) {
-      if (showMessage) {
-        log(`${this.name} cannot be used`)
-      }
-      return false
-    }
-    // battle item can only be used in combat
-    if (!store.player.isInCombat && this.isBattle) {
-      if (showMessage) {
-        log(`${this.name} can only be used during combat`)
-      }
-      return false
-    }
-    // only battle item can be used in combat
-    if (store.player.isInCombat && !this.isBattle) {
-      if (showMessage) {
-        log(`${this.name} can only be used outside of combat`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot use this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('use', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isUsable,
+        log: () => `${this.name} cannot be used`
+      },
+      // battle item can only be used in combat
+      {
+        expr: () => !store.player.isInCombat && this.isBattle,
+        log: () => `${this.name} can only be used during combat`
+      },
+      // only battle item can be used in combat
+      {
+        expr: () => store.player.isInCombat && !this.isBattle,
+        log: () => `${this.name} can only be used outside of combat`
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot use this while in conversation'
+      },
+    ], showMessage, 'use')
   },
 
   async use() {

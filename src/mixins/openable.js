@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -39,37 +39,28 @@ export default {
   },
 
   canOpen(showMessage) {
-    if (!this.isOpenable) {
-      if (showMessage) {
-        log(`${this.name} cannot be opened`)
-      }
-      return false
-    }
-    if (this.isOpened) {
-      if (showMessage) {
-        log(`${this.name} is already opened`)
-      }
-      return false
-    }
-    if (this.isLocked) {
-      if (showMessage) {
-        log(`${this.name} is locked`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot open this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot open this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('open', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isOpenable,
+        log: () => `${this.name} cannot be opened`
+      },
+      {
+        expr: () => this.isOpened,
+        log: () => `${this.name} is already opened`
+      },
+      {
+        expr: () => this.isLocked,
+        log: () => `${this.name} is locked`
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot open this while in combat'
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot open this while in conversation'
+      },
+    ], showMessage, 'open')
   },
 
   async open() {
@@ -85,31 +76,24 @@ export default {
   async onOpen() {},
 
   canClose(showMessage) {
-    if (!this.isClosable) {
-      if (showMessage) {
-        log(`${this.name} cannot be closed`)
-      }
-      return false
-    }
-    if (this.isClosed) {
-      if (showMessage) {
-        log(`${this.name} is already closed`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot close this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot close this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('close', showMessage));
+    return can(this, [
+      {
+        expr: !this.isClosable,
+        log: () => `${this.name} cannot be closed`
+      },
+      {
+        expr: this.isClosed,
+        log: () => `${this.name} is already closed`
+      },
+      {
+        expr: store.player.isInCombat,
+        log: () => 'You cannot close this while in combat'
+      },
+      {
+        expr: store.player.isInDialog,
+        log: () => 'You cannot close this while in conversation'
+      },
+    ], showMessage, 'close')
   },
 
   async close() {

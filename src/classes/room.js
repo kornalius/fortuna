@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin, emit, log, registerClass } from '@/utils'
+import { mixin, emit, registerClass, can } from '@/utils'
 import { store } from '@/store'
 import Door from '@/classes/items/door'
 import Npc from '@/classes/npcs/npc'
@@ -26,6 +26,8 @@ export default class Room extends Entity {
     })
   }
 
+  get isRoom() { return true }
+
   get img() { return `images/rooms/${this.state.img}` }
 
   get doors() { return store.doors.list.filter(i => i.roomIds.includes(this.id)) }
@@ -37,6 +39,29 @@ export default class Room extends Entity {
 
   get npcs() { return store.npcs.list.filter(i => i.location === this) }
   get aggresiveNpcs() { return this.npcs.filter(npc => npc.isAggresive && !npc.isDead) }
+
+  get ownerIds() { return this.location.ownerIds }
+  get owners() { return this.location.owners }
+
+  get presentOwners() { return this.owners.filter(o => this.npcs.includes(o)) }
+
+  get canSleepOnItems() { return this.items.find(i => i.canSleepOn)}
+
+  isOwnedBy(npc) {
+    let n = npc
+    if (typeof npc === 'string') {
+      n = this.get(npc)
+    }
+    return this.owners.includes(n)
+  }
+
+  addOwner(npc) {
+    if (!this.location.isOwnedBy(npc)) {
+      this.location.ownerIds.push(npc.id)
+      return true
+    }
+    return false
+  }
 
   addNpc(data) {
     if (Array.isArray(data)) {
@@ -58,20 +83,19 @@ export default class Room extends Entity {
   }
 
   canEnter(fromRoom, showMessage) {
-    if (store.game.city !== this.location?.location) {
-      if (showMessage) {
-        log(`You need to be in city ${this.location.location.name}`)
-      }
-      return false
-    }
-    if (store.game.building !== this.location) {
-      if (showMessage) {
-        log(`You need to be in building ${this.location.name}`)
-      }
-      return false
-    }
-    return store.player.canMove(showMessage)
-      && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));
+    return can(this, [
+      {
+        expr: () => store.game.city !== this.location?.location,
+        log: () => `You need to be in city ${this.location.location.name}`
+      },
+      {
+        expr: () => store.game.building !== this.location,
+        log: () => `You need to be in building ${this.location.name}`
+      },
+      {
+        expr: () => !store.player.canMove(showMessage)
+      },
+    ], showMessage, 'enter')
   }
 
   async enter(fromRoom) {
@@ -97,32 +121,27 @@ export default class Room extends Entity {
   async onEnter(fromRoom) {}
 
   canExit(toRoom, showMessage) {
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot leave the room while in discussion')
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot leave the room while in combat')
-      }
-      return false
-    }
-    if (this.aggresiveNpcs.length) {
-      if (showMessage) {
-        log('You cannot leave the room while there are still ennemies in it')
-      }
-      return false
-    }
-    return store.player.canMove(showMessage)
-      && !(this.checkRequirementsFor && !this.checkRequirementsFor('exit', showMessage));
+    return can(this, [
+      {
+        expr: () => store.player.isConnectedToServer,
+        log: () => `Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot leave the room while in discussion'
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot leave the room while in combat'
+      },
+      {
+        expr: () => this.aggresiveNpcs.length,
+        log: () => 'You cannot leave the room while there are still ennemies in it'
+      },
+      {
+        expr: () => !store.player.canMove(showMessage)
+      },
+    ], showMessage, 'exit')
   }
 
   async exit(toRoom) {

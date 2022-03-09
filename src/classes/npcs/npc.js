@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import Entity from '@/entity'
 import Dialog from '@/classes/dialog'
 import Combat from '@/classes/combat'
-import { emit, log, mixin, registerClass } from '@/utils'
+import { can, emit, mixin, registerClass } from '@/utils'
 import { store } from '@/store'
 import Code from '@/mixins/code'
 import Name from '@/mixins/name'
@@ -18,6 +18,7 @@ import Credits from '@/mixins/credits'
 import Items from '@/mixins/items'
 import Carry from '@/mixins/carry'
 import Requirements from '@/mixins/requirements'
+import Sleep from '@/mixins/sleep'
 
 export default class Npc extends Entity {
   setupInstance(data) {
@@ -55,15 +56,17 @@ export default class Npc extends Entity {
         ),
       ],
       // Agenda to follow
-      // { start: '08:00', end: '16:00', roomId: 'id' },
-      // { start: '16:01', end: '07:59', roomCode: 'Home' },
-      // { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom' },
+      // { start: '08:00', end: '16:00', roomId: 'id', expr: (npc, end?) => void },
+      // { start: '16:01', end: '07:59', roomCode: 'Home', expr: (npc, end?) => void },
+      // { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom', expr: (npc, end?) => void },
       agenda: [],
       // turns to skip during battle
       skipTurns: 0,
       ...data,
     })
   }
+
+  get isNpc() { return true }
 
   get name() { return this.isKnown ? this.state.name : '???' }
   get description() { return this.isKnown ? this.state.description : '???' }
@@ -148,38 +151,28 @@ export default class Npc extends Entity {
     } else {
       const i = new Dialog(data)
       i.npc = this
-      i.setupAnswers()
       store.dialogs.update(i)
+      i.setupAnswers()
       return i
     }
   }
 
   canTalk(showMessage) {
-    if (!this.isTalkable) {
-      if (showMessage) {
-        log(`${this.name} is not interested in talking to you`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log(`You are already in discussion with ${this.name}`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log(`You cannot talk to ${this.name} while in combat with ${store.player.combat.npc.name}`)
-      }
-      return false
-    }
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`Disconnect from ${store.player.server.toLowerCase()} first`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('talk', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isTalkable,
+        log: () => `${this.name} is not interested in talking to you`
+      },
+      { expr: () => store.player.isInDialog,
+        log: () => `You are already in discussion with ${this.name}`
+      },
+      { expr: () => store.player.isInCombat,
+        log: () => `You cannot talk to ${this.name} while in combat with ${store.player.combat.npc.name}`
+      },
+      { expr: () => store.player.isConnectedToServer,
+        log: () => `Disconnect from ${store.player.server.toLowerCase()} first`
+      },
+    ], showMessage, 'talk')
   }
 
   async talk() {
@@ -194,13 +187,12 @@ export default class Npc extends Entity {
   async onTalk() {}
 
   canSay(code, showMessage) {
-    if (!this.getDialog(code)) {
-      if (showMessage) {
-        log(`Could not find a valid dialog entry with the code ${code}`)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => !this.getDialog(code),
+        log: () => `Could not find a valid dialog entry with the code ${code}`
+      },
+    ], showMessage)
   }
 
   async say(code) {
@@ -218,31 +210,24 @@ export default class Npc extends Entity {
   async onBye() {}
 
   canCombat(showMessage) {
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log(`You are already in discussion with ${store.player.dialog.npc.name}`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log(`You are already in combat with ${store.player.combat.npc.name}`)
-      }
-      return false
-    }
-    if (!this.isAggresive) {
-      if (showMessage) {
-        log(`${this.name} is not aggresive towards you, there are no reasons for conflict`)
-      }
-      return false
-    }
-    if (this.isDead) {
-      if (showMessage) {
-        log(`${this.name} is dead, you cannot fight`)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => store.player.isInDialog,
+        log: () => `You are already in discussion with ${store.player.dialog.npc.name}`
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => `You are already in combat with ${store.player.combat.npc.name}`
+      },
+      {
+        expr: () => !this.isAggresive,
+        log: () => `${this.name} is not aggresive towards you, there are no reasons for conflict`
+      },
+      {
+        expr: () => this.isDead,
+        log: () => `${this.name} is dead, you cannot fight`
+      },
+    ], showMessage)
   }
 
   async combat() {
@@ -261,19 +246,20 @@ export default class Npc extends Entity {
   }
 
   canMove(showMessage) {
-    if (store.player.isInCombat && store.player.combat.npc === this) {
-      if (showMessage) {
-        log(`${this.name} cannot move while in combat`)
-      }
-      return false
-    }
-    if (store.player.isInDialog && store.player.dialog.npc === this) {
-      if (showMessage) {
-        log(`${this.name} cannot move while in discussion`)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => this.isSleeping,
+        log: () => `${this.name} is sleeping, therefore cannot move`
+      },
+      {
+        expr: () => store.player.isInCombat && store.player.combat.npc === this,
+        log: () => `${this.name} cannot move while in combat`
+      },
+      {
+        expr: () => store.player.isInDialog && store.player.dialog.npc === this,
+        log: () => `${this.name} cannot move while in discussion`
+      },
+    ], showMessage)
   }
 }
 
@@ -292,6 +278,7 @@ mixin(Npc, [
   Hp,
   Carry,
   Requirements,
+  Sleep,
 ])
 
 registerClass(Npc)

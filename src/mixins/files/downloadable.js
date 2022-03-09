@@ -1,4 +1,4 @@
-import { checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -27,28 +27,23 @@ export default {
   },
 
   canDownload(showMessage) {
-    if (!this.isDownloadable) {
-      if (showMessage) {
-        log(`${this.name} cannot be downloaded`)
-      }
-      return false
-    }
-    if (!this.isOnServer) {
-      if (showMessage) {
-        log(`${this.name} needs to be hosted on a server to be downloaded`)
-      }
-      return false
-    }
-    if (store.player.diskFree < this.weight) {
-      if (showMessage) {
-        log(`Not enough free disk space left to download ${this.name.toLowerCase()}`)
-      }
-      return false
-    }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('download', showMessage)) {
-      return false
-    }
-    return checkSoftware.call(this, store.player.installedFtp, showMessage)
+    return can(this, [
+      {
+        expr: () => !this.isDownloadable,
+        log: () => `${this.name} cannot be downloaded`
+      },
+      {
+        expr: () => !this.isOnServer,
+        log: () => `${this.name} needs to be hosted on a server to be downloaded`
+      },
+      {
+        expr: () => store.player.diskFree < this.weight,
+        log: () => `Not enough free disk space left to download ${this.name.toLowerCase()}`
+      },
+      {
+        expr: () => !checkSoftware.call(this, store.player.installedFtp, showMessage),
+      },
+    ], showMessage, 'download')
   },
 
   async download() {

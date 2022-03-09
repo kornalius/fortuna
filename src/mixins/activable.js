@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 
 export default {
   state: {
@@ -57,19 +57,16 @@ export default {
   },
 
   canActivate(showMessage) {
-    if (!this.isActivable) {
-      if (showMessage) {
-        log(`${this.name} cannot be activated`)
-      }
-      return false
-    }
-    if (this.isActive) {
-      if (showMessage) {
-        log(`${this.name} is already active`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('activate', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isActivable,
+        log: () => `${this.name} cannot be activated`
+      },
+      {
+        expr: () => this.isActive,
+        log: () => `${this.name} is already active`
+      },
+    ], showMessage, 'activate')
   },
 
   async activate() {
@@ -85,19 +82,16 @@ export default {
   },
 
   canDisactivate(showMessage) {
-    if (!this.isDisactivable) {
-      if (showMessage) {
-        log(`${this.name} cannot be deactivated`)
-      }
-      return false
-    }
-    if (!this.isActive) {
-      if (showMessage) {
-        log(`${this.name} is already deactivated`)
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('disactivate', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isDisactivable,
+        log: `${this.name} cannot be deactivated`
+      },
+      {
+        expr: () => !this.isActive,
+        log: `${this.name} is already deactivated`
+      },
+    ], showMessage, 'disactivate')
   },
 
   async disactivate() {

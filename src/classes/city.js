@@ -1,5 +1,5 @@
 import Entity from '@/entity'
-import { mixin, emit, log, registerClass } from '@/utils'
+import { mixin, emit, registerClass, can } from '@/utils'
 import { store } from '@/store'
 import Code from '@/mixins/code'
 import Name from '@/mixins/name'
@@ -36,6 +36,8 @@ export default class City extends Entity {
     })
   }
 
+  get isCity() { return true }
+
   get img() { return `images/cities/${this.state.img}` }
 
   get startBuildingCode() { return this.state.startBuildingCode }
@@ -63,32 +65,27 @@ export default class City extends Entity {
   }
 
   canEnter(showMessage) {
-    if (store.game.city === this) {
-      if (showMessage) {
-        log(`You are already in ${this.name}`)
+    return can(this, [
+      {
+        expr: () => store.game.city === this,
+        log: () => `You are already in ${this.name}`
+      },
+      {
+        expr: () => store.player.isConnectedToServer,
+        log: () => `Please disconnect from ${store.player.server.name.toLowerCase()} before entering this city`
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot enter the city while in discussion'
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot enter the city while in combat'
+      },
+      {
+        expr: () => !store.player.canMove(showMessage),
       }
-      return false
-    }
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before entering this city`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot enter the city while in discussion')
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot enter the city while in combat')
-      }
-      return false
-    }
-    return store.player.canMove(showMessage)
-      && !(this.checkRequirementsFor && !this.checkRequirementsFor('enter', showMessage));
+    ], showMessage, 'enter')
   }
 
   async enter() {
@@ -129,32 +126,29 @@ export default class City extends Entity {
   async onEnter() {}
 
   canExit(showMessage) {
-    if (store.player.isConnectedToServer) {
-      if (showMessage) {
-        log(`Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`)
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot leave the room while in discussion')
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot leave the room while in combat')
-      }
-      return false
-    }
-    if (store.game.building && !store.game.building?.canExit(showMessage)) {
-      return false
-    }
-    if (store.game.room && !store.game.room?.canExit(showMessage)) {
-      return false
-    }
-    return store.player.canMove(showMessage)
-      && !(this.checkRequirementsFor && !this.checkRequirementsFor('exit', showMessage));
+    return can(this, [
+      {
+        expr: () => store.player.isConnectedToServer,
+        log: () => `Please disconnect from ${store.player.server.name.toLowerCase()} before exiting this room`
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: () => 'You cannot leave the room while in discussion'
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: () => 'You cannot leave the room while in combat'
+      },
+      {
+        expr: () => store.game.building && !store.game.building?.canExit(showMessage),
+      },
+      {
+        expr: () => store.game.room && !store.game.room?.canExit(showMessage),
+      },
+      {
+        expr: () => !store.player.canMove(showMessage),
+      },
+    ], showMessage, 'exit')
   }
 
   async exit() {

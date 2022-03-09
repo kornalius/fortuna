@@ -1,5 +1,5 @@
 import random from 'lodash/random'
-import { emit, log } from '@/utils'
+import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -50,31 +50,24 @@ export default {
   },
 
   canDestroy(showMessage) {
-    if (this.isDestructable) {
-      if (showMessage) {
-        log(`${this.name} cannot be destroyed`)
-      }
-      return false
-    }
-    if (this.isDestroyed) {
-      if (showMessage) {
-        log(`${this.name} has already been destroyed`)
-      }
-      return false
-    }
-    if (store.player.isInCombat) {
-      if (showMessage) {
-        log('You cannot destroy this while in combat')
-      }
-      return false
-    }
-    if (store.player.isInDialog) {
-      if (showMessage) {
-        log('You cannot destroy this while in conversation')
-      }
-      return false
-    }
-    return !(this.checkRequirementsFor && !this.checkRequirementsFor('destroy', showMessage));
+    return can(this, [
+      {
+        expr: () => !this.isDestructable,
+        log: `${this.name} cannot be destroyed`
+      },
+      {
+        expr: () => this.isDestroyed,
+        log: `${this.name} has already been destroyed`
+      },
+      {
+        expr: () => store.player.isInCombat,
+        log: 'You cannot destroy this while in combat'
+      },
+      {
+        expr: () => store.player.isInDialog,
+        log: 'You cannot destroy this while in conversation'
+      },
+    ], showMessage, 'destroy')
   },
 
   async destroy() {

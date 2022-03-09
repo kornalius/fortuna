@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty'
-import { checkSoftware, emit, log, logs } from '@/utils'
+import { can, checkSoftware, emit, logs } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -54,22 +54,19 @@ export default {
   },
 
   canView(showMessage) {
-    if (!this.isViewable) {
-      if (showMessage) {
-        log(`${this.name} is not viewable`)
+    return can(this, [
+      {
+        expr: () => !this.isViewable,
+        log: () => `${this.name} is not viewable`
+      },
+      {
+        expr: () => store.player.installedViewer?.viewerType !== this.type,
+        log: () => `You need a ${this.type} viewer to view the content of ${this.name.toLowerCase()}`
+      },
+      {
+        expr: () => !checkSoftware.call(this, store.player.installedViewer,  showMessage),
       }
-      return false
-    }
-    if (store.player.installedViewer?.viewerType !== this.type) {
-      if (showMessage) {
-        log(`You need a ${this.type} viewer to view the content of ${this.name.toLowerCase()}`)
-      }
-      return false
-    }
-    if (this.checkRequirementsFor && !this.checkRequirementsFor('view', showMessage)) {
-      return false
-    }
-    return checkSoftware.call(this, store.player.installedViewer,  showMessage)
+    ], showMessage, 'view')
   },
 
   async view() {
