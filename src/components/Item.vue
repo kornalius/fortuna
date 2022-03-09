@@ -68,8 +68,9 @@
 
             <v-icon
               v-if="value.isNew"
-              icon="noto-v1:white-exclamation-mark"
               class="new"
+              icon="clarity:warning-standard-solid"
+              color="#F19936"
               width="16"
             />
           </div>
@@ -233,9 +234,7 @@ const groupedBuffs = computed(() => {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 2px;
-  background-color: #333;
-  border-radius: 50%;
+  filter: drop-shadow(2px 2px 1px #333);
 }
 .uses-left {
   position: absolute;

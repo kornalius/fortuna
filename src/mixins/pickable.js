@@ -62,8 +62,7 @@ export default {
       presentOwners.forEach(o => { o.aggresive = true })
     }
 
-    // change item location to be placed into your inventory
-    this.location = store.player
+    store.player.addItem(this)
 
     // mark item in your inventory as new
     this.hovered = false
