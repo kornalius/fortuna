@@ -1,0 +1,602 @@
+{
+    "fill_rate": 0,
+    "grid_height": 16,
+    "grid_width": 16,
+    "height": 64,
+    "image": "icons.png",
+    "name": "icons",
+    "padding_x": 0,
+    "padding_y": 0,
+    "pot": false,
+    "regions": [
+        {
+            "idx": 16,
+            "name": "backpack",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 15,
+            "name": "book",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 19,
+            "name": "cd",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 5,
+            "name": "check",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 20,
+            "name": "cigarette",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 11,
+            "name": "connect",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 19,
+            "name": "credit",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 16,
+            "name": "dice",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 17,
+            "name": "die",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 15,
+            "name": "diskette",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 14,
+            "name": "document",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 6,
+            "name": "examine",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 4,
+            "name": "file",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 3,
+            "name": "freeze",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 23,
+            "name": "grab",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 11,
+            "name": "hand",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 13,
+            "name": "heart",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 18,
+            "name": "id",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 21,
+            "name": "kick",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 1,
+            "name": "lightbulb",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 10,
+            "name": "list",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 10,
+            "name": "medal",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 6,
+            "name": "multi-checks",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 8,
+            "name": "pickup",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 7,
+            "name": "pound",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 22,
+            "name": "punch",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 12,
+            "name": "region_12",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 12,
+            "name": "region_27",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 18,
+            "name": "roll",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 0,
+            "name": "server",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 14,
+            "name": "shield",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 2,
+            "name": "software",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 13,
+            "name": "sword",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 17,
+            "name": "syringe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 8,
+            "name": "tag",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 5,
+            "name": "talk",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 9,
+            "name": "target",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 7,
+            "name": "use",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 9,
+            "name": "weight",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        }
+    ],
+    "regions_count": 39,
+    "rotations": false,
+    "using_grid": true,
+    "width": 80
+}

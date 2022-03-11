@@ -1,4 +1,10 @@
 <template>
+<!--  <icon-->
+<!--    icon="server"-->
+<!--    :scale-x="3"-->
+<!--    :scale-y="3"-->
+<!--  />-->
+
   <div
     v-for="log in logs"
     :key="log.id"
@@ -16,6 +22,7 @@
 <script setup>
 import { computed, watch } from 'vue'
 import { store } from '../store'
+// import Icon from '@/components/Icon'
 
 const logs = computed(() => {
   return store.logs.list
