@@ -30,7 +30,7 @@
           <span>{{ store.game.dayString }}</span>
         </div>
 
-        <div class="flex flex-wrap items-center mb2">
+        <div class="flex flex-wrap items-center mb1">
           <span class="yellow mr2">YOU SEE:</span>
 
           <span
@@ -50,7 +50,7 @@
           </span>
         </div>
 
-        <div class="flex flex-wrap items-center mb3">
+        <div class="flex flex-wrap items-center mb1">
           <span class="yellow mr2">EXITS:</span>
 
           <span
@@ -59,6 +59,24 @@
             class="inline mr1"
           >
             <Door :value="door" />
+          </span>
+        </div>
+
+        <div
+          v-for="container in value.openedContainers"
+          :key="container.id"
+          class="flex flex-wrap items-center mb1"
+        >
+          <v-icon :icon="icons[container.icon]" width="16" />
+
+          <span class="yellow mh2">{{ container.name }}:</span>
+
+          <span
+            v-for="item in container.items"
+            :key="item.id"
+            class="inline mr1"
+          >
+            <Item :value="item" />
           </span>
         </div>
 
@@ -94,6 +112,7 @@ import Server from '@/components/Server.vue'
 import Dialog from '@/components/Dialog.vue'
 import Combat from '@/components/Combat.vue'
 import { store } from '@/store'
+import icons from '@/icons'
 
 const scroller = ref()
 

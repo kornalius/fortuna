@@ -5,7 +5,7 @@ export default class Garage extends Building {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Garage',
-      icon: 'mdi:garage-variant',
+      icon: 'garage',
       ...data,
     })
   }

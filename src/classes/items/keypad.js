@@ -8,7 +8,7 @@ export default class Keypad extends Item {
 
     return super.setupInstance({
       name: 'Keypad',
-      icon: 'entypo:dial-pad',
+      icon: 'keypad',
       pickable: false,
       dropable: false,
       usable: true,

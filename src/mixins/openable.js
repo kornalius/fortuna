@@ -19,7 +19,7 @@ export default {
           ? {
             label: item.openLabel,
             key: 'toggleOpen',
-            icon: item.isOpened ? 'fa-solid:door-closed' : 'fa-solid:door-open',
+            icon: item.isOpened ? 'door-close' : 'door-open',
             disabled: !item.canOpen(),
             click: async () => item.open(),
           }

@@ -6,7 +6,7 @@ export default class Safe extends Container {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Safe',
-      icon: 'teenyicons:safe-solid',
+      icon: 'safe',
       ...data,
     })
   }

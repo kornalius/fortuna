@@ -8,7 +8,7 @@ import { store } from '@/store'
 export default {
   state: {
     // is the object searchable
-    searchable: false,
+    searchable: true,
     // how many times the object has been searched
     searched: 0,
     actions: [
@@ -17,7 +17,7 @@ export default {
           ? {
             label: item.searchLabel,
             key: 'search',
-            icon: 'fluent:box-search-24-filled',
+            icon: 'search',
             disabled: !item.canSearch(),
             click: async () => item.search(),
           }
@@ -35,6 +35,8 @@ export default {
   get searched() { return this.state.searched },
   set searched(value) { this.state.searched = value },
 
+  get wasSearched() { return this.searched > 0},
+
   get searchLabel() {
     return `Search ${this.requirementsLabelFor('search')}`
   },
@@ -44,6 +46,10 @@ export default {
       {
         expr: () => !this.isSearchable,
         log: `${this.name} cannot be searched`,
+      },
+      {
+        expr: () => this.searched > 0,
+        log: `${this.name} has already been searched`,
       },
       {
         expr: () => store.player.isInCombat,

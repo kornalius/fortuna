@@ -5,7 +5,7 @@ export default class Desk extends Container {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Desk',
-      icon: 'mdi:desk',
+      icon: 'desk',
       ...data,
     })
   }

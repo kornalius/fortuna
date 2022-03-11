@@ -18,7 +18,7 @@ export default class Door extends Item {
           {
             label: item.useLabel,
             key: 'use',
-            icon: 'whh:enteralt',
+            icon: 'enter',
             disabled: !item.canUse(),
             click: async () => item.use(),
           }

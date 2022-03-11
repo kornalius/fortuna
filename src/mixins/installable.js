@@ -19,7 +19,7 @@ export default {
           ? {
             label: item.installLabel,
             key: 'install',
-            icon: 'whh:savetodrive',
+            icon: 'install',
             disabled: !item.canInstall(),
             click: async () => item.install(),
           }
@@ -30,7 +30,7 @@ export default {
           ? {
             label: item.uninstallLabel,
             key: 'uninstall',
-            icon: 'entypo:uninstall',
+            icon: 'uninstall',
             disabled: !item.canUninstall(),
             click: async () => item.uninstall(),
           }

@@ -5,7 +5,7 @@ export default class Sofa extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Sofa',
-      icon: 'mdi:sofa',
+      icon: 'sofa',
       pickable: false,
       dropable: false,
       ...data,

@@ -21,7 +21,7 @@ export default class Building extends Entity {
     return super.setupInstance({
       name: 'Building',
       description: 'A building',
-      icon: 'clarity:building-solid',
+      icon: 'building',
       startRoomCode: null,
       locationId,
       locationStore,
@@ -30,7 +30,7 @@ export default class Building extends Entity {
           {
             label: 'Enter',
             key: 'enter',
-            icon: 'whh:enteralt',
+            icon: 'enter',
             disabled: !item.canEnter(),
             click: async () => item.enter(),
           }

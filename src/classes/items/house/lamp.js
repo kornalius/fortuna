@@ -6,7 +6,7 @@ export default class Lamp extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Lamp',
-      icon: 'bi:lamp-fill',
+      icon: 'lamp',
       pickable: false,
       dropable: false,
       ...data,

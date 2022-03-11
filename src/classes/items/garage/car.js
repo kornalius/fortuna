@@ -5,7 +5,7 @@ export default class Car extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Car',
-      icon: pickRandom(['fontisto:car', 'maki:car']),
+      icon: pickRandom(['car1', 'car2']),
       ...data,
     })
   }

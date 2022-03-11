@@ -21,7 +21,7 @@ export default {
           ? {
             label: item.unlockLabel,
             key: 'unlock',
-            icon: 'fa-solid:lock-open',
+            icon: 'unlock',
             disabled: !item.canUnlock(),
             click: async () => item.unlock(),
           }

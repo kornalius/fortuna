@@ -159,3 +159,15 @@ export const npc = ({ female, kid, old } = {}) => {
      to ${npc.motives}. ${capitalize(id)} is ${npc.mind}, ${npc.trait} and a ${npc.mood} type of person.`,
   }
 }
+
+/**
+ * Generate random loot from a list of classes
+ *
+ * @param classes {Class[]}
+ * @param min {number} minimum number to generate
+ * @param max {number} maximum number to generate
+ *
+ */
+export const generateLoot = (classes, min = 1, max = 5) => {
+  return new Array(random(min, max)).fill(0).map(() => pickRandom(classes))
+}

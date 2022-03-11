@@ -5,7 +5,7 @@ export default class Luck extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Luck',
-      icon: 'fluent:cube-rotate-20-filled',
+      icon: 'luck',
       description: 'Blesses you with 3 extra rolls during battle',
       ...data,
     })

@@ -19,7 +19,7 @@ export default {
           ? {
             label: item.pullLabel,
             key: 'pull',
-            icon: 'system-uicons:push-left',
+            icon: 'pull',
             disabled: !item.canPull(),
             click: async () => item.pull(),
           }

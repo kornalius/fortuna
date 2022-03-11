@@ -27,7 +27,7 @@
             v-for="i of freezes"
             :key="`freeze-${i}`"
             class="mr1"
-            icon="bi:snow"
+            :icon="icons.freeze"
             width="24"
           />
         </div>
@@ -36,7 +36,7 @@
       <n-popover trigger="hover" placement="bottom">
         <template #trigger>
           <div class="npc-stats-hp flex flex-grow-1 items-center" style="color: #b44; z-index: 1">
-            <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
+            <v-icon class="mr1" :icon="icons.heart" width="24" />
             <n-progress
               type="line"
               status="error"
@@ -137,6 +137,7 @@ import { computed, watch } from 'vue'
 import { store } from '@/store'
 import Die from '@/components/Die.vue'
 import { bleed } from '@/particles'
+import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },

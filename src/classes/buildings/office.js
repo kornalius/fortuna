@@ -5,7 +5,7 @@ export default class Office extends Building {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Office',
-      icon: 'la:building-solid',
+      icon: 'office',
       ...data,
     })
   }

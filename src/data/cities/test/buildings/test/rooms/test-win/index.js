@@ -3,7 +3,7 @@ import { store } from '@/store'
 
 export default {
   name: 'Outside',
-  icon: 'bx:bxs-landscape',
+  icon: 'outside',
   code: 'TestRoomWin',
   x: 0,
   y: 1,

@@ -5,7 +5,7 @@ export default class Wrench extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Wrench',
-      icon: 'bi:wrench',
+      icon: 'wrench',
       usable: true,
       ...data,
     })

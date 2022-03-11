@@ -24,7 +24,7 @@ export default {
           ? {
             label: item.destroyLabel,
             key: 'destroy',
-            icon: 'whh:breakable',
+            icon: 'destroy',
             disabled: !item.canDestroy(),
             click: async () => item.destroy(),
           }

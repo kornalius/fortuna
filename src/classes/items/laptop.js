@@ -5,7 +5,7 @@ export default class Laptop extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Laptop',
-      icon: 'entypo:laptop',
+      icon: 'laptop',
       usable: true,
       ...data,
     })

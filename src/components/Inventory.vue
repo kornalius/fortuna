@@ -20,7 +20,7 @@
                 :type="filter === undefined ? 'primary' : undefined"
                 @click="setFilter(undefined)"
               >
-                <v-icon icon="ci:check-all" width="24" />
+                <v-icon :icon="icons.checkAll" width="24" />
               </n-button>
             </template>
             <span>All</span>
@@ -32,7 +32,7 @@
                 :type="filter === 'isFile' ? 'primary' : undefined"
                 @click="setFilter('isFile')"
               >
-                <v-icon icon="mdi:file" width="24" />
+                <v-icon :icon="icons.file" width="24" />
               </n-button>
             </template>
             <span>Files</span>
@@ -44,7 +44,7 @@
                 :type="filter === 'isSoftware' ? 'primary' : undefined"
                 @click="setFilter('isSoftware')"
               >
-                <v-icon icon="whh:software" width="24" />
+                <v-icon :icon="icons.software" width="24" />
               </n-button>
             </template>
             <span>Softwares</span>
@@ -56,7 +56,7 @@
                 :type="filter === 'isBattle' ? 'primary' : undefined"
                 @click="setFilter('isBattle')"
               >
-                <v-icon icon="fa6-solid:dice-d6" width="24" />
+                <v-icon :icon="icons.dice" width="24" />
               </n-button>
             </template>
             <span>Battle</span>
@@ -72,7 +72,7 @@
             <n-popover trigger="hover" placement="top">
               <template #trigger>
                 <n-button>
-                  <v-icon icon="bi:sort-down" width="24" />
+                  <v-icon :icon="icons.sort" width="24" />
                 </n-button>
               </template>
               <span>Sort Inventory</span>
@@ -89,6 +89,7 @@ import { computed, h, ref } from 'vue'
 import { store } from '@/store'
 import Item from '@/components/Item.vue'
 import { Icon } from '@iconify/vue'
+import icons from '@/icons'
 
 const filter = ref()
 const sort = ref()
@@ -120,25 +121,16 @@ const sortOptions = ref([
   { key: 'qty', label: 'Quantity' },
 ])
 
-const sortIcon = key => {
-  switch (key) {
-    case 'name': return 'clarity:tag-solid'
-    case 'weight': return 'mdi:weight'
-    case 'qty': return 'ant-design:number-outlined'
-    default: return ''
-  }
-}
-
 const renderDropdownIcon = option => (
   sort.value === option.key || (sort.value === undefined && option.key === '')
-    ? h(Icon, { icon: 'bi:check-lg', width: 20, color: '#63e2b7' })
+    ? h(Icon, { icon: icons.check, width: 20, color: '#63e2b7' })
     : h('span', { style: 'width: 24px' })
 )
 
 const renderDropdownLabel = option => (
   h('div', { class: 'flex items-center' }, [
     h('span', { class: 'flex mr2' }, option.label),
-    h(Icon, { icon: sortIcon(option.key), width: 20, color: '#888' }),
+    h(Icon, { icon: icons[option.key], width: 20, color: '#888' }),
   ])
 )
 

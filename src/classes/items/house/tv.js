@@ -5,7 +5,7 @@ export default class Tv extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Tv',
-      icon: 'ion:tv-outline',
+      icon: 'tv',
       usable: true,
       pickable: false,
       dropable: false,

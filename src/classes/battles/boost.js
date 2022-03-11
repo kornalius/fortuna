@@ -5,7 +5,7 @@ export default class Boost extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Boost',
-      icon: 'healthicons:syringe',
+      icon: 'syringe',
       description: 'Combo! 3 swords = 5 extra damage',
       ...data,
     })

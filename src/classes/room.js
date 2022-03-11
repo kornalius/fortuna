@@ -47,6 +47,16 @@ export default class Room extends Entity {
 
   get canSleepOnItems() { return this.items.find(i => i.canSleepOn)}
 
+  /**
+   * Returns all containers in the room that are opened or have been searched
+   * @returns {*}
+   */
+  get openedContainers() {
+    return this.items.filter(i => (
+      (i.isOpenable && i.isOpened) || (i.items?.length > 0 && i.wasSearched))
+    )
+  }
+
   isOwnedBy(npc) {
     let n = npc
     if (typeof npc === 'string') {

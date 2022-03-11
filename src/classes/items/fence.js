@@ -7,7 +7,7 @@ export default class Fence extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Fence',
-      icon: 'maki:fence',
+      icon: 'fence',
       pickable: false,
       dropable: false,
       ...data,

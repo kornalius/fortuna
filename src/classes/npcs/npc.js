@@ -40,7 +40,7 @@ export default class Npc extends Entity {
           {
             label: 'Talk',
             key: 'talk',
-            icon: 'vs:kakaotalk',
+            icon: 'talk',
             disabled: !item.canTalk(),
             click: async () => item.talk(),
           }
@@ -49,7 +49,7 @@ export default class Npc extends Entity {
           {
             label: 'Combat',
             key: 'combat',
-            icon: 'mdi:axe-battle',
+            icon: 'combat',
             disabled: !item.canCombat(),
             click: async () => item.combat(),
           }

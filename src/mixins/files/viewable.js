@@ -20,7 +20,7 @@ export default {
           ? {
             label: item.viewLabel,
             key: 'view',
-            icon: 'healthicons:magnifying-glass',
+            icon: 'view',
             disabled: !item.canView(),
             click: async () => item.view(),
           }

@@ -5,7 +5,7 @@ export default class PictureFrame extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Picture frame',
-      icon: 'el:picture',
+      icon: 'picture-frame',
       pickable: false,
       dropable: false,
       ...data,

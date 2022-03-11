@@ -15,7 +15,7 @@ export default {
           ? {
             label: item.deleteLabel,
             key: 'delete',
-            icon: 'fluent:delete-24-filled',
+            icon: 'delete',
             disabled: !item.canDel(),
             click: async () => item.del(),
           }

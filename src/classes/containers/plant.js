@@ -5,7 +5,7 @@ export default class Plant extends Container {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Plant',
-      icon: 'ri:plant-fill',
+      icon: 'plant',
       ...data,
     })
   }

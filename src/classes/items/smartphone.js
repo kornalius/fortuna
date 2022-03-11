@@ -5,7 +5,7 @@ export default class Smartphone extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Smartphone',
-      icon: 'quill:phone',
+      icon: 'smartphone',
       usable: true,
       ...data,
     })

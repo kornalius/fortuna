@@ -49,7 +49,7 @@
           value.disconnect()
         }"
       >
-        <v-icon icon="websymbol:logout" width="16" />
+        <v-icon :icon="icons.logout" width="16" />
       </n-button>
     </div>
   </div>
@@ -60,6 +60,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import random from 'lodash/random'
 import { store } from '@/store'
 import Item from '@/components/Item.vue'
+import icons from '@/icons'
 
 const scroller = ref()
 

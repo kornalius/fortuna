@@ -5,7 +5,7 @@ export default class Store extends Building {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Store',
-      icon: 'fluent:building-retail-20-filled',
+      icon: 'store',
       ...data,
     })
   }

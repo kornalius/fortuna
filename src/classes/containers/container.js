@@ -25,7 +25,6 @@ export default class Container extends Entity {
       name: 'Container',
       locationId,
       locationStore,
-      searchable: true,
       ...data,
     })
   }

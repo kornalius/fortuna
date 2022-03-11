@@ -15,7 +15,7 @@ export default {
         ? {
             label: item.uploadLabel,
             key: 'upload',
-            icon: 'oi:data-transfer-upload',
+            icon: 'upload',
             disabled: !item.canUpload(),
             click: async () => item.upload(),
           }

@@ -15,7 +15,7 @@ export default {
         ? {
             label: item.downloadLabel,
             key: 'download',
-            icon: 'oi:data-transfer-download',
+            icon: 'download',
             disabled: !item.canDownload(),
             click: async () => item.download(),
           }

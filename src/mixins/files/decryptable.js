@@ -17,7 +17,7 @@ export default {
           ? {
               label: item.decryptLabel,
               key: 'decrypt',
-              icon: 'carbon:encryption',
+              icon: 'decrypt',
               disabled: !item.canDecrypt(),
               click: async () => item.decrypt(),
             }

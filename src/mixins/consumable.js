@@ -23,7 +23,7 @@ export default {
           ? {
             label: item.consumeLabel,
             key: 'consume',
-            icon: 'emojione-monotone:fork-and-knife',
+            icon: 'consume',
             disabled: !item.canConsume(),
             click: async () => item.consume(),
           }

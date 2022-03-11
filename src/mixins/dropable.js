@@ -15,7 +15,7 @@ export default {
           ? {
             label: item.dropLabel,
             key: 'drop',
-            icon: 'fa-solid:hand-holding',
+            icon: 'drop',
             class: 'rotate-180 mt2',
             disabled: !item.canDrop(),
             click: async () => item.drop(),

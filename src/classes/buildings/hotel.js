@@ -5,7 +5,7 @@ export default class Hotel extends Building {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Hotel',
-      icon: 'fa6-solid:hotel',
+      icon: 'hotel',
       ...data,
     })
   }

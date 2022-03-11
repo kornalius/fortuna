@@ -5,6 +5,14 @@ import { log } from '@/utils'
  * Adds actions requirements to an object. Before executing an action, it will check its requirements
  */
 
+const attrIcons = {
+  lvl: '🌟',
+  str: '💪',
+  dex: '🏃',
+  int: '🧠',
+  credits: '💳',
+}
+
 export default {
   state: {
     // requirements for an action [{ name: actionName, attrName: value... }]
@@ -53,7 +61,7 @@ export default {
         if (attr !== 'name') {
           const v = requirement[attr]
           if (store.player[attr] < v) {
-            labels.push(`${attr} ${v}`)
+            labels.push(`${attrIcons[attr]} ${v}`)
           }
         }
       }

@@ -5,7 +5,7 @@ export default class PoliceStation extends Building {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Police station',
-      icon: 'mdi:police-station',
+      icon: 'police-station',
       ...data,
     })
   }

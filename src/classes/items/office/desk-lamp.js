@@ -6,7 +6,7 @@ export default class DeskLamp extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Desk lamp',
-      icon: 'teenyicons:desklamp-solid',
+      icon: 'desk-lamp',
       usable: true,
       pickable: false,
       dropable: false,

@@ -5,7 +5,7 @@ export default class Stairs extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Stairs',
-      icon: 'fa6-solid:stairs',
+      icon: 'stairs',
       pickable: false,
       dropable: false,
       ...data,

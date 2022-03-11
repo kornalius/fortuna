@@ -58,5 +58,5 @@ export default {
    * @param operation {object}
    * @returns {Promise<void>}
    */
-  async onOperation(operation) { }
+  async onOperation(operation) {}
 }

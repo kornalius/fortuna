@@ -7,7 +7,7 @@ export default class Software extends File {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Software',
-      icon: 'whh:software',
+      icon: 'software',
       examinable: true,
       installable: true,
       decryptable: false,

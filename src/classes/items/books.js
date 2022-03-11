@@ -1,15 +1,19 @@
 import Item from './item'
-import { registerClass } from '@/utils'
+import Searchable from '@/mixins/searchable'
+import { mixin, registerClass } from '@/utils'
 
 export default class Books extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Books',
-      icon: 'wpf:books',
-      searchable: true,
+      icon: 'books',
       ...data,
     })
   }
 }
+
+mixin(Books, [
+  Searchable,
+])
 
 registerClass(Books)

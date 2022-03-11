@@ -5,7 +5,7 @@ export default class Virus extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Virus',
-      icon: 'healthicons:virus',
+      icon: 'virus',
       description: 'Infects your opponent with a nasty virus which paralyzes him/her for 2 turns',
       ...data,
     })

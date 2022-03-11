@@ -52,18 +52,18 @@ export default class Config {
 
     // battle dice faces
     battleDice: [
-      { value: 'A', icon: 'jam:sword-f', color: '#888' }, // SWORD
-      { value: 'D', icon: 'bxs:shield', color: '#6C852B' }, // SHIELD
-      { value: 'H', icon: 'bxs:heart', color: '#A02A1A' }, // HEART
-      { value: 'B', icon: 'fa-solid:bomb', color: '#222' }, // BOMB
-      { value: 'X', icon: 'bi:lightning-fill', color: '#F19936' }, // SHIELD BUSTER
+      { value: 'A', icon: 'sword', color: '#888' }, // SWORD
+      { value: 'D', icon: 'shield', color: '#6C852B' }, // SHIELD
+      { value: 'H', icon: 'heart', color: '#A02A1A' }, // HEART
+      { value: 'B', icon: 'bomb', color: '#222' }, // BOMB
+      { value: 'X', icon: 'lightning', color: '#F19936' }, // SHIELD BUSTER
       { value: '_', icon: '' }, // BLANK
     ],
 
     // Npc battle dice
     npcBattleDice: [
-      { value: 'A', icon: 'jam:sword-f', color: '#888' }, // SWORD
-      { value: 'D', icon: 'bxs:shield', color: '#6C852B' }, // DEFEND
+      { value: 'A', icon: 'sword', color: '#888' }, // SWORD
+      { value: 'D', icon: 'shield', color: '#6C852B' }, // DEFEND
       { value: '_', icon: '' }, // BLANK
       { value: '_', icon: '' }, // BLANK
       { value: '_', icon: '' }, // BLANK

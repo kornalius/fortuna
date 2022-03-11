@@ -16,14 +16,14 @@
       <div class="relative">
         <div class="inline-flex items-end">
           <v-icon
-            :icon="`bi:door-${value?.isOpened ? 'open' : 'closed'}-fill`"
+            :icon="icons[value?.isOpened ? 'door-open' : 'door-close']"
             width="20"
             color="#926839"
           />
           <v-icon
             v-if="value.isLocked"
             class="lock"
-            icon="fa-solid:lock"
+            :icon="icons.lock"
             width="10"
             color="#000"
           />
@@ -34,7 +34,7 @@
       <v-icon
         v-if="value.isNew"
         class="new"
-        icon="clarity:warning-standard-solid"
+        :icon="icons.new"
         color="#F19936"
         width="16"
       />
@@ -45,6 +45,7 @@
 <script setup>
 import { computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
+import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },

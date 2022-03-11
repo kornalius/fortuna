@@ -5,7 +5,7 @@ export default class Stove extends Container {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Stove',
-      icon: 'mdi:stove',
+      icon: 'stove',
       ...data,
     })
   }

@@ -17,7 +17,7 @@ export default {
           ? {
             label: item.useLabel,
             key: 'use',
-            icon: 'fa-solid:hand-pointer',
+            icon: 'use',
             disabled: !item.canUse(),
             click: async () => item.use(),
           }

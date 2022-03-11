@@ -31,7 +31,7 @@
 
             <v-icon
               v-else-if="value.icon"
-              :icon="value.icon"
+              :icon="icons[value.icon]"
               width="20"
               height="20"
             />
@@ -46,14 +46,14 @@
             <v-icon
               v-if="value.isNew"
               class="new"
-              icon="clarity:warning-standard-solid"
+              :icon="icons.new"
               color="#F19936"
               width="16"
             />
 
             <v-icon
               v-if="value.isAggresive"
-              icon="fa6-solid:face-angry"
+              :icon="icons.angry"
               class="aggresive"
               width="14"
             />
@@ -75,7 +75,7 @@
           <v-icon
             v-else-if="value.icon"
             class="pr2 pb2"
-            :icon="value.icon"
+            :icon="icons[value.icon]"
             width="44"
             height="44"
           />
@@ -102,13 +102,14 @@
 <script setup>
 import { computed, h } from 'vue'
 import { Icon } from '@iconify/vue'
+import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },
   disabled: { type: Boolean },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })
+const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], width: 20, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = async key => {

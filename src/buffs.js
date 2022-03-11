@@ -27,15 +27,15 @@ export const buffLabel = name => {
 
 export const buffIcon = name => {
   switch (name) {
-    case 'str': return 'mdi:arm-flex'
-    case 'dex': return 'fxemoji:running'
-    case 'int': return 'noto:brain'
-    case 'credit': return 'noto-v1:credit-card'
-    case 'hp': return 'mdi:cards-heart'
-    case 'disk': return 'whh:harddrivealt'
-    case 'ram': return 'whh:cpualt'
-    case 'dice': return 'fa-solid:dice-d6'
-    case 'roll': return 'jam:refresh-reverse'
+    case 'str': return 'str'
+    case 'dex': return 'dex'
+    case 'int': return 'int'
+    case 'credit': return 'credit'
+    case 'hp': return 'heart'
+    case 'disk': return 'harddrive'
+    case 'ram': return 'cpu'
+    case 'dice': return 'dice'
+    case 'roll': return 'roll'
     default:
   }
 }

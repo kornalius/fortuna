@@ -5,7 +5,7 @@ export default class Roll extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Roll',
-      icon: 'fluent:cube-quick-20-filled',
+      icon: 'roll',
       description: 'Gives you an extra roll during combat',
       uses: 5,
       ...data,

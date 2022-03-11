@@ -40,5 +40,5 @@ export default {
     return true
   },
 
-  async onVisit() { }
+  async onVisit() {}
 }

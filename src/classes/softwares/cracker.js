@@ -12,7 +12,7 @@ export default class Cracker extends Software {
           {
             label: 'Use',
             key: 'crack',
-            icon: 'cib:hackaday',
+            icon: 'crack',
             disabled: !item.canCrack(),
             click: async () => item.crack(),
           }

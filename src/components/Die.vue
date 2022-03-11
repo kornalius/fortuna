@@ -6,7 +6,7 @@
           <v-icon
             class="icon"
             :class="sizeClass"
-            :icon="faces[0].icon"
+            :icon="icons[faces[0].icon]"
             :width="faces[0].size"
             :height="faces[0].size"
             :rotate="faces[0].rotate"
@@ -19,7 +19,7 @@
           <v-icon
             class="icon"
             :class="sizeClass"
-            :icon="faces[1].icon"
+            :icon="icons[faces[1].icon]"
             :width="faces[1].size"
             :height="faces[1].size"
             :rotate="faces[1].rotate"
@@ -32,7 +32,7 @@
           <v-icon
             class="icon"
             :class="sizeClass"
-            :icon="faces[2].icon"
+            :icon="icons[faces[2].icon]"
             :width="faces[2].size"
             :height="faces[2].size"
             :rotate="faces[2].rotate"
@@ -45,7 +45,7 @@
           <v-icon
             class="icon"
             :class="sizeClass"
-            :icon="faces[3].icon"
+            :icon="icons[faces[3].icon]"
             :width="faces[3].size"
             :height="faces[3].size"
             :rotate="faces[3].rotate"
@@ -58,7 +58,7 @@
           <v-icon
             class="icon"
             :class="sizeClass"
-            :icon="faces[4].icon"
+            :icon="icons[faces[4].icon]"
             :width="faces[4].size"
             :height="faces[4].size"
             :rotate="faces[4].rotate"
@@ -71,7 +71,7 @@
           <v-icon
             class="icon"
             :class="sizeClass"
-            :icon="faces[5].icon"
+            :icon="icons[faces[5].icon]"
             :width="faces[5].size"
             :height="faces[5].size"
             :rotate="faces[5].rotate"
@@ -85,6 +85,7 @@
 
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
+import icons from '@/icons'
 
 const props = defineProps({
   faces: { type: Array },

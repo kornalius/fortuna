@@ -5,7 +5,7 @@ export default class Bandage extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Bandage',
-      icon: 'healthicons:bandage-adhesive',
+      icon: 'bandage',
       description: 'Patch you up with some bandages for 2 hp',
       uses: 5,
       ...data,

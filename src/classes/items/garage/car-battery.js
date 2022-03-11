@@ -5,7 +5,7 @@ export default class CarBattery extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Car battery',
-      icon: 'fa-solid:car-battery',
+      icon: 'car-battery',
       ...data,
     })
   }

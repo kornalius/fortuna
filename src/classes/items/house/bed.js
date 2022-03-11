@@ -5,7 +5,7 @@ export default class Bed extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Bed',
-      icon: 'ion:bed',
+      icon: 'bed',
       pickable: false,
       dropable: false,
       ...data,

@@ -16,7 +16,7 @@ export default class Server extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Server',
-      icon: 'whh:server',
+      icon: 'server',
       pickable: false,
       usable: false,
       type: null,
@@ -36,7 +36,7 @@ export default class Server extends Item {
           {
             label: 'Use',
             key: 'connect',
-            icon: 'mdi:lan-connect',
+            icon: 'connect',
             disabled: !item.canConnect(),
             click: async () => item.connect(),
           }
@@ -45,7 +45,7 @@ export default class Server extends Item {
           {
             label: 'Authenticate',
             key: 'authenticate',
-            icon: 'ph:password-bold',
+            icon: 'authenticate',
             disabled: !item.canAuthenticate(),
             click: async () => item.authenticate(),
           }
@@ -54,7 +54,7 @@ export default class Server extends Item {
           {
             label: 'List files',
             key: 'list',
-            icon: 'mdi:cube-scan',
+            icon: 'list',
             disabled: !item.canList(),
             click: async () => item.list(),
           }

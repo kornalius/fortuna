@@ -5,7 +5,7 @@ export default class Book extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Book',
-      icon: 'emojione-monotone:closed-book',
+      icon: 'book',
       usable: true,
       ...data,
     })

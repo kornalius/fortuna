@@ -5,7 +5,7 @@ export default class Library extends Building {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Library',
-      icon: 'fa6-solid:building-columns',
+      icon: 'library',
       ...data,
     })
   }

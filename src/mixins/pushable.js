@@ -19,7 +19,7 @@ export default {
           ? {
             label: item.pushLabel,
             key: 'push',
-            icon: 'system-uicons:push-right',
+            icon: 'push',
             disabled: !item.canPush(),
             click: async () => item.push(),
           }

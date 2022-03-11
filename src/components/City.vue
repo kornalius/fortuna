@@ -24,7 +24,7 @@
           <div class="flex flex-grow-1 flex-column items-center">
             <v-icon
               class="mb2"
-              :icon="value.icon"
+              :icon="icons[value.icon]"
               :color="value.color"
               width="44"
               height="44"
@@ -35,7 +35,7 @@
             <v-icon
               v-if="value.isNew"
               class="new"
-              icon="clarity:warning-standard-solid"
+              :icon="icons.new"
               color="#F19936"
               width="16"
             />
@@ -48,7 +48,7 @@
           <v-icon
             v-if="value.icon"
             class="pr2 pb2"
-            :icon="value.icon"
+            :icon="icons[value.icon]"
             width="44"
             height="44"
           />
@@ -69,6 +69,7 @@
 <script setup>
 import { h } from 'vue'
 import { Icon } from '@iconify/vue'
+import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },

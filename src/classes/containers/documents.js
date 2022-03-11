@@ -6,8 +6,7 @@ export default class Documents extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Documents',
-      icon: 'et:documents',
-      searchable: true,
+      icon: 'documents',
       ...data,
     })
   }

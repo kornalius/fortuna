@@ -19,14 +19,14 @@ export default class City extends Entity {
     return super.setupInstance({
       name: 'City',
       description: 'A city',
-      icon: 'emojione-monotone:cityscape',
+      icon: 'city',
       startBuildingCode: null,
       actions: [
         item => (
           {
             label: 'Enter',
             key: 'enter',
-            icon: 'whh:enteralt',
+            icon: 'enter',
             disabled: !item.canEnter(),
             click: async () => item.enter(),
           }

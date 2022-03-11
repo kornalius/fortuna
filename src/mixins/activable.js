@@ -20,7 +20,7 @@ export default {
         ? {
             label: item.activateLabel,
             key: 'activate',
-            icon: 'mdi:toggle-switch-outline',
+            icon: 'activate',
             disabled: !item.canActivate(),
             click: async () => item.activate(),
           }
@@ -31,7 +31,7 @@ export default {
           ? {
             label: item.disactivateLabel,
             key: 'disactivate',
-            icon: 'mdi:toggle-switch-off-outline',
+            icon: 'disactivate',
             disabled: !item.canDisactivate(),
             click: async () => item.disactivate(),
           }

@@ -15,7 +15,7 @@ export default {
           ? {
             label: item.pickupLabel,
             key: 'pickup',
-            icon: 'fa-solid:hand-lizard',
+            icon: 'pickup',
             class: 'rotate-270',
             disabled: !item.canPickup(),
             click: async () => item.pickup(),

@@ -12,27 +12,27 @@
       <template #trigger>
         <div class="flex items-center justify-between mb1" style="color: #ff0;">
           <div class="stats-lvl inline flex items-center">
-            <v-icon icon="noto:glowing-star" width="20" />
+            <v-icon :icon="icons.lvl" width="20" />
             <span class="ml2">{{ store.player.lvl }}</span>
           </div>
 
           <div class="stats-str inline flex items-center">
-            <v-icon icon="mdi:arm-flex" color="#DAA02B" width="24" />
+            <v-icon :icon="icons.str" color="#DAA02B" width="24" />
             <span class="ml2">{{ store.player.str }}</span>
           </div>
 
           <div class="stats-dex inline flex items-center">
-            <v-icon icon="fxemoji:running" width="24" />
+            <v-icon :icon="icons.dex" width="24" />
             <span class="ml2">{{ store.player.dex }}</span>
           </div>
 
           <div class="stats-int inline flex items-center">
-            <v-icon icon="noto:brain" width="24" />
+            <v-icon :icon="icons.int" width="24" />
             <span class="ml2">{{ store.player.int }}</span>
           </div>
 
           <div class="stats-credits inline flex items-center">
-            <v-icon icon="noto-v1:credit-card" width="24" />
+            <v-icon :icon="icons.credits" width="24" />
             <span class="ml2">{{ store.player.credits }}</span>
           </div>
         </div>
@@ -48,7 +48,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="stats-hp flex items-center mb1" style="color: #b44;">
-          <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
+          <v-icon class="mr1" :icon="icons.heart" width="24" />
           <n-progress
             type="line"
             status="error"
@@ -67,7 +67,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="stats-xp flex items-center mb1" style="color: #F19936;">
-          <v-icon class="mr1" icon="zondicons:badge" width="24" />
+          <v-icon class="mr1" :icon="icons.xp" width="24" />
           <n-progress
             type="line"
             color="#F19936"
@@ -86,7 +86,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="stats-disk flex items-center mb1" style="color: #2293E1;">
-          <v-icon class="mr1" icon="whh:harddrivealt" width="24" />
+          <v-icon class="mr1" :icon="icons.harddrive" width="24" />
           <n-progress
             type="line"
             color="#2293E1"
@@ -105,7 +105,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="stats-ram flex items-center mb1" style="color: #CBE54A;">
-          <v-icon class="mr1" icon="whh:cpualt" width="24" color="#CBE54A" />
+          <v-icon class="mr1" :icon="icons.cpu" width="24" color="#CBE54A" />
           <n-progress
             type="line"
             color="#CBE54A"
@@ -150,6 +150,7 @@ import { computed, watch } from 'vue'
 import { store } from '@/store'
 import { bleed, life } from '@/particles'
 import { buffIcon, buffLabel } from '@/buffs'
+import icons from '@/icons'
 
 watch(() => store.player.hp, (newValue, oldValue) => {
   const r = document.querySelector('.stats-hp').getBoundingClientRect()
@@ -165,7 +166,7 @@ const buffs = computed(() => {
   store.player.buffs.forEach(b => {
     buffs.push({
       name: buffLabel(b.name),
-      icon: buffIcon(b.name),
+      icon: icons[buffIcon(b.name)],
       value: b.value,
       timeLeft: b.time ? `${b.time} secs left` : '',
       turns: b.turns ? `${b.turns} turns left` : '',

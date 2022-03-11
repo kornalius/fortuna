@@ -9,7 +9,7 @@
       <template #trigger>
         <div class="flex items-center justify-between mb3" style="color: #ff0;">
           <div class="inline flex items-center">
-            <v-icon icon="mdi:arm-flex" color="#DAA02B" width="24" />
+            <v-icon :icon="icons.str" color="#DAA02B" width="24" />
             <span class="ml2">{{ store.player.str }}</span>
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('str')">-</n-button>
@@ -18,7 +18,7 @@
           </div>
 
           <div class="inline flex items-center">
-            <v-icon icon="fxemoji:running" width="24" />
+            <v-icon :icon="icons.dex" width="24" />
             <span class="ml2">{{ store.player.dex }}</span>
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('dex')">-</n-button>
@@ -27,7 +27,7 @@
           </div>
 
           <div class="inline flex items-center">
-            <v-icon icon="noto:brain" width="24" />
+            <v-icon :icon="icons.int" width="24" />
             <span class="ml2">{{ store.player.int }}</span>
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('int')">-</n-button>
@@ -45,7 +45,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center mb3" style="color: #b44;">
-          <v-icon class="mr1" icon="mdi:cards-heart" width="24" />
+          <v-icon class="mr1" :icon="icons.heart" width="24" />
           <span class="ml2">{{ store.player.maxHp }}</span>
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('extraHp')">-</n-button>
@@ -60,7 +60,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center mb3" style="color: #2293E1;">
-          <v-icon class="mr1" icon="whh:harddrivealt" width="24" />
+          <v-icon class="mr1" :icon="icons.harddrive" width="24" />
           <span class="ml2">{{ store.player.disk }}</span>
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('disk', 500)">-</n-button>
@@ -75,7 +75,7 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center mb3" style="color: #CBE54A;">
-          <v-icon class="mr1" icon="whh:cpualt" width="24" color="#CBE54A" />
+          <v-icon class="mr1" :icon="icons.cpu" width="24" color="#CBE54A" />
           <span class="ml2">{{ store.player.ram }}</span>
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('ram', 100)">-</n-button>
@@ -97,6 +97,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { store } from '@/store'
+import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Number, default: 0 },

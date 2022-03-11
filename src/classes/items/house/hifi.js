@@ -5,7 +5,7 @@ export default class Hifi extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Hifi',
-      icon: 'mdi:audio-video',
+      icon: 'hifi',
       pickable: false,
       dropable: false,
       ...data,

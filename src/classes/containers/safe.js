@@ -5,7 +5,7 @@ export default class Cabinet extends Container {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Cabinet',
-      icon: 'bxs:cabinet',
+      icon: 'cabinet',
       ...data,
     })
   }

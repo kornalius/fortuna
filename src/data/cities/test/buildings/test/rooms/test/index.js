@@ -8,11 +8,12 @@ import SimonSmith from './npcs/SimonSmith'
 import Freeze from '@/classes/battles/freeze'
 import Kick from '@/classes/battles/kick'
 import Roll from '@/classes/battles/roll'
+import BookShelf from '@/classes/containers/bookshelf'
 
 export default {
   name: 'Test Room',
   code: 'TestRoom',
-  icon: 'bx:bxs-flag-checkered',
+  icon: 'flag',
   x: 0,
   y: 0,
   img: 'test-room.png',
@@ -20,6 +21,7 @@ export default {
   mounted() {
     const npc = this.addNpc(new Npc(SimonSmith))
     this.location.addOwner(npc)
+    this.addItem(new BookShelf())
     this.addItem(new LightSwitch(TestRoomLightSwitch))
     this.addItem(new Server(TestRoomServer))
     this.addItem(new Freeze())

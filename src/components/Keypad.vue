@@ -4,7 +4,7 @@
       <div
         class="success flex flex-column flex-grow-1 items-center justify-center w-100"
       >
-        <v-icon icon="bi:check-circle-fill" width="64" />
+        <v-icon :icon="icons.checkCircle" width="64" />
         <span>SUCCESS</span>
       </div>
 
@@ -161,6 +161,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import anime from 'animejs'
+import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },

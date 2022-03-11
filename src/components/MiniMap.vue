@@ -16,7 +16,7 @@
             >
               <v-icon
                 v-if="room.icon"
-                :icon="room.icon"
+                :icon="icons[room.icon]"
                 width="32"
                 color="white"
               />
@@ -37,6 +37,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { store } from '@/store'
+import icons from '@/icons'
 
 const { minimapRoomSize, minimapMargins } = store.config
 
