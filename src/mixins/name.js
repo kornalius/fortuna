@@ -1,6 +1,12 @@
+/**
+ * Add a name state to object
+ */
+
 export default {
   state: {
+    // is the object renamable
     renameable: true,
+    // object name
     name: '',
   },
 

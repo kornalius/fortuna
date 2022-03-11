@@ -1,3 +1,7 @@
+/**
+ * Buffs that can be applied to another object
+ */
+
 export default {
   state: {
     // buffs to apply to an player or npc stats { name, value, time, turns, rolls }
@@ -20,12 +24,18 @@ export default {
     return this.buffsFor(name).reduce((acc, b) => acc + b.value, 0)
   },
 
+  /**
+   * Apply all buffs[] to another object
+   *
+   * @param o {object}
+   * @returns {boolean}
+   */
   applyBuffsTo(o) {
     if (typeof o.addBuff !== 'function') {
       return false
     }
     this.buffs.forEach(b => {
-      o.addBuff(b.name, b.value, b.time)
+      o.addBuff(b.name, b.value, b.time, b.turns, b.rolls)
     })
     return true
   },

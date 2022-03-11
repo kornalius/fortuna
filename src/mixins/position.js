@@ -1,3 +1,7 @@
+/**
+ * Add x, y positions states to an object
+ */
+
 export default {
   state: {
     x: 0,

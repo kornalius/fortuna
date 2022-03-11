@@ -1,8 +1,13 @@
 import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object deletable (for Files)
+ */
+
 export default {
   state: {
+    // is the object deletable
     deletable: false,
     actions: [
       item => (

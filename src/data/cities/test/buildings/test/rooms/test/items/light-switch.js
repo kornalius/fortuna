@@ -23,8 +23,12 @@ export default {
         'Your eyes take some time to adjust and you can now see the room in all it\'s glory.',
       ])
 
-      const door = store.game.room.addDoor({ unlockable: false, locked: true }, 'S')
-      store.game.room.addItem(new Keypad({ code: '1234', doorId: door.id }))
+      const door = store.game.room.addDoor({
+        unlockable: false,
+        locked: true,
+        keypadCode: '1234',
+      }, 'S')
+      store.game.room.addItem(new Keypad({ doorId: door.id }))
       store.game.room.addItem(new PillsBottle(TestRoomPillsBottle))
 
       log([

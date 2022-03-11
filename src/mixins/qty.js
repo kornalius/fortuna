@@ -1,7 +1,12 @@
+/**
+ * Add a quantity state to object
+ */
+
 export default {
   state: {
-    // Code matching item in inventory
+    // code matching item in inventory
     stackableCode: null,
+    // quantity
     qty: 1,
   },
 

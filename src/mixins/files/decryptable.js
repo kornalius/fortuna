@@ -1,9 +1,15 @@
 import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object decryptable (for Files)
+ */
+
 export default {
   state: {
+    // is the object decryptable
     decryptable: true,
+    // is the object crypted
     crypted: false,
     actions: [
       item => (

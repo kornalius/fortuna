@@ -1,8 +1,14 @@
 import { emit, log } from '@/utils';
 
+/**
+ * Adds an on/off state to the object
+ */
+
 export default {
   state: {
+    // is the object off
     off: true,
+    // the object is usable by default
     usable: true,
   },
 

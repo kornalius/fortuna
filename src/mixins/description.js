@@ -1,3 +1,7 @@
+/**
+ * Add description
+ */
+
 export default {
   state: {
     description: '',

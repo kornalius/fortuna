@@ -1,5 +1,13 @@
 import { onBeforeUnmount } from 'vue'
 
+/**
+ * Kinetic drag scrollable element
+ *
+ * @param el
+ * @param container
+ * @returns {{enableTracking: enableTracking, stop: stop, disableTracking: disableTracking}}
+ */
+
 export default (el, container) => {
   const ease = 0.3
   const threshold = 0.01

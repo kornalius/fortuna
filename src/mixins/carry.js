@@ -1,5 +1,9 @@
 import { can } from '@/utils'
 
+/**
+ * Provide max carrying weight and check if player or npc can move (not encumbered)
+ */
+
 export default {
   state: {
   },

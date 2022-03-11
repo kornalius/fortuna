@@ -1,9 +1,15 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object usable
+ */
+
 export default {
   state: {
+    // is the object usable
     usable: false,
+    // limit to the number of uses allowed, -1 means can be used as many times as wanted
     uses: -1,
     actions: [
       item => (

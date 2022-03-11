@@ -1,15 +1,21 @@
 import random from 'lodash/random'
 import { can, emit, log } from '@/utils'
 
+/**
+ * Make object consumable
+ */
+
 export default {
   state: {
     // total to consume
     consumable: 0,
+    // time it takes to consume
     consumeDelay: 1,
     // to be consumed every action
     consumeAmount: 1,
     // consumed so far
     consumed: 0,
+    // delete the object once consumed
     removeWhenConsumed: true,
     actions: [
       item => (

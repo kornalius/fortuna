@@ -1,8 +1,13 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object pickable
+ */
+
 export default {
   state: {
+    // is the object pickable
     pickable: true,
     actions: [
       item => (

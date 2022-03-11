@@ -1,15 +1,26 @@
 import { store } from '@/store'
 import { log } from '@/utils'
 
+/**
+ * Adds actions requirements to an object. Before executing an action, it will check its requirements
+ */
+
 export default {
   state: {
-    // [{ name: actionName, attrName: value... }]
+    // requirements for an action [{ name: actionName, attrName: value... }]
     requirements: [],
   },
 
   get requirements() { return this.state.requirements },
   set requirements(value) { this.state.requirements = value },
 
+  /**
+   * Checks if all requirements are met
+   *
+   * @param actionName {string}
+   * @param showMessage {boolean}
+   * @returns {boolean}
+   */
   checkRequirementsFor(actionName, showMessage) {
     const requirements = this.requirements.filter(r => r.name === actionName)
     for (let requirement of requirements) {
@@ -28,6 +39,12 @@ export default {
     return true
   },
 
+  /**
+   * Build a requirements string for display purposes
+   *
+   * @param actionName {string}
+   * @returns {string}
+   */
   requirementsLabelFor(actionName) {
     const labels = []
     const requirements = this.requirements.filter(r => r.name === actionName)

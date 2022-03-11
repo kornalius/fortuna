@@ -1,5 +1,10 @@
+/**
+ * Adds an experience state to the object
+ */
+
 export default {
   state: {
+    // current experience of the object
     xp: 0,
   },
 

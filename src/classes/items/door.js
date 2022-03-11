@@ -6,15 +6,9 @@ import Unlockable from '@/mixins/unlockable'
 
 export default class Door extends Item {
   setupInstance(data) {
-    let keyId
-
-    if (data.key) {
-      keyId = data.key.id
-    }
-
     return super.setupInstance({
       name: 'Door',
-      keyId,
+      keyId: data?.key?.id,
       usable: true,
       pickable: false,
       dropable: false,

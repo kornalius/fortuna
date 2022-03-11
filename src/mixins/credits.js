@@ -1,3 +1,7 @@
+/**
+ * Add credits
+ */
+
 export default {
   state: {
     credits: 0,

@@ -1,8 +1,13 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Make the object droppable
+ */
+
 export default {
   state: {
+    // is the object droppable or not
     dropable: true,
     actions: [
       item => (
@@ -52,7 +57,9 @@ export default {
     if (!this.canDrop(true)) {
       return false
     }
+    // place back in the current room
     this.location = store.game.room
+    // the object is now new to its new location
     this.hovered = false
     log(`You drop ${this.name.toLowerCase()}`)
     await emit.call(this, 'onDrop')

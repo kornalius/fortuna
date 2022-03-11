@@ -1,10 +1,17 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object openable and/or closable
+ */
+
 export default {
   state: {
+    // is the object openable
     openable: true,
+    // is the object closable
     closable: true,
+    // is the object opened
     opened: false,
     actions: [
       item => (

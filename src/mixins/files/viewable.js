@@ -2,10 +2,17 @@ import isEmpty from 'lodash/isEmpty'
 import { can, checkSoftware, emit, logs } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object viewable (for Files)
+ */
+
 export default {
   state: {
+    // is the object viewable
     viewed: false,
+    // content of the object
     content: null,
+    // type of the object (filetype)
     type: 'txt',
     actions: [
       item => (

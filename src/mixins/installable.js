@@ -1,10 +1,17 @@
 import { log, emit, can } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Make the object installable (used for Software)
+ */
+
 export default {
   state: {
+    // is the object installable
     installable: false,
+    // has the object been installed
     installed: false,
+    // type name of install (can only install one per type)
     installType: null,
     actions: [
       item => (

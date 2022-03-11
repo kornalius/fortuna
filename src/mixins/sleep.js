@@ -1,7 +1,12 @@
 import { can, emit } from '@/utils'
 
+/**
+ * Makes an object sleeping
+ */
+
 export default {
   state: {
+    // is the object sleeping or not
     sleeping: false,
   },
 

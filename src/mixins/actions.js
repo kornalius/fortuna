@@ -2,6 +2,10 @@ import compact from 'lodash/compact'
 import uniqBy from 'lodash/uniqBy'
 import reverse from 'lodash/reverse'
 
+/**
+ * Add actions menus to objects
+ */
+
 export default {
   state: {
     actions: [],

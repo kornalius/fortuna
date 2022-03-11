@@ -1,10 +1,18 @@
 import { can, emit, log } from '@/utils'
 
+/**
+ * Allow item to be activated or disactivated
+ */
+
 export default {
   state: {
+    // is the item activable
     activable: false,
+    // can the item be disactivated
     disactivable: false,
+    // time it takes to activate or disactivate
     activationDelay: 1,
+    // is the item active or not
     active: false,
     actions: [
       item => (

@@ -12,27 +12,21 @@ export default class Keypad extends Item {
       pickable: false,
       dropable: false,
       usable: true,
-      // keypad code to use
-      code: '',
       // door to open
       doorId,
       ...data,
     })
   }
 
-  get code() { return this.state.code }
-  set code(value) { this.state.code = value }
-
   get doorId() { return this.state.doorId }
   set doorId(value) { this.state.doorId = value }
 
-  get door() {
-    return store.doors.get(this.doorId)
-  }
-
+  get door() { return store.doors.get(this.doorId) }
   set door(value) {
     this.state.doorId = value ? value.id : null
   }
+
+  get code() { return this.door?.keypadCode || '' }
 
   setupDoor(data) {
     const doorId = data?.door?.id

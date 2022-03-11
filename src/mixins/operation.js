@@ -1,7 +1,12 @@
 import { operationTimeout } from '@/utils'
 
+/**
+ * Execute an asynchronous operation on an object
+ */
+
 export default {
   state: {
+    // current running operation
     operation: null,
   },
 
@@ -9,6 +14,14 @@ export default {
   get operation() { return this.state.operation },
   set operation(value) { this.state.operation = value },
 
+  /**
+   * Executes an asynchronous operation on object
+   *
+   * @param name {string} name of operation
+   * @param cb {function} function to call onced done
+   * @param baseDelay {number} execute time
+   * @returns {Promise<*>} returns the result of call cb
+   */
   async operate(name, cb, baseDelay) {
     const time = operationTimeout(baseDelay)
 
@@ -39,5 +52,11 @@ export default {
     return cb.call(this)
   },
 
-  onOperation(operation) { }
+  /**
+   * Called every 10% during an operation
+   *
+   * @param operation {object}
+   * @returns {Promise<void>}
+   */
+  async onOperation(operation) { }
 }

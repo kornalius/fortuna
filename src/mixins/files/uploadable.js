@@ -1,8 +1,13 @@
 import { can, checkSoftware, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object uploadable (for Files)
+ */
+
 export default {
   state: {
+    // is the object uploadable
     uploadable: false,
     actions: [
       item => (

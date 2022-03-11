@@ -1,8 +1,14 @@
 import { can, emit, log } from '@/utils'
 
+/**
+ * Make the object examinable
+ */
+
 export default {
   state: {
+    // is the object examinable or not
     examinable: true,
+    // how many times the object has been examined
     examined: 0,
     actions: [
       item => (

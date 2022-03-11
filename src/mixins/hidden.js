@@ -1,7 +1,12 @@
 import { emit } from '@/utils'
 
+/**
+ * Make the object hidden
+ */
+
 export default {
   state: {
+    // is the object hidden or not
     hidden: true,
   },
 

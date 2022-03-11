@@ -2,15 +2,21 @@ import random from 'lodash/random'
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Make the object destructable by applying damage to it until it reaches 0
+ */
+
 export default {
   state: {
     // total to be destroyed
     destructable: 0,
+    // time it takes to damage object
     destroyDelay: 1,
     // destroy amount every action
     destroyAmount: 1,
     // destroyed so far
     destroyed: 0,
+    // delete object when destroyed
     removeWhenDestroyed: true,
     actions: [
       item => (

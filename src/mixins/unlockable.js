@@ -1,11 +1,20 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Make the object unlockable
+ */
+
 export default {
   state: {
+    // if the object is unlockable
     unlockable: true,
+    // is the object locked
     locked: false,
+    // key needed to open
     keyId: null,
+    // keypad code to open the door
+    keypadCode: null,
     actions: [
       item => (
         item.isUnlockable && item.isLocked
@@ -34,6 +43,9 @@ export default {
 
   get keyId() { return this.state.keyId },
   set keyId(value) { this.state.keyId = value },
+
+  get keypadCode() { return this.state.keypadCode },
+  set keypadCode(value) { this.state.keypadCode = value },
 
   get key() {
     return this.keyId

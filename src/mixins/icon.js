@@ -1,3 +1,7 @@
+/**
+ * Add an icon state to object
+ */
+
 export default {
   state: {
     icon: null,

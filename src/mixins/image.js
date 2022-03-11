@@ -1,3 +1,7 @@
+/**
+ * Add an image state to the object
+ */
+
 export default {
   state: {
     img: null,

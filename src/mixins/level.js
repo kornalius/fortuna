@@ -1,6 +1,10 @@
 import clamp from 'lodash/clamp'
 import { store } from '@/store'
 
+/**
+ * Add level state to object
+ */
+
 export default {
   state: {
     lvl: 1,

@@ -1,5 +1,10 @@
+/**
+ * Adds a version state to the object (for Softwares and Files)
+ */
+
 export default {
   state: {
+    // version of the object
     version: 1,
   },
 

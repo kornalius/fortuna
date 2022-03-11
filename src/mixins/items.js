@@ -2,6 +2,10 @@ import { store } from '@/store'
 import Entity from '@/entity'
 import Item from '@/classes/items/item'
 
+/**
+ * List items owned or at location
+ */
+
 export default {
   state: {},
 

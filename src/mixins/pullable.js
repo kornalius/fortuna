@@ -1,10 +1,17 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object pullable
+ */
+
 export default {
   state: {
+    // is the object pullable
     pullable: false,
+    // time it takes to pull object
     pullDelay: 1,
+    // has the object been pulled
     pulled: false,
     actions: [
       item => (

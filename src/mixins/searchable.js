@@ -1,9 +1,15 @@
 import { can, emit, log } from '@/utils'
 import { store } from '@/store'
 
+/**
+ * Makes an object searchable
+ */
+
 export default {
   state: {
+    // is the object searchable
     searchable: false,
+    // how many times the object has been searched
     searched: 0,
     actions: [
       item => (
