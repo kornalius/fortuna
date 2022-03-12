@@ -121,6 +121,16 @@
       <span>[RAM] Used: {{ store.player.ramUsed }}, Free: {{ store.player.ramFree }}, Total: {{ store.player.ram }}</span>
     </n-popover>
 
+    <n-button
+      v-if="store.player.canLevelUp()"
+      class="levelup-button mv1 w-100"
+      color="yellow"
+      secondary
+      @click="() => store.player.levelUp()"
+    >
+      + Level +
+    </n-button>
+
     <div class="flex mt2 w-100" style="height: 24px;">
       <div
         v-for="buff in buffs"
@@ -199,5 +209,8 @@ const buffs = computed(() => {
   font-size: 32px;
   text-shadow: #333 1px 1px 4px;
   z-index: 2;
+}
+.levelup-button {
+  animation: heartbeat 1.5s ease-in-out infinite both, glowing 1s ease-in-out infinite alternate;
 }
 </style>

@@ -10,6 +10,7 @@ import Xp from '@/mixins/xp'
 import Credits from '@/mixins/credits'
 import Items from '@/mixins/items'
 import Carry from '@/mixins/carry'
+import Entity from '@/entity'
 
 export default class Player {
   storeName = 'player'
@@ -172,7 +173,7 @@ export default class Player {
       return data.map(d => this.addItem(d))
     }
 
-    if (data instanceof Item) {
+    if (data instanceof Entity) {
       data.locationId = null
       data.locationStore = this.storeName
       data.hovered = false

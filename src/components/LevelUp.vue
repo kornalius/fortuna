@@ -89,7 +89,7 @@
 
     <div class="flex w-100 mt3 justify-end">
 <!--      <n-button type="error" @click="cancel">Cancel</n-button>-->
-      <n-button type="primary" @click="confirm">Confirm</n-button>
+      <n-button type="primary" :disabled="pointsLeft > 0" @click="confirm">Confirm</n-button>
     </div>
   </n-card>
 </template>

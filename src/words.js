@@ -381,3 +381,9 @@ export const districtNames = [
 export const districtSuffixes = [
   'Square', 'Road', 'Park', 'Hill', 'Side', 'Plaza', 'Point', 'Valley'
 ]
+
+export const bookNames = [
+  'Bound for Evil', 'Fatal Duty', 'Caged Angel', 'Tower and the Sickle', 'The man in the City', 'Black Trap',
+  'The Prophecy in the Mist', 'Death of the Winged Beast', 'Trap the Past', 'Mark of Fire', 'The Buried Clock',
+  'Death of the Sacred Jackal',
+]

@@ -13,7 +13,7 @@
     </n-modal>
 
     <n-modal :show="store.game.showLevelUp" role="dialog" aria-modal="true">
-      <LevelUp :value="store.game.levelUpPoints"/>
+      <LevelUp :value="store.player.levelUpPoints"/>
     </n-modal>
 
     <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />

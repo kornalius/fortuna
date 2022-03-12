@@ -53,7 +53,7 @@ const props = defineProps({
   position: { type: String },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 20, class: option.class })
+const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], width: 20, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = async key => {

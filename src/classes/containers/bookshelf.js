@@ -1,6 +1,5 @@
 import Container from '@/classes/containers/container'
-import { generateLoot } from '@/generators'
-import { books } from '@/items-groups'
+import { books } from '@/generators'
 import { registerClass } from '@/utils'
 
 export default class BookShelf extends Container {
@@ -18,7 +17,7 @@ export default class BookShelf extends Container {
   async onSearch() {
     await super.onSearch()
     // generate random books
-    this.addItem(generateLoot(books))
+    this.addItem(books())
   }
 }
 

@@ -1,4 +1,5 @@
 import random from 'lodash/random'
+import capitalize from 'lodash/capitalize'
 import { pickRandom } from '@/utils'
 import {
   adverbs,
@@ -32,9 +33,9 @@ import {
   cityAdjectives3,
   cityBuildingAdjectives,
   cityBuildings,
-  citySkylineAdjectives, cityQualities, cityCultures, cityPlaces,
+  citySkylineAdjectives, cityQualities, cityCultures, cityPlaces, bookNames,
 } from '@/words'
-import { capitalize } from 'lodash';
+import Book from '@/classes/items/book'
 
 export const city = () => {
   const name = pickRandom(cityNames)
@@ -161,13 +162,59 @@ export const npc = ({ female, kid, old } = {}) => {
 }
 
 /**
- * Generate random loot from a list of classes
+ * Generate random requirements based on types and max values passed
  *
- * @param classes {Class[]}
+ * @param types {object[]} { name: actionName, attrName: maxRandomValue, ... }
+ * @returns {object}
+ */
+export const requirements = types => (
+  types.map(t => {
+    const r = { name: t.name }
+    Object.keys(t).forEach(key => {
+      if (key !== 'name') {
+        r[key] = random(1, t[key])
+      }
+    })
+    return r
+  })
+)
+
+/**
+ * Generate random books with random INT requirements
+ *
+ * @param min {number} minimum number of books to generate
+ * @param max {number} maximum number of books to generate
+ * @returns {Book[]}
+ */
+export const books = (min = 1, max = 5) => {
+  return new Array(random(min, max)).fill(0).map(() => {
+    const r = requirements([{ name: 'use', int: 4 }])
+    const { int } = r[0]
+    return new Book({
+      name: pickRandom(bookNames),
+      requirements: r,
+      uses: 1,
+      async onUse() {
+        store.player.xp += (int * 100)
+      },
+    })
+  })
+}
+
+/**
+ * Generate random loot from a list of classes or objects
+ *
+ * @param classesOrInstances {Class[] | object[]} classes or objects to choose from
  * @param min {number} minimum number to generate
  * @param max {number} maximum number to generate
- *
+ * @returns {object[]} array of instances
  */
-export const generateLoot = (classes, min = 1, max = 5) => {
-  return new Array(random(min, max)).fill(0).map(() => pickRandom(classes))
+export const loot = (classesOrInstances, min = 1, max = 5) => {
+  return new Array(random(min, max)).fill(0).map(() => {
+    const coi = pickRandom(classesOrInstances)
+    if (typeof coi === 'function') {
+      return new coi()
+    }
+    return coi
+  })
 }

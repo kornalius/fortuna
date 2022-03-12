@@ -1,5 +1,4 @@
 import { reactive } from 'vue'
-import merge from 'lodash/merge'
 import random from 'lodash/random'
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
@@ -57,12 +56,12 @@ export const mixState = (s, t) => {
   Object.keys({ ...s, ...t }).forEach(k => {
     if (Array.isArray(s?.[k]) || Array.isArray(t?.[k])) {
       m[k] = [...(s?.[k] || []), ...(t?.[k] || [])]
-      // if (k === 'actions') {
-      //   console.log(s.name || t.name, '->', { s: s[k], t: t[k], m: m[k] })
+      // if (k === 'requirements') {
+      //   console.log(s?.name || t?.name, '->', { s: s?.[k], t: t?.[k], m: m?.[k] })
       // }
     }
   })
-  return merge({}, s, t, m)
+  return { ...s, ...t, ...m }
 }
 
 /**
