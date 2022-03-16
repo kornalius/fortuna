@@ -26,7 +26,10 @@
         </div>
 
         <div class="flex ph1 mv2 items-center justify-between title-bar">
-          <span>{{ value?.name }}</span>
+          <div>
+            <span>{{ value?.name }}</span>
+            <n-checkbox v-model:checked="showLabels" class="ml3">Show Labels</n-checkbox>
+          </div>
           <span>{{ store.game.dayString }}</span>
         </div>
 
@@ -38,7 +41,7 @@
             :key="npc.id"
             class="inline mr1"
           >
-            <Npc :value="npc" />
+            <Npc :value="npc" :hide-label="!showLabels" />
           </span>
 
           <span
@@ -46,7 +49,7 @@
             :key="item.id"
             class="inline mr1"
           >
-            <Item :value="item" />
+            <Item :value="item" :hide-label="!showLabels" />
           </span>
         </div>
 
@@ -58,25 +61,7 @@
             :key="door.id"
             class="inline mr1"
           >
-            <Door :value="door" />
-          </span>
-        </div>
-
-        <div
-          v-for="container in value.openedContainers"
-          :key="container.id"
-          class="flex flex-wrap items-center mb1"
-        >
-          <v-icon :icon="icons[container.icon]" width="16" />
-
-          <span class="yellow mh2">{{ container.name }}:</span>
-
-          <span
-            v-for="item in container.items"
-            :key="item.id"
-            class="inline mr1"
-          >
-            <Item :value="item" />
+            <Door :value="door" hide-label />
           </span>
         </div>
 
@@ -103,7 +88,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import Log from '@/components/Log.vue'
 import Door from '@/components/Door.vue'
 import Npc from '@/components/Npc.vue'
@@ -118,6 +103,12 @@ const scroller = ref()
 
 const props = defineProps({
   value: { type: Object },
+})
+
+const showLabels = ref(store.game.showLabels)
+
+watch(showLabels, newValue => {
+  store.game.showLabels = newValue
 })
 
 const items = computed(() => props.value?.items || [])

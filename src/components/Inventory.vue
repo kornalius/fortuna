@@ -20,7 +20,10 @@
                 :type="filter === undefined ? 'primary' : undefined"
                 @click="setFilter(undefined)"
               >
-                <v-icon :icon="icons.checkAll" width="24" />
+                <icon
+                  :icon="icons.checkAll"
+                  :scale="2"
+                />
               </n-button>
             </template>
             <span>All</span>
@@ -32,7 +35,10 @@
                 :type="filter === 'isFile' ? 'primary' : undefined"
                 @click="setFilter('isFile')"
               >
-                <v-icon :icon="icons.file" width="24" />
+                <icon
+                  :icon="icons.file"
+                  :scale="2"
+                />
               </n-button>
             </template>
             <span>Files</span>
@@ -44,7 +50,10 @@
                 :type="filter === 'isSoftware' ? 'primary' : undefined"
                 @click="setFilter('isSoftware')"
               >
-                <v-icon :icon="icons.software" width="24" />
+                <icon
+                  :icon="icons.software"
+                  :scale="1.5"
+                />
               </n-button>
             </template>
             <span>Softwares</span>
@@ -56,7 +65,10 @@
                 :type="filter === 'isBattle' ? 'primary' : undefined"
                 @click="setFilter('isBattle')"
               >
-                <v-icon :icon="icons.dice" width="24" />
+                <icon
+                  :icon="icons.dice"
+                  :scale="2"
+                />
               </n-button>
             </template>
             <span>Battle</span>
@@ -72,7 +84,10 @@
             <n-popover trigger="hover" placement="top">
               <template #trigger>
                 <n-button>
-                  <v-icon :icon="icons.sort" width="24" />
+                  <icon
+                    :icon="icons.sort"
+                    :scale="2"
+                  />
                 </n-button>
               </template>
               <span>Sort Inventory</span>
@@ -87,8 +102,8 @@
 <script setup>
 import { computed, h, ref } from 'vue'
 import { store } from '@/store'
+import Icon from '@/components/Icon'
 import Item from '@/components/Item.vue'
-import { Icon } from '@iconify/vue'
 import icons from '@/icons'
 
 const filter = ref()
@@ -123,14 +138,14 @@ const sortOptions = ref([
 
 const renderDropdownIcon = option => (
   sort.value === option.key || (sort.value === undefined && option.key === '')
-    ? h(Icon, { icon: icons.check, width: 20, color: '#63e2b7' })
+    ? h(Icon, { icon: icons.check, scale: option.scale || 1.5, color: '#63e2b7' })
     : h('span', { style: 'width: 24px' })
 )
 
 const renderDropdownLabel = option => (
   h('div', { class: 'flex items-center' }, [
     h('span', { class: 'flex mr2' }, option.label),
-    h(Icon, { icon: icons[option.key], width: 20, color: '#888' }),
+    h(Icon, { icon: icons[option.key], scale: 1.5, color: '#888' }),
   ])
 )
 

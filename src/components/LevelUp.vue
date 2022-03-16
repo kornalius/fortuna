@@ -9,8 +9,14 @@
       <template #trigger>
         <div class="flex items-center justify-between mb3" style="color: #ff0;">
           <div class="inline flex items-center">
-            <v-icon :icon="icons.str" color="#DAA02B" width="24" />
+            <icon
+              :icon="icons.str"
+              color="#DAA02B"
+              :scale="1.5"
+            />
+
             <span class="ml2">{{ store.player.str }}</span>
+
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('str')">-</n-button>
               <n-button @click="increment('str')">+</n-button>
@@ -18,8 +24,13 @@
           </div>
 
           <div class="inline flex items-center">
-            <v-icon :icon="icons.dex" width="24" />
+            <icon
+              :icon="icons.dex"
+              :scale="1.5"
+            />
+
             <span class="ml2">{{ store.player.dex }}</span>
+
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('dex')">-</n-button>
               <n-button @click="increment('dex')">+</n-button>
@@ -27,8 +38,13 @@
           </div>
 
           <div class="inline flex items-center">
-            <v-icon :icon="icons.int" width="24" />
+            <icon
+              :icon="icons.int"
+              :scale="1.5"
+            />
+
             <span class="ml2">{{ store.player.int }}</span>
+
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('int')">-</n-button>
               <n-button @click="increment('int')">+</n-button>
@@ -45,8 +61,14 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center mb3" style="color: #b44;">
-          <v-icon class="mr1" :icon="icons.heart" width="24" />
+          <icon
+            class="mr1"
+            :icon="icons.heart"
+            :scale="1.5"
+          />
+
           <span class="ml2">{{ store.player.maxHp }}</span>
+
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('extraHp')">-</n-button>
             <n-button @click="increment('extraHp')">+</n-button>
@@ -60,8 +82,14 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center mb3" style="color: #2293E1;">
-          <v-icon class="mr1" :icon="icons.harddrive" width="24" />
+          <icon
+            class="mr1"
+            :icon="icons.harddrive"
+            :scale="1.5"
+          />
+
           <span class="ml2">{{ store.player.disk }}</span>
+
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('disk', 500)">-</n-button>
             <n-button @click="increment('disk', 500)">+</n-button>
@@ -75,8 +103,15 @@
     <n-popover trigger="hover" placement="left">
       <template #trigger>
         <div class="flex items-center mb3" style="color: #CBE54A;">
-          <v-icon class="mr1" :icon="icons.cpu" width="24" color="#CBE54A" />
+          <icon
+            class="mr1"
+            :icon="icons.cpu"
+            color="#CBE54A"
+            :scale="1.5"
+          />
+
           <span class="ml2">{{ store.player.ram }}</span>
+
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('ram', 100)">-</n-button>
             <n-button @click="increment('ram', 100)">+</n-button>

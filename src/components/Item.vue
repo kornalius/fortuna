@@ -8,7 +8,7 @@
   >
     <n-popover
       style="min-width: 250px; max-width: 350px;"
-      :delay="1000"
+      :delay="250"
       trigger="hover"
       :placement="value.isInInventory ? 'left' : 'top'"
     >
@@ -20,51 +20,45 @@
           strong
           @mouseover.once="() => value.hovered = true"
         >
-          <div class="flex flex-grow-1 items-center">
-            <v-icon
-              v-if="value.icon"
-              :icon="icons[value.icon]"
-              width="20"
-              height="20"
-            />
+          <div class="flex flex-grow-1 flex-column">
+            <div class="flex flex-grow-1 items-center">
+              <icon
+                v-if="value.icon"
+                :icon="icons[value.icon]"
+                :scale="1.5"
+              />
 
-            <v-icon
-              v-if="value.isInInventory && value.isInstalled"
-              :icon="icons.checkCircle"
-              class="installed"
-              width="14"
-            />
+              <icon
+                v-if="value.isInInventory && value.isInstalled"
+                :icon="icons.checkCircle"
+                class="installed"
+              />
 
-            <div class="flex flex-column w-100">
               <div
+                v-if="!hideLabel"
                 :class="[
-                  value.qty > 1 ? 'ml3' : 'ml2',
-                ]"
+                    value.qty > 1 ? 'ml3' : 'ml2',
+                  ]"
                 v-html="name"
               />
 
-              <n-progress
-                v-if="value.operation"
-                class="mt1 w-100"
-                :class="[
-                  value.qty > 1 ? 'ml3' : 'ml2',
-                ]"
-                type="line"
-                status="error"
-                :percentage="value.operation.pos / value.operation.total * 100"
-                :height="2"
-                :show-indicator="false"
-              />
+              <div v-if="value.qty > 1" class="qty">{{ value.qty }}</div>
             </div>
 
-            <div v-if="value.qty > 1" class="qty">{{ value.qty }}</div>
+            <n-progress
+              v-if="value.operation"
+              class="mt1 ml-5 w-100"
+              type="line"
+              status="error"
+              :percentage="value.operation.pos / value.operation.total * 100"
+              :height="2"
+              :show-indicator="false"
+            />
 
-            <v-icon
+            <icon
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
-              color="#F19936"
-              width="16"
             />
           </div>
         </n-button>
@@ -72,12 +66,11 @@
 
       <div class="flex w-100">
         <div class="flex items-center">
-          <v-icon
+          <icon
             v-if="value.icon"
             class="pr2 pb2"
             :icon="icons[value.icon]"
-            width="44"
-            height="44"
+            :scale="3"
           />
         </div>
 
@@ -102,7 +95,8 @@
               v-if="value.weight"
               class="flex items-center"
             >
-              <v-icon :icon="weightIcon" width="16" />
+              <icon :icon="weightIcon" />
+
               <span class="ml1 mt1">{{ value.weight }}</span>
             </div>
           </div>
@@ -120,7 +114,8 @@
             :key="`buffs-${buff.name}`"
             class="inline flex items-center"
           >
-            <v-icon :icon="buff.icon" width="16" height="16" />
+            <icon :icon="buff.icon" />
+
             <span class="ml1 mr2">{{ `${buff.value < 0 ? '-' : '+'}${buff.value}` }}</span>
           </div>
         </div>
@@ -133,16 +128,17 @@
 
 <script setup>
 import { computed, h } from 'vue'
-import { Icon } from '@iconify/vue'
 import { buffIcon, buffNames } from '@/buffs'
+import Icon from '@/components/Icon'
 import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },
   disabled: { type: Boolean },
+  hideLabel: { type: Boolean },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], width: 20, class: option.class })
+const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], scale: option.scale || 1.5, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, [option.label])
 
 const handleSelect = async key => {

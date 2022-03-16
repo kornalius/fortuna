@@ -6,54 +6,88 @@
     :render-label="renderDropdownLabel"
     @select="handleSelect"
   >
-    <n-button
-      :style="buttonStyle"
-      :disabled="disabled"
-      size="small"
-      quaternary
-      @mouseover.once="() => value.hovered = true"
+    <n-popover
+      style="min-width: 250px; max-width: 350px;"
+      :delay="250"
+      trigger="hover"
+      placement="top"
     >
-      <div class="relative">
-        <div class="inline-flex items-end">
-          <v-icon
+      <template #trigger>
+        <n-button
+          :style="buttonStyle"
+          :disabled="disabled"
+          size="small"
+          quaternary
+          @mouseover.once="() => value.hovered = true"
+        >
+          <div class="relative">
+            <div class="inline-flex items-end">
+              <icon
+                :icon="icons[value?.isOpened ? 'door-open' : 'door-close']"
+                :scale="1.5"
+              />
+
+              <icon
+                v-if="value.isLocked"
+                class="lock"
+                :icon="icons.lock"
+                :scale="0.75"
+              />
+
+              <span
+                v-if="!hideLabel"
+                class="ml1"
+              >
+                {{ label }}
+              </span>
+            </div>
+          </div>
+
+          <icon
+            v-if="value.isNew"
+            class="new"
+            :icon="icons.new"
+            color="#F19936"
+          />
+        </n-button>
+      </template>
+
+      <div class="flex w-100">
+        <div class="flex items-center">
+          <icon
             :icon="icons[value?.isOpened ? 'door-open' : 'door-close']"
-            width="20"
-            color="#926839"
+            :scale="2.5"
           />
-          <v-icon
+
+          <icon
             v-if="value.isLocked"
-            class="lock"
+            class="lock large"
             :icon="icons.lock"
-            width="10"
-            color="#000"
+            :scale="1.25"
           />
-          <span class="ml1">{{ label }}</span>
         </div>
+
+        <span class="pr2" v-html="label" />
       </div>
 
-      <v-icon
-        v-if="value.isNew"
-        class="new"
-        :icon="icons.new"
-        color="#F19936"
-        width="16"
-      />
-    </n-button>
+      <span>{{ value.description }}</span>
+    </n-popover>
   </n-dropdown>
 </template>
 
 <script setup>
 import { computed, h } from 'vue'
-import { Icon } from '@iconify/vue'
+import Icon from '@/components/Icon'
 import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },
   disabled: { type: Boolean },
+  hideLabel: { type: Boolean },
   position: { type: String },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], width: 20, class: option.class })
+const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], scale: option.scale || 1.5, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = async key => {
@@ -65,10 +99,10 @@ const handleSelect = async key => {
 
 const label = computed(() => {
   switch (props.value.direction) {
-    case 'N': return 'North'
-    case 'S': return 'South'
-    case 'E': return 'East'
-    case 'W': return 'West'
+    case 'N': return 'North door'
+    case 'S': return 'South door'
+    case 'E': return 'East door'
+    case 'W': return 'West door'
     default: return ''
   }
 })
@@ -84,6 +118,11 @@ const buttonStyle = computed(() => {
   position: absolute;
   top: 5px;
   left: 5px;
+}
+.lock.large {
+  position: absolute;
+  top: 17px;
+  left: 23px;
 }
 .new {
   position: absolute;

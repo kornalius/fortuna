@@ -1,3 +1,4 @@
+import flatten from 'lodash/flatten'
 import Entity from '@/entity'
 import { mixin, emit, registerClass, can } from '@/utils'
 import { store } from '@/store'
@@ -28,6 +29,10 @@ export default class Room extends Entity {
 
   get isRoom() { return true }
 
+  get roomItems() { return store.items.list.filter(i => i.location === this) }
+
+  get items() { return flatten([...this.roomItems, ...this.openedContainers.map(c => c.items)]) }
+
   get img() { return `images/rooms/${this.state.img}` }
 
   get doors() { return store.doors.list.filter(i => i.roomIds.includes(this.id)) }
@@ -52,7 +57,7 @@ export default class Room extends Entity {
    * @returns {*}
    */
   get openedContainers() {
-    return this.items.filter(i => (
+    return this.roomItems.filter(i => (
       (i.isOpenable && i.isOpened) || (i.items?.length > 0 && i.wasSearched))
     )
   }

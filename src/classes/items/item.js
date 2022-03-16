@@ -29,7 +29,6 @@ export default class Item extends Entity {
 
     return {
       name: 'Item',
-      description: 'An item',
       locationId,
       locationStore,
       ...data,

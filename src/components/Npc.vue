@@ -8,7 +8,7 @@
   >
     <n-popover
       style="min-width: 250px; max-width: 350px;"
-      :delay="1000"
+      :delay="250"
       trigger="hover"
       placement="top"
     >
@@ -29,33 +29,31 @@
               height="20"
             />
 
-            <v-icon
+            <icon
               v-else-if="value.icon"
               :icon="icons[value.icon]"
-              width="20"
-              height="20"
+              :scale="1.5"
             />
 
             <div class="flex flex-column w-100">
               <div
+                v-if="!hideLabel"
                 class="ml2"
                 v-html="name"
               />
             </div>
 
-            <v-icon
+            <icon
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
               color="#F19936"
-              width="16"
             />
 
-            <v-icon
+            <icon
               v-if="value.isAggresive"
-              :icon="icons.angry"
               class="aggresive"
-              width="14"
+              :icon="icons.angry"
             />
           </div>
         </n-button>
@@ -72,12 +70,11 @@
             height="44"
           />
 
-          <v-icon
+          <icon
             v-else-if="value.icon"
             class="pr2 pb2"
             :icon="icons[value.icon]"
-            width="44"
-            height="44"
+            :scale="2.5"
           />
         </div>
 
@@ -101,15 +98,16 @@
 
 <script setup>
 import { computed, h } from 'vue'
-import { Icon } from '@iconify/vue'
+import Icon from '@/components/Icon'
 import icons from '@/icons'
 
 const props = defineProps({
   value: { type: Object },
   disabled: { type: Boolean },
+  hideLabel: { type: Boolean },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], width: 20, class: option.class })
+const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], scale: option.scale || 1.5, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = async key => {

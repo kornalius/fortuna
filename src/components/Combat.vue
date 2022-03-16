@@ -23,12 +23,12 @@
           <span class="npc-hit-label">0</span>
         </div>
         <div class="freezes">
-          <v-icon
+          <icon
             v-for="i of freezes"
             :key="`freeze-${i}`"
             class="mr1"
             :icon="icons.freeze"
-            width="24"
+            :scale="2.5"
           />
         </div>
       </div>
@@ -36,7 +36,12 @@
       <n-popover trigger="hover" placement="bottom">
         <template #trigger>
           <div class="npc-stats-hp flex flex-grow-1 items-center" style="color: #b44; z-index: 1">
-            <v-icon class="mr1" :icon="icons.heart" width="24" />
+            <icon
+              class="mr1"
+              :icon="icons.heart"
+              :scale="2.5"
+            />
+
             <n-progress
               type="line"
               status="error"

@@ -49,7 +49,10 @@
           value.disconnect()
         }"
       >
-        <v-icon :icon="icons.logout" width="16" />
+        <icon
+          :icon="icons.logout"
+          :scale="1.5"
+        />
       </n-button>
     </div>
   </div>

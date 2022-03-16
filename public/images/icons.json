@@ -10,120 +10,15 @@
     "pot": false,
     "regions": [
         {
-            "idx": 16,
-            "name": "backpack",
+            "idx": 30,
+            "name": "1up",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                16,
-                48,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 15,
-            "name": "book",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
-                32,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 19,
-            "name": "cd",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                144,
-                32,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 5,
-            "name": "check",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
-                0,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 20,
-            "name": "cigarette",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
-                48,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 11,
-            "name": "connect",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                96,
-                16,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 19,
-            "name": "credit",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
+                160,
                 64,
-                48,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 16,
-            "name": "dice",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                96,
-                32,
                 16,
                 16
             ],
@@ -131,7 +26,7 @@
         },
         {
             "idx": 17,
-            "name": "die",
+            "name": "apple",
             "origin": [
                 8,
                 8
@@ -145,8 +40,788 @@
             "rotated": false
         },
         {
+            "idx": 91,
+            "name": "asterisk",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 23,
+            "name": "backpack",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 20,
+            "name": "banana",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 92,
+            "name": "bandage",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 109,
+            "name": "barcode",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 50,
+            "name": "battery",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 61,
+            "name": "bed",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 65,
+            "name": "biomod",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 45,
+            "name": "blender",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 105,
+            "name": "blocked",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 34,
+            "name": "blood",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 25,
+            "name": "bomb",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 14,
+            "name": "book1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 15,
-            "name": "diskette",
+            "name": "book2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 43,
+            "name": "books",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 27,
+            "name": "bookshelf",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 63,
+            "name": "boot",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 42,
+            "name": "box",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 110,
+            "name": "box-carton",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 102,
+            "name": "box-wood",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 139,
+            "name": "brain",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 37,
+            "name": "bread",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 111,
+            "name": "briefcase",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 112,
+            "name": "burn",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 62,
+            "name": "bush",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 37,
+            "name": "calendar",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 118,
+            "name": "cancel",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 119,
+            "name": "cancel-round",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 120,
+            "name": "cancel-round-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 110,
+            "name": "cancel-square",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 113,
+            "name": "car-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 115,
+            "name": "car-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 114,
+            "name": "car-taxi",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 135,
+            "name": "card",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 49,
+            "name": "cash-register",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 20,
+            "name": "cd",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 44,
+            "name": "ceiling-light",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 116,
+            "name": "chain",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 28,
+            "name": "chair",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 98,
+            "name": "check",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 99,
+            "name": "check-circle",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 100,
+            "name": "check-circle-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 90,
+            "name": "check-square",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 6,
+            "name": "checks",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 19,
+            "name": "cheese",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 13,
+            "name": "cigarette",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 25,
+            "name": "clock",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 5,
+            "name": "connect",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 94,
+            "name": "console",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 22,
+            "name": "cookie",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 115,
+            "name": "cpu",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 12,
+            "name": "credits",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 15,
+            "name": "cup",
             "origin": [
                 8,
                 8
@@ -160,30 +835,570 @@
             "rotated": false
         },
         {
-            "idx": 14,
-            "name": "document",
+            "idx": 70,
+            "name": "death",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                64,
-                32,
+                0,
+                224,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 6,
-            "name": "examine",
+            "idx": 48,
+            "name": "desk-chair",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 45,
+            "name": "desk-lamp",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 98,
+            "name": "desk-phone-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 99,
+            "name": "desk-phone-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 23,
+            "name": "dex",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 18,
+            "name": "dice",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 16,
+            "name": "die",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 19,
+            "name": "diskette",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 34,
+            "name": "door-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 35,
+            "name": "door-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 126,
+            "name": "door-wood-close",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 16,
+                400,
                 16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 127,
+            "name": "door-wood-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 130,
+            "name": "drill",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 111,
+            "name": "drive",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 117,
+            "name": "drive-cd",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 113,
+            "name": "drive-download",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 116,
+            "name": "drive-globe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 112,
+            "name": "drive-move",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 115,
+            "name": "drive-network",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 114,
+            "name": "drive-upload",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 130,
+            "name": "ear",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 72,
+            "name": "electric-cord",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 118,
+            "name": "envelop",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 129,
+            "name": "eraser",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 11,
+            "name": "examine",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 59,
+            "name": "exclamation-mark",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 121,
+            "name": "eye-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 119,
+            "name": "eye-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 120,
+            "name": "eye-semi-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 78,
+            "name": "face-angry",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 75,
+            "name": "face-happy",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 73,
+            "name": "face-neutral",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 76,
+            "name": "face-sad",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 74,
+            "name": "face-smile",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 77,
+            "name": "face-yell",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 26,
+            "name": "fence",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 71,
+            "name": "fight",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                224,
                 16,
                 16
             ],
@@ -205,6 +1420,141 @@
             "rotated": false
         },
         {
+            "idx": 47,
+            "name": "file-cabinet",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 81,
+            "name": "fire",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 26,
+            "name": "first-aid",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 55,
+            "name": "first-aid2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 15,
+            "name": "fist",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 33,
+            "name": "fist2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 69,
+            "name": "flashlight",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 30,
+            "name": "flower-pot",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 80,
+            "name": "footprint",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 3,
             "name": "freeze",
             "origin": [
@@ -220,90 +1570,120 @@
             "rotated": false
         },
         {
-            "idx": 23,
-            "name": "grab",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                128,
-                48,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 11,
-            "name": "hand",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                16,
-                32,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 13,
-            "name": "heart",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                48,
-                32,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 18,
-            "name": "id",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                48,
-                48,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 21,
-            "name": "kick",
+            "idx": 26,
+            "name": "fridge",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 96,
-                48,
+                64,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 1,
-            "name": "lightbulb",
+            "idx": 131,
+            "name": "funnel",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 40,
+            "name": "garbage",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 36,
+            "name": "garbage-full",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 16,
-                0,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 138,
+            "name": "gazcan",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 132,
+            "name": "gear",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 133,
+            "name": "glass-wine",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 67,
+            "name": "glasses",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                192,
                 16,
                 16
             ],
@@ -311,7 +1691,7 @@
         },
         {
             "idx": 10,
-            "name": "list",
+            "name": "glove",
             "origin": [
                 8,
                 8
@@ -325,60 +1705,225 @@
             "rotated": false
         },
         {
-            "idx": 10,
-            "name": "medal",
+            "idx": 136,
+            "name": "hammer",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                0,
-                32,
+                176,
+                400,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 6,
-            "name": "multi-checks",
+            "idx": 126,
+            "name": "hardhat",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 11,
+            "name": "heart",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 96,
-                0,
+                16,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 8,
-            "name": "pickup",
+            "idx": 71,
+            "name": "hifi",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                48,
-                16,
+                96,
+                208,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 7,
-            "name": "pound",
+            "idx": 128,
+            "name": "hourglass",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 95,
+            "name": "ice-cube",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 60,
+            "name": "interrogation-mark",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 55,
+            "name": "key-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 56,
+            "name": "key-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 57,
+            "name": "key-red",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 112,
-                0,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 53,
+            "name": "key-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 54,
+            "name": "key-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 106,
+            "name": "keyboard",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 105,
+            "name": "keys",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 14,
+            "name": "kick",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                32,
                 16,
                 16
             ],
@@ -386,7 +1931,7 @@
         },
         {
             "idx": 22,
-            "name": "punch",
+            "name": "knife",
             "origin": [
                 8,
                 8
@@ -400,15 +1945,540 @@
             "rotated": false
         },
         {
-            "idx": 12,
-            "name": "region_12",
+            "idx": 39,
+            "name": "lamp",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 50,
+            "name": "lamp2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 24,
+            "name": "laundry",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 125,
+            "name": "lightbulb",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 115,
+            "name": "lightbulb-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 83,
+            "name": "lighting",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 15,
+            "name": "list",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 83,
+            "name": "lock",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 84,
+            "name": "lock-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 107,
+            "name": "lock-small",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 108,
+            "name": "luggage",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 123,
+            "name": "mail",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 124,
+            "name": "mail-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 122,
+            "name": "mails",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 97,
+            "name": "marker",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 9,
+            "name": "medal",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 75,
+            "name": "medal-bronze",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 85,
+            "name": "medal-gold",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 29,
+            "name": "medal2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 40,
+            "name": "microwave",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 81,
+            "name": "milk",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 49,
+            "name": "mirror",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 100,
+            "name": "mouse",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 101,
+            "name": "mouse-left",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 102,
+            "name": "mouse-middle",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 32,
-                32,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 103,
+            "name": "mouse-right",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 78,
+            "name": "mushroom",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 80,
+            "name": "music-notes",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 96,
+            "name": "new",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 107,
+            "name": "new-text",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 108,
+            "name": "newspaper",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 42,
+            "name": "note",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 7,
+            "name": "number",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 20,
+            "name": "oven",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 31,
+            "name": "oxygen",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 64,
+            "name": "pants",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                160,
                 16,
                 16
             ],
@@ -416,7 +2486,7 @@
         },
         {
             "idx": 12,
-            "name": "region_27",
+            "name": "paper",
             "origin": [
                 8,
                 8
@@ -430,15 +2500,525 @@
             "rotated": false
         },
         {
-            "idx": 18,
-            "name": "roll",
+            "idx": 109,
+            "name": "paper-bag",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 13,
+            "name": "paper2",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 128,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 51,
+            "name": "park-bench",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 6,
+            "name": "password",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 29,
+            "name": "pc",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 44,
+            "name": "pc2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 46,
+            "name": "pc3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 111,
+            "name": "pda",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 110,
+            "name": "pda-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 48,
+            "name": "pens",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 42,
+            "name": "phone",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 13,
+            "name": "pickup",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 36,
+            "name": "picture",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 41,
+            "name": "picture-frame",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 112,
+            "name": "pill",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 76,
+            "name": "pills",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 31,
+            "name": "pills-bottle",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 117,
+            "name": "pin",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
                 32,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 24,
+            "name": "plant1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 38,
+            "name": "plant2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 113,
+            "name": "plug",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 114,
+            "name": "printer",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 118,
+            "name": "puzzle",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 109,
+            "name": "ram",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 127,
+            "name": "rip",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 117,
+            "name": "road-block",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 79,
+            "name": "robe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 17,
+            "name": "roll",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 27,
+            "name": "safe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 21,
+            "name": "sandwhich",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 107,
+            "name": "scanner",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 74,
+            "name": "scisors",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 73,
+            "name": "screwdriver",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 108,
+            "name": "sd-card",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 84,
+            "name": "security-camera",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                224,
                 16,
                 16
             ],
@@ -460,15 +3040,105 @@
             "rotated": false
         },
         {
-            "idx": 14,
+            "idx": 8,
             "name": "shield",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                144,
+                48,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 96,
+            "name": "shoe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 57,
+            "name": "shovel",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 137,
+            "name": "shutdown",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 39,
+            "name": "sink",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 110,
+            "name": "smartphone",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 47,
+            "name": "sofa",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                128,
                 16,
                 16
             ],
@@ -490,14 +3160,104 @@
             "rotated": false
         },
         {
-            "idx": 13,
-            "name": "sword",
+            "idx": 43,
+            "name": "speaker",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 128,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 79,
+            "name": "stairs",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 28,
+            "name": "star",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 38,
+            "name": "stool",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 20,
+            "name": "sushi",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 105,
+            "name": "switch",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 7,
+            "name": "sword",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
                 16,
                 16,
                 16
@@ -505,15 +3265,45 @@
             "rotated": false
         },
         {
-            "idx": 17,
+            "idx": 10,
             "name": "syringe",
             "origin": [
                 8,
                 8
             ],
             "rect": [
+                0,
                 32,
-                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 21,
+            "name": "table",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 41,
+            "name": "table2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                96,
                 16,
                 16
             ],
@@ -535,45 +3325,465 @@
             "rotated": false
         },
         {
-            "idx": 5,
+            "idx": 10,
             "name": "talk",
             "origin": [
                 8,
                 8
             ],
             "rect": [
+                160,
                 0,
-                16,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 9,
+            "idx": 14,
             "name": "target",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                64,
-                16,
+                224,
+                0,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 7,
-            "name": "use",
+            "idx": 93,
+            "name": "thermometer",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 91,
+            "name": "thumbs-down",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 92,
+            "name": "thumbs-up",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 32,
+                288,
                 16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 35,
+            "name": "toaster",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 60,
+            "name": "toilet",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 43,
+            "name": "toolbox",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 34,
+            "name": "traffic-cone",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 101,
+            "name": "traffic-lights",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 24,
+            "name": "trashcan",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 77,
+            "name": "tree",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 104,
+            "name": "trophy",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 103,
+            "name": "truck",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 95,
+            "name": "tshirt",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 23,
+            "name": "tv",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 28,
+            "name": "tv-box",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 95,
+            "name": "tv-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 97,
+            "name": "tv-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 106,
+            "name": "tv-remote",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 96,
+            "name": "tv-test",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 104,
+            "name": "usb-drive",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 12,
+            "name": "use",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 59,
+            "name": "vent",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 19,
+            "name": "vial",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 18,
+            "name": "vial-small",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 97,
+            "name": "wall-plug",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 103,
+            "name": "wallet",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 80,
+            "name": "warning",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 82,
+            "name": "water",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 21,
+            "name": "watermelon",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                32,
                 16,
                 16
             ],
@@ -593,9 +3803,99 @@
                 16
             ],
             "rotated": false
+        },
+        {
+            "idx": 22,
+            "name": "window",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 38,
+            "name": "window2-broken",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 37,
+            "name": "window2-closed",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 39,
+            "name": "window2-opened",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 18,
+            "name": "wine",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 71,
+            "name": "wrench",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
         }
     ],
-    "regions_count": 39,
+    "regions_count": 259,
     "rotations": false,
     "using_grid": true,
     "width": 80

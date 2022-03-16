@@ -22,22 +22,20 @@
           @mouseover.once="() => value.hovered = true"
         >
           <div class="flex flex-grow-1 flex-column items-center">
-            <v-icon
+            <icon
               class="mb2"
               :icon="icons[value.icon]"
               :color="value.color"
-              width="44"
-              height="44"
+              :scale="2.5"
             />
 
             <div class="ws-normal" v-html="value.name" />
 
-            <v-icon
+            <icon
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
               color="#F19936"
-              width="16"
             />
           </div>
         </n-button>
@@ -45,12 +43,11 @@
 
       <div class="flex w-100">
         <div class="flex items-center">
-          <v-icon
+          <icon
             v-if="value.icon"
             class="pr2 pb2"
             :icon="icons[value.icon]"
-            width="44"
-            height="44"
+            :scale="2.5"
           />
         </div>
 
@@ -68,7 +65,7 @@
 
 <script setup>
 import { h } from 'vue'
-import { Icon } from '@iconify/vue'
+import Icon from '@/components/Icon'
 import icons from '@/icons'
 
 const props = defineProps({
@@ -77,7 +74,7 @@ const props = defineProps({
   disabled: { type: Boolean },
 })
 
-const renderDropdownIcon = option => h(Icon, { icon: option.icon, width: 32, class: option.class })
+const renderDropdownIcon = option => h(Icon, { icon: option.icon, scale: option.scale || 1.5, class: option.class })
 const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, option.label)
 
 const handleSelect = async key => {

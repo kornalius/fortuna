@@ -3,79 +3,61 @@
     <div ref="element" class="die" :class="sizeClass">
       <div class="die-face die-face-1" :class="sizeClass" :style="dieFaceStyle">
         <div class="content">
-          <v-icon
+          <icon
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[0].icon]"
-            :width="faces[0].size"
-            :height="faces[0].size"
-            :rotate="faces[0].rotate"
-            :color="faces[0].color"
+            :scale="faces[0].size"
           />
         </div>
       </div>
       <div class="die-face die-face-2" :class="sizeClass" :style="dieFaceStyle">
         <div class="content">
-          <v-icon
+          <icon
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[1].icon]"
-            :width="faces[1].size"
-            :height="faces[1].size"
-            :rotate="faces[1].rotate"
-            :color="faces[1].color"
+            :scale="faces[1].size"
           />
         </div>
       </div>
       <div class="die-face die-face-3" :class="sizeClass" :style="dieFaceStyle">
         <div class="content">
-          <v-icon
+          <icon
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[2].icon]"
-            :width="faces[2].size"
-            :height="faces[2].size"
-            :rotate="faces[2].rotate"
-            :color="faces[2].color"
+            :scale="faces[2].size"
           />
         </div>
       </div>
       <div class="die-face die-face-4" :class="sizeClass" :style="dieFaceStyle">
         <div class="content">
-          <v-icon
+          <icon
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[3].icon]"
-            :width="faces[3].size"
-            :height="faces[3].size"
-            :rotate="faces[3].rotate"
-            :color="faces[3].color"
+            :scale="faces[3].size"
           />
         </div>
       </div>
       <div class="die-face die-face-5" :class="sizeClass" :style="dieFaceStyle">
         <div class="content">
-          <v-icon
+          <icon
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[4].icon]"
-            :width="faces[4].size"
-            :height="faces[4].size"
-            :rotate="faces[4].rotate"
-            :color="faces[4].color"
+            :scale="faces[4].size"
           />
         </div>
       </div>
       <div class="die-face die-face-6" :class="sizeClass" :style="dieFaceStyle">
         <div class="content">
-          <v-icon
+          <icon
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[5].icon]"
-            :width="faces[5].size"
-            :height="faces[5].size"
-            :rotate="faces[5].rotate"
-            :color="faces[5].color"
+            :scale="faces[5].size"
           />
         </div>
       </div>

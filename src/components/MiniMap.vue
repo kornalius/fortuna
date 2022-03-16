@@ -14,10 +14,10 @@
               :class="{ active: room === store.game.room }"
               :style="styleForRoom(room)"
             >
-              <v-icon
+              <icon
                 v-if="room.icon"
                 :icon="icons[room.icon]"
-                width="32"
+                :scale="2"
                 color="white"
               />
 

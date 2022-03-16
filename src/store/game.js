@@ -32,6 +32,7 @@ export default class Game {
       volume: 0.1,
       date: store.config.startDate,
       time: store.config.startTime,
+      showLabels: false,
     }
   }
 
@@ -50,6 +51,9 @@ export default class Game {
 
   get roomId() { return this.state.roomId }
   set roomId(value) { this.state.roomId = value }
+
+  get showLabels() { return this.state.showLabels }
+  set showLabels(value) { this.state.showLabels = value }
 
   get room() {
     return this.roomId

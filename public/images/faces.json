@@ -1,0 +1,17 @@
+{
+    "fill_rate": 0,
+    "grid_height": 44,
+    "grid_width": 44,
+    "height": 176,
+    "image": "faces.png",
+    "name": "faces",
+    "padding_x": 0,
+    "padding_y": 0,
+    "pot": false,
+    "regions": [
+    ],
+    "regions_count": 0,
+    "rotations": false,
+    "using_grid": true,
+    "width": 264
+}

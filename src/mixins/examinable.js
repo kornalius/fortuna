@@ -18,6 +18,7 @@ export default {
             key: 'examine',
             icon: 'examine',
             disabled: !item.canExamine(),
+            scale: 2,
             click: async () => item.examine(),
           }
           : undefined

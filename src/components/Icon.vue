@@ -1,10 +1,11 @@
 <template>
   <sprite
+    class="flex self-center"
     image="/images/icons.png"
     :json="json"
     :frame="icon"
-    :scale-x="scaleX"
-    :scale-y="scaleY"
+    :scale-x="scaleX || scale"
+    :scale-y="scaleY || scale"
   />
 </template>
 
@@ -14,8 +15,10 @@ import Sprite from '@/components/Sprite'
 
 const props = defineProps({
   icon: { type: String },
-  scaleX: { type: Number, default: 1 },
-  scaleY: { type: Number, default: 1 },
+  color: { type: String },
+  scale: { type: Number, default: 1 },
+  scaleX: { type: Number },
+  scaleY: { type: Number },
 })
 </script>
 

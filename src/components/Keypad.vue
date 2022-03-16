@@ -4,7 +4,11 @@
       <div
         class="success flex flex-column flex-grow-1 items-center justify-center w-100"
       >
-        <v-icon :icon="icons.checkCircle" width="64" />
+        <icon
+          :icon="icons.checkCircle"
+          :scale="4"
+        />
+
         <span>SUCCESS</span>
       </div>
 
