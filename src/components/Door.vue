@@ -24,14 +24,14 @@
             <div class="inline-flex items-end">
               <icon
                 :icon="icons[value?.isOpened ? 'door-open' : 'door-close']"
-                :scale="1.5"
+                :scale="1.75"
               />
 
               <icon
                 v-if="value.isLocked"
                 class="lock"
                 :icon="icons.lock"
-                :scale="0.75"
+                drop-shadow
               />
 
               <span
@@ -47,7 +47,7 @@
             v-if="value.isNew"
             class="new"
             :icon="icons.new"
-            color="#F19936"
+            drop-shadow
           />
         </n-button>
       </template>
@@ -57,6 +57,7 @@
           <icon
             :icon="icons[value?.isOpened ? 'door-open' : 'door-close']"
             :scale="2.5"
+            drop-shadow
           />
 
           <icon
@@ -64,6 +65,7 @@
             class="lock large"
             :icon="icons.lock"
             :scale="1.25"
+            drop-shadow
           />
         </div>
 

@@ -33,6 +33,7 @@
               v-else-if="value.icon"
               :icon="icons[value.icon]"
               :scale="1.5"
+              drop-shadow
             />
 
             <div class="flex flex-column w-100">
@@ -47,13 +48,14 @@
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
-              color="#F19936"
+              drop-shadow
             />
 
             <icon
               v-if="value.isAggresive"
               class="aggresive"
               :icon="icons.angry"
+              drop-shadow
             />
           </div>
         </n-button>

@@ -6,6 +6,12 @@
     :frame="icon"
     :scale-x="scaleX || scale"
     :scale-y="scaleY || scale"
+    :offset-x="offsetX"
+    :offset-y="offsetY"
+    :rotation="rotation"
+    :drop-shadow="dropShadow"
+    :shadow="shadow"
+    :filter="filter"
   />
 </template>
 
@@ -19,6 +25,12 @@ const props = defineProps({
   scale: { type: Number, default: 1 },
   scaleX: { type: Number },
   scaleY: { type: Number },
+  offsetX: { type: Number, default: 0 },
+  offsetY: { type: Number, default: 0 },
+  rotation: { type: Number },
+  dropShadow: { type: Boolean },
+  shadow: { type: String },
+  filter: { type: String },
 })
 </script>
 

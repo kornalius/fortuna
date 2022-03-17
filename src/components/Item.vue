@@ -59,6 +59,7 @@
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
+              drop-shadow
             />
           </div>
         </n-button>
@@ -71,6 +72,7 @@
             class="pr2 pb2"
             :icon="icons[value.icon]"
             :scale="3"
+            drop-shadow
           />
         </div>
 

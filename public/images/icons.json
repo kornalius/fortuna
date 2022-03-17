@@ -145,6 +145,36 @@
             "rotated": false
         },
         {
+            "idx": 139,
+            "name": "bell",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 140,
+            "name": "binoculars",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 65,
             "name": "biomod",
             "origin": [
@@ -184,6 +214,21 @@
             "rect": [
                 0,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 141,
+            "name": "blocks",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                416,
                 16,
                 16
             ],
@@ -415,6 +460,21 @@
             "rotated": false
         },
         {
+            "idx": 143,
+            "name": "calculator",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 37,
             "name": "calendar",
             "origin": [
@@ -424,6 +484,21 @@
             "rect": [
                 112,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 145,
+            "name": "camcorder",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                416,
                 16,
                 16
             ],
@@ -565,6 +640,21 @@
             "rotated": false
         },
         {
+            "idx": 142,
+            "name": "cassette",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 20,
             "name": "cd",
             "origin": [
@@ -619,6 +709,21 @@
             "rect": [
                 128,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 136,
+            "name": "chair2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                432,
                 16,
                 16
             ],
@@ -730,6 +835,21 @@
             "rotated": false
         },
         {
+            "idx": 137,
+            "name": "clipboard",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 25,
             "name": "clock",
             "origin": [
@@ -739,6 +859,36 @@
             "rect": [
                 0,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 141,
+            "name": "computer-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 140,
+            "name": "computer-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                432,
                 16,
                 16
             ],
@@ -805,6 +955,21 @@
             "rotated": false
         },
         {
+            "idx": 139,
+            "name": "credit-card",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 12,
             "name": "credits",
             "origin": [
@@ -814,6 +979,21 @@
             "rect": [
                 32,
                 32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 138,
+            "name": "crown",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                432,
                 16,
                 16
             ],
@@ -1144,6 +1324,21 @@
             "rect": [
                 64,
                 352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 144,
+            "name": "drop",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                432,
                 16,
                 16
             ],
@@ -1510,6 +1705,156 @@
             "rotated": false
         },
         {
+            "idx": 138,
+            "name": "flag-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 137,
+            "name": "flag-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 130,
+            "name": "flag-checkered",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 135,
+            "name": "flag-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 136,
+            "name": "flag-grey",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 133,
+            "name": "flag-purple",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 131,
+            "name": "flag-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 140,
+            "name": "flag-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 132,
+            "name": "flag-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 134,
+            "name": "flag=pink",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 69,
             "name": "flashlight",
             "origin": [
@@ -1534,6 +1879,51 @@
             "rect": [
                 80,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 142,
+            "name": "folder-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 144,
+            "name": "folder-file",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 143,
+            "name": "folder-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                416,
                 16,
                 16
             ],
@@ -1579,6 +1969,21 @@
             "rect": [
                 96,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 121,
+            "name": "friends",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                368,
                 16,
                 16
             ],
@@ -1714,6 +2119,81 @@
             "rect": [
                 176,
                 400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 119,
+            "name": "hand",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 123,
+            "name": "hand-down",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 124,
+            "name": "hand-left",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 122,
+            "name": "hand-right",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 120,
+            "name": "hand-serve",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                368,
                 16,
                 16
             ],
@@ -1900,6 +2380,21 @@
             "rotated": false
         },
         {
+            "idx": 145,
+            "name": "keypad",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 105,
             "name": "keys",
             "origin": [
@@ -1990,6 +2485,21 @@
             "rotated": false
         },
         {
+            "idx": 135,
+            "name": "lens",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 125,
             "name": "lightbulb",
             "origin": [
@@ -2021,7 +2531,7 @@
         },
         {
             "idx": 83,
-            "name": "lighting",
+            "name": "lightning",
             "origin": [
                 8,
                 8
@@ -3655,15 +4165,15 @@
             "rotated": false
         },
         {
-            "idx": 12,
+            "idx": 125,
             "name": "use",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                192,
-                0,
+                160,
+                368,
                 16,
                 16
             ],
@@ -3895,7 +4405,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 259,
+    "regions_count": 293,
     "rotations": false,
     "using_grid": true,
     "width": 80

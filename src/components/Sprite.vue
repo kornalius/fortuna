@@ -1,5 +1,8 @@
 <template>
-  <div class="sprite">
+  <div
+    class="sprite"
+    :style="style"
+  >
     <canvas
       :width="canvasSize.width"
       :height="canvasSize.height"
@@ -20,6 +23,12 @@ const props = defineProps({
   frames: { type: Array },
   scaleX: { type: Number, default: 1 },
   scaleY: { type: Number, default: 1 },
+  offsetX: { type: Number, default: 0 },
+  offsetY: { type: Number, default: 0 },
+  rotation: { type: Number },
+  dropShadow: { type: Boolean },
+  shadow: { type: String },
+  filter: { type: String },
   autoplay: { type: Boolean },
   loop: { type: Boolean },
   speed: { type: Number, default: 0 },
@@ -45,11 +54,28 @@ const canvasSize = computed(() => {
   if (keys.length > 0) {
     const firstKey = keys[0]
     return {
-      width: a.regions[firstKey].width * props.scaleX,
-      height: a.regions[firstKey].height * props.scaleY,
+      width: a.regions[firstKey].width * props.scaleX + props.offsetX,
+      height: a.regions[firstKey].height * props.scaleY + props.offsetX,
     }
   }
   return undefined
+})
+
+const style = computed(() => {
+  const s = []
+  if (props.rotation) {
+    s.push(`transform: rotate(${props.rotation}deg)`)
+  }
+  if (props.shadow) {
+    s.push(`filter: drop-shadow(${props.shadow})`)
+  }
+  if (props.dropShadow) {
+    s.push(`filter: drop-shadow(2px 2px 1px #333)`)
+  }
+  if (props.filter) {
+    s.push(`filter: ${props.filter}`)
+  }
+  return s.join('; ')
 })
 
 const hasFrames = computed(() => props.frames && props.frames.length > 0)
@@ -143,8 +169,8 @@ const render = () => {
     a.region.y,
     a.region.width,
     a.region.height,
-    0,
-    0,
+    props.offsetX,
+    props.offsetY,
     c.width,
     c.height,
   )
@@ -178,4 +204,5 @@ sprite.onload = () => spriteInit()
 </script>
 
 <style scoped>
+
 </style>

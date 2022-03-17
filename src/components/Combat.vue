@@ -39,7 +39,7 @@
             <icon
               class="mr1"
               :icon="icons.heart"
-              :scale="2.5"
+              :scale="2"
             />
 
             <n-progress

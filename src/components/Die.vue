@@ -7,7 +7,7 @@
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[0].icon]"
-            :scale="faces[0].size"
+            :scale="scale"
           />
         </div>
       </div>
@@ -17,7 +17,7 @@
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[1].icon]"
-            :scale="faces[1].size"
+            :scale="scale"
           />
         </div>
       </div>
@@ -27,7 +27,7 @@
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[2].icon]"
-            :scale="faces[2].size"
+            :scale="scale"
           />
         </div>
       </div>
@@ -37,7 +37,7 @@
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[3].icon]"
-            :scale="faces[3].size"
+            :scale="scale"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[4].icon]"
-            :scale="faces[4].size"
+            :scale="scale"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@
             class="icon"
             :class="sizeClass"
             :icon="icons[faces[5].icon]"
-            :scale="faces[5].size"
+            :scale="scale"
           />
         </div>
       </div>
@@ -101,6 +101,15 @@ const sizeClass = computed(() => ({
   xsmall: props.size === 'xsmall',
   large: props.size === 'large',
 }))
+
+const scale = computed(() => {
+  switch (props.size) {
+    case 'small': return 1
+    case 'xsmall': return 1
+    case 'large': return 3
+    default: return 2
+  }
+})
 
 const dieFaceStyle = computed(() => {
   const style = []
@@ -190,7 +199,7 @@ onMounted(() => {
   padding: 8px;
   width: 100%;
   height: 100%;
-  -webkit-filter: drop-shadow(-1px -1px 1px #333) drop-shadow(1px 1px 1px #fff);
+  -webkit-filter: drop-shadow(-1px -1px 1px #333) drop-shadow(2px 2px 1px #fff);
 }
 .icon.small {
   padding: 4px;
@@ -198,7 +207,7 @@ onMounted(() => {
 }
 .icon.xsmall {
   padding: 4px;
-  -webkit-filter: drop-shadow(-1px -1px 0 #333) drop-shadow(1px 1px 0 #ddd );
+  -webkit-filter: drop-shadow(-1px -1px 0 #333) drop-shadow(2px 2px 0 #ddd );
 }
 
 .die-face-1 { transform: rotateY(0deg) translateZ(24px); }
