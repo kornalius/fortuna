@@ -50,6 +50,8 @@ export default class Config {
     // dummy file types to be randomly generated
     dummyFileTypes: ['doc', 'qrt', 'rpt', 'cod', 'hdr', 'tab', 'dum', 'unk'],
 
+    // Dice
+
     // battle dice faces
     battleDice: [
       { value: 'A', icon: 'sword' }, // SWORD

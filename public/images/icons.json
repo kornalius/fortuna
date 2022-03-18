@@ -55,6 +55,21 @@
             "rotated": false
         },
         {
+            "idx": 165,
+            "name": "backetball",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                480,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 23,
             "name": "backpack",
             "origin": [
@@ -154,6 +169,21 @@
             "rect": [
                 144,
                 416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 163,
+            "name": "billard-ball",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                480,
                 16,
                 16
             ],
@@ -430,6 +460,21 @@
             "rotated": false
         },
         {
+            "idx": 177,
+            "name": "broom",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 112,
             "name": "burn",
             "origin": [
@@ -670,6 +715,21 @@
             "rotated": false
         },
         {
+            "idx": 149,
+            "name": "cds",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 44,
             "name": "ceiling-light",
             "origin": [
@@ -694,6 +754,21 @@
             "rect": [
                 176,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 176,
+            "name": "chain-unlink",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                528,
                 16,
                 16
             ],
@@ -769,6 +844,21 @@
             "rect": [
                 240,
                 272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 160,
+            "name": "check-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                480,
                 16,
                 16
             ],
@@ -859,6 +949,21 @@
             "rect": [
                 0,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 140,
+            "name": "compass",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                448,
                 16,
                 16
             ],
@@ -1009,6 +1114,36 @@
             "rect": [
                 0,
                 48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 150,
+            "name": "cutter",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 147,
+            "name": "database",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                432,
                 16,
                 16
             ],
@@ -1210,6 +1345,36 @@
             "rotated": false
         },
         {
+            "idx": 128,
+            "name": "drawer-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 129,
+            "name": "drawer-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 130,
             "name": "drill",
             "origin": [
@@ -1375,6 +1540,21 @@
             "rotated": false
         },
         {
+            "idx": 142,
+            "name": "enter",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                448,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 118,
             "name": "envelop",
             "origin": [
@@ -1429,6 +1609,21 @@
             "rect": [
                 224,
                 144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 141,
+            "name": "exit",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                448,
                 16,
                 16
             ],
@@ -1564,6 +1759,21 @@
             "rect": [
                 192,
                 208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 158,
+            "name": "female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                480,
                 16,
                 16
             ],
@@ -1855,15 +2065,30 @@
             "rotated": false
         },
         {
-            "idx": 69,
-            "name": "flashlight",
+            "idx": 149,
+            "name": "flashlight-off",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                144,
-                192,
+                64,
+                464,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 150,
+            "name": "flashlight-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                464,
                 16,
                 16
             ],
@@ -1885,45 +2110,15 @@
             "rotated": false
         },
         {
-            "idx": 142,
-            "name": "folder-close",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                192,
-                416,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 144,
-            "name": "folder-file",
+            "idx": 164,
+            "name": "football",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 224,
-                416,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 143,
-            "name": "folder-open",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                208,
-                416,
+                480,
                 16,
                 16
             ],
@@ -2095,6 +2290,21 @@
             "rotated": false
         },
         {
+            "idx": 156,
+            "name": "globe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                480,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 10,
             "name": "glove",
             "origin": [
@@ -2104,6 +2314,21 @@
             "rect": [
                 80,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 175,
+            "name": "guitar",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                528,
                 16,
                 16
             ],
@@ -2290,6 +2515,36 @@
             "rotated": false
         },
         {
+            "idx": 174,
+            "name": "jar",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 173,
+            "name": "key",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 55,
             "name": "key-blue",
             "origin": [
@@ -2359,6 +2614,21 @@
             "rect": [
                 64,
                 160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 172,
+            "name": "key2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                528,
                 16,
                 16
             ],
@@ -2659,6 +2929,21 @@
             "rect": [
                 192,
                 352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 157,
+            "name": "male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                480,
                 16,
                 16
             ],
@@ -3175,6 +3460,21 @@
             "rotated": false
         },
         {
+            "idx": 171,
+            "name": "piano",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 13,
             "name": "pickup",
             "origin": [
@@ -3640,6 +3940,21 @@
             "rotated": false
         },
         {
+            "idx": 155,
+            "name": "soap",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 47,
             "name": "sofa",
             "origin": [
@@ -3709,6 +4024,21 @@
             "rect": [
                 48,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 162,
+            "name": "sticky-note",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                480,
                 16,
                 16
             ],
@@ -3859,6 +4189,21 @@
             "rect": [
                 224,
                 0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 161,
+            "name": "target2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                480,
                 16,
                 16
             ],
@@ -4150,6 +4495,21 @@
             "rotated": false
         },
         {
+            "idx": 159,
+            "name": "umbrella",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                480,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 104,
             "name": "usb-drive",
             "origin": [
@@ -4405,7 +4765,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 293,
+    "regions_count": 317,
     "rotations": false,
     "using_grid": true,
     "width": 80

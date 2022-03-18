@@ -8,6 +8,7 @@ import { store } from '@/store'
 import Examinable from '@/mixins/examinable'
 import Version from '@/mixins/version'
 import Visitable from '@/mixins/visitable'
+import Timeout from '@/mixins/timeout'
 import { femaleNames, maleNames, passwords } from '@/words'
 
 export default class Server extends Item {
@@ -280,6 +281,10 @@ export default class Server extends Item {
       {
         expr: () => store.player.isInDialog,
         log: () => 'You cannot use this while in conversation'
+      },
+      {
+        expr: () => this.isTimedout,
+        log: () => `You are locked out of the server for another ${this.timeoutRemainingString}`
       },
     ], showMessage, 'connect')
   }
@@ -576,6 +581,7 @@ mixin(Server, [
   Examinable,
   Version,
   Visitable,
+  Timeout,
 ])
 
 registerClass(Server)

@@ -1,6 +1,6 @@
 import Item from '../item'
 import { mixin, registerClass } from '@/utils'
-import Switch from '@/mixins/switch';
+import Switch from '@/mixins/switch'
 
 export default class DeskLamp extends Item {
   setupInstance(data) {

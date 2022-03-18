@@ -47,7 +47,6 @@
             v-if="value.isNew"
             class="new"
             :icon="icons.new"
-            drop-shadow
           />
         </n-button>
       </template>
@@ -57,7 +56,6 @@
           <icon
             :icon="icons[value?.isOpened ? 'door-open' : 'door-close']"
             :scale="2.5"
-            drop-shadow
           />
 
           <icon
@@ -130,6 +128,5 @@ const buttonStyle = computed(() => {
   position: absolute;
   top: 0;
   right: 0;
-  filter: drop-shadow(2px 2px 1px #333);
 }
 </style>

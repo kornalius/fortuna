@@ -102,37 +102,19 @@
     <div class="flex flex-grow-1" />
 
     <div class="player-side flex flex-column flex-grow-1 relative ph2">
-      <div class="flex flex-column flex-grow-1 items-center">
-        <div style="height: 60px">
-          <span class="multiplier">
-            X {{ currentMultiplier }}
-          </span>
-        </div>
-
-        <div class="flex relative h-100 items-center">
-          <Die
-            v-for="(die, index) in store.player.dice"
-            :key="`player-die-${index}`"
-            :class="`player-die-${index}`"
-            :faces="die.faces"
-            :face="die.value"
-            :selected="store.player.combat.isSelected(index)"
-            :done="store.player.combat.isDone(index)"
-            @click="store.player.combat.toggleSelect(index)"
-          />
-        </div>
-
-        <div class="actions flex justify-end w-100 pv1">
-          <n-button
-            :disabled="disabled"
-            type="success"
-            tertiary
-            @click="executeOrReroll"
-          >
-            <span>{{ executeOrRerollLabel }}</span>
-          </n-button>
-        </div>
-      </div>
+      <Dice
+        :value="store.player.dice"
+        :disabled="disabled"
+        :isSelected="index => store.player.combat.isSelected(index)"
+        :isSelectable="() => !disabled"
+        :isDone="index => store.player.combat.isDone(index)"
+        :toggleSelect="index => store.player.combat.toggleSelect(index)"
+        :multiplier="currentMultiplier"
+        :canReroll="canReroll"
+        :rolls="store.player.rolls"
+        :reroll="() => store.player.combat.reroll()"
+        :endTurn="() => store.player.combat.endTurn()"
+      />
     </div>
   </div>
 </template>
@@ -141,6 +123,7 @@
 import { computed, watch } from 'vue'
 import { store } from '@/store'
 import Die from '@/components/Die.vue'
+import Dice from '@/components/Dice.vue'
 import { bleed } from '@/particles'
 import icons from '@/icons'
 
@@ -151,17 +134,6 @@ const props = defineProps({
 const disabled = computed(() => props.value.processing)
 
 const canReroll = computed(() => store.player.combat.canReroll())
-
-const executeOrRerollLabel = computed(() => (
-  canReroll.value ? `Reroll (${store.player.rolls})` : 'End Turn'
-))
-
-const executeOrReroll = async () => {
-  if (canReroll.value) {
-    return store.player.combat.reroll()
-  }
-  return store.player.combat.endTurn()
-}
 
 watch(() => props.value.npc.hp, (newValue, oldValue) => {
   if (newValue < oldValue) {
@@ -209,13 +181,6 @@ const combos = computed(() => [...props.value.combos, ...props.value.bonusCombos
   width: 100%;
   color: #D12E2E;
   font-size: 32px;
-  text-shadow: #333 1px 1px 4px;
-  z-index: 2;
-}
-.multiplier {
-  font-size: 40px;
-  opacity: 0;
-  scale: 0;
   text-shadow: #333 1px 1px 4px;
   z-index: 2;
 }

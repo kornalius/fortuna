@@ -27,7 +27,6 @@ const props = defineProps({
   offsetY: { type: Number, default: 0 },
   rotation: { type: Number },
   dropShadow: { type: Boolean },
-  shadow: { type: String },
   filter: { type: String },
   autoplay: { type: Boolean },
   loop: { type: Boolean },
@@ -65,9 +64,6 @@ const style = computed(() => {
   const s = []
   if (props.rotation) {
     s.push(`transform: rotate(${props.rotation}deg)`)
-  }
-  if (props.shadow) {
-    s.push(`filter: drop-shadow(${props.shadow})`)
   }
   if (props.dropShadow) {
     s.push(`filter: drop-shadow(2px 2px 1px #333)`)

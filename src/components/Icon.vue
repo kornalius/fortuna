@@ -10,7 +10,6 @@
     :offset-y="offsetY"
     :rotation="rotation"
     :drop-shadow="dropShadow"
-    :shadow="shadow"
     :filter="filter"
   />
 </template>
@@ -29,7 +28,6 @@ const props = defineProps({
   offsetY: { type: Number, default: 0 },
   rotation: { type: Number },
   dropShadow: { type: Boolean },
-  shadow: { type: String },
   filter: { type: String },
 })
 </script>

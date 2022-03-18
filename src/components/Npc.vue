@@ -33,7 +33,6 @@
               v-else-if="value.icon"
               :icon="icons[value.icon]"
               :scale="1.5"
-              drop-shadow
             />
 
             <div class="flex flex-column w-100">
@@ -48,7 +47,6 @@
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
-              drop-shadow
             />
 
             <icon
@@ -132,7 +130,6 @@ const name = computed(() => props.value.name)
   position: absolute;
   top: 0;
   right: 0;
-  filter: drop-shadow(2px 2px 1px #333);
 }
 .aggresive {
   position: absolute;

@@ -59,7 +59,6 @@
               v-if="value.isNew"
               class="new"
               :icon="icons.new"
-              drop-shadow
             />
           </div>
         </n-button>
@@ -226,7 +225,6 @@ const groupedBuffs = computed(() => {
   position: absolute;
   top: 0;
   right: 0;
-  filter: drop-shadow(2px 2px 1px #333);
 }
 .uses-left {
   position: absolute;

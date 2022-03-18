@@ -1,6 +1,6 @@
 import Container from '@/classes/containers/container'
 import { registerClass } from '@/utils'
-import { store } from '@/store';
+import { store } from '@/store'
 
 export default class Safe extends Container {
   setupInstance(data) {
