@@ -5,7 +5,7 @@ export default class Memcard extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Memory card',
-      icon: 'memory-card',
+      icon: 'memoryCVard',
       usable: true,
       ...data,
     })

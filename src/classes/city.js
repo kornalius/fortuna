@@ -114,7 +114,6 @@ export default class City extends Entity {
       if (building) {
         await building.enter()
       } else {
-        store.game.showCity = this
         store.game.showCityMap = true
       }
 

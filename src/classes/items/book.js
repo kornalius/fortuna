@@ -6,6 +6,7 @@ export default class Book extends Item {
     return super.setupInstance({
       name: 'Book',
       icon: 'book',
+      weight: 1,
       usable: true,
       ...data,
     })

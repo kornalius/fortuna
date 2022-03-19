@@ -6,7 +6,7 @@ export default class LightSwitch extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Light switch',
-      icon: 'light-switch',
+      icon: 'lightSwitch',
       pickable: false,
       dropable: false,
       ...data,

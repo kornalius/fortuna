@@ -41,6 +41,8 @@ export default class Player {
       // current combat being displayed
       combatId: null,
       dice: this.baseDice,
+      // is the player travelling between buildings?
+      travelling: false,
     }
   }
 
@@ -150,6 +152,9 @@ export default class Player {
   get shieldDiceIndexes() {
     return this.shieldDice.map(d => this.dice.indexOf(d))
   }
+
+  get isTravelling() { return this.state.travelling }
+  set travelling(value) { this.state.travelling = value }
 
   async reset() {
     Object.keys(this._mixinState).forEach(k => {

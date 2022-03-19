@@ -25,6 +25,21 @@
             "rotated": false
         },
         {
+            "idx": 75,
+            "name": "alarm-clock",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 17,
             "name": "apple",
             "origin": [
@@ -505,6 +520,21 @@
             "rotated": false
         },
         {
+            "idx": 180,
+            "name": "cactus",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 143,
             "name": "calculator",
             "origin": [
@@ -625,6 +655,21 @@
             "rotated": false
         },
         {
+            "idx": 143,
+            "name": "car-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 115,
             "name": "car-red",
             "origin": [
@@ -640,6 +685,21 @@
             "rotated": false
         },
         {
+            "idx": 144,
+            "name": "car-sports",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 114,
             "name": "car-taxi",
             "origin": [
@@ -649,6 +709,21 @@
             "rect": [
                 144,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 142,
+            "name": "car-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                416,
                 16,
                 16
             ],
@@ -709,6 +784,21 @@
             "rect": [
                 240,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 177,
+            "name": "cd-case",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                560,
                 16,
                 16
             ],
@@ -1090,6 +1180,21 @@
             "rotated": false
         },
         {
+            "idx": 62,
+            "name": "credits-alt",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 138,
             "name": "crown",
             "origin": [
@@ -1234,6 +1339,21 @@
             "rect": [
                 128,
                 48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 178,
+            "name": "diamond",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                560,
                 16,
                 16
             ],
@@ -1990,6 +2110,21 @@
             "rotated": false
         },
         {
+            "idx": 134,
+            "name": "flag-pink",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 133,
             "name": "flag-purple",
             "origin": [
@@ -2043,21 +2178,6 @@
             ],
             "rect": [
                 32,
-                416,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 134,
-            "name": "flag=pink",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                64,
                 416,
                 16,
                 16
@@ -3490,6 +3610,21 @@
             "rotated": false
         },
         {
+            "idx": 175,
+            "name": "pickup-alt",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 36,
             "name": "picture",
             "origin": [
@@ -3670,6 +3805,21 @@
             "rotated": false
         },
         {
+            "idx": 185,
+            "name": "reminder",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                544,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 127,
             "name": "rip",
             "origin": [
@@ -3814,6 +3964,21 @@
             "rect": [
                 48,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 181,
+            "name": "search",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                560,
                 16,
                 16
             ],
@@ -3979,6 +4144,21 @@
             "rect": [
                 32,
                 0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 184,
+            "name": "sort",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                544,
                 16,
                 16
             ],
@@ -4675,6 +4855,21 @@
             "rotated": false
         },
         {
+            "idx": 182,
+            "name": "weight-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 22,
             "name": "window",
             "origin": [
@@ -4765,7 +4960,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 317,
+    "regions_count": 330,
     "rotations": false,
     "using_grid": true,
     "width": 80

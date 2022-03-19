@@ -74,7 +74,7 @@
             v-else-if="value.icon"
             class="pr2 pb2"
             :icon="icons[value.icon]"
-            :scale="2.5"
+            :scale="3"
           />
         </div>
 

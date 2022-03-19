@@ -8,7 +8,7 @@ export default class PillsBottle extends Container {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Pills bottle',
-      icon: 'pills-bottle',
+      icon: 'pillsBottle',
       ...data,
     })
   }

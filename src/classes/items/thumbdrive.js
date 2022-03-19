@@ -5,7 +5,7 @@ export default class Thumbdrive extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Thumb drive',
-      icon: 'thumb-drive',
+      icon: 'thumbDrive',
       usable: true,
       ...data,
     })

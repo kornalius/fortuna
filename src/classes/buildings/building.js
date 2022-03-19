@@ -157,7 +157,6 @@ export default class Building extends Entity {
       await this.visit()
       await emit.call(this, 'onEnter')
 
-      store.game.showCity = null
       store.game.showCityMap = false
 
       const room = store.rooms.findByCode(this.startRoomCode)

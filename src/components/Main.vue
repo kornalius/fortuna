@@ -9,7 +9,7 @@
     </n-modal>
 
     <n-modal v-model:show="store.game.showCityMap" role="dialog" aria-modal="true">
-      <CityMap :value="store.game.showCity" />
+      <CityMap :value="store.game.city" />
     </n-modal>
 
     <n-modal :show="store.game.showLevelUp" role="dialog" aria-modal="true">

@@ -12,6 +12,11 @@
         </div>
       </div>
 
+      <div class="flex justify-end">
+        <icon class="mr2" :icon="icons.weightWhite" />
+        <span>{{ store.player.carryWeight }} / {{ store.player.maxWeight }}</span>
+      </div>
+
       <div class="flex flex-grow-1 justify-center">
         <n-button-group>
           <n-popover trigger="hover" placement="top">

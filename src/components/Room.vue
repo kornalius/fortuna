@@ -18,6 +18,10 @@
             :value="store.player.combat"
           />
 
+          <Travel
+            v-else-if="store.player.isTravelling"
+          />
+
           <img v-else-if="value.img"
             class="image"
             :src="value.img"
@@ -96,8 +100,8 @@ import Item from '@/components/Item.vue'
 import Server from '@/components/Server.vue'
 import Dialog from '@/components/Dialog.vue'
 import Combat from '@/components/Combat.vue'
+import Travel from '@/components/Travel.vue'
 import { store } from '@/store'
-import icons from '@/icons'
 
 const scroller = ref()
 
