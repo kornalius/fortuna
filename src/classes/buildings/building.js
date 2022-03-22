@@ -151,17 +151,17 @@ export default class Building extends Entity {
         }
       }
 
+      store.game.showCityMap = false
+
       this.hidden = false
       store.game.building = this
       store.game.room = null
       await this.visit()
       await emit.call(this, 'onEnter')
 
-      store.game.showCityMap = false
-
       const room = store.rooms.findByCode(this.startRoomCode)
       if (room) {
-        await room.enter()
+        await room.enter(undefined, true)
       }
 
       return true
@@ -200,6 +200,7 @@ export default class Building extends Entity {
     }
     store.game.building = null
     await emit.call(this, 'onExit')
+    store.game.showCityMap = true
     return true
   }
 

@@ -113,7 +113,7 @@ export default class Room extends Entity {
     ], showMessage, 'enter')
   }
 
-  async enter(fromRoom) {
+  async enter(fromRoom, showTravelling = false) {
     if (!this.canEnter(fromRoom, true)) {
       return false
     }
@@ -128,6 +128,13 @@ export default class Room extends Entity {
       store.game.room = this
       await this.visit()
       await emit.call(this, 'onEnter')
+
+      if (showTravelling) {
+        setTimeout(async () => {
+          // show travel and wait for it to finish animating
+          store.player.travelling = true
+        })
+      }
       return true
     }
     return false

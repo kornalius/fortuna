@@ -1,20 +1,23 @@
 <template>
-  <n-card style="opacity: .98">
+  <n-card style="width: 1000px; opacity: .98">
     <div class="flex flex-column h-100">
       <div class="flex flex-column">
         <div class="top flex self-center relative w-100">
           <Server
             v-if="store.player.isConnectedToServer"
+            class="fade-in"
             :value="store.player.server"
           />
 
           <Dialog
             v-else-if="store.player.isInDialog"
+            class="fade-in"
             :value="store.player.dialog"
           />
 
           <Combat
             v-else-if="store.player.isInCombat"
+            class="fade-in"
             :value="store.player.combat"
           />
 
@@ -23,7 +26,7 @@
           />
 
           <img v-else-if="value.img"
-            class="image"
+            class="image fade-in"
             :src="value.img"
             :alt="value.img"
           />
@@ -45,7 +48,11 @@
             :key="npc.id"
             class="inline mr1"
           >
-            <Npc :value="npc" :hide-label="!showLabels" />
+            <Npc
+              :value="npc"
+              :disabled="disabled"
+              :hide-label="!showLabels"
+            />
           </span>
 
           <span
@@ -53,7 +60,11 @@
             :key="item.id"
             class="inline mr1"
           >
-            <Item :value="item" :hide-label="!showLabels" />
+            <Item
+              :value="item"
+              :disabled="disabled"
+              :hide-label="!showLabels"
+            />
           </span>
         </div>
 
@@ -65,7 +76,11 @@
             :key="door.id"
             class="inline mr1"
           >
-            <Door :value="door" hide-label />
+            <Door
+              :value="door"
+              :disabled="disabled"
+              hide-label
+            />
           </span>
         </div>
 
@@ -107,6 +122,7 @@ const scroller = ref()
 
 const props = defineProps({
   value: { type: Object },
+  disabled: { type: Boolean },
 })
 
 const showLabels = ref(store.game.showLabels)
@@ -136,7 +152,7 @@ const logsChanged = () => {
   object-fit: cover;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 300px;
 }
 .scrollable {
   position: absolute;

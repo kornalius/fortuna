@@ -54,6 +54,30 @@ export const life = (x, y, emitterOptions = {}, particleOptions = {}) => {
   })
 }
 
+export const xp = (x, y, emitterOptions = {}, particleOptions = {}) => {
+  domParticles.addEmitter({
+    maxEmissions: 10,
+    ttl: 500,
+    emitEvery: 25,
+    position: { x, y, z: 2 },
+    ...emitterOptions,
+    particleOptions: {
+      ttl: 500,
+      contents: '✨',
+      style: {
+        color: '#ff0',
+        'font-size': '16px',
+        scale: [.5, 1.25],
+      },
+      onCreate(particle) {
+        particle.velocity.x = random(-50, 50)
+        particle.velocity.y = random(-100, 100)
+      },
+      ...particleOptions,
+    }
+  })
+}
+
 export const multiplier = (x, y, emitterOptions = {}, particleOptions = {}) => {
   domParticles.addEmitter({
     maxEmissions: 15,

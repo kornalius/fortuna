@@ -1,6 +1,7 @@
 <template>
   <n-dropdown
     trigger="click"
+    :disabled="disabled"
     :options="value.dropdownOptions"
     :render-icon="renderDropdownIcon"
     :render-label="renderDropdownLabel"
@@ -14,6 +15,7 @@
     >
       <template #trigger>
         <n-button
+          class="fade-in"
           :style="buttonStyle"
           :disabled="disabled"
           size="small"

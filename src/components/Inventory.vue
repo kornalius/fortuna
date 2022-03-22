@@ -6,8 +6,9 @@
           <item
             v-for="item in items"
             :key="item.id"
-            :value="item"
             class="pv1"
+            :value="item"
+            :disabled="disabled"
           />
         </div>
       </div>
@@ -26,8 +27,8 @@
                 @click="setFilter(undefined)"
               >
                 <icon
-                  :icon="icons.checkAll"
-                  :scale="2"
+                  :icon="icons.checkAllWhite"
+                  :scale="1.5"
                 />
               </n-button>
             </template>
@@ -42,7 +43,7 @@
               >
                 <icon
                   :icon="icons.file"
-                  :scale="2"
+                  :scale="1.75"
                 />
               </n-button>
             </template>
@@ -111,6 +112,10 @@ import Icon from '@/components/Icon'
 import Item from '@/components/Item.vue'
 import icons from '@/icons'
 
+const props = defineProps({
+  disabled: { type: Boolean },
+})
+
 const filter = ref()
 const sort = ref()
 
@@ -143,14 +148,14 @@ const sortOptions = ref([
 
 const renderDropdownIcon = option => (
   sort.value === option.key || (sort.value === undefined && option.key === '')
-    ? h(Icon, { icon: icons.check, scale: option.scale || 1.5, color: '#63e2b7' })
+    ? h(Icon, { icon: icons.checkWhite, scale: option.scale || 1 })
     : h('span', { style: 'width: 24px' })
 )
 
 const renderDropdownLabel = option => (
-  h('div', { class: 'flex items-center' }, [
+  h('div', { class: 'flex items-center justify-between' }, [
     h('span', { class: 'flex mr2' }, option.label),
-    h(Icon, { icon: icons[option.key], scale: 1.5, color: '#888' }),
+    h(Icon, { icon: icons[option.key] }),
   ])
 )
 

@@ -12,6 +12,10 @@ export default class Config {
     tickInterval: 60 * 1000,
     startCityCode: 'TestCity',
 
+    // Travelling
+
+    travelTime: 5000,
+
     // Player
 
     baseHp: 10,
@@ -78,6 +82,8 @@ export default class Config {
   get tickTime() { return this.state.tickTime }
   get tickInterval() { return this.state.tickInterval }
   get startCityCode() { return this.state.startCityCode }
+
+  get travelTime() { return this.state.travelTime }
 
   get baseHp() { return this.state.baseHp }
   get highestHp() { return this.state.highestHp }

@@ -196,17 +196,30 @@
 <script setup>
 import { computed, watch } from 'vue'
 import { store } from '@/store'
-import { bleed, life } from '@/particles'
+import { bleed, life, xp } from '@/particles'
 import { buffIcon, buffLabel } from '@/buffs'
 import icons from '@/icons'
 
 watch(() => store.player.hp, (newValue, oldValue) => {
+  if (store.game.showLevelUp) {
+    return
+  }
   const r = document.querySelector('.stats-hp').getBoundingClientRect()
   if (newValue < oldValue) {
     bleed(r.left + (store.player.hp / store.player.maxHp * (r.width - 20)), r.top + 8)
   } else if (newValue > oldValue) {
     life(r.left + (store.player.hp / store.player.maxHp * (r.width - 20)), r.top + 4)
+    store.game.playSound('upgrade')
   }
+})
+
+watch(() => store.player.xp, () => {
+  if (store.game.showLevelUp) {
+    return
+  }
+  const r = document.querySelector('.stats-xp').getBoundingClientRect()
+  xp(r.left + (store.player.xp / store.player.nextXp * (r.width - 20)), r.top + 8)
+  store.game.playSound('upgrade')
 })
 
 const buffs = computed(() => {

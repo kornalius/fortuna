@@ -25,7 +25,6 @@ export default class Game {
       showOptions: false,
       showProvince: false,
       showCityMap: false,
-      showCity: null,
       showLevelUp: false,
       showKeypad: false,
       keypadId: null,
@@ -117,9 +116,6 @@ export default class Game {
 
   get showCityMap() { return this.state.showCityMap }
   set showCityMap(value) { this.state.showCityMap = value }
-
-  get showCity() { return this.state.showCity }
-  set showCity(value) { this.state.showCity = value }
 
   get showLevelUp() { return this.state.showLevelUp }
   set showLevelUp(value) { this.state.showLevelUp = value }

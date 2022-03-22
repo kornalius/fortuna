@@ -628,7 +628,6 @@ export default class Combat extends Entity {
       const v = (store.player.hp - o) * (this.multipliers['H'] || 1) + (this.bonus['H'] || 0)
       if (v > 0) {
         log(`${store.player.name} gains ${v} life`)
-        store.game.playSound('upgrade')
         await delay(500)
         await emit.call(this, 'onGainLife', v)
       }

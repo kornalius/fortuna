@@ -1,17 +1,17 @@
 <template>
   <n-config-provider :theme="darkTheme" style="height: 100%;">
-    <Main v-if="store.game.isStarted" />
+    <Main v-if="store.game.isStarted" class="fade-in" />
 
     <div v-show="showDialog || showOptions">
       <div v-if="!store.game.isStarted" class="title smoke">FORTUNA</div>
       <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
       <div class="bg background-anim">
         <n-modal :show="showDialog" role="dialog" aria-modal="true">
-          <Menu />
+          <Menu class="fade-in" />
         </n-modal>
 
         <n-modal :show="showOptions" role="dialog" aria-modal="true">
-          <Options />
+          <Options class="fade-in" />
         </n-modal>
       </div>
     </div>
@@ -109,7 +109,6 @@ body {
   top: 15%;
   width: 100%;
   z-index: 1;
-  /*animation: glow 2s ease-in-out infinite alternate;*/
 }
 </style>
 
@@ -136,6 +135,7 @@ body {
 @import "/public/styles/click";
 @import "/public/styles/glowing";
 @import "/public/styles/freeze";
+@import "/public/styles/fade-in";
 
 .background-anim {
   position: absolute;
@@ -162,11 +162,13 @@ body {
 ::-webkit-scrollbar-thumb:vertical:active {
 }
 
-.n-button:hover {
-  animation: glitch .1s
-}
+// These mixup with fade-in animation
 
-.n-button:active {
-  animation: click .15s
-}
+//.n-button:hover {
+//  animation: glitch .1s
+//}
+
+//.n-button:active {
+//  animation: click .15s
+//}
 </style>
