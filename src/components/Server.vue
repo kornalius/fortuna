@@ -51,7 +51,6 @@
       >
         <icon
           :icon="icons.logout"
-          :scale="1.5"
         />
       </n-button>
     </div>
@@ -206,6 +205,7 @@ watch(displayed, () => {
   top: 266px;
   width: 0;
   z-index: 3;
+  filter: drop-shadow(0 0 5px #F5BB06);
 }
 .files {
   border-left: 1px dashed #F5BB06;

@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { log } from '@/utils'
+import { log, LOG_WARN } from '@/utils'
 
 /**
  * Adds actions requirements to an object. Before executing an action, it will check its requirements
@@ -37,7 +37,7 @@ export default {
           const v = requirement[attr]
           if (store.player[attr] < v) {
             if (showMessage) {
-              log(`Requirement not met for ${attr}, must be greater or equal to ${v}`)
+              log(`Requirement not met for ${attr}, must be greater or equal to ${v}`, LOG_WARN, this.icon)
             }
             return false
           }

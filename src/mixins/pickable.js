@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_ERROR, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -62,7 +62,7 @@ export default {
     // check if there are owners of this room/building present seeing you commit the crime of stealing!!!
     const presentOwners = this.location.presentOwners;
     if (presentOwners?.length > 0) {
-      log(`You have been caugth stealing ${presentOwners.map(o => o.name).join(', ')}`)
+      log(`You have been caugth stealing by ${presentOwners.map(o => o.name).join(', ')}`, LOG_ERROR, this.icon)
       presentOwners.forEach(o => { o.aggresive = true })
     }
 
@@ -71,7 +71,7 @@ export default {
     // mark item in your inventory as new
     this.hovered = false
 
-    log(`You pickup ${this.name.toLowerCase()}`)
+    log(`You pickup ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
     await emit.call(this, 'onPickup')
     return true
   },

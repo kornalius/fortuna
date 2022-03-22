@@ -1,6 +1,6 @@
 import Item from './item'
 import { store } from '@/store'
-import { log, emit, registerClass } from '@/utils'
+import { log, emit, registerClass, LOG_WARN } from '@/utils'
 
 export default class Keypad extends Item {
   setupInstance(data) {
@@ -53,7 +53,7 @@ export default class Keypad extends Item {
   async onSuccess() {
     if (this.door) {
       this.door.locked = false
-      log('Door has been unlocked')
+      log('Door has been unlocked', LOG_WARN, this.icon)
       store.game.playSound('unlock')
     }
   }

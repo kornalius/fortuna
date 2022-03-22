@@ -94,7 +94,7 @@ export default {
       return false
     }
     this.locked = false
-    log('Door has been unlocked')
+    log('Door has been unlocked', LOG_WARN, this.icon)
     await emit.call(this, 'onUnlock')
     return true
   },

@@ -1,4 +1,4 @@
-import { can, checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -56,10 +56,10 @@ export default {
       return false
     }
     store.game.playSound('hd')
-    log(`Uploading file ${this.name.toLowerCase()}...`)
+    log(`Uploading file ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     return this.operate('upload', async () => {
       store.game.stopSound('hd')
-      log(`You have successfully uploaded the file ${this.name.toLowerCase()}`)
+      log(`You have successfully uploaded the file ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onUpload')
       store.player.server.addItem(this)
     }, this.weight)

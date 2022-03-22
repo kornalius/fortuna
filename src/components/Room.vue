@@ -50,7 +50,7 @@
           >
             <Npc
               :value="npc"
-              :disabled="disabled"
+              :disabled="isDisabled"
               :hide-label="!showLabels"
             />
           </span>
@@ -62,7 +62,7 @@
           >
             <Item
               :value="item"
-              :disabled="disabled"
+              :disabled="isDisabled && (!store.player.isConnectedToServer || !item.isServer)"
               :hide-label="!showLabels"
             />
           </span>
@@ -78,7 +78,7 @@
           >
             <Door
               :value="door"
-              :disabled="disabled"
+              :disabled="isDisabled"
               hide-label
             />
           </span>
@@ -93,9 +93,11 @@
           src="/images/screen.png"
           alt="screen"
         />
+
         <div ref="scroller" class="scrollable">
           <Log @change="logsChanged" />
         </div>
+
         <img
           class="glare"
           src="/images/glare.png"
@@ -134,6 +136,13 @@ watch(showLabels, newValue => {
 const items = computed(() => props.value?.items || [])
 const npcs = computed(() => (props.value?.npcs || []).filter(npc => !npc.isDead))
 const doors = computed(() => props.value?.doors || [])
+
+const isDisabled = computed(() => (
+  props.disabled
+    || store.player.isConnectedToServer
+    || store.player.isInCombat
+    || store.player.isInDialog
+))
 
 const logsChanged = () => {
   setTimeout(() => {

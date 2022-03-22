@@ -1,4 +1,4 @@
-import { can, checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -54,11 +54,11 @@ export default {
     if (this.isOnServer) {
       store.game.playSound('hd')
     }
-    log(`Deleting file ${this.name.toLowerCase()}...`)
+    log(`Deleting file ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     return this.operate('del', async () => {
       store.game.stopSound('hd')
       this.remove()
-      log(`You have successfully deleted the file ${this.name.toLowerCase()}`)
+      log(`You have successfully deleted the file ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onDel')
     }, this.weight)
   },

@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 
 /**
  * Make the object examinable
@@ -43,7 +43,7 @@ export default {
     return can(this, [
       {
         expr: () => !this.isExaminable,
-        log: `${this.name} cannot be examined`
+        log: () => `${this.name} cannot be examined`
       },
     ], showMessage, 'examine')
   },
@@ -53,7 +53,7 @@ export default {
       return false
     }
     this.examined += 1
-    log(`You examine the ${this.name.toLowerCase()} but find nothing particular about it.`)
+    log(`You examine the ${this.name.toLowerCase()} but find nothing particular about it.`, LOG_WARN, this.icon)
     await emit.call(this, 'onExamine')
     return true
   },

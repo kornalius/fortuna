@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 
 /**
  * Allow item to be activated or disactivated
@@ -81,9 +81,9 @@ export default {
     if (!this.canActivate()) {
       return false
     }
-    log(`Activating ${this.name.toLowerCase()}...`)
+    log(`Activating ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     await this.operate('activate', async () => {
-      log(`You have activated ${this.name.toLowerCase()}`)
+      log(`You have activated ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onActivate')
     }, this.activationDelay)
     return true
@@ -93,11 +93,11 @@ export default {
     return can(this, [
       {
         expr: () => !this.isDisactivable,
-        log: `${this.name} cannot be deactivated`
+        log: () => `${this.name} cannot be deactivated`
       },
       {
         expr: () => !this.isActive,
-        log: `${this.name} is already deactivated`
+        log: () => `${this.name} is already deactivated`
       },
     ], showMessage, 'disactivate')
   },
@@ -106,9 +106,9 @@ export default {
     if (!this.canDisactivate()) {
       return false
     }
-    log(`Disactivating ${this.name.toLowerCase()}...`)
+    log(`Disactivating ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     await this.operate('disactivate', async () => {
-      log(`You have disactivated ${this.name.toLowerCase()}`)
+      log(`You have disactivated ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onActivate')
     }, this.activationDelay)
     return true

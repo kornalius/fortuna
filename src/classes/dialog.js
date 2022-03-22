@@ -1,6 +1,6 @@
 import Entity from '../entity'
 import { store } from '@/store'
-import { can, emit, log, mixin, registerClass } from '@/utils'
+import { can, emit, log, LOG_WARN, mixin, registerClass } from '@/utils'
 import Code from '@/mixins/code'
 import Requirements from '@/mixins/requirements'
 
@@ -12,7 +12,7 @@ export default class Dialog extends Entity {
     text: 'Bye',
     disabled: async () => false,
     say: async () => {
-      log('You leave the conversation')
+      log('You leave the conversation', LOG_WARN)
       await this.bye()
     },
   }

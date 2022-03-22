@@ -1,4 +1,4 @@
-import { can, checkSoftware, emit, log } from '@/utils'
+import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -60,9 +60,9 @@ export default {
     if (!this.canDecrypt(true)) {
       return false
     }
-    log(`Decrypting file ${this.name.toLowerCase()}...`)
+    log(`Decrypting file ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     return this.operate('decrypt', async () => {
-      log(`You have successfully decrypted the file ${this.name.toLowerCase()}`)
+      log(`You have successfully decrypted the file ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onDecrypt')
       this.crypted = false
     }, this.version)

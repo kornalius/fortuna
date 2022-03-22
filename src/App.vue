@@ -136,6 +136,7 @@ body {
 @import "/public/styles/glowing";
 @import "/public/styles/freeze";
 @import "/public/styles/fade-in";
+@import "/public/styles/log";
 
 .background-anim {
   position: absolute;

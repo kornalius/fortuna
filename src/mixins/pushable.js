@@ -48,19 +48,19 @@ export default {
     return can(this, [
       {
         expr: !this.isPushable,
-        log: `${this.name} cannot be pushed`
+        log: () => `${this.name} cannot be pushed`
       },
       {
         expr: this.isPushed,
-        log: `${this.name} is already pushed`
+        log: () => `${this.name} is already pushed`
       },
       {
         expr: store.player.isInCombat,
-        log: 'You cannot push this while in combat'
+        log: () => 'You cannot push this while in combat'
       },
       {
         expr: store.player.isInDialog,
-        log: 'You cannot push this while in conversation'
+        log: () => 'You cannot push this while in conversation'
       },
     ], showMessage, 'push')
   },
@@ -69,9 +69,9 @@ export default {
     if (!this.canPush()) {
       return false
     }
-    log(`Pushing ${this.name.toLowerCase()}...`)
+    log(`Pushing ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     await this.operate('push', async () => {
-      log(`You have pushed ${this.name.toLowerCase()}`)
+      log(`You have pushed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onPush')
     }, this.pushDelay)
     return true

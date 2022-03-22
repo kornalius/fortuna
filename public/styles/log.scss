@@ -1,0 +1,10 @@
+@keyframes new-log {
+  0% {
+    opacity: 0;
+    filter: grayscale(100%);
+  }
+  100% {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+}

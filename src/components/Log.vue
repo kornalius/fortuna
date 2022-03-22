@@ -1,28 +1,34 @@
 <template>
-<!--  <icon-->
-<!--    icon="server"-->
-<!--    :scale-x="3"-->
-<!--    :scale-y="3"-->
-<!--  />-->
-
   <div
     v-for="log in logs"
     :key="log.id"
-    :class="{ line: true, important: log.isImportant }"
+    :class="{
+      important: log.isImportant,
+      irrelevant: log.isIrrelevant,
+      warning: log.isWarning,
+      error: log.isError,
+    }"
   >
-    <span
+    <div
       v-for="(msg, i) in log.message"
       :key="`${log.id}-${i}`"
-      class="mr2"
-      v-html="msg"
-    />
+      class="flex mr2 line"
+    >
+      <icon
+        v-if="log.icon"
+        class="mr2"
+        :icon="icons[log.icon]"
+      />
+
+      <span v-html="msg" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { computed, watch } from 'vue'
 import { store } from '../store'
-// import Icon from '@/components/Icon'
+import icons from '@/icons'
 
 const logs = computed(() => {
   return store.logs.list
@@ -39,11 +45,20 @@ watch(logs, () => {
 
 <style scoped>
 .line {
-  line-height: 1.75em;
-  margin-bottom: 1em;
+  line-height: 2em;
+  animation: new-log ease-in .5s;
 }
 .important {
   font-weight: bolder;
   font-size: 1.25em;
+}
+.irrelevant {
+  color: whitesmoke;
+}
+.warning {
+  color: #F19936;
+}
+.error {
+  color: #D12E2E;
 }
 </style>

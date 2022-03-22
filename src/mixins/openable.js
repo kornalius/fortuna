@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -75,7 +75,7 @@ export default {
       return false
     }
     this.opened = true
-    log(`You opened ${this.name.toLowerCase()}`)
+    log(`You opened ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
     await emit.call(this, 'onOpen')
     return true
   },
@@ -108,7 +108,7 @@ export default {
       return false
     }
     this.opened = false
-    log(`You closed ${this.name.toLowerCase()}`)
+    log(`You closed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
     await emit.call(this, 'onClose')
     return true
   },

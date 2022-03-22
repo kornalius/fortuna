@@ -1,4 +1,4 @@
-import { log } from '@/utils'
+import { log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 export default {
@@ -14,9 +14,9 @@ export default {
 
   onExamine() {
     if (!store.player.has(this)) {
-      log('You read the sticker on the bottle, it seems to belong to, YOU?')
+      log('You read the sticker on the bottle, it seems to belong to, YOU?', LOG_WARN, this.icon)
     } else {
-      log('A bottle of prescribed pills to your name')
+      log('A bottle of prescribed pills to your name', LOG_WARN, this.icon)
     }
   },
 }

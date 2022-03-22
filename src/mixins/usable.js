@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -69,7 +69,7 @@ export default {
       return false
     }
 
-    log(`You use the ${this.name.toLowerCase()}`)
+    log(`You use the ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
     await emit.call(this, 'onUse')
 
     if (!this.hasUnlimitedUses) {

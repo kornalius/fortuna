@@ -1,7 +1,7 @@
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
 import random from 'lodash/random'
-import { can, checkSoftware, emit, log, mixin, pickRandom, randomFilename, registerClass } from '@/utils'
+import { can, checkSoftware, emit, log, LOG_WARN, mixin, pickRandom, randomFilename, registerClass } from '@/utils'
 import Item from '../items/item'
 import File from './file'
 import { store } from '@/store'
@@ -297,7 +297,7 @@ export default class Server extends Item {
       this.clear()
       store.player.server = this
       await this.visit()
-      log(`You have successfully connected to ${this.name.toLowerCase()}`)
+      log(`You have successfully connected to ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onConnect')
     })
   }
@@ -360,7 +360,7 @@ export default class Server extends Item {
     return this.operate('disconnect', async () => {
       store.player.server = null
       store.game.stopSound('hum')
-      log(`You have successfully disconnected from ${this.name}`)
+      log(`You have successfully disconnected from ${this.name}`, LOG_WARN, this.icon)
       await emit.call(this, 'onDisconnect')
     })
   }
@@ -395,12 +395,12 @@ export default class Server extends Item {
       return false
     }
     if (!this.isProtected) {
-      log(`Authenticating on ${this.name.toLowerCase()}...`)
+      log(`Authenticating on ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
       this.authenticating = true
       return this.operate('authenticate', async () => {
         this.authenticated = true
         this.authenticating = false
-        log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
+        log(`You have successfully authenticated on ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
         await emit.call(this, 'onAuthenticate')
       }, this.version)
     }
@@ -445,13 +445,13 @@ export default class Server extends Item {
     this.state.crackedname = undefined
     this.state.crackedpwd = undefined
     store.game.playSound('keyboard')
-    log(`Cracking ${this.name.toLowerCase()}...`)
+    log(`Cracking ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     return this.operate('crack', async () => {
       store.game.stopSound('keyboard')
       this.protected = false
       this.authenticated = true
       this.authenticating = false
-      log(`You have successfully cracked ${this.name.toLowerCase()}`)
+      log(`You have successfully cracked ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onCrack')
       log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
       await emit.call(this, 'onAuthenticate')

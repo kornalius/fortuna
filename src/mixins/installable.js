@@ -87,11 +87,11 @@ export default {
       return false
     }
     store.game.playSound('hd2')
-    log(`Installing ${this.name.toLowerCase()}...`)
+    log(`Installing ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     return this.operate('install', async () => {
       store.game.stopSound('hd2')
       this.installed = true
-      log(`You have successfully installed ${this.name.toLowerCase()}`)
+      log(`You have successfully installed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onInstall')
     },this.weight)
   },
@@ -121,11 +121,11 @@ export default {
       return false
     }
     store.game.playSound('hd2')
-    log(`Uninstalling ${this.name.toLowerCase()}...`)
+    log(`Uninstalling ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     return this.operate('uninstall', async () => {
       store.game.stopSound('hd2')
       this.installed = false
-      log(`You have successfully uninstalled ${this.name.toLowerCase()}`)
+      log(`You have successfully uninstalled ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onUninstall')
     }, this.weight)
   },

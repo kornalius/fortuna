@@ -3,17 +3,21 @@ import random from 'lodash/random'
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
 import { store } from './store'
-import Log from './classes/log'
+import Log, { LOG_IRRELEVANT, LOG_IMPORTANT, LOG_WARN, LOG_ERROR } from './classes/log'
 import { fileNouns, adjectives, filetypes, maleNames, lastNames, femaleNames } from '@/words'
+
+export { LOG_IRRELEVANT, LOG_IMPORTANT, LOG_WARN, LOG_ERROR }
 
 /**
  * Adds a log message to the logs store
  * @param message
+ * @param icon
  * @param level
  */
-export const log = (message, level = 0) => {
+export const log = (message, level = 0, icon) => {
   store.logs.update(new Log({
     message: Array.isArray(message) ? message : [message],
+    icon,
     level,
   }))
 }
@@ -128,19 +132,19 @@ export const operationTimeout = size => {
 export function checkSoftware(software, showMessage) {
   if (this.isBusy) {
     if (showMessage) {
-      log(`${this.name} is locked while an operation is running on it`)
+      log(`${this.name} is locked while an operation is running on it`, LOG_ERROR, this.icon)
     }
     return false
   }
   if (software?.isBusy) {
     if (showMessage) {
-      log(`${software.name} is locked while an operation is running on it`)
+      log(`${software.name} is locked while an operation is running on it`, LOG_ERROR, this.icon)
     }
     return false
   }
   if (software && software.version < this.version) {
     if (showMessage) {
-      log(`You need an installed ${showMessage} v${this.version} software to execute this operation`)
+      log(`You need an installed ${showMessage} v${this.version} software to execute this operation`, LOG_ERROR, this.icon)
     }
     return false
   }
@@ -249,7 +253,7 @@ export const can = (self, checks, showMessage, actionName) => {
   for (const check of checks) {
     if (check.expr()) {
       if (showMessage && check.log) {
-        log(check.log())
+        log(check.log(), LOG_ERROR, self.icon)
       }
       return false
     }

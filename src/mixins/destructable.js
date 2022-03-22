@@ -1,5 +1,5 @@
 import random from 'lodash/random'
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -59,19 +59,19 @@ export default {
     return can(this, [
       {
         expr: () => !this.isDestructable,
-        log: `${this.name} cannot be destroyed`
+        log: () => `${this.name} cannot be destroyed`
       },
       {
         expr: () => this.isDestroyed,
-        log: `${this.name} has already been destroyed`
+        log: () => `${this.name} has already been destroyed`
       },
       {
         expr: () => store.player.isInCombat,
-        log: 'You cannot destroy this while in combat'
+        log: () => 'You cannot destroy this while in combat'
       },
       {
         expr: () => store.player.isInDialog,
-        log: 'You cannot destroy this while in conversation'
+        log: () => 'You cannot destroy this while in conversation'
       },
     ], showMessage, 'destroy')
   },
@@ -80,14 +80,14 @@ export default {
     if (!this.canDestroy()) {
       return false
     }
-    log(`Damaging ${this.name.toLowerCase()}...`)
+    log(`Damaging ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     await this.operate('destroy', async () => {
       const dmg = random(this.destroyAmount)
       this.destroyed += dmg
       if (this.isDestroyed) {
-        log(`You have destroyed ${this.name.toLowerCase()}`)
+        log(`You have destroyed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       } else {
-        log(`You have damaged ${this.name.toLowerCase()} by ${dmg}`)
+        log(`You have damaged ${this.name.toLowerCase()} by ${dmg}`, LOG_WARN, this.icon)
       }
       await emit.call(this, 'onDestroy', dmg)
       if (this.isDestroyed && this.removeWhenDestroyed) {

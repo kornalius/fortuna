@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -60,7 +60,7 @@ export default {
     this.location = store.game.room
     // the object is now new to its new location
     this.hovered = false
-    log(`You drop ${this.name.toLowerCase()}`)
+    log(`You drop ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
     await emit.call(this, 'onDrop')
     return true
   },

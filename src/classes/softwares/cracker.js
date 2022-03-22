@@ -1,6 +1,6 @@
 import Software from '@/classes/softwares/software'
 import { store } from '@/store'
-import { emit, log, registerClass } from '@/utils'
+import { emit, log, LOG_ERROR, registerClass } from '@/utils'
 
 export default class Cracker extends Software {
   setupInstance(data) {
@@ -30,7 +30,7 @@ export default class Cracker extends Software {
   canCrack(showMessage) {
     if (!store.player.server) {
       if (showMessage) {
-        log(`You need to be connected to a terminal first`)
+        log(`You need to be connected to a terminal first`, LOG_ERROR, this.icon)
       }
       return false
     }

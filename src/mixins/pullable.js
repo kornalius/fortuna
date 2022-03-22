@@ -48,19 +48,19 @@ export default {
     return can(this, [
       {
         expr: () => !this.isPullable,
-        log: `${this.name} cannot be pulled`
+        log: () => `${this.name} cannot be pulled`
       },
       {
         expr: () => this.isPulled,
-        log: `${this.name} is already pulled`
+        log: () => `${this.name} is already pulled`
       },
       {
         expr: () => store.player.isInCombat,
-        log: 'You cannot pull this while in combat'
+        log: () => 'You cannot pull this while in combat'
       },
       {
         expr: () => store.player.isInDialog,
-        log: 'You cannot pull this while in conversation'
+        log: () => 'You cannot pull this while in conversation'
       },
     ], showMessage, 'pull')
   },
@@ -69,9 +69,9 @@ export default {
     if (!this.canPull()) {
       return false
     }
-    log(`Pulling ${this.name.toLowerCase()}...`)
+    log(`Pulling ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     await this.operate('pull', async () => {
-      log(`You have pulled ${this.name.toLowerCase()}`)
+      log(`You have pulled ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       await emit.call(this, 'onPull')
     }, this.pullDelay)
     return true

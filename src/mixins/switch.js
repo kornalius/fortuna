@@ -1,4 +1,4 @@
-import { emit, log } from '@/utils'
+import { emit, log, LOG_WARN } from '@/utils'
 
 /**
  * Adds an on/off state to the object
@@ -20,7 +20,7 @@ export default {
 
   async toggle() {
     if (!this.canUse(true)) {
-      log(`You cannot toggle the ${this.name.toLowerCase()}`)
+      log(`You cannot toggle the ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       return false
     }
     this.isOn = !this.isOn

@@ -1,4 +1,4 @@
-import { color, log } from '@/utils'
+import { color, log, LOG_IMPORTANT } from '@/utils'
 import Server from '@/classes/server/server'
 import TestRoomServer from './servers'
 import Npc from '@/classes/npcs/npc'
@@ -31,7 +31,7 @@ export default {
 
   async onEnter() {
     if (this.firstVisit) {
-      log(`Welcome to ${ color('red', 'Fortuna') }`, 1)
+      log(`Welcome to ${ color('red', 'Fortuna') }`, LOG_IMPORTANT)
       log('A text adventure game, spiced up with elements of Roleplaying games.')
       log([
         `${ color('blue', 'This is the tutorial room.') }`,

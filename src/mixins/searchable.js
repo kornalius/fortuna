@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -45,23 +45,23 @@ export default {
     return can(this, [
       {
         expr: () => !this.isSearchable,
-        log: `${this.name} cannot be searched`,
+        log: () => `${this.name} cannot be searched`,
       },
       {
         expr: () => this.searched > 0,
-        log: `${this.name} has already been searched`,
+        log: () => `${this.name} has already been searched`,
       },
       {
         expr: () => store.player.isInCombat,
-        log: `${this.name} can only be searched outside of combat`,
+        log: () => `${this.name} can only be searched outside of combat`,
       },
       {
         expr: () => store.player.isInDialog,
-        log: 'You cannot search this while in conversation',
+        log: () => 'You cannot search this while in conversation',
       },
       {
         expr: () => this.isOpenable && this.isClosed,
-        log: `${this.name} needs to be opened first before you can search it`,
+        log: () => `${this.name} needs to be opened first before you can search it`,
       },
     ], showMessage, 'search')
   },
@@ -71,7 +71,7 @@ export default {
       return false
     }
     this.searched += 1
-    log(`You search the ${this.name.toLowerCase()}`)
+    log(`You search the ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
     await emit.call(this, 'onSearch')
     return true
   },

@@ -1,5 +1,5 @@
 import random from 'lodash/random'
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 
 /**
  * Make object consumable
@@ -55,11 +55,11 @@ export default {
     return can(this, [
       {
         expr: () => this.isConsumable,
-        log: `${this.name} cannot not consumable`
+        log: () => `${this.name} cannot not consumable`
       },
       {
         expr: () => this.isConsumed,
-        log: `${this.name} has already been fully consumed`
+        log: () => `${this.name} has already been fully consumed`
       },
     ], showMessage, 'consume')
   },
@@ -68,14 +68,14 @@ export default {
     if (!this.canConsume()) {
       return false
     }
-    log(`Consuming ${this.name.toLowerCase()}...`)
+    log(`Consuming ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
     await this.operate('consume', async () => {
       const dmg = random(this.consumeAmount)
       this.consumed += dmg
       if (this.isConsumed) {
-        log(`You have fully consumed ${this.name.toLowerCase()}`)
+        log(`You have fully consumed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       } else {
-        log(`You have consumed ${dmg} from ${this.name.toLowerCase()}`)
+        log(`You have consumed ${dmg} from ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
       }
       await emit.call(this, 'onConsume', dmg)
       if (this.isConsumed && this.removeWhenConsumed) {

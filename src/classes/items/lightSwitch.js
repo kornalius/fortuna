@@ -17,7 +17,7 @@ export default class LightSwitch extends Item {
     log([
       'It\'s a normal looking light switch, nothing special about it other than the little button in the middle',
       this.isOn ? 'It is ON' : 'It is OFF',
-    ])
+    ], 0, this.icon)
     return super.onExamine()
   }
 }

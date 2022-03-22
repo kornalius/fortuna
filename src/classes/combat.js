@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import Entity from '../entity'
 import { store } from '@/store'
-import { emit, log, delay, mixin, registerClass, can } from '@/utils'
+import { emit, log, delay, mixin, registerClass, can, LOG_WARN, LOG_ERROR } from '@/utils'
 import Requirements from '@/mixins/requirements'
 import { multiplier as multiplierParticles } from '@/particles'
 
@@ -156,7 +156,7 @@ export default class Combat extends Entity {
 
   async nextTurn() {
     this.processing = true
-    log('Next turn started')
+    log('Next turn started', LOG_WARN)
 
     this.bonus = {}
     this.turn += 1
@@ -192,13 +192,13 @@ export default class Combat extends Entity {
   canReroll(showMessage) {
     if (!this.hasSelected) {
       if (showMessage) {
-        log('You need to select dice to reroll first')
+        log('You need to select dice to reroll first', LOG_WARN)
       }
       return false
     }
     if (store.player.rolls <= 0) {
       if (showMessage) {
-        log('You cannot reroll anymore')
+        log('You cannot reroll anymore', LOG_ERROR)
       }
       return false
     }
@@ -362,12 +362,12 @@ export default class Combat extends Entity {
 
     if (store.player.hp > 0) {
       this.won = true
-      log('You have won the battle')
+      log('You have won the battle', LOG_WARN)
       await emit.call(this, 'onWin')
       return true
     }
 
-    log('You have lost the battle')
+    log('You have lost the battle', LOG_ERROR)
     await emit.call(this, 'onLose')
     return true
   }
@@ -392,13 +392,13 @@ export default class Combat extends Entity {
     }
     if (store.player.rolls <= 0) {
       if (showMessage) {
-        log('You have no rerolls left')
+        log('You have no rerolls left', LOG_ERROR)
       }
       return false
     }
     if (this.isSelected(index)) {
       if (showMessage) {
-        log('This die is already selected')
+        log('This die is already selected', LOG_ERROR)
       }
       return false
     }
@@ -419,7 +419,7 @@ export default class Combat extends Entity {
   canUnselect(index, showMessage) {
     if (!this.isSelected(index)) {
       if (showMessage) {
-        log('This die is not selected')
+        log('This die is not selected', LOG_ERROR)
       }
       return false
     }
@@ -604,7 +604,7 @@ export default class Combat extends Entity {
     }
 
     if (dmg > 0) {
-      log(`${store.player.name} attack for ${dmg} damage`)
+      log(`${store.player.name} attack for ${dmg} damage`, LOG_WARN)
       this.npc.hp -= dmg
       await this.showDamage('npc', dmg)
       await emit.call(this, 'onAttack', dmg)
@@ -627,7 +627,7 @@ export default class Combat extends Entity {
       store.player.hp += dice.length
       const v = (store.player.hp - o) * (this.multipliers['H'] || 1) + (this.bonus['H'] || 0)
       if (v > 0) {
-        log(`${store.player.name} gains ${v} life`)
+        log(`${store.player.name} gains ${v} life`, LOG_WARN)
         await delay(500)
         await emit.call(this, 'onGainLife', v)
       }
@@ -646,7 +646,7 @@ export default class Combat extends Entity {
     const dmg = dice.length
     await this.highlightDice('player', dice)
     if (dmg > 0) {
-      log(`${store.player.name} receive ${dmg} damage(s)`)
+      log(`${store.player.name} receive ${dmg} damage(s)`, LOG_ERROR)
       store.game.playSound('bomb')
       store.player.hp -= dmg
       await this.showDamage('player', dmg, false)
@@ -683,7 +683,7 @@ export default class Combat extends Entity {
       }
 
       if (dmg > 0) {
-        log(`${this.npc.name} hits for ${dmg} damage(s)`)
+        log(`${this.npc.name} hits for ${dmg} damage(s)`, LOG_WARN)
         store.player.hp -= dmg
         await this.showDamage('player', dmg)
         await emit.call(this, 'onNpcAttack', dmg)
@@ -714,7 +714,7 @@ export default class Combat extends Entity {
           : npcShields - busters) * (this.multipliers['X'] || 1)
         if (v > 0) {
           store.game.playSound('metal-hit')
-          log(`${store.player.name} bust ${v} shield(s)`)
+          log(`${store.player.name} bust ${v} shield(s)`, LOG_WARN)
           for (let c = 0; c < v; c++) {
             const i = this.npc.shieldDiceIndexes[0]
             this.npc.dice.splice(i, 1)
