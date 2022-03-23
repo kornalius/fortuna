@@ -1,10 +1,12 @@
-import { reactive } from 'vue'
+import { createApp, reactive } from 'vue'
 import random from 'lodash/random'
 import shuffle from 'lodash/shuffle'
 import compact from 'lodash/compact'
 import { store } from './store'
 import Log, { LOG_IRRELEVANT, LOG_IMPORTANT, LOG_WARN, LOG_ERROR } from './classes/log'
 import { fileNouns, adjectives, filetypes, maleNames, lastNames, femaleNames } from '@/words'
+import icons from '@/icons'
+import Icon from '@/components/Icon'
 
 export { LOG_IRRELEVANT, LOG_IMPORTANT, LOG_WARN, LOG_ERROR }
 
@@ -106,6 +108,34 @@ export const mixin = (cl, o) => {
  * @returns {string}
  */
 export const color = (color, text) => `<span class="${color}">${text}</span>`
+
+/**
+ * Generate an icon tag
+ *
+ * @param icon
+ * @param scale
+ */
+export const icon = (icon, scale = 1) => (
+  render(`<icon icon="${icons[icon]}" :scale="${scale}" />`)
+)
+
+/**
+ * Render a Vue template string into an HTML string
+ *
+ * @param template
+ * @returns {string}
+ */
+export const render = template => {
+  const id = `render-${nanoid()}`
+  const el = document.createElement('span')
+  el.setAttribute('id', id)
+  setTimeout(() => {
+    createApp({ template })
+      .component('icon', Icon)
+      .mount(`#${id}`)
+  })
+  return el.outerHTML
+}
 
 /**
  * Returns a random operation timeout time in ms

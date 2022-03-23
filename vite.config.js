@@ -7,12 +7,14 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     vue(),
-    // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
   ],
   define: { 'process.env': {} },
   resolve: {
     alias: {
+      vue: 'vue/dist/vue.esm-bundler.js',
       '@': path.resolve(__dirname, 'src'),
+      '/images':  path.resolve(__dirname, 'public/images'),
+      '/sounds':  path.resolve(__dirname, 'public/sounds'),
     },
     extensions: [
       '.js',

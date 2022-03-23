@@ -125,4 +125,5 @@ export default {
   virus: '',
   pill: 'pill',
   keypad: 'keypad',
+  stars: 'stars',
 }

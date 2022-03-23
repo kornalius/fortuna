@@ -1,6 +1,6 @@
 <template>
   <sprite
-    class="flex self-center"
+    class="inline-flex self-center"
     image="/images/icons.png"
     :json="json"
     :frame="icon"
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import json from '/public/images/icons.json'
+import json from '/images/icons.json'
 import Sprite from '@/components/Sprite'
 
 const props = defineProps({
@@ -31,6 +31,3 @@ const props = defineProps({
   filter: { type: String },
 })
 </script>
-
-<style scoped>
-</style>

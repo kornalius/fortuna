@@ -1,5 +1,5 @@
 <template>
-  <div
+  <span
     class="sprite"
     :style="style"
   >
@@ -8,7 +8,7 @@
       :height="canvasSize.height"
       ref="spriteCanvas"
     />
-  </div>
+  </span>
 </template>
 
 <script setup>
@@ -198,7 +198,3 @@ sprite = new Image()
 sprite.src = props.image
 sprite.onload = () => spriteInit()
 </script>
-
-<style scoped>
-
-</style>

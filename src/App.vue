@@ -66,40 +66,6 @@ onUnmounted(() => {
 })
 </script>
 
-<style>
-@font-face{
-  font-family: nokia;
-  src: url('/fonts/nokiafc22.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face{
-  font-family: hacked;
-  src: url('/fonts/Hacked.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face{
-  font-family: pixeled;
-  src: url('/fonts/Pixeltype.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-#app {
-  height: 100%;
-}
-::selection {
-  color: white;
-  background: #2293E1;
-}
-body {
-  font-family: nokia,sans-serif;
-  height: 100vh;
-  background: #18181c;
-  overflow: hidden;
-}
-</style>
-
 <style scoped>
 .title {
   font-family: hacked,sans-serif;
@@ -137,6 +103,38 @@ body {
 @import "/public/styles/freeze";
 @import "/public/styles/fade-in";
 @import "/public/styles/log";
+
+@font-face{
+  font-family: nokia;
+  src: url('/fonts/nokiafc22.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: hacked;
+  src: url('/fonts/Hacked.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family: pixeled;
+  src: url('/fonts/Pixeltype.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+#app {
+  height: 100%;
+}
+::selection {
+  color: white;
+  background: #2293E1;
+}
+body {
+  font-family: nokia,sans-serif;
+  height: 100vh;
+  background: #18181c;
+  overflow: hidden;
+}
 
 .background-anim {
   position: absolute;
