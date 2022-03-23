@@ -19,6 +19,7 @@ import Items from '@/mixins/items'
 import Carry from '@/mixins/carry'
 import Requirements from '@/mixins/requirements'
 import Sleep from '@/mixins/sleep'
+import Tooltip from '@/mixins/tooltip'
 
 export default class Npc extends Entity {
   setupInstance(data) {
@@ -279,6 +280,7 @@ mixin(Npc, [
   Carry,
   Requirements,
   Sleep,
+  Tooltip,
 ])
 
 registerClass(Npc)

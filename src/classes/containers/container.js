@@ -15,6 +15,7 @@ import Pushable from '@/mixins/pushable'
 import Pullable from '@/mixins/pullable'
 import Items from '@/mixins/items'
 import Requirements from '@/mixins/requirements'
+import Tooltip from '@/mixins/tooltip'
 import { store } from '@/store'
 
 export default class Container extends Entity {
@@ -48,6 +49,7 @@ mixin(Container, [
   Pullable,
   Items,
   Requirements,
+  Tooltip,
 ])
 
 registerClass(Container)

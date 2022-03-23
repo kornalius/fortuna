@@ -93,7 +93,13 @@
         </div>
       </div>
 
-      <span>{{ value.description }}</span>
+      <div>
+        <span>{{ value.description }}</span>
+      </div>
+
+      <div v-if="value.tooltip()">
+        <span>{{ value.tooltip() }}</span>
+      </div>
     </n-popover>
   </n-dropdown>
 </template>

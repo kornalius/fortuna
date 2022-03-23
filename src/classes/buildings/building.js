@@ -13,6 +13,7 @@ import Actions from '@/mixins/actions'
 import Visitable from '@/mixins/visitable'
 import Requirements from '@/mixins/requirements'
 import Room from '@/classes/room'
+import Tooltip from '@/mixins/tooltip'
 
 export default class Building extends Entity {
   setupInstance(data) {
@@ -221,6 +222,7 @@ mixin(Building, [
   Actions,
   Visitable,
   Requirements,
+  Tooltip,
 ])
 
 registerClass(Building)

@@ -26,7 +26,9 @@ export default {
     this.addItem(new Server(TestRoomServer))
     this.addItem(new Freeze())
     this.addItem(new Kick())
-    this.addItem(new Roll())
+    this.addItem(new Roll({
+      tooltip() { return 'PENIS' },
+    }))
   },
 
   async onEnter() {

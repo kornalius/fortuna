@@ -22,6 +22,7 @@ import Examinable from '@/mixins/examinable'
 import Pushable from '@/mixins/pushable'
 import Pullable from '@/mixins/pullable'
 import Requirements from '@/mixins/requirements'
+import Tooltip from '@/mixins/tooltip'
 
 export default class Item extends Entity {
   setupInstance(data) {
@@ -60,6 +61,7 @@ mixin(Item, [
   Pushable,
   Pullable,
   Requirements,
+  Tooltip,
 ])
 
 registerClass(Item)

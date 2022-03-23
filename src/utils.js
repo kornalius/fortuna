@@ -59,7 +59,8 @@ export const oppositeDirection = d => {
 
 export const mixState = (s, t) => {
   const m = {}
-  Object.keys({ ...s, ...t }).forEach(k => {
+  const o = { ...s, ...t }
+  Object.keys(o).forEach(k => {
     if (Array.isArray(s?.[k]) || Array.isArray(t?.[k])) {
       m[k] = [...(s?.[k] || []), ...(t?.[k] || [])]
       // if (k === 'requirements') {

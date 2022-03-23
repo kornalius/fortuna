@@ -110,6 +110,10 @@
         <span>{{ value.description }}</span>
       </div>
 
+      <div v-if="value.tooltip()">
+        <span>{{ value.tooltip() }}</span>
+      </div>
+
       <div class="flex mt1 w-100">
         <div class="flex items-center">
           <div
