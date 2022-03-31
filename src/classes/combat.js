@@ -363,6 +363,7 @@ export default class Combat extends Entity {
     if (store.player.hp > 0) {
       this.won = true
       log('You have won the battle', LOG_WARN)
+      store.player.xp += this.npc.level * store.config.combatXP
       await emit.call(this, 'onWin')
       return true
     }

@@ -75,6 +75,11 @@ export default class Config {
       { value: '_', icon: '' }, // BLANK
       { value: '_', icon: '' }, // BLANK
     ],
+
+    // Combat
+
+    // number of XP per NPC level when winning a combat
+    combatXP: 100,
   })
 
   get startDate() { return this.state.startDate }
@@ -114,6 +119,8 @@ export default class Config {
 
   get battleDice() { return this.state.battleDice }
   get npcBattleDice() { return this.state.npcBattleDice }
+
+  get combatXP() { return this.state.combatXP }
 
   async reset() {}
 }
