@@ -385,5 +385,10 @@ export const districtSuffixes = [
 export const bookNames = [
   'Bound for Evil', 'Fatal Duty', 'Caged Angel', 'Tower and the Sickle', 'The man in the City', 'Black Trap',
   'The Prophecy in the Mist', 'Death of the Winged Beast', 'Trap the Past', 'Mark of Fire', 'The Buried Clock',
-  'Death of the Sacred Jackal',
+  'Death of the Sacred Jackal', 'Brave New World', 'To Kill a Mockingbird', 'Highway Holocaust', 'Robinson Crusoe',
+  'Ten Philosophical Mistakes', 'The Long Goodbye', 'The Chessmen of Mars', 'The Chessmen of Mars',
+  'Argonautica', 'The Republic', 'Slaughterhouse‐Five', 'On the Road', 'The Strenuous Life', 'Self Reliance',
+  'Lord of the Flies', 'Leviathan', 'East of Eden', 'The Stranger', 'Into the Wild', 'Moby Dick', 'The Metamorphosis',
+  'Beyond Good and Evil', 'From Here to Eternity', 'For Whom the Bell Tolls', '1984', 'The Universe Next Door',
+  'Stranger in a Stranger Land'
 ]
