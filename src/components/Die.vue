@@ -245,15 +245,13 @@ onMounted(() => {
 .icon {
   padding: 8px;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   /*-webkit-filter: drop-shadow(-1px -1px 1px #333) drop-shadow(1px 1px 1px #fff);*/
 }
 .icon.small {
-  padding: 4px;
   /*-webkit-filter: drop-shadow(-1px -1px 1px #333) drop-shadow(1px 1px 1px #fff);*/
 }
 .icon.xsmall {
-  padding: 4px;
   /*-webkit-filter: drop-shadow(-1px -1px 1px #333) drop-shadow(1px 1px 1px #ddd );*/
 }
 

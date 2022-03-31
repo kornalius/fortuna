@@ -70,6 +70,21 @@
             "rotated": false
         },
         {
+            "idx": 235,
+            "name": "axe",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 165,
             "name": "backetball",
             "origin": [
@@ -130,6 +145,21 @@
             "rotated": false
         },
         {
+            "idx": 239,
+            "name": "bank",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 109,
             "name": "barcode",
             "origin": [
@@ -139,6 +169,36 @@
             "rect": [
                 64,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 211,
+            "name": "basketball-hoop",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 231,
+            "name": "bathtub",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                720,
                 16,
                 16
             ],
@@ -265,6 +325,21 @@
             "rotated": false
         },
         {
+            "idx": 223,
+            "name": "bed-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 139,
             "name": "bell",
             "origin": [
@@ -274,6 +349,21 @@
             "rect": [
                 144,
                 416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 215,
+            "name": "bell-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                688,
                 16,
                 16
             ],
@@ -400,6 +490,21 @@
             "rotated": false
         },
         {
+            "idx": 245,
+            "name": "blood-drop",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 25,
             "name": "bomb",
             "origin": [
@@ -490,6 +595,21 @@
             "rotated": false
         },
         {
+            "idx": 252,
+            "name": "boot-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 42,
             "name": "box",
             "origin": [
@@ -520,6 +640,21 @@
             "rotated": false
         },
         {
+            "idx": 210,
+            "name": "box-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 102,
             "name": "box-wood",
             "origin": [
@@ -529,6 +664,21 @@
             "rect": [
                 192,
                 288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 197,
+            "name": "boxes",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                624,
                 16,
                 16
             ],
@@ -565,6 +715,21 @@
             "rotated": false
         },
         {
+            "idx": 247,
+            "name": "brick",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 111,
             "name": "briefcase",
             "origin": [
@@ -589,6 +754,96 @@
             "rect": [
                 192,
                 528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 185,
+            "name": "building",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 241,
+            "name": "building-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 186,
+            "name": "building-small",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 183,
+            "name": "building-tall",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 187,
+            "name": "building-tall-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 184,
+            "name": "building-tall-old",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                560,
                 16,
                 16
             ],
@@ -685,6 +940,21 @@
             "rotated": false
         },
         {
+            "idx": 226,
+            "name": "call-bell",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 145,
             "name": "camcorder",
             "origin": [
@@ -694,6 +964,36 @@
             "rect": [
                 240,
                 416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 235,
+            "name": "camping",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 240,
+            "name": "can",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                768,
                 16,
                 16
             ],
@@ -754,6 +1054,21 @@
             "rect": [
                 0,
                 352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 255,
+            "name": "candle",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                768,
                 16,
                 16
             ],
@@ -880,6 +1195,21 @@
             "rotated": false
         },
         {
+            "idx": 203,
+            "name": "cash-register-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                624,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 142,
             "name": "cassette",
             "origin": [
@@ -955,6 +1285,21 @@
             "rotated": false
         },
         {
+            "idx": 214,
+            "name": "certificate-wall",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 116,
             "name": "chain",
             "origin": [
@@ -1000,6 +1345,21 @@
             "rotated": false
         },
         {
+            "idx": 61,
+            "name": "chair-metal",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 136,
             "name": "chair2",
             "origin": [
@@ -1009,6 +1369,21 @@
             "rect": [
                 16,
                 432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 222,
+            "name": "chat-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                688,
                 16,
                 16
             ],
@@ -1195,6 +1570,96 @@
             "rotated": false
         },
         {
+            "idx": 207,
+            "name": "clock-square",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 244,
+            "name": "cloud-lighting",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 243,
+            "name": "cloud-rain",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 242,
+            "name": "cloud-sun",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 201,
+            "name": "coffee-maker",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 227,
+            "name": "coin",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 140,
             "name": "compass",
             "origin": [
@@ -1264,6 +1729,21 @@
             "rect": [
                 64,
                 288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 237,
+            "name": "construction",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                752,
                 16,
                 16
             ],
@@ -1480,6 +1960,21 @@
             "rotated": false
         },
         {
+            "idx": 215,
+            "name": "desk-lamp-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 98,
             "name": "desk-phone-off",
             "origin": [
@@ -1570,6 +2065,21 @@
             "rotated": false
         },
         {
+            "idx": 208,
+            "name": "dishes",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 19,
             "name": "diskette",
             "origin": [
@@ -1639,6 +2149,81 @@
             "rect": [
                 32,
                 400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 98,
+            "name": "dot-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 100,
+            "name": "dot-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 99,
+            "name": "dot-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 101,
+            "name": "dot-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 244,
+            "name": "downtown",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                752,
                 16,
                 16
             ],
@@ -1810,6 +2395,21 @@
             "rotated": false
         },
         {
+            "idx": 229,
+            "name": "dynamite",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 130,
             "name": "ear",
             "origin": [
@@ -1819,6 +2419,36 @@
             "rect": [
                 240,
                 368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 246,
+            "name": "earth",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 134,
+            "name": "education",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                400,
                 16,
                 16
             ],
@@ -1924,6 +2554,51 @@
             "rect": [
                 16,
                 448,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 213,
+            "name": "exit-sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 202,
+            "name": "extinguisher",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 196,
+            "name": "extinguisher-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                624,
                 16,
                 16
             ],
@@ -2170,6 +2845,21 @@
             "rotated": false
         },
         {
+            "idx": 210,
+            "name": "fireplace-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                624,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 26,
             "name": "first-aid",
             "origin": [
@@ -2410,6 +3100,36 @@
             "rotated": false
         },
         {
+            "idx": 204,
+            "name": "floor-sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                624,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 240,
+            "name": "flower",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 30,
             "name": "flower-pot",
             "origin": [
@@ -2500,6 +3220,21 @@
             "rotated": false
         },
         {
+            "idx": 196,
+            "name": "frying-pan",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 131,
             "name": "funnel",
             "origin": [
@@ -2509,6 +3244,21 @@
             "rect": [
                 96,
                 400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 201,
+            "name": "gamepad",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                624,
                 16,
                 16
             ],
@@ -2539,6 +3289,21 @@
             "rect": [
                 16,
                 112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 240,
+            "name": "gaz-pump",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                720,
                 16,
                 16
             ],
@@ -2710,6 +3475,36 @@
             "rotated": false
         },
         {
+            "idx": 238,
+            "name": "guitar-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 237,
+            "name": "guitar-electric",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 194,
             "name": "gun",
             "origin": [
@@ -2785,6 +3580,21 @@
             "rotated": false
         },
         {
+            "idx": 187,
+            "name": "hand-point-finger",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 122,
             "name": "hand-right",
             "origin": [
@@ -2800,6 +3610,21 @@
             "rotated": false
         },
         {
+            "idx": 228,
+            "name": "hand-saw",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 120,
             "name": "hand-serve",
             "origin": [
@@ -2809,6 +3634,21 @@
             "rect": [
                 80,
                 368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 193,
+            "name": "hand-stop",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                576,
                 16,
                 16
             ],
@@ -2875,6 +3715,21 @@
             "rotated": false
         },
         {
+            "idx": 239,
+            "name": "hellicopter",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 71,
             "name": "hifi",
             "origin": [
@@ -2884,6 +3739,36 @@
             "rect": [
                 96,
                 208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 234,
+            "name": "hole",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 240,
+            "name": "hospital",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                752,
                 16,
                 16
             ],
@@ -2920,6 +3805,21 @@
             "rotated": false
         },
         {
+            "idx": 243,
+            "name": "industry",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 60,
             "name": "interrogation-mark",
             "origin": [
@@ -2944,6 +3844,21 @@
             "rect": [
                 144,
                 528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 242,
+            "name": "jeans",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                768,
                 16,
                 16
             ],
@@ -3070,6 +3985,81 @@
             "rotated": false
         },
         {
+            "idx": 224,
+            "name": "keyboard-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 59,
+            "name": "keycard-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 60,
+            "name": "keycard-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 61,
+            "name": "keycard-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 58,
+            "name": "keycard-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 145,
             "name": "keypad",
             "origin": [
@@ -3130,6 +4120,36 @@
             "rotated": false
         },
         {
+            "idx": 224,
+            "name": "knife-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 197,
+            "name": "ladder",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 39,
             "name": "lamp",
             "origin": [
@@ -3160,6 +4180,51 @@
             "rotated": false
         },
         {
+            "idx": 216,
+            "name": "laptop-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 217,
+            "name": "laptop-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 221,
+            "name": "laptop-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 24,
             "name": "laundry",
             "origin": [
@@ -3184,6 +4249,51 @@
             "rect": [
                 0,
                 432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 220,
+            "name": "lever",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 63,
+            "name": "lever-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 64,
+            "name": "lever-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                192,
                 16,
                 16
             ],
@@ -3295,6 +4405,21 @@
             "rotated": false
         },
         {
+            "idx": 245,
+            "name": "luck",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 108,
             "name": "luggage",
             "origin": [
@@ -3304,6 +4429,51 @@
             "rect": [
                 208,
                 304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 220,
+            "name": "luggage-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 230,
+            "name": "magnet",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 226,
+            "name": "magnify",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                704,
                 16,
                 16
             ],
@@ -3370,6 +4540,21 @@
             "rotated": false
         },
         {
+            "idx": 245,
+            "name": "manhole",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 97,
             "name": "marker",
             "origin": [
@@ -3379,6 +4564,21 @@
             "rect": [
                 192,
                 272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 249,
+            "name": "meat-slice",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                752,
                 16,
                 16
             ],
@@ -3430,6 +4630,21 @@
             "rotated": false
         },
         {
+            "idx": 212,
+            "name": "medal-wall",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 29,
             "name": "medal2",
             "origin": [
@@ -3439,6 +4654,21 @@
             "rect": [
                 144,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 254,
+            "name": "microscope",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                768,
                 16,
                 16
             ],
@@ -3484,6 +4714,126 @@
             "rect": [
                 224,
                 112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 211,
+            "name": "mirror-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 233,
+            "name": "money",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 221,
+            "name": "money-sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 102,
+            "name": "monitor-screen",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 238,
+            "name": "montain",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 237,
+            "name": "montains",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 247,
+            "name": "moon",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 230,
+            "name": "motorcycle",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                736,
                 16,
                 16
             ],
@@ -3595,6 +4945,21 @@
             "rotated": false
         },
         {
+            "idx": 205,
+            "name": "n64",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 96,
             "name": "new",
             "origin": [
@@ -3634,6 +4999,21 @@
             "rect": [
                 128,
                 320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 213,
+            "name": "night-lamp",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                640,
                 16,
                 16
             ],
@@ -3739,6 +5119,21 @@
             "rect": [
                 144,
                 320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 218,
+            "name": "paper-stack",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                672,
                 16,
                 16
             ],
@@ -3859,6 +5254,21 @@
             "rect": [
                 160,
                 320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 230,
+            "name": "pen",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                704,
                 16,
                 16
             ],
@@ -4045,6 +5455,111 @@
             "rotated": false
         },
         {
+            "idx": 204,
+            "name": "ping-pong",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 176,
+            "name": "pinky",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 250,
+            "name": "pizza-slice",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 213,
+            "name": "plant-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 214,
+            "name": "plant-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 215,
+            "name": "plant-4",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 216,
+            "name": "plant-5",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 24,
             "name": "plant1",
             "origin": [
@@ -4090,6 +5605,36 @@
             "rotated": false
         },
         {
+            "idx": 219,
+            "name": "poison",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 229,
+            "name": "postal-box",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 114,
             "name": "printer",
             "origin": [
@@ -4105,6 +5650,36 @@
             "rotated": false
         },
         {
+            "idx": 219,
+            "name": "printer-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 242,
+            "name": "pub",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 118,
             "name": "puzzle",
             "origin": [
@@ -4114,6 +5689,66 @@
             "rect": [
                 48,
                 368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 220,
+            "name": "question-mark",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 192,
+            "name": "radio-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 218,
+            "name": "radioactive",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 241,
+            "name": "rainbow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                736,
                 16,
                 16
             ],
@@ -4180,6 +5815,21 @@
             "rotated": false
         },
         {
+            "idx": 232,
+            "name": "road-block-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 79,
             "name": "robe",
             "origin": [
@@ -4219,6 +5869,36 @@
             "rect": [
                 192,
                 48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 198,
+            "name": "safe-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 199,
+            "name": "safe-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                608,
                 16,
                 16
             ],
@@ -4375,6 +6055,21 @@
             "rotated": false
         },
         {
+            "idx": 250,
+            "name": "shoe-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 57,
             "name": "shovel",
             "origin": [
@@ -4399,6 +6094,21 @@
             "rect": [
                 192,
                 400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 236,
+            "name": "sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                720,
                 16,
                 16
             ],
@@ -4450,6 +6160,21 @@
             "rotated": false
         },
         {
+            "idx": 200,
+            "name": "small-table-wood",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 110,
             "name": "smartphone",
             "origin": [
@@ -4465,6 +6190,36 @@
             "rotated": false
         },
         {
+            "idx": 223,
+            "name": "smartphone-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 251,
+            "name": "snicker",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 155,
             "name": "soap",
             "origin": [
@@ -4474,6 +6229,21 @@
             "rect": [
                 0,
                 496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 243,
+            "name": "socks",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                768,
                 16,
                 16
             ],
@@ -4525,6 +6295,21 @@
             "rotated": false
         },
         {
+            "idx": 32,
+            "name": "spark",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 43,
             "name": "speaker",
             "origin": [
@@ -4534,6 +6319,36 @@
             "rect": [
                 128,
                 112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 148,
+            "name": "speedometer",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 236,
+            "name": "stadium",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                752,
                 16,
                 16
             ],
@@ -4615,6 +6430,66 @@
             "rotated": false
         },
         {
+            "idx": 190,
+            "name": "stool-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 203,
+            "name": "stool-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 201,
+            "name": "stool-4",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 224,
+            "name": "stop-sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 191,
             "name": "str",
             "origin": [
@@ -4624,6 +6499,21 @@
             "rect": [
                 176,
                 576,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 248,
+            "name": "sun",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                752,
                 16,
                 16
             ],
@@ -4705,6 +6595,51 @@
             "rotated": false
         },
         {
+            "idx": 62,
+            "name": "table-metal",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 205,
+            "name": "table-small",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                624,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 40,
+            "name": "table-steel",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 41,
             "name": "table2",
             "origin": [
@@ -4729,6 +6664,21 @@
             "rect": [
                 128,
                 0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 228,
+            "name": "tag-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                704,
                 16,
                 16
             ],
@@ -4795,6 +6745,21 @@
             "rotated": false
         },
         {
+            "idx": 228,
+            "name": "thermometer-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 91,
             "name": "thumbs-down",
             "origin": [
@@ -4825,6 +6790,36 @@
             "rotated": false
         },
         {
+            "idx": 191,
+            "name": "tire",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 194,
+            "name": "tissue-box",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 35,
             "name": "toaster",
             "origin": [
@@ -4849,6 +6844,66 @@
             "rect": [
                 80,
                 176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 233,
+            "name": "toilet-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 219,
+            "name": "toilet-paper",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 210,
+            "name": "toilet-paper-wall",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 220,
+            "name": "toilet-papers",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                656,
                 16,
                 16
             ],
@@ -4900,6 +6955,36 @@
             "rotated": false
         },
         {
+            "idx": 231,
+            "name": "traffic-lights-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 227,
+            "name": "trash-can",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 24,
             "name": "trashcan",
             "origin": [
@@ -4924,6 +7009,21 @@
             "rect": [
                 32,
                 240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 196,
+            "name": "tree-pine",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                592,
                 16,
                 16
             ],
@@ -5080,6 +7180,21 @@
             "rotated": false
         },
         {
+            "idx": 241,
+            "name": "underwear",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 104,
             "name": "usb-drive",
             "origin": [
@@ -5110,6 +7225,21 @@
             "rotated": false
         },
         {
+            "idx": 195,
+            "name": "vase",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 59,
             "name": "vent",
             "origin": [
@@ -5119,6 +7249,36 @@
             "rect": [
                 64,
                 176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 246,
+            "name": "ventilation-shaft",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 248,
+            "name": "ventilation-shaft-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                784,
                 16,
                 16
             ],
@@ -5149,6 +7309,21 @@
             "rect": [
                 48,
                 48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 209,
+            "name": "wall-monitor",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                624,
                 16,
                 16
             ],
@@ -5200,6 +7375,21 @@
             "rotated": false
         },
         {
+            "idx": 225,
+            "name": "watch",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 82,
             "name": "water",
             "origin": [
@@ -5209,6 +7399,21 @@
             "rect": [
                 192,
                 224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 223,
+            "name": "water-tank",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                672,
                 16,
                 16
             ],
@@ -5254,6 +7459,21 @@
             "rect": [
                 112,
                 560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 195,
+            "name": "wii",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                624,
                 16,
                 16
             ],
@@ -5335,6 +7555,21 @@
             "rotated": false
         },
         {
+            "idx": 146,
+            "name": "wood-sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 71,
             "name": "wrench",
             "origin": [
@@ -5350,7 +7585,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 356,
+    "regions_count": 505,
     "rotations": false,
     "using_grid": true,
     "width": 80
