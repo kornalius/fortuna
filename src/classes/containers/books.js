@@ -1,12 +1,13 @@
 import Container from './container'
+import Searchable from '@/mixins/searchable'
+import { mixin, registerClass } from '@/utils'
 import { books } from '@/generators'
-import { registerClass } from '@/utils'
 
-export default class BookShelf extends Container {
+export default class Books extends Container {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'BookShelf',
-      icon: 'bookshelf',
+      name: 'Books',
+      icon: 'books',
       openable: false,
       pickable: false,
       dropable: false,
@@ -21,4 +22,8 @@ export default class BookShelf extends Container {
   }
 }
 
-registerClass(BookShelf)
+mixin(Books, [
+  Searchable,
+])
+
+registerClass(Books)

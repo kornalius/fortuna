@@ -1,4 +1,4 @@
-import Container from '@/classes/containers/container'
+import Container from './container'
 import { mixin, registerClass } from '@/utils'
 import Pickable from '@/mixins/pickable'
 import Dropable from '@/mixins/dropable'

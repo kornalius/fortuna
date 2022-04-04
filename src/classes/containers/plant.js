@@ -1,4 +1,5 @@
-import Container from '@/classes/containers/container'
+import random from 'lodash/random'
+import Container from './container'
 import { registerClass } from '@/utils'
 
 export default class Plant extends Container {
@@ -6,6 +7,7 @@ export default class Plant extends Container {
     return super.setupInstance({
       name: 'Plant',
       icon: 'plant',
+      iconSuffix: random(1, 6),
       ...data,
     })
   }

@@ -25,6 +25,36 @@
             "rotated": false
         },
         {
+            "idx": 252,
+            "name": "agent-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 251,
+            "name": "agent-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 75,
             "name": "alarm-clock",
             "origin": [
@@ -40,6 +70,21 @@
             "rotated": false
         },
         {
+            "idx": 85,
+            "name": "alarm-clock-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 17,
             "name": "apple",
             "origin": [
@@ -49,6 +94,501 @@
             "rect": [
                 112,
                 32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 91,
+            "name": "arrow-2-left",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 90,
+            "name": "arrow-down",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 89,
+            "name": "arrow-down-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 87,
+            "name": "arrow-down-curved",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 76,
+            "name": "arrow-down-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 81,
+            "name": "arrow-left",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 88,
+            "name": "arrow-left-curved",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 89,
+            "name": "arrow-left-curved-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 80,
+            "name": "arrow-left-down",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 77,
+            "name": "arrow-left-down-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 82,
+            "name": "arrow-left-up",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 79,
+            "name": "arrow-left-up-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 78,
+            "name": "arrow-left-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 54,
+            "name": "arrow-pointer-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 53,
+            "name": "arrow-pointer-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 94,
+            "name": "arrow-redo",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 88,
+            "name": "arrow-right",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 92,
+            "name": "arrow-right-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 86,
+            "name": "arrow-right-curved",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 90,
+            "name": "arrow-right-curved-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 89,
+            "name": "arrow-right-down",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 75,
+            "name": "arrow-right-down-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 87,
+            "name": "arrow-right-up",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 73,
+            "name": "arrow-right-up-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 74,
+            "name": "arrow-right-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 95,
+            "name": "arrow-undo",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 86,
+            "name": "arrow-up",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 90,
+            "name": "arrow-up-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 85,
+            "name": "arrow-up-curved",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 72,
+            "name": "arrow-up-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 85,
+            "name": "arrows-around",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 87,
+            "name": "arrows-rotate",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                256,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 93,
+            "name": "arrows-shrink",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                256,
                 16,
                 16
             ],
@@ -160,6 +700,21 @@
             "rotated": false
         },
         {
+            "idx": 227,
+            "name": "barber-sign",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 109,
             "name": "barcode",
             "origin": [
@@ -169,6 +724,51 @@
             "rect": [
                 64,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 211,
+            "name": "baseball-cap-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 212,
+            "name": "baseball-cap-purple",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 210,
+            "name": "baseball-cap-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                656,
                 16,
                 16
             ],
@@ -505,6 +1105,36 @@
             "rotated": false
         },
         {
+            "idx": 215,
+            "name": "blouse-hanging-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 244,
+            "name": "blouse-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 25,
             "name": "bomb",
             "origin": [
@@ -565,6 +1195,21 @@
             "rotated": false
         },
         {
+            "idx": 222,
+            "name": "books-pile",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 27,
             "name": "bookshelf",
             "origin": [
@@ -604,6 +1249,21 @@
             "rect": [
                 192,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 16,
+            "name": "bowl",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                48,
                 16,
                 16
             ],
@@ -880,6 +1540,96 @@
             "rotated": false
         },
         {
+            "idx": 166,
+            "name": "business-male-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 165,
+            "name": "business-male-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 167,
+            "name": "business-male-old-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 168,
+            "name": "business-male-old-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 174,
+            "name": "business-man-hat-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 175,
+            "name": "business-man-hat-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 180,
             "name": "cactus",
             "origin": [
@@ -1009,6 +1759,21 @@
             "rect": [
                 208,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 186,
+            "name": "cancel-big-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                592,
                 16,
                 16
             ],
@@ -1225,6 +1990,186 @@
             "rotated": false
         },
         {
+            "idx": 172,
+            "name": "casual-female-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 170,
+            "name": "casual-female-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 170,
+            "name": "casual-female-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 173,
+            "name": "casual-female-pink",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 161,
+            "name": "casual-female-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 159,
+            "name": "casual-female-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 171,
+            "name": "casual-male-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 169,
+            "name": "casual-male-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 157,
+            "name": "casual-male-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 169,
+            "name": "casual-male-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 160,
+            "name": "casual-male-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 158,
+            "name": "casual-male-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 20,
             "name": "cd",
             "origin": [
@@ -1360,6 +2305,36 @@
             "rotated": false
         },
         {
+            "idx": 203,
+            "name": "chair-steel-front",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 202,
+            "name": "chair-steel-side",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 136,
             "name": "chair2",
             "origin": [
@@ -1399,6 +2374,21 @@
             "rect": [
                 208,
                 272,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 5,
+            "name": "check-big-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                0,
                 16,
                 16
             ],
@@ -1750,6 +2740,36 @@
             "rotated": false
         },
         {
+            "idx": 160,
+            "name": "construction-worker-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 161,
+            "name": "construction-worker-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 179,
             "name": "contrast",
             "origin": [
@@ -1900,6 +2920,21 @@
             "rotated": false
         },
         {
+            "idx": 216,
+            "name": "cyclone",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 147,
             "name": "database",
             "origin": [
@@ -1975,6 +3010,21 @@
             "rotated": false
         },
         {
+            "idx": 258,
+            "name": "desk-metal",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 98,
             "name": "desk-phone-off",
             "origin": [
@@ -1999,6 +3049,21 @@
             "rect": [
                 144,
                 288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 257,
+            "name": "desk-wood",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                784,
                 16,
                 16
             ],
@@ -2095,6 +3160,36 @@
             "rotated": false
         },
         {
+            "idx": 168,
+            "name": "doctor-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 167,
+            "name": "doctor-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 34,
             "name": "door-close",
             "origin": [
@@ -2104,6 +3199,36 @@
             "rect": [
                 64,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 204,
+            "name": "door-glass-closed",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 199,
+            "name": "door-glass-opened",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                624,
                 16,
                 16
             ],
@@ -2755,6 +3880,21 @@
             "rotated": false
         },
         {
+            "idx": 163,
+            "name": "female-naked",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 26,
             "name": "fence",
             "origin": [
@@ -2800,6 +3940,51 @@
             "rotated": false
         },
         {
+            "idx": 125,
+            "name": "file-binary",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 122,
+            "name": "file-blank",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 128,
+            "name": "file-branch",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 47,
             "name": "file-cabinet",
             "origin": [
@@ -2809,6 +3994,216 @@
             "rect": [
                 192,
                 112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 131,
+            "name": "file-image",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 130,
+            "name": "file-in",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 134,
+            "name": "file-json",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 129,
+            "name": "file-list",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 135,
+            "name": "file-object",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 133,
+            "name": "file-out",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 127,
+            "name": "file-search",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 126,
+            "name": "file-shred",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 125,
+            "name": "file-text",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 132,
+            "name": "file-world",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 120,
+            "name": "files",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 123,
+            "name": "files-side-by-side",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 121,
+            "name": "files-stack",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 124,
+            "name": "files-structure",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                384,
                 16,
                 16
             ],
@@ -3064,6 +4459,21 @@
             "rect": [
                 32,
                 416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 185,
+            "name": "flash",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                592,
                 16,
                 16
             ],
@@ -3340,6 +4750,21 @@
             "rotated": false
         },
         {
+            "idx": 52,
+            "name": "gear-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 133,
             "name": "glass-wine",
             "origin": [
@@ -3355,7 +4780,7 @@
             "rotated": false
         },
         {
-            "idx": 67,
+            "idx": 247,
             "name": "glasses",
             "origin": [
                 8,
@@ -3363,7 +4788,7 @@
             ],
             "rect": [
                 112,
-                192,
+                768,
                 16,
                 16
             ],
@@ -3460,6 +4885,36 @@
             "rotated": false
         },
         {
+            "idx": 254,
+            "name": "guard-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 253,
+            "name": "guard-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 175,
             "name": "guitar",
             "origin": [
@@ -3550,6 +5005,21 @@
             "rotated": false
         },
         {
+            "idx": 51,
+            "name": "hand-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 123,
             "name": "hand-down",
             "origin": [
@@ -3559,6 +5029,36 @@
             "rect": [
                 128,
                 368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 53,
+            "name": "hand-grab-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 52,
+            "name": "hand-grab-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                144,
                 16,
                 16
             ],
@@ -3580,6 +5080,36 @@
             "rotated": false
         },
         {
+            "idx": 12,
+            "name": "hand-point",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 49,
+            "name": "hand-point-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 187,
             "name": "hand-point-finger",
             "origin": [
@@ -3589,6 +5119,21 @@
             "rect": [
                 32,
                 592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 48,
+            "name": "hand-point-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                144,
                 16,
                 16
             ],
@@ -3649,6 +5194,21 @@
             "rect": [
                 208,
                 576,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 50,
+            "name": "hand-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                144,
                 16,
                 16
             ],
@@ -3790,6 +5350,36 @@
             "rotated": false
         },
         {
+            "idx": 47,
+            "name": "hourglass-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 46,
+            "name": "hourglass-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 95,
             "name": "ice-cube",
             "origin": [
@@ -3829,6 +5419,36 @@
             "rect": [
                 240,
                 144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 256,
+            "name": "janitor-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 255,
+            "name": "janitor-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                784,
                 16,
                 16
             ],
@@ -4099,6 +5719,36 @@
             "rect": [
                 64,
                 32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 168,
+            "name": "kid-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 167,
+            "name": "kid-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                496,
                 16,
                 16
             ],
@@ -4534,6 +6184,21 @@
             "rect": [
                 112,
                 480,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 162,
+            "name": "male-naked",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                512,
                 16,
                 16
             ],
@@ -5035,6 +6700,21 @@
             "rotated": false
         },
         {
+            "idx": 234,
+            "name": "notepad",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 7,
             "name": "number",
             "origin": [
@@ -5200,6 +6880,21 @@
             "rotated": false
         },
         {
+            "idx": 65,
+            "name": "pc-terminal",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 44,
             "name": "pc2",
             "origin": [
@@ -5299,6 +6994,51 @@
             "rect": [
                 208,
                 112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 156,
+            "name": "people",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 169,
+            "name": "person",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 170,
+            "name": "person-unknown",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                496,
                 16,
                 16
             ],
@@ -5455,6 +7195,21 @@
             "rotated": false
         },
         {
+            "idx": 196,
+            "name": "pine-tree",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 204,
             "name": "ping-pong",
             "origin": [
@@ -5561,7 +7316,7 @@
         },
         {
             "idx": 24,
-            "name": "plant1",
+            "name": "plant-1",
             "origin": [
                 8,
                 8
@@ -5576,7 +7331,7 @@
         },
         {
             "idx": 38,
-            "name": "plant2",
+            "name": "plant-6",
             "origin": [
                 8,
                 8
@@ -5605,6 +7360,36 @@
             "rotated": false
         },
         {
+            "idx": 45,
+            "name": "pointer-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 55,
+            "name": "pointer-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 219,
             "name": "poison",
             "origin": [
@@ -5620,6 +7405,36 @@
             "rotated": false
         },
         {
+            "idx": 250,
+            "name": "police-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 249,
+            "name": "police-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 229,
             "name": "postal-box",
             "origin": [
@@ -5629,6 +7444,21 @@
             "rect": [
                 144,
                 704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 51,
+            "name": "potion-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                160,
                 16,
                 16
             ],
@@ -5704,6 +7534,21 @@
             "rect": [
                 80,
                 688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 82,
+            "name": "radio",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                240,
                 16,
                 16
             ],
@@ -5935,6 +7780,51 @@
             "rotated": false
         },
         {
+            "idx": 192,
+            "name": "scanner-device",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 163,
+            "name": "scientist-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 162,
+            "name": "scientist-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 74,
             "name": "scisors",
             "origin": [
@@ -6034,6 +7924,96 @@
             "rect": [
                 48,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 208,
+            "name": "shirt-hanging-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 209,
+            "name": "shirt-hanging-white-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 206,
+            "name": "shirt-hanging-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 245,
+            "name": "shirt-hockey",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 50,
+            "name": "shirt-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 249,
+            "name": "shirt-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                768,
                 16,
                 16
             ],
@@ -6295,6 +8275,21 @@
             "rotated": false
         },
         {
+            "idx": 17,
+            "name": "soup-bowl",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 32,
             "name": "spark",
             "origin": [
@@ -6499,6 +8494,51 @@
             "rect": [
                 176,
                 576,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 31,
+            "name": "street-lamp-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 32,
+            "name": "street-lamp-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 33,
+            "name": "street-lamp-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                96,
                 16,
                 16
             ],
@@ -6715,6 +8755,21 @@
             "rotated": false
         },
         {
+            "idx": 54,
+            "name": "target-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 161,
             "name": "target2",
             "origin": [
@@ -6754,6 +8809,36 @@
             "rect": [
                 208,
                 688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 165,
+            "name": "thief-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 164,
+            "name": "thief-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                496,
                 16,
                 16
             ],
@@ -7015,21 +9100,6 @@
             "rotated": false
         },
         {
-            "idx": 196,
-            "name": "tree-pine",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                176,
-                592,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 104,
             "name": "trophy",
             "origin": [
@@ -7285,6 +9355,36 @@
             "rotated": false
         },
         {
+            "idx": 205,
+            "name": "vest-hanging-brown",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 207,
+            "name": "vest-hanging-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 19,
             "name": "vial",
             "origin": [
@@ -7450,6 +9550,21 @@
             "rotated": false
         },
         {
+            "idx": 193,
+            "name": "weight-small",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 182,
             "name": "weight-white",
             "origin": [
@@ -7583,9 +9698,84 @@
                 16
             ],
             "rotated": false
+        },
+        {
+            "idx": 229,
+            "name": "wrench-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 56,
+            "name": "zoom-in-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 55,
+            "name": "zoom-in-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 58,
+            "name": "zoom-out-black",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 57,
+            "name": "zoom-out-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                144,
+                16,
+                16
+            ],
+            "rotated": false
         }
     ],
-    "regions_count": 505,
+    "regions_count": 651,
     "rotations": false,
     "using_grid": true,
     "width": 80

@@ -218,3 +218,13 @@ export const loot = (classesOrInstances, min = 1, max = 5) => {
     return coi
   })
 }
+
+export const search = (self, content) => {
+  content.forEach(c => {
+    let q = c.qty || 1
+    if (Array.isArray(c.qty) && c.qty.length === 2) {
+      q = random(c.qty[0], c.qty[1])
+    }
+    self.addItem(new c.klass({ qty: q }))
+  })
+}

@@ -1,4 +1,4 @@
-import Container from '@/classes/containers/container'
+import Container from './container'
 import { registerClass } from '@/utils'
 import { store } from '@/store'
 
