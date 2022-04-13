@@ -1015,6 +1015,36 @@
             "rotated": false
         },
         {
+            "idx": 250,
+            "name": "bite",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 251,
+            "name": "bite-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 195,
             "name": "bleed",
             "origin": [
@@ -1105,6 +1135,21 @@
             "rotated": false
         },
         {
+            "idx": 259,
+            "name": "bloodbag",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 215,
             "name": "blouse-hanging-white",
             "origin": [
@@ -1129,6 +1174,21 @@
             "rect": [
                 64,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 261,
+            "name": "blueprint",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                816,
                 16,
                 16
             ],
@@ -1225,6 +1285,21 @@
             "rotated": false
         },
         {
+            "idx": 257,
+            "name": "bookshelf-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 63,
             "name": "boot",
             "origin": [
@@ -1271,7 +1346,7 @@
         },
         {
             "idx": 42,
-            "name": "box",
+            "name": "box-carton-1",
             "origin": [
                 8,
                 8
@@ -1286,7 +1361,7 @@
         },
         {
             "idx": 110,
-            "name": "box-carton",
+            "name": "box-carton-2",
             "origin": [
                 8,
                 8
@@ -1316,7 +1391,7 @@
         },
         {
             "idx": 102,
-            "name": "box-wood",
+            "name": "box-wood-1",
             "origin": [
                 8,
                 8
@@ -1324,6 +1399,36 @@
             "rect": [
                 192,
                 288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 67,
+            "name": "box-wood-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 68,
+            "name": "box-wood-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                208,
                 16,
                 16
             ],
@@ -2644,6 +2749,21 @@
             "rect": [
                 112,
                 704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 255,
+            "name": "colors",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                816,
                 16,
                 16
             ],
@@ -4585,8 +4705,23 @@
             "rotated": false
         },
         {
-            "idx": 3,
+            "idx": 252,
             "name": "freeze",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 3,
+            "name": "freeze-2",
             "origin": [
                 8,
                 8
@@ -4969,6 +5104,21 @@
             "rect": [
                 144,
                 592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 264,
+            "name": "hamburger",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                800,
                 16,
                 16
             ],
@@ -6400,6 +6550,21 @@
             "rotated": false
         },
         {
+            "idx": 262,
+            "name": "molecule",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 233,
             "name": "money",
             "origin": [
@@ -7255,6 +7420,21 @@
             "rotated": false
         },
         {
+            "idx": 24,
+            "name": "plant-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 213,
             "name": "plant-2",
             "origin": [
@@ -7315,21 +7495,6 @@
             "rotated": false
         },
         {
-            "idx": 24,
-            "name": "plant-1",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                64,
-                64,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 38,
             "name": "plant-6",
             "origin": [
@@ -7339,6 +7504,21 @@
             "rect": [
                 128,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 265,
+            "name": "plate",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                800,
                 16,
                 16
             ],
@@ -7489,6 +7669,21 @@
             "rect": [
                 144,
                 672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 262,
+            "name": "protect",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                800,
                 16,
                 16
             ],
@@ -7705,6 +7900,21 @@
             "rotated": false
         },
         {
+            "idx": 256,
+            "name": "ruby",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 27,
             "name": "safe",
             "origin": [
@@ -7915,6 +8125,21 @@
             "rotated": false
         },
         {
+            "idx": 259,
+            "name": "server-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 8,
             "name": "shield",
             "origin": [
@@ -8119,6 +8344,21 @@
             "rect": [
                 224,
                 592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 255,
+            "name": "slash",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                800,
                 16,
                 16
             ],
@@ -8395,6 +8635,21 @@
             "rotated": false
         },
         {
+            "idx": 258,
+            "name": "stetoscope",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 162,
             "name": "sticky-note",
             "origin": [
@@ -8539,6 +8794,21 @@
             "rect": [
                 48,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 256,
+            "name": "strike",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                800,
                 16,
                 16
             ],
@@ -8785,6 +9055,21 @@
             "rotated": false
         },
         {
+            "idx": 254,
+            "name": "theater",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 93,
             "name": "thermometer",
             "origin": [
@@ -8869,6 +9154,21 @@
             "rect": [
                 32,
                 288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 257,
+            "name": "ticket",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                816,
                 16,
                 16
             ],
@@ -9004,6 +9304,21 @@
             "rect": [
                 48,
                 128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 263,
+            "name": "tooth",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                800,
                 16,
                 16
             ],
@@ -9400,6 +9715,36 @@
             "rotated": false
         },
         {
+            "idx": 260,
+            "name": "vial-blood",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                800,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 45,
+            "name": "vial-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 18,
             "name": "vial-small",
             "origin": [
@@ -9409,6 +9754,36 @@
             "rect": [
                 48,
                 48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 260,
+            "name": "virus",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                784,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 259,
+            "name": "virus-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                800,
                 16,
                 16
             ],
@@ -9529,6 +9904,21 @@
             "rect": [
                 176,
                 32,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 253,
+            "name": "wave",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                800,
                 16,
                 16
             ],
@@ -9775,7 +10165,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 651,
+    "regions_count": 677,
     "rotations": false,
     "using_grid": true,
     "width": 80

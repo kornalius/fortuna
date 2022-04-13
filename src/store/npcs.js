@@ -18,7 +18,7 @@ export default class Npcs extends Entities {
           ].join(' ')
 
           // find the target room
-          let room;
+          let room
           if (a.roomId) {
             room = store.rooms.get(a.roomId)
           }

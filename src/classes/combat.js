@@ -164,6 +164,14 @@ export default class Combat extends Entity {
 
     store.player.rolls = store.player.maxRolls
 
+    // make sure shields buff is processed
+    if (store.player.shieldsBuffTurns > 0) {
+      store.player.shieldsBuffTurns -= 1
+      if (store.player.shieldsBuffTurns <= 0) {
+        store.player.shieldsBuff = 0
+      }
+    }
+
     // decrement turns left for bonus combos
     this.bonusCombos.forEach(c => {
       if (c.turns !== -1) {
@@ -190,19 +198,17 @@ export default class Combat extends Entity {
   }
 
   canReroll(showMessage) {
-    if (!this.hasSelected) {
-      if (showMessage) {
-        log('You need to select dice to reroll first', LOG_WARN)
-      }
-      return false
-    }
-    if (store.player.rolls <= 0) {
-      if (showMessage) {
-        log('You cannot reroll anymore', LOG_ERROR)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => !this.hasSelected,
+        log: () => 'You need to select dice to reroll first',
+        level: LOG_WARN
+      },
+      {
+        expr: () => store.player.rolls <= 0,
+        log: () => 'You cannot reroll anymore'
+      },
+    ], showMessage)
   }
 
   /**
@@ -388,22 +394,19 @@ export default class Combat extends Entity {
   }
 
   canSelect(index, showMessage) {
-    if (this.processing) {
-      return false
-    }
-    if (store.player.rolls <= 0) {
-      if (showMessage) {
-        log('You have no rerolls left', LOG_ERROR)
-      }
-      return false
-    }
-    if (this.isSelected(index)) {
-      if (showMessage) {
-        log('This die is already selected', LOG_ERROR)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => this.processing,
+      },
+      {
+        expr: () => store.player.rolls <= 0,
+        log: () => 'You have no rerolls left'
+      },
+      {
+        expr: () => this.isSelected(index),
+        log: () => 'This die is already selected'
+      },
+    ], showMessage)
   }
 
   async select(index) {
@@ -418,13 +421,12 @@ export default class Combat extends Entity {
   async onSelect(index) {}
 
   canUnselect(index, showMessage) {
-    if (!this.isSelected(index)) {
-      if (showMessage) {
-        log('This die is not selected', LOG_ERROR)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => !this.isSelected(index),
+        log: () => 'This die is not selected'
+      },
+    ], showMessage)
   }
 
   async unselect(index) {
@@ -709,7 +711,7 @@ export default class Combat extends Entity {
       const busters = dice.length
       await this.highlightDice('player', dice, this.multipliers['X']) + (this.bonus['X'] || 0)
       if (busters > 0) {
-        const npcShields = this.npc.shieldDice.length;
+        const npcShields = this.npc.shieldDice.length
         const v = (npcShields - busters <= 0
           ? npcShields
           : npcShields - busters) * (this.multipliers['X'] || 1)

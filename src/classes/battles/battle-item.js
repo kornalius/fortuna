@@ -1,5 +1,6 @@
 import Item from '../items/item'
-import { log, LOG_WARN, registerClass } from '@/utils'
+import { can, LOG_WARN, registerClass } from '@/utils'
+import { store } from '@/store'
 
 export default class BattleItem extends Item {
   setupInstance(data) {
@@ -12,16 +13,18 @@ export default class BattleItem extends Item {
   get isBattle() { return true }
 
   canUse(showMessage) {
-    if (!store.player.isInCombat) {
-      if (showMessage) {
-        log(`You must be in combat to use ${this.name}.toLowerCase()`, LOG_WARN, this.icon)
-      }
-      return false
-    }
-    if (store.player.combat.processing) {
-      if (showMessage) {
-        log(`You must wait for your turn to use ${this.name}.toLowerCase()`, LOG_WARN, this.icon)
-      }
+    if (!can(this, [
+      {
+        expr: () => !store.player.isInCombat,
+        log: () => `You must be in combat to use ${this.name}.toLowerCase()`,
+        level: LOG_WARN
+      },
+      {
+        expr: () => store.player.combat.processing,
+        log: () => `You must wait for your turn to use ${this.name}.toLowerCase()`,
+        level: LOG_WARN
+      },
+    ], showMessage)) {
       return false
     }
     return super.canUse(showMessage)

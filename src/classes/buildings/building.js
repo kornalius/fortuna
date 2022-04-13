@@ -145,7 +145,7 @@ export default class Building extends Entity {
     }
 
     if (store.game.building !== this) {
-      const prevBuilding = store.game.building;
+      const prevBuilding = store.game.building
       if (prevBuilding) {
         if (!prevBuilding.exit(this)) {
           return false

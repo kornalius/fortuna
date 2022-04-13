@@ -119,7 +119,7 @@ export default class Room extends Entity {
     }
 
     if (store.game.room !== this) {
-      const prevRoom = store.game.room;
+      const prevRoom = store.game.room
       if (prevRoom) {
         if (!prevRoom.exit(this)) {
           return false

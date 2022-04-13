@@ -1,12 +1,12 @@
 import BattleItem from './battle-item'
 import { registerClass } from '@/utils'
 
-export default class Boost extends BattleItem {
+export default class Mutation extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Boost',
-      icon: 'pills',
-      description: 'Confidence booster. 3 sword symbols = 5 extra damage',
+      name: 'Mutation',
+      icon: 'vialGreen',
+      description: 'Mutate into an horrible thing. 3 sword symbols = 7 extra damage',
       ...data,
     })
   }
@@ -14,12 +14,12 @@ export default class Boost extends BattleItem {
   async onUse() {
     store.player.combat.addBonusCombo({
       faces: { 'A': 3 },
-      valueLabel: () => '5 dmg',
+      valueLabel: () => '7 dmg',
       expr: async () => {
-        store.player.combat.npc.hp -= 5
+        store.player.combat.npc.hp -= 7
       }
     }, 1)
   }
 }
 
-registerClass(Boost)
+registerClass(Mutation)

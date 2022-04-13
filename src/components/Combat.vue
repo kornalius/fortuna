@@ -146,7 +146,21 @@ const freezes = computed(() => new Array(props.value.npc.skipTurns).map((_, i) =
 
 const currentMultiplier = computed(() => props.value.currentMultiplier)
 
-const combos = computed(() => [...props.value.combos, ...props.value.bonusCombos])
+const combos = computed(() => {
+  const facesToString = faces => Object.keys(faces).reduce((acc, k) => ([...acc, `${k}${faces[k]}`]), []).sort().join(',')
+  const combos = [...props.value.bonusCombos]
+  props.value.combos.forEach(c => {
+    const cf = facesToString(c.faces)
+    const ccc = combos.find(cc => {
+      const ccf = facesToString(cc.faces)
+      return ccf === cf
+    })
+    if (!ccc) {
+      combos.push(c)
+    }
+  })
+  return combos
+})
 </script>
 
 <style scoped>

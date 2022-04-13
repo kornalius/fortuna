@@ -4,7 +4,9 @@
 
     <div v-show="showDialog || showOptions">
       <div v-if="!store.game.isStarted" class="title smoke">FORTUNA</div>
+
       <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
+
       <div class="bg background-anim">
         <n-modal :show="showDialog" role="dialog" aria-modal="true">
           <Menu class="fade-in" />
@@ -13,6 +15,10 @@
         <n-modal :show="showOptions" role="dialog" aria-modal="true">
           <Options class="fade-in" />
         </n-modal>
+
+        <n-modal :show="store.game.showIconsList" role="dialog" aria-modal="true">
+          <IconsList class="fade-in" />
+        </n-modal>
       </div>
     </div>
   </n-config-provider>
@@ -20,17 +26,12 @@
 
 <script setup>
 import { computed, onMounted, onUnmounted, watch } from 'vue'
-import dayjs from 'dayjs'
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
-import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
 import Main from '@/components/Main.vue'
 import Menu from '@/components/Menu.vue'
 import Options from '@/components/Options.vue'
+import IconsList from '@/components/IconsList.vue'
 import { store } from '@/store'
 import { darkTheme } from 'naive-ui'
-
-dayjs.extend(isSameOrBefore)
-dayjs.extend(isSameOrAfter)
 
 const showDialog = computed(() => store.game.isPaused || store.game.isStarted === false)
 const showOptions = computed(() => store.game.showOptions)
@@ -52,6 +53,9 @@ const keyup = e => {
         store.game.resume()
       }
     }
+  }
+  else if (e.keyCode === 73 && e.ctrlKey && !e.shiftKey) {
+    store.game.showIconsList = !store.game.showIconsList
   }
   e.stopImmediatePropagation()
   e.preventDefault()
@@ -151,11 +155,14 @@ body {
   background-color: rgba(0, 0, 0, 0);
   -webkit-border-radius: 100px;
 }
+::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, .25);
+}
 ::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: rgba(150, 150, 150, .5);
+  background-color: rgba(250, 250, 250, .5);
 }
 ::-webkit-scrollbar-thumb:vertical {
-  background-color: rgba(50, 50, 50, .5);
+  background-color: rgba(100, 100, 100, .5);
   -webkit-border-radius: 100px;
 }
 ::-webkit-scrollbar-thumb:vertical:active {

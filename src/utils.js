@@ -161,25 +161,20 @@ export const operationTimeout = size => {
  * @returns {boolean}
  */
 export function checkSoftware(software, showMessage) {
-  if (this.isBusy) {
-    if (showMessage) {
-      log(`${this.name} is locked while an operation is running on it`, LOG_ERROR, this.icon)
-    }
-    return false
-  }
-  if (software?.isBusy) {
-    if (showMessage) {
-      log(`${software.name} is locked while an operation is running on it`, LOG_ERROR, this.icon)
-    }
-    return false
-  }
-  if (software && software.version < this.version) {
-    if (showMessage) {
-      log(`You need an installed ${showMessage} v${this.version} software to execute this operation`, LOG_ERROR, this.icon)
-    }
-    return false
-  }
-  return true
+  return can(this, [
+    {
+      expr: () => this.isBusy,
+      log: () => `${this.name} is locked while an operation is running on it`,
+    },
+    {
+      expr: () => software?.isBusy,
+      log: () => `${software.name} is locked while an operation is running on it`,
+    },
+    {
+      expr: () => software && software.version < this.version,
+      log: () => `You need an installed ${showMessage} v${this.version} software to execute this operation`,
+    },
+  ], showMessage)
 }
 
 /**
@@ -284,7 +279,7 @@ export const can = (self, checks, showMessage, actionName) => {
   for (const check of checks) {
     if (check.expr()) {
       if (showMessage && check.log) {
-        log(check.log(), LOG_ERROR, self.icon)
+        log(check.log(), check.level || LOG_ERROR, check.icon || self.icon)
       }
       return false
     }

@@ -41,6 +41,7 @@ const animation = ref({
 })
 
 const spriteCanvas = ref()
+const ready = ref(false)
 
 let lastTime = 0
 let sprite = undefined
@@ -114,16 +115,26 @@ const reset = () => {
   emit('animationReset', animation.value.region.name)
 }
 
+watch(spriteCanvas, () => {
+  if (spriteCanvas.value && ready.value) {
+    spriteInit()
+  }
+})
+
 const spriteInit = () => {
-  context = spriteCanvas.value.getContext('2d')
-  context.imageSmoothingEnabled = false
-  emit('ready')
-  animation.value.region = regionFromFrameIndex(0)
-  animation.value.frameIndex = 0
-  if (props.autoplay && hasFrames.value) {
-    play()
+  if (spriteCanvas.value) {
+    context = spriteCanvas.value.getContext('2d')
+    context.imageSmoothingEnabled = false
+    emit('ready')
+    animation.value.region = regionFromFrameIndex(0)
+    animation.value.frameIndex = 0
+    if (props.autoplay && hasFrames.value) {
+      play()
+    } else {
+      render()
+    }
   } else {
-    render()
+    ready.value = true
   }
 }
 

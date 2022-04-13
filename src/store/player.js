@@ -147,7 +147,13 @@ export default class Player {
   }
 
   get shieldDice() {
-    return this.dice.filter(d => store.config.battleDice[d.value - 1].value === 'D')
+    const defIndex = store.config.battleDice.findIndex(d => d.value === 'D')
+    const dice = this.dice.filter(d => store.config.battleDice[d.value - 1].value === 'D')
+    const l = dice.length
+    while (dice.length < l + this.sumOfBuffs('shield')) {
+      dice.push({ faces: store.config.battleDice, value: defIndex + 1 })
+    }
+    return dice
   }
   get shieldDiceIndexes() {
     return this.shieldDice.map(d => this.dice.indexOf(d))

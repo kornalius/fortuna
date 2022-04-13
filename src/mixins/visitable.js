@@ -1,4 +1,4 @@
-import { emit, LOG_WARN } from '@/utils'
+import { can, emit, LOG_WARN } from '@/utils'
 
 /**
  * Makes the object visitable
@@ -22,13 +22,13 @@ export default {
   get hasVisited() { return this.visited > 0 },
 
   canVisit(showMessage) {
-    if (!this.isVisitable) {
-      if (showMessage) {
-        log(`You cannot visit ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
-      }
-      return false
-    }
-    return true
+    return can(this, [
+      {
+        expr: () => !this.isVisitable,
+        log: () => `You cannot visit ${this.name.toLowerCase()}`,
+        level: LOG_WARN
+      },
+    ], showMessage)
   },
 
   async visit() {

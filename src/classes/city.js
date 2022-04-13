@@ -94,7 +94,7 @@ export default class City extends Entity {
     }
 
     if (store.game.city !== this) {
-      const prevCity = store.game.city;
+      const prevCity = store.game.city
       if (prevCity) {
         if (!prevCity.exit(this)) {
           return false

@@ -60,7 +60,7 @@ export default {
     }
 
     // check if there are owners of this room/building present seeing you commit the crime of stealing!!!
-    const presentOwners = this.location.presentOwners;
+    const presentOwners = this.location.presentOwners
     if (presentOwners?.length > 0) {
       log(`You have been caugth stealing by ${presentOwners.map(o => o.name).join(', ')}`, LOG_ERROR, this.icon)
       presentOwners.forEach(o => { o.aggresive = true })
