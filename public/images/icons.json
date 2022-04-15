@@ -100,6 +100,21 @@
             "rotated": false
         },
         {
+            "idx": 278,
+            "name": "apple-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 91,
             "name": "arrow-2-left",
             "origin": [
@@ -625,6 +640,21 @@
             "rotated": false
         },
         {
+            "idx": 283,
+            "name": "axe-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 165,
             "name": "backetball",
             "origin": [
@@ -664,6 +694,21 @@
             "rect": [
                 80,
                 48,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 277,
+            "name": "banana-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                864,
                 16,
                 16
             ],
@@ -1225,6 +1270,21 @@
             "rotated": false
         },
         {
+            "idx": 279,
+            "name": "bone",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 14,
             "name": "book1",
             "origin": [
@@ -1549,6 +1609,21 @@
             "rect": [
                 208,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 270,
+            "name": "brocoli",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                864,
                 16,
                 16
             ],
@@ -2104,6 +2179,21 @@
             "rect": [
                 160,
                 400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 280,
+            "name": "carot",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                864,
                 16,
                 16
             ],
@@ -2995,6 +3085,36 @@
             "rotated": false
         },
         {
+            "idx": 275,
+            "name": "cookie-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 276,
+            "name": "cookie-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 183,
             "name": "counter",
             "origin": [
@@ -3070,6 +3190,36 @@
             "rotated": false
         },
         {
+            "idx": 271,
+            "name": "croissant",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 284,
+            "name": "crowbar",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 138,
             "name": "crown",
             "origin": [
@@ -3079,6 +3229,21 @@
             "rect": [
                 48,
                 432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 274,
+            "name": "cucumber",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                864,
                 16,
                 16
             ],
@@ -3154,6 +3319,21 @@
             "rect": [
                 0,
                 224,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 260,
+            "name": "death-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                832,
                 16,
                 16
             ],
@@ -3319,6 +3499,21 @@
             "rect": [
                 208,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 277,
+            "name": "dice-booster",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                848,
                 16,
                 16
             ],
@@ -4054,6 +4249,21 @@
             "rect": [
                 160,
                 352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 278,
+            "name": "eyeball",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                848,
                 16,
                 16
             ],
@@ -7195,6 +7405,21 @@
             "rotated": false
         },
         {
+            "idx": 279,
+            "name": "orange",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 20,
             "name": "oven",
             "origin": [
@@ -7735,6 +7960,21 @@
             "rotated": false
         },
         {
+            "idx": 282,
+            "name": "plank",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 24,
             "name": "plant-1",
             "origin": [
@@ -7939,6 +8179,21 @@
             "rect": [
                 144,
                 704,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 273,
+            "name": "potato",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                864,
                 16,
                 16
             ],
@@ -8215,6 +8470,21 @@
             "rotated": false
         },
         {
+            "idx": 281,
+            "name": "rock",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 17,
             "name": "roll",
             "origin": [
@@ -8224,6 +8494,21 @@
             "rect": [
                 192,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 280,
+            "name": "rope",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                848,
                 16,
                 16
             ],
@@ -8494,6 +8779,36 @@
             "rect": [
                 48,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 275,
+            "name": "shield-add",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 274,
+            "name": "shield-link",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                848,
                 16,
                 16
             ],
@@ -9265,6 +9580,21 @@
             "rotated": false
         },
         {
+            "idx": 276,
+            "name": "sword-add",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 10,
             "name": "syringe",
             "origin": [
@@ -9709,6 +10039,21 @@
             "rect": [
                 240,
                 656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 272,
+            "name": "tomato",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                864,
                 16,
                 16
             ],
@@ -10585,7 +10930,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 705,
+    "regions_count": 728,
     "rotations": false,
     "using_grid": true,
     "width": 80

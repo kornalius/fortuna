@@ -138,6 +138,7 @@ export default {
   bullseye: 'target2',
   extrapunch: 'fist2',
   medecine: 'first-aid-kit-2',
+  shieldLink: 'shield-link',
   boost: 'boost',
   keypad: 'keypad',
   stars: 'stars',
