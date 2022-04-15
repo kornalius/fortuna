@@ -6,6 +6,7 @@ export default class BattleItem extends Item {
   setupInstance(data) {
     return super.setupInstance({
       usable: true,
+      uses: 1,
       ...data,
     })
   }

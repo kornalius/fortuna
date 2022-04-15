@@ -503,10 +503,13 @@ export default class Combat extends Entity {
       await this.damage(bombs)
       this.done = [...this.done, ...bombs]
     }
+
+    // Npc attacks
     if (this.npc.swordDice.length) {
       await this.npcAttack(this.npc.swordDiceIndexes)
       this.done = [...this.done, ...store.player.shieldDiceIndexes]
     }
+
     if (lifes.length) {
       await this.gainLife(lifes)
       this.done = [...this.done, ...lifes]

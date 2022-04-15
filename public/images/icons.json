@@ -805,6 +805,21 @@
             "rotated": false
         },
         {
+            "idx": 269,
+            "name": "baton",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 50,
             "name": "battery",
             "origin": [
@@ -1300,6 +1315,21 @@
             "rotated": false
         },
         {
+            "idx": 239,
+            "name": "boost",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                736,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 63,
             "name": "boot",
             "origin": [
@@ -1504,6 +1534,21 @@
             "rect": [
                 96,
                 336,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 253,
+            "name": "briefcase-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                768,
                 16,
                 16
             ],
@@ -1729,6 +1774,21 @@
             "rect": [
                 240,
                 512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 273,
+            "name": "bust",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                848,
                 16,
                 16
             ],
@@ -2374,6 +2434,21 @@
             "rect": [
                 176,
                 528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 265,
+            "name": "chainsaw",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                832,
                 16,
                 16
             ],
@@ -3085,6 +3160,21 @@
             "rotated": false
         },
         {
+            "idx": 268,
+            "name": "defibrilator",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 48,
             "name": "desk-chair",
             "origin": [
@@ -3235,6 +3325,21 @@
             "rotated": false
         },
         {
+            "idx": 272,
+            "name": "dice-sticky",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 16,
             "name": "die",
             "origin": [
@@ -3304,6 +3409,21 @@
             "rect": [
                 112,
                 512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 274,
+            "name": "dodge",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                832,
                 16,
                 16
             ],
@@ -3715,6 +3835,21 @@
             "rotated": false
         },
         {
+            "idx": 266,
+            "name": "emergency-button",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 142,
             "name": "enter",
             "origin": [
@@ -3775,6 +3910,21 @@
             "rotated": false
         },
         {
+            "idx": 266,
+            "name": "exchange",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 59,
             "name": "exclamation-mark",
             "origin": [
@@ -3814,6 +3964,21 @@
             "rect": [
                 128,
                 656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 271,
+            "name": "exit-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                832,
                 16,
                 16
             ],
@@ -4345,6 +4510,21 @@
             "rotated": false
         },
         {
+            "idx": 35,
+            "name": "fire-hydrant",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 195,
             "name": "fireplace",
             "origin": [
@@ -4384,6 +4564,36 @@
             "rect": [
                 16,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 270,
+            "name": "first-aid-kit",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 261,
+            "name": "first-aid-kit-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                800,
                 16,
                 16
             ],
@@ -4669,6 +4879,21 @@
             "rect": [
                 80,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 270,
+            "name": "focus",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                848,
                 16,
                 16
             ],
@@ -5110,6 +5335,21 @@
             "rotated": false
         },
         {
+            "idx": 268,
+            "name": "gun-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 264,
             "name": "hamburger",
             "origin": [
@@ -5365,6 +5605,21 @@
             "rotated": false
         },
         {
+            "idx": 271,
+            "name": "handcuffs",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 126,
             "name": "hardhat",
             "origin": [
@@ -5464,6 +5719,21 @@
             "rect": [
                 144,
                 720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 269,
+            "name": "hope",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                848,
                 16,
                 16
             ],
@@ -6055,6 +6325,21 @@
             "rotated": false
         },
         {
+            "idx": 267,
+            "name": "levels",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 220,
             "name": "lever",
             "origin": [
@@ -6094,6 +6379,21 @@
             "rect": [
                 64,
                 192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 116,
+            "name": "life-buoy",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                368,
                 16,
                 16
             ],
@@ -7015,6 +7315,21 @@
             "rotated": false
         },
         {
+            "idx": 270,
+            "name": "park-bench-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 6,
             "name": "password",
             "origin": [
@@ -7825,6 +8140,21 @@
             "rotated": false
         },
         {
+            "idx": 265,
+            "name": "ricochet",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 127,
             "name": "rip",
             "origin": [
@@ -8110,6 +8440,21 @@
             "rotated": false
         },
         {
+            "idx": 263,
+            "name": "security_camera",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 0,
             "name": "server",
             "origin": [
@@ -8215,6 +8560,21 @@
             "rotated": false
         },
         {
+            "idx": 248,
+            "name": "shirt-tie",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 50,
             "name": "shirt-white",
             "origin": [
@@ -8269,6 +8629,21 @@
             "rect": [
                 160,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 262,
+            "name": "shotgun",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                832,
                 16,
                 16
             ],
@@ -8815,6 +9190,21 @@
             "rotated": false
         },
         {
+            "idx": 267,
+            "name": "strong-arm-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 248,
             "name": "sun",
             "origin": [
@@ -9055,6 +9445,21 @@
             "rotated": false
         },
         {
+            "idx": 264,
+            "name": "terminal-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 254,
             "name": "theater",
             "origin": [
@@ -9169,6 +9574,21 @@
             "rect": [
                 32,
                 816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 261,
+            "name": "tingas",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                832,
                 16,
                 16
             ],
@@ -10165,7 +10585,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 677,
+    "regions_count": 705,
     "rotations": false,
     "using_grid": true,
     "width": 80

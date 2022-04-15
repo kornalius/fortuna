@@ -1,7 +1,14 @@
 <template>
   <n-card
-    style="width: 600px; opacity: .95;"
+    style="width: 600px; height: 924px; opacity: .95;"
   >
+    <n-input
+      v-model:value="search"
+      class="mb2"
+      placeholder="Type to search"
+      clearable
+    />
+
     <n-data-table
       :columns="columns"
       :data="regions"
@@ -14,9 +21,11 @@
 </template>
 
 <script setup>
-import { computed, h } from 'vue'
+import { computed, h, ref } from 'vue'
 import json from '/images/icons.json'
 import Sprite from '@/components/Sprite'
+
+const search = ref('')
 
 const columns = [
   {
@@ -44,13 +53,22 @@ const columns = [
     }, row.name)
   }
 ]
-const regions = computed(() => json.regions.sort((a, b) => {
-  if (a.name < b.name) {
-    return -1
-  }
-  if (a.name > b.name) {
-    return 1
-  }
-  return 0
-}))
+
+const regions = computed(() => {
+  const s = search.value !== '' && search.value !== undefined
+    ? new RegExp(search.value)
+    : undefined
+
+  return json.regions
+    .filter(r => s ? s.test(r.name) : true)
+    .sort((a, b) => {
+      if (a.name < b.name) {
+        return -1
+      }
+      if (a.name > b.name) {
+        return 1
+      }
+      return 0
+    })
+})
 </script>

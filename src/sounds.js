@@ -54,13 +54,11 @@ export const soundFiles = {
   // Bombs
   'bomb': { src: 'sfx/bomb.wav' },
 
-  // Powers
-  'upgrade': { src: 'sfx/upgrade.wav' },
-
   // Water
   'water-swirl': { src: 'sfx/water-swirl.wav' },
 
-  // Fight
+  // Fight and Powers
+  'upgrade': { src: 'sfx/upgrade.wav' },
   'kick': { src: 'sfx/kick.wav' },
   'punch': { src: 'sfx/punch.wav' },
   'freeze': { src: 'sfx/freeze.wav' },
@@ -69,9 +67,42 @@ export const soundFiles = {
   'gun': { src: 'sfx/gun.wav' },
   'sparkle': { src: 'sfx/sparkle.wav' },
   'tape': { src: 'sfx/tape.wav' },
+  'shock': { src: 'sfx/shock.wav' },
+  'shields-up': { src: 'sfx/shields-up.wav' },
+  'shields-up-2': { src: 'sfx/shields-up-2.wav' },
+  'power-up': { src: 'sfx/power-up.wav' },
+  'power-up-2': { src: 'sfx/power-up-2.wav' },
+  'power-up-3': { src: 'sfx/power-up.w-3av' },
+  'power-up-4': { src: 'sfx/power-up.wav-4' },
+  'defibrilator': { src: 'sfx/defibrilator.wav' },
+  'charge-up': { src: 'sfx/charge-up.wav' },
+  'buff': { src: 'sfx/buff.wav' },
+  'buff-2': { src: 'sfx/buff-2.wav' },
+  'buff-3': { src: 'sfx/buff-3.wav' },
+  'swoop-up': { src: 'sfx/swoop-up.wav' },
+  'choir': { src: 'sfx/choir.wav' },
+  'handcuffs': { src: 'sfx/handcuffs.wav' },
+  'arrow': { src: 'sfx/arrow.wav' },
+  'break': { src: 'sfx/break.wav' },
+  'wobble-up': { src: 'sfx/wobble-up.wav' },
+  'wobble-down': { src: 'sfx/wobble-down.wav' },
 
   // Boxes
   'box-carton-open': { src: 'sfx/box-carton-open.wav' },
   'box-wood-destroy': { src: 'sfx/box-wood-destroy.wav' },
   'box-wood-open': { src: 'sfx/box-wood-open.wav' },
+
+  // Human
+  'anger': { src: 'sfx/anger.wav' },
+  'breath': { src: 'sfx/breath.wav' },
+  'breath-2': { src: 'sfx/breath-2.wav' },
+  'breath-3': { src: 'sfx/breath-3.wav' },
+  'grunt': { src: 'sfx/grunt.wav' },
+  'grunt-2': { src: 'sfx/grunt-2.wav' },
+  'grunt-3': { src: 'sfx/grunt-3.wav' },
+  'grunt-4': { src: 'sfx/grunt-4.wav' },
+  'heartbeat': { src: 'sfx/heartbeat.wav' },
+  'pain': { src: 'sfx/pain.wav' },
+  'scream': { src: 'sfx/scream.wav' },
+
 }
