@@ -27,7 +27,7 @@ export default {
     this.addItem(new Freeze())
     this.addItem(new Kick())
     this.addItem(new Roll({
-      tooltip() { return 'PENIS' },
+      tooltip() { return 'TOOLTIP TEST' },
     }))
   },
 

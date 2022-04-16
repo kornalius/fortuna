@@ -39,18 +39,42 @@ export default {
 
   get isTextFile() { return this.type === 'txt' },
   get isImageFile() { return this.type === 'img' },
+  get isKeyFile() { return this.type === 'key' },
+  get isCodeFile() { return this.type === 'cod' },
+  get isCommandFile() { return this.type === 'cmd' },
+  get isListFile() { return this.type === 'lst' },
+  get isDataFile() { return this.type === 'dat' },
+  get isAudioFile() { return this.type === 'aud' },
 
   get icon() {
-    if (this.isViewable) {
-      if (this.isTextFile) {
-        return 'mdi:file-document'
-      }
-      if (this.isImageFile) {
-        return 'mdi:file-image'
-      }
-      return 'mdi:file-eye'
+    if (this.isTextFile) {
+      return 'fileText'
     }
-    return 'mdi:file-question'
+    if (this.isImageFile) {
+      return 'fileImage'
+    }
+    if (this.isKeyFile) {
+      return 'fileKey'
+    }
+    if (this.isCodeFile) {
+      return 'fileCode'
+    }
+    if (this.isCommandFile) {
+      return 'fileCommand'
+    }
+    if (this.isListFile) {
+      return 'fileList'
+    }
+    if (this.isDataFile) {
+      return 'fileJson'
+    }
+    if (this.isAudioFile) {
+      return 'fileAudio'
+    }
+    if (this.isViewable) {
+      return 'fileSearch'
+    }
+    return this.state.icon || 'file'
   },
 
   get isViewed() { return this.state.viewed },

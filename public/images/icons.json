@@ -1030,6 +1030,21 @@
             "rotated": false
         },
         {
+            "idx": 279,
+            "name": "belt-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 163,
             "name": "billard-ball",
             "origin": [
@@ -2845,6 +2860,21 @@
             "rotated": false
         },
         {
+            "idx": 282,
+            "name": "clock-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 244,
             "name": "cloud-lighting",
             "origin": [
@@ -2899,6 +2929,21 @@
             "rect": [
                 176,
                 608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 277,
+            "name": "coffee-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                880,
                 16,
                 16
             ],
@@ -3265,6 +3310,21 @@
             "rotated": false
         },
         {
+            "idx": 287,
+            "name": "cushion",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 150,
             "name": "cutter",
             "origin": [
@@ -3304,6 +3364,36 @@
             "rect": [
                 192,
                 432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 283,
+            "name": "dead-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 290,
+            "name": "dead-white-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                880,
                 16,
                 16
             ],
@@ -3535,6 +3625,21 @@
             "rotated": false
         },
         {
+            "idx": 287,
+            "name": "dice-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 16,
             "name": "die",
             "origin": [
@@ -3619,6 +3724,21 @@
             "rect": [
                 224,
                 832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 291,
+            "name": "donut",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                896,
                 16,
                 16
             ],
@@ -3775,6 +3895,21 @@
             "rotated": false
         },
         {
+            "idx": 294,
+            "name": "download",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 244,
             "name": "downtown",
             "origin": [
@@ -3829,6 +3964,21 @@
             "rect": [
                 80,
                 400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 285,
+            "name": "drink-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                896,
                 16,
                 16
             ],
@@ -4435,6 +4585,21 @@
             "rotated": false
         },
         {
+            "idx": 286,
+            "name": "file-audio",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 125,
             "name": "file-binary",
             "origin": [
@@ -4540,6 +4705,21 @@
             "rotated": false
         },
         {
+            "idx": 285,
+            "name": "file-key",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 129,
             "name": "file-list",
             "origin": [
@@ -4624,6 +4804,21 @@
             "rect": [
                 80,
                 384,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 286,
+            "name": "file-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                880,
                 16,
                 16
             ],
@@ -5080,6 +5275,21 @@
             "rotated": false
         },
         {
+            "idx": 292,
+            "name": "flower-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 30,
             "name": "flower-pot",
             "origin": [
@@ -5335,6 +5545,21 @@
             "rotated": false
         },
         {
+            "idx": 288,
+            "name": "gear-white-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 133,
             "name": "glass-wine",
             "origin": [
@@ -5359,6 +5584,21 @@
             "rect": [
                 112,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 67,
+            "name": "glasses-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                192,
                 16,
                 16
             ],
@@ -5875,6 +6115,21 @@
             "rotated": false
         },
         {
+            "idx": 281,
+            "name": "heart-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 188,
             "name": "hearts",
             "origin": [
@@ -6190,6 +6445,21 @@
             "rotated": false
         },
         {
+            "idx": 285,
+            "name": "key-white-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                864,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 54,
             "name": "key-yellow",
             "origin": [
@@ -6445,6 +6715,21 @@
             "rotated": false
         },
         {
+            "idx": 286,
+            "name": "lamp-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 50,
             "name": "lamp2",
             "origin": [
@@ -6670,6 +6955,21 @@
             "rotated": false
         },
         {
+            "idx": 293,
+            "name": "list-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 83,
             "name": "lock",
             "origin": [
@@ -6715,6 +7015,36 @@
             "rotated": false
         },
         {
+            "idx": 283,
+            "name": "lock-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 66,
+            "name": "lotion",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 245,
             "name": "luck",
             "origin": [
@@ -6724,6 +7054,21 @@
             "rect": [
                 160,
                 752,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 281,
+            "name": "luck-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                896,
                 16,
                 16
             ],
@@ -6964,6 +7309,21 @@
             "rect": [
                 32,
                 672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 280,
+            "name": "medal-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                880,
                 16,
                 16
             ],
@@ -7270,6 +7630,21 @@
             "rotated": false
         },
         {
+            "idx": 284,
+            "name": "music-note-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 80,
             "name": "music-notes",
             "origin": [
@@ -7459,6 +7834,21 @@
             "rect": [
                 224,
                 160,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 275,
+            "name": "pants-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                880,
                 16,
                 16
             ],
@@ -7894,6 +8284,21 @@
             "rect": [
                 32,
                 368,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 289,
+            "name": "pin-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                880,
                 16,
                 16
             ],
@@ -8905,6 +9310,21 @@
             "rotated": false
         },
         {
+            "idx": 276,
+            "name": "shirt-white-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 249,
             "name": "shirt-yellow",
             "origin": [
@@ -8974,6 +9394,21 @@
             "rect": [
                 32,
                 176,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 284,
+            "name": "shovel-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                896,
                 16,
                 16
             ],
@@ -9310,6 +9745,21 @@
             "rotated": false
         },
         {
+            "idx": 282,
+            "name": "star-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 190,
             "name": "stars",
             "origin": [
@@ -9319,6 +9769,21 @@
             "rect": [
                 160,
                 576,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 290,
+            "name": "steak",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                896,
                 16,
                 16
             ],
@@ -9595,6 +10060,21 @@
             "rotated": false
         },
         {
+            "idx": 278,
+            "name": "sword-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 10,
             "name": "syringe",
             "origin": [
@@ -9754,6 +10234,21 @@
             "rect": [
                 144,
                 144,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 280,
+            "name": "target-white-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                896,
                 16,
                 16
             ],
@@ -10345,6 +10840,21 @@
             "rotated": false
         },
         {
+            "idx": 295,
+            "name": "upload",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 104,
             "name": "usb-drive",
             "origin": [
@@ -10825,6 +11335,36 @@
             "rotated": false
         },
         {
+            "idx": 288,
+            "name": "wood-pile",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 289,
+            "name": "wood-pile-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 146,
             "name": "wood-sign",
             "origin": [
@@ -10864,6 +11404,21 @@
             "rect": [
                 64,
                 720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 285,
+            "name": "wrench-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                880,
                 16,
                 16
             ],
@@ -10930,7 +11485,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 728,
+    "regions_count": 765,
     "rotations": false,
     "using_grid": true,
     "width": 80

@@ -147,9 +147,9 @@ export const operationTimeout = size => {
   if (!size) {
     return 0
   }
-  // if (localStorage.getItem('DEV_MODE') === 'true') {
-  //   return 0
-  // }
+  if (localStorage.getItem('DEV_MODE') === 'true') {
+    return 100
+  }
   return random(size * (store.config.operationBaseDelay * 1.5))
     + store.config.operationBaseDelay
 }

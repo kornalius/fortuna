@@ -3,7 +3,7 @@ import { store } from '@/store'
 
 export default {
   name: 'Outside',
-  icon: 'outside',
+  icon: 'montains',
   code: 'TestRoomWin',
   x: 0,
   y: 1,

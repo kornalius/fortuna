@@ -12,14 +12,18 @@ export default class Cracker extends Software {
           {
             label: 'Use',
             key: 'crack',
-            icon: 'crack',
+            icon: 'gearWhite',
             disabled: !item.canCrack(),
             click: async () => item.crack(),
           }
         ),
       ],
       actionsOrder: [
-        'crack'
+        'examine',
+        'crack',
+        'install',
+        'uninstall',
+        'delete',
       ],
       ...data,
     })

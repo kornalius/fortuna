@@ -42,6 +42,10 @@ watch(() => store.game.volume, newValue => {
 
 const keyup = e => {
   if (e.keyCode === 27) {
+    if (store.game.showIconsList) {
+      store.game.showIconsList = false
+      return
+    }
     if (store.game.showOptions) {
       store.game.showOptions = false
       return
@@ -55,7 +59,7 @@ const keyup = e => {
     }
   }
   else if (e.keyCode === 73 && e.ctrlKey && !e.shiftKey) {
-    store.game.showIconsList = !store.game.showIconsList
+    store.game.showIconsList = true
   }
   e.stopImmediatePropagation()
   e.preventDefault()

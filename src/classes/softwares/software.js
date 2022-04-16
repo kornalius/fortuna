@@ -16,6 +16,7 @@ export default class Software extends File {
       dropable: true,
       actionsOrder: [
         'examine',
+        'use',
         'install',
         'uninstall',
         'delete',

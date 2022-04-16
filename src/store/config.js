@@ -88,7 +88,12 @@ export default class Config {
   get tickInterval() { return this.state.tickInterval }
   get startCityCode() { return this.state.startCityCode }
 
-  get travelTime() { return this.state.travelTime }
+  get travelTime() {
+    if (localStorage.getItem('DEV_MODE') === 'true') {
+      return 500
+    }
+    return this.state.travelTime
+  }
 
   get baseHp() { return this.state.baseHp }
   get highestHp() { return this.state.highestHp }

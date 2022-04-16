@@ -55,7 +55,7 @@ export default class Server extends Item {
           {
             label: 'List files',
             key: 'list',
-            icon: 'list',
+            icon: 'listWhite',
             disabled: !item.canList(),
             click: async () => item.list(),
           }

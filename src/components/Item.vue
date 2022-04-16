@@ -11,7 +11,7 @@
       style="min-width: 250px; max-width: 350px;"
       :delay="250"
       trigger="hover"
-      :placement="value.isInInventory ? 'left' : 'top'"
+      :placement="value.isInInventory || value.isFile ? 'left' : 'top'"
     >
       <template #trigger>
         <n-button
