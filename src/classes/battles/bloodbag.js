@@ -6,7 +6,7 @@ export default class Bloodbag extends BattleItem {
     return super.setupInstance({
       name: 'Bloodbag',
       icon: 'bloodbag',
-      description: 'Just like a portable dialysis machine. 3 shield symbols = + 5 shields',
+      description: 'Just like a portable dialysis machine. 3 shield symbols = +3 shields',
       ...data,
     })
   }
@@ -14,9 +14,9 @@ export default class Bloodbag extends BattleItem {
   async onUse() {
     store.player.combat.addBonusCombo({
       faces: { 'D': 3 },
-      valueLabel: () => '+5',
+      valueLabel: () => '+3',
       expr: async () => {
-        store.player.addBuff('shield', 5, 0, 1)
+        store.player.addBuff('shield', 3, 0, 1)
       }
     }, 1)
   }

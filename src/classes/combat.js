@@ -365,6 +365,8 @@ export default class Combat extends Entity {
     // remove combat buffs
     store.player.removeBuff('dice')
     store.player.removeBuff('roll')
+    store.player.removeBuff('sword')
+    store.player.removeBuff('shield')
 
     if (store.player.hp > 0) {
       this.won = true
@@ -539,7 +541,7 @@ export default class Combat extends Entity {
         .finished
     ]
 
-    if (multiplier) {
+    if (multiplier > 1) {
       this.currentMultiplier = multiplier
       anime.set('.multiplier', {
         scale: 0,
@@ -592,16 +594,38 @@ export default class Combat extends Entity {
   }
 
   /**
+   * Return the multipliers and bonus for a type
+   *
+   * @param type
+   * @returns {{multiplier: (number), bonus: (number)}}
+   */
+  multiplierBonus(type) {
+    return {
+      multiplier: this.multipliers[type] || 1,
+      bonus: this.bonus[type] || 0,
+    }
+  }
+
+  /**
    * Apply attack dice to opponent
    *
    * @param dice
    * @returns {Promise<void>}
    */
   async attack(dice) {
-    const dmg = (dice.length - this.npc.shieldDice.length) * (this.multipliers['A'] || 1) + (this.bonus['A'] || 0)
+    const extraSwordCount = store.player.extraSwordDice.length
+    const { multiplier, bonus } = this.multiplierBonus('A')
+
+    const dmg = ((dice.length + extraSwordCount) - this.npc.shieldDice.length) * multiplier + bonus
+      + store.player.sumOfBuffs('dmg')
 
     store.game.playSound('swing')
-    await this.highlightDice('player', dice, this.multipliers['A'])
+    await Promise.all([
+      this.highlightDice('player', dice, multiplier),
+      extraSwordCount
+        ? this.highlightDice('sword', store.player.extraSwordDiceIndexes)
+        : resolve => resolve(),
+    ])
 
     const si = this.npc.shieldDiceIndexes
     if (si.length) {
@@ -626,12 +650,15 @@ export default class Combat extends Entity {
    * @returns {Promise<void>}
    */
   async gainLife(dice) {
+    const { multiplier, bonus } = this.multiplierBonus('H')
+
+    await this.highlightDice('player', dice, multiplier)
+
     const hearts = dice.length
-    await this.highlightDice('player', dice, this.multipliers['H'])
     if (hearts > 0) {
       const o = store.player.hp
       store.player.hp += dice.length
-      const v = (store.player.hp - o) * (this.multipliers['H'] || 1) + (this.bonus['H'] || 0)
+      const v = (store.player.hp - o) * multiplier + bonus
       if (v > 0) {
         log(`${store.player.name} gains ${v} life`, LOG_WARN)
         await delay(500)
@@ -678,14 +705,25 @@ export default class Combat extends Entity {
     if (this.npc.hp > 0) {
       this.processing = true
 
-      const dmg = dice.length - (store.player.shieldDice.length * (this.multipliers['D'] || 1))  + (this.bonus['D'] || 0)
+      const shieldCount = store.player.shieldDice.length
+      const extraShieldCount = store.player.extraShieldDice.length
+      const { multiplier, bonus } = this.multiplierBonus('D')
+
+      const dmg = dice.length - (shieldCount + extraShieldCount) * multiplier + bonus
 
       store.game.playSound('swing')
       await this.highlightDice('npc', dice)
 
-      if (store.player.shieldDice.length) {
+      if (shieldCount || extraShieldCount) {
         store.game.playSound('sword-hit')
-        await this.highlightDice('player', store.player.shieldDiceIndexes, this.multipliers['D'])
+        await Promise.all([
+          shieldCount
+            ? this.highlightDice('player', store.player.shieldDiceIndexes, multiplier)
+            : resolve => resolve(),
+          extraShieldCount
+            ? this.highlightDice('shield', store.player.extraShieldDiceIndexes, shieldCount ? undefined : multiplier)
+            : resolve => resolve(),
+        ])
       }
 
       if (dmg > 0) {
@@ -711,13 +749,16 @@ export default class Combat extends Entity {
    */
   async bustShield(dice) {
     if (this.npc.hp > 0) {
+      const { multiplier, bonus } = this.multiplierBonus('X')
+
+      await this.highlightDice('player', dice, multiplier)
+
       const busters = dice.length
-      await this.highlightDice('player', dice, this.multipliers['X']) + (this.bonus['X'] || 0)
       if (busters > 0) {
         const npcShields = this.npc.shieldDice.length
         const v = (npcShields - busters <= 0
           ? npcShields
-          : npcShields - busters) * (this.multipliers['X'] || 1)
+          : npcShields - busters) * multiplier + bonus
         if (v > 0) {
           store.game.playSound('metal-hit')
           log(`${store.player.name} bust ${v} shield(s)`, LOG_WARN)

@@ -134,29 +134,49 @@ export default class Player {
     }
   }
 
-  get dice() { return this.state.dice }
+  get dice() {
+    if (this.state.dice.length !== this.maxDice) {
+      this.state.dice = this.baseDice
+    }
+    return this.state.dice
+  }
   set dice(value) { this.state.dice = value }
+
   get maxDice() {
     return Math.floor(store.config.baseDice + (0.25 * this.lvl)) + this.sumOfBuffs('dice')
   }
 
   get baseDice() {
-    return new Array(this.maxDice).fill(0).map(() => (
-      { faces: store.config.battleDice, value: 1 }
-    ))
+    return new Array(this.maxDice)
+      .fill(0)
+      .map(() => ({ faces: store.config.battleDice, value: 1 }))
   }
 
   get shieldDice() {
-    const defIndex = store.config.battleDice.findIndex(d => d.value === 'D')
-    const dice = this.dice.filter(d => store.config.battleDice[d.value - 1].value === 'D')
-    const l = dice.length
-    while (dice.length < l + this.sumOfBuffs('shield')) {
-      dice.push({ faces: store.config.battleDice, value: defIndex + 1 })
-    }
-    return dice
+    return this.dice.filter(d => store.config.battleDice[d.value - 1].value === 'D')
   }
   get shieldDiceIndexes() {
     return this.shieldDice.map(d => this.dice.indexOf(d))
+  }
+
+  get extraShieldDice() {
+    const defIndex = store.config.battleDice.findIndex(d => d.value === 'D')
+    return new Array(this.sumOfBuffs('shield')).fill(0).map(() => (
+      { faces: store.config.battleDice, value: defIndex + 1 }
+    ))
+  }
+  get extraShieldDiceIndexes() {
+    return this.extraShieldDice.map((d, index) => index)
+  }
+
+  get extraSwordDice() {
+    const defIndex = store.config.battleDice.findIndex(d => d.value === 'A')
+    return new Array(this.sumOfBuffs('sword')).fill(0).map(() => (
+      { faces: store.config.battleDice, value: defIndex + 1 }
+    ))
+  }
+  get extraSwordDiceIndexes() {
+    return this.extraSwordDice.map((d, index) => index)
   }
 
   get isTravelling() { return this.state.travelling }

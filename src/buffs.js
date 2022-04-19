@@ -8,6 +8,8 @@ export const buffNames = () => ([
   'ram',
   'dice',
   'roll',
+  'sword',
+  'shield',
 ])
 
 export const buffLabel = name => {
@@ -21,6 +23,8 @@ export const buffLabel = name => {
     case 'ram': return 'Ram'
     case 'dice': return 'Dice'
     case 'roll': return 'Roll'
+    case 'sword': return 'Sword'
+    case 'shield': return 'Shield'
     default:
   }
 }
@@ -36,6 +40,8 @@ export const buffIcon = name => {
     case 'ram': return 'cpu'
     case 'dice': return 'dice'
     case 'roll': return 'roll'
+    case 'sword': return 'sword'
+    case 'shield': return 'shield'
     default:
   }
 }

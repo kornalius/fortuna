@@ -16,7 +16,7 @@ export default class ExtraPunch extends BattleItem {
       faces: { 'A': 4 },
       valueLabel: () => '10 dmg',
       expr: async () => {
-        store.player.addBuff('sword', 10, 0, 1)
+        store.player.addBuff('dmg', 10, 0, 1)
         store.game.playSound('punch')
       }
     }, 1)

@@ -16,7 +16,7 @@ export default class Bullseye extends BattleItem {
       faces: { 'A': 3 },
       valueLabel: () => '6 dmg',
       expr: async () => {
-        store.player.addBuff('sword', 6, 0, 1)
+        store.player.addBuff('dmg', 6, 0, 1)
         store.game.playSound('arrow')
       }
     }, 1)

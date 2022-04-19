@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import random from 'lodash/random';
 
 export default class Config {
   storeName = 'config'
@@ -128,4 +129,19 @@ export default class Config {
   get combatXP() { return this.state.combatXP }
 
   async reset() {}
+
+  randomDie(diceConfig, omit = []) {
+    let die = { faces: diceConfig, value: random(1, 6) }
+    while (omit.includes(diceConfig[die.value - 1].value)) {
+      die = { faces: diceConfig, value: random(1, 6) }
+    }
+    return die
+  }
+
+  randomDice(count, diceConfig, omit = [], sorted = true) {
+    const dice = new Array(count).fill(0).map(() => this.randomDie(diceConfig, omit))
+    return sorted
+      ? dice.sort((a, b) => a.value < b.value ? -1 : 1)
+      : dice
+  }
 }

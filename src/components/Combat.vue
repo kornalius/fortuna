@@ -102,6 +102,25 @@
     <div class="flex flex-grow-1" />
 
     <div class="player-side flex flex-column flex-grow-1 relative ph2">
+      <div class="defend flex items-center">
+        <Die
+          v-for="(die, index) in store.player.extraSwordDice"
+          :key="`sword-die-${index}`"
+          :class="`sword-die-${index}`"
+          :faces="die.faces"
+          :face="die.value"
+          size="xsmall"
+        />
+        <Die
+          v-for="(die, index) in store.player.extraShieldDice"
+          :key="`shield-die-${index}`"
+          :class="`shield-die-${index}`"
+          :faces="die.faces"
+          :face="die.value"
+          size="xsmall"
+        />
+      </div>
+
       <Dice
         :value="store.player.dice"
         :disabled="disabled"

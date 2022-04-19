@@ -2,7 +2,7 @@
     "fill_rate": 0,
     "grid_height": 16,
     "grid_width": 16,
-    "height": 64,
+    "height": 928,
     "image": "icons.png",
     "name": "icons",
     "padding_x": 0,
@@ -3603,21 +3603,6 @@
             ],
             "rect": [
                 192,
-                848,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 272,
-            "name": "dice-sticky",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                112,
                 848,
                 16,
                 16
@@ -9805,6 +9790,21 @@
             "rotated": false
         },
         {
+            "idx": 272,
+            "name": "sticky-die",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                848,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 162,
             "name": "sticky-note",
             "origin": [
@@ -11488,5 +11488,5 @@
     "regions_count": 765,
     "rotations": false,
     "using_grid": true,
-    "width": 80
+    "width": 256
 }

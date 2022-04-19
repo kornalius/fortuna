@@ -150,6 +150,8 @@ export default {
   extrapunch: 'fist2',
   medecine: 'first-aid-kit-2',
   shieldLink: 'shield-link',
+  stickyDie: 'sticky-die',
+  boosterDie: 'booster-die',
   boost: 'boost',
   keypad: 'keypad',
   stars: 'stars',
