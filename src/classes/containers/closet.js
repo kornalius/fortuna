@@ -6,6 +6,7 @@ export default class Closet extends Container {
     return super.setupInstance({
       name: 'Closet',
       icon: 'closet',
+      openIconSuffix: true,
       ...data,
     })
   }

@@ -30,6 +30,7 @@ export default class Npc extends Entity {
       talkable: false,
       known: false,
       aggresive: false,
+      female: false,
       locationId,
       locationStore,
       dice: this.baseDice,
@@ -69,6 +70,13 @@ export default class Npc extends Entity {
 
   get name() { return this.isKnown ? this.state.name : '???' }
   get description() { return this.isKnown ? this.state.description : '???' }
+
+  get female() { return this.state.female }
+  set female(value) { this.state.female = value }
+
+  get iconSuffix() {
+    return `${this.state.iconSuffix ? `${this.state.iconSuffix}-` : ''}${this.female ? 'female' : 'male'}`
+  }
 
   get maxHp() {
     return Math.floor(

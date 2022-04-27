@@ -12,6 +12,7 @@ export default {
     usable: true,
     // if the icon should be suffixed with switch state -on or -off
     switchIconSuffix: true,
+    pickable: false,
   },
 
   get isOn() { return !this.state.off },
@@ -27,7 +28,7 @@ export default {
     if (!this.switchIconSuffix) {
       return this.state.iconSuffix
     }
-    return `${this.state.iconSuffix || ''}-${this.isOn ? 'on' : 'off'}`
+    return `${this.state.iconSuffix ? `${this.state.iconSuffix}-` : ''}${this.isOn ? 'on' : 'off'}`
   },
 
   async toggle() {
@@ -37,7 +38,6 @@ export default {
     }
     store.game.playSound('switch')
     this.isOn = !this.isOn
-    await emit.call(this, 'onUse')
     return true
   },
 

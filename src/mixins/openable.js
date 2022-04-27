@@ -9,6 +9,8 @@ export default {
   state: {
     // is the object openable
     openable: true,
+    // does it have an open state icon?
+    openIconSuffix: false,
     // is the object closable
     closable: true,
     // is the object opened
@@ -34,10 +36,20 @@ export default {
   get isOpened() { return this.state.opened },
   set opened(value) { this.state.opened = value },
 
-  get isClosable() { return this.state.closeable },
+  get isCloseable() { return this.state.closeable },
   set closeable(value) { this.state.closeable = value },
 
   get isClosed() { return !this.state.opened },
+
+  get openIconSuffix() { return this.state.openIconSuffix },
+  set openIconSuffix(value) { this.state.openIconSuffix = value },
+
+  get iconSuffix() {
+    if (!this.openIconSuffix) {
+      return this.state.iconSuffix
+    }
+    return `${this.state.iconSuffix ? `${this.state.iconSuffix}-` : ''}${this.isOpened ? 'open' : 'close'}`
+  },
 
   get openLabel() {
     return !this.isOpened
@@ -85,7 +97,7 @@ export default {
   canClose(showMessage) {
     return can(this, [
       {
-        expr: !this.isClosable,
+        expr: !this.isCloseable,
         log: () => `${this.name} cannot be closed`
       },
       {

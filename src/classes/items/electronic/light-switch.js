@@ -12,7 +12,6 @@ export default class LightSwitch extends Electronic {
 
   async onExamine() {
     log('It\'s a normal looking light switch, nothing special about it other than the little button in the middle', 0, this.icon)
-    return super.onExamine()
   }
 }
 

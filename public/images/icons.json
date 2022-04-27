@@ -2,7 +2,7 @@
     "fill_rate": 0,
     "grid_height": 16,
     "grid_width": 16,
-    "height": 928,
+    "height": 944,
     "image": "icons.png",
     "name": "icons",
     "padding_x": 0,
@@ -2920,6 +2920,36 @@
             "rotated": false
         },
         {
+            "idx": 941,
+            "name": "closet-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 942,
+            "name": "closet-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 750,
             "name": "cloud-lighting",
             "origin": [
@@ -3199,6 +3229,21 @@
             "rect": [
                 240,
                 320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 940,
+            "name": "crack",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                928,
                 16,
                 16
             ],
@@ -8905,6 +8950,36 @@
             "rotated": false
         },
         {
+            "idx": 938,
+            "name": "pull",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 939,
+            "name": "push",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 371,
             "name": "puzzle",
             "origin": [
@@ -11860,7 +11935,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 790,
+    "regions_count": 795,
     "rotations": false,
     "using_grid": true,
     "width": 256
