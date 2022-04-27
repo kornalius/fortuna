@@ -1,4 +1,4 @@
-import { emit, log, LOG_WARN } from '@/utils'
+import { log, LOG_WARN } from '@/utils'
 
 /**
  * Adds an on/off state to the object
