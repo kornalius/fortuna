@@ -1,11 +1,11 @@
 import Food from './food'
-import { registerClass } from '@/utils'
+import { pickRandom, registerClass } from '@/utils'
 
 export default class Apple extends Food {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Apple',
-      icon: 'apple',
+      icon: pickRandom(['apple', 'appleGreen']),
       ...data,
     })
   }

@@ -10,7 +10,7 @@
     "pot": false,
     "regions": [
         {
-            "idx": 30,
+            "idx": 74,
             "name": "1up",
             "origin": [
                 8,
@@ -25,7 +25,7 @@
             "rotated": false
         },
         {
-            "idx": 252,
+            "idx": 791,
             "name": "agent-female",
             "origin": [
                 8,
@@ -40,7 +40,7 @@
             "rotated": false
         },
         {
-            "idx": 251,
+            "idx": 790,
             "name": "agent-male",
             "origin": [
                 8,
@@ -55,7 +55,7 @@
             "rotated": false
         },
         {
-            "idx": 75,
+            "idx": 207,
             "name": "alarm-clock",
             "origin": [
                 8,
@@ -70,7 +70,7 @@
             "rotated": false
         },
         {
-            "idx": 85,
+            "idx": 250,
             "name": "alarm-clock-2",
             "origin": [
                 8,
@@ -85,7 +85,7 @@
             "rotated": false
         },
         {
-            "idx": 17,
+            "idx": 39,
             "name": "apple",
             "origin": [
                 8,
@@ -100,7 +100,7 @@
             "rotated": false
         },
         {
-            "idx": 278,
+            "idx": 872,
             "name": "apple-green",
             "origin": [
                 8,
@@ -115,7 +115,7 @@
             "rotated": false
         },
         {
-            "idx": 91,
+            "idx": 267,
             "name": "arrow-2-left",
             "origin": [
                 8,
@@ -130,7 +130,7 @@
             "rotated": false
         },
         {
-            "idx": 90,
+            "idx": 255,
             "name": "arrow-down",
             "origin": [
                 8,
@@ -145,7 +145,7 @@
             "rotated": false
         },
         {
-            "idx": 89,
+            "idx": 265,
             "name": "arrow-down-2",
             "origin": [
                 8,
@@ -160,7 +160,7 @@
             "rotated": false
         },
         {
-            "idx": 87,
+            "idx": 274,
             "name": "arrow-down-curved",
             "origin": [
                 8,
@@ -175,7 +175,7 @@
             "rotated": false
         },
         {
-            "idx": 76,
+            "idx": 230,
             "name": "arrow-down-white",
             "origin": [
                 8,
@@ -190,7 +190,7 @@
             "rotated": false
         },
         {
-            "idx": 81,
+            "idx": 257,
             "name": "arrow-left",
             "origin": [
                 8,
@@ -205,7 +205,7 @@
             "rotated": false
         },
         {
-            "idx": 88,
+            "idx": 275,
             "name": "arrow-left-curved",
             "origin": [
                 8,
@@ -220,7 +220,7 @@
             "rotated": false
         },
         {
-            "idx": 89,
+            "idx": 276,
             "name": "arrow-left-curved-2",
             "origin": [
                 8,
@@ -235,7 +235,7 @@
             "rotated": false
         },
         {
-            "idx": 80,
+            "idx": 256,
             "name": "arrow-left-down",
             "origin": [
                 8,
@@ -250,7 +250,7 @@
             "rotated": false
         },
         {
-            "idx": 77,
+            "idx": 231,
             "name": "arrow-left-down-white",
             "origin": [
                 8,
@@ -265,7 +265,7 @@
             "rotated": false
         },
         {
-            "idx": 82,
+            "idx": 258,
             "name": "arrow-left-up",
             "origin": [
                 8,
@@ -280,7 +280,7 @@
             "rotated": false
         },
         {
-            "idx": 79,
+            "idx": 233,
             "name": "arrow-left-up-white",
             "origin": [
                 8,
@@ -295,7 +295,7 @@
             "rotated": false
         },
         {
-            "idx": 78,
+            "idx": 232,
             "name": "arrow-left-white",
             "origin": [
                 8,
@@ -310,7 +310,7 @@
             "rotated": false
         },
         {
-            "idx": 54,
+            "idx": 142,
             "name": "arrow-pointer-black",
             "origin": [
                 8,
@@ -325,7 +325,7 @@
             "rotated": false
         },
         {
-            "idx": 53,
+            "idx": 141,
             "name": "arrow-pointer-white",
             "origin": [
                 8,
@@ -340,7 +340,7 @@
             "rotated": false
         },
         {
-            "idx": 94,
+            "idx": 270,
             "name": "arrow-redo",
             "origin": [
                 8,
@@ -355,7 +355,7 @@
             "rotated": false
         },
         {
-            "idx": 88,
+            "idx": 253,
             "name": "arrow-right",
             "origin": [
                 8,
@@ -370,7 +370,7 @@
             "rotated": false
         },
         {
-            "idx": 92,
+            "idx": 268,
             "name": "arrow-right-2",
             "origin": [
                 8,
@@ -385,7 +385,7 @@
             "rotated": false
         },
         {
-            "idx": 86,
+            "idx": 273,
             "name": "arrow-right-curved",
             "origin": [
                 8,
@@ -400,7 +400,7 @@
             "rotated": false
         },
         {
-            "idx": 90,
+            "idx": 277,
             "name": "arrow-right-curved-2",
             "origin": [
                 8,
@@ -415,7 +415,7 @@
             "rotated": false
         },
         {
-            "idx": 89,
+            "idx": 254,
             "name": "arrow-right-down",
             "origin": [
                 8,
@@ -430,7 +430,7 @@
             "rotated": false
         },
         {
-            "idx": 75,
+            "idx": 229,
             "name": "arrow-right-down-white",
             "origin": [
                 8,
@@ -445,7 +445,7 @@
             "rotated": false
         },
         {
-            "idx": 87,
+            "idx": 252,
             "name": "arrow-right-up",
             "origin": [
                 8,
@@ -460,7 +460,7 @@
             "rotated": false
         },
         {
-            "idx": 73,
+            "idx": 227,
             "name": "arrow-right-up-white",
             "origin": [
                 8,
@@ -475,7 +475,7 @@
             "rotated": false
         },
         {
-            "idx": 74,
+            "idx": 228,
             "name": "arrow-right-white",
             "origin": [
                 8,
@@ -490,7 +490,7 @@
             "rotated": false
         },
         {
-            "idx": 95,
+            "idx": 271,
             "name": "arrow-undo",
             "origin": [
                 8,
@@ -505,7 +505,7 @@
             "rotated": false
         },
         {
-            "idx": 86,
+            "idx": 251,
             "name": "arrow-up",
             "origin": [
                 8,
@@ -520,7 +520,7 @@
             "rotated": false
         },
         {
-            "idx": 90,
+            "idx": 266,
             "name": "arrow-up-2",
             "origin": [
                 8,
@@ -535,7 +535,7 @@
             "rotated": false
         },
         {
-            "idx": 85,
+            "idx": 272,
             "name": "arrow-up-curved",
             "origin": [
                 8,
@@ -550,7 +550,7 @@
             "rotated": false
         },
         {
-            "idx": 72,
+            "idx": 226,
             "name": "arrow-up-white",
             "origin": [
                 8,
@@ -565,7 +565,7 @@
             "rotated": false
         },
         {
-            "idx": 85,
+            "idx": 261,
             "name": "arrows-around",
             "origin": [
                 8,
@@ -580,7 +580,7 @@
             "rotated": false
         },
         {
-            "idx": 87,
+            "idx": 263,
             "name": "arrows-rotate",
             "origin": [
                 8,
@@ -595,7 +595,7 @@
             "rotated": false
         },
         {
-            "idx": 93,
+            "idx": 269,
             "name": "arrows-shrink",
             "origin": [
                 8,
@@ -610,7 +610,7 @@
             "rotated": false
         },
         {
-            "idx": 91,
+            "idx": 278,
             "name": "asterisk",
             "origin": [
                 8,
@@ -625,7 +625,7 @@
             "rotated": false
         },
         {
-            "idx": 235,
+            "idx": 730,
             "name": "axe",
             "origin": [
                 8,
@@ -640,7 +640,7 @@
             "rotated": false
         },
         {
-            "idx": 283,
+            "idx": 877,
             "name": "axe-2",
             "origin": [
                 8,
@@ -655,7 +655,7 @@
             "rotated": false
         },
         {
-            "idx": 165,
+            "idx": 495,
             "name": "backetball",
             "origin": [
                 8,
@@ -670,7 +670,7 @@
             "rotated": false
         },
         {
-            "idx": 23,
+            "idx": 45,
             "name": "backpack",
             "origin": [
                 8,
@@ -685,7 +685,7 @@
             "rotated": false
         },
         {
-            "idx": 20,
+            "idx": 53,
             "name": "banana",
             "origin": [
                 8,
@@ -700,7 +700,7 @@
             "rotated": false
         },
         {
-            "idx": 277,
+            "idx": 871,
             "name": "banana-2",
             "origin": [
                 8,
@@ -715,7 +715,7 @@
             "rotated": false
         },
         {
-            "idx": 92,
+            "idx": 279,
             "name": "bandage",
             "origin": [
                 8,
@@ -730,7 +730,7 @@
             "rotated": false
         },
         {
-            "idx": 239,
+            "idx": 756,
             "name": "bank",
             "origin": [
                 8,
@@ -745,7 +745,7 @@
             "rotated": false
         },
         {
-            "idx": 227,
+            "idx": 700,
             "name": "barber-sign",
             "origin": [
                 8,
@@ -760,7 +760,7 @@
             "rotated": false
         },
         {
-            "idx": 109,
+            "idx": 340,
             "name": "barcode",
             "origin": [
                 8,
@@ -775,7 +775,7 @@
             "rotated": false
         },
         {
-            "idx": 211,
+            "idx": 662,
             "name": "baseball-cap-blue",
             "origin": [
                 8,
@@ -790,7 +790,7 @@
             "rotated": false
         },
         {
-            "idx": 212,
+            "idx": 663,
             "name": "baseball-cap-purple",
             "origin": [
                 8,
@@ -805,7 +805,7 @@
             "rotated": false
         },
         {
-            "idx": 210,
+            "idx": 661,
             "name": "baseball-cap-red",
             "origin": [
                 8,
@@ -820,7 +820,7 @@
             "rotated": false
         },
         {
-            "idx": 211,
+            "idx": 673,
             "name": "basketball-hoop",
             "origin": [
                 8,
@@ -835,7 +835,7 @@
             "rotated": false
         },
         {
-            "idx": 231,
+            "idx": 726,
             "name": "bathtub",
             "origin": [
                 8,
@@ -850,7 +850,7 @@
             "rotated": false
         },
         {
-            "idx": 269,
+            "idx": 841,
             "name": "baton",
             "origin": [
                 8,
@@ -865,7 +865,7 @@
             "rotated": false
         },
         {
-            "idx": 50,
+            "idx": 138,
             "name": "battery",
             "origin": [
                 8,
@@ -880,7 +880,7 @@
             "rotated": false
         },
         {
-            "idx": 182,
+            "idx": 578,
             "name": "battery-charging",
             "origin": [
                 8,
@@ -895,7 +895,7 @@
             "rotated": false
         },
         {
-            "idx": 181,
+            "idx": 577,
             "name": "battery-connected",
             "origin": [
                 8,
@@ -910,7 +910,7 @@
             "rotated": false
         },
         {
-            "idx": 188,
+            "idx": 573,
             "name": "battery-empty",
             "origin": [
                 8,
@@ -925,7 +925,7 @@
             "rotated": false
         },
         {
-            "idx": 180,
+            "idx": 576,
             "name": "battery-full",
             "origin": [
                 8,
@@ -940,7 +940,7 @@
             "rotated": false
         },
         {
-            "idx": 190,
+            "idx": 575,
             "name": "battery-half",
             "origin": [
                 8,
@@ -955,7 +955,7 @@
             "rotated": false
         },
         {
-            "idx": 189,
+            "idx": 574,
             "name": "battery-quarter",
             "origin": [
                 8,
@@ -970,7 +970,7 @@
             "rotated": false
         },
         {
-            "idx": 61,
+            "idx": 182,
             "name": "bed",
             "origin": [
                 8,
@@ -985,7 +985,7 @@
             "rotated": false
         },
         {
-            "idx": 223,
+            "idx": 696,
             "name": "bed-2",
             "origin": [
                 8,
@@ -1000,7 +1000,7 @@
             "rotated": false
         },
         {
-            "idx": 139,
+            "idx": 425,
             "name": "bell",
             "origin": [
                 8,
@@ -1015,7 +1015,7 @@
             "rotated": false
         },
         {
-            "idx": 215,
+            "idx": 688,
             "name": "bell-2",
             "origin": [
                 8,
@@ -1030,7 +1030,7 @@
             "rotated": false
         },
         {
-            "idx": 279,
+            "idx": 884,
             "name": "belt-white",
             "origin": [
                 8,
@@ -1045,7 +1045,7 @@
             "rotated": false
         },
         {
-            "idx": 163,
+            "idx": 493,
             "name": "billard-ball",
             "origin": [
                 8,
@@ -1060,7 +1060,7 @@
             "rotated": false
         },
         {
-            "idx": 140,
+            "idx": 426,
             "name": "binoculars",
             "origin": [
                 8,
@@ -1075,7 +1075,7 @@
             "rotated": false
         },
         {
-            "idx": 65,
+            "idx": 175,
             "name": "biomod",
             "origin": [
                 8,
@@ -1090,7 +1090,7 @@
             "rotated": false
         },
         {
-            "idx": 250,
+            "idx": 800,
             "name": "bite",
             "origin": [
                 8,
@@ -1105,7 +1105,7 @@
             "rotated": false
         },
         {
-            "idx": 251,
+            "idx": 801,
             "name": "bite-red",
             "origin": [
                 8,
@@ -1120,7 +1120,7 @@
             "rotated": false
         },
         {
-            "idx": 195,
+            "idx": 591,
             "name": "bleed",
             "origin": [
                 8,
@@ -1135,7 +1135,7 @@
             "rotated": false
         },
         {
-            "idx": 45,
+            "idx": 111,
             "name": "blender",
             "origin": [
                 8,
@@ -1150,7 +1150,7 @@
             "rotated": false
         },
         {
-            "idx": 105,
+            "idx": 336,
             "name": "blocked",
             "origin": [
                 8,
@@ -1165,7 +1165,7 @@
             "rotated": false
         },
         {
-            "idx": 141,
+            "idx": 427,
             "name": "blocks",
             "origin": [
                 8,
@@ -1180,7 +1180,7 @@
             "rotated": false
         },
         {
-            "idx": 34,
+            "idx": 89,
             "name": "blood",
             "origin": [
                 8,
@@ -1195,7 +1195,7 @@
             "rotated": false
         },
         {
-            "idx": 245,
+            "idx": 751,
             "name": "blood-drop",
             "origin": [
                 8,
@@ -1210,7 +1210,7 @@
             "rotated": false
         },
         {
-            "idx": 259,
+            "idx": 798,
             "name": "bloodbag",
             "origin": [
                 8,
@@ -1225,7 +1225,7 @@
             "rotated": false
         },
         {
-            "idx": 215,
+            "idx": 655,
             "name": "blouse-hanging-white",
             "origin": [
                 8,
@@ -1240,7 +1240,7 @@
             "rotated": false
         },
         {
-            "idx": 244,
+            "idx": 772,
             "name": "blouse-red",
             "origin": [
                 8,
@@ -1255,7 +1255,7 @@
             "rotated": false
         },
         {
-            "idx": 261,
+            "idx": 822,
             "name": "blueprint",
             "origin": [
                 8,
@@ -1270,7 +1270,7 @@
             "rotated": false
         },
         {
-            "idx": 25,
+            "idx": 47,
             "name": "bomb",
             "origin": [
                 8,
@@ -1285,7 +1285,7 @@
             "rotated": false
         },
         {
-            "idx": 279,
+            "idx": 862,
             "name": "bone",
             "origin": [
                 8,
@@ -1300,7 +1300,7 @@
             "rotated": false
         },
         {
-            "idx": 14,
+            "idx": 25,
             "name": "book1",
             "origin": [
                 8,
@@ -1315,7 +1315,7 @@
             "rotated": false
         },
         {
-            "idx": 15,
+            "idx": 26,
             "name": "book2",
             "origin": [
                 8,
@@ -1330,7 +1330,7 @@
             "rotated": false
         },
         {
-            "idx": 43,
+            "idx": 109,
             "name": "books",
             "origin": [
                 8,
@@ -1345,7 +1345,7 @@
             "rotated": false
         },
         {
-            "idx": 222,
+            "idx": 684,
             "name": "books-pile",
             "origin": [
                 8,
@@ -1360,7 +1360,7 @@
             "rotated": false
         },
         {
-            "idx": 27,
+            "idx": 71,
             "name": "bookshelf",
             "origin": [
                 8,
@@ -1375,7 +1375,7 @@
             "rotated": false
         },
         {
-            "idx": 257,
+            "idx": 807,
             "name": "bookshelf-2",
             "origin": [
                 8,
@@ -1390,7 +1390,7 @@
             "rotated": false
         },
         {
-            "idx": 239,
+            "idx": 745,
             "name": "boost",
             "origin": [
                 8,
@@ -1405,7 +1405,7 @@
             "rotated": false
         },
         {
-            "idx": 63,
+            "idx": 173,
             "name": "boot",
             "origin": [
                 8,
@@ -1420,7 +1420,7 @@
             "rotated": false
         },
         {
-            "idx": 252,
+            "idx": 780,
             "name": "boot-2",
             "origin": [
                 8,
@@ -1435,7 +1435,7 @@
             "rotated": false
         },
         {
-            "idx": 16,
+            "idx": 49,
             "name": "bowl",
             "origin": [
                 8,
@@ -1450,7 +1450,7 @@
             "rotated": false
         },
         {
-            "idx": 42,
+            "idx": 130,
             "name": "box-carton-1",
             "origin": [
                 8,
@@ -1465,7 +1465,7 @@
             "rotated": false
         },
         {
-            "idx": 110,
+            "idx": 341,
             "name": "box-carton-2",
             "origin": [
                 8,
@@ -1480,7 +1480,7 @@
             "rotated": false
         },
         {
-            "idx": 210,
+            "idx": 650,
             "name": "box-open",
             "origin": [
                 8,
@@ -1495,7 +1495,7 @@
             "rotated": false
         },
         {
-            "idx": 102,
+            "idx": 300,
             "name": "box-wood-1",
             "origin": [
                 8,
@@ -1510,7 +1510,7 @@
             "rotated": false
         },
         {
-            "idx": 67,
+            "idx": 210,
             "name": "box-wood-2",
             "origin": [
                 8,
@@ -1525,7 +1525,7 @@
             "rotated": false
         },
         {
-            "idx": 68,
+            "idx": 211,
             "name": "box-wood-3",
             "origin": [
                 8,
@@ -1540,7 +1540,22 @@
             "rotated": false
         },
         {
-            "idx": 197,
+            "idx": 825,
+            "name": "box-wood-4",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 626,
             "name": "boxes",
             "origin": [
                 8,
@@ -1555,7 +1570,7 @@
             "rotated": false
         },
         {
-            "idx": 139,
+            "idx": 414,
             "name": "brain",
             "origin": [
                 8,
@@ -1570,7 +1585,7 @@
             "rotated": false
         },
         {
-            "idx": 37,
+            "idx": 114,
             "name": "bread",
             "origin": [
                 8,
@@ -1585,7 +1600,7 @@
             "rotated": false
         },
         {
-            "idx": 247,
+            "idx": 786,
             "name": "brick",
             "origin": [
                 8,
@@ -1600,7 +1615,7 @@
             "rotated": false
         },
         {
-            "idx": 111,
+            "idx": 342,
             "name": "briefcase",
             "origin": [
                 8,
@@ -1615,7 +1630,7 @@
             "rotated": false
         },
         {
-            "idx": 253,
+            "idx": 781,
             "name": "briefcase-2",
             "origin": [
                 8,
@@ -1630,7 +1645,7 @@
             "rotated": false
         },
         {
-            "idx": 270,
+            "idx": 864,
             "name": "brocoli",
             "origin": [
                 8,
@@ -1645,7 +1660,7 @@
             "rotated": false
         },
         {
-            "idx": 177,
+            "idx": 540,
             "name": "broom",
             "origin": [
                 8,
@@ -1660,7 +1675,7 @@
             "rotated": false
         },
         {
-            "idx": 185,
+            "idx": 570,
             "name": "building",
             "origin": [
                 8,
@@ -1675,7 +1690,7 @@
             "rotated": false
         },
         {
-            "idx": 241,
+            "idx": 758,
             "name": "building-2",
             "origin": [
                 8,
@@ -1690,7 +1705,7 @@
             "rotated": false
         },
         {
-            "idx": 186,
+            "idx": 571,
             "name": "building-small",
             "origin": [
                 8,
@@ -1705,7 +1720,7 @@
             "rotated": false
         },
         {
-            "idx": 183,
+            "idx": 568,
             "name": "building-tall",
             "origin": [
                 8,
@@ -1720,7 +1735,7 @@
             "rotated": false
         },
         {
-            "idx": 187,
+            "idx": 572,
             "name": "building-tall-green",
             "origin": [
                 8,
@@ -1735,7 +1750,7 @@
             "rotated": false
         },
         {
-            "idx": 184,
+            "idx": 569,
             "name": "building-tall-old",
             "origin": [
                 8,
@@ -1750,7 +1765,7 @@
             "rotated": false
         },
         {
-            "idx": 112,
+            "idx": 343,
             "name": "burn",
             "origin": [
                 8,
@@ -1765,7 +1780,7 @@
             "rotated": false
         },
         {
-            "idx": 62,
+            "idx": 194,
             "name": "bush",
             "origin": [
                 8,
@@ -1780,7 +1795,7 @@
             "rotated": false
         },
         {
-            "idx": 166,
+            "idx": 529,
             "name": "business-male-beige",
             "origin": [
                 8,
@@ -1795,7 +1810,7 @@
             "rotated": false
         },
         {
-            "idx": 165,
+            "idx": 528,
             "name": "business-male-blue",
             "origin": [
                 8,
@@ -1810,7 +1825,7 @@
             "rotated": false
         },
         {
-            "idx": 167,
+            "idx": 530,
             "name": "business-male-old-beige",
             "origin": [
                 8,
@@ -1825,7 +1840,7 @@
             "rotated": false
         },
         {
-            "idx": 168,
+            "idx": 531,
             "name": "business-male-old-blue",
             "origin": [
                 8,
@@ -1840,7 +1855,7 @@
             "rotated": false
         },
         {
-            "idx": 174,
+            "idx": 526,
             "name": "business-man-hat-1",
             "origin": [
                 8,
@@ -1855,7 +1870,7 @@
             "rotated": false
         },
         {
-            "idx": 175,
+            "idx": 527,
             "name": "business-man-hat-2",
             "origin": [
                 8,
@@ -1870,7 +1885,7 @@
             "rotated": false
         },
         {
-            "idx": 273,
+            "idx": 856,
             "name": "bust",
             "origin": [
                 8,
@@ -1885,7 +1900,37 @@
             "rotated": false
         },
         {
-            "idx": 180,
+            "idx": 90,
+            "name": "cabinet-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 91,
+            "name": "cabinet-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 565,
             "name": "cactus",
             "origin": [
                 8,
@@ -1900,7 +1945,7 @@
             "rotated": false
         },
         {
-            "idx": 143,
+            "idx": 440,
             "name": "calculator",
             "origin": [
                 8,
@@ -1915,7 +1960,7 @@
             "rotated": false
         },
         {
-            "idx": 37,
+            "idx": 103,
             "name": "calendar",
             "origin": [
                 8,
@@ -1930,7 +1975,7 @@
             "rotated": false
         },
         {
-            "idx": 184,
+            "idx": 580,
             "name": "calendar-alt",
             "origin": [
                 8,
@@ -1945,7 +1990,7 @@
             "rotated": false
         },
         {
-            "idx": 226,
+            "idx": 699,
             "name": "call-bell",
             "origin": [
                 8,
@@ -1960,7 +2005,7 @@
             "rotated": false
         },
         {
-            "idx": 145,
+            "idx": 431,
             "name": "camcorder",
             "origin": [
                 8,
@@ -1975,7 +2020,7 @@
             "rotated": false
         },
         {
-            "idx": 235,
+            "idx": 752,
             "name": "camping",
             "origin": [
                 8,
@@ -1990,7 +2035,7 @@
             "rotated": false
         },
         {
-            "idx": 240,
+            "idx": 768,
             "name": "can",
             "origin": [
                 8,
@@ -2005,7 +2050,7 @@
             "rotated": false
         },
         {
-            "idx": 118,
+            "idx": 349,
             "name": "cancel",
             "origin": [
                 8,
@@ -2020,7 +2065,7 @@
             "rotated": false
         },
         {
-            "idx": 186,
+            "idx": 593,
             "name": "cancel-big-red",
             "origin": [
                 8,
@@ -2035,7 +2080,7 @@
             "rotated": false
         },
         {
-            "idx": 119,
+            "idx": 350,
             "name": "cancel-round",
             "origin": [
                 8,
@@ -2050,7 +2095,7 @@
             "rotated": false
         },
         {
-            "idx": 120,
+            "idx": 351,
             "name": "cancel-round-white",
             "origin": [
                 8,
@@ -2065,7 +2110,7 @@
             "rotated": false
         },
         {
-            "idx": 110,
+            "idx": 352,
             "name": "cancel-square",
             "origin": [
                 8,
@@ -2080,7 +2125,7 @@
             "rotated": false
         },
         {
-            "idx": 255,
+            "idx": 783,
             "name": "candle",
             "origin": [
                 8,
@@ -2095,7 +2140,7 @@
             "rotated": false
         },
         {
-            "idx": 113,
+            "idx": 344,
             "name": "car-blue",
             "origin": [
                 8,
@@ -2110,7 +2155,7 @@
             "rotated": false
         },
         {
-            "idx": 143,
+            "idx": 429,
             "name": "car-green",
             "origin": [
                 8,
@@ -2125,7 +2170,7 @@
             "rotated": false
         },
         {
-            "idx": 115,
+            "idx": 346,
             "name": "car-red",
             "origin": [
                 8,
@@ -2140,7 +2185,7 @@
             "rotated": false
         },
         {
-            "idx": 144,
+            "idx": 430,
             "name": "car-sports",
             "origin": [
                 8,
@@ -2155,7 +2200,7 @@
             "rotated": false
         },
         {
-            "idx": 114,
+            "idx": 345,
             "name": "car-taxi",
             "origin": [
                 8,
@@ -2170,7 +2215,7 @@
             "rotated": false
         },
         {
-            "idx": 142,
+            "idx": 428,
             "name": "car-yellow",
             "origin": [
                 8,
@@ -2185,7 +2230,7 @@
             "rotated": false
         },
         {
-            "idx": 135,
+            "idx": 410,
             "name": "card",
             "origin": [
                 8,
@@ -2200,7 +2245,7 @@
             "rotated": false
         },
         {
-            "idx": 280,
+            "idx": 874,
             "name": "carot",
             "origin": [
                 8,
@@ -2215,7 +2260,7 @@
             "rotated": false
         },
         {
-            "idx": 49,
+            "idx": 137,
             "name": "cash-register",
             "origin": [
                 8,
@@ -2230,7 +2275,7 @@
             "rotated": false
         },
         {
-            "idx": 203,
+            "idx": 632,
             "name": "cash-register-2",
             "origin": [
                 8,
@@ -2245,7 +2290,7 @@
             "rotated": false
         },
         {
-            "idx": 142,
+            "idx": 439,
             "name": "cassette",
             "origin": [
                 8,
@@ -2260,7 +2305,7 @@
             "rotated": false
         },
         {
-            "idx": 172,
+            "idx": 524,
             "name": "casual-female-beige",
             "origin": [
                 8,
@@ -2275,7 +2320,7 @@
             "rotated": false
         },
         {
-            "idx": 170,
+            "idx": 533,
             "name": "casual-female-black",
             "origin": [
                 8,
@@ -2290,7 +2335,7 @@
             "rotated": false
         },
         {
-            "idx": 170,
+            "idx": 522,
             "name": "casual-female-green",
             "origin": [
                 8,
@@ -2305,7 +2350,7 @@
             "rotated": false
         },
         {
-            "idx": 173,
+            "idx": 525,
             "name": "casual-female-pink",
             "origin": [
                 8,
@@ -2320,7 +2365,7 @@
             "rotated": false
         },
         {
-            "idx": 161,
+            "idx": 513,
             "name": "casual-female-red",
             "origin": [
                 8,
@@ -2335,7 +2380,7 @@
             "rotated": false
         },
         {
-            "idx": 159,
+            "idx": 500,
             "name": "casual-female-yellow",
             "origin": [
                 8,
@@ -2350,7 +2395,7 @@
             "rotated": false
         },
         {
-            "idx": 171,
+            "idx": 523,
             "name": "casual-male-beige",
             "origin": [
                 8,
@@ -2365,7 +2410,7 @@
             "rotated": false
         },
         {
-            "idx": 169,
+            "idx": 532,
             "name": "casual-male-black",
             "origin": [
                 8,
@@ -2380,7 +2425,7 @@
             "rotated": false
         },
         {
-            "idx": 157,
+            "idx": 498,
             "name": "casual-male-blue",
             "origin": [
                 8,
@@ -2395,7 +2440,7 @@
             "rotated": false
         },
         {
-            "idx": 169,
+            "idx": 521,
             "name": "casual-male-green",
             "origin": [
                 8,
@@ -2410,7 +2455,7 @@
             "rotated": false
         },
         {
-            "idx": 160,
+            "idx": 512,
             "name": "casual-male-red",
             "origin": [
                 8,
@@ -2425,7 +2470,7 @@
             "rotated": false
         },
         {
-            "idx": 158,
+            "idx": 499,
             "name": "casual-male-yellow",
             "origin": [
                 8,
@@ -2440,7 +2485,7 @@
             "rotated": false
         },
         {
-            "idx": 20,
+            "idx": 31,
             "name": "cd",
             "origin": [
                 8,
@@ -2455,7 +2500,7 @@
             "rotated": false
         },
         {
-            "idx": 177,
+            "idx": 562,
             "name": "cd-case",
             "origin": [
                 8,
@@ -2470,7 +2515,7 @@
             "rotated": false
         },
         {
-            "idx": 149,
+            "idx": 446,
             "name": "cds",
             "origin": [
                 8,
@@ -2485,7 +2530,7 @@
             "rotated": false
         },
         {
-            "idx": 44,
+            "idx": 132,
             "name": "ceiling-light",
             "origin": [
                 8,
@@ -2500,7 +2545,7 @@
             "rotated": false
         },
         {
-            "idx": 214,
+            "idx": 676,
             "name": "certificate-wall",
             "origin": [
                 8,
@@ -2515,7 +2560,7 @@
             "rotated": false
         },
         {
-            "idx": 116,
+            "idx": 347,
             "name": "chain",
             "origin": [
                 8,
@@ -2530,7 +2575,7 @@
             "rotated": false
         },
         {
-            "idx": 176,
+            "idx": 539,
             "name": "chain-unlink",
             "origin": [
                 8,
@@ -2545,7 +2590,7 @@
             "rotated": false
         },
         {
-            "idx": 265,
+            "idx": 837,
             "name": "chainsaw",
             "origin": [
                 8,
@@ -2560,7 +2605,7 @@
             "rotated": false
         },
         {
-            "idx": 28,
+            "idx": 72,
             "name": "chair",
             "origin": [
                 8,
@@ -2575,7 +2620,7 @@
             "rotated": false
         },
         {
-            "idx": 61,
+            "idx": 193,
             "name": "chair-metal",
             "origin": [
                 8,
@@ -2590,7 +2635,7 @@
             "rotated": false
         },
         {
-            "idx": 203,
+            "idx": 643,
             "name": "chair-steel-front",
             "origin": [
                 8,
@@ -2605,7 +2650,7 @@
             "rotated": false
         },
         {
-            "idx": 202,
+            "idx": 642,
             "name": "chair-steel-side",
             "origin": [
                 8,
@@ -2620,7 +2665,7 @@
             "rotated": false
         },
         {
-            "idx": 136,
+            "idx": 433,
             "name": "chair2",
             "origin": [
                 8,
@@ -2635,7 +2680,7 @@
             "rotated": false
         },
         {
-            "idx": 222,
+            "idx": 695,
             "name": "chat-2",
             "origin": [
                 8,
@@ -2650,7 +2695,7 @@
             "rotated": false
         },
         {
-            "idx": 98,
+            "idx": 285,
             "name": "check",
             "origin": [
                 8,
@@ -2680,7 +2725,7 @@
             "rotated": false
         },
         {
-            "idx": 99,
+            "idx": 286,
             "name": "check-circle",
             "origin": [
                 8,
@@ -2695,7 +2740,7 @@
             "rotated": false
         },
         {
-            "idx": 100,
+            "idx": 287,
             "name": "check-circle-white",
             "origin": [
                 8,
@@ -2710,7 +2755,7 @@
             "rotated": false
         },
         {
-            "idx": 160,
+            "idx": 490,
             "name": "check-red",
             "origin": [
                 8,
@@ -2725,7 +2770,7 @@
             "rotated": false
         },
         {
-            "idx": 90,
+            "idx": 288,
             "name": "check-square",
             "origin": [
                 8,
@@ -2740,7 +2785,7 @@
             "rotated": false
         },
         {
-            "idx": 187,
+            "idx": 583,
             "name": "check-white",
             "origin": [
                 8,
@@ -2770,7 +2815,7 @@
             "rotated": false
         },
         {
-            "idx": 186,
+            "idx": 582,
             "name": "checks-white",
             "origin": [
                 8,
@@ -2785,7 +2830,7 @@
             "rotated": false
         },
         {
-            "idx": 19,
+            "idx": 41,
             "name": "cheese",
             "origin": [
                 8,
@@ -2800,7 +2845,7 @@
             "rotated": false
         },
         {
-            "idx": 13,
+            "idx": 35,
             "name": "cigarette",
             "origin": [
                 8,
@@ -2815,7 +2860,7 @@
             "rotated": false
         },
         {
-            "idx": 137,
+            "idx": 434,
             "name": "clipboard",
             "origin": [
                 8,
@@ -2830,7 +2875,7 @@
             "rotated": false
         },
         {
-            "idx": 25,
+            "idx": 80,
             "name": "clock",
             "origin": [
                 8,
@@ -2845,7 +2890,7 @@
             "rotated": false
         },
         {
-            "idx": 207,
+            "idx": 647,
             "name": "clock-square",
             "origin": [
                 8,
@@ -2860,7 +2905,7 @@
             "rotated": false
         },
         {
-            "idx": 282,
+            "idx": 898,
             "name": "clock-white",
             "origin": [
                 8,
@@ -2875,7 +2920,7 @@
             "rotated": false
         },
         {
-            "idx": 244,
+            "idx": 750,
             "name": "cloud-lighting",
             "origin": [
                 8,
@@ -2890,7 +2935,7 @@
             "rotated": false
         },
         {
-            "idx": 243,
+            "idx": 749,
             "name": "cloud-rain",
             "origin": [
                 8,
@@ -2905,7 +2950,7 @@
             "rotated": false
         },
         {
-            "idx": 242,
+            "idx": 748,
             "name": "cloud-sun",
             "origin": [
                 8,
@@ -2920,7 +2965,7 @@
             "rotated": false
         },
         {
-            "idx": 201,
+            "idx": 619,
             "name": "coffee-maker",
             "origin": [
                 8,
@@ -2935,7 +2980,7 @@
             "rotated": false
         },
         {
-            "idx": 277,
+            "idx": 882,
             "name": "coffee-white",
             "origin": [
                 8,
@@ -2950,7 +2995,7 @@
             "rotated": false
         },
         {
-            "idx": 227,
+            "idx": 711,
             "name": "coin",
             "origin": [
                 8,
@@ -2965,7 +3010,7 @@
             "rotated": false
         },
         {
-            "idx": 255,
+            "idx": 816,
             "name": "colors",
             "origin": [
                 8,
@@ -2980,7 +3025,7 @@
             "rotated": false
         },
         {
-            "idx": 140,
+            "idx": 448,
             "name": "compass",
             "origin": [
                 8,
@@ -2995,37 +3040,7 @@
             "rotated": false
         },
         {
-            "idx": 141,
-            "name": "computer-off",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                96,
-                432,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 140,
-            "name": "computer-on",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
-                432,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 5,
+            "idx": 16,
             "name": "connect",
             "origin": [
                 8,
@@ -3040,7 +3055,7 @@
             "rotated": false
         },
         {
-            "idx": 94,
+            "idx": 292,
             "name": "console",
             "origin": [
                 8,
@@ -3055,7 +3070,7 @@
             "rotated": false
         },
         {
-            "idx": 237,
+            "idx": 754,
             "name": "construction",
             "origin": [
                 8,
@@ -3070,7 +3085,7 @@
             "rotated": false
         },
         {
-            "idx": 160,
+            "idx": 501,
             "name": "construction-worker-1",
             "origin": [
                 8,
@@ -3085,7 +3100,7 @@
             "rotated": false
         },
         {
-            "idx": 161,
+            "idx": 502,
             "name": "construction-worker-2",
             "origin": [
                 8,
@@ -3100,7 +3115,7 @@
             "rotated": false
         },
         {
-            "idx": 179,
+            "idx": 564,
             "name": "contrast",
             "origin": [
                 8,
@@ -3115,7 +3130,7 @@
             "rotated": false
         },
         {
-            "idx": 22,
+            "idx": 44,
             "name": "cookie",
             "origin": [
                 8,
@@ -3130,7 +3145,7 @@
             "rotated": false
         },
         {
-            "idx": 275,
+            "idx": 869,
             "name": "cookie-2",
             "origin": [
                 8,
@@ -3145,7 +3160,7 @@
             "rotated": false
         },
         {
-            "idx": 276,
+            "idx": 870,
             "name": "cookie-3",
             "origin": [
                 8,
@@ -3160,7 +3175,7 @@
             "rotated": false
         },
         {
-            "idx": 183,
+            "idx": 579,
             "name": "counter",
             "origin": [
                 8,
@@ -3175,7 +3190,7 @@
             "rotated": false
         },
         {
-            "idx": 115,
+            "idx": 335,
             "name": "cpu",
             "origin": [
                 8,
@@ -3190,7 +3205,7 @@
             "rotated": false
         },
         {
-            "idx": 139,
+            "idx": 436,
             "name": "credit-card",
             "origin": [
                 8,
@@ -3205,7 +3220,7 @@
             "rotated": false
         },
         {
-            "idx": 12,
+            "idx": 34,
             "name": "credits",
             "origin": [
                 8,
@@ -3220,8 +3235,8 @@
             "rotated": false
         },
         {
-            "idx": 62,
-            "name": "credits-alt",
+            "idx": 172,
+            "name": "credits-2",
             "origin": [
                 8,
                 8
@@ -3235,7 +3250,7 @@
             "rotated": false
         },
         {
-            "idx": 271,
+            "idx": 865,
             "name": "croissant",
             "origin": [
                 8,
@@ -3250,7 +3265,7 @@
             "rotated": false
         },
         {
-            "idx": 284,
+            "idx": 878,
             "name": "crowbar",
             "origin": [
                 8,
@@ -3265,7 +3280,7 @@
             "rotated": false
         },
         {
-            "idx": 138,
+            "idx": 435,
             "name": "crown",
             "origin": [
                 8,
@@ -3280,7 +3295,7 @@
             "rotated": false
         },
         {
-            "idx": 274,
+            "idx": 868,
             "name": "cucumber",
             "origin": [
                 8,
@@ -3295,7 +3310,7 @@
             "rotated": false
         },
         {
-            "idx": 15,
+            "idx": 48,
             "name": "cup",
             "origin": [
                 8,
@@ -3310,7 +3325,7 @@
             "rotated": false
         },
         {
-            "idx": 287,
+            "idx": 903,
             "name": "cushion",
             "origin": [
                 8,
@@ -3325,7 +3340,7 @@
             "rotated": false
         },
         {
-            "idx": 150,
+            "idx": 447,
             "name": "cutter",
             "origin": [
                 8,
@@ -3340,7 +3355,7 @@
             "rotated": false
         },
         {
-            "idx": 216,
+            "idx": 689,
             "name": "cyclone",
             "origin": [
                 8,
@@ -3355,7 +3370,7 @@
             "rotated": false
         },
         {
-            "idx": 147,
+            "idx": 444,
             "name": "database",
             "origin": [
                 8,
@@ -3370,7 +3385,7 @@
             "rotated": false
         },
         {
-            "idx": 283,
+            "idx": 888,
             "name": "dead-white",
             "origin": [
                 8,
@@ -3385,7 +3400,7 @@
             "rotated": false
         },
         {
-            "idx": 290,
+            "idx": 895,
             "name": "dead-white-2",
             "origin": [
                 8,
@@ -3400,7 +3415,7 @@
             "rotated": false
         },
         {
-            "idx": 70,
+            "idx": 224,
             "name": "death",
             "origin": [
                 8,
@@ -3415,7 +3430,7 @@
             "rotated": false
         },
         {
-            "idx": 260,
+            "idx": 832,
             "name": "death-2",
             "origin": [
                 8,
@@ -3430,7 +3445,7 @@
             "rotated": false
         },
         {
-            "idx": 268,
+            "idx": 851,
             "name": "defibrilator",
             "origin": [
                 8,
@@ -3445,7 +3460,7 @@
             "rotated": false
         },
         {
-            "idx": 48,
+            "idx": 136,
             "name": "desk-chair",
             "origin": [
                 8,
@@ -3460,7 +3475,7 @@
             "rotated": false
         },
         {
-            "idx": 45,
+            "idx": 122,
             "name": "desk-lamp",
             "origin": [
                 8,
@@ -3475,7 +3490,7 @@
             "rotated": false
         },
         {
-            "idx": 215,
+            "idx": 677,
             "name": "desk-lamp-2",
             "origin": [
                 8,
@@ -3490,7 +3505,7 @@
             "rotated": false
         },
         {
-            "idx": 258,
+            "idx": 797,
             "name": "desk-metal",
             "origin": [
                 8,
@@ -3505,7 +3520,7 @@
             "rotated": false
         },
         {
-            "idx": 98,
+            "idx": 296,
             "name": "desk-phone-off",
             "origin": [
                 8,
@@ -3520,7 +3535,7 @@
             "rotated": false
         },
         {
-            "idx": 99,
+            "idx": 297,
             "name": "desk-phone-on",
             "origin": [
                 8,
@@ -3535,7 +3550,7 @@
             "rotated": false
         },
         {
-            "idx": 257,
+            "idx": 796,
             "name": "desk-wood",
             "origin": [
                 8,
@@ -3550,7 +3565,7 @@
             "rotated": false
         },
         {
-            "idx": 23,
+            "idx": 56,
             "name": "dex",
             "origin": [
                 8,
@@ -3565,7 +3580,7 @@
             "rotated": false
         },
         {
-            "idx": 178,
+            "idx": 563,
             "name": "diamond",
             "origin": [
                 8,
@@ -3580,7 +3595,7 @@
             "rotated": false
         },
         {
-            "idx": 18,
+            "idx": 29,
             "name": "dice",
             "origin": [
                 8,
@@ -3595,7 +3610,7 @@
             "rotated": false
         },
         {
-            "idx": 277,
+            "idx": 860,
             "name": "dice-booster",
             "origin": [
                 8,
@@ -3610,7 +3625,7 @@
             "rotated": false
         },
         {
-            "idx": 287,
+            "idx": 892,
             "name": "dice-white",
             "origin": [
                 8,
@@ -3625,7 +3640,7 @@
             "rotated": false
         },
         {
-            "idx": 16,
+            "idx": 27,
             "name": "die",
             "origin": [
                 8,
@@ -3640,7 +3655,7 @@
             "rotated": false
         },
         {
-            "idx": 208,
+            "idx": 648,
             "name": "dishes",
             "origin": [
                 8,
@@ -3655,7 +3670,7 @@
             "rotated": false
         },
         {
-            "idx": 19,
+            "idx": 30,
             "name": "diskette",
             "origin": [
                 8,
@@ -3670,7 +3685,7 @@
             "rotated": false
         },
         {
-            "idx": 168,
+            "idx": 520,
             "name": "doctor-female",
             "origin": [
                 8,
@@ -3685,7 +3700,7 @@
             "rotated": false
         },
         {
-            "idx": 167,
+            "idx": 519,
             "name": "doctor-male",
             "origin": [
                 8,
@@ -3700,7 +3715,7 @@
             "rotated": false
         },
         {
-            "idx": 274,
+            "idx": 846,
             "name": "dodge",
             "origin": [
                 8,
@@ -3715,7 +3730,7 @@
             "rotated": false
         },
         {
-            "idx": 291,
+            "idx": 907,
             "name": "donut",
             "origin": [
                 8,
@@ -3730,7 +3745,7 @@
             "rotated": false
         },
         {
-            "idx": 34,
+            "idx": 100,
             "name": "door-close",
             "origin": [
                 8,
@@ -3745,7 +3760,7 @@
             "rotated": false
         },
         {
-            "idx": 204,
+            "idx": 644,
             "name": "door-glass-closed",
             "origin": [
                 8,
@@ -3760,7 +3775,7 @@
             "rotated": false
         },
         {
-            "idx": 199,
+            "idx": 628,
             "name": "door-glass-opened",
             "origin": [
                 8,
@@ -3775,7 +3790,7 @@
             "rotated": false
         },
         {
-            "idx": 35,
+            "idx": 101,
             "name": "door-open",
             "origin": [
                 8,
@@ -3790,7 +3805,7 @@
             "rotated": false
         },
         {
-            "idx": 126,
+            "idx": 401,
             "name": "door-wood-close",
             "origin": [
                 8,
@@ -3805,7 +3820,7 @@
             "rotated": false
         },
         {
-            "idx": 127,
+            "idx": 402,
             "name": "door-wood-open",
             "origin": [
                 8,
@@ -3820,7 +3835,7 @@
             "rotated": false
         },
         {
-            "idx": 98,
+            "idx": 307,
             "name": "dot-green",
             "origin": [
                 8,
@@ -3835,7 +3850,7 @@
             "rotated": false
         },
         {
-            "idx": 100,
+            "idx": 309,
             "name": "dot-red",
             "origin": [
                 8,
@@ -3850,7 +3865,7 @@
             "rotated": false
         },
         {
-            "idx": 99,
+            "idx": 308,
             "name": "dot-white",
             "origin": [
                 8,
@@ -3865,7 +3880,7 @@
             "rotated": false
         },
         {
-            "idx": 101,
+            "idx": 310,
             "name": "dot-yellow",
             "origin": [
                 8,
@@ -3880,7 +3895,7 @@
             "rotated": false
         },
         {
-            "idx": 294,
+            "idx": 910,
             "name": "download",
             "origin": [
                 8,
@@ -3895,7 +3910,7 @@
             "rotated": false
         },
         {
-            "idx": 244,
+            "idx": 761,
             "name": "downtown",
             "origin": [
                 8,
@@ -3910,7 +3925,7 @@
             "rotated": false
         },
         {
-            "idx": 128,
+            "idx": 403,
             "name": "drawer-close",
             "origin": [
                 8,
@@ -3925,7 +3940,7 @@
             "rotated": false
         },
         {
-            "idx": 129,
+            "idx": 404,
             "name": "drawer-open",
             "origin": [
                 8,
@@ -3940,7 +3955,7 @@
             "rotated": false
         },
         {
-            "idx": 130,
+            "idx": 405,
             "name": "drill",
             "origin": [
                 8,
@@ -3955,7 +3970,7 @@
             "rotated": false
         },
         {
-            "idx": 285,
+            "idx": 901,
             "name": "drink-white",
             "origin": [
                 8,
@@ -3970,7 +3985,7 @@
             "rotated": false
         },
         {
-            "idx": 111,
+            "idx": 353,
             "name": "drive",
             "origin": [
                 8,
@@ -3985,7 +4000,7 @@
             "rotated": false
         },
         {
-            "idx": 117,
+            "idx": 359,
             "name": "drive-cd",
             "origin": [
                 8,
@@ -4000,7 +4015,7 @@
             "rotated": false
         },
         {
-            "idx": 113,
+            "idx": 355,
             "name": "drive-download",
             "origin": [
                 8,
@@ -4015,7 +4030,7 @@
             "rotated": false
         },
         {
-            "idx": 116,
+            "idx": 358,
             "name": "drive-globe",
             "origin": [
                 8,
@@ -4030,7 +4045,7 @@
             "rotated": false
         },
         {
-            "idx": 112,
+            "idx": 354,
             "name": "drive-move",
             "origin": [
                 8,
@@ -4045,7 +4060,7 @@
             "rotated": false
         },
         {
-            "idx": 115,
+            "idx": 357,
             "name": "drive-network",
             "origin": [
                 8,
@@ -4060,7 +4075,7 @@
             "rotated": false
         },
         {
-            "idx": 114,
+            "idx": 356,
             "name": "drive-upload",
             "origin": [
                 8,
@@ -4075,7 +4090,7 @@
             "rotated": false
         },
         {
-            "idx": 144,
+            "idx": 441,
             "name": "drop",
             "origin": [
                 8,
@@ -4090,7 +4105,7 @@
             "rotated": false
         },
         {
-            "idx": 229,
+            "idx": 702,
             "name": "dynamite",
             "origin": [
                 8,
@@ -4105,7 +4120,7 @@
             "rotated": false
         },
         {
-            "idx": 130,
+            "idx": 383,
             "name": "ear",
             "origin": [
                 8,
@@ -4120,7 +4135,7 @@
             "rotated": false
         },
         {
-            "idx": 246,
+            "idx": 763,
             "name": "earth",
             "origin": [
                 8,
@@ -4135,7 +4150,7 @@
             "rotated": false
         },
         {
-            "idx": 134,
+            "idx": 409,
             "name": "education",
             "origin": [
                 8,
@@ -4150,7 +4165,7 @@
             "rotated": false
         },
         {
-            "idx": 72,
+            "idx": 215,
             "name": "electric-cord",
             "origin": [
                 8,
@@ -4165,7 +4180,7 @@
             "rotated": false
         },
         {
-            "idx": 266,
+            "idx": 838,
             "name": "emergency-button",
             "origin": [
                 8,
@@ -4180,7 +4195,7 @@
             "rotated": false
         },
         {
-            "idx": 142,
+            "idx": 450,
             "name": "enter",
             "origin": [
                 8,
@@ -4195,7 +4210,7 @@
             "rotated": false
         },
         {
-            "idx": 118,
+            "idx": 360,
             "name": "envelop",
             "origin": [
                 8,
@@ -4210,7 +4225,7 @@
             "rotated": false
         },
         {
-            "idx": 129,
+            "idx": 382,
             "name": "eraser",
             "origin": [
                 8,
@@ -4240,7 +4255,7 @@
             "rotated": false
         },
         {
-            "idx": 266,
+            "idx": 849,
             "name": "exchange",
             "origin": [
                 8,
@@ -4255,7 +4270,7 @@
             "rotated": false
         },
         {
-            "idx": 59,
+            "idx": 158,
             "name": "exclamation-mark",
             "origin": [
                 8,
@@ -4270,7 +4285,7 @@
             "rotated": false
         },
         {
-            "idx": 141,
+            "idx": 449,
             "name": "exit",
             "origin": [
                 8,
@@ -4285,7 +4300,7 @@
             "rotated": false
         },
         {
-            "idx": 213,
+            "idx": 664,
             "name": "exit-sign",
             "origin": [
                 8,
@@ -4300,7 +4315,7 @@
             "rotated": false
         },
         {
-            "idx": 271,
+            "idx": 843,
             "name": "exit-white",
             "origin": [
                 8,
@@ -4315,7 +4330,7 @@
             "rotated": false
         },
         {
-            "idx": 202,
+            "idx": 620,
             "name": "extinguisher",
             "origin": [
                 8,
@@ -4330,7 +4345,7 @@
             "rotated": false
         },
         {
-            "idx": 196,
+            "idx": 625,
             "name": "extinguisher-2",
             "origin": [
                 8,
@@ -4345,7 +4360,7 @@
             "rotated": false
         },
         {
-            "idx": 121,
+            "idx": 363,
             "name": "eye-close",
             "origin": [
                 8,
@@ -4360,7 +4375,7 @@
             "rotated": false
         },
         {
-            "idx": 119,
+            "idx": 361,
             "name": "eye-red",
             "origin": [
                 8,
@@ -4375,7 +4390,7 @@
             "rotated": false
         },
         {
-            "idx": 120,
+            "idx": 362,
             "name": "eye-semi-close",
             "origin": [
                 8,
@@ -4390,7 +4405,7 @@
             "rotated": false
         },
         {
-            "idx": 278,
+            "idx": 861,
             "name": "eyeball",
             "origin": [
                 8,
@@ -4405,7 +4420,7 @@
             "rotated": false
         },
         {
-            "idx": 78,
+            "idx": 221,
             "name": "face-angry",
             "origin": [
                 8,
@@ -4420,7 +4435,7 @@
             "rotated": false
         },
         {
-            "idx": 75,
+            "idx": 218,
             "name": "face-happy",
             "origin": [
                 8,
@@ -4435,7 +4450,7 @@
             "rotated": false
         },
         {
-            "idx": 73,
+            "idx": 216,
             "name": "face-neutral",
             "origin": [
                 8,
@@ -4450,7 +4465,7 @@
             "rotated": false
         },
         {
-            "idx": 76,
+            "idx": 219,
             "name": "face-sad",
             "origin": [
                 8,
@@ -4465,7 +4480,7 @@
             "rotated": false
         },
         {
-            "idx": 74,
+            "idx": 217,
             "name": "face-smile",
             "origin": [
                 8,
@@ -4480,7 +4495,7 @@
             "rotated": false
         },
         {
-            "idx": 77,
+            "idx": 220,
             "name": "face-yell",
             "origin": [
                 8,
@@ -4495,7 +4510,7 @@
             "rotated": false
         },
         {
-            "idx": 158,
+            "idx": 488,
             "name": "female",
             "origin": [
                 8,
@@ -4510,7 +4525,7 @@
             "rotated": false
         },
         {
-            "idx": 163,
+            "idx": 515,
             "name": "female-naked",
             "origin": [
                 8,
@@ -4525,7 +4540,7 @@
             "rotated": false
         },
         {
-            "idx": 26,
+            "idx": 59,
             "name": "fence",
             "origin": [
                 8,
@@ -4540,7 +4555,7 @@
             "rotated": false
         },
         {
-            "idx": 71,
+            "idx": 225,
             "name": "fight",
             "origin": [
                 8,
@@ -4570,7 +4585,7 @@
             "rotated": false
         },
         {
-            "idx": 286,
+            "idx": 913,
             "name": "file-audio",
             "origin": [
                 8,
@@ -4585,7 +4600,7 @@
             "rotated": false
         },
         {
-            "idx": 125,
+            "idx": 400,
             "name": "file-binary",
             "origin": [
                 8,
@@ -4600,7 +4615,7 @@
             "rotated": false
         },
         {
-            "idx": 122,
+            "idx": 386,
             "name": "file-blank",
             "origin": [
                 8,
@@ -4615,7 +4630,7 @@
             "rotated": false
         },
         {
-            "idx": 128,
+            "idx": 392,
             "name": "file-branch",
             "origin": [
                 8,
@@ -4630,7 +4645,7 @@
             "rotated": false
         },
         {
-            "idx": 47,
+            "idx": 124,
             "name": "file-cabinet",
             "origin": [
                 8,
@@ -4645,7 +4660,22 @@
             "rotated": false
         },
         {
-            "idx": 131,
+            "idx": 128,
+            "name": "file-cabinet-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 395,
             "name": "file-image",
             "origin": [
                 8,
@@ -4660,7 +4690,7 @@
             "rotated": false
         },
         {
-            "idx": 130,
+            "idx": 394,
             "name": "file-in",
             "origin": [
                 8,
@@ -4675,7 +4705,7 @@
             "rotated": false
         },
         {
-            "idx": 134,
+            "idx": 398,
             "name": "file-json",
             "origin": [
                 8,
@@ -4690,7 +4720,7 @@
             "rotated": false
         },
         {
-            "idx": 285,
+            "idx": 912,
             "name": "file-key",
             "origin": [
                 8,
@@ -4705,7 +4735,7 @@
             "rotated": false
         },
         {
-            "idx": 129,
+            "idx": 393,
             "name": "file-list",
             "origin": [
                 8,
@@ -4720,7 +4750,7 @@
             "rotated": false
         },
         {
-            "idx": 135,
+            "idx": 399,
             "name": "file-object",
             "origin": [
                 8,
@@ -4735,7 +4765,7 @@
             "rotated": false
         },
         {
-            "idx": 133,
+            "idx": 397,
             "name": "file-out",
             "origin": [
                 8,
@@ -4750,7 +4780,7 @@
             "rotated": false
         },
         {
-            "idx": 127,
+            "idx": 391,
             "name": "file-search",
             "origin": [
                 8,
@@ -4765,7 +4795,7 @@
             "rotated": false
         },
         {
-            "idx": 126,
+            "idx": 390,
             "name": "file-shred",
             "origin": [
                 8,
@@ -4780,7 +4810,7 @@
             "rotated": false
         },
         {
-            "idx": 125,
+            "idx": 389,
             "name": "file-text",
             "origin": [
                 8,
@@ -4795,7 +4825,7 @@
             "rotated": false
         },
         {
-            "idx": 286,
+            "idx": 891,
             "name": "file-white",
             "origin": [
                 8,
@@ -4810,7 +4840,7 @@
             "rotated": false
         },
         {
-            "idx": 132,
+            "idx": 396,
             "name": "file-world",
             "origin": [
                 8,
@@ -4825,7 +4855,7 @@
             "rotated": false
         },
         {
-            "idx": 120,
+            "idx": 384,
             "name": "files",
             "origin": [
                 8,
@@ -4840,7 +4870,7 @@
             "rotated": false
         },
         {
-            "idx": 123,
+            "idx": 387,
             "name": "files-side-by-side",
             "origin": [
                 8,
@@ -4855,7 +4885,7 @@
             "rotated": false
         },
         {
-            "idx": 121,
+            "idx": 385,
             "name": "files-stack",
             "origin": [
                 8,
@@ -4870,7 +4900,7 @@
             "rotated": false
         },
         {
-            "idx": 124,
+            "idx": 388,
             "name": "files-structure",
             "origin": [
                 8,
@@ -4885,7 +4915,7 @@
             "rotated": false
         },
         {
-            "idx": 81,
+            "idx": 235,
             "name": "fire",
             "origin": [
                 8,
@@ -4900,7 +4930,7 @@
             "rotated": false
         },
         {
-            "idx": 35,
+            "idx": 79,
             "name": "fire-hydrant",
             "origin": [
                 8,
@@ -4915,7 +4945,7 @@
             "rotated": false
         },
         {
-            "idx": 195,
+            "idx": 602,
             "name": "fireplace",
             "origin": [
                 8,
@@ -4930,8 +4960,23 @@
             "rotated": false
         },
         {
-            "idx": 210,
-            "name": "fireplace-2",
+            "idx": 934,
+            "name": "fireplace-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 639,
+            "name": "fireplace-on",
             "origin": [
                 8,
                 8
@@ -4945,7 +4990,7 @@
             "rotated": false
         },
         {
-            "idx": 26,
+            "idx": 81,
             "name": "first-aid",
             "origin": [
                 8,
@@ -4960,7 +5005,7 @@
             "rotated": false
         },
         {
-            "idx": 270,
+            "idx": 831,
             "name": "first-aid-kit",
             "origin": [
                 8,
@@ -4975,7 +5020,7 @@
             "rotated": false
         },
         {
-            "idx": 261,
+            "idx": 811,
             "name": "first-aid-kit-2",
             "origin": [
                 8,
@@ -4990,7 +5035,7 @@
             "rotated": false
         },
         {
-            "idx": 55,
+            "idx": 176,
             "name": "first-aid2",
             "origin": [
                 8,
@@ -5005,7 +5050,7 @@
             "rotated": false
         },
         {
-            "idx": 15,
+            "idx": 37,
             "name": "fist",
             "origin": [
                 8,
@@ -5020,7 +5065,7 @@
             "rotated": false
         },
         {
-            "idx": 33,
+            "idx": 77,
             "name": "fist2",
             "origin": [
                 8,
@@ -5035,7 +5080,7 @@
             "rotated": false
         },
         {
-            "idx": 138,
+            "idx": 424,
             "name": "flag-black",
             "origin": [
                 8,
@@ -5050,7 +5095,7 @@
             "rotated": false
         },
         {
-            "idx": 137,
+            "idx": 423,
             "name": "flag-blue",
             "origin": [
                 8,
@@ -5065,7 +5110,7 @@
             "rotated": false
         },
         {
-            "idx": 130,
+            "idx": 416,
             "name": "flag-checkered",
             "origin": [
                 8,
@@ -5080,7 +5125,7 @@
             "rotated": false
         },
         {
-            "idx": 135,
+            "idx": 421,
             "name": "flag-green",
             "origin": [
                 8,
@@ -5095,7 +5140,7 @@
             "rotated": false
         },
         {
-            "idx": 136,
+            "idx": 422,
             "name": "flag-grey",
             "origin": [
                 8,
@@ -5110,7 +5155,7 @@
             "rotated": false
         },
         {
-            "idx": 134,
+            "idx": 420,
             "name": "flag-pink",
             "origin": [
                 8,
@@ -5125,7 +5170,7 @@
             "rotated": false
         },
         {
-            "idx": 133,
+            "idx": 419,
             "name": "flag-purple",
             "origin": [
                 8,
@@ -5140,7 +5185,7 @@
             "rotated": false
         },
         {
-            "idx": 131,
+            "idx": 417,
             "name": "flag-red",
             "origin": [
                 8,
@@ -5155,7 +5200,7 @@
             "rotated": false
         },
         {
-            "idx": 140,
+            "idx": 415,
             "name": "flag-white",
             "origin": [
                 8,
@@ -5170,7 +5215,7 @@
             "rotated": false
         },
         {
-            "idx": 132,
+            "idx": 418,
             "name": "flag-yellow",
             "origin": [
                 8,
@@ -5185,7 +5230,7 @@
             "rotated": false
         },
         {
-            "idx": 185,
+            "idx": 592,
             "name": "flash",
             "origin": [
                 8,
@@ -5200,7 +5245,7 @@
             "rotated": false
         },
         {
-            "idx": 149,
+            "idx": 468,
             "name": "flashlight-off",
             "origin": [
                 8,
@@ -5215,7 +5260,7 @@
             "rotated": false
         },
         {
-            "idx": 150,
+            "idx": 469,
             "name": "flashlight-on",
             "origin": [
                 8,
@@ -5230,7 +5275,7 @@
             "rotated": false
         },
         {
-            "idx": 204,
+            "idx": 633,
             "name": "floor-sign",
             "origin": [
                 8,
@@ -5245,7 +5290,7 @@
             "rotated": false
         },
         {
-            "idx": 240,
+            "idx": 746,
             "name": "flower",
             "origin": [
                 8,
@@ -5260,7 +5305,7 @@
             "rotated": false
         },
         {
-            "idx": 292,
+            "idx": 908,
             "name": "flower-2",
             "origin": [
                 8,
@@ -5275,7 +5320,7 @@
             "rotated": false
         },
         {
-            "idx": 30,
+            "idx": 85,
             "name": "flower-pot",
             "origin": [
                 8,
@@ -5290,7 +5335,7 @@
             "rotated": false
         },
         {
-            "idx": 270,
+            "idx": 853,
             "name": "focus",
             "origin": [
                 8,
@@ -5305,7 +5350,7 @@
             "rotated": false
         },
         {
-            "idx": 164,
+            "idx": 494,
             "name": "football",
             "origin": [
                 8,
@@ -5320,7 +5365,7 @@
             "rotated": false
         },
         {
-            "idx": 80,
+            "idx": 245,
             "name": "footprint",
             "origin": [
                 8,
@@ -5335,7 +5380,7 @@
             "rotated": false
         },
         {
-            "idx": 252,
+            "idx": 802,
             "name": "freeze",
             "origin": [
                 8,
@@ -5365,8 +5410,23 @@
             "rotated": false
         },
         {
-            "idx": 26,
+            "idx": 918,
             "name": "fridge",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 70,
+            "name": "fridge-small",
             "origin": [
                 8,
                 8
@@ -5380,7 +5440,7 @@
             "rotated": false
         },
         {
-            "idx": 121,
+            "idx": 374,
             "name": "friends",
             "origin": [
                 8,
@@ -5395,7 +5455,7 @@
             "rotated": false
         },
         {
-            "idx": 196,
+            "idx": 614,
             "name": "frying-pan",
             "origin": [
                 8,
@@ -5410,7 +5470,7 @@
             "rotated": false
         },
         {
-            "idx": 131,
+            "idx": 406,
             "name": "funnel",
             "origin": [
                 8,
@@ -5425,7 +5485,7 @@
             "rotated": false
         },
         {
-            "idx": 201,
+            "idx": 630,
             "name": "gamepad",
             "origin": [
                 8,
@@ -5440,7 +5500,7 @@
             "rotated": false
         },
         {
-            "idx": 40,
+            "idx": 95,
             "name": "garbage",
             "origin": [
                 8,
@@ -5455,7 +5515,7 @@
             "rotated": false
         },
         {
-            "idx": 36,
+            "idx": 113,
             "name": "garbage-full",
             "origin": [
                 8,
@@ -5470,7 +5530,37 @@
             "rotated": false
         },
         {
-            "idx": 240,
+            "idx": 833,
+            "name": "gascan",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 413,
+            "name": "gascan-small",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                400,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 735,
             "name": "gaz-pump",
             "origin": [
                 8,
@@ -5485,22 +5575,7 @@
             "rotated": false
         },
         {
-            "idx": 138,
-            "name": "gazcan",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                208,
-                400,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 132,
+            "idx": 407,
             "name": "gear",
             "origin": [
                 8,
@@ -5515,7 +5590,7 @@
             "rotated": false
         },
         {
-            "idx": 52,
+            "idx": 162,
             "name": "gear-white",
             "origin": [
                 8,
@@ -5530,7 +5605,7 @@
             "rotated": false
         },
         {
-            "idx": 288,
+            "idx": 893,
             "name": "gear-white-2",
             "origin": [
                 8,
@@ -5545,7 +5620,7 @@
             "rotated": false
         },
         {
-            "idx": 133,
+            "idx": 408,
             "name": "glass-wine",
             "origin": [
                 8,
@@ -5560,7 +5635,7 @@
             "rotated": false
         },
         {
-            "idx": 247,
+            "idx": 775,
             "name": "glasses",
             "origin": [
                 8,
@@ -5575,7 +5650,7 @@
             "rotated": false
         },
         {
-            "idx": 67,
+            "idx": 199,
             "name": "glasses-2",
             "origin": [
                 8,
@@ -5590,7 +5665,7 @@
             "rotated": false
         },
         {
-            "idx": 156,
+            "idx": 486,
             "name": "globe",
             "origin": [
                 8,
@@ -5605,7 +5680,7 @@
             "rotated": false
         },
         {
-            "idx": 10,
+            "idx": 21,
             "name": "glove",
             "origin": [
                 8,
@@ -5620,7 +5695,7 @@
             "rotated": false
         },
         {
-            "idx": 191,
+            "idx": 598,
             "name": "grenade-1",
             "origin": [
                 8,
@@ -5635,7 +5710,7 @@
             "rotated": false
         },
         {
-            "idx": 190,
+            "idx": 597,
             "name": "grenade-2",
             "origin": [
                 8,
@@ -5650,7 +5725,7 @@
             "rotated": false
         },
         {
-            "idx": 189,
+            "idx": 596,
             "name": "grenade-3",
             "origin": [
                 8,
@@ -5665,7 +5740,7 @@
             "rotated": false
         },
         {
-            "idx": 188,
+            "idx": 595,
             "name": "grenade-4",
             "origin": [
                 8,
@@ -5680,7 +5755,7 @@
             "rotated": false
         },
         {
-            "idx": 254,
+            "idx": 793,
             "name": "guard-female",
             "origin": [
                 8,
@@ -5695,7 +5770,7 @@
             "rotated": false
         },
         {
-            "idx": 253,
+            "idx": 792,
             "name": "guard-male",
             "origin": [
                 8,
@@ -5710,7 +5785,7 @@
             "rotated": false
         },
         {
-            "idx": 175,
+            "idx": 538,
             "name": "guitar",
             "origin": [
                 8,
@@ -5725,7 +5800,7 @@
             "rotated": false
         },
         {
-            "idx": 238,
+            "idx": 744,
             "name": "guitar-2",
             "origin": [
                 8,
@@ -5740,7 +5815,7 @@
             "rotated": false
         },
         {
-            "idx": 237,
+            "idx": 743,
             "name": "guitar-electric",
             "origin": [
                 8,
@@ -5755,7 +5830,7 @@
             "rotated": false
         },
         {
-            "idx": 194,
+            "idx": 601,
             "name": "gun",
             "origin": [
                 8,
@@ -5770,7 +5845,7 @@
             "rotated": false
         },
         {
-            "idx": 268,
+            "idx": 840,
             "name": "gun-2",
             "origin": [
                 8,
@@ -5785,7 +5860,7 @@
             "rotated": false
         },
         {
-            "idx": 264,
+            "idx": 814,
             "name": "hamburger",
             "origin": [
                 8,
@@ -5800,7 +5875,7 @@
             "rotated": false
         },
         {
-            "idx": 136,
+            "idx": 411,
             "name": "hammer",
             "origin": [
                 8,
@@ -5815,7 +5890,7 @@
             "rotated": false
         },
         {
-            "idx": 119,
+            "idx": 372,
             "name": "hand",
             "origin": [
                 8,
@@ -5830,7 +5905,7 @@
             "rotated": false
         },
         {
-            "idx": 51,
+            "idx": 150,
             "name": "hand-black",
             "origin": [
                 8,
@@ -5845,7 +5920,7 @@
             "rotated": false
         },
         {
-            "idx": 123,
+            "idx": 376,
             "name": "hand-down",
             "origin": [
                 8,
@@ -5860,7 +5935,7 @@
             "rotated": false
         },
         {
-            "idx": 53,
+            "idx": 152,
             "name": "hand-grab-black",
             "origin": [
                 8,
@@ -5875,7 +5950,7 @@
             "rotated": false
         },
         {
-            "idx": 52,
+            "idx": 151,
             "name": "hand-grab-white",
             "origin": [
                 8,
@@ -5890,7 +5965,7 @@
             "rotated": false
         },
         {
-            "idx": 124,
+            "idx": 377,
             "name": "hand-left",
             "origin": [
                 8,
@@ -5920,7 +5995,7 @@
             "rotated": false
         },
         {
-            "idx": 49,
+            "idx": 148,
             "name": "hand-point-black",
             "origin": [
                 8,
@@ -5935,7 +6010,7 @@
             "rotated": false
         },
         {
-            "idx": 187,
+            "idx": 594,
             "name": "hand-point-finger",
             "origin": [
                 8,
@@ -5950,7 +6025,7 @@
             "rotated": false
         },
         {
-            "idx": 48,
+            "idx": 147,
             "name": "hand-point-white",
             "origin": [
                 8,
@@ -5965,7 +6040,7 @@
             "rotated": false
         },
         {
-            "idx": 122,
+            "idx": 375,
             "name": "hand-right",
             "origin": [
                 8,
@@ -5980,7 +6055,7 @@
             "rotated": false
         },
         {
-            "idx": 228,
+            "idx": 723,
             "name": "hand-saw",
             "origin": [
                 8,
@@ -5995,7 +6070,7 @@
             "rotated": false
         },
         {
-            "idx": 120,
+            "idx": 373,
             "name": "hand-serve",
             "origin": [
                 8,
@@ -6010,7 +6085,7 @@
             "rotated": false
         },
         {
-            "idx": 193,
+            "idx": 589,
             "name": "hand-stop",
             "origin": [
                 8,
@@ -6025,7 +6100,7 @@
             "rotated": false
         },
         {
-            "idx": 50,
+            "idx": 149,
             "name": "hand-white",
             "origin": [
                 8,
@@ -6040,7 +6115,7 @@
             "rotated": false
         },
         {
-            "idx": 271,
+            "idx": 854,
             "name": "handcuffs",
             "origin": [
                 8,
@@ -6055,7 +6130,7 @@
             "rotated": false
         },
         {
-            "idx": 126,
+            "idx": 379,
             "name": "hardhat",
             "origin": [
                 8,
@@ -6070,7 +6145,7 @@
             "rotated": false
         },
         {
-            "idx": 185,
+            "idx": 581,
             "name": "headphones",
             "origin": [
                 8,
@@ -6085,7 +6160,7 @@
             "rotated": false
         },
         {
-            "idx": 11,
+            "idx": 22,
             "name": "heart",
             "origin": [
                 8,
@@ -6100,7 +6175,7 @@
             "rotated": false
         },
         {
-            "idx": 281,
+            "idx": 886,
             "name": "heart-white",
             "origin": [
                 8,
@@ -6115,7 +6190,7 @@
             "rotated": false
         },
         {
-            "idx": 188,
+            "idx": 584,
             "name": "hearts",
             "origin": [
                 8,
@@ -6130,7 +6205,7 @@
             "rotated": false
         },
         {
-            "idx": 239,
+            "idx": 734,
             "name": "hellicopter",
             "origin": [
                 8,
@@ -6145,8 +6220,8 @@
             "rotated": false
         },
         {
-            "idx": 71,
-            "name": "hifi",
+            "idx": 214,
+            "name": "hifi-off",
             "origin": [
                 8,
                 8
@@ -6160,7 +6235,22 @@
             "rotated": false
         },
         {
-            "idx": 234,
+            "idx": 924,
+            "name": "hifi-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 729,
             "name": "hole",
             "origin": [
                 8,
@@ -6175,7 +6265,7 @@
             "rotated": false
         },
         {
-            "idx": 269,
+            "idx": 852,
             "name": "hope",
             "origin": [
                 8,
@@ -6190,7 +6280,7 @@
             "rotated": false
         },
         {
-            "idx": 240,
+            "idx": 757,
             "name": "hospital",
             "origin": [
                 8,
@@ -6205,7 +6295,7 @@
             "rotated": false
         },
         {
-            "idx": 128,
+            "idx": 381,
             "name": "hourglass",
             "origin": [
                 8,
@@ -6220,7 +6310,7 @@
             "rotated": false
         },
         {
-            "idx": 47,
+            "idx": 146,
             "name": "hourglass-black",
             "origin": [
                 8,
@@ -6235,7 +6325,7 @@
             "rotated": false
         },
         {
-            "idx": 46,
+            "idx": 145,
             "name": "hourglass-white",
             "origin": [
                 8,
@@ -6250,7 +6340,7 @@
             "rotated": false
         },
         {
-            "idx": 95,
+            "idx": 282,
             "name": "ice-cube",
             "origin": [
                 8,
@@ -6265,7 +6355,7 @@
             "rotated": false
         },
         {
-            "idx": 243,
+            "idx": 760,
             "name": "industry",
             "origin": [
                 8,
@@ -6280,7 +6370,7 @@
             "rotated": false
         },
         {
-            "idx": 60,
+            "idx": 159,
             "name": "interrogation-mark",
             "origin": [
                 8,
@@ -6295,7 +6385,7 @@
             "rotated": false
         },
         {
-            "idx": 256,
+            "idx": 795,
             "name": "janitor-female",
             "origin": [
                 8,
@@ -6310,7 +6400,7 @@
             "rotated": false
         },
         {
-            "idx": 255,
+            "idx": 794,
             "name": "janitor-male",
             "origin": [
                 8,
@@ -6325,7 +6415,7 @@
             "rotated": false
         },
         {
-            "idx": 174,
+            "idx": 537,
             "name": "jar",
             "origin": [
                 8,
@@ -6340,7 +6430,7 @@
             "rotated": false
         },
         {
-            "idx": 242,
+            "idx": 770,
             "name": "jeans",
             "origin": [
                 8,
@@ -6355,7 +6445,52 @@
             "rotated": false
         },
         {
-            "idx": 173,
+            "idx": 212,
+            "name": "jewelry-box-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 213,
+            "name": "jewelry-box-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 110,
+            "name": "kettle",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 536,
             "name": "key",
             "origin": [
                 8,
@@ -6370,7 +6505,7 @@
             "rotated": false
         },
         {
-            "idx": 55,
+            "idx": 165,
             "name": "key-blue",
             "origin": [
                 8,
@@ -6385,7 +6520,7 @@
             "rotated": false
         },
         {
-            "idx": 56,
+            "idx": 166,
             "name": "key-green",
             "origin": [
                 8,
@@ -6400,7 +6535,7 @@
             "rotated": false
         },
         {
-            "idx": 57,
+            "idx": 167,
             "name": "key-red",
             "origin": [
                 8,
@@ -6415,7 +6550,7 @@
             "rotated": false
         },
         {
-            "idx": 53,
+            "idx": 163,
             "name": "key-white",
             "origin": [
                 8,
@@ -6430,7 +6565,7 @@
             "rotated": false
         },
         {
-            "idx": 285,
+            "idx": 879,
             "name": "key-white-2",
             "origin": [
                 8,
@@ -6445,7 +6580,7 @@
             "rotated": false
         },
         {
-            "idx": 54,
+            "idx": 164,
             "name": "key-yellow",
             "origin": [
                 8,
@@ -6460,7 +6595,7 @@
             "rotated": false
         },
         {
-            "idx": 172,
+            "idx": 535,
             "name": "key2",
             "origin": [
                 8,
@@ -6475,7 +6610,7 @@
             "rotated": false
         },
         {
-            "idx": 106,
+            "idx": 315,
             "name": "keyboard",
             "origin": [
                 8,
@@ -6490,7 +6625,7 @@
             "rotated": false
         },
         {
-            "idx": 224,
+            "idx": 708,
             "name": "keyboard-2",
             "origin": [
                 8,
@@ -6505,7 +6640,7 @@
             "rotated": false
         },
         {
-            "idx": 59,
+            "idx": 169,
             "name": "keycard-blue",
             "origin": [
                 8,
@@ -6520,7 +6655,7 @@
             "rotated": false
         },
         {
-            "idx": 60,
+            "idx": 170,
             "name": "keycard-green",
             "origin": [
                 8,
@@ -6535,7 +6670,7 @@
             "rotated": false
         },
         {
-            "idx": 61,
+            "idx": 171,
             "name": "keycard-red",
             "origin": [
                 8,
@@ -6550,7 +6685,7 @@
             "rotated": false
         },
         {
-            "idx": 58,
+            "idx": 168,
             "name": "keycard-yellow",
             "origin": [
                 8,
@@ -6565,7 +6700,7 @@
             "rotated": false
         },
         {
-            "idx": 145,
+            "idx": 442,
             "name": "keypad",
             "origin": [
                 8,
@@ -6580,7 +6715,7 @@
             "rotated": false
         },
         {
-            "idx": 105,
+            "idx": 314,
             "name": "keys",
             "origin": [
                 8,
@@ -6595,7 +6730,7 @@
             "rotated": false
         },
         {
-            "idx": 14,
+            "idx": 36,
             "name": "kick",
             "origin": [
                 8,
@@ -6610,7 +6745,7 @@
             "rotated": false
         },
         {
-            "idx": 168,
+            "idx": 509,
             "name": "kid-female",
             "origin": [
                 8,
@@ -6625,7 +6760,7 @@
             "rotated": false
         },
         {
-            "idx": 167,
+            "idx": 508,
             "name": "kid-male",
             "origin": [
                 8,
@@ -6640,7 +6775,7 @@
             "rotated": false
         },
         {
-            "idx": 22,
+            "idx": 55,
             "name": "knife",
             "origin": [
                 8,
@@ -6655,7 +6790,7 @@
             "rotated": false
         },
         {
-            "idx": 224,
+            "idx": 697,
             "name": "knife-2",
             "origin": [
                 8,
@@ -6670,7 +6805,7 @@
             "rotated": false
         },
         {
-            "idx": 197,
+            "idx": 615,
             "name": "ladder",
             "origin": [
                 8,
@@ -6685,7 +6820,7 @@
             "rotated": false
         },
         {
-            "idx": 39,
+            "idx": 105,
             "name": "lamp",
             "origin": [
                 8,
@@ -6700,7 +6835,7 @@
             "rotated": false
         },
         {
-            "idx": 286,
+            "idx": 902,
             "name": "lamp-3",
             "origin": [
                 8,
@@ -6715,7 +6850,7 @@
             "rotated": false
         },
         {
-            "idx": 50,
+            "idx": 127,
             "name": "lamp2",
             "origin": [
                 8,
@@ -6730,8 +6865,8 @@
             "rotated": false
         },
         {
-            "idx": 216,
-            "name": "laptop-1",
+            "idx": 678,
+            "name": "laptop-1-off",
             "origin": [
                 8,
                 8
@@ -6745,8 +6880,8 @@
             "rotated": false
         },
         {
-            "idx": 217,
-            "name": "laptop-2",
+            "idx": 679,
+            "name": "laptop-1-on",
             "origin": [
                 8,
                 8
@@ -6760,8 +6895,8 @@
             "rotated": false
         },
         {
-            "idx": 221,
-            "name": "laptop-3",
+            "idx": 705,
+            "name": "laptop-2-off",
             "origin": [
                 8,
                 8
@@ -6775,7 +6910,22 @@
             "rotated": false
         },
         {
-            "idx": 24,
+            "idx": 917,
+            "name": "laptop-2-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 57,
             "name": "laundry",
             "origin": [
                 8,
@@ -6790,7 +6940,7 @@
             "rotated": false
         },
         {
-            "idx": 135,
+            "idx": 432,
             "name": "lens",
             "origin": [
                 8,
@@ -6805,7 +6955,7 @@
             "rotated": false
         },
         {
-            "idx": 267,
+            "idx": 839,
             "name": "levels",
             "origin": [
                 8,
@@ -6820,7 +6970,7 @@
             "rotated": false
         },
         {
-            "idx": 220,
+            "idx": 704,
             "name": "lever",
             "origin": [
                 8,
@@ -6835,7 +6985,7 @@
             "rotated": false
         },
         {
-            "idx": 63,
+            "idx": 195,
             "name": "lever-off",
             "origin": [
                 8,
@@ -6850,7 +7000,7 @@
             "rotated": false
         },
         {
-            "idx": 64,
+            "idx": 196,
             "name": "lever-on",
             "origin": [
                 8,
@@ -6865,7 +7015,7 @@
             "rotated": false
         },
         {
-            "idx": 116,
+            "idx": 369,
             "name": "life-buoy",
             "origin": [
                 8,
@@ -6880,7 +7030,7 @@
             "rotated": false
         },
         {
-            "idx": 125,
+            "idx": 367,
             "name": "lightbulb",
             "origin": [
                 8,
@@ -6895,7 +7045,7 @@
             "rotated": false
         },
         {
-            "idx": 115,
+            "idx": 368,
             "name": "lightbulb-off",
             "origin": [
                 8,
@@ -6910,7 +7060,7 @@
             "rotated": false
         },
         {
-            "idx": 83,
+            "idx": 237,
             "name": "lightning",
             "origin": [
                 8,
@@ -6940,7 +7090,7 @@
             "rotated": false
         },
         {
-            "idx": 293,
+            "idx": 909,
             "name": "list-white",
             "origin": [
                 8,
@@ -6955,7 +7105,7 @@
             "rotated": false
         },
         {
-            "idx": 83,
+            "idx": 248,
             "name": "lock",
             "origin": [
                 8,
@@ -6970,7 +7120,7 @@
             "rotated": false
         },
         {
-            "idx": 84,
+            "idx": 249,
             "name": "lock-open",
             "origin": [
                 8,
@@ -6985,7 +7135,7 @@
             "rotated": false
         },
         {
-            "idx": 107,
+            "idx": 316,
             "name": "lock-small",
             "origin": [
                 8,
@@ -7000,7 +7150,7 @@
             "rotated": false
         },
         {
-            "idx": 283,
+            "idx": 899,
             "name": "lock-white",
             "origin": [
                 8,
@@ -7015,7 +7165,7 @@
             "rotated": false
         },
         {
-            "idx": 66,
+            "idx": 198,
             "name": "lotion",
             "origin": [
                 8,
@@ -7030,7 +7180,7 @@
             "rotated": false
         },
         {
-            "idx": 245,
+            "idx": 762,
             "name": "luck",
             "origin": [
                 8,
@@ -7045,7 +7195,7 @@
             "rotated": false
         },
         {
-            "idx": 281,
+            "idx": 897,
             "name": "luck-white",
             "origin": [
                 8,
@@ -7060,7 +7210,7 @@
             "rotated": false
         },
         {
-            "idx": 108,
+            "idx": 317,
             "name": "luggage",
             "origin": [
                 8,
@@ -7075,7 +7225,7 @@
             "rotated": false
         },
         {
-            "idx": 220,
+            "idx": 682,
             "name": "luggage-2",
             "origin": [
                 8,
@@ -7090,7 +7240,7 @@
             "rotated": false
         },
         {
-            "idx": 230,
+            "idx": 725,
             "name": "magnet",
             "origin": [
                 8,
@@ -7105,7 +7255,7 @@
             "rotated": false
         },
         {
-            "idx": 226,
+            "idx": 710,
             "name": "magnify",
             "origin": [
                 8,
@@ -7120,7 +7270,7 @@
             "rotated": false
         },
         {
-            "idx": 123,
+            "idx": 365,
             "name": "mail",
             "origin": [
                 8,
@@ -7135,7 +7285,7 @@
             "rotated": false
         },
         {
-            "idx": 124,
+            "idx": 366,
             "name": "mail-open",
             "origin": [
                 8,
@@ -7150,7 +7300,7 @@
             "rotated": false
         },
         {
-            "idx": 122,
+            "idx": 364,
             "name": "mails",
             "origin": [
                 8,
@@ -7165,7 +7315,7 @@
             "rotated": false
         },
         {
-            "idx": 157,
+            "idx": 487,
             "name": "male",
             "origin": [
                 8,
@@ -7180,7 +7330,7 @@
             "rotated": false
         },
         {
-            "idx": 162,
+            "idx": 514,
             "name": "male-naked",
             "origin": [
                 8,
@@ -7195,7 +7345,7 @@
             "rotated": false
         },
         {
-            "idx": 245,
+            "idx": 784,
             "name": "manhole",
             "origin": [
                 8,
@@ -7210,7 +7360,7 @@
             "rotated": false
         },
         {
-            "idx": 97,
+            "idx": 284,
             "name": "marker",
             "origin": [
                 8,
@@ -7225,7 +7375,7 @@
             "rotated": false
         },
         {
-            "idx": 249,
+            "idx": 766,
             "name": "meat-slice",
             "origin": [
                 8,
@@ -7240,7 +7390,7 @@
             "rotated": false
         },
         {
-            "idx": 9,
+            "idx": 20,
             "name": "medal",
             "origin": [
                 8,
@@ -7255,7 +7405,7 @@
             "rotated": false
         },
         {
-            "idx": 75,
+            "idx": 240,
             "name": "medal-bronze",
             "origin": [
                 8,
@@ -7270,7 +7420,7 @@
             "rotated": false
         },
         {
-            "idx": 85,
+            "idx": 239,
             "name": "medal-gold",
             "origin": [
                 8,
@@ -7285,7 +7435,7 @@
             "rotated": false
         },
         {
-            "idx": 212,
+            "idx": 674,
             "name": "medal-wall",
             "origin": [
                 8,
@@ -7300,7 +7450,7 @@
             "rotated": false
         },
         {
-            "idx": 280,
+            "idx": 885,
             "name": "medal-white",
             "origin": [
                 8,
@@ -7315,7 +7465,7 @@
             "rotated": false
         },
         {
-            "idx": 29,
+            "idx": 73,
             "name": "medal2",
             "origin": [
                 8,
@@ -7330,7 +7480,7 @@
             "rotated": false
         },
         {
-            "idx": 254,
+            "idx": 782,
             "name": "microscope",
             "origin": [
                 8,
@@ -7345,7 +7495,7 @@
             "rotated": false
         },
         {
-            "idx": 40,
+            "idx": 117,
             "name": "microwave",
             "origin": [
                 8,
@@ -7360,7 +7510,7 @@
             "rotated": false
         },
         {
-            "idx": 81,
+            "idx": 246,
             "name": "milk",
             "origin": [
                 8,
@@ -7375,7 +7525,7 @@
             "rotated": false
         },
         {
-            "idx": 49,
+            "idx": 126,
             "name": "mirror",
             "origin": [
                 8,
@@ -7390,7 +7540,7 @@
             "rotated": false
         },
         {
-            "idx": 211,
+            "idx": 651,
             "name": "mirror-2",
             "origin": [
                 8,
@@ -7405,7 +7555,7 @@
             "rotated": false
         },
         {
-            "idx": 262,
+            "idx": 823,
             "name": "molecule",
             "origin": [
                 8,
@@ -7420,7 +7570,7 @@
             "rotated": false
         },
         {
-            "idx": 233,
+            "idx": 739,
             "name": "money",
             "origin": [
                 8,
@@ -7435,7 +7585,7 @@
             "rotated": false
         },
         {
-            "idx": 221,
+            "idx": 694,
             "name": "money-sign",
             "origin": [
                 8,
@@ -7450,7 +7600,7 @@
             "rotated": false
         },
         {
-            "idx": 102,
+            "idx": 311,
             "name": "monitor-screen",
             "origin": [
                 8,
@@ -7465,7 +7615,7 @@
             "rotated": false
         },
         {
-            "idx": 238,
+            "idx": 733,
             "name": "montain",
             "origin": [
                 8,
@@ -7480,7 +7630,7 @@
             "rotated": false
         },
         {
-            "idx": 237,
+            "idx": 732,
             "name": "montains",
             "origin": [
                 8,
@@ -7495,7 +7645,7 @@
             "rotated": false
         },
         {
-            "idx": 247,
+            "idx": 764,
             "name": "moon",
             "origin": [
                 8,
@@ -7510,7 +7660,7 @@
             "rotated": false
         },
         {
-            "idx": 230,
+            "idx": 736,
             "name": "motorcycle",
             "origin": [
                 8,
@@ -7525,7 +7675,7 @@
             "rotated": false
         },
         {
-            "idx": 100,
+            "idx": 320,
             "name": "mouse",
             "origin": [
                 8,
@@ -7540,7 +7690,7 @@
             "rotated": false
         },
         {
-            "idx": 101,
+            "idx": 321,
             "name": "mouse-left",
             "origin": [
                 8,
@@ -7555,7 +7705,7 @@
             "rotated": false
         },
         {
-            "idx": 102,
+            "idx": 322,
             "name": "mouse-middle",
             "origin": [
                 8,
@@ -7570,7 +7720,7 @@
             "rotated": false
         },
         {
-            "idx": 103,
+            "idx": 323,
             "name": "mouse-right",
             "origin": [
                 8,
@@ -7585,7 +7735,7 @@
             "rotated": false
         },
         {
-            "idx": 192,
+            "idx": 588,
             "name": "mouth",
             "origin": [
                 8,
@@ -7600,7 +7750,7 @@
             "rotated": false
         },
         {
-            "idx": 78,
+            "idx": 243,
             "name": "mushroom",
             "origin": [
                 8,
@@ -7615,7 +7765,7 @@
             "rotated": false
         },
         {
-            "idx": 284,
+            "idx": 889,
             "name": "music-note-white",
             "origin": [
                 8,
@@ -7630,7 +7780,7 @@
             "rotated": false
         },
         {
-            "idx": 80,
+            "idx": 234,
             "name": "music-notes",
             "origin": [
                 8,
@@ -7645,7 +7795,7 @@
             "rotated": false
         },
         {
-            "idx": 205,
+            "idx": 623,
             "name": "n64",
             "origin": [
                 8,
@@ -7660,7 +7810,7 @@
             "rotated": false
         },
         {
-            "idx": 96,
+            "idx": 283,
             "name": "new",
             "origin": [
                 8,
@@ -7675,7 +7825,7 @@
             "rotated": false
         },
         {
-            "idx": 107,
+            "idx": 327,
             "name": "new-text",
             "origin": [
                 8,
@@ -7690,7 +7840,7 @@
             "rotated": false
         },
         {
-            "idx": 108,
+            "idx": 328,
             "name": "newspaper",
             "origin": [
                 8,
@@ -7705,7 +7855,7 @@
             "rotated": false
         },
         {
-            "idx": 213,
+            "idx": 653,
             "name": "night-lamp",
             "origin": [
                 8,
@@ -7720,7 +7870,7 @@
             "rotated": false
         },
         {
-            "idx": 42,
+            "idx": 119,
             "name": "note",
             "origin": [
                 8,
@@ -7735,7 +7885,7 @@
             "rotated": false
         },
         {
-            "idx": 234,
+            "idx": 718,
             "name": "notepad",
             "origin": [
                 8,
@@ -7765,7 +7915,7 @@
             "rotated": false
         },
         {
-            "idx": 279,
+            "idx": 873,
             "name": "orange",
             "origin": [
                 8,
@@ -7780,7 +7930,7 @@
             "rotated": false
         },
         {
-            "idx": 20,
+            "idx": 64,
             "name": "oven",
             "origin": [
                 8,
@@ -7795,7 +7945,7 @@
             "rotated": false
         },
         {
-            "idx": 31,
+            "idx": 75,
             "name": "oxygen",
             "origin": [
                 8,
@@ -7810,7 +7960,7 @@
             "rotated": false
         },
         {
-            "idx": 64,
+            "idx": 174,
             "name": "pants",
             "origin": [
                 8,
@@ -7825,7 +7975,7 @@
             "rotated": false
         },
         {
-            "idx": 275,
+            "idx": 880,
             "name": "pants-white",
             "origin": [
                 8,
@@ -7840,7 +7990,7 @@
             "rotated": false
         },
         {
-            "idx": 12,
+            "idx": 23,
             "name": "paper",
             "origin": [
                 8,
@@ -7855,7 +8005,7 @@
             "rotated": false
         },
         {
-            "idx": 109,
+            "idx": 329,
             "name": "paper-bag",
             "origin": [
                 8,
@@ -7870,7 +8020,7 @@
             "rotated": false
         },
         {
-            "idx": 218,
+            "idx": 680,
             "name": "paper-stack",
             "origin": [
                 8,
@@ -7885,7 +8035,7 @@
             "rotated": false
         },
         {
-            "idx": 13,
+            "idx": 24,
             "name": "paper2",
             "origin": [
                 8,
@@ -7900,7 +8050,7 @@
             "rotated": false
         },
         {
-            "idx": 51,
+            "idx": 139,
             "name": "park-bench",
             "origin": [
                 8,
@@ -7915,7 +8065,7 @@
             "rotated": false
         },
         {
-            "idx": 270,
+            "idx": 842,
             "name": "park-bench-2",
             "origin": [
                 8,
@@ -7930,7 +8080,7 @@
             "rotated": false
         },
         {
-            "idx": 6,
+            "idx": 17,
             "name": "password",
             "origin": [
                 8,
@@ -7945,37 +8095,142 @@
             "rotated": false
         },
         {
-            "idx": 29,
-            "name": "pc",
+            "idx": 324,
+            "name": "pc-1-off",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                224,
-                48,
+                64,
+                320,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 65,
-            "name": "pc-terminal",
+            "idx": 326,
+            "name": "pc-1-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                320,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 438,
+            "name": "pc-2-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 437,
+            "name": "pc-2-on",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 80,
-                192,
+                432,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 44,
+            "idx": 635,
+            "name": "pc-3-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                624,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 636,
+            "name": "pc-3-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                624,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 293,
+            "name": "pc-4-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 295,
+            "name": "pc-4-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 294,
+            "name": "pc-test",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 121,
             "name": "pc2",
             "origin": [
                 8,
@@ -7990,22 +8245,7 @@
             "rotated": false
         },
         {
-            "idx": 46,
-            "name": "pc3",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                96,
-                128,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 111,
+            "idx": 331,
             "name": "pda",
             "origin": [
                 8,
@@ -8020,7 +8260,7 @@
             "rotated": false
         },
         {
-            "idx": 110,
+            "idx": 330,
             "name": "pda-off",
             "origin": [
                 8,
@@ -8035,7 +8275,7 @@
             "rotated": false
         },
         {
-            "idx": 230,
+            "idx": 714,
             "name": "pen",
             "origin": [
                 8,
@@ -8050,7 +8290,7 @@
             "rotated": false
         },
         {
-            "idx": 198,
+            "idx": 605,
             "name": "pendant",
             "origin": [
                 8,
@@ -8065,7 +8305,7 @@
             "rotated": false
         },
         {
-            "idx": 48,
+            "idx": 125,
             "name": "pens",
             "origin": [
                 8,
@@ -8080,7 +8320,7 @@
             "rotated": false
         },
         {
-            "idx": 156,
+            "idx": 497,
             "name": "people",
             "origin": [
                 8,
@@ -8095,7 +8335,7 @@
             "rotated": false
         },
         {
-            "idx": 169,
+            "idx": 510,
             "name": "person",
             "origin": [
                 8,
@@ -8110,7 +8350,7 @@
             "rotated": false
         },
         {
-            "idx": 170,
+            "idx": 511,
             "name": "person-unknown",
             "origin": [
                 8,
@@ -8125,7 +8365,7 @@
             "rotated": false
         },
         {
-            "idx": 42,
+            "idx": 108,
             "name": "phone",
             "origin": [
                 8,
@@ -8140,7 +8380,7 @@
             "rotated": false
         },
         {
-            "idx": 171,
+            "idx": 534,
             "name": "piano",
             "origin": [
                 8,
@@ -8170,7 +8410,7 @@
             "rotated": false
         },
         {
-            "idx": 175,
+            "idx": 560,
             "name": "pickup-alt",
             "origin": [
                 8,
@@ -8185,7 +8425,7 @@
             "rotated": false
         },
         {
-            "idx": 36,
+            "idx": 102,
             "name": "picture",
             "origin": [
                 8,
@@ -8200,7 +8440,7 @@
             "rotated": false
         },
         {
-            "idx": 41,
+            "idx": 129,
             "name": "picture-frame",
             "origin": [
                 8,
@@ -8215,7 +8455,7 @@
             "rotated": false
         },
         {
-            "idx": 112,
+            "idx": 332,
             "name": "pill",
             "origin": [
                 8,
@@ -8230,7 +8470,7 @@
             "rotated": false
         },
         {
-            "idx": 76,
+            "idx": 241,
             "name": "pills",
             "origin": [
                 8,
@@ -8245,7 +8485,7 @@
             "rotated": false
         },
         {
-            "idx": 31,
+            "idx": 86,
             "name": "pills-bottle",
             "origin": [
                 8,
@@ -8260,7 +8500,7 @@
             "rotated": false
         },
         {
-            "idx": 117,
+            "idx": 370,
             "name": "pin",
             "origin": [
                 8,
@@ -8275,7 +8515,7 @@
             "rotated": false
         },
         {
-            "idx": 289,
+            "idx": 894,
             "name": "pin-white",
             "origin": [
                 8,
@@ -8290,22 +8530,7 @@
             "rotated": false
         },
         {
-            "idx": 196,
-            "name": "pine-tree",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                176,
-                592,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 204,
+            "idx": 622,
             "name": "ping-pong",
             "origin": [
                 8,
@@ -8320,7 +8545,7 @@
             "rotated": false
         },
         {
-            "idx": 176,
+            "idx": 561,
             "name": "pinky",
             "origin": [
                 8,
@@ -8335,7 +8560,7 @@
             "rotated": false
         },
         {
-            "idx": 250,
+            "idx": 767,
             "name": "pizza-slice",
             "origin": [
                 8,
@@ -8350,7 +8575,7 @@
             "rotated": false
         },
         {
-            "idx": 282,
+            "idx": 876,
             "name": "plank",
             "origin": [
                 8,
@@ -8365,7 +8590,7 @@
             "rotated": false
         },
         {
-            "idx": 24,
+            "idx": 68,
             "name": "plant-1",
             "origin": [
                 8,
@@ -8380,7 +8605,7 @@
             "rotated": false
         },
         {
-            "idx": 213,
+            "idx": 675,
             "name": "plant-2",
             "origin": [
                 8,
@@ -8395,7 +8620,7 @@
             "rotated": false
         },
         {
-            "idx": 214,
+            "idx": 665,
             "name": "plant-3",
             "origin": [
                 8,
@@ -8410,7 +8635,7 @@
             "rotated": false
         },
         {
-            "idx": 215,
+            "idx": 666,
             "name": "plant-4",
             "origin": [
                 8,
@@ -8425,7 +8650,7 @@
             "rotated": false
         },
         {
-            "idx": 216,
+            "idx": 667,
             "name": "plant-5",
             "origin": [
                 8,
@@ -8440,7 +8665,7 @@
             "rotated": false
         },
         {
-            "idx": 38,
+            "idx": 104,
             "name": "plant-6",
             "origin": [
                 8,
@@ -8455,7 +8680,7 @@
             "rotated": false
         },
         {
-            "idx": 265,
+            "idx": 815,
             "name": "plate",
             "origin": [
                 8,
@@ -8470,7 +8695,22 @@
             "rotated": false
         },
         {
-            "idx": 113,
+            "idx": 703,
+            "name": "playcard",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                688,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 333,
             "name": "plug",
             "origin": [
                 8,
@@ -8485,7 +8725,7 @@
             "rotated": false
         },
         {
-            "idx": 45,
+            "idx": 144,
             "name": "pointer-black",
             "origin": [
                 8,
@@ -8500,7 +8740,7 @@
             "rotated": false
         },
         {
-            "idx": 55,
+            "idx": 143,
             "name": "pointer-white",
             "origin": [
                 8,
@@ -8515,7 +8755,7 @@
             "rotated": false
         },
         {
-            "idx": 219,
+            "idx": 692,
             "name": "poison",
             "origin": [
                 8,
@@ -8530,7 +8770,7 @@
             "rotated": false
         },
         {
-            "idx": 250,
+            "idx": 789,
             "name": "police-female",
             "origin": [
                 8,
@@ -8545,7 +8785,7 @@
             "rotated": false
         },
         {
-            "idx": 249,
+            "idx": 788,
             "name": "police-male",
             "origin": [
                 8,
@@ -8560,7 +8800,7 @@
             "rotated": false
         },
         {
-            "idx": 229,
+            "idx": 713,
             "name": "postal-box",
             "origin": [
                 8,
@@ -8575,7 +8815,7 @@
             "rotated": false
         },
         {
-            "idx": 273,
+            "idx": 867,
             "name": "potato",
             "origin": [
                 8,
@@ -8590,7 +8830,7 @@
             "rotated": false
         },
         {
-            "idx": 51,
+            "idx": 161,
             "name": "potion-white",
             "origin": [
                 8,
@@ -8605,7 +8845,7 @@
             "rotated": false
         },
         {
-            "idx": 114,
+            "idx": 334,
             "name": "printer",
             "origin": [
                 8,
@@ -8620,7 +8860,7 @@
             "rotated": false
         },
         {
-            "idx": 219,
+            "idx": 681,
             "name": "printer-2",
             "origin": [
                 8,
@@ -8635,7 +8875,7 @@
             "rotated": false
         },
         {
-            "idx": 262,
+            "idx": 812,
             "name": "protect",
             "origin": [
                 8,
@@ -8650,7 +8890,7 @@
             "rotated": false
         },
         {
-            "idx": 242,
+            "idx": 759,
             "name": "pub",
             "origin": [
                 8,
@@ -8665,7 +8905,7 @@
             "rotated": false
         },
         {
-            "idx": 118,
+            "idx": 371,
             "name": "puzzle",
             "origin": [
                 8,
@@ -8680,7 +8920,7 @@
             "rotated": false
         },
         {
-            "idx": 220,
+            "idx": 693,
             "name": "question-mark",
             "origin": [
                 8,
@@ -8695,22 +8935,7 @@
             "rotated": false
         },
         {
-            "idx": 82,
-            "name": "radio",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                112,
-                240,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 192,
+            "idx": 610,
             "name": "radio-2",
             "origin": [
                 8,
@@ -8725,7 +8950,37 @@
             "rotated": false
         },
         {
-            "idx": 218,
+            "idx": 923,
+            "name": "radio-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 247,
+            "name": "radio-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                240,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 691,
             "name": "radioactive",
             "origin": [
                 8,
@@ -8740,7 +8995,7 @@
             "rotated": false
         },
         {
-            "idx": 241,
+            "idx": 747,
             "name": "rainbow",
             "origin": [
                 8,
@@ -8755,7 +9010,7 @@
             "rotated": false
         },
         {
-            "idx": 109,
+            "idx": 318,
             "name": "ram",
             "origin": [
                 8,
@@ -8770,7 +9025,7 @@
             "rotated": false
         },
         {
-            "idx": 185,
+            "idx": 559,
             "name": "reminder",
             "origin": [
                 8,
@@ -8785,7 +9040,7 @@
             "rotated": false
         },
         {
-            "idx": 265,
+            "idx": 848,
             "name": "ricochet",
             "origin": [
                 8,
@@ -8800,7 +9055,7 @@
             "rotated": false
         },
         {
-            "idx": 127,
+            "idx": 380,
             "name": "rip",
             "origin": [
                 8,
@@ -8815,7 +9070,7 @@
             "rotated": false
         },
         {
-            "idx": 117,
+            "idx": 348,
             "name": "road-block",
             "origin": [
                 8,
@@ -8830,7 +9085,7 @@
             "rotated": false
         },
         {
-            "idx": 232,
+            "idx": 738,
             "name": "road-block-2",
             "origin": [
                 8,
@@ -8845,7 +9100,7 @@
             "rotated": false
         },
         {
-            "idx": 79,
+            "idx": 244,
             "name": "robe",
             "origin": [
                 8,
@@ -8860,7 +9115,7 @@
             "rotated": false
         },
         {
-            "idx": 281,
+            "idx": 875,
             "name": "rock",
             "origin": [
                 8,
@@ -8875,7 +9130,7 @@
             "rotated": false
         },
         {
-            "idx": 17,
+            "idx": 28,
             "name": "roll",
             "origin": [
                 8,
@@ -8890,7 +9145,7 @@
             "rotated": false
         },
         {
-            "idx": 280,
+            "idx": 863,
             "name": "rope",
             "origin": [
                 8,
@@ -8905,7 +9160,7 @@
             "rotated": false
         },
         {
-            "idx": 256,
+            "idx": 817,
             "name": "ruby",
             "origin": [
                 8,
@@ -8920,7 +9175,7 @@
             "rotated": false
         },
         {
-            "idx": 27,
+            "idx": 60,
             "name": "safe",
             "origin": [
                 8,
@@ -8935,7 +9190,7 @@
             "rotated": false
         },
         {
-            "idx": 198,
+            "idx": 616,
             "name": "safe-close",
             "origin": [
                 8,
@@ -8950,7 +9205,7 @@
             "rotated": false
         },
         {
-            "idx": 199,
+            "idx": 617,
             "name": "safe-open",
             "origin": [
                 8,
@@ -8965,7 +9220,7 @@
             "rotated": false
         },
         {
-            "idx": 21,
+            "idx": 54,
             "name": "sandwhich",
             "origin": [
                 8,
@@ -8980,7 +9235,7 @@
             "rotated": false
         },
         {
-            "idx": 107,
+            "idx": 338,
             "name": "scanner",
             "origin": [
                 8,
@@ -8995,7 +9250,7 @@
             "rotated": false
         },
         {
-            "idx": 192,
+            "idx": 599,
             "name": "scanner-device",
             "origin": [
                 8,
@@ -9010,7 +9265,7 @@
             "rotated": false
         },
         {
-            "idx": 163,
+            "idx": 504,
             "name": "scientist-female",
             "origin": [
                 8,
@@ -9025,7 +9280,7 @@
             "rotated": false
         },
         {
-            "idx": 162,
+            "idx": 503,
             "name": "scientist-male",
             "origin": [
                 8,
@@ -9040,7 +9295,7 @@
             "rotated": false
         },
         {
-            "idx": 74,
+            "idx": 206,
             "name": "scisors",
             "origin": [
                 8,
@@ -9055,7 +9310,7 @@
             "rotated": false
         },
         {
-            "idx": 73,
+            "idx": 205,
             "name": "screwdriver",
             "origin": [
                 8,
@@ -9070,7 +9325,7 @@
             "rotated": false
         },
         {
-            "idx": 108,
+            "idx": 339,
             "name": "sd-card",
             "origin": [
                 8,
@@ -9085,7 +9340,7 @@
             "rotated": false
         },
         {
-            "idx": 181,
+            "idx": 566,
             "name": "search",
             "origin": [
                 8,
@@ -9100,7 +9355,7 @@
             "rotated": false
         },
         {
-            "idx": 84,
+            "idx": 238,
             "name": "security-camera",
             "origin": [
                 8,
@@ -9115,7 +9370,7 @@
             "rotated": false
         },
         {
-            "idx": 263,
+            "idx": 824,
             "name": "security_camera",
             "origin": [
                 8,
@@ -9145,7 +9400,7 @@
             "rotated": false
         },
         {
-            "idx": 259,
+            "idx": 820,
             "name": "server-2",
             "origin": [
                 8,
@@ -9160,7 +9415,7 @@
             "rotated": false
         },
         {
-            "idx": 8,
+            "idx": 19,
             "name": "shield",
             "origin": [
                 8,
@@ -9175,7 +9430,7 @@
             "rotated": false
         },
         {
-            "idx": 275,
+            "idx": 858,
             "name": "shield-add",
             "origin": [
                 8,
@@ -9190,7 +9445,7 @@
             "rotated": false
         },
         {
-            "idx": 274,
+            "idx": 857,
             "name": "shield-link",
             "origin": [
                 8,
@@ -9205,7 +9460,7 @@
             "rotated": false
         },
         {
-            "idx": 208,
+            "idx": 659,
             "name": "shirt-hanging-red",
             "origin": [
                 8,
@@ -9220,7 +9475,7 @@
             "rotated": false
         },
         {
-            "idx": 209,
+            "idx": 660,
             "name": "shirt-hanging-white-blue",
             "origin": [
                 8,
@@ -9235,7 +9490,7 @@
             "rotated": false
         },
         {
-            "idx": 206,
+            "idx": 657,
             "name": "shirt-hanging-yellow",
             "origin": [
                 8,
@@ -9250,7 +9505,7 @@
             "rotated": false
         },
         {
-            "idx": 245,
+            "idx": 773,
             "name": "shirt-hockey",
             "origin": [
                 8,
@@ -9265,7 +9520,7 @@
             "rotated": false
         },
         {
-            "idx": 248,
+            "idx": 776,
             "name": "shirt-tie",
             "origin": [
                 8,
@@ -9280,7 +9535,7 @@
             "rotated": false
         },
         {
-            "idx": 50,
+            "idx": 160,
             "name": "shirt-white",
             "origin": [
                 8,
@@ -9295,7 +9550,7 @@
             "rotated": false
         },
         {
-            "idx": 276,
+            "idx": 881,
             "name": "shirt-white-2",
             "origin": [
                 8,
@@ -9310,7 +9565,7 @@
             "rotated": false
         },
         {
-            "idx": 249,
+            "idx": 777,
             "name": "shirt-yellow",
             "origin": [
                 8,
@@ -9325,7 +9580,7 @@
             "rotated": false
         },
         {
-            "idx": 96,
+            "idx": 305,
             "name": "shoe",
             "origin": [
                 8,
@@ -9340,7 +9595,7 @@
             "rotated": false
         },
         {
-            "idx": 250,
+            "idx": 778,
             "name": "shoe-2",
             "origin": [
                 8,
@@ -9355,7 +9610,7 @@
             "rotated": false
         },
         {
-            "idx": 262,
+            "idx": 834,
             "name": "shotgun",
             "origin": [
                 8,
@@ -9370,7 +9625,7 @@
             "rotated": false
         },
         {
-            "idx": 57,
+            "idx": 178,
             "name": "shovel",
             "origin": [
                 8,
@@ -9385,7 +9640,7 @@
             "rotated": false
         },
         {
-            "idx": 284,
+            "idx": 900,
             "name": "shovel-white",
             "origin": [
                 8,
@@ -9400,7 +9655,7 @@
             "rotated": false
         },
         {
-            "idx": 137,
+            "idx": 412,
             "name": "shutdown",
             "origin": [
                 8,
@@ -9415,7 +9670,7 @@
             "rotated": false
         },
         {
-            "idx": 236,
+            "idx": 731,
             "name": "sign",
             "origin": [
                 8,
@@ -9430,7 +9685,7 @@
             "rotated": false
         },
         {
-            "idx": 39,
+            "idx": 116,
             "name": "sink",
             "origin": [
                 8,
@@ -9445,7 +9700,7 @@
             "rotated": false
         },
         {
-            "idx": 199,
+            "idx": 606,
             "name": "skull",
             "origin": [
                 8,
@@ -9460,7 +9715,7 @@
             "rotated": false
         },
         {
-            "idx": 255,
+            "idx": 805,
             "name": "slash",
             "origin": [
                 8,
@@ -9475,7 +9730,7 @@
             "rotated": false
         },
         {
-            "idx": 189,
+            "idx": 585,
             "name": "sleep",
             "origin": [
                 8,
@@ -9490,7 +9745,7 @@
             "rotated": false
         },
         {
-            "idx": 200,
+            "idx": 618,
             "name": "small-table-wood",
             "origin": [
                 8,
@@ -9505,22 +9760,7 @@
             "rotated": false
         },
         {
-            "idx": 110,
-            "name": "smartphone",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                240,
-                304,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 223,
+            "idx": 707,
             "name": "smartphone-2",
             "origin": [
                 8,
@@ -9535,7 +9775,37 @@
             "rotated": false
         },
         {
-            "idx": 251,
+            "idx": 922,
+            "name": "smartphone-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 319,
+            "name": "smartphone-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                304,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 779,
             "name": "snicker",
             "origin": [
                 8,
@@ -9550,7 +9820,7 @@
             "rotated": false
         },
         {
-            "idx": 155,
+            "idx": 496,
             "name": "soap",
             "origin": [
                 8,
@@ -9565,7 +9835,7 @@
             "rotated": false
         },
         {
-            "idx": 243,
+            "idx": 771,
             "name": "socks",
             "origin": [
                 8,
@@ -9580,7 +9850,7 @@
             "rotated": false
         },
         {
-            "idx": 47,
+            "idx": 135,
             "name": "sofa",
             "origin": [
                 8,
@@ -9589,6 +9859,21 @@
             "rect": [
                 112,
                 128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 184,
+            "name": "sofa-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                176,
                 16,
                 16
             ],
@@ -9610,7 +9895,7 @@
             "rotated": false
         },
         {
-            "idx": 184,
+            "idx": 558,
             "name": "sort",
             "origin": [
                 8,
@@ -9625,7 +9910,7 @@
             "rotated": false
         },
         {
-            "idx": 17,
+            "idx": 50,
             "name": "soup-bowl",
             "origin": [
                 8,
@@ -9640,7 +9925,7 @@
             "rotated": false
         },
         {
-            "idx": 32,
+            "idx": 76,
             "name": "spark",
             "origin": [
                 8,
@@ -9655,7 +9940,7 @@
             "rotated": false
         },
         {
-            "idx": 43,
+            "idx": 120,
             "name": "speaker",
             "origin": [
                 8,
@@ -9670,7 +9955,7 @@
             "rotated": false
         },
         {
-            "idx": 148,
+            "idx": 445,
             "name": "speedometer",
             "origin": [
                 8,
@@ -9685,7 +9970,7 @@
             "rotated": false
         },
         {
-            "idx": 236,
+            "idx": 753,
             "name": "stadium",
             "origin": [
                 8,
@@ -9700,7 +9985,7 @@
             "rotated": false
         },
         {
-            "idx": 79,
+            "idx": 222,
             "name": "stairs",
             "origin": [
                 8,
@@ -9715,7 +10000,7 @@
             "rotated": false
         },
         {
-            "idx": 28,
+            "idx": 83,
             "name": "star",
             "origin": [
                 8,
@@ -9730,7 +10015,7 @@
             "rotated": false
         },
         {
-            "idx": 282,
+            "idx": 887,
             "name": "star-white",
             "origin": [
                 8,
@@ -9745,7 +10030,7 @@
             "rotated": false
         },
         {
-            "idx": 190,
+            "idx": 586,
             "name": "stars",
             "origin": [
                 8,
@@ -9760,7 +10045,7 @@
             "rotated": false
         },
         {
-            "idx": 290,
+            "idx": 906,
             "name": "steak",
             "origin": [
                 8,
@@ -9775,7 +10060,7 @@
             "rotated": false
         },
         {
-            "idx": 258,
+            "idx": 808,
             "name": "stetoscope",
             "origin": [
                 8,
@@ -9790,7 +10075,7 @@
             "rotated": false
         },
         {
-            "idx": 272,
+            "idx": 855,
             "name": "sticky-die",
             "origin": [
                 8,
@@ -9805,7 +10090,7 @@
             "rotated": false
         },
         {
-            "idx": 162,
+            "idx": 492,
             "name": "sticky-note",
             "origin": [
                 8,
@@ -9820,7 +10105,7 @@
             "rotated": false
         },
         {
-            "idx": 38,
+            "idx": 115,
             "name": "stool",
             "origin": [
                 8,
@@ -9835,7 +10120,7 @@
             "rotated": false
         },
         {
-            "idx": 190,
+            "idx": 608,
             "name": "stool-2",
             "origin": [
                 8,
@@ -9850,7 +10135,7 @@
             "rotated": false
         },
         {
-            "idx": 203,
+            "idx": 621,
             "name": "stool-3",
             "origin": [
                 8,
@@ -9865,7 +10150,7 @@
             "rotated": false
         },
         {
-            "idx": 201,
+            "idx": 641,
             "name": "stool-4",
             "origin": [
                 8,
@@ -9880,7 +10165,7 @@
             "rotated": false
         },
         {
-            "idx": 224,
+            "idx": 686,
             "name": "stop-sign",
             "origin": [
                 8,
@@ -9895,7 +10180,7 @@
             "rotated": false
         },
         {
-            "idx": 191,
+            "idx": 587,
             "name": "str",
             "origin": [
                 8,
@@ -9910,7 +10195,7 @@
             "rotated": false
         },
         {
-            "idx": 31,
+            "idx": 97,
             "name": "street-lamp-1",
             "origin": [
                 8,
@@ -9925,7 +10210,7 @@
             "rotated": false
         },
         {
-            "idx": 32,
+            "idx": 98,
             "name": "street-lamp-2",
             "origin": [
                 8,
@@ -9940,7 +10225,7 @@
             "rotated": false
         },
         {
-            "idx": 33,
+            "idx": 99,
             "name": "street-lamp-3",
             "origin": [
                 8,
@@ -9955,7 +10240,7 @@
             "rotated": false
         },
         {
-            "idx": 256,
+            "idx": 806,
             "name": "strike",
             "origin": [
                 8,
@@ -9970,7 +10255,7 @@
             "rotated": false
         },
         {
-            "idx": 267,
+            "idx": 850,
             "name": "strong-arm-white",
             "origin": [
                 8,
@@ -9985,7 +10270,7 @@
             "rotated": false
         },
         {
-            "idx": 248,
+            "idx": 765,
             "name": "sun",
             "origin": [
                 8,
@@ -10000,7 +10285,7 @@
             "rotated": false
         },
         {
-            "idx": 20,
+            "idx": 42,
             "name": "sushi",
             "origin": [
                 8,
@@ -10015,8 +10300,23 @@
             "rotated": false
         },
         {
-            "idx": 105,
-            "name": "switch",
+            "idx": 933,
+            "name": "switch-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 303,
+            "name": "switch-on",
             "origin": [
                 8,
                 8
@@ -10030,7 +10330,7 @@
             "rotated": false
         },
         {
-            "idx": 7,
+            "idx": 18,
             "name": "sword",
             "origin": [
                 8,
@@ -10045,7 +10345,7 @@
             "rotated": false
         },
         {
-            "idx": 276,
+            "idx": 859,
             "name": "sword-add",
             "origin": [
                 8,
@@ -10060,7 +10360,7 @@
             "rotated": false
         },
         {
-            "idx": 278,
+            "idx": 883,
             "name": "sword-white",
             "origin": [
                 8,
@@ -10075,7 +10375,7 @@
             "rotated": false
         },
         {
-            "idx": 10,
+            "idx": 32,
             "name": "syringe",
             "origin": [
                 8,
@@ -10090,7 +10390,7 @@
             "rotated": false
         },
         {
-            "idx": 21,
+            "idx": 65,
             "name": "table",
             "origin": [
                 8,
@@ -10105,7 +10405,7 @@
             "rotated": false
         },
         {
-            "idx": 62,
+            "idx": 183,
             "name": "table-metal",
             "origin": [
                 8,
@@ -10120,7 +10420,7 @@
             "rotated": false
         },
         {
-            "idx": 205,
+            "idx": 634,
             "name": "table-small",
             "origin": [
                 8,
@@ -10135,7 +10435,7 @@
             "rotated": false
         },
         {
-            "idx": 40,
+            "idx": 106,
             "name": "table-steel",
             "origin": [
                 8,
@@ -10150,7 +10450,7 @@
             "rotated": false
         },
         {
-            "idx": 41,
+            "idx": 107,
             "name": "table2",
             "origin": [
                 8,
@@ -10159,6 +10459,36 @@
             "rect": [
                 176,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 919,
+            "name": "tablet-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 920,
+            "name": "tablet-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                912,
                 16,
                 16
             ],
@@ -10180,7 +10510,7 @@
             "rotated": false
         },
         {
-            "idx": 228,
+            "idx": 712,
             "name": "tag-2",
             "origin": [
                 8,
@@ -10225,7 +10555,7 @@
             "rotated": false
         },
         {
-            "idx": 54,
+            "idx": 153,
             "name": "target-white",
             "origin": [
                 8,
@@ -10240,7 +10570,7 @@
             "rotated": false
         },
         {
-            "idx": 280,
+            "idx": 896,
             "name": "target-white-2",
             "origin": [
                 8,
@@ -10255,7 +10585,7 @@
             "rotated": false
         },
         {
-            "idx": 161,
+            "idx": 491,
             "name": "target2",
             "origin": [
                 8,
@@ -10270,8 +10600,38 @@
             "rotated": false
         },
         {
-            "idx": 264,
-            "name": "terminal-2",
+            "idx": 197,
+            "name": "terminal-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 937,
+            "name": "terminal-retro-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 836,
+            "name": "terminal-retro-on",
             "origin": [
                 8,
                 8
@@ -10285,7 +10645,7 @@
             "rotated": false
         },
         {
-            "idx": 254,
+            "idx": 804,
             "name": "theater",
             "origin": [
                 8,
@@ -10300,7 +10660,7 @@
             "rotated": false
         },
         {
-            "idx": 93,
+            "idx": 291,
             "name": "thermometer",
             "origin": [
                 8,
@@ -10315,7 +10675,7 @@
             "rotated": false
         },
         {
-            "idx": 228,
+            "idx": 701,
             "name": "thermometer-2",
             "origin": [
                 8,
@@ -10330,7 +10690,7 @@
             "rotated": false
         },
         {
-            "idx": 165,
+            "idx": 506,
             "name": "thief-female",
             "origin": [
                 8,
@@ -10345,7 +10705,7 @@
             "rotated": false
         },
         {
-            "idx": 164,
+            "idx": 505,
             "name": "thief-male",
             "origin": [
                 8,
@@ -10360,7 +10720,7 @@
             "rotated": false
         },
         {
-            "idx": 91,
+            "idx": 289,
             "name": "thumbs-down",
             "origin": [
                 8,
@@ -10375,7 +10735,7 @@
             "rotated": false
         },
         {
-            "idx": 92,
+            "idx": 290,
             "name": "thumbs-up",
             "origin": [
                 8,
@@ -10390,7 +10750,7 @@
             "rotated": false
         },
         {
-            "idx": 257,
+            "idx": 818,
             "name": "ticket",
             "origin": [
                 8,
@@ -10405,22 +10765,7 @@
             "rotated": false
         },
         {
-            "idx": 261,
-            "name": "tingas",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                16,
-                832,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 191,
+            "idx": 609,
             "name": "tire",
             "origin": [
                 8,
@@ -10435,7 +10780,7 @@
             "rotated": false
         },
         {
-            "idx": 194,
+            "idx": 612,
             "name": "tissue-box",
             "origin": [
                 8,
@@ -10450,7 +10795,7 @@
             "rotated": false
         },
         {
-            "idx": 35,
+            "idx": 112,
             "name": "toaster",
             "origin": [
                 8,
@@ -10465,7 +10810,7 @@
             "rotated": false
         },
         {
-            "idx": 60,
+            "idx": 181,
             "name": "toilet",
             "origin": [
                 8,
@@ -10480,7 +10825,7 @@
             "rotated": false
         },
         {
-            "idx": 233,
+            "idx": 728,
             "name": "toilet-2",
             "origin": [
                 8,
@@ -10495,7 +10840,7 @@
             "rotated": false
         },
         {
-            "idx": 219,
+            "idx": 670,
             "name": "toilet-paper",
             "origin": [
                 8,
@@ -10510,7 +10855,7 @@
             "rotated": false
         },
         {
-            "idx": 210,
+            "idx": 672,
             "name": "toilet-paper-wall",
             "origin": [
                 8,
@@ -10525,7 +10870,7 @@
             "rotated": false
         },
         {
-            "idx": 220,
+            "idx": 671,
             "name": "toilet-papers",
             "origin": [
                 8,
@@ -10540,7 +10885,7 @@
             "rotated": false
         },
         {
-            "idx": 272,
+            "idx": 866,
             "name": "tomato",
             "origin": [
                 8,
@@ -10555,7 +10900,7 @@
             "rotated": false
         },
         {
-            "idx": 43,
+            "idx": 131,
             "name": "toolbox",
             "origin": [
                 8,
@@ -10570,7 +10915,7 @@
             "rotated": false
         },
         {
-            "idx": 263,
+            "idx": 813,
             "name": "tooth",
             "origin": [
                 8,
@@ -10585,7 +10930,7 @@
             "rotated": false
         },
         {
-            "idx": 34,
+            "idx": 78,
             "name": "traffic-cone",
             "origin": [
                 8,
@@ -10600,7 +10945,7 @@
             "rotated": false
         },
         {
-            "idx": 101,
+            "idx": 299,
             "name": "traffic-lights",
             "origin": [
                 8,
@@ -10615,7 +10960,7 @@
             "rotated": false
         },
         {
-            "idx": 231,
+            "idx": 737,
             "name": "traffic-lights-2",
             "origin": [
                 8,
@@ -10630,7 +10975,7 @@
             "rotated": false
         },
         {
-            "idx": 227,
+            "idx": 722,
             "name": "trash-can",
             "origin": [
                 8,
@@ -10645,7 +10990,7 @@
             "rotated": false
         },
         {
-            "idx": 24,
+            "idx": 46,
             "name": "trashcan",
             "origin": [
                 8,
@@ -10660,7 +11005,7 @@
             "rotated": false
         },
         {
-            "idx": 77,
+            "idx": 242,
             "name": "tree",
             "origin": [
                 8,
@@ -10675,7 +11020,67 @@
             "rotated": false
         },
         {
-            "idx": 104,
+            "idx": 603,
+            "name": "tree-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                592,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 914,
+            "name": "tree-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 915,
+            "name": "tree-4",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 916,
+            "name": "tree-5",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 302,
             "name": "trophy",
             "origin": [
                 8,
@@ -10690,7 +11095,7 @@
             "rotated": false
         },
         {
-            "idx": 103,
+            "idx": 312,
             "name": "truck",
             "origin": [
                 8,
@@ -10705,7 +11110,7 @@
             "rotated": false
         },
         {
-            "idx": 95,
+            "idx": 304,
             "name": "tshirt",
             "origin": [
                 8,
@@ -10720,22 +11125,7 @@
             "rotated": false
         },
         {
-            "idx": 23,
-            "name": "tv",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                48,
-                64,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 28,
+            "idx": 61,
             "name": "tv-box",
             "origin": [
                 8,
@@ -10750,37 +11140,37 @@
             "rotated": false
         },
         {
-            "idx": 95,
+            "idx": 67,
             "name": "tv-off",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                80,
-                288,
+                48,
+                64,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 97,
+            "idx": 921,
             "name": "tv-on",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                112,
-                288,
+                144,
+                912,
                 16,
                 16
             ],
             "rotated": false
         },
         {
-            "idx": 106,
+            "idx": 337,
             "name": "tv-remote",
             "origin": [
                 8,
@@ -10795,22 +11185,7 @@
             "rotated": false
         },
         {
-            "idx": 96,
-            "name": "tv-test",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                96,
-                288,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 159,
+            "idx": 489,
             "name": "umbrella",
             "origin": [
                 8,
@@ -10825,7 +11200,7 @@
             "rotated": false
         },
         {
-            "idx": 241,
+            "idx": 769,
             "name": "underwear",
             "origin": [
                 8,
@@ -10840,7 +11215,7 @@
             "rotated": false
         },
         {
-            "idx": 295,
+            "idx": 911,
             "name": "upload",
             "origin": [
                 8,
@@ -10855,7 +11230,7 @@
             "rotated": false
         },
         {
-            "idx": 104,
+            "idx": 313,
             "name": "usb-drive",
             "origin": [
                 8,
@@ -10870,7 +11245,7 @@
             "rotated": false
         },
         {
-            "idx": 125,
+            "idx": 378,
             "name": "use",
             "origin": [
                 8,
@@ -10885,7 +11260,7 @@
             "rotated": false
         },
         {
-            "idx": 195,
+            "idx": 613,
             "name": "vase",
             "origin": [
                 8,
@@ -10900,7 +11275,7 @@
             "rotated": false
         },
         {
-            "idx": 59,
+            "idx": 180,
             "name": "vent",
             "origin": [
                 8,
@@ -10915,7 +11290,7 @@
             "rotated": false
         },
         {
-            "idx": 246,
+            "idx": 785,
             "name": "ventilation-shaft",
             "origin": [
                 8,
@@ -10930,7 +11305,7 @@
             "rotated": false
         },
         {
-            "idx": 248,
+            "idx": 787,
             "name": "ventilation-shaft-2",
             "origin": [
                 8,
@@ -10945,7 +11320,7 @@
             "rotated": false
         },
         {
-            "idx": 205,
+            "idx": 656,
             "name": "vest-hanging-brown",
             "origin": [
                 8,
@@ -10960,7 +11335,7 @@
             "rotated": false
         },
         {
-            "idx": 207,
+            "idx": 658,
             "name": "vest-hanging-yellow",
             "origin": [
                 8,
@@ -10975,7 +11350,7 @@
             "rotated": false
         },
         {
-            "idx": 19,
+            "idx": 52,
             "name": "vial",
             "origin": [
                 8,
@@ -10990,7 +11365,7 @@
             "rotated": false
         },
         {
-            "idx": 260,
+            "idx": 810,
             "name": "vial-blood",
             "origin": [
                 8,
@@ -11005,7 +11380,7 @@
             "rotated": false
         },
         {
-            "idx": 45,
+            "idx": 133,
             "name": "vial-green",
             "origin": [
                 8,
@@ -11020,7 +11395,7 @@
             "rotated": false
         },
         {
-            "idx": 18,
+            "idx": 51,
             "name": "vial-small",
             "origin": [
                 8,
@@ -11035,7 +11410,7 @@
             "rotated": false
         },
         {
-            "idx": 260,
+            "idx": 799,
             "name": "virus",
             "origin": [
                 8,
@@ -11050,7 +11425,7 @@
             "rotated": false
         },
         {
-            "idx": 259,
+            "idx": 809,
             "name": "virus-2",
             "origin": [
                 8,
@@ -11065,7 +11440,7 @@
             "rotated": false
         },
         {
-            "idx": 209,
+            "idx": 638,
             "name": "wall-monitor",
             "origin": [
                 8,
@@ -11080,7 +11455,7 @@
             "rotated": false
         },
         {
-            "idx": 97,
+            "idx": 306,
             "name": "wall-plug",
             "origin": [
                 8,
@@ -11095,7 +11470,7 @@
             "rotated": false
         },
         {
-            "idx": 103,
+            "idx": 301,
             "name": "wallet",
             "origin": [
                 8,
@@ -11110,7 +11485,7 @@
             "rotated": false
         },
         {
-            "idx": 80,
+            "idx": 223,
             "name": "warning",
             "origin": [
                 8,
@@ -11125,7 +11500,7 @@
             "rotated": false
         },
         {
-            "idx": 225,
+            "idx": 698,
             "name": "watch",
             "origin": [
                 8,
@@ -11140,7 +11515,7 @@
             "rotated": false
         },
         {
-            "idx": 82,
+            "idx": 236,
             "name": "water",
             "origin": [
                 8,
@@ -11155,7 +11530,7 @@
             "rotated": false
         },
         {
-            "idx": 223,
+            "idx": 685,
             "name": "water-tank",
             "origin": [
                 8,
@@ -11170,7 +11545,7 @@
             "rotated": false
         },
         {
-            "idx": 21,
+            "idx": 43,
             "name": "watermelon",
             "origin": [
                 8,
@@ -11185,7 +11560,7 @@
             "rotated": false
         },
         {
-            "idx": 253,
+            "idx": 803,
             "name": "wave",
             "origin": [
                 8,
@@ -11215,7 +11590,7 @@
             "rotated": false
         },
         {
-            "idx": 193,
+            "idx": 611,
             "name": "weight-small",
             "origin": [
                 8,
@@ -11230,7 +11605,7 @@
             "rotated": false
         },
         {
-            "idx": 182,
+            "idx": 567,
             "name": "weight-white",
             "origin": [
                 8,
@@ -11245,7 +11620,7 @@
             "rotated": false
         },
         {
-            "idx": 195,
+            "idx": 624,
             "name": "wii",
             "origin": [
                 8,
@@ -11260,7 +11635,7 @@
             "rotated": false
         },
         {
-            "idx": 22,
+            "idx": 66,
             "name": "window",
             "origin": [
                 8,
@@ -11275,7 +11650,7 @@
             "rotated": false
         },
         {
-            "idx": 38,
+            "idx": 93,
             "name": "window2-broken",
             "origin": [
                 8,
@@ -11290,7 +11665,7 @@
             "rotated": false
         },
         {
-            "idx": 37,
+            "idx": 92,
             "name": "window2-closed",
             "origin": [
                 8,
@@ -11305,7 +11680,7 @@
             "rotated": false
         },
         {
-            "idx": 39,
+            "idx": 94,
             "name": "window2-opened",
             "origin": [
                 8,
@@ -11320,7 +11695,7 @@
             "rotated": false
         },
         {
-            "idx": 18,
+            "idx": 40,
             "name": "wine",
             "origin": [
                 8,
@@ -11335,7 +11710,7 @@
             "rotated": false
         },
         {
-            "idx": 288,
+            "idx": 904,
             "name": "wood-pile",
             "origin": [
                 8,
@@ -11350,7 +11725,7 @@
             "rotated": false
         },
         {
-            "idx": 289,
+            "idx": 905,
             "name": "wood-pile-2",
             "origin": [
                 8,
@@ -11365,7 +11740,7 @@
             "rotated": false
         },
         {
-            "idx": 146,
+            "idx": 443,
             "name": "wood-sign",
             "origin": [
                 8,
@@ -11380,7 +11755,7 @@
             "rotated": false
         },
         {
-            "idx": 71,
+            "idx": 203,
             "name": "wrench",
             "origin": [
                 8,
@@ -11395,7 +11770,7 @@
             "rotated": false
         },
         {
-            "idx": 229,
+            "idx": 724,
             "name": "wrench-2",
             "origin": [
                 8,
@@ -11410,7 +11785,7 @@
             "rotated": false
         },
         {
-            "idx": 285,
+            "idx": 890,
             "name": "wrench-white",
             "origin": [
                 8,
@@ -11425,7 +11800,7 @@
             "rotated": false
         },
         {
-            "idx": 56,
+            "idx": 155,
             "name": "zoom-in-black",
             "origin": [
                 8,
@@ -11440,7 +11815,7 @@
             "rotated": false
         },
         {
-            "idx": 55,
+            "idx": 154,
             "name": "zoom-in-white",
             "origin": [
                 8,
@@ -11455,7 +11830,7 @@
             "rotated": false
         },
         {
-            "idx": 58,
+            "idx": 157,
             "name": "zoom-out-black",
             "origin": [
                 8,
@@ -11470,7 +11845,7 @@
             "rotated": false
         },
         {
-            "idx": 57,
+            "idx": 156,
             "name": "zoom-out-white",
             "origin": [
                 8,
@@ -11485,7 +11860,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 765,
+    "regions_count": 790,
     "rotations": false,
     "using_grid": true,
     "width": 256

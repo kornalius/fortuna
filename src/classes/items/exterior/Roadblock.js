@@ -2,19 +2,17 @@ import random from 'lodash/random'
 import Item from '../item'
 import { registerClass } from '@/utils'
 
-export default class Sofa extends Item {
+export default class Roadblock extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Sofa',
-      icon: 'sofa',
+      name: 'Roadblock',
+      icon: 'road-block',
       iconSuffix: random(1, 2),
       pickable: false,
       dropable: false,
       ...data,
     })
   }
-
-  get canSleepOn() { return true }
 }
 
-registerClass(Sofa)
+registerClass(Roadblock)

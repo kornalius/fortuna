@@ -2,18 +2,18 @@ import Electronic from './electronic'
 import { mixin, registerClass } from '@/utils'
 import Switch from '@/mixins/switch'
 
-export default class Smartphone extends Electronic {
+export default class PDA extends Electronic {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Smartphone',
-      icon: 'smartphone',
+      name: 'PDA',
+      icon: 'pda',
       ...data,
     })
   }
 }
 
-mixin(Smartphone, [
+mixin(PDA, [
   Switch,
 ])
 
-registerClass(Smartphone)
+registerClass(PDA)

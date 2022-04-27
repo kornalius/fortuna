@@ -1,5 +1,5 @@
 import Item from '../item'
-import { log, mixin, registerClass } from '@/utils'
+import { mixin, registerClass } from '@/utils'
 import Switch from '@/mixins/switch'
 
 export default class Light extends Item {
@@ -11,13 +11,6 @@ export default class Light extends Item {
       dropable: false,
       ...data,
     })
-  }
-
-  async onExamine() {
-    log([
-      this.isOn ? 'It is ON' : 'It is OFF',
-    ], 0, this.icon)
-    return super.onExamine()
   }
 }
 

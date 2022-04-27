@@ -1,15 +1,21 @@
-import Item from '../item'
-import { registerClass } from '@/utils'
+import random from 'lodash/random'
+import Electronic from './electronic'
+import { mixin, registerClass } from '@/utils'
+import Switch from '@/mixins/switch'
 
-export default class Laptop extends Item {
+export default class Laptop extends Electronic {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Laptop',
       icon: 'laptop',
-      usable: true,
+      iconSuffix: random(1, 2),
       ...data,
     })
   }
 }
+
+mixin(Laptop, [
+  Switch,
+])
 
 registerClass(Laptop)

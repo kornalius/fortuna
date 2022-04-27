@@ -1,7 +1,7 @@
-import Light from './light'
+import Electronic from './electronic'
 import { log, registerClass } from '@/utils'
 
-export default class LightSwitch extends Light {
+export default class LightSwitch extends Electronic {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Light switch',

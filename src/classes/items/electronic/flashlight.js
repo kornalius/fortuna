@@ -1,11 +1,11 @@
-import Item from '../item'
+import Electronic from './electronic'
 import { registerClass } from '@/utils'
 
-export default class Pinetree extends Item {
+export default class Flashlight extends Electronic {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Pine tree',
-      icon: 'pinetree',
+      name: 'Flashlight',
+      icon: 'flashlight',
       pickable: false,
       dropable: false,
       ...data,
@@ -13,4 +13,4 @@ export default class Pinetree extends Item {
   }
 }
 
-registerClass(Pinetree)
+registerClass(Flashlight)

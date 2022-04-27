@@ -2,11 +2,11 @@ import Food from './food'
 import { registerClass } from '@/utils'
 import { store } from '@/store';
 
-export default class Milk extends Food {
+export default class Wine extends Food {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Milk',
-      icon: 'milk',
+      name: 'Wine',
+      icon: 'wine',
       ...data,
     })
   }
@@ -16,4 +16,4 @@ export default class Milk extends Food {
   }
 }
 
-registerClass(Milk)
+registerClass(Wine)

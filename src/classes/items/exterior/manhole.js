@@ -1,11 +1,11 @@
-import Electronic from './electronic'
+import Item from '../item'
 import { registerClass } from '@/utils'
 
-export default class Hifi extends Electronic {
+export default class Manhole extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Hifi',
-      icon: 'hifi',
+      name: 'Manhole',
+      icon: 'tree',
       pickable: false,
       dropable: false,
       ...data,
@@ -13,4 +13,4 @@ export default class Hifi extends Electronic {
   }
 }
 
-registerClass(Hifi)
+registerClass(Manhole)

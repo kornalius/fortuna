@@ -104,5 +104,10 @@ export const soundFiles = {
   'heartbeat': { src: 'sfx/heartbeat.wav' },
   'pain': { src: 'sfx/pain.wav' },
   'scream': { src: 'sfx/scream.wav' },
+  'eat': { src: 'sfx/eat.wav' },
+  'drink': { src: 'sfx/drink.wav' },
 
+  // Furnitures
+  'piano': { src: 'sfx/piano.wav' },
+  'sink': { src: 'sfx/sink.wav' },
 }
