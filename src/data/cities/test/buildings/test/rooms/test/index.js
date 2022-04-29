@@ -1,7 +1,6 @@
 import { color, icon, log, LOG_IMPORTANT } from '@/utils'
 import Server from '@/classes/server/server'
 import TestRoomServer from './servers'
-import Npc from '@/classes/npcs/npc'
 import LightSwitch from '@/classes/items/electronic/light-switch'
 import TestRoomLightSwitch from './items/light-switch'
 import SimonSmith from './npcs/SimonSmith'
@@ -9,6 +8,7 @@ import Freeze from '@/classes/battles/freeze'
 import Kick from '@/classes/battles/kick'
 import Roll from '@/classes/battles/roll'
 import BookShelf from '@/classes/containers/bookshelf'
+import RandomNpc from '@/classes/npcs/random-npc'
 
 export default {
   name: 'Test Room',
@@ -19,7 +19,7 @@ export default {
   img: 'test-room.png',
 
   mounted() {
-    const npc = this.addNpc(new Npc(SimonSmith))
+    const npc = this.addNpc(new RandomNpc(SimonSmith))
     this.location.addOwner(npc)
     this.addItem(new BookShelf())
     this.addItem(new LightSwitch(TestRoomLightSwitch))

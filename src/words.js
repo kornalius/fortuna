@@ -247,7 +247,7 @@ export const jobs = [
   'captain', 'carpenter', 'cashier', 'chemist', 'coach', 'concierge', 'cook', 'courier', 'dental hygienist', 'dentist',
   'dispatcher', 'doctor', 'economist', 'electrician', 'housekeeper', 'janitor', 'journalist', 'lawer', 'librarian', 'machinists',
   'marketer', 'merchant', 'meteorologist', 'microbiologist', 'nurse', 'painter', 'paramedic', 'physician', 'physicist',
-  'physiologist', 'pilot', 'plumber', 'psychiatric', 'publicist', 'receptionist', 'reporter', 'researcher', 'secretary',
+  'physiologist', 'pilot', 'plumber', 'psychiatric', 'publicist', 'receptionist', 'reporter', 'secretary',
   'therapist', 'toxicologist', 'veterinary', 'welder','administrator', 'advisor', 'advocate', 'agent', 'ambassador', 'analyst',
   'architect', 'buyer', 'coder', 'collector', 'commander', 'communicator', 'consultant', 'controller', 'coordinator', 'counselor',
   'curator', 'designer', 'developer', 'director', 'engineer', 'estimator', 'examiner', 'expeditor', 'forecaster', 'generalist',

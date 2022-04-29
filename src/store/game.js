@@ -29,6 +29,7 @@ export default class Game {
       showKeypad: false,
       keypadId: null,
       volume: 0.1,
+      crt: true,
       date: store.config.startDate,
       time: store.config.startTime,
       showLabels: false,
@@ -145,6 +146,9 @@ export default class Game {
 
   get volume() { return this.state.volume }
   set volume(value) { this.state.volume = Math.max(0.0, Math.min(1.0, value)) }
+
+  get crt() { return this.state.crt }
+  set crt(value) { this.state.crt = value }
 
   startTick() {
     this._interval = setInterval(() => {

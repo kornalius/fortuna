@@ -1,3 +1,4 @@
+import compact from 'lodash/compact'
 import Entity from '@/entity'
 import Dialog from '@/classes/dialog'
 import Combat from '@/classes/combat'
@@ -75,7 +76,7 @@ export default class Npc extends Entity {
   set female(value) { this.state.female = value }
 
   get iconSuffix() {
-    return `${this.state.iconSuffix ? `${this.state.iconSuffix}-` : ''}${this.female ? 'female' : 'male'}`
+    return compact([this.state.iconSuffix, this.female ? 'female' : 'male']).join('-')
   }
 
   get maxHp() {

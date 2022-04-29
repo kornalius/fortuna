@@ -2,7 +2,7 @@
     "fill_rate": 0,
     "grid_height": 16,
     "grid_width": 16,
-    "height": 944,
+    "height": 960,
     "image": "icons.png",
     "name": "icons",
     "padding_x": 0,
@@ -19,6 +19,21 @@
             "rect": [
                 160,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 947,
+            "name": "activate",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                944,
                 16,
                 16
             ],
@@ -880,6 +895,21 @@
             "rotated": false
         },
         {
+            "idx": 943,
+            "name": "battery-car",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 578,
             "name": "battery-charging",
             "origin": [
@@ -1144,6 +1174,21 @@
             "rect": [
                 240,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 944,
+            "name": "bless",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                944,
                 16,
                 16
             ],
@@ -1429,6 +1474,66 @@
             "rect": [
                 192,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 957,
+            "name": "boss-female-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 956,
+            "name": "boss-female-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 530,
+            "name": "boss-male-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                528,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 531,
+            "name": "boss-male-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                528,
                 16,
                 16
             ],
@@ -1795,6 +1900,36 @@
             "rotated": false
         },
         {
+            "idx": 955,
+            "name": "business-female-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 954,
+            "name": "business-female-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 529,
             "name": "business-male-beige",
             "origin": [
@@ -1819,66 +1954,6 @@
             "rect": [
                 0,
                 528,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 530,
-            "name": "business-male-old-beige",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                32,
-                528,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 531,
-            "name": "business-male-old-blue",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                48,
-                528,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 526,
-            "name": "business-man-hat-1",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                224,
-                512,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 527,
-            "name": "business-man-hat-2",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                240,
-                512,
                 16,
                 16
             ],
@@ -2335,6 +2410,21 @@
             "rotated": false
         },
         {
+            "idx": 949,
+            "name": "casual-female-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 522,
             "name": "casual-female-green",
             "origin": [
@@ -2343,21 +2433,6 @@
             ],
             "rect": [
                 160,
-                512,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 525,
-            "name": "casual-female-pink",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                208,
                 512,
                 16,
                 16
@@ -3115,15 +3190,15 @@
             "rotated": false
         },
         {
-            "idx": 501,
-            "name": "construction-worker-1",
+            "idx": 951,
+            "name": "construction-boss-female",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                80,
-                496,
+                112,
+                944,
                 16,
                 16
             ],
@@ -3131,13 +3206,43 @@
         },
         {
             "idx": 502,
-            "name": "construction-worker-2",
+            "name": "construction-boss-male",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 96,
+                496,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 950,
+            "name": "construction-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 501,
+            "name": "construction-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
                 496,
                 16,
                 16
@@ -3490,6 +3595,21 @@
             "rotated": false
         },
         {
+            "idx": 945,
+            "name": "decrypt",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 851,
             "name": "defibrilator",
             "origin": [
@@ -3610,6 +3730,21 @@
             "rotated": false
         },
         {
+            "idx": 946,
+            "name": "destroy",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 56,
             "name": "dex",
             "origin": [
@@ -3694,6 +3829,21 @@
             "rect": [
                 176,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 948,
+            "name": "disactivate",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                944,
                 16,
                 16
             ],
@@ -4564,21 +4714,6 @@
             "rect": [
                 128,
                 480,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 515,
-            "name": "female-naked",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                48,
-                512,
                 16,
                 16
             ],
@@ -6415,6 +6550,66 @@
             "rotated": false
         },
         {
+            "idx": 953,
+            "name": "inspector-female-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 952,
+            "name": "inspector-female-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                944,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 527,
+            "name": "inspector-male-beige",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 526,
+            "name": "inspector-male-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 159,
             "name": "interrogation-mark",
             "origin": [
@@ -7375,21 +7570,6 @@
             "rotated": false
         },
         {
-            "idx": 514,
-            "name": "male-naked",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                32,
-                512,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 784,
             "name": "manhole",
             "origin": [
@@ -7849,6 +8029,36 @@
             "rect": [
                 240,
                 608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 515,
+            "name": "naked-female",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                512,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 514,
+            "name": "naked-male",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                512,
                 16,
                 16
             ],
@@ -11935,7 +12145,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 795,
+    "regions_count": 809,
     "rotations": false,
     "using_grid": true,
     "width": 256

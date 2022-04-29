@@ -1,3 +1,4 @@
+import compact from 'lodash/compact'
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
@@ -48,7 +49,7 @@ export default {
     if (!this.openIconSuffix) {
       return this.state.iconSuffix
     }
-    return `${this.state.iconSuffix ? `${this.state.iconSuffix}-` : ''}${this.isOpened ? 'open' : 'close'}`
+    return compact([this.state.iconSuffix, this.isOpened ? 'open' : 'close']).join('-')
   },
 
   get openLabel() {

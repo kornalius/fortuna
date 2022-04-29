@@ -40,6 +40,17 @@ watch(() => store.game.volume, newValue => {
   Howler.volume(newValue)
 }, { immediate: true })
 
+watch(() => store.game.crt, newValue => {
+  const el = document.querySelector('#app')
+  if (el) {
+    if (newValue) {
+      el.classList.add(['scanlines'])
+    } else {
+      el.classList.remove(['scanlines'])
+    }
+  }
+}, { immediate: true })
+
 const keyup = e => {
   if (e.keyCode === 27) {
     if (store.game.showIconsList) {

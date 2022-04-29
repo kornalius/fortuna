@@ -1,6 +1,7 @@
 /**
  * Add an icon state to object
  */
+import compact from 'lodash/compact';
 
 export default {
   state: {
@@ -9,10 +10,7 @@ export default {
   },
 
   get icon() {
-    if (this.iconSuffix) {
-      return `${this.state.icon}-${this.iconSuffix}`
-    }
-    return this.state.icon
+    return compact([this.state.icon, this.iconSuffix]).join('-')
   },
   set icon(value) { this.state.icon = value },
 

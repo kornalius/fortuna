@@ -1,3 +1,4 @@
+import compact from 'lodash/compact'
 import { log, LOG_WARN } from '@/utils'
 
 /**
@@ -28,7 +29,7 @@ export default {
     if (!this.switchIconSuffix) {
       return this.state.iconSuffix
     }
-    return `${this.state.iconSuffix ? `${this.state.iconSuffix}-` : ''}${this.isOn ? 'on' : 'off'}`
+    return compact([this.state.iconSuffix, this.isOn ? 'on' : 'off']).join('-')
   },
 
   async toggle() {

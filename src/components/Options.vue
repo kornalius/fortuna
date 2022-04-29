@@ -3,7 +3,17 @@
     <div class="flex flex-grow-1 justify-center f3 mb4">
       Options
     </div>
-    <div class="flex flex-grow-1">
+
+    <div class="flex flex-grow-1 pb4">
+      <n-checkbox
+        class="w-100"
+        v-model:checked="crt"
+      >
+        CRT effects
+      </n-checkbox>
+    </div>
+
+    <div class="flex flex-grow-1 pb4">
       <div class="flex w-50">
         Volume
       </div>
@@ -18,7 +28,6 @@
     </div>
 
     <n-button
-      class="mt4"
       type="primary"
       strong
       secondary
@@ -38,6 +47,7 @@ import { ref, watch } from 'vue'
 import { store } from '@/store'
 
 const volume = ref(0)
+const crt = ref(false)
 
 watch(() => store.game.volume, newValue => {
   volume.value = newValue
@@ -46,6 +56,16 @@ watch(() => store.game.volume, newValue => {
 watch(volume, newValue => {
   if (newValue !== store.game.volume) {
     store.game.volume = newValue
+  }
+})
+
+watch(() => store.game.crt, newValue => {
+  crt.value = newValue
+}, { immediate: true })
+
+watch(crt, newValue => {
+  if (newValue !== store.game.crt) {
+    store.game.crt = newValue
   }
 })
 </script>
