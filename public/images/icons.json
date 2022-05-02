@@ -895,6 +895,66 @@
             "rotated": false
         },
         {
+            "idx": 573,
+            "name": "battery-0",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 576,
+            "name": "battery-100",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                576,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 574,
+            "name": "battery-25",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 575,
+            "name": "battery-50",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                560,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 943,
             "name": "battery-car",
             "origin": [
@@ -934,66 +994,6 @@
             "rect": [
                 16,
                 576,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 573,
-            "name": "battery-empty",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                208,
-                560,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 576,
-            "name": "battery-full",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                0,
-                576,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 575,
-            "name": "battery-half",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                240,
-                560,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 574,
-            "name": "battery-quarter",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                224,
-                560,
                 16,
                 16
             ],
@@ -2606,7 +2606,7 @@
         },
         {
             "idx": 132,
-            "name": "ceiling-light",
+            "name": "ceiling-light-off",
             "origin": [
                 8,
                 8
@@ -2614,6 +2614,21 @@
             "rect": [
                 64,
                 128,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 931,
+            "name": "ceiling-light-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                928,
                 16,
                 16
             ],
@@ -3641,7 +3656,7 @@
         },
         {
             "idx": 122,
-            "name": "desk-lamp",
+            "name": "desk-lamp-1-off",
             "origin": [
                 8,
                 8
@@ -3655,8 +3670,23 @@
             "rotated": false
         },
         {
+            "idx": 929,
+            "name": "desk-lamp-1-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                928,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 677,
-            "name": "desk-lamp-2",
+            "name": "desk-lamp-2-off",
             "origin": [
                 8,
                 8
@@ -3664,6 +3694,21 @@
             "rect": [
                 80,
                 672,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 936,
+            "name": "desk-lamp-2-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                928,
                 16,
                 16
             ],
@@ -5591,7 +5636,7 @@
         },
         {
             "idx": 918,
-            "name": "fridge",
+            "name": "fridge-close",
             "origin": [
                 8,
                 8
@@ -5599,6 +5644,21 @@
             "rect": [
                 96,
                 912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 958,
+            "name": "fridge-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                944,
                 16,
                 16
             ],
@@ -7060,21 +7120,6 @@
             "rotated": false
         },
         {
-            "idx": 105,
-            "name": "lamp",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                144,
-                96,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 902,
             "name": "lamp-3",
             "origin": [
@@ -7090,15 +7135,30 @@
             "rotated": false
         },
         {
-            "idx": 127,
-            "name": "lamp2",
+            "idx": 653,
+            "name": "lamp-off",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                240,
+                208,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 935,
+            "name": "lamp-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
                 112,
+                928,
                 16,
                 16
             ],
@@ -7270,30 +7330,30 @@
             "rotated": false
         },
         {
-            "idx": 367,
-            "name": "lightbulb",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                240,
-                352,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 368,
+            "idx": 202,
             "name": "lightbulb-off",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                0,
-                368,
+                160,
+                192,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 932,
+            "name": "lightbulb-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                928,
                 16,
                 16
             ],
@@ -8110,15 +8170,60 @@
             "rotated": false
         },
         {
-            "idx": 653,
-            "name": "night-lamp",
+            "idx": 105,
+            "name": "night-lamp-1-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 925,
+            "name": "night-lamp-1-on",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 208,
-                640,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 127,
+            "name": "night-lamp-2-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                112,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 930,
+            "name": "night-lamp-2-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                928,
                 16,
                 16
             ],
@@ -10481,7 +10586,7 @@
         },
         {
             "idx": 97,
-            "name": "street-lamp-1",
+            "name": "street-lamp-1-off",
             "origin": [
                 8,
                 8
@@ -10495,8 +10600,23 @@
             "rotated": false
         },
         {
+            "idx": 926,
+            "name": "street-lamp-1-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 98,
-            "name": "street-lamp-2",
+            "name": "street-lamp-2-off",
             "origin": [
                 8,
                 8
@@ -10510,8 +10630,23 @@
             "rotated": false
         },
         {
+            "idx": 927,
+            "name": "street-lamp-2-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                912,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 99,
-            "name": "street-lamp-3",
+            "name": "street-lamp-3-off",
             "origin": [
                 8,
                 8
@@ -10519,6 +10654,21 @@
             "rect": [
                 48,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 928,
+            "name": "street-lamp-3-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                928,
                 16,
                 16
             ],
@@ -12145,7 +12295,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 809,
+    "regions_count": 819,
     "rotations": false,
     "using_grid": true,
     "width": 256

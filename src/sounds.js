@@ -110,4 +110,5 @@ export const soundFiles = {
   // Furnitures
   'piano': { src: 'sfx/piano.wav' },
   'sink': { src: 'sfx/sink.wav' },
+  'radio': { src: 'sfx/radio.wav' },
 }

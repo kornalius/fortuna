@@ -1,8 +1,8 @@
-import Item from '../item'
+import Electronic from '@/classes/items/electronic/electronic'
 import { mixin, registerClass } from '@/utils'
 import Switch from '@/mixins/switch'
 
-export default class Light extends Item {
+export default class Light extends Electronic {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Light',

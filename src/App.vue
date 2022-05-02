@@ -52,7 +52,7 @@ watch(() => store.game.crt, newValue => {
 }, { immediate: true })
 
 const keyup = e => {
-  if (e.keyCode === 27) {
+  if (e.keyCode === 27) { // ESC
     if (store.game.showIconsList) {
       store.game.showIconsList = false
       return
@@ -69,7 +69,7 @@ const keyup = e => {
       }
     }
   }
-  else if (e.keyCode === 73 && e.ctrlKey && !e.shiftKey) {
+  else if (e.keyCode === 73 && e.ctrlKey && !e.shiftKey) { // CTRL+I
     store.game.showIconsList = true
   }
   e.stopImmediatePropagation()

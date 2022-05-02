@@ -1,14 +1,14 @@
 import Light from './light'
 import { registerClass } from '@/utils'
 
-export default class CeilingLight extends Light {
+export default class Lamp extends Light {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Ceiling light',
-      icon: 'ceiling-light',
+      name: 'Lamp',
+      icon: 'lamp',
       ...data,
     })
   }
 }
 
-registerClass(CeilingLight)
+registerClass(Lamp)

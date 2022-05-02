@@ -2,15 +2,15 @@ import random from 'lodash/random'
 import Light from './light'
 import { registerClass } from '@/utils'
 
-export default class DeskLamp extends Light {
+export default class StreetLamp extends Light {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Desk lamp',
-      icon: 'desk-lamp',
-      iconSuffix: random(1, 2),
+      name: 'Street lamp',
+      icon: 'street-lamp',
+      iconSuffix: random(1, 3),
       ...data,
     })
   }
 }
 
-registerClass(DeskLamp)
+registerClass(StreetLamp)

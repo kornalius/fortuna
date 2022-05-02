@@ -1,17 +1,15 @@
 import Item from '../item'
 import { registerClass } from '@/utils'
 
-export default class Tv extends Item {
+export default class Radio extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Tv',
-      icon: 'tv',
+      name: 'Radio',
+      icon: 'radio',
       usable: true,
-      pickable: false,
-      dropable: false,
       ...data,
     })
   }
 }
 
-registerClass(Tv)
+registerClass(Radio)

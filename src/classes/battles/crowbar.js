@@ -1,11 +1,11 @@
 import BattleItem from './battle-item'
 import { registerClass } from '@/utils'
 
-export default class Machete extends BattleItem {
+export default class Crowbar extends BattleItem {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Machete',
-      icon: 'machete',
+      name: 'Crowbar',
+      icon: 'crowbar',
       description: 'Deals 4 damages during combat',
       ...data,
     })
@@ -17,4 +17,4 @@ export default class Machete extends BattleItem {
   }
 }
 
-registerClass(Machete)
+registerClass(Crowbar)

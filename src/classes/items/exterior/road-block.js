@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import Item from '../item'
 import { registerClass } from '@/utils'
 
-export default class Roadblock extends Item {
+export default class RoadBlock extends Item {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Roadblock',
@@ -15,4 +15,4 @@ export default class Roadblock extends Item {
   }
 }
 
-registerClass(Roadblock)
+registerClass(RoadBlock)

@@ -6,8 +6,8 @@ export default class NightLamp extends Light {
   setupInstance(data) {
     return super.setupInstance({
       name: 'Night lamp',
-      icon: 'lamp',
-      iconSuffix: random(1, 3),
+      icon: 'night-lamp',
+      iconSuffix: random(1, 2),
       ...data,
     })
   }
