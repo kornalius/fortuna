@@ -42,6 +42,10 @@ export default {
         log: () => `${this.name} needs to be in your inventory first`
       },
       {
+        expr: () => this.isEquipped,
+        log: () => `${this.name} cannot be dropped while it is equipped`
+      },
+      {
         expr: () => this.isSoftware && this.isInstalled,
         log: () => `${this.name} needs to be uninstalled first`
       },

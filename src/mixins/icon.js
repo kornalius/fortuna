@@ -1,7 +1,7 @@
 /**
  * Add an icon state to object
  */
-import compact from 'lodash/compact';
+import compact from 'lodash/compact'
 
 export default {
   state: {

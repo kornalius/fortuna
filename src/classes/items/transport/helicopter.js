@@ -1,14 +1,14 @@
 import Item from '../item'
 import { registerClass } from '@/utils'
 
-export default class CarBattery extends Item {
+export default class Helicopter extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Car battery',
-      icon: 'carBattery',
+      name: 'Helicopter',
+      icon: 'helicopter',
       ...data,
     })
   }
 }
 
-registerClass(CarBattery)
+registerClass(Helicopter)

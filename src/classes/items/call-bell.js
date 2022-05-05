@@ -1,13 +1,12 @@
-import Item from '../item'
+import Item from './item'
 import { registerClass } from '@/utils'
 import { store } from '@/store'
 
-export default class Piano extends Item {
+export default class CallBell extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Piano',
-      icon: 'piano',
-      usable: true,
+      name: 'CallBell',
+      icon: 'callBell',
       pickable: false,
       dropable: false,
       ...data,
@@ -15,8 +14,8 @@ export default class Piano extends Item {
   }
 
   async onUse() {
-    store.game.playSound('piano')
+    store.game.playSound('call-bell')
   }
 }
 
-registerClass(Piano)
+registerClass(CallBell)

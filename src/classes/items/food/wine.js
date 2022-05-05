@@ -1,6 +1,6 @@
 import Food from './food'
 import { registerClass } from '@/utils'
-import { store } from '@/store';
+import { store } from '@/store'
 
 export default class Wine extends Food {
   setupInstance(data) {

@@ -9,6 +9,7 @@ import Kick from '@/classes/battles/kick'
 import Roll from '@/classes/battles/roll'
 import BookShelf from '@/classes/containers/bookshelf'
 import RandomNpc from '@/classes/npcs/random-npc'
+import BaseballCap from '@/classes/items/clothing/baseball-cap'
 
 export default {
   name: 'Test Room',
@@ -24,6 +25,7 @@ export default {
     this.addItem(new BookShelf())
     this.addItem(new LightSwitch(TestRoomLightSwitch))
     this.addItem(new Server(TestRoomServer))
+    this.addItem(new BaseballCap())
     this.addItem(new Freeze())
     this.addItem(new Kick())
     this.addItem(new Roll({

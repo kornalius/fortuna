@@ -1,4 +1,4 @@
-import Electronic from '@/classes/items/electronic/electronic'
+import Electronic from '../electronic/electronic'
 import { mixin, registerClass } from '@/utils'
 import Switch from '@/mixins/switch'
 

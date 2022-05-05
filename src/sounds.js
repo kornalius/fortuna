@@ -86,6 +86,7 @@ export const soundFiles = {
   'break': { src: 'sfx/break.wav' },
   'wobble-up': { src: 'sfx/wobble-up.wav' },
   'wobble-down': { src: 'sfx/wobble-down.wav' },
+  'explosion': { src: 'sfx/explosion.wav' },
 
   // Boxes
   'box-carton-open': { src: 'sfx/box-carton-open.wav' },
@@ -106,9 +107,11 @@ export const soundFiles = {
   'scream': { src: 'sfx/scream.wav' },
   'eat': { src: 'sfx/eat.wav' },
   'drink': { src: 'sfx/drink.wav' },
+  'equip': { src: 'sfx/equip.wav' },
 
   // Furnitures
   'piano': { src: 'sfx/piano.wav' },
   'sink': { src: 'sfx/sink.wav' },
   'radio': { src: 'sfx/radio.wav' },
+  'call-bell': { src: 'sfx/call-bell.wav' },
 }

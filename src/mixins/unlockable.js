@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**

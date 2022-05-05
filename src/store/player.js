@@ -67,6 +67,8 @@ export default class Player {
 
   get items() { return store.items.list.filter(i => i.locationStore === this.storeName) }
 
+  get equippedItems() { return store.items.list.filter(i => i.locationStore === this.storeName && i.isEquipped) }
+
   get installedSoftwares() { return this.items.filter(i => i.isSoftware && i.isInstalled) }
   get files() { return this.items.filter(i => i.isFile) }
 
@@ -197,6 +199,10 @@ export default class Player {
 
   installedSoftware(expr) {
     return this.installedSoftwares.find(i => expr.call(this, i))
+  }
+
+  equippedInSlot(slot) {
+    return this.equippedItems.find(i => i.equipSlot === slot)
   }
 
   addItem(data) {

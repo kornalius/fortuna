@@ -15,8 +15,9 @@ export default {
   },
 
   onUse() {
-    if (this.isOff) {
+    if (this.isOff && !this.state.done) {
       this.isOn = true
+      this.state.done = true
 
       log([
         'The room becomes lit, you are blinded by the sudden switch from darkness to light.',

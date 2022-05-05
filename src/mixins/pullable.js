@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -66,7 +66,7 @@ export default {
   },
 
   async pull() {
-    if (!this.canPull()) {
+    if (!this.canPull(true)) {
       return false
     }
     log(`Pulling ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)

@@ -6,7 +6,8 @@ export default class LightningStrike extends BattleItem {
     return super.setupInstance({
       name: 'Lightning strike',
       icon: 'lightning',
-      description: 'Accumulate energy from ambient air, compress it and turn it into a devastating lighting bolt. 4 sword symbols = 10 extra damage',
+      description: `Accumulate energy from ambient air, compress it and turn it into a devastating lighting bolt. 
+        4 sword symbols = 10 extra damage`,
       ...data,
     })
   }

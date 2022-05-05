@@ -1,4 +1,4 @@
-import { can, emit, log } from '@/utils'
+import { can, emit, log, LOG_WARN } from '@/utils'
 import { store } from '@/store'
 
 /**
@@ -66,7 +66,7 @@ export default {
   },
 
   async push() {
-    if (!this.canPush()) {
+    if (!this.canPush(true)) {
       return false
     }
     log(`Pushing ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)

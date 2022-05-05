@@ -1,15 +1,15 @@
 import Item from './item'
 import { registerClass } from '@/utils'
 
-export default class Book extends Item {
+export default class Watch extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Book',
-      icon: 'book',
+      name: 'Watch',
+      icon: 'watch',
       weight: 1,
       ...data,
     })
   }
 }
 
-registerClass(Book)
+registerClass(Watch)

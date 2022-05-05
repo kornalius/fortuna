@@ -6,6 +6,8 @@ export default class LightSwitch extends Electronic {
     return super.setupInstance({
       name: 'Light switch',
       icon: 'lightSwitch',
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

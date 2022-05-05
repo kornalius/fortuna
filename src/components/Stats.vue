@@ -191,6 +191,8 @@
       </div>
     </div>
   </n-card>
+
+  <equipment />
 </template>
 
 <script setup>
@@ -199,6 +201,7 @@ import { store } from '@/store'
 import { bleed, life, xp } from '@/particles'
 import { buffIcon, buffLabel } from '@/buffs'
 import icons from '@/icons'
+import Equipment from '@/components/Equipment';
 
 watch(() => store.player.hp, (newValue, oldValue) => {
   if (store.game.showLevelUp) {

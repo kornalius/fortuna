@@ -2,7 +2,7 @@
     "fill_rate": 0,
     "grid_height": 16,
     "grid_width": 16,
-    "height": 960,
+    "height": 992,
     "image": "icons.png",
     "name": "icons",
     "padding_x": 0,
@@ -670,6 +670,21 @@
             "rotated": false
         },
         {
+            "idx": 962,
+            "name": "axe-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 495,
             "name": "backetball",
             "origin": [
@@ -745,6 +760,21 @@
             "rotated": false
         },
         {
+            "idx": 964,
+            "name": "bandage-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 756,
             "name": "bank",
             "origin": [
@@ -790,8 +820,23 @@
             "rotated": false
         },
         {
+            "idx": 661,
+            "name": "baseball-cap-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                656,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 662,
-            "name": "baseball-cap-blue",
+            "name": "baseball-cap-2",
             "origin": [
                 8,
                 8
@@ -806,28 +851,13 @@
         },
         {
             "idx": 663,
-            "name": "baseball-cap-purple",
+            "name": "baseball-cap-3",
             "origin": [
                 8,
                 8
             ],
             "rect": [
                 112,
-                656,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 661,
-            "name": "baseball-cap-red",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
                 656,
                 16,
                 16
@@ -1060,21 +1090,6 @@
             "rotated": false
         },
         {
-            "idx": 884,
-            "name": "belt-white",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                64,
-                880,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 493,
             "name": "billard-ball",
             "origin": [
@@ -1285,21 +1300,6 @@
             "rotated": false
         },
         {
-            "idx": 772,
-            "name": "blouse-red",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                64,
-                768,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 822,
             "name": "blueprint",
             "origin": [
@@ -1466,7 +1466,7 @@
         },
         {
             "idx": 780,
-            "name": "boot-2",
+            "name": "boots",
             "origin": [
                 8,
                 8
@@ -1870,6 +1870,21 @@
             "rotated": false
         },
         {
+            "idx": 971,
+            "name": "bullets",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 343,
             "name": "burn",
             "origin": [
@@ -2216,7 +2231,7 @@
         },
         {
             "idx": 344,
-            "name": "car-blue",
+            "name": "car-1",
             "origin": [
                 8,
                 8
@@ -2230,23 +2245,8 @@
             "rotated": false
         },
         {
-            "idx": 429,
-            "name": "car-green",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                208,
-                416,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 346,
-            "name": "car-red",
+            "name": "car-2",
             "origin": [
                 8,
                 8
@@ -2260,8 +2260,38 @@
             "rotated": false
         },
         {
+            "idx": 428,
+            "name": "car-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 429,
+            "name": "car-4",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                416,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 430,
-            "name": "car-sports",
+            "name": "car-5",
             "origin": [
                 8,
                 8
@@ -2284,21 +2314,6 @@
             "rect": [
                 144,
                 336,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 428,
-            "name": "car-yellow",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                192,
-                416,
                 16,
                 16
             ],
@@ -2764,6 +2779,111 @@
             "rect": [
                 16,
                 432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 978,
+            "name": "char-eyes",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 976,
+            "name": "char-feet",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 977,
+            "name": "char-hands",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 975,
+            "name": "char-head",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 880,
+            "name": "char-legs",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 881,
+            "name": "char-torso",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 884,
+            "name": "char-waist",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                880,
                 16,
                 16
             ],
@@ -3805,6 +3925,21 @@
             "rotated": false
         },
         {
+            "idx": 10,
+            "name": "dialog",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                0,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 563,
             "name": "diamond",
             "origin": [
@@ -4459,6 +4594,21 @@
             "rect": [
                 128,
                 352,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 974,
+            "name": "equip",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                960,
                 16,
                 16
             ],
@@ -5260,6 +5410,21 @@
             "rotated": false
         },
         {
+            "idx": 966,
+            "name": "first-aid-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 176,
             "name": "first-aid2",
             "origin": [
@@ -5770,6 +5935,21 @@
             "rotated": false
         },
         {
+            "idx": 735,
+            "name": "gas-pump",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 833,
             "name": "gascan",
             "origin": [
@@ -5794,21 +5974,6 @@
             "rect": [
                 208,
                 400,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 735,
-            "name": "gaz-pump",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                240,
-                720,
                 16,
                 16
             ],
@@ -5854,6 +6019,21 @@
             "rect": [
                 208,
                 880,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 965,
+            "name": "gem-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                960,
                 16,
                 16
             ],
@@ -5929,6 +6109,21 @@
             "rect": [
                 80,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 963,
+            "name": "goal-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                960,
                 16,
                 16
             ],
@@ -7360,6 +7555,36 @@
             "rotated": false
         },
         {
+            "idx": 968,
+            "name": "lightbulb-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 969,
+            "name": "lighting-white",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 237,
             "name": "lightning",
             "origin": [
@@ -7654,21 +7879,6 @@
             "rect": [
                 192,
                 272,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 766,
-            "name": "meat-slice",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                224,
-                752,
                 16,
                 16
             ],
@@ -8329,21 +8539,6 @@
             "rect": [
                 224,
                 160,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 880,
-            "name": "pants-white",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                0,
-                880,
                 16,
                 16
             ],
@@ -9505,6 +9700,21 @@
             "rotated": false
         },
         {
+            "idx": 772,
+            "name": "robe-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 875,
             "name": "rock",
             "origin": [
@@ -9850,6 +10060,21 @@
             "rotated": false
         },
         {
+            "idx": 777,
+            "name": "shirt",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 659,
             "name": "shirt-hanging-red",
             "origin": [
@@ -9940,38 +10165,8 @@
             "rotated": false
         },
         {
-            "idx": 881,
-            "name": "shirt-white-2",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                16,
-                880,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 777,
-            "name": "shirt-yellow",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                144,
-                768,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 305,
-            "name": "shoe",
+            "name": "shoes-1",
             "origin": [
                 8,
                 8
@@ -9986,7 +10181,7 @@
         },
         {
             "idx": 778,
-            "name": "shoe-2",
+            "name": "shoes-2",
             "origin": [
                 8,
                 8
@@ -10196,7 +10391,7 @@
         },
         {
             "idx": 779,
-            "name": "snicker",
+            "name": "snickers",
             "origin": [
                 8,
                 8
@@ -10234,6 +10429,21 @@
             "rect": [
                 48,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 959,
+            "name": "soda-can",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                944,
                 16,
                 16
             ],
@@ -10444,6 +10654,21 @@
             "rect": [
                 160,
                 896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 766,
+            "name": "steak-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                752,
                 16,
                 16
             ],
@@ -10735,23 +10960,8 @@
             "rotated": false
         },
         {
-            "idx": 933,
-            "name": "switch-off",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
-                928,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 303,
-            "name": "switch-on",
+            "name": "switch-off",
             "origin": [
                 8,
                 8
@@ -10759,6 +10969,21 @@
             "rect": [
                 240,
                 288,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 933,
+            "name": "switch-on",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                928,
                 16,
                 16
             ],
@@ -10960,15 +11185,15 @@
             "rotated": false
         },
         {
-            "idx": 10,
+            "idx": 973,
             "name": "talk",
             "origin": [
                 8,
                 8
             ],
             "rect": [
-                160,
-                0,
+                208,
+                960,
                 16,
                 16
             ],
@@ -11194,6 +11419,21 @@
             "rect": [
                 32,
                 816,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 835,
+            "name": "time-bomb",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                832,
                 16,
                 16
             ],
@@ -11644,6 +11884,21 @@
             "rect": [
                 16,
                 768,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 979,
+            "name": "unequip",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                976,
                 16,
                 16
             ],
@@ -12295,7 +12550,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 819,
+    "regions_count": 836,
     "rotations": false,
     "using_grid": true,
     "width": 256
