@@ -7,6 +7,8 @@ import Chair from '@/classes/items/furniture/chair'
 import Plant from '@/classes/containers/plant'
 import Painting from '@/classes/items/furniture/painting'
 import Windows from '@/classes/items/furniture/windows'
+import TrashCan from '@/classes/containers/trash-can'
+import Table from '@/classes/items/furniture/table'
 
 export default class RandomRoom extends Room {
   setupInstance(data) {
@@ -20,6 +22,8 @@ export default class RandomRoom extends Room {
         [Windows, 1, 2],
         [Chair, 0, 2],
         [Plant, 0, 2],
+        [TrashCan, 0, 1],
+        [Table, 0, 1],
         ...(data.randomItems || []),
       ],
     })

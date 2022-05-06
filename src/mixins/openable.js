@@ -18,7 +18,7 @@ export default {
     opened: false,
     actions: [
       item => (
-        item.isOpenable || item.isCloseable
+        item.isOpenable
           ? {
             label: item.openLabel,
             key: item.openKey,

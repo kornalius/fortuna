@@ -1,5 +1,6 @@
 import Electronic from './electronic'
 import { registerClass } from '@/utils'
+import { store } from '@/store'
 
 export default class Hifi extends Electronic {
   setupInstance(data) {
@@ -10,6 +11,13 @@ export default class Hifi extends Electronic {
       dropable: false,
       ...data,
     })
+  }
+
+  async onUse() {
+    await this.toggle()
+    if (this.isOn) {
+      store.game.playSound('hifi')
+    }
   }
 }
 

@@ -2696,7 +2696,7 @@
         },
         {
             "idx": 72,
-            "name": "chair",
+            "name": "chair-1",
             "origin": [
                 8,
                 8
@@ -2704,6 +2704,81 @@
             "rect": [
                 128,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 433,
+            "name": "chair-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                432,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 642,
+            "name": "chair-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 643,
+            "name": "chair-4",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                48,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 727,
+            "name": "chair-5",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                720,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 136,
+            "name": "chair-desk",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                128,
                 16,
                 16
             ],
@@ -2719,51 +2794,6 @@
             "rect": [
                 16,
                 192,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 643,
-            "name": "chair-steel-front",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                48,
-                640,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 642,
-            "name": "chair-steel-side",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                32,
-                640,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 433,
-            "name": "chair2",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                16,
-                432,
                 16,
                 16
             ],
@@ -3754,21 +3784,6 @@
             "rect": [
                 48,
                 848,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 136,
-            "name": "desk-chair",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                128,
-                128,
                 16,
                 16
             ],
@@ -10405,21 +10420,6 @@
             "rotated": false
         },
         {
-            "idx": 618,
-            "name": "small-table-wood",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                160,
-                608,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 707,
             "name": "smartphone-2",
             "origin": [
@@ -10796,7 +10796,7 @@
         },
         {
             "idx": 115,
-            "name": "stool",
+            "name": "stool-1",
             "origin": [
                 8,
                 8
@@ -10848,6 +10848,21 @@
             ],
             "rect": [
                 16,
+                640,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 649,
+            "name": "stool-5",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
                 640,
                 16,
                 16
@@ -11126,7 +11141,7 @@
         },
         {
             "idx": 65,
-            "name": "table",
+            "name": "table-1",
             "origin": [
                 8,
                 8
@@ -11134,6 +11149,36 @@
             "rect": [
                 16,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 107,
+            "name": "table-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 106,
+            "name": "table-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                96,
                 16,
                 16
             ],
@@ -11155,8 +11200,23 @@
             "rotated": false
         },
         {
+            "idx": 618,
+            "name": "table-small-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                608,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 634,
-            "name": "table-small",
+            "name": "table-small-2",
             "origin": [
                 8,
                 8
@@ -11164,36 +11224,6 @@
             "rect": [
                 160,
                 624,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 106,
-            "name": "table-steel",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                160,
-                96,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 107,
-            "name": "table2",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                176,
-                96,
                 16,
                 16
             ],
@@ -12640,7 +12670,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 842,
+    "regions_count": 844,
     "rotations": false,
     "using_grid": true,
     "width": 256

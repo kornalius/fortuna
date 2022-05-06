@@ -1,3 +1,4 @@
+import random from 'lodash/random'
 import Item from '../item'
 import { mixin, registerClass } from '@/utils'
 import Items from '@/mixins/items'
@@ -8,6 +9,7 @@ export default class Table extends Item {
     return super.setupInstance({
       name: 'Table',
       icon: 'table',
+      iconSuffix: random(1, 3),
       pickable: false,
       dropable: false,
       ...data,

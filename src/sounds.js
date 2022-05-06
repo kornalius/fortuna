@@ -113,5 +113,6 @@ export const soundFiles = {
   'piano': { src: 'sfx/piano.wav' },
   'sink': { src: 'sfx/sink.wav' },
   'radio': { src: 'sfx/radio.wav' },
+  'hifi': { src: 'sfx/hifi.wav' },
   'call-bell': { src: 'sfx/call-bell.wav' },
 }
