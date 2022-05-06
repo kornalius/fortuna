@@ -37,7 +37,7 @@ export default {
     equipped: false,
     actions: [
       item => (
-        item.isEquipable
+        item.isEquipable && store.player.has(item)
           ? {
             label: item.equipLabel,
             key: item.equipKey,
@@ -64,7 +64,9 @@ export default {
   set equipDelay(value) { this.state.equipDelay = value },
 
   get equipLabel() {
-    return `${this.isEquipped ? 'Unequip' : 'Equip'} ${this.requirementsLabelFor('equip')}`
+    return !this.isEquipped
+      ? `Equip ${this.requirementsLabelFor('equip')}`
+      : `Unequip ${this.requirementsLabelFor('unequip')}`
   },
 
   get equipKey() {

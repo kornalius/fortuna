@@ -43,7 +43,7 @@ export default class City extends Entity {
   get startBuildingCode() { return this.state.startBuildingCode }
   set startBuildingCode(value) { this.state.startBuildingCode = value }
 
-  get buildings() { return store.buildings.list.filter(i => i.location === this) }
+  get buildings() { return store.buildings.list.filter(i => i.location?.id === this.id) }
 
   addBuilding(data) {
     if (Array.isArray(data)) {
@@ -67,7 +67,7 @@ export default class City extends Entity {
   canEnter(showMessage) {
     return can(this, [
       {
-        expr: () => store.game.city === this,
+        expr: () => store.game.city?.id === this.id,
         log: () => `You are already in ${this.name}`
       },
       {

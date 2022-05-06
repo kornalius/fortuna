@@ -67,7 +67,7 @@ export default class Server extends Item {
 
   get isServer() { return true }
 
-  get items() { return store.items.list.filter(i => i.location === this) }
+  get items() { return store.items.list.filter(i => i.location?.id === this.id) }
 
   // get files() { return this.items.filter(i => i.isFile || i.isSoftware) }
 
@@ -83,8 +83,8 @@ export default class Server extends Item {
 
   get visibleFiles() { return this.files.filter(f => f.isVisible) }
 
-  get isConnected() { return store.player.server === this }
-  get isDisconnected() { return store.player.server !== this }
+  get isConnected() { return store.player.server?.id === this.id }
+  get isDisconnected() { return store.player.server?.id !== this.id }
 
   get isAuthenticated() { return this.state.authenticated }
   set authenticated(value) { this.state.authenticated = value }
@@ -320,8 +320,8 @@ export default class Server extends Item {
         this.println(...this.bootSequence)
       }
       this.generateRandomDummyFiles(random(5, 25))
-      const a = this.files
       // leave here, files needs to be computed first
+      const a = this.files
       this.fileOrders = shuffle(this.fileOrders)
     }
 

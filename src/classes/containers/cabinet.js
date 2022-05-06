@@ -2,11 +2,13 @@ import Container from './container'
 import { registerClass } from '@/utils'
 import { store } from '@/store'
 
-export default class Safe extends Container {
+export default class Cabinet extends Container {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Safe',
+      name: 'Cabinet',
       icon: 'safe',
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }
@@ -20,4 +22,4 @@ export default class Safe extends Container {
   }
 }
 
-registerClass(Safe)
+registerClass(Cabinet)

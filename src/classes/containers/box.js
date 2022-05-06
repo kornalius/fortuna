@@ -14,7 +14,7 @@ export default class Box extends Container {
       icon: 'box',
       iconSuffix,
       destructable: isWood ? random(5, 10) : 0,
-      closable: false,
+      closeable: false,
       ...data,
     })
   }

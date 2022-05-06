@@ -61,6 +61,28 @@ export const loot = (classesOrInstances, min = 1, max = 5) => {
   })
 }
 
+/**
+ * Generate items from a list classes and their quantities
+ *
+ * @param classes {[][]} classes and quantities object
+ *  ex: [[LightSwitch, 1], [Chair, 0, 4], ...]
+ * @returns {object[]} array of instances
+ */
+export const randomItems = (classes) => {
+  const instances = []
+  classes.forEach(c => {
+    let qty = c[1]
+    if (c.length === 3) {
+      qty = random(c[1], c[2])
+    }
+    for (let i = 0; i < qty; i++) {
+      instances.push(new c[0]())
+    }
+  })
+
+  return instances
+}
+
 export const search = (self, content) => {
   content.forEach(c => {
     let q = c.qty || 1

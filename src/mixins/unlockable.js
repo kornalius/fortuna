@@ -36,7 +36,6 @@ export default {
   get isUnlockable() { return this.state.unlockable },
   set unlockable(value) { this.state.unlockable = value },
 
-
   get isLocked() { return this.state.locked },
   get isUnlocked() { return !this.state.locked },
   set locked(value) { this.state.locked = value },

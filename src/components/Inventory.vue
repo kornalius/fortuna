@@ -121,7 +121,7 @@ const sort = ref()
 
 const items = computed(() =>
   store.player.items
-    .filter(i => !filter.value || i[filter.value])
+    .filter(i => !i.isEquipped && (!filter.value || i[filter.value]))
     .sort((a, b) => {
       if (sort.value) {
         const key = sort.value

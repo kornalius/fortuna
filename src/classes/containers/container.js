@@ -30,6 +30,8 @@ export default class Container extends Entity {
     })
   }
 
+  get isContainer() { return true }
+
   get isInInventory() { return store.player.has(this) }
 }
 

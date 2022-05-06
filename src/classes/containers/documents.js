@@ -7,6 +7,9 @@ export default class Documents extends Item {
     return super.setupInstance({
       name: 'Documents',
       icon: 'documents',
+      openable: false,
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

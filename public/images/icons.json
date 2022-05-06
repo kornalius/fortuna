@@ -2020,21 +2020,6 @@
             "rotated": false
         },
         {
-            "idx": 565,
-            "name": "cactus",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                80,
-                560,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 440,
             "name": "calculator",
             "origin": [
@@ -3124,6 +3109,21 @@
             "rect": [
                 32,
                 896,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 982,
+            "name": "close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                96,
+                976,
                 16,
                 16
             ],
@@ -8021,7 +8021,7 @@
         },
         {
             "idx": 126,
-            "name": "mirror",
+            "name": "mirror-1",
             "origin": [
                 8,
                 8
@@ -8485,6 +8485,21 @@
             "rotated": false
         },
         {
+            "idx": 981,
+            "name": "open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 873,
             "name": "orange",
             "origin": [
@@ -8524,6 +8539,51 @@
             "rect": [
                 176,
                 64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 209,
+            "name": "painting-1",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 208,
+            "name": "painting-2",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                208,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 631,
+            "name": "painting-3",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                624,
                 16,
                 16
             ],
@@ -9229,6 +9289,21 @@
             "rect": [
                 128,
                 96,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 565,
+            "name": "plant-7",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                80,
+                560,
                 16,
                 16
             ],
@@ -12325,23 +12400,8 @@
             "rotated": false
         },
         {
-            "idx": 66,
-            "name": "window",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                32,
-                64,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
             "idx": 93,
-            "name": "window2-broken",
+            "name": "window-2-broken",
             "origin": [
                 8,
                 8
@@ -12356,7 +12416,7 @@
         },
         {
             "idx": 92,
-            "name": "window2-closed",
+            "name": "window-2-closed",
             "origin": [
                 8,
                 8
@@ -12371,7 +12431,7 @@
         },
         {
             "idx": 94,
-            "name": "window2-opened",
+            "name": "window-2-opened",
             "origin": [
                 8,
                 8
@@ -12379,6 +12439,36 @@
             "rect": [
                 224,
                 80,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 66,
+            "name": "window-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                32,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 980,
+            "name": "window-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                64,
+                976,
                 16,
                 16
             ],
@@ -12550,7 +12640,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 836,
+    "regions_count": 842,
     "rotations": false,
     "using_grid": true,
     "width": 256

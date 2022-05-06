@@ -13,18 +13,18 @@ export default {
     // does it have an open state icon?
     openIconSuffix: false,
     // is the object closable
-    closable: true,
+    closeable: true,
     // is the object opened
     opened: false,
     actions: [
       item => (
-        item.isOpenable && !item.isOpened
+        item.isOpenable || item.isCloseable
           ? {
             label: item.openLabel,
-            key: 'toggleOpen',
-            icon: item.isOpened ? 'door-close' : 'door-open',
-            disabled: !item.canOpen(),
-            click: async () => item.open(),
+            key: item.openKey,
+            icon: item.openIcon,
+            disabled: item.openDisabled,
+            click: item.openClick,
           }
           : undefined
       ),
@@ -56,6 +56,25 @@ export default {
     return !this.isOpened
       ? `Open ${this.requirementsLabelFor('open')}`
       : `Close ${this.requirementsLabelFor('close')}`
+  },
+
+  get openKey() {
+    return this.isOpened ? 'close' : 'open'
+  },
+
+  get openIcon() {
+    return this.isOpened ? 'close' : 'open'
+  },
+
+  get openDisabled() {
+    return this.isOpened ? !this.canClose() : !this.canOpen()
+  },
+
+  get openClick() {
+    if (this.isOpened) {
+      return async () => this.close()
+    }
+    return async () => this.open()
   },
 
   canOpen(showMessage) {
@@ -98,19 +117,19 @@ export default {
   canClose(showMessage) {
     return can(this, [
       {
-        expr: !this.isCloseable,
+        expr: () => !this.isCloseable,
         log: () => `${this.name} cannot be closed`
       },
       {
-        expr: this.isClosed,
+        expr: () => this.isClosed,
         log: () => `${this.name} is already closed`
       },
       {
-        expr: store.player.isInCombat,
+        expr:() =>  store.player.isInCombat,
         log: () => 'You cannot close this while in combat'
       },
       {
-        expr: store.player.isInDialog,
+        expr: () => store.player.isInDialog,
         log: () => 'You cannot close this while in conversation'
       },
     ], showMessage, 'close')

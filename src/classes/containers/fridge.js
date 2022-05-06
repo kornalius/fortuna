@@ -6,6 +6,8 @@ export default class Fridge extends Container {
     return super.setupInstance({
       name: 'Fridge',
       icon: 'fridge',
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

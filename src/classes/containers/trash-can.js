@@ -6,6 +6,9 @@ export default class TrashCan extends Container {
     return super.setupInstance({
       name: 'TrashCan',
       icon: 'trash-can',
+      openable: false,
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

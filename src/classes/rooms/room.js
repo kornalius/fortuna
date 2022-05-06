@@ -58,7 +58,7 @@ export default class Room extends Entity {
    */
   get openedContainers() {
     return this.roomItems.filter(i => (
-      (i.isOpenable && i.isOpened) || (i.items?.length > 0 && i.wasSearched))
+      (i.isContainer && i.isOpenable && i.isOpened) || (i.items?.length > 0 && i.wasSearched))
     )
   }
 

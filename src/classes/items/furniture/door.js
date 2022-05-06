@@ -1,8 +1,6 @@
 import Item from '../item'
 import { can, emit, mixin, oppositeDirection, registerClass } from '@/utils'
 import { store } from '@/store'
-import Name from '@/mixins/name'
-import Description from '@/mixins/description'
 import Openable from '@/mixins/openable'
 import Unlockable from '@/mixins/unlockable'
 
@@ -97,8 +95,6 @@ export default class Door extends Item {
 }
 
 mixin(Door, [
-  Name,
-  Description,
   Openable,
   Unlockable,
 ])

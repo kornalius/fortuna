@@ -20,12 +20,14 @@ export const soundFiles = {
   'open-pills-bottle': { src: 'sfx/open-pills-bottle.wav'},
   'search-pills-bottle': { src: 'sfx/search-pills-bottle.wav'},
 
-  // Walk
-  'walk': { src: 'sfx/walk.wav' },
+  // Boxes
+  'box-carton-open': { src: 'sfx/box-carton-open.wav' },
+  'box-wood-destroy': { src: 'sfx/box-wood-destroy.wav' },
+  'box-wood-open': { src: 'sfx/box-wood-open.wav' },
 
-  // Pickup + Drop
-  'pickup': { src: 'sfx/pickup.wav' },
-  'drop': { src: 'sfx/drop.wav' },
+  // Windows
+  'open-window': { src: 'sfx/open-window.wav' },
+  'close-window': { src: 'sfx/close-window.wav' },
 
   // Switches
   'switch': { src: 'sfx/switch.wav' },
@@ -88,12 +90,8 @@ export const soundFiles = {
   'wobble-down': { src: 'sfx/wobble-down.wav' },
   'explosion': { src: 'sfx/explosion.wav' },
 
-  // Boxes
-  'box-carton-open': { src: 'sfx/box-carton-open.wav' },
-  'box-wood-destroy': { src: 'sfx/box-wood-destroy.wav' },
-  'box-wood-open': { src: 'sfx/box-wood-open.wav' },
-
   // Human
+  'walk': { src: 'sfx/walk.wav' },
   'anger': { src: 'sfx/anger.wav' },
   'breath': { src: 'sfx/breath.wav' },
   'breath-2': { src: 'sfx/breath-2.wav' },
@@ -108,6 +106,8 @@ export const soundFiles = {
   'eat': { src: 'sfx/eat.wav' },
   'drink': { src: 'sfx/drink.wav' },
   'equip': { src: 'sfx/equip.wav' },
+  'pickup': { src: 'sfx/pickup.wav' },
+  'drop': { src: 'sfx/drop.wav' },
 
   // Furnitures
   'piano': { src: 'sfx/piano.wav' },

@@ -1,14 +1,13 @@
 import random from 'lodash/random'
-import Container from './container'
+import Item from '../item'
 import { registerClass } from '@/utils'
 
-export default class Plant extends Container {
+export default class Mirror extends Item {
   setupInstance(data) {
     return super.setupInstance({
-      name: 'Plant',
-      icon: 'plant',
-      iconSuffix: random(1, 7),
-      openable: false,
+      name: 'Mirror',
+      icon: 'mirror',
+      iconSuffix: random(1, 2),
       pickable: false,
       dropable: false,
       ...data,
@@ -16,4 +15,4 @@ export default class Plant extends Container {
   }
 }
 
-registerClass(Plant)
+registerClass(Mirror)

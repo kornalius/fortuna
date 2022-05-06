@@ -6,6 +6,8 @@ export default class Cabinet extends Container {
     return super.setupInstance({
       name: 'Cabinet',
       icon: 'cabinet',
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

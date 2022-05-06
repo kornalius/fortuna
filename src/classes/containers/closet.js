@@ -7,6 +7,8 @@ export default class Closet extends Container {
       name: 'Closet',
       icon: 'closet',
       openIconSuffix: true,
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

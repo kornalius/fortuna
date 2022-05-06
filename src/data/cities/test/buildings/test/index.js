@@ -1,4 +1,5 @@
-import Room from '@/classes/room'
+import Room from '@/classes/rooms/room'
+import RandomLivingRoom from '@/classes/rooms/random-livingroom'
 import TestRoom from './rooms/test'
 import TestWinRoom from './rooms/test-win'
 
@@ -11,7 +12,7 @@ export default {
 
   mounted() {
     this.addRoom([
-      new Room(TestRoom),
+      new RandomLivingRoom(TestRoom),
       new Room(TestWinRoom),
     ])
   },

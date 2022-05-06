@@ -12,7 +12,7 @@ import Hovered from '@/mixins/hovered'
 import Actions from '@/mixins/actions'
 import Visitable from '@/mixins/visitable'
 import Requirements from '@/mixins/requirements'
-import Room from '@/classes/room'
+import Room from '@/classes/rooms/room'
 import Tooltip from '@/mixins/tooltip'
 
 export default class Building extends Entity {

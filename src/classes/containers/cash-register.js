@@ -6,6 +6,8 @@ export default class CashRegister extends Container {
     return super.setupInstance({
       name: 'Cash register',
       icon: 'fa-solid:cash-register',
+      pickable: false,
+      dropable: false,
       ...data,
     })
   }

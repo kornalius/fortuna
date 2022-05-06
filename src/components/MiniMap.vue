@@ -48,7 +48,7 @@ const props = defineProps({
 const container = ref()
 
 const rooms = computed(() => (
-  store.rooms.list.filter(r => r.hasVisited && r.location === props.building)
+  store.rooms.list.filter(r => r.hasVisited && r.locationId === props.building.id)
 ))
 
 const style = computed(() => ({
