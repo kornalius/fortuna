@@ -1,6 +1,5 @@
 import Electronic from './electronic'
-import { mixin, registerClass } from '@/utils'
-import Switch from '@/mixins/switch'
+import { registerClass } from '@/utils'
 
 export default class PDA extends Electronic {
   setupInstance(data) {
@@ -11,9 +10,5 @@ export default class PDA extends Electronic {
     })
   }
 }
-
-mixin(PDA, [
-  Switch,
-])
 
 registerClass(PDA)

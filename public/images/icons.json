@@ -4060,6 +4060,36 @@
             "rotated": false
         },
         {
+            "idx": 983,
+            "name": "dishwasher-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                112,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 984,
+            "name": "dishwasher-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                128,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 30,
             "name": "diskette",
             "origin": [
@@ -8005,8 +8035,23 @@
             "rotated": false
         },
         {
+            "idx": 985,
+            "name": "microwave-off",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                144,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 117,
-            "name": "microwave",
+            "name": "microwave-on",
             "origin": [
                 8,
                 8
@@ -8524,21 +8569,6 @@
             "rect": [
                 144,
                 864,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 64,
-            "name": "oven",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                0,
-                64,
                 16,
                 16
             ],
@@ -10885,6 +10915,36 @@
             "rotated": false
         },
         {
+            "idx": 64,
+            "name": "stove-close",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                64,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 986,
+            "name": "stove-open",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                160,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 587,
             "name": "str",
             "origin": [
@@ -12670,7 +12730,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 844,
+    "regions_count": 848,
     "rotations": false,
     "using_grid": true,
     "width": 256

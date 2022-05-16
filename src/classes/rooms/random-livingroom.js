@@ -6,6 +6,7 @@ import Radio from '@/classes/items/electronic/radio'
 import Piano from '@/classes/items/electronic/piano'
 import Hifi from '@/classes/items/electronic/hifi'
 import Speaker from '@/classes/items/electronic/speaker'
+import Fireplace from '@/classes/items/electronic/fireplace'
 
 export default class RandomLivingRoom extends RandomRoom {
   setupInstance(data) {
@@ -18,6 +19,7 @@ export default class RandomLivingRoom extends RandomRoom {
         [Piano, 0, 1],
         [Hifi, 0, 1],
         [Speaker, 0, 2],
+        [Fireplace, 0, 1],
         ...(data.randomItems || []),
       ],
       ...data,

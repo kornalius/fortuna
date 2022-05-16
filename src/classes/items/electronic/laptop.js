@@ -1,7 +1,6 @@
 import random from 'lodash/random'
 import Electronic from './electronic'
-import { mixin, registerClass } from '@/utils'
-import Switch from '@/mixins/switch'
+import { registerClass } from '@/utils'
 
 export default class Laptop extends Electronic {
   setupInstance(data) {
@@ -13,9 +12,5 @@ export default class Laptop extends Electronic {
     })
   }
 }
-
-mixin(Laptop, [
-  Switch,
-])
 
 registerClass(Laptop)

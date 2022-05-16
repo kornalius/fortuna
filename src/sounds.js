@@ -115,4 +115,5 @@ export const soundFiles = {
   'radio': { src: 'sfx/radio.wav' },
   'hifi': { src: 'sfx/hifi.wav' },
   'call-bell': { src: 'sfx/call-bell.wav' },
+  'fireplace': { src: 'sfx/fireplace.wav' },
 }
