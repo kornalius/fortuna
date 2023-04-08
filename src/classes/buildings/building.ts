@@ -125,7 +125,7 @@ export class Building extends Entity {
     return can(this, [
       {
         expr: () => window.store.game.city !== this.location,
-        log: () => `You need to be in city ${this.location.name} to enter this building`
+        log: () => `You need to be in city ${this.location?.nameDisplay} to enter this building`
       },
       {
         expr: () => window.store.game.building === this,
@@ -133,7 +133,7 @@ export class Building extends Entity {
       },
       {
         expr: () => window.store.player.isConnectedToServer,
-        log: () => `Please disconnect from ${window.store.player.server?.name.toLowerCase()} before entering this building`
+        log: () => `Please disconnect from ${window.store.player.server?.nameDisplay} before entering this building`
       },
       {
         expr: () => window.store.player.isInDialog,
@@ -190,7 +190,7 @@ export class Building extends Entity {
     return can(this, [
       {
         expr: () => window.store.player.isConnectedToServer,
-        log: () => `Please disconnect from ${window.store.player.server?.name.toLowerCase()} before exiting this room`
+        log: () => `Please disconnect from ${window.store.player.server?.nameDisplay} before exiting this room`
       },
       {
         expr: () => window.store.player.isInDialog,

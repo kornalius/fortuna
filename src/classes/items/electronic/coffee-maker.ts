@@ -11,7 +11,7 @@ export class CoffeeMaker extends Electronic {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     await this.toggle()
     if (this.isOn) {
       window.store.game.playSound('coffee-maker')

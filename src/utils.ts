@@ -18,7 +18,7 @@ export { LOG_IRRELEVANT, LOG_IMPORTANT, LOG_WARN, LOG_ERROR }
  * @param icon
  * @param level
  */
-export const log = (message: string[] | string, level: number = 0, icon?: string | null) => {
+export const log = (message: string[] | string, level: number = 0, icon?: string | null): void => {
   window.store.logs.update(new Log({
     message: Array.isArray(message) ? message : [message],
     icon: icon ? icon : null,
@@ -30,7 +30,7 @@ export const log = (message: string[] | string, level: number = 0, icon?: string
  * Adds log messages to the logs store
  * @param messages
  */
-export const logs = (...messages: string[]) => {
+export const logs = (...messages: string[]): void => {
   messages.forEach(message => {
     window.store.logs.update(new Log({
       message: Array.isArray(message) ? message : [message],
@@ -79,13 +79,13 @@ export const mixState = (s: { [key: string]: any }, t: { [key: string]: any }): 
  * @param cl
  * @param o
  */
-export const mixin = (cl: Constructor, o: AnyData[] | AnyData) => {
+export const mixin = (cl: Constructor, o: AnyData[] | AnyData): void => {
   if (Array.isArray(o)) {
     o.forEach(oo => mixin(cl, oo))
     return
   }
 
-  Object.getOwnPropertyNames(o).forEach(k => {
+  Object.keys(o).forEach(k => {
     const d = Object.getOwnPropertyDescriptor(o, k)
     const cd = Object.getOwnPropertyDescriptor(cl.prototype, k)
     if ((d?.get || d?.set) && !cd) {
@@ -103,6 +103,8 @@ export const mixin = (cl: Constructor, o: AnyData[] | AnyData) => {
       cl.prototype[k] = d?.value
     }
   })
+
+  // console.log(cl.prototype.constructor.name, cl.prototype)
 }
 
 /**
@@ -119,7 +121,7 @@ export const color = (color: string, text: string): string => `<span class="${co
  * @param icon
  * @param scale
  */
-export const icon = (icon: string, scale: number = 1) => (
+export const icon = (icon: string, scale: number = 1): string => (
   render(`<icon icon="${icons[icon]}" :scale="${scale}" />`)
 )
 
@@ -129,7 +131,7 @@ export const icon = (icon: string, scale: number = 1) => (
  * @param template
  * @returns {string}
  */
-export const render = (template: string | object | undefined) => {
+export const render = (template: string | object | undefined): string => {
   const id = `render-${window.nanoid()}`
   const el = document.createElement('span')
   el.setAttribute('id', id)
@@ -164,15 +166,15 @@ export const operationTimeout = (size?: number): number => {
  * @param showMessage
  * @returns {boolean}
  */
-export function checkSoftware(self: any, software?: Software, showMessage?: boolean) {
+export function checkSoftware(self: any, software?: Software, showMessage?: boolean): boolean {
   return can(self, [
     {
       expr: () => self.isBusy,
-      log: () => `${self.name} is locked while an operation is running on it`,
+      log: () => `${self.nameProper} is locked while an operation is running on it`,
     },
     {
       expr: () => software?.isBusy,
-      log: () => `${software?.name} is locked while an operation is running on it`,
+      log: () => `${software?.nameProper} is locked while an operation is running on it`,
     },
     {
       expr: () => software && software.version < self.version,
@@ -188,7 +190,7 @@ export function checkSoftware(self: any, software?: Software, showMessage?: bool
  * @param args
  * @returns {Promise<void>}
  */
-export async function emit(self: any, name: string, ...args: any[]) {
+export async function emit(self: any, name: string, ...args: any[]): Promise<void> {
   if (self[name]) {
     await self[name](...args)
   }
@@ -228,14 +230,14 @@ export const pickRandom = (array: any[]): any => array[random(array.length - 1)]
 //   return shuffle(newArray)
 // }
 
-export const randomFilename = () => `${pickRandom(adjectives)}-${pickRandom(fileNouns)}.${pickRandom(filetypes)}`
+export const randomFilename = (): string => `${pickRandom(adjectives)}-${pickRandom(fileNouns)}.${pickRandom(filetypes)}`
 
-export const randomMaleName = () => `${pickRandom(maleNames)} ${pickRandom(lastNames)}`
+export const randomMaleName = (): string => `${pickRandom(maleNames)} ${pickRandom(lastNames)}`
 
-export const randomFemaleName = () => `${pickRandom(femaleNames)} ${pickRandom(lastNames)}`
+export const randomFemaleName = (): string => `${pickRandom(femaleNames)} ${pickRandom(lastNames)}`
 
-export const delay = (time: number) => {
-  return new Promise((resolve: (value?: unknown) => void) => {
+export const delay = (time: number): Promise<void> => {
+  return new Promise((resolve: () => void) => {
     setTimeout(() => {
       resolve()
     }, time)

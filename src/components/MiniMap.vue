@@ -11,7 +11,7 @@
           <template #trigger>
             <div
               class="room flex items-center justify-center"
-              :class="{ active: room === window.store.game.room }"
+              :class="{ active: room === store.game.room }"
               :style="styleForRoom(room)"
             >
               <icon
@@ -27,7 +27,7 @@
               <div v-if="room.westDoor" class="west door" />
             </div>
           </template>
-          <span>{{ room.name }}</span>
+          <span>{{ room.nameProper }}</span>
         </n-popover>
       </div>
     </div>
@@ -73,6 +73,8 @@ onMounted(() => {
     }
   }, { immediate: true })
 })
+
+const { store } = window
 </script>
 
 <style scoped>

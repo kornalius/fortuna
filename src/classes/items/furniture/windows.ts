@@ -1,6 +1,6 @@
 import { registerClass, mixin } from '@/utils'
 import { Item } from '../item'
-import { IOpenable } from '@/mixins/openable'
+import { IOpenable, Openable } from '@/mixins/openable'
 import { SetupData } from '@/entity'
 
 export interface Windows extends IOpenable {}
@@ -17,11 +17,11 @@ export class Windows extends Item {
     })
   }
 
-  async onOpen() {
+  async onOpen(): Promise<void> {
     window.store.game.playSound('open-window')
   }
 
-  async onClose() {
+  async onClose(): Promise<void> {
     window.store.game.playSound('close-window')
   }
 }

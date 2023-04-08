@@ -50,7 +50,7 @@ export const books = (min = 1, max = 5): Book[] => {
       name: pickRandom(bookNames),
       requirements: r,
       uses: 1,
-      async onUse() {
+      async onUse(): Promise<void> {
         window.store.player.xp += (int * 100)
       },
     })

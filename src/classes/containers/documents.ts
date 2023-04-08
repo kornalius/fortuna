@@ -1,4 +1,4 @@
-import { mixin, registerClass } from '@/utils'
+import { registerClass } from '@/utils'
 import { Item } from '../items/item'
 import { IItems } from '@/mixins/items'
 import { SetupData } from '@/entity'
@@ -17,9 +17,5 @@ export class Documents extends Item {
     })
   }
 }
-
-mixin(Documents, [
-  Items,
-])
 
 registerClass(Documents)

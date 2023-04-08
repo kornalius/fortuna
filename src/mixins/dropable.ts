@@ -47,27 +47,27 @@ export const Dropable: IDropable = {
 
   get dropLabel(): string { return `Drop ${this.requirementsLabelFor('drop')}` },
 
-  canDrop(showMessage?: boolean) {
+  canDrop(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => !this.isDropable,
-        log: () => `${this.name} cannot be dropped`
+        log: () => `${this.nameProper} cannot be dropped`
       },
       {
         expr: () => !window.store.player.has(this),
-        log: () => `${this.name} needs to be in your inventory first`
+        log: () => `${this.nameProper} needs to be in your inventory first`
       },
       {
         expr: () => this.isEquipped,
-        log: () => `${this.name} cannot be dropped while it is equipped`
+        log: () => `${this.nameProper} cannot be dropped while it is equipped`
       },
       {
         expr: () => (this as any).isSoftware && this.isInstalled,
-        log: () => `${this.name} needs to be uninstalled first`
+        log: () => `${this.nameProper} needs to be uninstalled first`
       },
       {
         expr: () => this.isInstalled,
-        log: () => `${this.name} needs to be uninstalled first`
+        log: () => `${this.nameProper} needs to be uninstalled first`
       },
     ], showMessage, 'drop')
   },
@@ -80,7 +80,7 @@ export const Dropable: IDropable = {
     this.location = window.store.game.room
     // the object is now new to its new location
     this.hovered = false
-    log(`You drop ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+    log(`You drop ${this.nameDisplay}`, LOG_WARN, this.icon)
     await emit(this, 'onDrop')
     return true
   },

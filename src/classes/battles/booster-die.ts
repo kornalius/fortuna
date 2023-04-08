@@ -12,7 +12,7 @@ export class BoosterDie extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.addBuff('dice', 3, 0, 1)
   }
 }

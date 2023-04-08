@@ -1,10 +1,10 @@
 import random from 'lodash/random'
 import { pickRandom, mixin, registerClass } from '@/utils'
 import { Container } from './container'
-import { Destructable } from '@/mixins/destructable'
+import { IDestructable, Destructable } from '@/mixins/destructable'
 import { SetupData } from '@/entity'
 
-export interface Box extends Destructable {}
+export interface Box extends IDestructable {}
 
 export class Box extends Container {
   setupInstance(data?: SetupData): SetupData | undefined {
@@ -21,9 +21,9 @@ export class Box extends Container {
     })
   }
 
-  get isWood(): boolean { return this.iconSuffix.startsWith('wood') }
+  get isWood(): boolean { return this.iconSuffix?.startsWith('wood') || false }
 
-  async onOpen() {
+  async onUse(): Promise<void> {
     if (this.isWood) {
       window.store.game.playSound('box-wood-open')
     } else {
@@ -31,7 +31,7 @@ export class Box extends Container {
     }
   }
 
-  async onDestroy() {
+  async onDestroy(): Promise<void> {
     window.store.game.playSound('box-wood-destroy')
   }
 }

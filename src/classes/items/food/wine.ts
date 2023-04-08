@@ -11,7 +11,7 @@ export class Wine extends Food {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.game.playSound('drink')
   }
 }

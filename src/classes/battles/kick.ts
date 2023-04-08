@@ -13,7 +13,7 @@ export class Kick extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     if (window.store.player.combat?.npc) {
       window.store.player.combat.npc.hp -= 2
       window.store.game.playSound('kick')

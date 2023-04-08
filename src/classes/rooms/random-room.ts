@@ -30,7 +30,7 @@ export class RandomRoom extends Room {
     })
   }
 
-  mounted() {
+  mounted(): void {
     super.mounted()
 
     if (this.state.randomItems.length > 0) {

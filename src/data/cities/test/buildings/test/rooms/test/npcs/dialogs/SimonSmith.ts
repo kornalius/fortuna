@@ -17,7 +17,7 @@ export default () => ([
     code: 'name',
     text: 'He grimace like you were some kind of bug he was about to squash with his old boot. ' +
       '"My name is Simon Smith", he replies reluctantly.',
-    async onSay() {
+    async onSay(): Promise<void> {
       if (this.npc) {
         this.npc.known = true
       }

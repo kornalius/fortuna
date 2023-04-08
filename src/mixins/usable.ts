@@ -59,17 +59,17 @@ export const Usable: IUsable = {
     return can(this, [
       {
         expr: () => !this.isUsable,
-        log: () => `${this.name} cannot be used`
+        log: () => `${this.nameProper} cannot be used`
       },
       // battle item can only be used in combat
       {
         expr: () => !window.store.player.isInCombat && (this as any).isBattle,
-        log: () => `${this.name} can only be used during combat`
+        log: () => `${this.nameProper} can only be used during combat`
       },
       // only battle item can be used in combat
       {
         expr: () => window.store.player.isInCombat && !(this as any).isBattle,
-        log: () => `${this.name} can only be used outside of combat`
+        log: () => `${this.nameProper} can only be used outside of combat`
       },
       {
         expr: () => window.store.player.isInDialog,
@@ -83,7 +83,7 @@ export const Usable: IUsable = {
       return false
     }
 
-    log(`You use the ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+    log(`You use the ${this.nameDisplay}`, LOG_WARN, this.icon)
     await emit(this, 'onUse')
 
     if (!this.hasUnlimitedUses) {

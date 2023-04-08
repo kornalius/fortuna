@@ -1,8 +1,8 @@
 import { Item } from '../item'
 import { can, emit, mixin, oppositeDirection, registerClass } from '@/utils'
-import { IOpenable } from '@/mixins/openable'
-import { IUnlockable } from '@/mixins/unlockable'
 import { SetupData } from '@/entity'
+import { IOpenable, Openable } from '@/mixins/openable'
+import { IUnlockable, Unlockable } from '@/mixins/unlockable'
 import { IUsable } from '@/mixins/usable'
 import { Room } from '@/classes/rooms/room'
 import compact from 'lodash/compact'
@@ -76,11 +76,11 @@ export class Door extends Item {
       },
       {
         expr: () => this.isLocked,
-        log: () => `${this.name} is locked`
+        log: () => `${this.nameProper} is locked`
       },
       {
         expr: () => !this.direction,
-        log: () => `${this.name} as no direction assigned to it`
+        log: () => `${this.nameProper} as no direction assigned to it`
       },
       {
         expr: () => !!window.store.game.room && !window.store.game.room.canExit(showMessage),
@@ -102,11 +102,11 @@ export class Door extends Item {
     return false
   }
 
-  async onOpen() {
+  async onOpen(): Promise<void> {
     window.store.game.playSound('open-door')
   }
 
-  async onClose() {
+  async onClose(): Promise<void> {
     window.store.game.playSound('close-door')
   }
 }

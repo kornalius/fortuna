@@ -15,7 +15,7 @@ export class BookShelf extends Container {
     })
   }
 
-  async onSearch() {
+  async onUse(): Promise<void> {
     await super.onSearch()
     // generate random books
     this.addItem(books())

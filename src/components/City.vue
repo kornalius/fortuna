@@ -29,7 +29,7 @@
               :scale="2"
             />
 
-            <div class="ws-normal" v-html="value.name" />
+            <div class="ws-normal" v-html="value.nameProper" />
 
             <icon
               v-if="value.isNew"
@@ -51,7 +51,7 @@
         </div>
 
         <div class="flex flex-column w-100">
-          <span class="pr2" v-html="value.name" />
+          <span class="pr2" v-html="value.nameProper" />
         </div>
       </div>
 

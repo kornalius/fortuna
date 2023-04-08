@@ -1,8 +1,8 @@
 import random from 'lodash/random'
 import { mixin, registerClass } from '@/utils'
 import { Item } from '../item'
-import { IItems } from '@/mixins/items'
-import { ISearchable } from '@/mixins/searchable'
+import { IItems, Items } from '@/mixins/items'
+import { ISearchable, Searchable } from '@/mixins/searchable'
 import { SetupData } from '@/entity'
 
 export interface Table extends IItems, ISearchable {}

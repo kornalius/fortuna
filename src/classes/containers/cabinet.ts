@@ -13,11 +13,11 @@ export class Cabinet extends Container {
     })
   }
 
-  async onOpen() {
+  async onOpen(): Promise<void> {
     window.store.game.playSound('open-drawer')
   }
 
-  async onClose() {
+  async onClose(): Promise<void> {
     window.store.game.playSound('close-drawer')
   }
 }

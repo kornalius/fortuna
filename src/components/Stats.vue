@@ -17,7 +17,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ window.store.player.lvl }}</span>
+            <span class="ml2">{{ store.player.lvl }}</span>
           </div>
 
           <div class="stats-str inline flex items-center">
@@ -26,7 +26,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ window.store.player.str }}</span>
+            <span class="ml2">{{ store.player.str }}</span>
           </div>
 
           <div class="stats-dex inline flex items-center">
@@ -35,7 +35,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ window.store.player.dex }}</span>
+            <span class="ml2">{{ store.player.dex }}</span>
           </div>
 
           <div class="stats-int inline flex items-center">
@@ -44,7 +44,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ window.store.player.int }}</span>
+            <span class="ml2">{{ store.player.int }}</span>
           </div>
 
           <div class="stats-credits inline flex items-center">
@@ -53,16 +53,16 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ window.store.player.credits }}</span>
+            <span class="ml2">{{ store.player.credits }}</span>
           </div>
         </div>
       </template>
 
-      <span>LEVEL: {{ window.store.player.lvl }}, </span>
-      <span>STR: {{ window.store.player.str}}, </span>
-      <span>DEX: {{ window.store.player.dex }}, </span>
-      <span>INT: {{ window.store.player.int }}, </span>
-      <span>CREDITS: {{ window.store.player.credits }}</span>
+      <span>LEVEL: {{ store.player.lvl }}, </span>
+      <span>STR: {{ store.player.str}}, </span>
+      <span>DEX: {{ store.player.dex }}, </span>
+      <span>INT: {{ store.player.int }}, </span>
+      <span>CREDITS: {{ store.player.credits }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -79,14 +79,14 @@
             status="error"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="window.store.player.hp / window.store.player.maxHp * 100"
+            :percentage="store.player.hp / store.player.maxHp * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>HP: {{ window.store.player.hp }} / {{ window.store.player.maxHp }}</span>
+      <span>HP: {{ store.player.hp }} / {{ store.player.maxHp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -103,14 +103,14 @@
             color="#F19936"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="window.store.player.xp / window.store.player.nextXp * 100"
+            :percentage="store.player.xp / store.player.nextXp * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>XP: {{ window.store.player.xp }} / {{ window.store.player.nextXp }}</span>
+      <span>XP: {{ store.player.xp }} / {{ store.player.nextXp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -127,14 +127,14 @@
             color="#2293E1"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="window.store.player.diskUsed / window.store.player.disk * 100"
+            :percentage="store.player.diskUsed / store.player.disk * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>[DISK] Used: {{ window.store.player.diskUsed }}, Free: {{ window.store.player.diskFree }}, Total: {{ window.store.player.disk }}</span>
+      <span>[DISK] Used: {{ store.player.diskUsed }}, Free: {{ store.player.diskFree }}, Total: {{ store.player.disk }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -152,22 +152,22 @@
             color="#CBE54A"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="window.store.player.ramUsed / window.store.player.ram * 100"
+            :percentage="store.player.ramUsed / store.player.ram * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>[RAM] Used: {{ window.store.player.ramUsed }}, Free: {{ window.store.player.ramFree }}, Total: {{ window.store.player.ram }}</span>
+      <span>[RAM] Used: {{ store.player.ramUsed }}, Free: {{ store.player.ramFree }}, Total: {{ store.player.ram }}</span>
     </n-popover>
 
     <n-button
-      v-if="window.store.player.canLevelUp()"
+      v-if="store.player.canLevelUp()"
       class="levelup-button mv1 w-100"
       color="yellow"
       secondary
-      @click="() => window.store.player.levelUp()"
+      @click="() => store.player.levelUp()"
     >
       + Level +
     </n-button>
@@ -238,6 +238,8 @@ const buffs = computed(() => {
   })
   return buffs
 })
+
+const { store } = window
 </script>
 
 <style scoped>

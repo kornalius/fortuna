@@ -13,7 +13,7 @@ export class Roll extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.rolls += 1
     window.store.game.playSound('sparkle')
   }

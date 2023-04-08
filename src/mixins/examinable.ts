@@ -58,7 +58,7 @@ export const Examinable: IExaminable = {
     return can(this, [
       {
         expr: () => !this.isExaminable,
-        log: () => `${this.name} cannot be examined`
+        log: () => `${this.nameProper} cannot be examined`
       },
     ], showMessage, 'examine')
   },
@@ -68,7 +68,7 @@ export const Examinable: IExaminable = {
       return false
     }
     this.examined += 1
-    log(`You examine the ${this.name.toLowerCase()} but find nothing particular about it.`, LOG_WARN, this.icon)
+    log(`You examine the ${this.nameDisplay} but find nothing particular about it.`, LOG_WARN, this.icon)
     await emit(this, 'onExamine')
     return true
   },

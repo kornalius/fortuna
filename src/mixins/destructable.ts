@@ -79,11 +79,11 @@ export const Destructable: IDestructable = {
     return can(this, [
       {
         expr: () => !this.isDestructable,
-        log: () => `${this.name} cannot be destroyed`
+        log: () => `${this.nameProper} cannot be destroyed`
       },
       {
         expr: () => this.isDestroyed,
-        log: () => `${this.name} has already been destroyed`
+        log: () => `${this.nameProper} has already been destroyed`
       },
       {
         expr: () => window.store.player.isInCombat,
@@ -100,14 +100,14 @@ export const Destructable: IDestructable = {
     if (!this.canDestroy()) {
       return false
     }
-    log(`Damaging ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Damaging ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('destroy', async () => {
       const dmg = random(this.destroyAmount)
       this.destroyed += dmg
       if (this.isDestroyed) {
-        log(`You have destroyed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+        log(`You have destroyed ${this.nameDisplay}`, LOG_WARN, this.icon)
       } else {
-        log(`You have damaged ${this.name.toLowerCase()} by ${dmg}`, LOG_WARN, this.icon)
+        log(`You have damaged ${this.nameDisplay} by ${dmg}`, LOG_WARN, this.icon)
       }
       await emit(this, 'onDestroy', dmg)
       if (this.isDestroyed && this.removeWhenDestroyed) {

@@ -87,15 +87,15 @@ export const Unlockable: IUnlockable = {
     return can(this, [
       {
         expr: () => !this.isUnlockable,
-        log: () => `${this.name} cannot be unlocked`
+        log: () => `${this.nameProper} cannot be unlocked`
       },
       {
         expr: () => !this.isLocked,
-        log: () => `${this.name} is not locked`
+        log: () => `${this.nameProper} is not locked`
       },
       {
         expr: () => !!this.keyId && !window.store.player.has(this.keyId),
-        log: () => `${this.name} needs a key to be unlocked`
+        log: () => `${this.nameProper} needs a key to be unlocked`
       },
       {
         expr: () => window.store.player.isInCombat,

@@ -41,7 +41,7 @@ export const Visitable: IVisitable = {
     return can(this, [
       {
         expr: () => !this.isVisitable,
-        log: () => `You cannot visit ${this.name.toLowerCase()}`,
+        log: () => `You cannot visit ${this.nameDisplay}`,
         level: LOG_WARN
       },
     ], showMessage)

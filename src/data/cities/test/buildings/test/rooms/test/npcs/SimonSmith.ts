@@ -11,7 +11,7 @@ export default {
     { date: window.store.config.startDate, start: '18:15', end: '18:29', roomCode: 'TestRoomWin' },
   ],
 
-  mounted() {
+  mounted(): void {
     this.addDialog(SimonSmithDialogs.call(this))
   },
 } as Npc

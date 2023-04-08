@@ -13,7 +13,7 @@ export class Freeze extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     if (window.store.player.combat?.npc) {
       window.store.player.combat.npc.skipTurns += 1
       window.store.game.playSound('freeze')

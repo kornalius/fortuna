@@ -1,31 +1,31 @@
 <template>
   <n-card style="width: 400px; opacity: .95;">
     <n-button
-      v-if="window.store.game.isPaused"
+      v-if="store.game.isPaused"
       class="mv3"
       type="primary"
       strong
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
-        window.store.game.resume()
+        store.game.playSound('button')
+        store.game.resume()
       }"
     >
       Resume
     </n-button>
 
     <n-button
-      v-if="!window.store.game.isStarted && window.store.game.hasSave"
+      v-if="!store.game.isStarted && store.game.hasSave"
       class="mv3"
       type="primary"
       strong
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
-        window.store.game.load()
-        window.store.game.start()
+        store.game.playSound('button')
+        store.game.load()
+        store.game.start()
       }"
     >
       Continue
@@ -38,22 +38,22 @@
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
-        window.store.game.restart()
+        store.game.playSound('button')
+        store.game.restart()
       }"
     >
-      {{ window.store.game.isStarted ? 'Restart' : 'New Game' }}
+      {{ store.game.isStarted ? 'Restart' : 'New Game' }}
     </n-button>
 
     <n-button
-      v-if="window.store.game.isStarted"
+      v-if="store.game.isStarted"
       class="mv3"
       strong
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
-        window.store.game.save()
+        store.game.playSound('button')
+        store.game.save()
       }"
     >
       Save Game
@@ -66,8 +66,8 @@
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
-        window.store.game.showOptions = true
+        store.game.playSound('button')
+        store.game.showOptions = true
       }"
     >
       Options
@@ -80,7 +80,7 @@
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
+        store.game.playSound('button')
       }"
     >
       Credits
@@ -89,4 +89,5 @@
 </template>
 
 <script setup>
+const { store } = window
 </script>

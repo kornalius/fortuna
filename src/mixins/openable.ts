@@ -90,17 +90,11 @@ export const Openable: IOpenable = {
       : `Close ${this.requirementsLabelFor('close')}`
   },
 
-  get openKey(): string {
-    return this.isOpened ? 'close' : 'open'
-  },
+  get openKey(): string { return this.isOpened ? 'close' : 'open' },
 
-  get openIcon(): string {
-    return this.isOpened ? 'close' : 'open'
-  },
+  get openIcon(): string { return this.isOpened ? 'close' : 'open' },
 
-  get openDisabled(): boolean {
-    return this.isOpened ? !this.canClose() : !this.canOpen()
-  },
+  get openDisabled(): boolean { return this.isOpened ? !this.canClose() : !this.canOpen() },
 
   get openClick(): () => Promise<boolean> {
     if (this.isOpened) {
@@ -113,15 +107,15 @@ export const Openable: IOpenable = {
     return can(this, [
       {
         expr: () => !this.isOpenable,
-        log: () => `${this.name} cannot be opened`
+        log: () => `${this.nameProper} cannot be opened`
       },
       {
         expr: () => this.isOpened,
-        log: () => `${this.name} is already opened`
+        log: () => `${this.nameProper} is already opened`
       },
       {
         expr: () => this.isLocked,
-        log: () => `${this.name} is locked`
+        log: () => `${this.nameProper} is locked`
       },
       {
         expr: () => window.store.player.isInCombat,
@@ -139,7 +133,7 @@ export const Openable: IOpenable = {
       return false
     }
     this.opened = true
-    log(`You opened ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+    log(`You opened ${this.nameDisplay}`, LOG_WARN, this.icon)
     await emit(this, 'onOpen')
     return true
   },
@@ -150,11 +144,11 @@ export const Openable: IOpenable = {
     return can(this, [
       {
         expr: () => !this.isCloseable,
-        log: () => `${this.name} cannot be closed`
+        log: () => `${this.nameProper} cannot be closed`
       },
       {
         expr: () => this.isClosed,
-        log: () => `${this.name} is already closed`
+        log: () => `${this.nameProper} is already closed`
       },
       {
         expr:() =>  window.store.player.isInCombat,
@@ -172,7 +166,7 @@ export const Openable: IOpenable = {
       return false
     }
     this.opened = false
-    log(`You closed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+    log(`You closed ${this.nameDisplay}`, LOG_WARN, this.icon)
     await emit(this, 'onClose')
     return true
   },

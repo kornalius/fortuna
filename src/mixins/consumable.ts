@@ -79,11 +79,11 @@ export const Consumable: IConsumable = {
     return can(this, [
       {
         expr: () => this.isConsumable,
-        log: () => `${this.name} cannot not consumable`
+        log: () => `${this.nameProper} cannot not consumable`
       },
       {
         expr: () => this.isConsumed,
-        log: () => `${this.name} has already been fully consumed`
+        log: () => `${this.nameProper} has already been fully consumed`
       },
     ], showMessage, 'consume')
   },
@@ -92,14 +92,14 @@ export const Consumable: IConsumable = {
     if (!this.canConsume()) {
       return false
     }
-    log(`Consuming ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Consuming ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('consume', async () => {
       const dmg = random(this.consumeAmount)
       this.consumed += dmg
       if (this.isConsumed) {
-        log(`You have fully consumed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+        log(`You have fully consumed ${this.nameDisplay}`, LOG_WARN, this.icon)
       } else {
-        log(`You have consumed ${dmg} from ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+        log(`You have consumed ${dmg} from ${this.nameDisplay}`, LOG_WARN, this.icon)
       }
       await emit(this, 'onConsume', dmg)
       if (this.isConsumed && this.removeWhenConsumed) {

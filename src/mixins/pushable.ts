@@ -65,11 +65,11 @@ export const Pushable: IPushable = {
     return can(this, [
       {
         expr: () => !this.isPushable,
-        log: () => `${this.name} cannot be pushed`
+        log: () => `${this.nameProper} cannot be pushed`
       },
       {
         expr: () => this.isPushed,
-        log: () => `${this.name} is already pushed`
+        log: () => `${this.nameProper} is already pushed`
       },
       {
         expr: () => window.store.player.isInCombat,
@@ -86,9 +86,9 @@ export const Pushable: IPushable = {
     if (!this.canPush(true)) {
       return false
     }
-    log(`Pushing ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Pushing ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('push', async () => {
-      log(`You have pushed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have pushed ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onPush')
       return true
     }, this.pushDelay)

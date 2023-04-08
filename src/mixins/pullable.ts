@@ -65,11 +65,11 @@ export const Pullable: IPullable = {
     return can(this, [
       {
         expr: () => !this.isPullable,
-        log: () => `${this.name} cannot be pulled`
+        log: () => `${this.nameProper} cannot be pulled`
       },
       {
         expr: () => this.isPulled,
-        log: () => `${this.name} is already pulled`
+        log: () => `${this.nameProper} is already pulled`
       },
       {
         expr: () => window.store.player.isInCombat,
@@ -86,9 +86,9 @@ export const Pullable: IPullable = {
     if (!this.canPull(true)) {
       return false
     }
-    log(`Pulling ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Pulling ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('pull', async () => {
-      log(`You have pulled ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have pulled ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onPull')
       return true
     }, this.pullDelay)

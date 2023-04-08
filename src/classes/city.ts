@@ -12,7 +12,6 @@ import { IHovered, Hovered } from '@/mixins/hovered'
 import { IActions, Actions } from '@/mixins/actions'
 import { IVisitable, Visitable } from '@/mixins/visitable'
 import { IRequirements, Requirements } from '@/mixins/requirements'
-import { Buildings } from '@/store/buildings'
 
 export interface City extends
   ICode,
@@ -84,11 +83,11 @@ export class City extends Entity {
     return can(this, [
       {
         expr: () => window.store.game.city?.id === this.id,
-        log: () => `You are already in ${this.name}`
+        log: () => `You are already in ${this.nameDisplay}`
       },
       {
         expr: () => window.store.player.isConnectedToServer,
-        log: () => `Please disconnect from ${window.store.player.server?.name.toLowerCase()} before entering this city`
+        log: () => `Please disconnect from ${window.store.player.server?.nameDisplay} before entering this city`
       },
       {
         expr: () => window.store.player.isInDialog,
@@ -144,7 +143,7 @@ export class City extends Entity {
     return can(this, [
       {
         expr: () => window.store.player.isConnectedToServer,
-        log: () => `Please disconnect from ${window.store.player.server?.name.toLowerCase()} before exiting this room`
+        log: () => `Please disconnect from ${window.store.player.server?.nameDisplay} before exiting this room`
       },
       {
         expr: () => window.store.player.isInDialog,

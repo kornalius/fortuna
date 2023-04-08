@@ -12,7 +12,7 @@ export class StickyDie extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.addBuff('dice', 1, 0, 3)
   }
 }

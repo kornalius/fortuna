@@ -59,8 +59,8 @@ export class Room extends Entity {
   get npcs(): Npc[] { return window.store.npcs.list.filter(i => i.location === this) }
   get aggresiveNpcs(): Npc[] { return this.npcs.filter(npc => npc.isAggresive && !npc.isDead) }
 
-  get ownerIds(): string[] { return this.location.ownerIds }
-  get owners(): Npc[] { return this.location.owners }
+  get ownerIds(): string[] { return this.location?.ownerIds || [] }
+  get owners(): Npc[] { return this.location?.owners || [] }
 
   get presentOwners(): Npc[] { return this.owners.filter(o => this.npcs.includes(o)) }
 
@@ -85,7 +85,7 @@ export class Room extends Entity {
   }
 
   addOwner(npc: Npc): boolean {
-    if (!this.location.isOwnedBy(npc)) {
+    if (this.location && !this.location.isOwnedBy(npc)) {
       this.location.ownerIds.push(npc.id)
       return true
     }
@@ -165,11 +165,11 @@ export class Room extends Entity {
     return can(this, [
       {
         expr: () => window.store.game.city !== this.location?.location,
-        log: () => `You need to be in city ${this.location.location.name}`
+        log: () => `You need to be in city ${this.location?.location.nameProper}`
       },
       {
         expr: () => window.store.game.building !== this.location,
-        log: () => `You need to be in building ${this.location.name}`
+        log: () => `You need to be in building ${this.location?.nameProper}`
       },
       {
         expr: () => !window.store.player.canMove(showMessage)
@@ -210,7 +210,7 @@ export class Room extends Entity {
     return can(this, [
       {
         expr: () => window.store.player.isConnectedToServer,
-        log: () => `Please disconnect from ${window.store.player.server?.name.toLowerCase()} before exiting this room`
+        log: () => `Please disconnect from ${window.store.player.server?.nameDisplay} before exiting this room`
       },
       {
         expr: () => window.store.player.isInDialog,

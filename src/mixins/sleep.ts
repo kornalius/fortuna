@@ -35,10 +35,10 @@ export const Sleep: ISleep = {
     return can(this, [
       {
         expr: () => this.isSleeping,
-        log: () => `${this.name} is already asleep`,
+        log: () => `${this.nameProper} is already asleep`,
       },
       {
-        expr: () => this.location.canSleepOnItems().length === 0,
+        expr: () => this.location?.canSleepOnItems().length === 0,
         log: () => 'No suitable furniture to go to sleep',
       },
     ], showMessage)
@@ -59,7 +59,7 @@ export const Sleep: ISleep = {
     return can(this, [
       {
         expr: () => !this.isSleeping,
-        log: () => `${this.name} is not sleeping`,
+        log: () => `${this.nameProper} is not sleeping`,
       },
     ], showMessage)
   },

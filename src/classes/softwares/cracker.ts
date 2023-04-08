@@ -54,7 +54,7 @@ export class Cracker extends Software {
     return false
   }
 
-  async onCrack() {}
+  async onUse(): Promise<void> {}
 }
 
 registerClass(Cracker)

@@ -10,7 +10,7 @@ export default {
   startBuildingCode: 'TestBuilding',
   img: 'test-city.png',
 
-  mounted() {
+  mounted(): void {
     this.addBuilding(new Building(TestBuilding))
   },
 } as City

@@ -14,7 +14,7 @@ export class Piano extends Item {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.game.playSound('piano')
   }
 }

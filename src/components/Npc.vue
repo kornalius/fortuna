@@ -130,7 +130,7 @@ const buttonStyle = computed(() => {
   return s.join(' ')
 })
 
-const name = computed(() => props.value.name)
+const name = computed(() => props.value.nameProper)
 </script>
 
 <style scoped>

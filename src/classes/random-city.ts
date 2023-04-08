@@ -69,7 +69,7 @@ export class RandomCity extends City {
   set quality(value) { this.state.quality = value }
 
   get description(): string {
-    return `${this.name} is a ${this.adj1} ${this.adj2} ${this.adj3}. 
+    return `${this.nameProper} is a ${this.adj1} ${this.adj2} ${this.adj3}. 
       The skyline is ${this.skylineAdj} with ${this.buildingAdj} skyscrapers 
       and ${this.building}. ${capitalize(this.culture)} from all over the world come to it 
       for its ${this.recognition} and its numerous ${this.place}. It is known for its 

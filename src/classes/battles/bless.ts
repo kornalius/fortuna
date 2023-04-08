@@ -13,7 +13,7 @@ export class Bless extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.rolls += 2
     window.store.game.playSound('sparkle')
   }

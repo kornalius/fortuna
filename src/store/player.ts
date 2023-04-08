@@ -35,14 +35,11 @@ export interface Player extends
 {}
 
 export class Player {
-  readonly _mixinState: State
-
-  state: State = {}
+  _mixinState: State
 
   storeName = 'player'
 
   constructor() {
-    // @ts-ignore
     this._mixinState = { ...this.state }
     this.state = reactive<State>({ ...this._mixinState, ...this.defaultState })
     setInterval(() => this.processBuffs(), 1000)
@@ -96,7 +93,7 @@ export class Player {
     return window.store?.items.list.filter(i => i.locationStore === this.storeName)
   }
 
-  get equippedItems() {
+  get equippedItems(): Item[] {
     return window.store?.items.list.filter(i => i.locationStore === this.storeName && i.isEquipped)
   }
 
@@ -307,7 +304,7 @@ export class Player {
 
   async onLevelUp(): Promise<void> {}
 
-  deserialize() {
+  deserialize(): any {
     return deserializeObject(this.state)
   }
 }

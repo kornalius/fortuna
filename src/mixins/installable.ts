@@ -79,15 +79,15 @@ export const Installable: IInstallable = {
     return can(this, [
       {
         expr: () => !this.isInstallable,
-        log: () => `${this.name} cannot be installed`
+        log: () => `${this.nameProper} cannot be installed`
       },
       {
         expr: () => this.isInstalled,
-        log: () => `${this.name} is already installed`
+        log: () => `${this.nameProper} is already installed`
       },
       {
         expr: () => !window.store.player.has(this),
-        log: () => `${this.name} needs to be in your inventory first`
+        log: () => `${this.nameProper} needs to be in your inventory first`
       },
       {
         expr: () => window.store.player.hasInstalledSoftwareOfType(this.installType),
@@ -96,7 +96,7 @@ export const Installable: IInstallable = {
       // for files and softwares
       {
         expr: () => (this as any).isBusy,
-        log: () => `${this.name} is locked while an operation is running on it`
+        log: () => `${this.nameProper} is locked while an operation is running on it`
       },
     ], showMessage, 'install')
   },
@@ -106,11 +106,11 @@ export const Installable: IInstallable = {
       return false
     }
     window.store.game.playSound('hd2')
-    log(`Installing ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Installing ${this.nameDisplay}...`, LOG_WARN, this.icon)
     return this.operate('install', async () => {
       window.store.game.stopSound('hd2')
       this.installed = true
-      log(`You have successfully installed ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have successfully installed ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onInstall')
       return true
     }, this.weight)
@@ -122,16 +122,16 @@ export const Installable: IInstallable = {
     return can(this, [
       {
         expr: () => !this.isInstallable,
-        log: () => `${this.name} cannot be uninstalled`
+        log: () => `${this.nameProper} cannot be uninstalled`
       },
       {
         expr: () => !this.isInstalled,
-        log: () => `${this.name} is not installed`
+        log: () => `${this.nameProper} is not installed`
       },
       // for files and softwares
       {
         expr: () => this.isBusy,
-        log: () => `${this.name} is locked while an operation is running on it`
+        log: () => `${this.nameProper} is locked while an operation is running on it`
       },
     ], showMessage, 'uninstall')
   },
@@ -141,11 +141,11 @@ export const Installable: IInstallable = {
       return false
     }
     window.store.game.playSound('hd2')
-    log(`Uninstalling ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Uninstalling ${this.nameDisplay}...`, LOG_WARN, this.icon)
     return this.operate('uninstall', async () => {
       window.store.game.stopSound('hd2')
       this.installed = false
-      log(`You have successfully uninstalled ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have successfully uninstalled ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onUninstall')
       return true
     }, this.weight)

@@ -90,9 +90,9 @@ export class RandomNpc extends Npc {
 
     return super.setupInstance({
       color: pickRandom(jc),
-      firstname: pickRandom(female ? femaleNames : maleNames),
-      lastname: pickRandom(lastNames),
-      nickname: pickRandom(nickNames),
+      firstname: capitalize(pickRandom(female ? femaleNames : maleNames)),
+      lastname: capitalize(pickRandom(lastNames)),
+      nickname: capitalize(pickRandom(nickNames)),
       female,
       age,
       eyeColor: pickRandom(eyeColors),
@@ -120,7 +120,7 @@ export class RandomNpc extends Npc {
   }
 
   get name(): string {
-    return this.state.name || `${capitalize(this.firstname)} ${capitalize(this.lastname)}`
+    return this.state.name || `${this.firstname} ${this.lastname}`
   }
 
   get icon(): string {
@@ -224,7 +224,7 @@ export class RandomNpc extends Npc {
     const id = this.female ? 'she' : 'he'
     const his = this.female ? 'her' : 'his'
 
-    return `${this.name}, also known as "${capitalize(this.nickname)}", 
+    return `${this.nameProper}, also known as "${this.nickname}", 
       is a ${this.age} years old, ${this.skinColor} skin, ${this.eyeColor} eyes, ${this.buildAdv} ${this.build} 
       and ${this.sizeAdv} ${this.size}, ${this.jobLevel} ${this.jobDomain} ${this.job}. 
       ${capitalize(his)} main motive in life is to ${this.motives}. 

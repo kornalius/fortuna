@@ -11,7 +11,7 @@ export class Sink extends Container {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.game.playSound('sink')
   }
 }

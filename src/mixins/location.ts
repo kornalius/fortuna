@@ -3,6 +3,7 @@
  */
 
 import { State } from '@/entity'
+import { AnyData } from '@/utils'
 
 export interface ILocation {
   state: State
@@ -10,7 +11,7 @@ export interface ILocation {
   set locationId(value)
   get locationStore(): string | null
   set locationStore(value)
-  get location(): any | undefined
+  get location(): AnyData | undefined
   set location(value)
   setupLocation(data?: { location?: any }): { locationId?: string, locationStore?: string }
 }
@@ -29,7 +30,7 @@ export const Location: ILocation = {
   get locationStore(): string | null { return this.state.locationStore },
   set locationStore(value) { this.state.locationStore = value },
 
-  get location(): any | undefined {
+  get location(): AnyData | undefined {
     if (this.locationStore) {
       if (this.locationId) {
         return (window.store as any)[this.locationStore].get(this.locationId)

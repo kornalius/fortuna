@@ -1,30 +1,30 @@
 import { Entity, SetupData } from '@/entity'
 import { mixin, registerClass } from '@/utils'
-import { Code } from '@/mixins/code'
-import { Name } from '@/mixins/name'
-import { Description } from '@/mixins/description'
-import { Icon } from '@/mixins/icon'
-import { Hovered } from '@/mixins/hovered'
-import { Location } from '@/mixins/location'
-import { Actions } from '@/mixins/actions'
-import { IExaminable } from '@/mixins/examinable'
-import { IOpenable } from '@/mixins/openable'
-import { ISearchable } from '@/mixins/searchable'
-import { IUnlockable } from '@/mixins/unlockable'
-import { IPushable } from '@/mixins/pushable'
-import { IPullable } from '@/mixins/pullable'
-import { IItems } from '@/mixins/items'
-import { IRequirements } from '@/mixins/requirements'
-import { Tooltip } from '@/mixins/tooltip'
+import { ICode, Code } from '@/mixins/code'
+import { IName, Name } from '@/mixins/name'
+import { IDescription, Description } from '@/mixins/description'
+import { IIcon, Icon } from '@/mixins/icon'
+import { IHovered, Hovered } from '@/mixins/hovered'
+import { ILocation, Location } from '@/mixins/location'
+import { IActions, Actions } from '@/mixins/actions'
+import { IExaminable, Examinable } from '@/mixins/examinable'
+import { IOpenable, Openable } from '@/mixins/openable'
+import { ISearchable, Searchable } from '@/mixins/searchable'
+import { IUnlockable, Unlockable } from '@/mixins/unlockable'
+import { IPushable, Pushable } from '@/mixins/pushable'
+import { IPullable, Pullable } from '@/mixins/pullable'
+import { IItems, Items } from '@/mixins/items'
+import { IRequirements, Requirements } from '@/mixins/requirements'
+import { ITooltip, Tooltip } from '@/mixins/tooltip'
 
 export interface Container extends
-  Code,
-  Name,
-  Description,
-  Icon,
-  Hovered,
-  Location,
-  Actions,
+  ICode,
+  IName,
+  IDescription,
+  IIcon,
+  IHovered,
+  ILocation,
+  IActions,
   IExaminable,
   IOpenable,
   ISearchable,
@@ -33,7 +33,7 @@ export interface Container extends
   IPullable,
   IItems,
   IRequirements,
-  Tooltip
+  ITooltip
 {}
 
 export class Container extends Entity {
@@ -61,7 +61,7 @@ mixin(Container, [
   Hovered,
   Location,
   Actions,
-  IExaminable,
+  Examinable,
   Openable,
   Searchable,
   Unlockable,

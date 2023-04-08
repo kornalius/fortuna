@@ -26,7 +26,7 @@
               tertiary
               v-text="answer.text"
               @click="() => {
-                window.store.game.playSound('button')
+                store.game.playSound('button')
                 value.answer(answer.code)
               }"
             />
@@ -42,6 +42,8 @@
 const props = defineProps({
   value: { type: Object },
 })
+
+const { store } = window
 </script>
 
 <style scoped>

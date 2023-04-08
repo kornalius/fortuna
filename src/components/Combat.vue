@@ -59,7 +59,7 @@
 
     <div class="flex flex-column relative items-center ml2">
       <Die
-        v-for="(die, index) in window.store.player.combat.npc.dice"
+        v-for="(die, index) in store.player.combat.npc.dice"
         :key="`npc-die-${index}`"
         :class="`npc-die-${index}`"
         :faces="die.faces"
@@ -104,7 +104,7 @@
     <div class="player-side flex flex-column flex-grow-1 relative ph2">
       <div class="defend flex items-center">
         <Die
-          v-for="(die, index) in window.store.player.extraSwordDice"
+          v-for="(die, index) in store.player.extraSwordDice"
           :key="`sword-die-${index}`"
           :class="`sword-die-${index}`"
           :faces="die.faces"
@@ -112,7 +112,7 @@
           size="xsmall"
         />
         <Die
-          v-for="(die, index) in window.store.player.extraShieldDice"
+          v-for="(die, index) in store.player.extraShieldDice"
           :key="`shield-die-${index}`"
           :class="`shield-die-${index}`"
           :faces="die.faces"
@@ -122,17 +122,17 @@
       </div>
 
       <Dice
-        :value="window.store.player.dice"
+        :value="store.player.dice"
         :disabled="disabled"
-        :isSelected="index => window.store.player.combat.isSelected(index)"
+        :isSelected="index => store.player.combat.isSelected(index)"
         :isSelectable="() => !disabled"
-        :isDone="index => window.store.player.combat.isDone(index)"
-        :toggleSelect="index => window.store.player.combat.toggleSelect(index)"
+        :isDone="index => store.player.combat.isDone(index)"
+        :toggleSelect="index => store.player.combat.toggleSelect(index)"
         :multiplier="currentMultiplier"
         :canReroll="canReroll"
-        :rolls="window.store.player.rolls"
-        :reroll="() => window.store.player.combat.reroll()"
-        :endTurn="() => window.store.player.combat.endTurn()"
+        :rolls="store.player.rolls"
+        :reroll="() => store.player.combat.reroll()"
+        :endTurn="() => store.player.combat.endTurn()"
       />
     </div>
   </div>
@@ -179,6 +179,8 @@ const combos = computed(() => {
   })
   return combos
 })
+
+const { store } = window
 </script>
 
 <style scoped>

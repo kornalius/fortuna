@@ -45,7 +45,7 @@
         size="small"
         type="warning"
         @click="() => {
-          window.store.game.playSound('click')
+          store.game.playSound('click')
           value.disconnect()
         }"
       >
@@ -142,6 +142,8 @@ watch(displayed, () => {
     }
   }, 100);
 }, { immediate: true, deep: true })
+
+const { store } = window
 </script>
 
 <style>

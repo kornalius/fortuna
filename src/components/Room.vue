@@ -4,25 +4,25 @@
       <div class="flex flex-column">
         <div class="top flex self-center relative w-100">
           <Server
-            v-if="window.store.player.isConnectedToServer"
+            v-if="store.player.isConnectedToServer"
             class="fade-in"
-            :value="window.store.player.server"
+            :value="store.player.server"
           />
 
           <Dialog
-            v-else-if="window.store.player.isInDialog"
+            v-else-if="store.player.isInDialog"
             class="fade-in"
-            :value="window.store.player.dialog"
+            :value="store.player.dialog"
           />
 
           <Combat
-            v-else-if="window.store.player.isInCombat"
+            v-else-if="store.player.isInCombat"
             class="fade-in"
-            :value="window.store.player.combat"
+            :value="store.player.combat"
           />
 
           <Travel
-            v-else-if="window.store.player.isTravelling"
+            v-else-if="store.player.isTravelling"
           />
 
           <img v-else-if="value.img"
@@ -34,10 +34,10 @@
 
         <div class="flex ph1 mv2 items-center justify-between title-bar">
           <div>
-            <span>{{ value?.name }}</span>
+            <span>{{ value?.nameProper }}</span>
             <n-checkbox v-model:checked="showLabels" class="ml3">Show Labels</n-checkbox>
           </div>
-          <span>{{ window.store.game.dayString }}</span>
+          <span>{{ store.game.dayString }}</span>
         </div>
 
         <div class="flex flex-wrap items-center mb1">
@@ -62,7 +62,7 @@
           >
             <Item
               :value="item"
-              :disabled="isDisabled && (!window.store.player.isConnectedToServer || !item.isServer)"
+              :disabled="isDisabled && (!store.player.isConnectedToServer || !item.isServer)"
               :hide-label="!showLabels"
             />
           </span>
@@ -150,6 +150,8 @@ const logsChanged = () => {
     }
   }, 100);
 }
+
+const { store } = window
 </script>
 
 <style scoped>

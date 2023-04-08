@@ -7,7 +7,7 @@ import {
   checkSoftware,
   emit,
   log,
-  LOG_WARN,
+  LOG_WARN, mixin,
   pickRandom,
   randomFilename,
   registerClass
@@ -17,10 +17,10 @@ import { File } from './file'
 import { femaleNames, maleNames, passwords } from '@/words'
 import { SetupData } from '@/entity'
 import { Software } from '@/classes/softwares/software'
-import { IExaminable } from '@/mixins/examinable'
-import { IVersion } from '@/mixins/version'
-import { IVisitable } from '@/mixins/visitable'
-import { ITimeout } from '@/mixins/timeout'
+import { IExaminable, Examinable } from '@/mixins/examinable'
+import { IVersion, Version } from '@/mixins/version'
+import { IVisitable, Visitable } from '@/mixins/visitable'
+import { ITimeout, Timeout } from '@/mixins/timeout'
 import { IOperationItem } from '@/mixins/operation'
 
 export interface Server extends
@@ -187,13 +187,13 @@ export class Server extends Item {
     }
   }
 
-  clear() {
+  clear(): void {
     this.display = []
     this.buffer = []
     this.caret = 0
   }
 
-  print(...args: (string | undefined | string[])[]) {
+  print(...args: (string | undefined | string[])[]): void {
     args.forEach(text => {
       if (Array.isArray(text)) {
         this.print(text.join(' '))
@@ -205,7 +205,7 @@ export class Server extends Item {
     })
   }
 
-  println(...args: (string | undefined | string[])[]) {
+  println(...args: (string | undefined | string[])[]): void {
     args.forEach(text => {
       if (Array.isArray(text)) {
         this.println(text.join(' '))
@@ -223,11 +223,11 @@ export class Server extends Item {
    *
    * @param count
    */
-  moveBy(count: number) {
+  moveBy(count: number): void {
     this.caret += count
   }
 
-  moveToEnd() {
+  moveToEnd(): void {
     this.caret = this.display.length
   }
 
@@ -236,7 +236,7 @@ export class Server extends Item {
    *
    * @param count
    */
-  erase(count: number) {
+  erase(count: number): void {
     this.caret -= 1
     const l = this.caret - count
     while (this.caret > l) {
@@ -246,7 +246,7 @@ export class Server extends Item {
     this.caret += 1
   }
 
-  processBuffer() {
+  processBuffer(): void {
     if (this.buffer.length > 0) {
       const c = this.buffer[0]
       if (this.caret < this.display.length) {
@@ -264,8 +264,8 @@ export class Server extends Item {
     }
   }
 
-  async waitBufferEmpty() {
-    return new Promise((resolve: (value?: any) => void) => {
+  async waitBufferEmpty(): Promise<void> {
+    return new Promise((resolve: () => void) => {
       const interval = setInterval(() => {
         if (this.buffer.length === 0) {
           clearInterval(interval)
@@ -275,19 +275,19 @@ export class Server extends Item {
     })
   }
 
-  canConnect(showMessage?: boolean) {
+  canConnect(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => this.isBusy,
-        log: () => `${this.name} is busy performing another operation`
+        log: () => `${this.nameProper} is busy performing another operation`
       },
       {
         expr: () => this.isConnected,
-        log: () => `You are already connected to ${this.name.toLowerCase()}`
+        log: () => `You are already connected to ${this.nameDisplay}`
       },
       {
         expr: () => window.store.player.isConnectedToServer,
-        log: () => `You cannot use this while connected to ${window.store.player.server?.name.toLowerCase()}`
+        log: () => `You cannot use this while connected to ${window.store.player.server?.nameDisplay}`
       },
       {
         expr: () => window.store.player.isInCombat,
@@ -304,7 +304,7 @@ export class Server extends Item {
     ], showMessage, 'connect')
   }
 
-  async connect() {
+  async connect(): Promise<boolean> {
     if (!this.canConnect) {
       return false
     }
@@ -312,13 +312,13 @@ export class Server extends Item {
       this.clear()
       window.store.player.server = this
       await this.visit()
-      log(`You have successfully connected to ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have successfully connected to ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onConnect')
       return true
     })
   }
 
-  async onConnect() {
+  async onConnect(): Promise<void> {
     window.store.game.playSound('boot-sound')
 
     window.store.game.playSound('hum')
@@ -353,78 +353,79 @@ export class Server extends Item {
 
     this.moveBy(-11)
 
-    return this.authenticate()
+    await this.authenticate()
   }
 
-  canDisconnect(showMessage?: boolean) {
+  canDisconnect(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => this.isBusy,
-        log: () => `${this.name} is busy performing another operation`
+        log: () => `${this.nameProper} is busy performing another operation`
       },
       {
         expr: () => !this.isConnected,
-        log: () => `You are not connected to ${this.name.toLowerCase()}`
+        log: () => `You are not connected to ${this.nameDisplay}`
       },
     ], showMessage, 'disconnect')
   }
 
-  async disconnect() {
+  async disconnect(): Promise<boolean> {
     if (!this.canDisconnect) {
       return false
     }
     return this.operate('disconnect', async () => {
       window.store.player.server = null
       window.store.game.stopSound('hum')
-      log(`You have successfully disconnected from ${this.name}`, LOG_WARN, this.icon)
+      log(`You have successfully disconnected from ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onDisconnect')
       return true
     })
   }
 
-  async onDisconnect() {
+  async onDisconnect(): Promise<void> {
     window.store.game.playSound('power-down')
   }
 
-  canAuthenticate(showMessage?: boolean) {
+  canAuthenticate(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => this.isBusy,
-        log: () => `${this.name} is busy performing another operation`
+        log: () => `${this.nameProper} is busy performing another operation`
       },
       {
         expr: () => this.isAuthenticated,
-        log: () => `You are already authenticated on ${this.name.toLowerCase()}`
+        log: () => `You are already authenticated on ${this.nameDisplay}`
       },
       {
         expr: () => this.isProtected,
-        log: () => `${this.name} is protected, try cracking it first`
+        log: () => `${this.nameProper} is protected, try cracking it first`
       },
       {
         expr: () => !this.isConnected,
-        log: () => `You need to be connected to ${this.name.toLowerCase()}`
+        log: () => `You need to be connected to ${this.nameDisplay}`
       },
     ], showMessage, 'authenticate')
   }
 
-  async authenticate() {
-    if (!this.canAuthenticate) {
+  async authenticate(): Promise<boolean> {
+    if (!this.canAuthenticate(true)) {
       return false
     }
     if (!this.isProtected) {
-      log(`Authenticating on ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+      log(`Authenticating on ${this.nameDisplay}...`, LOG_WARN, this.icon)
       this.authenticating = true
       return this.operate('authenticate', async () => {
         this.authenticated = true
         this.authenticating = false
-        log(`You have successfully authenticated on ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+        log(`You have successfully authenticated on ${this.nameDisplay}`, LOG_WARN, this.icon)
         await emit(this, 'onAuthenticate')
         return true
       }, this.version)
     }
+    return false
   }
 
-  async onAuthenticate() {
+  async onAuthenticate(): Promise<void> {
     this.println('You have successfully authenticated')
     this.println(...this.welcome)
   }
@@ -433,27 +434,27 @@ export class Server extends Item {
     return can(this, [
       {
         expr: () => !!this.username,
-        log: () => `${this.name} does not have any user assign to it`
+        log: () => `${this.nameProper} does not have any user assign to it`
       },
       {
         expr: () => !!this.password,
-        log: () => `${this.name} does not have any password assign to a user`
+        log: () => `${this.nameProper} does not have any password assign to a user`
       },
       {
         expr: () => this.isBusy,
-        log: () => `${this.name} is busy performing another operation`
+        log: () => `${this.nameProper} is busy performing another operation`
       },
       {
         expr: () => !this.isConnected,
-        log: () => `You need to be connected to ${this.name.toLowerCase()} first`
+        log: () => `You need to be connected to ${this.nameDisplay} first`
       },
       {
         expr: () => !this.isCrackable,
-        log: () => `${this.name} is not crackable`
+        log: () => `${this.nameProper} is not crackable`
       },
       {
         expr: () => !this.isProtected,
-        log: () => `${this.name} is not protected`
+        log: () => `${this.nameProper} is not protected`
       },
       {
         expr: () => !checkSoftware(this, window.store.player.installedCracker, showMessage),
@@ -461,7 +462,7 @@ export class Server extends Item {
     ], showMessage, 'crack')
   }
 
-  async crack() {
+  async crack(): Promise<boolean> {
     if (!this.canCrack(true)) {
       return false
     }
@@ -470,40 +471,40 @@ export class Server extends Item {
     this.state.crackedname = undefined
     this.state.crackedpwd = undefined
     window.store.game.playSound('keyboard')
-    log(`Cracking ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Cracking ${this.nameDisplay}...`, LOG_WARN, this.icon)
     return this.operate('crack', async () => {
       window.store.game.stopSound('keyboard')
       this.protected = false
       this.authenticated = true
       this.authenticating = false
-      log(`You have successfully cracked ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have successfully cracked ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onCrack')
-      log(`You have successfully authenticated on ${this.name.toLowerCase()}`)
+      log(`You have successfully authenticated on ${this.nameDisplay}`)
       await emit(this, 'onAuthenticate')
       return true
     }, this.version * 3)
   }
 
-  async onCrack() {}
+  async onCrack(): Promise<void> {}
 
-  canList(showMessage?: boolean) {
+  canList(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => this.isBusy,
-        log: () => `${this.name} is busy performing another operation`
+        log: () => `${this.nameProper} is busy performing another operation`
       },
       {
         expr: () => !this.isConnected,
-        log: () => `You need to be connected to ${this.name} to perform a listing`
+        log: () => `You need to be connected to ${this.nameDisplay} to perform a listing`
       },
       {
         expr: () => !this.isAuthenticated,
-        log: () => `You need to be authenticated to ${this.name} first`
+        log: () => `You need to be authenticated to ${this.nameDisplay} first`
       },
     ], showMessage, 'list')
   }
 
-  async list() {
+  async list(): Promise<boolean> {
     if (!this.canList(true)) {
       return false
     }
@@ -518,9 +519,9 @@ export class Server extends Item {
     }, 3)
   }
 
-  async onList() {}
+  async onList(): Promise<void> {}
 
-  fillLetters(count: number, arr: string[], word: string) {
+  fillLetters(count: number, arr: string[], word: string): void {
     const len = arr.length
     for (let i = 0; i < count; i++) {
       let found = false
@@ -536,7 +537,7 @@ export class Server extends Item {
     }
   }
 
-  async onOperation(operation: IOperationItem) {
+  async onOperation(operation: IOperationItem): Promise<void> {
     if (operation.name === 'list') {
       let x = 0
       const count = Math.floor(this.files.length / 10)
@@ -590,7 +591,7 @@ export class Server extends Item {
     }
   }
 
-  generateRandomDummyFiles(count: number) {
+  generateRandomDummyFiles(count: number): void {
     for(let i = 0; i < count; i++) {
       const name = randomFilename()
       const type = name.substring(name.indexOf('.') + 1)
@@ -605,5 +606,12 @@ export class Server extends Item {
     }
   }
 }
+
+mixin(Server, [
+  Examinable,
+  Version,
+  Visitable,
+  Timeout
+])
 
 registerClass(Server)

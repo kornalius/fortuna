@@ -1,14 +1,22 @@
-import { Item } from '../items/item'
 import { mixin, registerClass } from '@/utils'
-import { Version } from '@/mixins/version'
-import { Viewable } from '@/mixins/files/viewable'
-import { Deletable } from '@/mixins/files/deletable'
-import { Decryptable } from '@/mixins/files/decryptable'
-import { Downloadable } from '@/mixins/files/downloadable'
-import { Uploadable } from '@/mixins/files/uploadable'
+import { Item } from '../items/item'
+import { IVersion, Version } from '@/mixins/version'
+import { IViewable, Viewable } from '@/mixins/files/viewable'
+import { IDeletable, Deletable } from '@/mixins/files/deletable'
+import { IDecryptable, Decryptable } from '@/mixins/files/decryptable'
+import { IDownloadable, Downloadable } from '@/mixins/files/downloadable'
+import { IUploadable, Uploadable } from '@/mixins/files/uploadable'
 import { SetupData } from '@/entity'
 
-export interface File extends Item, Version, Viewable, Deletable, Decryptable, Downloadable, Uploadable {}
+export interface File extends
+  Item,
+  IVersion,
+  IViewable,
+  IDeletable,
+  IDecryptable,
+  IDownloadable,
+  IUploadable
+{}
 
 export class File extends Item {
   setupInstance(data?: SetupData): SetupData | undefined {

@@ -1,10 +1,10 @@
 import { mixin, registerClass } from '@/utils'
 import { Container } from './container'
-import { IPickable } from '@/mixins/pickable'
-import { Dropable } from '@/mixins/dropable'
+import { IPickable, Pickable } from '@/mixins/pickable'
+import { IDropable, Dropable } from '@/mixins/dropable'
 import { SetupData } from '@/entity'
 
-export interface PillsBottle extends IPickable, Dropable {}
+export interface PillsBottle extends IPickable, IDropable {}
 
 export class PillsBottle extends Container {
   setupInstance(data?: SetupData): SetupData | undefined {
@@ -15,11 +15,11 @@ export class PillsBottle extends Container {
     })
   }
 
-  async onOpen() {
+  async onOpen(): Promise<void> {
     window.store.game.playSound('open-pills-bottle')
   }
 
-  async onSearch() {
+  async onSearch(): Promise<void> {
     window.store.game.playSound('search-pills-bottle')
   }
 }

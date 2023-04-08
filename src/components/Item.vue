@@ -171,7 +171,7 @@ const showVersion = computed(() => (
 ))
 
 const name = computed(() => (
-  `${props.value.name}${showVersion.value ? ` <span class="blue f7">v${props.value.version}</span>` : ''}`
+  `${props.value.nameProper}${showVersion.value ? ` <span class="blue f7">v${props.value.version}</span>` : ''}`
 ))
 
 const weightIcon = computed(() => {

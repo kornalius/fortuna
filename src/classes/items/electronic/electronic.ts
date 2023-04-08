@@ -1,6 +1,6 @@
 import { mixin, registerClass } from '@/utils'
 import { Item } from '../item'
-import { ISwitch } from '@/mixins/switch'
+import { ISwitch, Switch } from '@/mixins/switch'
 import { SetupData } from '@/entity'
 
 export interface Electronic extends ISwitch {}

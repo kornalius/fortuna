@@ -81,23 +81,19 @@ export const Activable: IActivable = {
   get activationDelay(): number { return this.state.activationDelay },
   set activationDelay(value) { this.state.activationDelay = value },
 
-  get activateLabel(): string {
-    return `Activate ${this.requirementsLabelFor('activate')}`
-  },
+  get activateLabel(): string { return `Activate ${this.requirementsLabelFor('activate')}` },
 
-  get disactivateLabel(): string {
-    return `Disactivate ${this.requirementsLabelFor('disactivate')}`
-  },
+  get disactivateLabel(): string { return `Disactivate ${this.requirementsLabelFor('disactivate')}` },
 
   canActivate(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => !this.isActivable,
-        log: () => `${this.name} cannot be activated`
+        log: () => `${this.nameProper} cannot be activated`
       },
       {
         expr: () => this.isActive,
-        log: () => `${this.name} is already active`
+        log: () => `${this.nameProper} is already active`
       },
     ], showMessage, 'activate')
   },
@@ -106,9 +102,9 @@ export const Activable: IActivable = {
     if (!this.canActivate()) {
       return false
     }
-    log(`Activating ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Activating ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('activate', async () => {
-      log(`You have activated ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have activated ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onActivate')
       return true
     }, this.activationDelay)
@@ -119,11 +115,11 @@ export const Activable: IActivable = {
     return can(this, [
       {
         expr: () => !this.isDisactivable,
-        log: () => `${this.name} cannot be deactivated`
+        log: () => `${this.nameProper} cannot be deactivated`
       },
       {
         expr: () => !this.isActive,
-        log: () => `${this.name} is already deactivated`
+        log: () => `${this.nameProper} is already deactivated`
       },
     ], showMessage, 'disactivate')
   },
@@ -132,9 +128,9 @@ export const Activable: IActivable = {
     if (!this.canDisactivate()) {
       return false
     }
-    log(`Disactivating ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Disactivating ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('disactivate', async () => {
-      log(`You have disactivated ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have disactivated ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onActivate')
       return true
     }, this.activationDelay)

@@ -13,7 +13,7 @@ export class Bandage extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.hp += 2
     window.store.game.playSound('tape')
   }

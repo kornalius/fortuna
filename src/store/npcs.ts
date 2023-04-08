@@ -8,7 +8,7 @@ export class Npcs extends Entities {
 
   get(id?: string | null): Npc | undefined { return id ? this.state[id] : undefined }
 
-  async processAgendas() {
+  async processAgendas(): Promise<void> {
     await Promise.all(
       this.list.map(async n => {
         if (n.canMove()) {

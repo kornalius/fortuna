@@ -4,9 +4,11 @@ import { mixState, deserializeObject, AnyData } from '@/utils'
 export type SetupData = AnyData
 export type State = AnyData
 
-export class Entity {
-  state: State = {}
+export interface Entity {
+  state: State
+}
 
+export class Entity {
   constructor(data?: AnyData) {
     const newData = this.setupInstance(data) || {}
 
@@ -32,6 +34,7 @@ export class Entity {
     this.state = reactive(
       mixState(
         {
+          ...this.state,
           id: window.nanoid(),
           store: null,
         },
@@ -47,14 +50,14 @@ export class Entity {
   get id(): string { return this.state.id }
   get store() { return this.state.store }
 
-  remove() {
+  remove(): void {
     (window.store as AnyData)[this.store].remove(this.id)
   }
 
-  deserialize() {
+  deserialize(): any {
     return deserializeObject(this.state)
   }
 
-  mounted() {
+  mounted(): void {
   }
 }

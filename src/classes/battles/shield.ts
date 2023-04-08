@@ -13,7 +13,7 @@ export class Shield extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.addBuff('shield', 1, 0, 1)
     window.store.game.playSound('sword-hit')
   }

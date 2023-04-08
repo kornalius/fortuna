@@ -33,8 +33,8 @@
       secondary
       block
       @click="() => {
-        window.store.game.playSound('button')
-        window.store.game.showOptions = false
+        store.game.playSound('button')
+        store.game.showOptions = false
       }"
     >
       Back
@@ -67,4 +67,6 @@ watch(crt, newValue => {
     window.store.game.crt = newValue
   }
 })
+
+const { store } = window
 </script>

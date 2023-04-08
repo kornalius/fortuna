@@ -12,7 +12,7 @@ export class ExtraPunch extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     if (window.store.player.combat) {
       window.store.player.combat.addBonusCombo({
         faces: { 'A': 4 },

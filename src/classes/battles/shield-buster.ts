@@ -12,7 +12,7 @@ export class ShieldBuster extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     // remove a shield dice from npc
     if (window.store.player.combat?.npc) {
       window.store.player.combat.npc.shieldDice.pop()

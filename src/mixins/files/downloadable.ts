@@ -1,22 +1,31 @@
-import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { State } from '@/entity'
-import { Name } from '@/mixins/name'
-import { IRequirements } from '@/mixins/requirements'
-import { Weight } from '@/mixins/weight'
-import { Operation } from '@/mixins/operation'
-
 /**
  * Makes an object downloadable (for Files)
  */
 
-export interface Downloadable extends Name, IRequirements, Weight, Operation {}
+import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
+import { State } from '@/entity'
+import { IName } from '@/mixins/name'
+import { IRequirements } from '@/mixins/requirements'
+import { IWeight } from '@/mixins/weight'
+import { IOperation } from '@/mixins/operation'
 
-export class Downloadable {
-  state: State = {
+export interface IDownloadable extends IName, IRequirements, IWeight, IOperation {
+  state: State
+  get isDownloadable(): boolean
+  set downloadable(value: boolean)
+  get downloadLabel(): string
+  canDownload(showMessage?: boolean): boolean
+  download(): Promise<boolean>
+  onDownload(): Promise<void>
+}
+
+// @ts-ignore
+export const Downloadable: IDownloadable = {
+  state: {
     // is the object downloadable
     downloadable: false,
     actions: [
-      (item: Downloadable) => (
+      (item: IDownloadable) => (
         item.isDownloadable && (item as any).isOnServer
         ? {
             label: item.downloadLabel,
@@ -28,48 +37,47 @@ export class Downloadable {
           : undefined
       ),
     ],
-  }
+  },
 
-  get isDownloadable(): boolean { return this.state.downloadable }
-  set downloadable(value: boolean) { this.state.downloadable = value }
+  get isDownloadable(): boolean { return this.state.downloadable },
+  set downloadable(value: boolean) { this.state.downloadable = value },
 
-  get downloadLabel() {
-    return `Download ${this.requirementsLabelFor('download')}`
-  }
+  get downloadLabel(): string { return `Download ${this.requirementsLabelFor('download')}` },
 
-  canDownload(showMessage?: boolean) {
+  canDownload(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => !this.isDownloadable,
-        log: () => `${this.name} cannot be downloaded`
+        log: () => `${this.nameProper} cannot be downloaded`
       },
       {
         expr: () => !(this as any).isOnServer,
-        log: () => `${this.name} needs to be hosted on a server to be downloaded`
+        log: () => `${this.nameProper} needs to be hosted on a server to be downloaded`
       },
       {
         expr: () => window.store.player.diskFree < this.weight,
-        log: () => `Not enough free disk space left to download ${this.name.toLowerCase()}`
+        log: () => `Not enough free disk space left to download ${this.nameDisplay}`
       },
       {
         expr: () => !checkSoftware(this, window.store.player.installedFtp, showMessage),
       },
     ], showMessage, 'download')
-  }
+  },
 
-  async download() {
+  async download(): Promise<boolean> {
     if (!this.canDownload(true)) {
       return false
     }
     window.store.game.playSound('hd')
-    log(`Downloading file ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    log(`Downloading file ${this.nameDisplay}...`, LOG_WARN, this.icon)
     return this.operate('download', async () => {
       window.store.game.stopSound('hd')
-      log(`You have successfully downloaded the file ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have successfully downloaded the file ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onDownload')
       window.store.player.addItem(this)
+      return true
     }, this.weight)
-  }
+  },
 
-  async onDownload() {}
+  async onDownload(): Promise<void> {},
 }

@@ -12,7 +12,7 @@ export class Luck extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.rolls += 3
     window.store.game.playSound('sparkle')
   }

@@ -13,7 +13,7 @@ export class Dynamite extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     if (window.store.player.combat?.npc) {
       window.store.player.combat.npc.hp -= 5
       window.store.game.playSound('explosion')

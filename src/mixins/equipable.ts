@@ -116,27 +116,27 @@ export const Equipable: IEquipable = {
     return can(this, [
       {
         expr: () => !this.isEquipable,
-        log: () => `${this.name} cannot be equipped`
+        log: () => `${this.nameProper} cannot be equipped`
       },
       {
         expr: () => this.isEquipped,
-        log: () => `${this.name} is already equipped`
+        log: () => `${this.nameProper} is already equipped`
       },
       {
         expr: () => !window.store.player.has(this),
-        log: () => `${this.name} needs to be in your inventory first`
+        log: () => `${this.nameProper} needs to be in your inventory first`
       },
       {
         expr: () => !!window.store.player.equippedInSlot(this.equipSlot),
-        log: () => `You are already wearing ${window.store.player.equippedInSlot(this.equipSlot)?.name.toLowerCase()}`
+        log: () => `You are already wearing ${window.store.player.equippedInSlot(this.equipSlot)?.nameDisplay}`
       },
       {
         expr: () => window.store.player.isInCombat,
-        log: () => `You cannot equipped ${this.name.toLowerCase()} while in combat`
+        log: () => `You cannot equipped ${this.nameDisplay} while in combat`
       },
       {
         expr: () => window.store.player.isInDialog,
-        log: () => `You cannot equip ${this.name.toLowerCase()} while in conversation`
+        log: () => `You cannot equip ${this.nameDisplay} while in conversation`
       },
     ], showMessage, 'equip')
   },
@@ -145,35 +145,35 @@ export const Equipable: IEquipable = {
     if (!this.canEquip(true)) {
       return false
     }
-    // log(`Equipping ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    // log(`Equipping ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('equip', async () => {
       this.equipped = true
-      log(`You have equipped ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have equipped ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onEquip')
       return true
     }, this.equipDelay)
     return true
   },
 
-  async onEquip() {},
+  async onEquip(): Promise<void> {},
 
   canUnequip(showMessage?: boolean): boolean {
     return can(this, [
       {
         expr: () => !this.isEquipable,
-        log: () => `${this.name} cannot be un-equipped`
+        log: () => `${this.nameProper} cannot be un-equipped`
       },
       {
         expr: () => !this.isEquipped,
-        log: () => `${this.name} is not equipped`
+        log: () => `${this.nameProper} is not equipped`
       },
       {
         expr: () => window.store.player.isInCombat,
-        log: () => `You cannot un-equip ${this.name.toLowerCase()} while in combat`
+        log: () => `You cannot un-equip ${this.nameDisplay} while in combat`
       },
       {
         expr: () => window.store.player.isInDialog,
-        log: () => `You cannot un-equip ${this.name.toLowerCase()} while in conversation`
+        log: () => `You cannot un-equip ${this.nameDisplay} while in conversation`
       },
     ], showMessage, 'unequip')
   },
@@ -182,15 +182,15 @@ export const Equipable: IEquipable = {
     if (!this.canUnequip(true)) {
       return false
     }
-    // log(`Un-equipping ${this.name.toLowerCase()}...`, LOG_WARN, this.icon)
+    // log(`Un-equipping ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('equip', async () => {
       this.equipped = false
-      log(`You have un-equipped ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You have un-equipped ${this.nameDisplay}`, LOG_WARN, this.icon)
       await emit(this, 'onUnequip')
       return true
     }, this.equipDelay)
     return true
   },
 
-  async onUnequip() {},
+  async onUnequip(): Promise<void> {},
 }

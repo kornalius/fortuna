@@ -13,7 +13,7 @@ export class CallBell extends Item {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.game.playSound('call-bell')
   }
 }

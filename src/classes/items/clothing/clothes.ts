@@ -1,6 +1,6 @@
 import { registerClass, mixin } from '@/utils'
 import { Item } from '../item'
-import { IEquipable } from '@/mixins/equipable'
+import { IEquipable, Equipable } from '@/mixins/equipable'
 import { SetupData } from '@/entity'
 
 export interface Clothes extends IEquipable {}

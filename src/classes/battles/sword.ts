@@ -13,7 +13,7 @@ export class Sword extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.addBuff('sword', 1, 0, 1)
   }
 }

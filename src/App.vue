@@ -1,9 +1,9 @@
 <template>
   <n-config-provider :theme="darkTheme" style="height: 100%;">
-    <Main v-if="window.store.game.isStarted" class="fade-in" />
+    <Main v-if="store.game.isStarted" class="fade-in" />
 
     <div v-show="showDialog || showOptions">
-      <div v-if="!window.store.game.isStarted" class="title smoke">FORTUNA</div>
+      <div v-if="!store.game.isStarted" class="title smoke">FORTUNA</div>
 
       <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
 
@@ -16,7 +16,7 @@
           <Options class="fade-in" />
         </n-modal>
 
-        <n-modal :show="window.store.game.showIconsList" role="dialog" aria-modal="true">
+        <n-modal :show="store.game.showIconsList" role="dialog" aria-modal="true">
           <IconsList class="fade-in" />
         </n-modal>
       </div>
@@ -82,6 +82,8 @@ onMounted(() => {
 onUnmounted(() => {
   window.document.removeEventListener('keyup', keyup)
 })
+
+const { store } = window
 </script>
 
 <style scoped>

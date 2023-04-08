@@ -17,12 +17,12 @@ export class BattleItem extends Item {
     if (!can(this, [
       {
         expr: () => !window.store.player.isInCombat,
-        log: () => `You must be in combat to use ${this.name}.toLowerCase()`,
+        log: () => `You must be in combat to use ${this.nameDisplay}`,
         level: LOG_WARN
       },
       {
         expr: () => !!window.store.player.combat?.processing,
-        log: () => `You must wait for your turn to use ${this.name}.toLowerCase()`,
+        log: () => `You must wait for your turn to use ${this.nameDisplay}`,
         level: LOG_WARN
       },
     ], showMessage)) {

@@ -3,7 +3,7 @@ import { registeredClasses, serializeObject } from '@/utils'
 import { Entity } from '@/entity'
 import { UnwrapNestedRefs } from '@vue/reactivity'
 
-export interface SerializedData {
+export interface ISerializedData {
   klass?: string;
   value: any;
 }
@@ -21,7 +21,7 @@ export class Entities {
 
   findByName(name?: string | null): Entity | undefined { return this.list.find(e => (e as any).name === name) }
 
-  async reset() {
+  async reset(): Promise<void> {
     Object.keys(this.state).forEach(k => {
       delete this.state[k]
     })
@@ -38,7 +38,7 @@ export class Entities {
     }
   }
 
-  remove(id: string[] | string) {
+  remove(id: string[] | string): void {
     if (Array.isArray(id)) {
       id.forEach(i => this.remove(i))
     } else {
@@ -46,7 +46,7 @@ export class Entities {
     }
   }
 
-  deserialize(): SerializedData[] {
+  deserialize(): ISerializedData[] {
     return this.list.map(i => {
       const Klass = registeredClasses[i.constructor.name]
       if (!Klass) {
@@ -59,8 +59,8 @@ export class Entities {
     })
   }
 
-  serialize(data: SerializedData[]) {
-    return data.forEach((d: SerializedData) => {
+  serialize(data: ISerializedData[]): void {
+    return data.forEach((d: ISerializedData) => {
       const Klass = d.klass ? registeredClasses[d.klass] : undefined
       if (!Klass) {
         console.error(`Class ${d.klass} has not been registered`)

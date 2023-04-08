@@ -20,9 +20,9 @@ export default {
   y: 0,
   img: 'test-room.png',
 
-  mounted() {
+  mounted(): void {
     const npc = this.addNpc(new RandomNpc(SimonSmith))
-    this.location.addOwner(npc)
+    this.location?.addOwner(npc)
     this.addItem(new BookShelf())
     this.addItem(new LightSwitch(TestRoomLightSwitch))
     this.addItem(new Server(TestRoomServer))
@@ -34,7 +34,7 @@ export default {
     }))
   },
 
-  async onEnter() {
+  async onEnter(): Promise<void> {
     if (this.firstVisit) {
       log(`${ icon('stars', 2) } Welcome to ${ color('red', 'Fortuna') } ${ icon('stars', 2) }`, LOG_IMPORTANT)
       log('A text adventure game, spiced up with elements of Roleplaying games.')

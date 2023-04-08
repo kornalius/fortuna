@@ -20,6 +20,11 @@ export interface IBonusCombo extends ICombo {
 
 export type Multipliers = { [key: string]: number }
 
+export interface IBonusMultiplier {
+  multiplier: number
+  bonus: number
+}
+
 export interface Combat extends IRequirements {}
 
 export class Combat extends Entity {
@@ -606,7 +611,7 @@ export class Combat extends Entity {
    * @param type
    * @returns {{multiplier: (number), bonus: (number)}}
    */
-  multiplierBonus(type: string) {
+  multiplierBonus(type: string): IBonusMultiplier {
     return {
       multiplier: this.multipliers[type] || 1,
       bonus: this.bonus[type] || 0,
@@ -631,7 +636,7 @@ export class Combat extends Entity {
       this.highlightDice('player', dice, multiplier),
       extraSwordCount
         ? this.highlightDice('sword', window.store.player.extraSwordDiceIndexes)
-        : (resolve: (value?: unknown) => void) => resolve(),
+        : (resolve: () => void) => resolve(),
     ])
 
     const si = (this.npc ? this.npc.shieldDiceIndexes : [])
@@ -641,7 +646,7 @@ export class Combat extends Entity {
     }
 
     if (dmg > 0) {
-      log(`${window.store.player.name} attack for ${dmg} damage`, LOG_WARN)
+      log(`${window.store.player.nameProper} attack for ${dmg} damage`, LOG_WARN)
       if (this.npc) {
         this.npc.hp -= dmg
       }
@@ -669,7 +674,7 @@ export class Combat extends Entity {
       window.store.player.hp += dice.length
       const v = (window.store.player.hp - o) * multiplier + bonus
       if (v > 0) {
-        log(`${window.store.player.name} gains ${v} life`, LOG_WARN)
+        log(`${window.store.player.nameProper} gains ${v} life`, LOG_WARN)
         await delay(500)
         await emit(this, 'onGainLife', v)
       }
@@ -688,7 +693,7 @@ export class Combat extends Entity {
     const dmg = dice.length
     await this.highlightDice('player', dice)
     if (dmg > 0) {
-      log(`${window.store.player.name} receive ${dmg} damage(s)`, LOG_ERROR)
+      log(`${window.store.player.nameProper} receive ${dmg} damage(s)`, LOG_ERROR)
       window.store.game.playSound('bomb')
       window.store.player.hp -= dmg
       await this.showDamage('player', dmg, false)
@@ -728,15 +733,15 @@ export class Combat extends Entity {
         await Promise.all([
           shieldCount
             ? this.highlightDice('player', window.store.player.shieldDiceIndexes, multiplier)
-            : (resolve: (value?: unknown) => void) => resolve(),
+            : (resolve: () => void) => resolve(),
           extraShieldCount
             ? this.highlightDice('shield', window.store.player.extraShieldDiceIndexes, shieldCount ? undefined : multiplier)
-            : (resolve: (value?: unknown) => void) => resolve(),
+            : (resolve: () => void) => resolve(),
         ])
       }
 
       if (dmg > 0) {
-        log(`${this.npc.name} hits for ${dmg} damage(s)`, LOG_WARN)
+        log(`${this.npc.nameProper} hits for ${dmg} damage(s)`, LOG_WARN)
         window.store.player.hp -= dmg
         await this.showDamage('player', dmg)
         await emit(this, 'onNpcAttack', dmg)
@@ -770,7 +775,7 @@ export class Combat extends Entity {
           : npcShields - busters) * multiplier + bonus
         if (v > 0) {
           window.store.game.playSound('metal-hit')
-          log(`${window.store.player.name} bust ${v} shield(s)`, LOG_WARN)
+          log(`${window.store.player.nameProper} bust ${v} shield(s)`, LOG_WARN)
           for (let c = 0; c < v; c++) {
             const i = this.npc.shieldDiceIndexes[0]
             this.npc.dice.splice(i, 1)

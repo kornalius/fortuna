@@ -58,7 +58,7 @@ export const Switch: ISwitch = {
 
   async toggle(): Promise<boolean> {
     if (!this.canUse(true)) {
-      log(`You cannot toggle the ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+      log(`You cannot toggle the ${this.nameDisplay}`, LOG_WARN, this.icon)
       return false
     }
     window.store.game.playSound('switch')

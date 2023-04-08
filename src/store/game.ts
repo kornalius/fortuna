@@ -10,6 +10,7 @@ import { Item } from '@/classes/items/item'
 import { City } from '@/classes/city'
 import { Building } from '@/classes/buildings/building'
 import { Room } from '@/classes/rooms/room'
+import { State } from '@/entity'
 
 export interface GameState {
   started: boolean
@@ -32,10 +33,16 @@ export interface GameState {
   time: string
 }
 
+export interface Game {
+  state: State
+}
+
 export class Game {
   storeName = 'game'
 
-  state = reactive<GameState>({ ...this.defaultState })
+  constructor() {
+    this.state = reactive<GameState>({ ...this.defaultState })
+  }
 
   get defaultState(): GameState {
     return {
@@ -171,18 +178,18 @@ export class Game {
   get crt(): boolean { return this.state.crt }
   set crt(value) { this.state.crt = value }
 
-  startTick() {
+  startTick(): void {
     this._interval = window.setInterval(async () => {
       await this.tick()
     }, window.store.config.tickInterval)
   }
 
-  stopTick() {
+  stopTick(): void {
     clearInterval(this._interval)
     this._interval = 0
   }
 
-  async start() {
+  async start(): Promise<void> {
     if (this.state.paused) {
       window.location.reload()
       return
@@ -200,7 +207,7 @@ export class Game {
   /**
    * Tick to the next time / day
    */
-  async tick() {
+  async tick(): Promise<dayjs.Dayjs> {
     const t = this.day.add(window.store.config.tickTime, 'minutes')
     this.date = t.format('YYYY-MM-DD')
     this.time = t.format('HH:mm')
@@ -215,12 +222,12 @@ export class Game {
     return t.isSameOrAfter(s) && t.isSameOrBefore(e)
   }
 
-  pause() {
+  pause(): void {
     this.state.paused = true
     this.stopTick()
   }
 
-  resume() {
+  resume(): void {
     this.state.paused = false
     this.startTick()
   }
@@ -236,7 +243,7 @@ export class Game {
     }
   }
 
-  playSound(name: string, volume?: number) {
+  playSound(name: string, volume?: number): void {
     if (!this.state.sounds[name]) {
       this.state.sounds[name] = this.loadSound(name)
       this.state.sounds[name].once('load', () => this.state.sounds[name].play())
@@ -247,19 +254,19 @@ export class Game {
     this.state.sounds[name].play()
   }
 
-  pauseSound(name: string) {
+  pauseSound(name: string): void {
     this.state.sounds[name].pause()
   }
 
-  stopSound(name: string) {
+  stopSound(name: string): void {
     this.state.sounds[name].stop()
   }
 
-  isSoundPlaying(name: string) {
+  isSoundPlaying(name: string): boolean {
     return this.state.sounds[name].playing()
   }
 
-  toggleSound(name: string) {
+  toggleSound(name: string): void {
     if (this.isSoundPlaying(name)) {
       this.playSound(name)
     } else {
@@ -267,7 +274,7 @@ export class Game {
     }
   }
 
-  async load() {
+  async load(): Promise<void> {
     const data = JSON.parse(localStorage.getItem('game') || 'undefined')
     if (data) {
       console.log('Loading game...')
@@ -283,7 +290,7 @@ export class Game {
     }
   }
 
-  async save() {
+  async save(): Promise<void> {
     const data: AnyData = {}
     Object.keys(window.store).forEach(k => {
       if (k !== 'config') {
@@ -294,11 +301,11 @@ export class Game {
     localStorage.setItem('game', JSON.stringify(data))
   }
 
-  async delete() {
+  async delete(): Promise<void> {
     localStorage.removeItem('game')
   }
 
-  async reset() {
+  async reset(): Promise<void> {
     Object.keys(this.defaultState).forEach(k => {
       if (k !== 'sounds') {
         // @ts-ignore
@@ -307,13 +314,13 @@ export class Game {
     })
   }
 
-  async restart() {
+  async restart(): Promise<void> {
     await this.delete()
     await reset()
     await this.start()
   }
 
-  deserialize() {
+  deserialize(): any {
     return deserializeObject(omit(this.state, ['sounds']))
   }
 }

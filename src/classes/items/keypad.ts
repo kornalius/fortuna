@@ -29,29 +29,29 @@ export class Keypad extends Item {
 
   get code(): string | null { return this.door?.keypadCode || '' }
 
-  setupDoor(data: SetupData): { doorId: string } {
+  setupDoor(data?: SetupData): { doorId: string } {
     const doorId = data?.door?.id
     return { doorId }
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.game.keypad = this
     window.store.game.showKeypad = true
   }
 
-  async error() {
+  async error(): Promise<boolean> {
     await emit(this, 'onError')
     return true
   }
 
-  async onError() {}
+  async onError(): Promise<void> {}
 
-  async success() {
+  async success(): Promise<boolean> {
     await emit(this, 'onSuccess')
     return true
   }
 
-  async onSuccess() {
+  async onSuccess(): Promise<void> {
     if (this.door) {
       this.door.locked = false
       log('Door has been unlocked', LOG_WARN, this.icon)

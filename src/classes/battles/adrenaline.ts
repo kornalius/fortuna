@@ -12,7 +12,7 @@ export class Adrenaline extends BattleItem {
     })
   }
 
-  async onUse() {
+  async onUse(): Promise<void> {
     window.store.player.hp += 4
     window.store.game.playSound('tape')
   }

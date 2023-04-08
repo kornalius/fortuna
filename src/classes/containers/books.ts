@@ -1,7 +1,7 @@
 import { mixin, registerClass } from '@/utils'
-import { ISearchable } from '@/mixins/searchable'
 import { Container } from './container'
 import { books } from '@/generators'
+import { ISearchable, Searchable } from '@/mixins/searchable'
 import { SetupData } from '@/entity'
 
 export interface Books extends ISearchable {}
@@ -18,7 +18,7 @@ export class Books extends Container {
     })
   }
 
-  async onSearch() {
+  async onUse(): Promise<void> {
     await super.onSearch()
     // generate random books
     this.addItem(books())

@@ -1,10 +1,10 @@
 import { File } from '../server/file'
 import { mixin, registerClass } from '@/utils'
-import { Installable } from '@/mixins/installable'
-import { IUsable } from '@/mixins/usable'
+import { IInstallable, Installable } from '@/mixins/installable'
+import { IUsable, Usable } from '@/mixins/usable'
 import { SetupData } from '@/entity'
 
-export interface Software extends File, Installable, IUsable {}
+export interface Software extends File, IInstallable, IUsable {}
 
 export class Software extends File {
   setupInstance(data?: SetupData): SetupData | undefined {

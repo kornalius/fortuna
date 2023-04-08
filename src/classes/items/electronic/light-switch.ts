@@ -13,7 +13,7 @@ export class LightSwitch extends Electronic {
     })
   }
 
-  async onExamine() {
+  async onExamine(): Promise<void> {
     log('It\'s a normal looking light switch, nothing special about it other than the little button in the middle', 0, this.icon)
   }
 }

@@ -55,11 +55,11 @@ export const Pickable: IPickable = {
     return can(this, [
       {
         expr: () => !this.isPickable,
-        log: () => `${this.name} cannot be picked`
+        log: () => `${this.nameProper} cannot be picked`
       },
       {
         expr: () => window.store.player.has(this),
-        log: () => `${this.name} is already in your inventory`
+        log: () => `${this.nameProper} is already in your inventory`
       },
     ], showMessage, 'pickup')
   },
@@ -75,9 +75,9 @@ export const Pickable: IPickable = {
     }
 
     // check if there are owners of this room/building present seeing you commit the crime of stealing!!!
-    const presentOwners: Npc[] = this.location.presentOwners
+    const presentOwners: Npc[] = this.location?.presentOwners
     if (presentOwners?.length > 0) {
-      log(`You have been caugth stealing by ${presentOwners.map(o => o.name).join(', ')}`, LOG_ERROR, this.icon)
+      log(`You have been caugth stealing by ${presentOwners.map(o => o.nameProper).join(', ')}`, LOG_ERROR, this.icon)
       presentOwners.forEach(o => { o.aggresive = true })
     }
 
@@ -86,7 +86,7 @@ export const Pickable: IPickable = {
     // mark item in your inventory as new
     this.hovered = false
 
-    log(`You pickup ${this.name.toLowerCase()}`, LOG_WARN, this.icon)
+    log(`You pickup ${this.nameDisplay}`, LOG_WARN, this.icon)
     await emit(this, 'onPickup')
     return true
   },

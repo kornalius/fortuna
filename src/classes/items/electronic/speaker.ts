@@ -13,8 +13,8 @@ export class Speaker extends Item {
     })
   }
 
-  async onUse() {
-    window.store.game.playSound('piano')
+  async onUse(): Promise<void> {
+    window.store.game.playSound('speaker')
   }
 }
 

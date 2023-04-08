@@ -15,7 +15,7 @@
 
       <div class="flex justify-end">
         <icon class="mr2" :icon="icons.weightWhite" />
-        <span>{{ window.store.player.carryWeight }} / {{ window.store.player.maxWeight }}</span>
+        <span>{{ store.player.carryWeight }} / {{ store.player.maxWeight }}</span>
       </div>
 
       <div class="flex flex-grow-1 justify-center">
@@ -161,6 +161,8 @@ const renderDropdownLabel = option => (
 const setSort = async key => {
   sort.value = key === '' ? undefined : key
 }
+
+const { store } = window
 </script>
 
 <style scoped>

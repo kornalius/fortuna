@@ -206,16 +206,16 @@ export class Npc extends Entity {
     return can(this, [
       {
         expr: () => !this.isTalkable,
-        log: () => `${this.name} is not interested in talking to you`
+        log: () => `${this.nameProper} is not interested in talking to you`
       },
       { expr: () => window.store.player.isInDialog,
-        log: () => `You are already in discussion with ${this.name}`
+        log: () => `You are already in discussion with ${this.nameDisplay}`
       },
       { expr: () => window.store.player.isInCombat,
-        log: () => `You cannot talk to ${this.name} while in combat with ${window.store.player.combat?.npc?.name}`
+        log: () => `You cannot talk to ${this.nameDisplay} while in combat with ${window.store.player.combat?.npc?.nameDisplay}`
       },
       { expr: () => window.store.player.isConnectedToServer,
-        log: () => `Disconnect from ${window.store.player.server?.name.toLowerCase()} first`
+        log: () => `Disconnect from ${window.store.player.server?.nameDisplay} first`
       },
     ], showMessage, 'talk')
   }
@@ -258,19 +258,19 @@ export class Npc extends Entity {
     return can(this, [
       {
         expr: () => window.store.player.isInDialog,
-        log: () => `You are already in discussion with ${window.store.player.dialog?.npc?.name}`
+        log: () => `You are already in discussion with ${window.store.player.dialog?.npc?.nameProper}`
       },
       {
         expr: () => window.store.player.isInCombat,
-        log: () => `You are already in combat with ${window.store.player.combat?.npc?.name}`
+        log: () => `You are already in combat with ${window.store.player.combat?.npc?.nameProper}`
       },
       {
         expr: () => !this.isAggresive,
-        log: () => `${this.name} is not aggresive towards you, there are no reasons for conflict`
+        log: () => `${this.nameProper} is not aggresive towards you, there are no reasons for conflict`
       },
       {
         expr: () => this.isDead,
-        log: () => `${this.name} is dead, you cannot fight`
+        log: () => `${this.nameProper} is dead, you cannot fight`
       },
     ], showMessage)
   }
@@ -291,15 +291,15 @@ export class Npc extends Entity {
     return can(this, [
       {
         expr: () => this.isSleeping,
-        log: () => `${this.name} is sleeping, therefore cannot move`
+        log: () => `${this.nameProper} is sleeping, therefore cannot move`
       },
       {
         expr: () => window.store.player.isInCombat && window.store.player.combat?.npc === this,
-        log: () => `${this.name} cannot move while in combat`
+        log: () => `${this.nameProper} cannot move while in combat`
       },
       {
         expr: () => window.store.player.isInDialog && window.store.player.dialog?.npc === this,
-        log: () => `${this.name} cannot move while in discussion`
+        log: () => `${this.nameProper} cannot move while in discussion`
       },
     ], showMessage)
   }

@@ -4,7 +4,7 @@ import { PillsBottle } from '@/classes/containers/pills-bottle'
 export default {
   name: 'Bottle',
 
-  onPickup() {
+  async onPickup(): Promise<void> {
     log([
       'You stash it in your pockets. You will need to investigate',
       'this a little further down the road because you clearly don\'t remember being',
@@ -12,7 +12,7 @@ export default {
     ])
   },
 
-  onExamine() {
+  async onExamine(): Promise<void> {
     if (!window.store.player.has(this)) {
       log('You read the sticker on the bottle, it seems to belong to, YOU?', LOG_WARN, this.icon)
     } else {

@@ -10,7 +10,7 @@ export default {
   crackable: true,
   protected: true,
 
-  mounted() {
+  mounted(): void {
     this.addFile([
       new File({
         name: 'Plots.txt',

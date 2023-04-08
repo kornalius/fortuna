@@ -1,7 +1,7 @@
 import { mixin, registerClass } from '@/utils'
 import { Item } from '../item'
-import { IOpenable } from '@/mixins/openable'
-import { IUnlockable } from '@/mixins/unlockable'
+import { IOpenable, Openable } from '@/mixins/openable'
+import { IUnlockable, Unlockable } from '@/mixins/unlockable'
 import { SetupData } from '@/entity'
 
 export interface Fence extends IOpenable, IUnlockable {}
