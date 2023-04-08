@@ -15,7 +15,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.str }}</span>
+            <span class="ml2">{{ window.store.player.str }}</span>
 
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('str')">-</n-button>
@@ -29,7 +29,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.dex }}</span>
+            <span class="ml2">{{ window.store.player.dex }}</span>
 
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('dex')">-</n-button>
@@ -43,7 +43,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.int }}</span>
+            <span class="ml2">{{ window.store.player.int }}</span>
 
             <n-button-group class="ml3" size="small">
               <n-button @click="decrement('int')">-</n-button>
@@ -53,9 +53,9 @@
         </div>
       </template>
 
-      <span>STR: {{ store.player.str}}, </span>
-      <span>DEX: {{ store.player.dex }}, </span>
-      <span>INT: {{ store.player.int }}, </span>
+      <span>STR: {{ window.store.player.str}}, </span>
+      <span>DEX: {{ window.store.player.dex }}, </span>
+      <span>INT: {{ window.store.player.int }}, </span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -67,7 +67,7 @@
             :scale="1.5"
           />
 
-          <span class="ml2">{{ store.player.maxHp }}</span>
+          <span class="ml2">{{ window.store.player.maxHp }}</span>
 
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('extraHp')">-</n-button>
@@ -76,7 +76,7 @@
         </div>
       </template>
 
-      <span>HP: {{ store.player.maxHp }}</span>
+      <span>HP: {{ window.store.player.maxHp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -88,7 +88,7 @@
             :scale="1.5"
           />
 
-          <span class="ml2">{{ store.player.disk }}</span>
+          <span class="ml2">{{ window.store.player.disk }}</span>
 
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('disk', 500)">-</n-button>
@@ -97,7 +97,7 @@
         </div>
       </template>
 
-      <span>[DISK] Used: {{ store.player.diskUsed }}, Free: {{ store.player.diskFree }}, Total: {{ store.player.disk }}</span>
+      <span>[DISK] Used: {{ window.store.player.diskUsed }}, Free: {{ window.store.player.diskFree }}, Total: {{ window.store.player.disk }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -110,7 +110,7 @@
             :scale="1.5"
           />
 
-          <span class="ml2">{{ store.player.ram }}</span>
+          <span class="ml2">{{ window.store.player.ram }}</span>
 
           <n-button-group class="ml3" size="small">
             <n-button @click="decrement('ram', 100)">-</n-button>
@@ -119,7 +119,7 @@
         </div>
       </template>
 
-      <span>[RAM] Used: {{ store.player.ramUsed }}, Free: {{ store.player.ramFree }}, Total: {{ store.player.ram }}</span>
+      <span>[RAM] Used: {{ window.store.player.ramUsed }}, Free: {{ window.store.player.ramFree }}, Total: {{ window.store.player.ram }}</span>
     </n-popover>
 
     <div class="flex w-100 mt3 justify-end">
@@ -131,7 +131,6 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { store } from '@/store'
 import icons from '@/icons'
 
 const props = defineProps({
@@ -148,37 +147,37 @@ const origStats = {}
 
 const decrement = (stat, by = 1) => {
   if (origStats[stat] === undefined) {
-    origStats[stat] = store.player[stat]
+    origStats[stat] = window.store.player[stat]
   }
-  if (store.player[stat] - 1 >= origStats[stat]) {
-    store.player[stat] -= by
+  if (window.store.player[stat] - 1 >= origStats[stat]) {
+    window.store.player[stat] -= by
     pointsLeft.value += 1
   }
 }
 
 const increment = (stat, by = 1) => {
   if (origStats[stat] === undefined) {
-    origStats[stat] = store.player[stat]
+    origStats[stat] = window.store.player[stat]
   }
   if (pointsLeft.value > 0) {
-    store.player[stat] += by
+    window.store.player[stat] += by
     pointsLeft.value -= 1
   }
 }
 
-watch(() => store.player.maxHp, newValue => {
-  store.player.hp = newValue
+watch(() => window.store.player.maxHp, newValue => {
+  window.store.player.hp = newValue
 })
 
 // const cancel = () => {
 //   Object.keys(origStats).forEach(k => {
-//     store.player[k] = origStats[k]
+//     window.store.player[k] = origStats[k]
 //   })
-//   store.game.showLevelUp = true
+//   window.store.game.showLevelUp = true
 // }
 
 const confirm = () => {
-  store.game.showLevelUp = false
+  window.store.game.showLevelUp = false
 }
 </script>
 

@@ -28,7 +28,6 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
-import { store } from '@/store'
 import City from '@/components/City.vue'
 import useDrag from '@/composites/drag'
 
@@ -52,7 +51,7 @@ const cityStyle = city => {
   return style.join('; ')
 }
 
-const cities = computed(() => store.cities.list)
+const cities = computed(() => window.store.cities.list)
 
 const updateCoordinates = e => {
   pos.value = {

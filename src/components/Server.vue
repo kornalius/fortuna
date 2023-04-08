@@ -45,7 +45,7 @@
         size="small"
         type="warning"
         @click="() => {
-          store.game.playSound('click')
+          window.store.game.playSound('click')
           value.disconnect()
         }"
       >
@@ -60,7 +60,6 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import random from 'lodash/random'
-import { store } from '@/store'
 import Item from '@/components/Item.vue'
 import icons from '@/icons'
 
@@ -125,7 +124,7 @@ const process = () => {
   setTimeout(() => {
     props.value.processBuffer()
     process()
-  }, random(store.config.serverSpeed))
+  }, random(window.store.config.serverSpeed))
 }
 
 onMounted(() => {

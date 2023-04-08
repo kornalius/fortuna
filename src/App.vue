@@ -1,9 +1,9 @@
 <template>
   <n-config-provider :theme="darkTheme" style="height: 100%;">
-    <Main v-if="store.game.isStarted" class="fade-in" />
+    <Main v-if="window.store.game.isStarted" class="fade-in" />
 
     <div v-show="showDialog || showOptions">
-      <div v-if="!store.game.isStarted" class="title smoke">FORTUNA</div>
+      <div v-if="!window.store.game.isStarted" class="title smoke">FORTUNA</div>
 
       <img src="/images/menu-background.png" class="background-image" alt="menu-background.png" />
 
@@ -16,7 +16,7 @@
           <Options class="fade-in" />
         </n-modal>
 
-        <n-modal :show="store.game.showIconsList" role="dialog" aria-modal="true">
+        <n-modal :show="window.store.game.showIconsList" role="dialog" aria-modal="true">
           <IconsList class="fade-in" />
         </n-modal>
       </div>
@@ -24,53 +24,52 @@
   </n-config-provider>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, onUnmounted, watch } from 'vue'
 import Main from '@/components/Main.vue'
 import Menu from '@/components/Menu.vue'
 import Options from '@/components/Options.vue'
 import IconsList from '@/components/IconsList.vue'
-import { store } from '@/store'
 import { darkTheme } from 'naive-ui'
 
-const showDialog = computed(() => store.game.isPaused || store.game.isStarted === false)
-const showOptions = computed(() => store.game.showOptions)
+const showDialog = computed(() => window.store.game.isPaused || !window.store.game.isStarted)
+const showOptions = computed(() => window.store.game.showOptions)
 
-watch(() => store.game.volume, newValue => {
+watch(() => window.store.game.volume, newValue => {
   Howler.volume(newValue)
 }, { immediate: true })
 
-watch(() => store.game.crt, newValue => {
+watch(() => window.store.game.crt, newValue => {
   const el = document.querySelector('#app')
   if (el) {
     if (newValue) {
-      el.classList.add(['scanlines'])
+      el.classList.add('scanlines')
     } else {
-      el.classList.remove(['scanlines'])
+      el.classList.remove('scanlines')
     }
   }
 }, { immediate: true })
 
 const keyup = e => {
   if (e.keyCode === 27) { // ESC
-    if (store.game.showIconsList) {
-      store.game.showIconsList = false
+    if (window.store.game.showIconsList) {
+      window.store.game.showIconsList = false
       return
     }
-    if (store.game.showOptions) {
-      store.game.showOptions = false
+    if (window.store.game.showOptions) {
+      window.store.game.showOptions = false
       return
     }
-    if (store.game.isStarted) {
-      if (!store.game.isPaused) {
-        store.game.pause()
+    if (window.store.game.isStarted) {
+      if (!window.store.game.isPaused) {
+        window.store.game.pause()
       } else {
-        store.game.resume()
+        window.store.game.resume()
       }
     }
   }
   else if (e.keyCode === 73 && e.ctrlKey && !e.shiftKey) { // CTRL+I
-    store.game.showIconsList = true
+    window.store.game.showIconsList = true
   }
   e.stopImmediatePropagation()
   e.preventDefault()

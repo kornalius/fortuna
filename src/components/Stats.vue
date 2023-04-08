@@ -17,7 +17,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.lvl }}</span>
+            <span class="ml2">{{ window.store.player.lvl }}</span>
           </div>
 
           <div class="stats-str inline flex items-center">
@@ -26,7 +26,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.str }}</span>
+            <span class="ml2">{{ window.store.player.str }}</span>
           </div>
 
           <div class="stats-dex inline flex items-center">
@@ -35,7 +35,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.dex }}</span>
+            <span class="ml2">{{ window.store.player.dex }}</span>
           </div>
 
           <div class="stats-int inline flex items-center">
@@ -44,7 +44,7 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.int }}</span>
+            <span class="ml2">{{ window.store.player.int }}</span>
           </div>
 
           <div class="stats-credits inline flex items-center">
@@ -53,16 +53,16 @@
               :scale="1.5"
             />
 
-            <span class="ml2">{{ store.player.credits }}</span>
+            <span class="ml2">{{ window.store.player.credits }}</span>
           </div>
         </div>
       </template>
 
-      <span>LEVEL: {{ store.player.lvl }}, </span>
-      <span>STR: {{ store.player.str}}, </span>
-      <span>DEX: {{ store.player.dex }}, </span>
-      <span>INT: {{ store.player.int }}, </span>
-      <span>CREDITS: {{ store.player.credits }}</span>
+      <span>LEVEL: {{ window.store.player.lvl }}, </span>
+      <span>STR: {{ window.store.player.str}}, </span>
+      <span>DEX: {{ window.store.player.dex }}, </span>
+      <span>INT: {{ window.store.player.int }}, </span>
+      <span>CREDITS: {{ window.store.player.credits }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -79,14 +79,14 @@
             status="error"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="store.player.hp / store.player.maxHp * 100"
+            :percentage="window.store.player.hp / window.store.player.maxHp * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>HP: {{ store.player.hp }} / {{ store.player.maxHp }}</span>
+      <span>HP: {{ window.store.player.hp }} / {{ window.store.player.maxHp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -103,14 +103,14 @@
             color="#F19936"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="store.player.xp / store.player.nextXp * 100"
+            :percentage="window.store.player.xp / window.store.player.nextXp * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>XP: {{ store.player.xp }} / {{ store.player.nextXp }}</span>
+      <span>XP: {{ window.store.player.xp }} / {{ window.store.player.nextXp }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -127,14 +127,14 @@
             color="#2293E1"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="store.player.diskUsed / store.player.disk * 100"
+            :percentage="window.store.player.diskUsed / window.store.player.disk * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>[DISK] Used: {{ store.player.diskUsed }}, Free: {{ store.player.diskFree }}, Total: {{ store.player.disk }}</span>
+      <span>[DISK] Used: {{ window.store.player.diskUsed }}, Free: {{ window.store.player.diskFree }}, Total: {{ window.store.player.disk }}</span>
     </n-popover>
 
     <n-popover trigger="hover" placement="left">
@@ -152,22 +152,22 @@
             color="#CBE54A"
             border-radius="12px 0 12px 0"
             fill-border-radius="12px 0 12px 0"
-            :percentage="store.player.ramUsed / store.player.ram * 100"
+            :percentage="window.store.player.ramUsed / window.store.player.ram * 100"
             :height="8"
             :show-indicator="false"
           />
         </div>
       </template>
 
-      <span>[RAM] Used: {{ store.player.ramUsed }}, Free: {{ store.player.ramFree }}, Total: {{ store.player.ram }}</span>
+      <span>[RAM] Used: {{ window.store.player.ramUsed }}, Free: {{ window.store.player.ramFree }}, Total: {{ window.store.player.ram }}</span>
     </n-popover>
 
     <n-button
-      v-if="store.player.canLevelUp()"
+      v-if="window.store.player.canLevelUp()"
       class="levelup-button mv1 w-100"
       color="yellow"
       secondary
-      @click="() => store.player.levelUp()"
+      @click="() => window.store.player.levelUp()"
     >
       + Level +
     </n-button>
@@ -197,37 +197,36 @@
 
 <script setup>
 import { computed, watch } from 'vue'
-import { store } from '@/store'
 import { bleed, life, xp } from '@/particles'
 import { buffIcon, buffLabel } from '@/buffs'
 import icons from '@/icons'
-import Equipment from '@/components/Equipment';
+import Equipment from '@/components/Equipment'
 
-watch(() => store.player.hp, (newValue, oldValue) => {
-  if (store.game.showLevelUp) {
+watch(() => window.store.player.hp, (newValue, oldValue) => {
+  if (window.store.game.showLevelUp) {
     return
   }
   const r = document.querySelector('.stats-hp').getBoundingClientRect()
   if (newValue < oldValue) {
-    bleed(r.left + (store.player.hp / store.player.maxHp * (r.width - 20)), r.top + 8)
+    bleed(r.left + (window.store.player.hp / window.store.player.maxHp * (r.width - 20)), r.top + 8)
   } else if (newValue > oldValue) {
-    life(r.left + (store.player.hp / store.player.maxHp * (r.width - 20)), r.top + 4)
-    store.game.playSound('upgrade')
+    life(r.left + (window.store.player.hp / window.store.player.maxHp * (r.width - 20)), r.top + 4)
+    window.store.game.playSound('upgrade')
   }
 })
 
-watch(() => store.player.xp, () => {
-  if (store.game.showLevelUp) {
+watch(() => window.store.player.xp, () => {
+  if (window.store.game.showLevelUp) {
     return
   }
   const r = document.querySelector('.stats-xp').getBoundingClientRect()
-  xp(r.left + (store.player.xp / store.player.nextXp * (r.width - 20)), r.top + 8)
-  store.game.playSound('upgrade')
+  xp(r.left + (window.store.player.xp / window.store.player.nextXp * (r.width - 20)), r.top + 8)
+  window.store.game.playSound('upgrade')
 })
 
 const buffs = computed(() => {
   const buffs = []
-  store.player.buffs.forEach(b => {
+  window.store.player.buffs.forEach(b => {
     buffs.push({
       name: buffLabel(b.name),
       icon: icons[buffIcon(b.name)],

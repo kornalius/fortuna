@@ -4,25 +4,25 @@
       <div class="flex flex-column">
         <div class="top flex self-center relative w-100">
           <Server
-            v-if="store.player.isConnectedToServer"
+            v-if="window.store.player.isConnectedToServer"
             class="fade-in"
-            :value="store.player.server"
+            :value="window.store.player.server"
           />
 
           <Dialog
-            v-else-if="store.player.isInDialog"
+            v-else-if="window.store.player.isInDialog"
             class="fade-in"
-            :value="store.player.dialog"
+            :value="window.store.player.dialog"
           />
 
           <Combat
-            v-else-if="store.player.isInCombat"
+            v-else-if="window.store.player.isInCombat"
             class="fade-in"
-            :value="store.player.combat"
+            :value="window.store.player.combat"
           />
 
           <Travel
-            v-else-if="store.player.isTravelling"
+            v-else-if="window.store.player.isTravelling"
           />
 
           <img v-else-if="value.img"
@@ -37,7 +37,7 @@
             <span>{{ value?.name }}</span>
             <n-checkbox v-model:checked="showLabels" class="ml3">Show Labels</n-checkbox>
           </div>
-          <span>{{ store.game.dayString }}</span>
+          <span>{{ window.store.game.dayString }}</span>
         </div>
 
         <div class="flex flex-wrap items-center mb1">
@@ -62,7 +62,7 @@
           >
             <Item
               :value="item"
-              :disabled="isDisabled && (!store.player.isConnectedToServer || !item.isServer)"
+              :disabled="isDisabled && (!window.store.player.isConnectedToServer || !item.isServer)"
               :hide-label="!showLabels"
             />
           </span>
@@ -118,7 +118,6 @@ import Server from '@/components/Server.vue'
 import Dialog from '@/components/Dialog.vue'
 import Combat from '@/components/Combat.vue'
 import Travel from '@/components/Travel.vue'
-import { store } from '@/store'
 
 const scroller = ref()
 
@@ -127,10 +126,10 @@ const props = defineProps({
   disabled: { type: Boolean },
 })
 
-const showLabels = ref(store.game.showLabels)
+const showLabels = ref(window.store.game.showLabels)
 
 watch(showLabels, newValue => {
-  store.game.showLabels = newValue
+  window.store.game.showLabels = newValue
 })
 
 const items = computed(() => props.value?.items || [])
@@ -139,9 +138,9 @@ const doors = computed(() => props.value?.doors || [])
 
 const isDisabled = computed(() => (
   props.disabled
-    || store.player.isConnectedToServer
-    || store.player.isInCombat
-    || store.player.isInDialog
+    || window.store.player.isConnectedToServer
+    || window.store.player.isInCombat
+    || window.store.player.isInDialog
 ))
 
 const logsChanged = () => {

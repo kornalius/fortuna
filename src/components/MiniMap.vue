@@ -11,7 +11,7 @@
           <template #trigger>
             <div
               class="room flex items-center justify-center"
-              :class="{ active: room === store.game.room }"
+              :class="{ active: room === window.store.game.room }"
               :style="styleForRoom(room)"
             >
               <icon
@@ -36,10 +36,9 @@
 
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
-import { store } from '@/store'
 import icons from '@/icons'
 
-const { minimapRoomSize, minimapMargins } = store.config
+const { minimapRoomSize, minimapMargins } = window.store.config
 
 const props = defineProps({
   building: { type: Object },
@@ -48,12 +47,12 @@ const props = defineProps({
 const container = ref()
 
 const rooms = computed(() => (
-  store.rooms.list.filter(r => r.hasVisited && r.locationId === props.building.id)
+  window.store.rooms.list.filter(r => r.hasVisited && r.locationId === props.building.id)
 ))
 
 const style = computed(() => ({
-  width: `${store.game.minimapWidth + minimapMargins * 2}px`,
-  height: `${store.game.minimapHeight + minimapMargins * 2}px`,
+  width: `${window.store.game.minimapWidth + minimapMargins * 2}px`,
+  height: `${window.store.game.minimapHeight + minimapMargins * 2}px`,
 }))
 
 const styleForRoom = room => ({
@@ -64,7 +63,7 @@ const styleForRoom = room => ({
 })
 
 onMounted(() => {
-  watch(() => store.game.room, room => {
+  watch(() => window.store.game.room, room => {
     if (room && container?.value) {
       const r = container.value.getBoundingClientRect()
       const x = room.x * minimapRoomSize + minimapMargins - (minimapRoomSize * 0.5)

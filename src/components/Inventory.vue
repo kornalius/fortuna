@@ -15,7 +15,7 @@
 
       <div class="flex justify-end">
         <icon class="mr2" :icon="icons.weightWhite" />
-        <span>{{ store.player.carryWeight }} / {{ store.player.maxWeight }}</span>
+        <span>{{ window.store.player.carryWeight }} / {{ window.store.player.maxWeight }}</span>
       </div>
 
       <div class="flex flex-grow-1 justify-center">
@@ -107,7 +107,6 @@
 
 <script setup>
 import { computed, h, ref } from 'vue'
-import { store } from '@/store'
 import Icon from '@/components/Icon'
 import Item from '@/components/Item.vue'
 import icons from '@/icons'
@@ -120,7 +119,7 @@ const filter = ref()
 const sort = ref()
 
 const items = computed(() =>
-  store.player.items
+  window.store.player.items
     .filter(i => !i.isEquipped && (!filter.value || i[filter.value]))
     .sort((a, b) => {
       if (sort.value) {

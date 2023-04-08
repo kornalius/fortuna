@@ -183,7 +183,7 @@ const correct = ref(false)
 watch(displayText, async newValue => {
   if (newValue.length === 4) {
     if (text.value === props.value.code) {
-      store.game.playSound('success')
+      window.store.game.playSound('success')
       correct.value = true
       await anime.timeline({
         targets: `.success`,
@@ -198,33 +198,33 @@ watch(displayText, async newValue => {
         })
         .finished
 
-      store.game.showKeypad = false
+      window.store.game.showKeypad = false
       await props.value.success()
     } else {
-      store.game.playSound('error_keypad')
+      window.store.game.playSound('error_keypad')
       text.value = ''
     }
   }
 })
 
 const keyClick = key => {
-  store.game.playSound('keypad')
+  window.store.game.playSound('keypad')
   text.value = `${text.value}${key}`
 }
 
 const reset = () => {
-  store.game.playSound('keypad')
+  window.store.game.playSound('keypad')
   text.value = ''
 }
 
 const erase = () => {
-  store.game.playSound('keypad')
+  window.store.game.playSound('keypad')
   text.value = text.value.substring(0, text.value.length - 1)
 }
 
 const cancel = () => {
-  store.game.playSound('keypad')
-  store.game.showKeypad = false
+  window.store.game.playSound('keypad')
+  window.store.game.showKeypad = false
 }
 </script>
 

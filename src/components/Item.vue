@@ -186,7 +186,7 @@ const weightIcon = computed(() => {
 
 const groupedBuffs = computed(() => {
   const buffs = []
-  buffNames().forEach(name => {
+  buffNames.forEach(name => {
     if (props.value.sumOfBuffs) {
       const sum = props.value.sumOfBuffs(name)
       if (sum !== 0) {

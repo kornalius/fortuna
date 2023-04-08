@@ -26,7 +26,7 @@
               tertiary
               v-text="answer.text"
               @click="() => {
-                store.game.playSound('button')
+                window.store.game.playSound('button')
                 value.answer(answer.code)
               }"
             />
@@ -38,7 +38,6 @@
 </template>
 
 <script setup>
-import { store } from '@/store'
 
 const props = defineProps({
   value: { type: Object },

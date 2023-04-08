@@ -27,13 +27,12 @@
 
 <script setup>
 import { computed, watch } from 'vue'
-import { store } from '../store'
 import icons from '@/icons'
 
 const logs = computed(() => {
-  return store.logs.list
+  return window.store.logs.list
     .sort((a, b) => a.timestamp < b.timestamp)
-    .slice(-store.config.logSize)
+    .slice(-window.store.config.logSize)
 })
 
 const emit = defineEmits(['change'])

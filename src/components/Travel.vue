@@ -1,16 +1,15 @@
 <template>
   <div
     class="back"
-    :style="`animation: scroll ease-out ${store.config.travelTime}ms;`"
+    :style="`animation: scroll ease-out ${window.store.config.travelTime}ms;`"
   />
 </template>
 
 <script setup>
-import { store } from '@/store'
 
 setTimeout(() => {
-  store.player.travelling = false
-}, store.config.travelTime)
+  window.store.player.travelling = false
+}, window.store.config.travelTime)
 </script>
 
 <style>

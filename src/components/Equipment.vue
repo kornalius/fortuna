@@ -38,7 +38,6 @@
 
 <script setup>
 import { computed } from 'vue'
-import { store } from '@/store'
 import { EquipableSlots } from '@/mixins/equipable'
 import EquipmentSlot from '@/components/EquipmentSlot'
 
@@ -46,11 +45,11 @@ const props = defineProps({
   disabled: { type: Boolean },
 })
 
-const head = computed(() => store.player.equippedInSlot(EquipableSlots.HEAD))
-const eyes = computed(() => store.player.equippedInSlot(EquipableSlots.EYES))
-const torso = computed(() => store.player.equippedInSlot(EquipableSlots.TORSO))
-const waist = computed(() => store.player.equippedInSlot(EquipableSlots.WAIST))
-const hands = computed(() => store.player.equippedInSlot(EquipableSlots.HANDS))
-const legs = computed(() => store.player.equippedInSlot(EquipableSlots.LEGS))
-const feet = computed(() => store.player.equippedInSlot(EquipableSlots.FEET))
+const head = computed(() => window.store.player.equippedInSlot(EquipableSlots.HEAD))
+const eyes = computed(() => window.store.player.equippedInSlot(EquipableSlots.EYES))
+const torso = computed(() => window.store.player.equippedInSlot(EquipableSlots.TORSO))
+const waist = computed(() => window.store.player.equippedInSlot(EquipableSlots.WAIST))
+const hands = computed(() => window.store.player.equippedInSlot(EquipableSlots.HANDS))
+const legs = computed(() => window.store.player.equippedInSlot(EquipableSlots.LEGS))
+const feet = computed(() => window.store.player.equippedInSlot(EquipableSlots.FEET))
 </script>

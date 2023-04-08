@@ -33,8 +33,8 @@
       secondary
       block
       @click="() => {
-        store.game.playSound('button')
-        store.game.showOptions = false
+        window.store.game.playSound('button')
+        window.store.game.showOptions = false
       }"
     >
       Back
@@ -44,28 +44,27 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { store } from '@/store'
 
 const volume = ref(0)
 const crt = ref(false)
 
-watch(() => store.game.volume, newValue => {
+watch(() => window.store.game.volume, newValue => {
   volume.value = newValue
 }, { immediate: true })
 
 watch(volume, newValue => {
-  if (newValue !== store.game.volume) {
-    store.game.volume = newValue
+  if (newValue !== window.store.game.volume) {
+    window.store.game.volume = newValue
   }
 })
 
-watch(() => store.game.crt, newValue => {
+watch(() => window.store.game.crt, newValue => {
   crt.value = newValue
 }, { immediate: true })
 
 watch(crt, newValue => {
-  if (newValue !== store.game.crt) {
-    store.game.crt = newValue
+  if (newValue !== window.store.game.crt) {
+    window.store.game.crt = newValue
   }
 })
 </script>
