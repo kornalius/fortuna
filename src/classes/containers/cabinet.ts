@@ -15,10 +15,12 @@ export class Cabinet extends Container {
 
   async onOpen(): Promise<void> {
     window.store.game.playSound('open-drawer')
+    await super.onOpen()
   }
 
   async onClose(): Promise<void> {
     window.store.game.playSound('close-drawer')
+    await super.onClose()
   }
 }
 

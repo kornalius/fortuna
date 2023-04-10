@@ -189,6 +189,11 @@ export class Room extends Entity {
           return false
         }
       }
+
+      this.items.forEach(i => {
+        emit(i, 'onReveal')
+      })
+
       window.store.game.room = this
       await this.visit()
       await emit(this, 'onEnter')
@@ -234,6 +239,11 @@ export class Room extends Entity {
     if (!this.canExit(true)) {
       return false
     }
+
+    this.items.forEach(i => {
+      emit(i, 'onConceal')
+    })
+
     window.store.game.room = null
     await emit(this, 'onExit', toRoom)
     return true

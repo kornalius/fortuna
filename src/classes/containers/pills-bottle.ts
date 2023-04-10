@@ -17,6 +17,7 @@ export class PillsBottle extends Container {
 
   async onOpen(): Promise<void> {
     window.store.game.playSound('open-pills-bottle')
+    await super.onOpen()
   }
 
   async onSearch(): Promise<void> {

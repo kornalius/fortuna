@@ -1,5 +1,5 @@
 import { Entity, SetupData } from '@/entity'
-import { mixin, registerClass } from '@/utils'
+import { emit, mixin, registerClass } from '@/utils'
 import { ICode, Code } from '@/mixins/code'
 import { IName, Name } from '@/mixins/name'
 import { IDescription, Description } from '@/mixins/description'
@@ -51,6 +51,18 @@ export class Container extends Entity {
   get isContainer(): boolean { return true }
 
   get isInInventory(): boolean { return window.store.player.has(this) }
+
+  async onOpen(): Promise<void> {
+    this.items.forEach(i => {
+      emit(i, 'onReveal')
+    })
+  }
+
+  async onClose(): Promise<void> {
+    this.items.forEach(i => {
+      emit(i, 'onConceal')
+    })
+  }
 }
 
 mixin(Container, [

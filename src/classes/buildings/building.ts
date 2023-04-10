@@ -68,7 +68,7 @@ export class Building extends Entity {
   get startRoomCode(): string | null { return this.state.startRoomCode }
   set startRoomCode(value) { this.state.startRoomCode = value }
 
-  get buildings(): Building[] { return window.store.buildings.list.filter(i => i.location === this) }
+  get rooms(): Room[] { return window.store.rooms.list.filter(i => i.location === this) }
 
   get hours(): OpenHours | null { return this.state.hours }
   set hours(value) { this.state.hours = value }
@@ -166,6 +166,10 @@ export class Building extends Entity {
         }
       }
 
+      this.rooms.forEach(r => {
+        emit(r, 'onReveal')
+      })
+
       window.store.game.showCityMap = false
 
       this.hidden = false
@@ -210,6 +214,11 @@ export class Building extends Entity {
     if (!this.canExit(true)) {
       return false
     }
+
+    this.rooms.forEach(r => {
+      emit(r, 'onConceal')
+    })
+
     if (window.store.game.room) {
       await window.store.game.room.exit()
     }

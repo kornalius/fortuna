@@ -116,6 +116,10 @@ export class City extends Entity {
         }
       }
 
+      this.buildings.forEach(b => {
+        emit(b, 'onReveal')
+      })
+
       this.hidden = false
       window.store.game.city = this
       window.store.game.building = null
@@ -169,6 +173,9 @@ export class City extends Entity {
     if (!this.canExit(true)) {
       return false
     }
+    this.buildings.forEach(b => {
+      emit(b, 'onConceal')
+    })
     if (window.store.game.building) {
       await window.store.game.building.exit()
     }
