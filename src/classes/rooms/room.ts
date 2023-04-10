@@ -62,7 +62,7 @@ export class Room extends Entity {
   get ownerIds(): string[] { return this.location?.ownerIds || [] }
   get owners(): Npc[] { return this.location?.owners || [] }
 
-  get presentOwners(): Npc[] { return this.owners.filter(o => this.npcs.includes(o)) }
+  get presentOwners(): Npc[] { return this.owners.filter(o => !o.isDead && this.npcs.includes(o)) }
 
   get canSleepOnItems(): boolean { return !!this.items.find(i => (i as any).canSleepOn)}
 

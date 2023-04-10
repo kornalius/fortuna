@@ -1,4 +1,4 @@
-import { Entity, SetupData } from '@/entity'
+import { SetupData } from '@/entity'
 import { emit, mixin, registerClass } from '@/utils'
 import { ICode, Code } from '@/mixins/code'
 import { IName, Name } from '@/mixins/name'
@@ -16,6 +16,7 @@ import { IPullable, Pullable } from '@/mixins/pullable'
 import { IItems, Items } from '@/mixins/items'
 import { IRequirements, Requirements } from '@/mixins/requirements'
 import { ITooltip, Tooltip } from '@/mixins/tooltip'
+import { Item } from '@/classes/items/item'
 
 export interface Container extends
   ICode,
@@ -36,7 +37,7 @@ export interface Container extends
   ITooltip
 {}
 
-export class Container extends Entity {
+export class Container extends Item {
   setupInstance(data?: SetupData): SetupData | undefined {
     const { locationId, locationStore } = this.setupLocation(data)
 

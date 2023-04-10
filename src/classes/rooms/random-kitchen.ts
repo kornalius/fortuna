@@ -8,6 +8,7 @@ import { Blender } from '@/classes/items/electronic/blender'
 import { Microwave } from '@/classes/items/electronic/microwave'
 import { Stove } from '@/classes/containers/stove'
 import { SetupData } from '@/entity'
+import { ClassDefinition } from '@/generators'
 
 export class RandomKitchen extends RandomRoom {
   setupInstance(data?: SetupData): SetupData | undefined {
@@ -22,7 +23,7 @@ export class RandomKitchen extends RandomRoom {
         [Blender, 0, 1],
         [Microwave, 0, 1],
         ...(data?.randomItems || []),
-      ],
+      ] as ClassDefinition[],
       ...(data || {}),
     })
   }

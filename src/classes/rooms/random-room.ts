@@ -1,5 +1,5 @@
 import { registerClass } from '@/utils'
-import { randomItems } from '@/generators'
+import { ClassDefinition, randomItems } from '@/generators'
 import { Room } from './room'
 import { LightSwitch } from '@/classes/items/electronic/light-switch'
 import { CeilingLight } from '@/classes/items/light/ceiling-light'
@@ -26,7 +26,7 @@ export class RandomRoom extends Room {
         [TrashCan, 0, 1],
         [Table, 0, 1],
         ...(data?.randomItems || []),
-      ],
+      ] as ClassDefinition[],
     })
   }
 

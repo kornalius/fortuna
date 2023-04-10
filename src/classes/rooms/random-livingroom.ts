@@ -8,6 +8,7 @@ import { Hifi } from '@/classes/items/electronic/hifi'
 import { Speaker } from '@/classes/items/electronic/speaker'
 import { Fireplace } from '@/classes/items/electronic/fireplace'
 import { SetupData } from '@/entity'
+import { ClassDefinition } from '@/generators'
 
 export class RandomLivingRoom extends RandomRoom {
   setupInstance(data?: SetupData): SetupData | undefined {
@@ -22,7 +23,7 @@ export class RandomLivingRoom extends RandomRoom {
         [Speaker, 0, 2],
         [Fireplace, 0, 1],
         ...(data?.randomItems || []),
-      ],
+      ] as ClassDefinition[],
       ...(data || {}),
     })
   }
