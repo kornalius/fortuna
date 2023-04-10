@@ -156,7 +156,7 @@ export class Room extends Entity {
         directions,
       })
       d.location = this
-      window.store.npcs.update(d)
+      window.store.doors.update(d)
       return d
     }
   }

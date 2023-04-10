@@ -7,6 +7,10 @@ import { LightSwitch } from '@/classes/items/electronic/light-switch'
 export default {
   usable: false,
 
+  mounted(): void {
+    this.state.done = false
+  },
+
   async onExamine(): Promise<void> {
     if (this.isOff) {
       log('You feel the switch and concludes it is a normal switch with nothing special about it')
@@ -15,8 +19,7 @@ export default {
   },
 
   async onUse(): Promise<void> {
-    if (this.isOff && !this.state.done) {
-      this.isOn = true
+    if (this.isOn && !this.state.done) {
       this.state.done = true
 
       log([

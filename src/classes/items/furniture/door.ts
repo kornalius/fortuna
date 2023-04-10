@@ -17,6 +17,7 @@ export class Door extends Item {
   setupInstance(data?: SetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Door',
+      icon: 'door',
       keyId: data?.key?.id,
       usable: true,
       pickable: false,

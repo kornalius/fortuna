@@ -47,7 +47,7 @@ export default {
     log([
       'It is very dark in here.',
       'You cannot quite see.',
-      'You use extend your hands in front of you and walk forward until you touch the wall, at least it feels like gypsum.',
+      'You extend your hands in front of you and walk forward until you touch the wall, at least it feels like gypsum.',
       'You lounge the wall until your fingers touch a bump that feels like metal about the size of a credit card.',
     ])
   },

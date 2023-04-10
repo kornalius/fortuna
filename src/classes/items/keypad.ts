@@ -23,9 +23,7 @@ export class Keypad extends Item {
   set doorId(value) { this.state.doorId = value }
 
   get door(): Door | undefined { return window.store.doors.get(this.doorId) }
-  set door(value: Door | undefined | null) {
-    this.state.doorId = value ? value.id : null
-  }
+  set door(value: Door | undefined | null) { this.state.doorId = value ? value.id : null }
 
   get code(): string | null { return this.door?.keypadCode || '' }
 
