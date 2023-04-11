@@ -99,7 +99,7 @@ export const Activable: IActivable = {
   },
 
   async activate(): Promise<boolean> {
-    if (!this.canActivate()) {
+    if (!this.canActivate(true)) {
       return false
     }
     log(`Activating ${this.nameDisplay}...`, LOG_WARN, this.icon)

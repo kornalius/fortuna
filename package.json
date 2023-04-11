@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capaj/pluralize": "^1.0.4",
     "@types/howler": "^2.2.7",
     "animejs": "^3.2.1",
     "dayjs": "^1.10.8",

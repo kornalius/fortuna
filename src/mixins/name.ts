@@ -25,7 +25,7 @@ export const Name: IName = {
   },
 
   get renameable(): boolean { return this.state.renameable },
-  set renameable(renameable) { this.state.renameable = renameable },
+  set renameable(value) { this.state.renameable = value },
 
   get name(): string | null { return this.state.name },
   set name(value) {

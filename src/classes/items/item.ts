@@ -22,6 +22,7 @@ import { IPushable, Pushable } from '@/mixins/pushable'
 import { IPullable, Pullable } from '@/mixins/pullable'
 import { IRequirements, Requirements } from '@/mixins/requirements'
 import { ITooltip, Tooltip } from '@/mixins/tooltip'
+import { ISelectable, Selectable } from '@/mixins/selectable'
 
 export interface Item extends
   ICode,
@@ -45,7 +46,8 @@ export interface Item extends
   IPushable,
   IPullable,
   IRequirements,
-  ITooltip
+  ITooltip,
+  ISelectable
 {}
 
 export class Item extends Entity {
@@ -86,6 +88,7 @@ mixin(Item, [
   Pullable,
   Requirements,
   Tooltip,
+  Selectable,
 ])
 
 registerClass(Item)

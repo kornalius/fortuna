@@ -22,7 +22,7 @@
           strong
           @mouseover.once="() => value.hovered = true"
         >
-          <div class="flex flex-grow-1 flex-column">
+          <div class="flex flex-grow-1 flex-column" :class="{ selected }">
             <div class="flex flex-grow-1 items-center">
               <icon
                 v-if="value.icon"
@@ -143,6 +143,7 @@ const props = defineProps({
   value: { type: Object },
   disabled: { type: Boolean },
   hideLabel: { type: Boolean },
+  selected: { type: Boolean },
 })
 
 const renderDropdownIcon = option => h(Icon, { icon: icons[option.icon], scale: option.scale || 1.5, class: option.class })
@@ -240,5 +241,8 @@ const groupedBuffs = computed(() => {
   background-color: #333;
   border-radius: 8px;
   color: #F19936;
+}
+.selected {
+  border: 2px solid #F19936;
 }
 </style>

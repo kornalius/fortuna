@@ -31,6 +31,7 @@ export interface GameState {
   showIconsList: boolean
   date: string
   time: string
+  selectedItemId: string | null
 }
 
 export interface Game {
@@ -64,6 +65,7 @@ export class Game {
       showIconsList: false,
       date: window.store.config.startDate,
       time: window.store.config.startTime,
+      selectedItemId: null,
     }
   }
 
@@ -170,6 +172,22 @@ export class Game {
     } else {
       this.keypadId = null
     }
+  }
+
+  get selectedItemId(): string | null { return this.state.selectedItemId }
+  set selectedItemId(value) { this.state.selectedItemId = value }
+
+  get selectedItem(): Item | undefined { return window.store.items.get(this.selectedItemId) }
+  set selectedItem(value: Item | undefined | null) {
+    if (value) {
+      this.selectedItemId = value.id
+    } else {
+      this.selectedItemId = null
+    }
+  }
+
+  clearSelectedItem(): void {
+    this.selectedItem = null
   }
 
   get volume(): number { return this.state.volume }

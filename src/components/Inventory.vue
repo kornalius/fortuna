@@ -1,5 +1,8 @@
 <template>
-  <n-card style="opacity: .95">
+  <n-card
+    style="opacity: .95"
+    @click.stop="store.game.clearSelectedItem"
+  >
     <div class="flex flex-column h-100">
       <div class="relative flex h-100">
         <div class="scrollable">
@@ -9,12 +12,16 @@
             class="pv1"
             :value="item"
             :disabled="disabled"
+            :selected="item.isSelected"
           />
         </div>
       </div>
 
       <div class="flex justify-end">
-        <icon class="mr2" :icon="icons.weightWhite" />
+        <icon
+          class="mr2"
+          :icon="icons.weightWhite"
+        />
         <span>{{ store.player.carryWeight }} / {{ store.player.maxWeight }}</span>
       </div>
 
@@ -117,6 +124,7 @@ const props = defineProps({
 
 const filter = ref()
 const sort = ref()
+const selected = ref()
 
 const items = computed(() =>
   window.store.player.items

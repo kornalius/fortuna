@@ -89,7 +89,7 @@ export const Consumable: IConsumable = {
   },
 
   async consume(): Promise<boolean> {
-    if (!this.canConsume()) {
+    if (!this.canConsume(true)) {
       return false
     }
     log(`Consuming ${this.nameDisplay}...`, LOG_WARN, this.icon)

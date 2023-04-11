@@ -938,6 +938,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@capaj/pluralize@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@capaj/pluralize/-/pluralize-1.0.4.tgz#6fedf577fbc49e4331b85a638909db8a356a7e2f"
+  integrity sha512-rhTKZelAa1QwiFvFml/XhRBFy2ZFr9YEMUQmIwk0i4Cr9or7SyTkzMRKAzUtgf/b4vwR6MhOYZX1sEwfWJMiFg==
+
 "@css-render/plugin-bem@^0.15.8":
   version "0.15.8"
   resolved "https://registry.yarnpkg.com/@css-render/plugin-bem/-/plugin-bem-0.15.8.tgz#02df62ec0a16f5c07687e64f1ee595e8509d04ce"

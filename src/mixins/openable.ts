@@ -54,7 +54,7 @@ export const Openable: IOpenable = {
             label: item.openLabel,
             key: item.openKey,
             icon: item.openIcon,
-            disabled: item.openDisabled,
+            disabled: !item.canOpen(),
             click: item.openClick,
           }
           : undefined
@@ -106,7 +106,7 @@ export const Openable: IOpenable = {
   canOpen(showMessage?: boolean): boolean {
     return can(this, [
       {
-        expr: () => !this.isOpenable,
+        expr: () => !this.isOpenable || !this.openDisabled,
         log: () => `${this.nameProper} cannot be opened`
       },
       {

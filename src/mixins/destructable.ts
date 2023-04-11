@@ -97,7 +97,7 @@ export const Destructable: IDestructable = {
   },
 
   async destroy(): Promise<boolean> {
-    if (!this.canDestroy()) {
+    if (!this.canDestroy(true)) {
       return false
     }
     log(`Damaging ${this.nameDisplay}...`, LOG_WARN, this.icon)
