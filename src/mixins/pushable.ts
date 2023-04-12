@@ -4,12 +4,34 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IOperation } from './operation'
-import { IRequirements } from './requirements'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IOperation, IOperationSetupData } from './operation'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IPushable extends IName, IIcon, IRequirements, IOperation {
+export interface IPushableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the object pushable
+  pushable?: boolean
+  // time it takes to push object
+  pushDelay?: number
+  // has the object been pushed
+  pushed?: boolean
+}
+
+export interface IPushable extends
+  IName,
+  IIcon,
+  IRequirements,
+  IOperation,
+  IActions
+{
   state: State
   get isPushable(): boolean
   set pushable(value: boolean)
@@ -26,21 +48,18 @@ export interface IPushable extends IName, IIcon, IRequirements, IOperation {
 // @ts-ignore
 export const Pushable: IPushable = {
   state: {
-    // is the object pushable
     pushable: false,
-    // time it takes to push object
     pushDelay: 1,
-    // has the object been pushed
     pushed: false,
     actions: [
-      (item: IPushable) => (
+      (item: IPushable): IDropdownItem | undefined => (
         item.isPushable && !item.isPushed
           ? {
             label: item.pushLabel,
             key: 'push',
             icon: 'push',
             disabled: !item.canPush(),
-            click: async () => item.push(),
+            click: item.push,
           }
           : undefined
       ),
@@ -48,7 +67,7 @@ export const Pushable: IPushable = {
     requirements: [
       { name: 'push', str: 1 }
     ],
-  },
+  } as IPushableSetupData,
 
   get isPushable(): boolean { return this.state.pushable },
   set pushable(value: boolean) { this.state.pushable = value },

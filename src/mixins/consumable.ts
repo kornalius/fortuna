@@ -5,15 +5,42 @@
 import random from 'lodash/random'
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State, Entity } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IOperation } from './operation'
-import { IRequirements } from './requirements'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IOperation, IOperationSetupData } from './operation'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IConsumable extends IName, IIcon, IOperation, IRequirements, Entity {
+export interface IConsumableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IOperationSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // total to consume
+  consumable?: number
+  // time it takes to consume
+  consumeDelay?: number
+  // to be consumed every action
+  consumeAmount?: number
+  // consumed so far
+  consumed?: number
+  // delete the object once consumed
+  removeWhenConsumed?: boolean
+}
+
+export interface IConsumable extends
+  IName,
+  IIcon,
+  IOperation,
+  IRequirements,
+  IActions,
+  Entity
+{
   state: State
   get isConsumable(): boolean
-  set consumable(value: boolean)
+  set consumable(value: number)
   get isConsumed(): boolean
   get consumed(): number
   set consumed(value: number)
@@ -43,22 +70,22 @@ export const Consumable: IConsumable = {
     // delete the object once consumed
     removeWhenConsumed: true,
     actions: [
-      (item: IConsumable) => (
+      (item: IConsumable): IDropdownItem | undefined => (
         item.isConsumable
           ? {
             label: item.consumeLabel,
             key: 'consume',
             icon: 'consume',
             disabled: !item.canConsume(),
-            click: async () => item.consume(),
+            click: item.consume,
           }
           : undefined
       ),
     ],
-  },
+  } as IConsumableSetupData,
 
   get isConsumable(): boolean { return this.state.consumable > 0 },
-  set consumable(value: boolean) { this.state.consumable = value },
+  set consumable(value: number) { this.state.consumable = value },
 
   get isConsumed(): boolean { return this.state.consumed >= this.state.consumable },
   get consumed(): number { return this.state.consumed },

@@ -5,14 +5,39 @@
 import compact from 'lodash/compact'
 import { log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { ILocation } from './location'
-import { IUsable } from './usable'
-import { IExaminable } from './examinable'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { ILocation, ILocationSetupData } from './location'
+import { IUsable, IUsableSetupData } from './usable'
+import { IExaminable, IExaminableSetupData } from './examinable'
+import { IPickableSetupData } from '@/mixins/pickable'
 
-export interface ISwitch extends IName, IIcon, IExaminable, IUsable, IRequirements, ILocation {
+export interface ISwitchSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IExaminableSetupData,
+  IUsableSetupData,
+  IRequirementsSetupData,
+  ILocationSetupData,
+  IPickableSetupData
+{
+  // is the object off
+  off?: boolean
+  // the object is usable by default
+  usable?: boolean
+  // if the icon should be suffixed with switch state -on or -off
+  switchIconSuffix?: boolean
+}
+
+export interface ISwitch extends
+  IName,
+  IIcon,
+  IExaminable,
+  IUsable,
+  IRequirements,
+  ILocation
+{
   state: State
   get isOn(): boolean
   set isOn(value)
@@ -30,14 +55,11 @@ export interface ISwitch extends IName, IIcon, IExaminable, IUsable, IRequiremen
 // @ts-ignore
 export const Switch: ISwitch = {
   state: {
-    // is the object off
     off: true,
-    // the object is usable by default
     usable: true,
-    // if the icon should be suffixed with switch state -on or -off
     switchIconSuffix: true,
     pickable: false,
-  },
+  } as ISwitchSetupData,
 
   get isOn(): boolean { return !this.state.off },
   set isOn(value) { this.state.off = !value },

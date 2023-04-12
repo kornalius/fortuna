@@ -13,6 +13,11 @@ export interface IBuff {
   rolls?: number
 }
 
+export interface IBuffsSetupData {
+  // buffs to apply to an player or npc stats { name, value, time, turns, rolls }
+  buffs?: IBuff[],
+}
+
 export interface IBuffs {
   state: State
   get buffs(): IBuff[]
@@ -26,9 +31,8 @@ export interface IBuffs {
 
 export const Buffs: IBuffs = {
   state: {
-    // buffs to apply to an player or npc stats { name, value, time, turns, rolls }
     buffs: [],
-  },
+  } as IBuffsSetupData,
 
   get buffs(): IBuff[] { return this.state.buffs },
   set buffs(value) { this.state.buffs = value },

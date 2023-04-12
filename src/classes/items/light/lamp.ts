@@ -1,9 +1,10 @@
 import { registerClass } from '@/utils'
 import { Light } from './light'
 import { SetupData } from '@/entity'
+import { IItemSetupData } from '@/classes/items/item'
 
 export class Lamp extends Light {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IItemSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Lamp',
       icon: 'lamp',

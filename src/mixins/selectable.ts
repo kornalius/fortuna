@@ -5,9 +5,21 @@
 import { State } from '@/entity'
 import { can } from '@/utils'
 import { Item } from '@/classes/items/item'
-import { IName } from '@/mixins/name'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface ISelectable extends IName {
+export interface ISelectableSetupData extends
+  INameSetupData,
+  IActionsSetupData
+{
+  // is the object selectable
+  selectable?: boolean
+}
+
+export interface ISelectable extends
+  IName,
+  IActions
+{
   state: State
   get isSelectable(): boolean
   set selectable(value: boolean)
@@ -25,19 +37,19 @@ export const Selectable: ISelectable = {
     // is the object selectable
     selectable: true,
     actions: [
-      (item: ISelectable) => (
+      (item: ISelectable): IDropdownItem | undefined => (
         item.isSelectable
           ? {
             label: item.selectLabel,
             key: 'select',
             icon: 'select',
             disabled: !item.canSelect(),
-            click: async () => item.toggleSelect(),
+            click: item.toggleSelect,
           }
           : undefined
       ),
     ],
-  },
+  } as ISelectableSetupData,
 
   get isSelectable(): boolean { return this.state.selectable && (this as unknown as Item).isInInventory },
   set selectable(value: boolean) { this.state.selectable = value },

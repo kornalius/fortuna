@@ -1,9 +1,9 @@
 import { pickRandom, registerClass } from '@/utils'
-import { Food } from './food'
+import { Food, IFoodSetupData } from './food'
 import { SetupData } from '@/entity'
 
 export class Cookie extends Food {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IFoodSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Cookie',
       icon: pickRandom(['cookie1', 'cookie2', 'cookie3']),

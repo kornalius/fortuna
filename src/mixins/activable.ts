@@ -4,11 +4,33 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IRequirements } from './requirements'
-import { IOperation } from './operation'
+import { IName, INameSetupData } from './name'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IOperation, IOperationSetupData } from './operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IActivable extends IName, IRequirements, IOperation {
+export interface IActivableSetupData extends
+  INameSetupData,
+  IActionsSetupData,
+  IOperationSetupData,
+  IRequirementsSetupData
+{
+  // is the item activable
+  activable?: boolean
+  // can the item be disactivated
+  disactivable?: boolean
+  // time it takes to activate or disactivate
+  activationDelay?: number
+  // is the item active or not
+  active?: boolean
+}
+
+export interface IActivable extends
+  IName,
+  IActions,
+  IRequirements,
+  IOperation
+{
   state: State
   get isActivable(): boolean
   set activable(value: boolean)
@@ -31,34 +53,30 @@ export interface IActivable extends IName, IRequirements, IOperation {
 // @ts-ignore
 export const Activable: IActivable = {
   state: {
-    // is the item activable
     activable: false,
-    // can the item be disactivated
     disactivable: false,
-    // time it takes to activate or disactivate
     activationDelay: 1,
-    // is the item active or not
     active: false,
     actions: [
-      (item: IActivable) => (
+      (item: IActivable): IDropdownItem | undefined => (
         item.isActivable && !item.isActive
         ? {
             label: item.activateLabel,
             key: 'activate',
             icon: 'activate',
             disabled: !item.canActivate(),
-            click: async () => item.activate(),
+            click: item.activate,
           }
         : undefined
       ),
-        (item: IActivable) => (
+      (item: IActivable): IDropdownItem | undefined => (
         item.isDisactivable && item.isActive
           ? {
             label: item.disactivateLabel,
             key: 'disactivate',
             icon: 'disactivate',
             disabled: !item.canDisactivate(),
-            click: async () => item.disactivate(),
+            click: item.disactivate,
           }
           : undefined
       ),
@@ -67,7 +85,7 @@ export const Activable: IActivable = {
       { name: 'activate', dex: 1 },
       { name: 'disactivate', dex: 1 },
     ],
-  },
+  } as IActivableSetupData,
 
   get isActivable(): boolean { return this.state.activable },
   set activable(value: boolean) { this.state.activable = value },

@@ -4,11 +4,29 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IExaminable extends IName, IIcon, IRequirements {
+export interface IExaminableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object examinable or not
+  examinable?: boolean
+  // how many times the object has been examined
+  examined?: number
+}
+
+export interface IExaminable extends
+  IName,
+  IIcon,
+  IRequirements,
+  IActions
+{
   state: State
   get isExaminable(): boolean
   set examinable(value: boolean)
@@ -23,12 +41,10 @@ export interface IExaminable extends IName, IIcon, IRequirements {
 // @ts-ignore
 export const Examinable: IExaminable = {
   state: {
-    // is the object examinable or not
     examinable: true,
-    // how many times the object has been examined
     examined: 0,
     actions: [
-      (item: IExaminable) => (
+      (item: IExaminable): IDropdownItem | undefined => (
         item.isExaminable
           ? {
             label: item.examineLabel,
@@ -36,7 +52,7 @@ export const Examinable: IExaminable = {
             icon: 'examine',
             disabled: !item.canExamine(),
             scale: 2,
-            click: async () => item.examine(),
+            click: item.examine,
           }
           : undefined
       ),
@@ -44,7 +60,7 @@ export const Examinable: IExaminable = {
     actionsOrder: [
       'examine',
     ],
-  },
+  } as IExaminableSetupData,
 
   get isExaminable(): boolean { return this.state.examinable },
   set examinable(value: boolean) { this.state.examinable = value },

@@ -4,10 +4,11 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { IOperation } from './operation'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IOperation, IOperationSetupData } from './operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
 export type Slots = 'H' | 'Y' | 'T' | 'W' | 'D' | 'L' | 'FEET'
 
@@ -31,7 +32,30 @@ export const EquipableIcons = {
   [EquipableSlots.FEET]: 'char-feet',
 }
 
-export interface IEquipable extends IName, IIcon, IRequirements, IOperation {
+export interface IEquipableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the item equipable
+  equipable?: boolean
+  // time it takes to equip the item
+  equipDelay?: number
+  // slot to equip in
+  equipSlot?: Slots | null
+  // is the item equipped
+  equipped?: boolean
+}
+
+export interface IEquipable extends
+  IName,
+  IIcon,
+  IRequirements,
+  IActions,
+  IOperation
+{
   state: State
   get isEquipable(): boolean
   set equipable(value: boolean)
@@ -57,16 +81,12 @@ export interface IEquipable extends IName, IIcon, IRequirements, IOperation {
 // @ts-ignore
 export const Equipable: IEquipable = {
   state: {
-    // is the item equipable
     equipable: false,
-    // time it takes to equip the item
     equipDelay: 1000,
-    // slot to equip in
     equipSlot: EquipableSlots.HEAD,
-    // is the item equipped
     equipped: false,
     actions: [
-      (item: IEquipable) => (
+      (item: IEquipable): IDropdownItem | undefined => (
         item.isEquipable && window.store.player.has(item)
           ? {
             label: item.equipLabel,
@@ -79,7 +99,7 @@ export const Equipable: IEquipable = {
       ),
     ],
     requirements: [],
-  },
+  } as IEquipableSetupData,
 
   get isEquipable(): boolean { return this.state.equipable },
   set equipable(value: boolean) { this.state.equipable = value },

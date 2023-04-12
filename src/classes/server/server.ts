@@ -12,16 +12,46 @@ import {
   randomFilename,
   registerClass
 } from '@/utils'
-import { Item } from '../items/item'
+import { IItemSetupData, Item } from '../items/item'
 import { File } from './file'
 import { femaleNames, maleNames, passwords } from '@/words'
 import { SetupData } from '@/entity'
 import { Software } from '@/classes/softwares/software'
-import { IExaminable, Examinable } from '@/mixins/examinable'
-import { IVersion, Version } from '@/mixins/version'
-import { IVisitable, Visitable } from '@/mixins/visitable'
-import { ITimeout, Timeout } from '@/mixins/timeout'
+import { IExaminable, Examinable, IExaminableSetupData } from '@/mixins/examinable'
+import { IVersion, IVersionSetupData, Version } from '@/mixins/version'
+import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
+import { ITimeout, ITimeoutSetupData, Timeout } from '@/mixins/timeout'
 import { IOperationItem } from '@/mixins/operation'
+import { IDropdownItem } from '@/mixins/actions'
+
+export interface IServerSetupData extends
+  IItemSetupData,
+  IExaminableSetupData,
+  IVersionSetupData,
+  IVisitableSetupData,
+  ITimeoutSetupData
+{
+  // current displayed lines
+  display?: string[]
+  // buffered characters
+  buffer?: string[],
+  // are we authenticating?
+  authenticating?: boolean
+  // is the server authenticated
+  authenticated?: boolean
+  // is the server crackable?
+  crackable?: boolean
+  // is the server protected? (Not cracked yet)
+  protected?: boolean
+  // are we listing files?
+  listing?: boolean
+  // position of the caret on screen
+  caret?: number
+  // username for crack
+  username?: string | null
+  // password for crack
+  password?: string | null
+}
 
 export interface Server extends
   IExaminable,
@@ -33,13 +63,16 @@ export interface Server extends
 export class Server extends Item {
   fileOrders: string[] = []
 
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: IServerSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IServerSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Server',
       icon: 'server',
       pickable: false,
       usable: false,
-      type: null,
       display: [],
       buffer: [],
       authenticating: false,
@@ -51,31 +84,31 @@ export class Server extends Item {
       username: null,
       password: null,
       actions: [
-        (item: Server) => (
+        (item: Server): IDropdownItem | undefined => (
           {
             label: 'Use',
             key: 'connect',
             icon: 'connect',
             disabled: !item.canConnect(),
-            click: async () => item.connect(),
+            click: item.connect,
           }
         ),
-        (item: Server) => (
+        (item: Server): IDropdownItem | undefined => (
           {
             label: 'Authenticate',
             key: 'authenticate',
             icon: 'authenticate',
             disabled: !item.canAuthenticate(),
-            click: async () => item.authenticate(),
+            click: item.authenticate,
           }
         ),
-        (item: Server) => (
+        (item: Server): IDropdownItem | undefined => (
           {
             label: 'List files',
             key: 'list',
             icon: 'listWhite',
             disabled: !item.canList(),
-            click: async () => item.list(),
+            click: item.list,
           }
         ),
       ],
@@ -599,7 +632,6 @@ export class Server extends Item {
         name,
         size: random(1, window.store.config.maxFileSize),
         type,
-        viewable: false,
         downloadable: false,
         deletable: false,
       }))

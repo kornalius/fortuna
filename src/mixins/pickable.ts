@@ -4,14 +4,34 @@
 
 import { can, emit, log, LOG_ERROR, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { ILocation } from './location'
-import { IHovered } from './hovered'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { ILocation, ILocationSetupData } from './location'
+import { IHovered, IHoveredSetupData } from './hovered'
 import { Npc } from '@/classes/npcs/npc'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IPickable extends IName, IIcon, IRequirements, IHovered, ILocation {
+export interface IPickableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  IHoveredSetupData,
+  ILocationSetupData,
+  IActionsSetupData
+{
+  // is the object pickable
+  pickable?: boolean
+}
+
+export interface IPickable extends
+  IName,
+  IIcon,
+  IRequirements,
+  IHovered,
+  ILocation,
+  IActions
+{
   state: State
   get isPickable(): boolean
   set pickable(value: boolean)
@@ -24,22 +44,21 @@ export interface IPickable extends IName, IIcon, IRequirements, IHovered, ILocat
 // @ts-ignore
 export const Pickable: IPickable = {
   state: {
-    // is the object pickable
     pickable: true,
     actions: [
-      (item: IPickable) => (
+      (item: IPickable): IDropdownItem | undefined => (
         item.isPickable && !window.store.player.has(item)
           ? {
             label: item.pickupLabel,
             key: 'pickup',
             icon: 'pickup',
             disabled: !item.canPickup(),
-            click: async () => item.pickup(),
+            click: item.pickup,
           }
           : undefined
       ),
     ],
-  },
+  } as IPickableSetupData,
 
   get isPickable(): boolean { return this.state.pickable },
   set pickable(value: boolean) { this.state.pickable = value },

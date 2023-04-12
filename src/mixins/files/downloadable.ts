@@ -4,12 +4,30 @@
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from '@/mixins/name'
-import { IRequirements } from '@/mixins/requirements'
-import { IWeight } from '@/mixins/weight'
-import { IOperation } from '@/mixins/operation'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
+import { IWeight, IWeightSetupData } from '@/mixins/weight'
+import { IOperation, IOperationSetupData } from '@/mixins/operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDownloadable extends IName, IRequirements, IWeight, IOperation {
+export interface IDownloadableSetupData extends
+  INameSetupData,
+  IRequirementsSetupData,
+  IWeightSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the object downloadable
+  downloadable?: boolean
+}
+
+export interface IDownloadable extends
+  IName,
+  IRequirements,
+  IWeight,
+  IOperation,
+  IActions
+{
   state: State
   get isDownloadable(): boolean
   set downloadable(value: boolean)
@@ -22,22 +40,21 @@ export interface IDownloadable extends IName, IRequirements, IWeight, IOperation
 // @ts-ignore
 export const Downloadable: IDownloadable = {
   state: {
-    // is the object downloadable
     downloadable: false,
     actions: [
-      (item: IDownloadable) => (
+      (item: IDownloadable): IDropdownItem | undefined => (
         item.isDownloadable && (item as any).isOnServer
         ? {
             label: item.downloadLabel,
             key: 'download',
             icon: 'download',
             disabled: !item.canDownload(),
-            click: async () => item.download(),
+            click: item.download,
           }
           : undefined
       ),
     ],
-  },
+  } as IDownloadableSetupData,
 
   get isDownloadable(): boolean { return this.state.downloadable },
   set downloadable(value: boolean) { this.state.downloadable = value },

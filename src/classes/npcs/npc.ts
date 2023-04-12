@@ -3,22 +3,22 @@ import { Entity, SetupData } from '@/entity'
 import { Dialog } from '@/classes/dialog'
 import { Combat } from '@/classes/combat'
 import { AnyData, can, emit, mixin, registerClass } from '@/utils'
-import { ICode, Code } from '@/mixins/code'
-import { IName, Name } from '@/mixins/name'
-import { IDescription, Description } from '@/mixins/description'
-import { IActions, Actions } from '@/mixins/actions'
-import { IImage, Image } from '@/mixins/image'
-import { IHovered, Hovered } from '@/mixins/hovered'
-import { ILocation, Location } from '@/mixins/location'
-import { ILevel, Level } from '@/mixins/level'
-import { IBuffable, Buffable } from '@/mixins/buffable'
-import { IHp, Hp } from '@/mixins/hp'
-import { ICredits, Credits } from '@/mixins/credits'
-import { IItems, Items } from '@/mixins/items'
-import { ICarry, Carry } from '@/mixins/carry'
-import { IRequirements, Requirements } from '@/mixins/requirements'
-import { ISleep, Sleep } from '@/mixins/sleep'
-import { ITooltip, Tooltip } from '@/mixins/tooltip'
+import { ICode, Code, ICodeSetupData } from '@/mixins/code'
+import { IName, INameSetupData, Name } from '@/mixins/name'
+import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
+import { IActions, Actions, IDropdownItem, IActionsSetupData } from '@/mixins/actions'
+import { IImage, IImageSetupData, Image } from '@/mixins/image'
+import { IHovered, Hovered, IHoveredSetupData } from '@/mixins/hovered'
+import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
+import { ILevel, ILevelSetupData, Level } from '@/mixins/level'
+import { IBuffable, Buffable, IBuffableSetupData } from '@/mixins/buffable'
+import { IHp, Hp, IHpSetupData } from '@/mixins/hp'
+import { ICredits, Credits, ICreditsSetupData } from '@/mixins/credits'
+import { IItems, IItemsSetupData, Items } from '@/mixins/items'
+import { ICarry, Carry, ICarrySetupData } from '@/mixins/carry'
+import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+import { ISleep, ISleepSetupData, Sleep } from '@/mixins/sleep'
+import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
 import { IDie } from '@/store/config'
 
 export interface Agenda {
@@ -28,6 +28,61 @@ export interface Agenda {
   roomId?: string | null
   roomCode?: string | null
   expr: (npc: Npc, end: boolean) => Promise<void>
+}
+
+export interface INpcSetupData extends
+  ICodeSetupData,
+  INameSetupData,
+  IDescriptionSetupData,
+  IActionsSetupData,
+  IImageSetupData,
+  IHoveredSetupData,
+  ILocationSetupData,
+  ICreditsSetupData,
+  IItemsSetupData,
+  ILevelSetupData,
+  IBuffableSetupData,
+  IHpSetupData,
+  ICarrySetupData,
+  IRequirementsSetupData,
+  ISleepSetupData,
+  ITooltipSetupData
+{
+  // is the Npc female or male?
+  female?: boolean
+  // can we talk to this Npc?
+  talkable?: boolean
+  // have we met this Npc before?
+  known?: boolean
+  // is the Npc aggresive towards us?
+  aggresive?: boolean
+  // fixed set of dice
+  dice?: IDie[]
+  color?: string | null
+  firstname?: string | null
+  lastname?: string | null
+  nickname?: string | null
+  age?: number
+  eyeColor?: string | null
+  hairColor?: string | null
+  skinColor?: string | null
+  build?: string | null
+  size?: string | null
+  strength?: string | null
+  status?: string | null
+  mood?: string | null
+  motives?: string | null
+  mind?: string | null
+  trait?: string | null
+  job?: string | null
+  jobLevel?: string | null
+  jobDomain?: string | null
+  buildAdv?: string | null
+  sizeAdv?: string | null
+  strengthAdv?: string | null
+  statusAdv?: string | null
+  moodAdv?: string | null
+  mindAdv?: string | null
 }
 
 export interface Npc extends
@@ -50,8 +105,12 @@ export interface Npc extends
 {}
 
 export class Npc extends Entity {
-  setupInstance(data?: SetupData): SetupData | undefined {
-    const { locationId, locationStore } = this.setupLocation(data)
+  constructor(data?: INpcSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: INpcSetupData): SetupData | undefined {
+    const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({
       name: 'Npc',
@@ -63,24 +122,23 @@ export class Npc extends Entity {
       locationId,
       locationStore,
       dice: this.baseDice,
-      // fixed set of dice
       actions: [
-        (item: Npc) => (
+        (item: Npc): IDropdownItem | undefined => (
           {
             label: 'Talk',
             key: 'talk',
             icon: 'talk',
             disabled: !item.canTalk(),
-            click: async () => item.talk(),
+            click: item.talk,
           }
         ),
-        (item: Npc) => (
+        (item: Npc): IDropdownItem | undefined => (
           {
             label: 'Combat',
             key: 'combat',
             icon: 'combat',
             disabled: !item.canCombat(),
-            click: async () => item.combat(),
+            click: item.combat,
           }
         ),
       ],
@@ -92,7 +150,7 @@ export class Npc extends Entity {
       // turns to skip during battle
       skipTurns: 0,
       ...(data || {})
-    })
+    }) as INpcSetupData
   }
 
   get isNpc(): boolean { return true }

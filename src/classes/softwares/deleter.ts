@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Software } from '@/classes/softwares/software'
+import { ISoftwareSetupData, Software } from '@/classes/softwares/software'
 import { SetupData } from '@/entity'
 
 export class Deleter extends Software {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: ISoftwareSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Deleter',
       installType: 'deleter',

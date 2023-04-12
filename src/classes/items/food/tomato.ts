@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Food } from './food'
+import { Food, IFoodSetupData } from './food'
 import { SetupData } from '@/entity'
 
 export class Tomato extends Food {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IFoodSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Tomato',
       icon: 'tomato',

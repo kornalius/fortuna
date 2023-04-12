@@ -1,12 +1,19 @@
 import { mixin, registerClass } from '@/utils'
-import { Item } from '../item'
-import { ISwitch, Switch } from '@/mixins/switch'
+import { IItemSetupData, Item } from '../item'
+import { ISwitch, ISwitchSetupData, Switch } from '@/mixins/switch'
 import { SetupData } from '@/entity'
+
+
+export interface IElectronicSetupData extends IItemSetupData, ISwitchSetupData {}
 
 export interface Electronic extends ISwitch {}
 
 export class Electronic extends Item {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: IElectronicSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IElectronicSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Electronic',
       ...(data || {})

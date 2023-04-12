@@ -7,10 +7,10 @@ import { Roll } from '@/classes/battles/roll'
 import { BookShelf } from '@/classes/containers/bookshelf'
 import { RandomNpc } from '@/classes/npcs/random-npc'
 import { BaseballCap } from '@/classes/items/clothing/baseball-cap'
-import TestRoomServer from './servers'
-import TestRoomLightSwitch from './items/light-switch'
-import SimonSmith from './npcs/SimonSmith'
 import { Room } from '@/classes/rooms/room'
+import TestRoomServer from './servers'
+import TestRoomLightSwitch from './light-switch'
+import SimonSmith from './SimonSmith'
 
 export default {
   name: 'Test Room',

@@ -4,13 +4,34 @@
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName } from '@/mixins/name'
-import { IIcon } from '@/mixins/icon'
-import { IWeight } from '@/mixins/weight'
-import { IOperation } from '@/mixins/operation'
-import { IRequirements } from '@/mixins/requirements'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IIcon, IIconSetupData } from '@/mixins/icon'
+import { IWeight, IWeightSetupData } from '@/mixins/weight'
+import { IOperation, IOperationSetupData } from '@/mixins/operation'
+import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDeletable extends Entity, IName, IIcon, IWeight, IOperation, IRequirements {
+export interface IDeletableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IWeightSetupData,
+  IOperationSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object deletable
+  deletable?: boolean
+}
+
+export interface IDeletable extends
+  Entity,
+  IName,
+  IIcon,
+  IWeight,
+  IOperation,
+  IRequirements,
+  IActions
+{
   state: State
   get isDeletable(): boolean
   set deletable(value: boolean)
@@ -23,22 +44,21 @@ export interface IDeletable extends Entity, IName, IIcon, IWeight, IOperation, I
 // @ts-ignore
 export const Deletable: IDeletable = {
   state: {
-    // is the object deletable
     deletable: false,
     actions: [
-      (item: IDeletable) => (
+      (item: IDeletable): IDropdownItem | undefined => (
         item.isDeletable
           ? {
             label: item.deleteLabel,
             key: 'delete',
             icon: 'delete',
             disabled: !item.canDel(),
-            click: async () => item.del(),
+            click: item.del,
           }
           : undefined
       ),
     ],
-  },
+  } as IDeletableSetupData,
 
   get isDeletable(): boolean { return this.state.deletable },
   set deletable(value: boolean) { this.state.deletable = value },

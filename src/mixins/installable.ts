@@ -4,13 +4,37 @@
 
 import { log, emit, can, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { IWeight } from './weight'
-import { IOperation } from './operation'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IWeight, IWeightSetupData } from './weight'
+import { IOperation, IOperationSetupData } from './operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IInstallable extends IName, IIcon, IRequirements, IWeight, IOperation {
+export interface IInstallableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  IWeightSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the object installable
+  installable?: boolean
+  // has the object been installed
+  installed?: boolean
+  // type name of install (can only install one per type)
+  installType?: string | null
+}
+
+export interface IInstallable extends
+  IName,
+  IIcon,
+  IRequirements,
+  IWeight,
+  IOperation,
+  IActions
+{
   state: State
   get isInstallable(): boolean
   set installable(value: boolean)
@@ -31,37 +55,34 @@ export interface IInstallable extends IName, IIcon, IRequirements, IWeight, IOpe
 // @ts-ignore
 export const Installable: IInstallable = {
   state: {
-    // is the object installable
     installable: false,
-    // has the object been installed
     installed: false,
-    // type name of install (can only install one per type)
     installType: null,
     actions: [
-      (item: IInstallable) => (
+      (item: IInstallable): IDropdownItem | undefined => (
         item.isInstallable
           ? {
             label: item.installLabel,
             key: 'install',
             icon: 'install',
             disabled: !item.canInstall(),
-            click: async () => item.install(),
+            click: item.install,
           }
         : undefined
       ),
-      (item: IInstallable) => (
+      (item: IInstallable): IDropdownItem | undefined => (
         item.isInstallable
           ? {
             label: item.uninstallLabel,
             key: 'uninstall',
             icon: 'uninstall',
             disabled: !item.canUninstall(),
-            click: async () => item.uninstall(),
+            click: item.uninstall,
           }
           : undefined
       ),
     ],
-  },
+  } as IInstallableSetupData,
 
   get isInstallable(): boolean { return this.state.installable },
   set installable(value: boolean) { this.state.installable = value },

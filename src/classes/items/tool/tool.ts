@@ -1,9 +1,11 @@
 import { registerClass } from '@/utils'
-import { Item } from '../item'
+import { IItemSetupData, Item } from '../item'
 import { SetupData } from '@/entity'
 
+export interface IToolSetupData extends IItemSetupData {}
+
 export class Tool extends Item {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IToolSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Tool',
       usable: true,

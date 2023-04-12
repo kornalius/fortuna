@@ -1,17 +1,34 @@
 import { Entity, SetupData } from '@/entity'
 import { mixin, emit, registerClass, can, AnyData } from '@/utils'
 import { Building } from '@/classes/buildings/building'
-import { ICode, Code } from '@/mixins/code'
-import { IName, Name } from '@/mixins/name'
-import { IDescription, Description } from '@/mixins/description'
-import { IImage, Image } from '@/mixins/image'
-import { IPosition, Position } from '@/mixins/position'
-import { IIcon, Icon } from '@/mixins/icon'
-import { IHidden, Hidden } from '@/mixins/hidden'
-import { IHovered, Hovered } from '@/mixins/hovered'
-import { IActions, Actions } from '@/mixins/actions'
-import { IVisitable, Visitable } from '@/mixins/visitable'
-import { IRequirements, Requirements } from '@/mixins/requirements'
+import { ICode, Code, ICodeSetupData } from '@/mixins/code'
+import { IName, INameSetupData, Name } from '@/mixins/name'
+import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
+import { IImage, IImageSetupData, Image } from '@/mixins/image'
+import { IPosition, IPositionSetupData, Position } from '@/mixins/position'
+import { IIcon, Icon, IIconSetupData } from '@/mixins/icon'
+import { IHidden, Hidden, IHiddenSetupData } from '@/mixins/hidden'
+import { IHovered, Hovered, IHoveredSetupData } from '@/mixins/hovered'
+import { IActions, Actions, IDropdownItem, IActionsSetupData } from '@/mixins/actions'
+import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
+import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+
+export interface ICitySetupData extends
+  ICodeSetupData,
+  INameSetupData,
+  IDescriptionSetupData,
+  IPositionSetupData,
+  IIconSetupData,
+  IImageSetupData,
+  IHiddenSetupData,
+  IHoveredSetupData,
+  IActionsSetupData,
+  IVisitableSetupData,
+  IRequirementsSetupData
+{
+  // start building code when entering the city
+  startBuildingCode?: string | null
+}
 
 export interface City extends
   ICode,
@@ -28,20 +45,24 @@ export interface City extends
 {}
 
 export class City extends Entity {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: ICitySetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: ICitySetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'City',
       description: 'A city',
       icon: 'city',
       startBuildingCode: null,
       actions: [
-        (item: City) => (
+        (item: City): IDropdownItem | undefined => (
           {
             label: 'Enter',
             key: 'enter',
             icon: 'enter',
             disabled: !item.canEnter(),
-            click: async () => item.enter(),
+            click: item.enter,
           }
         ),
       ],

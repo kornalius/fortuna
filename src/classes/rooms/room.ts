@@ -5,16 +5,29 @@ import { Direction, Directions, Door } from '@/classes/items/furniture/door'
 import { Npc } from '@/classes/npcs/npc'
 import { Item } from '@/classes/items/item'
 import { Container } from '@/classes/containers/container'
-import { ICode, Code } from '@/mixins/code'
-import { ILocation, Location } from '@/mixins/location'
-import { IName, Name } from '@/mixins/name'
-import { IPosition, Position } from '@/mixins/position'
-import { IIcon, Icon } from '@/mixins/icon'
-import { IImage, Image } from '@/mixins/image'
-import { IItems, Items } from '@/mixins/items'
-import { IActions, Actions } from '@/mixins/actions'
-import { IVisitable, Visitable } from '@/mixins/visitable'
-import { IRequirements, Requirements } from '@/mixins/requirements'
+import { ICode, Code, ICodeSetupData } from '@/mixins/code'
+import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
+import { IName, INameSetupData, Name } from '@/mixins/name'
+import { IPosition, IPositionSetupData, Position } from '@/mixins/position'
+import { IIcon, Icon, IIconSetupData } from '@/mixins/icon'
+import { IImage, IImageSetupData, Image } from '@/mixins/image'
+import { IItems, IItemsSetupData, Items } from '@/mixins/items'
+import { IActions, Actions, IActionsSetupData } from '@/mixins/actions'
+import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
+import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+
+export interface IRoomSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  ICodeSetupData,
+  IPositionSetupData,
+  IImageSetupData,
+  IItemsSetupData,
+  IActionsSetupData,
+  IVisitableSetupData,
+  IRequirementsSetupData,
+  ILocationSetupData
+{}
 
 export interface Room extends
   IName,
@@ -30,8 +43,12 @@ export interface Room extends
 {}
 
 export class Room extends Entity {
-  setupInstance(data?: SetupData): SetupData | undefined {
-    const { locationId, locationStore } = this.setupLocation(data)
+  constructor(data?: IRoomSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IRoomSetupData): SetupData | undefined {
+    const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({
       name: 'Room',

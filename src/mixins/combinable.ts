@@ -6,9 +6,10 @@ import { pluralize } from '@capaj/pluralize'
 import { State } from '@/entity'
 import { AnyData, can, emit, log, LOG_WARN, registeredClasses } from '@/utils'
 import { Item } from '@/classes/items/item'
-import { IName } from '@/mixins/name'
-import { IIcon } from '@/mixins/icon'
-import { IOperation } from '@/mixins/operation'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IIcon, IIconSetupData } from '@/mixins/icon'
+import { IOperation, IOperationSetupData } from '@/mixins/operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
 export interface ICombinableRecipe {
   // target item constructor name
@@ -21,7 +22,26 @@ export interface ICombinableRecipe {
   result_data?: AnyData
 }
 
-export interface ICombinable extends IName, IIcon, IOperation {
+export interface ICombinableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the item combinable
+  combinable?: boolean
+  // list of recipes
+  recipes?: ICombinableRecipe[]
+  // time is takes to combine an item
+  combineDelay?: number
+}
+
+export interface ICombinable extends
+  IName,
+  IIcon,
+  IOperation,
+  IActions
+{
   state: State
   get isCombinable(): boolean
   set combinable(value: boolean)
@@ -38,14 +58,11 @@ export interface ICombinable extends IName, IIcon, IOperation {
 // @ts-ignore
 export const Combinable: ICombinable = {
   state: {
-    // is the item combinable
     combinable: false,
-    // list of recipes
-    recipes: [] as ICombinableRecipe[],
-    // time is takes to combine an item
+    recipes: [],
     combineDelay: 1,
     actions: [
-      (item: ICombinable) => (
+      (item: ICombinable): IDropdownItem | undefined => (
         item.isCombinable
           ? {
             label: item.combineLabel,
@@ -57,7 +74,7 @@ export const Combinable: ICombinable = {
           : undefined
       ),
     ],
-  },
+  } as ICombinableSetupData,
 
   get isCombinable(): boolean { return this.state.combinable && (this as unknown as Item).isInInventory },
   set combinable(value: boolean) { this.state.combinable = value },

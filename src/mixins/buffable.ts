@@ -6,6 +6,11 @@ import { buffNames } from '@/buffs'
 import { State } from '@/entity'
 import { IBuff } from './buffs'
 
+export interface IBuffableSetupData {
+  // buffs currently applied to object's stats { name, value, time, turns, rolls }
+  buffs?: IBuff[]
+}
+
 export interface IBuffable {
   state: State
   get buffs(): IBuff[]
@@ -21,9 +26,8 @@ export interface IBuffable {
 
 export const Buffable: IBuffable = {
   state: {
-    // buffs currently applied to object's stats { name, value, time, turns, rolls }
-    buffs: [] as IBuff[],
-  },
+    buffs: [],
+  } as IBuffableSetupData,
 
   get buffs(): IBuff[] { return this.state.buffs },
   set buffs(value) { this.state.buffs = value },

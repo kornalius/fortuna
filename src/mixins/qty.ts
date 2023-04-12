@@ -5,6 +5,15 @@
 import { State } from '@/entity'
 import random from 'lodash/random'
 
+export interface IQtySetupData {
+  // code matching item in inventory
+  stackableCode?: string | null
+  // quantity
+  qty?: number
+  // maximum random qty set at setupInstance
+  randomQty?: number
+}
+
 export interface IQty {
   state: State
   get stackableCode(): string | null
@@ -16,15 +25,12 @@ export interface IQty {
 
 export const Qty: IQty = {
   state: {
-    // code matching item in inventory
     stackableCode: null,
-    // quantity
     qty: 1,
-    // maximum random qty set at setupInstance
     randomQty: 0,
     // random qty onced set
     _randomQty: 0,
-  },
+  } as IQtySetupData,
 
   get stackableCode(): string | null { return this.state.stackableCode },
   set stackableCode(value) { this.state.stackableCode = value },

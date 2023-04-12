@@ -1,10 +1,21 @@
 import { log, emit, registerClass, LOG_WARN } from '@/utils'
-import { Item}  from './item'
+import { IItemSetupData, Item } from './item'
 import { SetupData } from '@/entity'
 import { Door } from '@/classes/items/furniture/door'
 
+export interface IKeypadSetupData extends
+  IItemSetupData
+{
+  // doorId to unlock
+  doorId?: string | null
+}
+
 export class Keypad extends Item {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: IKeypadSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IKeypadSetupData): SetupData | undefined {
     const { doorId } = this.setupDoor(data)
 
     return super.setupInstance({

@@ -4,15 +4,37 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { ILocation } from './location'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { ILocation, ILocationSetupData } from './location'
 import { IInstallable } from './installable'
 import { IEquipable } from './equipable'
-import { IHovered } from './hovered'
-import { IRequirements } from './requirements'
+import { IHovered, IHoveredSetupData } from './hovered'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDropable extends IName, IIcon, IEquipable, IInstallable, IHovered, ILocation, IRequirements {
+export interface IDropableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IHoveredSetupData,
+  ILocationSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object droppable or not
+  dropable?: boolean
+}
+
+export interface IDropable extends
+  IName,
+  IIcon,
+  IEquipable,
+  IInstallable,
+  IHovered,
+  ILocation,
+  IRequirements,
+  IActions
+{
   state: State
   get isDropable(): boolean
   set dropable(value: boolean)
@@ -25,22 +47,21 @@ export interface IDropable extends IName, IIcon, IEquipable, IInstallable, IHove
 // @ts-ignore
 export const Dropable: IDropable = {
   state: {
-    // is the object droppable or not
     dropable: true,
     actions: [
-      (item: IDropable) => (
+      (item: IDropable): IDropdownItem | undefined => (
         item.isDropable && window.store.player.has(item)
           ? {
             label: item.dropLabel,
             key: 'drop',
             icon: 'drop',
             disabled: !item.canDrop(),
-            click: async () => item.drop(),
+            click: item.drop,
           }
           : undefined
       ),
     ],
-  },
+  } as IDropableSetupData,
 
   get isDropable(): boolean { return this.state.dropable },
   set dropable(value: boolean) { this.state.dropable = value },

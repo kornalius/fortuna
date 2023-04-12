@@ -1,13 +1,21 @@
 import { Entity, State } from '@/entity'
 import { Item } from '@/classes/items/item'
-import { ILocation } from './location'
-import { IQty } from './qty'
+import { ILocation, ILocationSetupData } from './location'
+import { IQty, IQtySetupData } from './qty'
 import { AnyData } from '@/utils'
+
+export interface IItemsSetupData extends
+  ILocationSetupData,
+  IQtySetupData
+{}
 
 /**
  * List items owned or at location
  */
-export interface IItems extends ILocation, IQty {
+export interface IItems extends
+  ILocation,
+  IQty
+{
   state: State
   get items(): Item[]
   get(id?: string): Item | undefined

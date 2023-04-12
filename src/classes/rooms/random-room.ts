@@ -1,6 +1,6 @@
 import { registerClass } from '@/utils'
 import { ClassDefinition, randomItems } from '@/generators'
-import { Room } from './room'
+import { IRoomSetupData, Room } from './room'
 import { LightSwitch } from '@/classes/items/electronic/light-switch'
 import { CeilingLight } from '@/classes/items/light/ceiling-light'
 import { Chair } from '@/classes/items/furniture/chair'
@@ -11,8 +11,16 @@ import { TrashCan } from '@/classes/containers/trash-can'
 import { Table } from '@/classes/items/furniture/table'
 import { SetupData } from '@/entity'
 
+export interface IRandomRoomSetupData extends IRoomSetupData {
+  randomItems?: ClassDefinition[]
+}
+
 export class RandomRoom extends Room {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: IRandomRoomSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IRandomRoomSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Random room',
       ...(data || {}),
@@ -27,7 +35,7 @@ export class RandomRoom extends Room {
         [Table, 0, 1],
         ...(data?.randomItems || []),
       ] as ClassDefinition[],
-    })
+    } as IRoomSetupData)
   }
 
   mounted(): void {

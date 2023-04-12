@@ -4,10 +4,27 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName } from './name'
-import { IRequirements } from './requirements'
+import { IName, INameSetupData } from './name'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IUsable extends IName, IRequirements, Entity {
+export interface IUsableSetupData extends
+  INameSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object usable
+  usable?: boolean
+  // limit to the number of uses allowed, -1 means can be used as many times as wanted
+  uses?: number
+}
+
+export interface IUsable extends
+  IName,
+  IRequirements,
+  IActions,
+  Entity
+{
   state: State
   get isUsable(): boolean
   set usable(value: boolean)
@@ -23,19 +40,17 @@ export interface IUsable extends IName, IRequirements, Entity {
 // @ts-ignore
 export const Usable: IUsable = {
   state: {
-    // is the object usable
     usable: false,
-    // limit to the number of uses allowed, -1 means can be used as many times as wanted
     uses: -1,
     actions: [
-      (item: IUsable) => (
+      (item: IUsable): IDropdownItem | undefined => (
         item.isUsable
           ? {
             label: item.useLabel,
             key: 'use',
             icon: 'use',
             disabled: !item.canUse(),
-            click: async () => item.use(),
+            click: item.use,
           }
           : undefined
       ),
@@ -43,7 +58,7 @@ export const Usable: IUsable = {
     requirements: [
       { name: 'use', dex: 1 },
     ],
-  },
+  } as IUsableSetupData,
 
   get isUsable(): boolean { return this.state.usable },
   set usable(value: boolean) { this.state.usable = value },

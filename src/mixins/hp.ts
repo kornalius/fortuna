@@ -4,10 +4,23 @@
 
 import clamp from 'lodash/clamp'
 import { State } from '@/entity'
-import { ILevel } from './level'
-import { IBuffable } from './buffable'
+import { ILevel, ILevelSetupData } from './level'
+import { IBuffable, IBuffableSetupData } from './buffable'
 
-export interface IHp extends ILevel, IBuffable {
+export interface IHpSetupData extends
+  ILevelSetupData,
+  IBuffableSetupData
+{
+  // current hp
+  hp?: number
+  // levelup extra hp applied to the maxHp
+  extraHp?: number
+}
+
+export interface IHp extends
+  ILevel,
+  IBuffable
+{
   state: State
   get hp(): number
   set hp(value)
@@ -22,11 +35,9 @@ export interface IHp extends ILevel, IBuffable {
 // @ts-ignore
 export const Hp: IHp = {
   state: {
-    // current hp
     hp: 0,
-    // levelup extra hp applied to the maxHp
     extraHp: 0,
-  },
+  } as IHpSetupData,
 
   get hp(): number { return this.state.hp + this.sumOfBuffs('hp') },
   set hp(value) { this.state.hp = clamp(value, 0, this.maxHp) },

@@ -4,11 +4,26 @@
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from '@/mixins/name'
-import { IIcon } from '@/mixins/icon'
-import { IVersion } from '@/mixins/version'
-import { IOperation } from '@/mixins/operation'
-import { IRequirements } from '@/mixins/requirements'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IIcon, IIconSetupData } from '@/mixins/icon'
+import { IVersion, IVersionSetupData } from '@/mixins/version'
+import { IOperation, IOperationSetupData } from '@/mixins/operation'
+import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
+import { IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+
+export interface IDecryptableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IVersionSetupData,
+  IOperationSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object decryptable
+  decryptable?: boolean
+  // is the object crypted
+  crypted?: boolean
+}
 
 export interface IDecryptable extends IName, IIcon, IVersion, IOperation, IRequirements {
   state: State
@@ -25,24 +40,22 @@ export interface IDecryptable extends IName, IIcon, IVersion, IOperation, IRequi
 // @ts-ignore
 export const Decryptable: IDecryptable = {
   state: {
-    // is the object decryptable
     decryptable: true,
-    // is the object crypted
     crypted: false,
     actions: [
-      (item: IDecryptable) => (
+      (item: IDecryptable): IDropdownItem | undefined => (
         item.isDecryptable && item.isCrypted
           ? {
               label: item.decryptLabel,
               key: 'decrypt',
               icon: 'decrypt',
               disabled: !item.canDecrypt(),
-              click: async () => item.decrypt(),
+              click: item.decrypt,
             }
           : undefined
       ),
     ],
-  },
+  } as IDecryptableSetupData,
 
   get isDecryptable(): boolean { return this.state.decryptable },
   set decryptable(value: boolean) { this.state.decryptable = value },

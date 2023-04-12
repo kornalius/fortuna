@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Container } from './container'
+import { Container, IContainerSetupData } from './container'
 import { SetupData } from '@/entity'
 
 export class TrashCan extends Container {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IContainerSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'TrashCan',
       icon: 'trash-can',

@@ -11,7 +11,7 @@ import { IPosition, Position } from '@/mixins/position'
 import { IIcon, Icon } from '@/mixins/icon'
 import { IHidden, Hidden } from '@/mixins/hidden'
 import { IHovered, Hovered } from '@/mixins/hovered'
-import { IActions, Actions } from '@/mixins/actions'
+import { IActions, Actions, IDropdownItem } from '@/mixins/actions'
 import { IVisitable, Visitable } from '@/mixins/visitable'
 import { IRequirements, Requirements } from '@/mixins/requirements'
 import { ITooltip, Tooltip } from '@/mixins/tooltip'
@@ -45,13 +45,13 @@ export class Building extends Entity {
       locationId,
       locationStore,
       actions: [
-        (item: Building) => (
+        (item: Building): IDropdownItem | undefined => (
           {
             label: 'Enter',
             key: 'enter',
             icon: 'enter',
             disabled: !item.canEnter(),
-            click: async () => item.enter(),
+            click: item.enter,
           }
         ),
       ],

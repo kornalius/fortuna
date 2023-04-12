@@ -1,5 +1,5 @@
 import { registerClass } from '@/utils'
-import { RandomRoom } from '@/classes/rooms/random-room'
+import { IRandomRoomSetupData, RandomRoom } from '@/classes/rooms/random-room'
 import { Fridge } from '@/classes/containers/fridge'
 import { Dishwasher } from '@/classes/containers/dishwasher'
 import { Table } from '@/classes/items/furniture/table'
@@ -11,7 +11,7 @@ import { SetupData } from '@/entity'
 import { ClassDefinition } from '@/generators'
 
 export class RandomKitchen extends RandomRoom {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IRandomRoomSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Random kitchen',
       randomItems: [

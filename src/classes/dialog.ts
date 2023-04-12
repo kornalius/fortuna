@@ -1,7 +1,7 @@
 import { Entity, SetupData } from '../entity'
 import { can, emit, log, LOG_WARN, mixin, registerClass } from '@/utils'
-import { ICode, Code } from '@/mixins/code'
-import { IRequirements, Requirements } from '@/mixins/requirements'
+import { ICode, Code, ICodeSetupData } from '@/mixins/code'
+import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
 import { Npc } from '@/classes/npcs/npc'
 
 export interface IDialog {
@@ -30,7 +30,22 @@ export interface IAnswer {
 
 export type AnswerCount = { [key: string]: number }
 
-export interface Dialog extends ICode, IRequirements {}
+export interface IDialogSetupData extends
+  ICodeSetupData,
+  IRequirementsSetupData
+{
+  npcId?: string | null
+  parentId?: string | null
+  text?: string | null
+  answers?: IAnswer[]
+  answerCount?: AnswerCount
+  sayCount?: number
+}
+
+export interface Dialog extends
+  ICode,
+  IRequirements
+{}
 
 export class Dialog extends Entity {
   byeAnswer: IAnswer = {
@@ -45,14 +60,18 @@ export class Dialog extends Entity {
     },
   }
 
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: IDialogSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IDialogSetupData): SetupData | undefined {
     return super.setupInstance({
       npcId: null,
       parentId: null,
       code: null,
       text: '',
-      answers: [] as IAnswer[],
-      answerCount: {} as AnswerCount,
+      answers: [],
+      answerCount: {},
       sayCount: 0,
       ...(data || {})
     })

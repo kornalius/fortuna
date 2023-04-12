@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Tool } from './tool'
+import { IToolSetupData, Tool } from './tool'
 import { SetupData } from '@/entity'
 
 export class Hammer extends Tool {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IToolSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Hammer',
       icon: 'hammer',

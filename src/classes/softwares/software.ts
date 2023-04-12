@@ -1,20 +1,33 @@
-import { File } from '../server/file'
+import { File, IFileSetupData } from '../server/file'
 import { mixin, registerClass } from '@/utils'
-import { IInstallable, Installable } from '@/mixins/installable'
-import { IUsable, Usable } from '@/mixins/usable'
+import { IInstallable, IInstallableSetupData, Installable } from '@/mixins/installable'
+import { IUsable, IUsableSetupData, Usable } from '@/mixins/usable'
 import { SetupData } from '@/entity'
 
-export interface Software extends File, IInstallable, IUsable {}
+export interface ISoftwareSetupData extends
+  IFileSetupData,
+  IInstallableSetupData,
+  IUsableSetupData
+{}
+
+export interface Software extends
+  File,
+  IInstallable,
+  IUsable
+{}
 
 export class Software extends File {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: ISoftwareSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: ISoftwareSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Software',
       icon: 'software',
       examinable: true,
       installable: true,
       decryptable: false,
-      viewable: false,
       pickable: true,
       dropable: true,
       actionsOrder: [

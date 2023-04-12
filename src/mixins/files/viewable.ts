@@ -5,13 +5,37 @@
 import isEmpty from 'lodash/isEmpty'
 import { can, checkSoftware, emit, logs } from '@/utils'
 import { State } from '@/entity'
-import { IName } from '@/mixins/name'
-import { IRequirements } from '@/mixins/requirements'
-import { IOperation } from '@/mixins/operation'
-import { IWeight } from '@/mixins/weight'
-import { ILocation } from '@/mixins/location'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
+import { IOperation, IOperationSetupData } from '@/mixins/operation'
+import { IWeight, IWeightSetupData } from '@/mixins/weight'
+import { ILocation, ILocationSetupData } from '@/mixins/location'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IViewable extends IName, IRequirements, IOperation, ILocation, IWeight {
+export interface IViewableSetupData extends
+  INameSetupData,
+  IRequirementsSetupData,
+  IOperationSetupData,
+  ILocationSetupData,
+  IWeightSetupData,
+  IActionsSetupData
+{
+  // is the object viewable
+  viewed?: boolean
+  // content of the object
+  content?: string | null
+  // type of the object (filetype)
+  type?: string
+}
+
+export interface IViewable extends
+  IName,
+  IRequirements,
+  IOperation,
+  ILocation,
+  IWeight,
+  IActions
+{
   state: State
   get isViewable(): boolean
   get type(): string
@@ -39,26 +63,23 @@ export interface IViewable extends IName, IRequirements, IOperation, ILocation, 
 // @ts-ignore
 export const Viewable: IViewable = {
   state: {
-    // is the object viewable
     viewed: false,
-    // content of the object
     content: null,
-    // type of the object (filetype)
     type: 'txt',
     actions: [
-      (item: IViewable) => (
+      (item: IViewable): IDropdownItem | undefined => (
         item.isViewable
           ? {
             label: item.viewLabel,
             key: 'view',
             icon: 'view',
             disabled: !item.canView(),
-            click: async () => item.view(),
+            click: item.view,
           }
           : undefined
       ),
     ],
-  },
+  } as IViewableSetupData,
 
   get isViewable(): boolean { return !isEmpty(this.state.content) },
 

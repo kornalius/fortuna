@@ -6,21 +6,25 @@ import compact from 'lodash/compact'
 import uniqBy from 'lodash/uniqBy'
 import reverse from 'lodash/reverse'
 import { State } from '@/entity'
-import { AnyData } from '@/utils'
 
 export interface IDropdownItem {
   key: string
   label: string
   icon: string
   disabled: boolean
-  click: () => Promise<void>,
+  scale?: number
+  click: () => Promise<(void | boolean)>,
 }
 
-export type ActionItem = ((item: AnyData) => IDropdownItem) | IDropdownItem
+export type ActionItem = ((item: any) => IDropdownItem | undefined) | IDropdownItem | undefined
 
-export type ActionOrder = string
-
-export type ActionOmit = string
+export interface IActionsSetupData {
+  // actions to be converted to dropdown menu items
+  actions?: ActionItem[],
+  // action orders
+  actionsOrder?: string[],
+  omitActions?: string[],
+}
 
 export interface IActions {
   state: State
@@ -32,10 +36,10 @@ export interface IActions {
 
 export const Actions: IActions = {
   state: {
-    actions: [] as ActionItem[],
-    actionsOrder: [] as ActionOrder[],
-    omitActions: [] as ActionOmit[],
-  } as State,
+    actions: [],
+    actionsOrder: [],
+    omitActions: [],
+  } as IActionsSetupData,
 
   get actions(): ActionItem[] { return this.state.actions },
 

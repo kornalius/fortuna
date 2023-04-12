@@ -5,11 +5,36 @@
 import random from 'lodash/random'
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName } from './name'
-import { IOperation } from './operation'
-import { IRequirements } from './requirements'
+import { IName, INameSetupData } from './name'
+import { IOperation, IOperationSetupData } from './operation'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDestructable extends IName, IOperation, IRequirements, Entity {
+export interface IDestructableSetupData extends
+  INameSetupData,
+  IOperationSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // total to be destroyed
+  destructable?: number
+  // time it takes to damage object
+  destroyDelay?: number
+  // destroy amount every action
+  destroyAmount?: number
+  // destroyed so far
+  destroyed?: number
+  // delete object when destroyed
+  removeWhenDestroyed?: boolean
+}
+
+export interface IDestructable extends
+  IName,
+  IOperation,
+  IRequirements,
+  IActions,
+  Entity
+{
   state: State
   get isDestructable(): boolean
   set destructable(value: boolean)
@@ -30,25 +55,20 @@ export interface IDestructable extends IName, IOperation, IRequirements, Entity 
 // @ts-ignore
 export const Destructable: IDestructable = {
   state: {
-    // total to be destroyed
     destructable: 0,
-    // time it takes to damage object
     destroyDelay: 1,
-    // destroy amount every action
     destroyAmount: 1,
-    // destroyed so far
     destroyed: 0,
-    // delete object when destroyed
     removeWhenDestroyed: true,
     actions: [
-      (item: IDestructable) => (
+      (item: IDestructable): IDropdownItem | undefined => (
         item.isDestructable
           ? {
             label: item.destroyLabel,
             key: 'destroy',
             icon: 'destroy',
             disabled: !item.canDestroy(),
-            click: async () => item.destroy(),
+            click: item.destroy,
           }
           : undefined
       ),
@@ -56,7 +76,7 @@ export const Destructable: IDestructable = {
     requirements: [
       { name: 'destroy', str: 1 },
     ],
-  },
+  } as IDestructableSetupData,
 
   get isDestructable(): boolean { return this.state.destructable > 0 },
   set destructable(value: boolean) { this.state.destructable = value },

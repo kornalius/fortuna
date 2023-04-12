@@ -4,10 +4,30 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName } from './name'
-import { IRequirements } from './requirements'
+import { IName, INameSetupData } from './name'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IUnlockable extends IName, IRequirements {
+export interface IUnlockableSetupData extends
+  INameSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // if the object is unlockable
+  unlockable?: boolean
+  // is the object locked
+  locked?: boolean
+  // key needed to open
+  keyId?: string | null,
+  // keypad code to open the door
+  keypadCode?: string | null,
+}
+
+export interface IUnlockable extends
+  IName,
+  IRequirements,
+  IActions
+{
   state: State
   get isUnlockable(): boolean
   set unlockable(value: boolean)
@@ -29,23 +49,19 @@ export interface IUnlockable extends IName, IRequirements {
 // @ts-ignore
 export const Unlockable: IUnlockable = {
   state: {
-    // if the object is unlockable
     unlockable: true,
-    // is the object locked
     locked: false,
-    // key needed to open
     keyId: null,
-    // keypad code to open the door
     keypadCode: null,
     actions: [
-      (item: IUnlockable) => (
+      (item: IUnlockable): IDropdownItem | undefined => (
         item.isUnlockable && item.isLocked
           ? {
             label: item.unlockLabel,
             key: 'unlock',
             icon: 'unlock',
             disabled: !item.canUnlock(),
-            click: async () => item.unlock(),
+            click: item.unlock,
           }
           : undefined
       ),
@@ -53,7 +69,7 @@ export const Unlockable: IUnlockable = {
     requirements: [
       { name: 'unlock', dex: 1 },
     ],
-  },
+  } as IUnlockableSetupData,
 
   get isUnlockable(): boolean { return this.state.unlockable },
   set unlockable(value: boolean) { this.state.unlockable = value },

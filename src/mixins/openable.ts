@@ -1,16 +1,40 @@
-import compact from 'lodash/compact'
-import { can, emit, log, LOG_WARN } from '@/utils'
-import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IUnlockable } from './unlockable'
-import { IRequirements } from './requirements'
-
 /**
  * Makes an object openable and/or closable
  */
 
-export interface IOpenable extends IName, IIcon, IUnlockable, IRequirements {
+import compact from 'lodash/compact'
+import { can, emit, log, LOG_WARN } from '@/utils'
+import { State } from '@/entity'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IUnlockable, IUnlockableSetupData } from './unlockable'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+
+export interface IOpenableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IUnlockableSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object openable
+  openable?: boolean
+  // does it have an open state icon?
+  openIconSuffix?: boolean
+  // is the object closable
+  closeable?: boolean
+  // is the object opened
+  opened?: boolean
+}
+
+export interface IOpenable extends
+  IName,
+  IIcon,
+  IUnlockable,
+  IRequirements,
+  IActions
+{
   state: State
   get isOpenable(): boolean
   set openable(value: boolean)
@@ -39,16 +63,12 @@ export interface IOpenable extends IName, IIcon, IUnlockable, IRequirements {
 // @ts-ignore
 export const Openable: IOpenable = {
   state: {
-    // is the object openable
     openable: true,
-    // does it have an open state icon?
     openIconSuffix: false,
-    // is the object closable
     closeable: true,
-    // is the object opened
     opened: false,
     actions: [
-      (item: IOpenable) => (
+      (item: IOpenable): IDropdownItem | undefined => (
         item.isOpenable
           ? {
             label: item.openLabel,
@@ -60,7 +80,7 @@ export const Openable: IOpenable = {
           : undefined
       ),
     ],
-  },
+  } as IOpenableSetupData,
 
   get isOpenable(): boolean { return this.state.openable },
   set openable(value: boolean) { this.state.openable = value },

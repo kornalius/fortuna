@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Npc } from './npc'
+import { INpcSetupData, Npc } from './npc'
 import { SetupData } from '@/entity'
 
 export class Director extends Npc {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: INpcSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Director',
       icon: 'director',

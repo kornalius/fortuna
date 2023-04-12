@@ -4,13 +4,33 @@
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from '@/mixins/name'
-import { IIcon } from '@/mixins/icon'
-import { IWeight } from '@/mixins/weight'
-import { IRequirements } from '@/mixins/requirements'
-import { IOperation } from '@/mixins/operation'
+import { IName, INameSetupData } from '@/mixins/name'
+import { IIcon, IIconSetupData } from '@/mixins/icon'
+import { IWeight, IWeightSetupData } from '@/mixins/weight'
+import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
+import { IOperation, IOperationSetupData } from '@/mixins/operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IUploadable extends IName, IIcon, IWeight, IRequirements, IOperation {
+export interface IUploadableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IWeightSetupData,
+  IRequirementsSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the object uploadable
+  uploadable?: boolean
+}
+
+export interface IUploadable extends
+  IName,
+  IIcon,
+  IWeight,
+  IRequirements,
+  IOperation,
+  IActions
+{
   state: State
   get isUploadable(): boolean
   set uploadable(value: boolean)
@@ -23,22 +43,21 @@ export interface IUploadable extends IName, IIcon, IWeight, IRequirements, IOper
 // @ts-ignore
 export const Uploadable: IUploadable = {
   state: {
-    // is the object uploadable
     uploadable: false,
     actions: [
-      (item: IUploadable) => (
+      (item: IUploadable): IDropdownItem | undefined => (
         item.isUploadable && window.store.player.has(item)
         ? {
             label: item.uploadLabel,
             key: 'upload',
             icon: 'upload',
             disabled: !item.canUpload(),
-            click: async () => item.upload(),
+            click: item.upload,
           }
           : undefined
       ),
     ],
-  },
+  } as IUploadableSetupData,
 
   get isUploadable(): boolean { return this.state.uploadable },
   set uploadable(value: boolean) { this.state.uploadable = value },

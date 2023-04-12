@@ -4,6 +4,11 @@
 
 import { State } from '@/entity'
 
+export interface IWeightSetupData {
+  // weight of the object
+  weight?: number
+}
+
 export interface IWeight {
   state: State
   get weight(): number
@@ -12,9 +17,8 @@ export interface IWeight {
 
 export const Weight: IWeight = {
   state: {
-    // weight of the object
     weight: 0,
-  },
+  } as IWeightSetupData,
 
   get weight(): number { return this.state.weight },
   set weight(value) { this.state.weight = value },

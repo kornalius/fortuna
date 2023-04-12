@@ -1,14 +1,14 @@
 import random from 'lodash/random'
 import { registerClass } from '@/utils'
-import { Electronic } from './electronic'
+import { Electronic, IElectronicSetupData } from './electronic'
 import { SetupData } from '@/entity'
 
 export class Pc extends Electronic {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IElectronicSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Pc',
       icon: 'pc',
-      iconSuffix: random(1, 4),
+      iconSuffix: random(1, 4).toString(),
       pickable: false,
       dropable: false,
       ...(data || {})

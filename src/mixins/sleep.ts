@@ -4,12 +4,26 @@
 
 import { can, emit } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { ILocation } from './location'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { ILocation, ILocationSetupData } from './location'
 
-export interface ISleep extends IName, IIcon, IRequirements, ILocation {
+export interface ISleepSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  ILocationSetupData
+{
+  // is the object sleeping or not
+  sleeping?: boolean
+}
+export interface ISleep extends
+  IName,
+  IIcon,
+  IRequirements,
+  ILocation
+{
   state: State
   get isSleeping(): boolean
   set sleeping(value: boolean)
@@ -24,9 +38,8 @@ export interface ISleep extends IName, IIcon, IRequirements, ILocation {
 // @ts-ignore
 export const Sleep: ISleep = {
   state: {
-    // is the object sleeping or not
     sleeping: false,
-  },
+  } as ISleepSetupData,
 
   get isSleeping(): boolean { return this.state.sleeping },
   set sleeping(value: boolean) { this.state.sleeping = value },

@@ -1,13 +1,26 @@
 import { mixin, registerClass } from '@/utils'
-import { Container } from './container'
-import { IPickable, Pickable } from '@/mixins/pickable'
-import { IDropable, Dropable } from '@/mixins/dropable'
+import { Container, IContainerSetupData } from './container'
+import { IPickable, IPickableSetupData, Pickable } from '@/mixins/pickable'
+import { IDropable, Dropable, IDropableSetupData } from '@/mixins/dropable'
 import { SetupData } from '@/entity'
 
-export interface PillsBottle extends IPickable, IDropable {}
+export interface IPillsBottleSetupData extends
+  IContainerSetupData,
+  IPickableSetupData,
+  IDropableSetupData
+{}
+
+export interface PillsBottle extends
+  IPickable,
+  IDropable
+{}
 
 export class PillsBottle extends Container {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: IPillsBottleSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IPillsBottleSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Pills bottle',
       icon: 'pillsBottle',

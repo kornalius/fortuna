@@ -11,6 +11,11 @@ export interface IOperationItem {
   total: number
 }
 
+export interface IOperationSetupData {
+  // current running operation
+  operation?: IOperationItem | null
+}
+
 export interface IOperation {
   state: State
   get isBusy(): boolean
@@ -22,9 +27,8 @@ export interface IOperation {
 
 export const Operation: IOperation = {
   state: {
-    // current running operation
     operation: null,
-  },
+  } as IOperationSetupData,
 
   get isBusy(): boolean { return this.state.operation !== null },
   get operation(): IOperationItem | null { return this.state.operation },

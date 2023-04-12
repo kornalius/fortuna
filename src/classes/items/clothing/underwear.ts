@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Clothes } from './clothes'
+import { Clothes, IClothesSetupData } from './clothes'
 import { SetupData } from '@/entity'
 
 export class Underwear extends Clothes {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IClothesSetupData): SetupData | undefined {
     return super.setupInstance({
       name: 'Underwear',
       icon: 'underwear',

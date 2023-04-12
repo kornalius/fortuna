@@ -4,12 +4,34 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { IOperation } from './operation'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IOperation, IOperationSetupData } from './operation'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface IPullable extends IName, IIcon, IRequirements, IOperation {
+export interface IPullableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IRequirementsSetupData,
+  IOperationSetupData,
+  IActionsSetupData
+{
+  // is the object pullable
+  pullable?: boolean
+  // time it takes to pull object
+  pullDelay?: number
+  // has the object been pulled
+  pulled?: boolean
+}
+
+export interface IPullable extends
+  IName,
+  IIcon,
+  IRequirements,
+  IOperation,
+  IActions
+{
   state: State
   get isPullable(): boolean
   set pullable(value: boolean)
@@ -26,21 +48,18 @@ export interface IPullable extends IName, IIcon, IRequirements, IOperation {
 // @ts-ignore
 export const Pullable: IPullable = {
   state: {
-    // is the object pullable
     pullable: false,
-    // time it takes to pull object
     pullDelay: 1,
-    // has the object been pulled
     pulled: false,
     actions: [
-      (item: IPullable) => (
+      (item: IPullable): IDropdownItem | undefined => (
         item.isPullable && !item.isPulled
           ? {
             label: item.pullLabel,
             key: 'pull',
             icon: 'pull',
             disabled: !item.canPull(),
-            click: async () => item.pull(),
+            click: item.pull,
           }
           : undefined
       ),
@@ -48,7 +67,7 @@ export const Pullable: IPullable = {
     requirements: [
       { name: 'pull', str: 1 },
     ],
-  },
+  } as IPullableSetupData,
 
   get isPullable(): boolean { return this.state.pullable },
   set pullable(value: boolean) { this.state.pullable = value },

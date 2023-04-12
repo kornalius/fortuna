@@ -4,12 +4,32 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName } from './name'
-import { IIcon } from './icon'
-import { IRequirements } from './requirements'
-import { IOpenable } from './openable'
+import { IName, INameSetupData } from './name'
+import { IIcon, IIconSetupData } from './icon'
+import { IRequirements, IRequirementsSetupData } from './requirements'
+import { IOpenable, IOpenableSetupData } from './openable'
+import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
-export interface ISearchable extends IName, IIcon, IOpenable, IRequirements {
+export interface ISearchableSetupData extends
+  INameSetupData,
+  IIconSetupData,
+  IOpenableSetupData,
+  IRequirementsSetupData,
+  IActionsSetupData
+{
+  // is the object searchable
+  searchable?: boolean
+  // how many times the object has been searched
+  searched?: number
+}
+
+export interface ISearchable extends
+  IName,
+  IIcon,
+  IOpenable,
+  IRequirements,
+  IActions
+{
   state: State
   get isSearchable(): boolean
   set searchable(value: boolean)
@@ -25,19 +45,17 @@ export interface ISearchable extends IName, IIcon, IOpenable, IRequirements {
 // @ts-ignore
 export const Searchable: ISearchable = {
   state: {
-    // is the object searchable
     searchable: true,
-    // how many times the object has been searched
     searched: 0,
     actions: [
-      (item: ISearchable) => (
+      (item: ISearchable): IDropdownItem | undefined => (
         item.isSearchable
           ? {
             label: item.searchLabel,
             key: 'search',
             icon: 'search',
             disabled: !item.canSearch(),
-            click: async () => item.search(),
+            click: item.search,
           }
           : undefined
       ),
@@ -45,7 +63,7 @@ export const Searchable: ISearchable = {
     requirements: [
       { name: 'search', int: 1 },
     ],
-  },
+  } as ISearchableSetupData,
 
   get isSearchable(): boolean { return this.state.searchable },
   set searchable(value: boolean) { this.state.searchable = value },

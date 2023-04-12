@@ -2,7 +2,7 @@ import random from 'lodash/random'
 import anime from 'animejs'
 import { Entity, SetupData } from '../entity'
 import { emit, log, delay, mixin, registerClass, can, LOG_WARN, LOG_ERROR } from '@/utils'
-import { IRequirements, Requirements } from '@/mixins/requirements'
+import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
 import { multiplier as multiplierParticles } from '@/particles'
 import { Npc } from '@/classes/npcs/npc'
 import { Dice, DiceIndexes } from '@/store/config'
@@ -25,28 +25,65 @@ export interface IBonusMultiplier {
   bonus: number
 }
 
+export interface ICombatSetupData extends IRequirementsSetupData {
+  // is the combat engine processing?
+  processing?: boolean
+  // npc id that we are fighting against
+  npcId?: string | null
+  // current turn
+  turn?: number
+  // current turn bonus to apply
+  bonus: {},
+  // rolls left for the turn
+  rolls?: number
+  // has the combat ended
+  ended?: boolean
+  // did you win the battle?
+  won?: boolean
+  // selected dice indexes
+  selected?: number[]
+  // done action dice indexes
+  done?: number[]
+  // combos
+  combos?: ICombo[]
+  /**
+   * Combos gained via items during combat
+   * {
+   *   faces: { 'A': 5 }   // faces to match in hand, this is optional
+   *   expr: matches => {} // when matches, apply this function
+   *   turns: 0            // turns left
+   * }
+   */
+  bonusCombos?: IBonusCombo[]
+  /**
+   * Faces multipliers
+   * {
+   *   'face': multiplier
+   * }
+   */
+  multipliers?: Multipliers
+  // current active multiplier
+  currentMultiplier?: number
+}
+
 export interface Combat extends IRequirements {}
 
 export class Combat extends Entity {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  constructor(data?: ICombatSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: ICombatSetupData): SetupData | undefined {
     return super.setupInstance({
       processing: false,
       npcId: null,
-      // current turn
       turn: 1,
-      // current turn bonus to apply
       bonus: {},
-      // rolls left for the turn
       rolls: window.store.player.maxRolls,
-      // has the combat ended
       ended: false,
-      // did you win the battle?
       won: false,
-      // selected dice
       selected: [],
-      // done action dice
       done: [],
-      // combos
       combos: [
         {
           faces: { 'A': 3 },
@@ -101,21 +138,7 @@ export class Combat extends Entity {
           }
         },
       ] as ICombo[],
-      /**
-       * Combos gained via items during combat
-       * {
-       *   faces: { 'A': 5 }   // faces to match in hand, this is optional
-       *   expr: matches => {} // when matches, apply this function
-       *   turns: 0            // turns left
-       * }
-       */
       bonusCombos: [],
-      /**
-       * Faces multipliers
-       * {
-       *   'face': multiplier
-       * }
-       */
       multipliers: {},
       currentMultiplier: 0,
       ...(data || {})

@@ -4,6 +4,11 @@
 
 import { State } from '@/entity'
 
+export interface IVersionSetupData {
+  // version of the object
+  version?: number
+}
+
 export interface IVersion {
   state: State
   get version(): number
@@ -12,7 +17,6 @@ export interface IVersion {
 
 export const Version: IVersion = {
   state: {
-    // version of the object
     version: 1,
   },
 

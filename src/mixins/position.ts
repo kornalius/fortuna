@@ -4,6 +4,13 @@
 
 import { State } from '@/entity'
 
+export interface IPositionSetupData {
+  // x position
+  x?: number
+  // y position
+  y?: number
+}
+
 export interface IPosition {
   state: State
   get x(): number
@@ -16,7 +23,7 @@ export const Position: IPosition = {
   state: {
     x: 0,
     y: 0,
-  },
+  } as IPositionSetupData,
 
   get x(): number { return this.state.x },
   set x(value) { this.state.x = value },
