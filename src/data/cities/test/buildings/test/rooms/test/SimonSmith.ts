@@ -1,5 +1,5 @@
 import SimonSmithDialogs from './dialogs/SimonSmith'
-import { Npc } from '@/classes/npcs/npc'
+import { INpcSetupData, Npc } from '@/classes/npcs/npc'
 
 export default {
   name: 'Simon Smith',
@@ -11,7 +11,7 @@ export default {
     { date: window.store.config.startDate, start: '18:15', end: '18:29', roomCode: 'TestRoomWin' },
   ],
 
-  mounted(): void {
+  mounted(this: Npc): void {
     this.addDialog(SimonSmithDialogs.call(this))
   },
-} as Npc
+} as INpcSetupData

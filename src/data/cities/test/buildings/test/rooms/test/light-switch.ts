@@ -3,22 +3,23 @@ import TestRoomPillsBottle from './pills-bottle'
 import { PillsBottle } from '@/classes/containers/pills-bottle'
 import { Keypad } from '@/classes/items/keypad'
 import { LightSwitch } from '@/classes/items/electronic/light-switch'
+import { IElectronicSetupData } from '@/classes/items/electronic/electronic'
 
 export default {
   usable: false,
 
-  mounted(): void {
+  mounted(this: LightSwitch): void {
     this.state.done = false
   },
 
-  async onExamine(): Promise<void> {
+  async onExamine(this: LightSwitch): Promise<void> {
     if (this.isOff) {
       log('You feel the switch and concludes it is a normal switch with nothing special about it')
       this.usable = true
     }
   },
 
-  async onUse(): Promise<void> {
+  async onUse(this: LightSwitch): Promise<void> {
     if (this.isOn && !this.state.done) {
       this.state.done = true
 
@@ -43,4 +44,4 @@ export default {
       ])
     }
   },
-} as LightSwitch
+} as IElectronicSetupData

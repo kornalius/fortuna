@@ -1,4 +1,4 @@
-import { Entity, SetupData } from '../entity'
+import { Entity, IEntitySetupData, SetupData } from '../entity'
 import { can, emit, log, LOG_WARN, mixin, registerClass } from '@/utils'
 import { ICode, Code, ICodeSetupData } from '@/mixins/code'
 import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
@@ -31,6 +31,7 @@ export interface IAnswer {
 export type AnswerCount = { [key: string]: number }
 
 export interface IDialogSetupData extends
+  IEntitySetupData,
   ICodeSetupData,
   IRequirementsSetupData
 {

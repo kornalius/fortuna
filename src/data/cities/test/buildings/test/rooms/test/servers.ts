@@ -3,14 +3,14 @@ import { Ftp } from '@/classes/softwares/ftp'
 import { Viewer } from '@/classes/softwares/viewer'
 import { Deleter } from '@/classes/softwares/deleter'
 import { Cracker } from '@/classes/softwares/cracker'
-import { Server } from '@/classes/server/server'
+import { IServerSetupData, Server } from '@/classes/server/server'
 
 export default {
   name: 'Test server',
   crackable: true,
   protected: true,
 
-  mounted(): void {
+  mounted(this: Server): void {
     this.addFile([
       new File({
         name: 'Plots.txt',
@@ -63,4 +63,4 @@ export default {
       }),
     ])
   },
-} as Server
+} as IServerSetupData

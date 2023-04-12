@@ -1,6 +1,6 @@
 import { mixin, emit, registerClass, can } from '@/utils'
 import compact from 'lodash/compact'
-import { Entity, SetupData } from '@/entity'
+import { Entity, IEntitySetupData, SetupData } from '@/entity'
 import { IRoomSetupData, Room } from '@/classes/rooms/room'
 import { Npc } from '@/classes/npcs/npc'
 import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
@@ -19,6 +19,7 @@ import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
 export type OpenHours = [string, string];
 
 export interface IBuildingSetupData extends
+  IEntitySetupData,
   ICodeSetupData,
   ILocationSetupData,
   INameSetupData,

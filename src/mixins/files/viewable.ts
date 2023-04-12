@@ -4,7 +4,7 @@
 
 import isEmpty from 'lodash/isEmpty'
 import { can, checkSoftware, emit, logs } from '@/utils'
-import { State } from '@/entity'
+import { Entity, IEntitySetupData, State } from '@/entity'
 import { IName, INameSetupData } from '@/mixins/name'
 import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
 import { IOperation, IOperationSetupData } from '@/mixins/operation'
@@ -13,6 +13,7 @@ import { ILocation, ILocationSetupData } from '@/mixins/location'
 import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
 export interface IViewableSetupData extends
+  IEntitySetupData,
   INameSetupData,
   IRequirementsSetupData,
   IOperationSetupData,
@@ -30,6 +31,7 @@ export interface IViewableSetupData extends
 }
 
 export interface IViewable extends
+  Entity,
   IName,
   IRequirements,
   IOperation,

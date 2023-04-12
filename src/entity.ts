@@ -4,12 +4,16 @@ import { mixState, deserializeObject, AnyData } from '@/utils'
 export type SetupData = AnyData
 export type State = AnyData
 
+export interface IEntitySetupData extends AnyData{
+  mounted?: () => void
+}
+
 export interface Entity {
   state: State
 }
 
 export class Entity {
-  constructor(data?: AnyData) {
+  constructor(data?: IEntitySetupData) {
     const newData = this.setupInstance(data) || {}
 
     // take all functions from newData and add them to this
@@ -43,7 +47,7 @@ export class Entity {
     )
   }
 
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IEntitySetupData): SetupData | undefined {
     return data
   }
 

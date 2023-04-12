@@ -1,5 +1,5 @@
 import compact from 'lodash/compact'
-import { Entity, SetupData } from '@/entity'
+import { Entity, IEntitySetupData, SetupData } from '@/entity'
 import { Dialog } from '@/classes/dialog'
 import { Combat } from '@/classes/combat'
 import { AnyData, can, emit, mixin, registerClass } from '@/utils'
@@ -31,6 +31,7 @@ export interface Agenda {
 }
 
 export interface INpcSetupData extends
+  IEntitySetupData,
   ICodeSetupData,
   INameSetupData,
   IDescriptionSetupData,

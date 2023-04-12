@@ -1,6 +1,6 @@
-import { IRoomSetupData, Room } from '@/classes/rooms/room'
+import { Room } from '@/classes/rooms/room'
 import { RandomLivingRoom } from '@/classes/rooms/random-livingroom'
-import { Building } from '@/classes/buildings/building'
+import { Building, IBuildingSetupData } from '@/classes/buildings/building'
 import TestRoom from './rooms/test'
 import TestWinRoom from './rooms/test-win'
 
@@ -11,10 +11,10 @@ export default {
   y: 445,
   startRoomCode: 'TestRoom',
 
-  mounted() {
+  mounted(this: Building): void {
     this.addRoom([
-      new RandomLivingRoom(TestRoom as unknown as IRoomSetupData),
-      new Room(TestWinRoom as unknown as IRoomSetupData),
+      new RandomLivingRoom(TestRoom),
+      new Room(TestWinRoom),
     ])
   },
-} as Building
+} as IBuildingSetupData

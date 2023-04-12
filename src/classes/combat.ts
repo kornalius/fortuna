@@ -1,6 +1,6 @@
 import random from 'lodash/random'
 import anime from 'animejs'
-import { Entity, SetupData } from '../entity'
+import { Entity, IEntitySetupData, SetupData } from '../entity'
 import { emit, log, delay, mixin, registerClass, can, LOG_WARN, LOG_ERROR } from '@/utils'
 import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
 import { multiplier as multiplierParticles } from '@/particles'
@@ -25,7 +25,7 @@ export interface IBonusMultiplier {
   bonus: number
 }
 
-export interface ICombatSetupData extends IRequirementsSetupData {
+export interface ICombatSetupData extends IRequirementsSetupData, IEntitySetupData {
   // is the combat engine processing?
   processing?: boolean
   // npc id that we are fighting against

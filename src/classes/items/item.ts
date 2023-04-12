@@ -1,4 +1,4 @@
-import { Entity, SetupData } from '@/entity'
+import { Entity, IEntitySetupData, SetupData } from '@/entity'
 import { mixin, registerClass } from '@/utils'
 import { ICode, ICodeSetupData, Code } from '@/mixins/code'
 import { IName, INameSetupData, Name } from '@/mixins/name'
@@ -25,6 +25,7 @@ import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
 import { ISelectable, ISelectableSetupData, Selectable } from '@/mixins/selectable'
 
 export interface IItemSetupData extends
+  IEntitySetupData,
   ICodeSetupData,
   INameSetupData,
   IDescriptionSetupData,

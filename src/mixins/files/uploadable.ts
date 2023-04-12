@@ -3,7 +3,7 @@
  */
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { State } from '@/entity'
+import { Entity, IEntitySetupData, State } from '@/entity'
 import { IName, INameSetupData } from '@/mixins/name'
 import { IIcon, IIconSetupData } from '@/mixins/icon'
 import { IWeight, IWeightSetupData } from '@/mixins/weight'
@@ -12,6 +12,7 @@ import { IOperation, IOperationSetupData } from '@/mixins/operation'
 import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
 export interface IUploadableSetupData extends
+  IEntitySetupData,
   INameSetupData,
   IIconSetupData,
   IWeightSetupData,
@@ -25,6 +26,7 @@ export interface IUploadableSetupData extends
 }
 
 export interface IUploadable extends
+  Entity,
   IName,
   IIcon,
   IWeight,

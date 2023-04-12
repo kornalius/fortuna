@@ -3,7 +3,7 @@
  */
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { State } from '@/entity'
+import { Entity, IEntitySetupData, State } from '@/entity'
 import { IName, INameSetupData } from '@/mixins/name'
 import { IIcon, IIconSetupData } from '@/mixins/icon'
 import { IVersion, IVersionSetupData } from '@/mixins/version'
@@ -12,6 +12,7 @@ import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
 import { IActionsSetupData, IDropdownItem } from '@/mixins/actions'
 
 export interface IDecryptableSetupData extends
+  IEntitySetupData,
   INameSetupData,
   IIconSetupData,
   IVersionSetupData,
@@ -26,7 +27,14 @@ export interface IDecryptableSetupData extends
   onDecrypt?: () => Promise<void>
 }
 
-export interface IDecryptable extends IName, IIcon, IVersion, IOperation, IRequirements {
+export interface IDecryptable extends
+  Entity,
+  IName,
+  IIcon,
+  IVersion,
+  IOperation,
+  IRequirements
+{
   state: State
   get isDecryptable(): boolean
   set decryptable(value: boolean)

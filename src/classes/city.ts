@@ -1,4 +1,4 @@
-import { Entity, SetupData } from '@/entity'
+import { Entity, IEntitySetupData, SetupData } from '@/entity'
 import { mixin, emit, registerClass, can } from '@/utils'
 import { Building, IBuildingSetupData } from '@/classes/buildings/building'
 import { ICode, Code, ICodeSetupData } from '@/mixins/code'
@@ -14,6 +14,7 @@ import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
 import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
 
 export interface ICitySetupData extends
+  IEntitySetupData,
   ICodeSetupData,
   INameSetupData,
   IDescriptionSetupData,

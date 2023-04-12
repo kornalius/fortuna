@@ -1,10 +1,10 @@
 import { log, LOG_WARN } from '@/utils'
-import { IPillsBottleSetupData } from '@/classes/containers/pills-bottle'
+import { IPillsBottleSetupData, PillsBottle } from '@/classes/containers/pills-bottle'
 
 export default {
   name: 'Bottle',
 
-  async onPickup(): Promise<void> {
+  async onPickup(this: PillsBottle): Promise<void> {
     log([
       'You stash it in your pockets. You will need to investigate',
       'this a little further down the road because you clearly don\'t remember being',
@@ -12,7 +12,7 @@ export default {
     ])
   },
 
-  async onExamine(): Promise<void> {
+  async onExamine(this: PillsBottle): Promise<void> {
     if (!window.store.player.has(this)) {
       log('You read the sticker on the bottle, it seems to belong to, YOU?', LOG_WARN, this.icon)
     } else {

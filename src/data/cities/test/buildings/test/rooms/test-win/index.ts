@@ -1,5 +1,5 @@
 import { log } from '@/utils'
-import { Room } from '@/classes/rooms/room'
+import { IRoomSetupData, Room } from '@/classes/rooms/room'
 
 export default {
   name: 'Outside',
@@ -9,8 +9,8 @@ export default {
   y: 1,
   img: 'test-win.png',
 
-  async onEnter(): Promise<void> {
+  async onEnter(this: Room): Promise<void> {
     log('Congratulations, you have won the game!!!')
     window.store.game.pause()
   },
-} as Room
+} as IRoomSetupData

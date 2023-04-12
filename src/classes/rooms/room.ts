@@ -1,5 +1,5 @@
 import flatten from 'lodash/flatten'
-import { Entity, SetupData } from '@/entity'
+import { Entity, IEntitySetupData, SetupData } from '@/entity'
 import { mixin, emit, registerClass, can, AnyData } from '@/utils'
 import { Direction, Directions, Door } from '@/classes/items/furniture/door'
 import { INpcSetupData, Npc } from '@/classes/npcs/npc'
@@ -17,6 +17,7 @@ import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
 import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
 
 export interface IRoomSetupData extends
+  IEntitySetupData,
   INameSetupData,
   IIconSetupData,
   ICodeSetupData,

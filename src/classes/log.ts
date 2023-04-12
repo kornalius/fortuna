@@ -1,4 +1,4 @@
-import { Entity, SetupData } from '../entity'
+import { Entity, IEntitySetupData, SetupData } from '../entity'
 import { IIconSetupData } from '@/mixins/icon'
 
 export const LOG_IRRELEVANT = -1
@@ -6,7 +6,10 @@ export const LOG_IMPORTANT = 1
 export const LOG_WARN = 2
 export const LOG_ERROR = 3
 
-export interface ILogSetupData extends IIconSetupData {
+export interface ILogSetupData extends
+  IEntitySetupData,
+  IIconSetupData
+{
   timestamp?: number
   message?: string | null
   level?: number
