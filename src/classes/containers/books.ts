@@ -1,5 +1,5 @@
 import { mixin, registerClass } from '@/utils'
-import { Container, IContainerSetupData } from './container'
+import { Container, IContainerData } from './container'
 import { books } from '@/generators'
 import { ISearchable, Searchable } from '@/mixins/searchable'
 import { SetupData } from '@/entity'
@@ -7,7 +7,7 @@ import { SetupData } from '@/entity'
 export interface Books extends ISearchable {}
 
 export class Books extends Container {
-  setupInstance(data?: IContainerSetupData): SetupData | undefined {
+  setupInstance(data?: IContainerData): SetupData | undefined {
     return super.setupInstance({
       name: 'Books',
       icon: 'books',

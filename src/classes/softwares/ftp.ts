@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { ISoftwareSetupData, Software } from '@/classes/softwares/software'
+import { ISoftwareData, Software } from '@/classes/softwares/software'
 import { SetupData } from '@/entity'
 
 export class Ftp extends Software {
-  setupInstance(data?: ISoftwareSetupData): SetupData | undefined {
+  setupInstance(data?: ISoftwareData): SetupData | undefined {
     return super.setupInstance({
       name: 'FTP',
       installType: 'ftp',

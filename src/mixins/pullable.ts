@@ -4,18 +4,18 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IOperation, IOperationSetupData } from './operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IOperation, IOperationData } from './operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IPullableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IRequirementsSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface IPullableData extends
+  INameData,
+  IIconData,
+  IRequirementsData,
+  IOperationData,
+  IActionsData
 {
   // is the object pullable
   pullable?: boolean
@@ -68,7 +68,7 @@ export const Pullable: IPullable = {
     requirements: [
       { name: 'pull', str: 1 },
     ],
-  } as IPullableSetupData,
+  } as IPullableData,
 
   get isPullable(): boolean { return this.state.pullable },
   set pullable(value: boolean) { this.state.pullable = value },

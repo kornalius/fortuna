@@ -1,37 +1,37 @@
 import { mixin, emit, registerClass, can } from '@/utils'
 import compact from 'lodash/compact'
-import { Entity, IEntitySetupData, SetupData } from '@/entity'
-import { IRoomSetupData, Room } from '@/classes/rooms/room'
+import { Entity, IEntityData, SetupData } from '@/entity'
+import { IRoomData, Room } from '@/classes/rooms/room'
 import { Npc } from '@/classes/npcs/npc'
-import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
-import { ICode, Code, ICodeSetupData } from '@/mixins/code'
-import { IName, INameSetupData, Name } from '@/mixins/name'
-import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
-import { IPosition, IPositionSetupData, Position } from '@/mixins/position'
-import { IIcon, Icon, IIconSetupData } from '@/mixins/icon'
-import { IHidden, Hidden, IHiddenSetupData } from '@/mixins/hidden'
-import { IHovered, Hovered, IHoveredSetupData } from '@/mixins/hovered'
-import { IActions, Actions, IDropdownItem, IActionsSetupData } from '@/mixins/actions'
-import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
-import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
-import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
+import { ILocation, ILocationData, Location } from '@/mixins/location'
+import { ICode, Code, ICodeData } from '@/mixins/code'
+import { IName, INameData, Name } from '@/mixins/name'
+import { IDescription, Description, IDescriptionData } from '@/mixins/description'
+import { IPosition, IPositionData, Position } from '@/mixins/position'
+import { IIcon, Icon, IIconData } from '@/mixins/icon'
+import { IHidden, Hidden, IHiddenData } from '@/mixins/hidden'
+import { IHovered, Hovered, IHoveredData } from '@/mixins/hovered'
+import { IActions, Actions, IDropdownItem, IActionsData } from '@/mixins/actions'
+import { IVisitable, IVisitableData, Visitable } from '@/mixins/visitable'
+import { IRequirements, IRequirementsData, Requirements } from '@/mixins/requirements'
+import { ITooltip, ITooltipData, Tooltip } from '@/mixins/tooltip'
 
 export type OpenHours = [string, string];
 
-export interface IBuildingSetupData extends
-  IEntitySetupData,
-  ICodeSetupData,
-  ILocationSetupData,
-  INameSetupData,
-  IDescriptionSetupData,
-  IPositionSetupData,
-  IIconSetupData,
-  IHiddenSetupData,
-  IHoveredSetupData,
-  IActionsSetupData,
-  IVisitableSetupData,
-  IRequirementsSetupData,
-  ITooltipSetupData
+export interface IBuildingData extends
+  IEntityData,
+  ICodeData,
+  ILocationData,
+  INameData,
+  IDescriptionData,
+  IPositionData,
+  IIconData,
+  IHiddenData,
+  IHoveredData,
+  IActionsData,
+  IVisitableData,
+  IRequirementsData,
+  ITooltipData
 {
   // start room code to go to when entering the building
   startRoomCode?: string | null
@@ -59,11 +59,11 @@ export interface Building extends
 {}
 
 export class Building extends Entity {
-  constructor(data?: IBuildingSetupData) {
+  constructor(data?: IBuildingData) {
     super(data)
   }
 
-  setupInstance(data?: IBuildingSetupData): SetupData | undefined {
+  setupInstance(data?: IBuildingData): SetupData | undefined {
     const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({
@@ -119,7 +119,7 @@ export class Building extends Entity {
     return false
   }
 
-  addRoom(data: (Room | IRoomSetupData)[] | Room | IRoomSetupData): Room[] | Room {
+  addRoom(data: (Room | IRoomData)[] | Room | IRoomData): Room[] | Room {
     if (Array.isArray(data)) {
       return data.map(d => this.addRoom(d) as Room)
     }

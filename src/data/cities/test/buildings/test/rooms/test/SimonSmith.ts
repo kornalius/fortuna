@@ -1,5 +1,5 @@
 import SimonSmithDialogs from './dialogs/SimonSmith'
-import { INpcSetupData, Npc } from '@/classes/npcs/npc'
+import { INpcData, Npc } from '@/classes/npcs/npc'
 
 export default {
   name: 'Simon Smith',
@@ -14,4 +14,4 @@ export default {
   mounted(this: Npc): void {
     this.addDialog(SimonSmithDialogs.call(this))
   },
-} as INpcSetupData
+} as INpcData

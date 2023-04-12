@@ -4,7 +4,7 @@
 
 import { AnyData, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IIcon, IIconSetupData } from './icon'
+import { IIcon, IIconData } from './icon'
 
 export interface IRequirement {
   name: string
@@ -25,8 +25,8 @@ const attrIcons: { [key: string]: string } = {
   credits: '💳',
 }
 
-export interface IRequirementsSetupData extends
-  IIconSetupData
+export interface IRequirementsData extends
+  IIconData
 {
   // requirements for an action [{ name: actionName, attrName: value... }]
   requirements?: IRequirement[]

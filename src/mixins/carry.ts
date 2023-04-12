@@ -4,12 +4,12 @@
 
 import { can } from '@/utils'
 import { State } from '@/entity'
-import { IItems, IItemsSetupData } from './items'
-import { ILevel, ILevelSetupData } from './level'
+import { IItems, IItemsData } from './items'
+import { ILevel, ILevelData } from './level'
 
-export interface ICarrySetupData extends
-  IItemsSetupData,
-  ILevelSetupData
+export interface ICarryData extends
+  IItemsData,
+  ILevelData
 {}
 
 export interface ICarry extends
@@ -24,7 +24,7 @@ export interface ICarry extends
 
 // @ts-ignore
 export const Carry: ICarry = {
-  state: {} as ICarrySetupData,
+  state: {} as ICarryData,
 
   get maxWeight(): number { return 10 * Math.pow(this.lvl, 2)  },
   get carryWeight(): number {

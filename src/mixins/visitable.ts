@@ -4,10 +4,10 @@
 
 import { can, emit, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
+import { IName, INameData } from './name'
 
-export interface IVisitableSetupData extends
-  INameSetupData
+export interface IVisitableData extends
+  INameData
 {
   // is the object visitable
   visitable?: boolean
@@ -36,7 +36,7 @@ export const Visitable: IVisitable = {
   state: {
     visitable: true,
     visited: 0,
-  } as IVisitableSetupData,
+  } as IVisitableData,
 
   get isVisitable(): boolean { return this.state.visitable },
   set visitable(value: boolean) { this.state.visitable = value },

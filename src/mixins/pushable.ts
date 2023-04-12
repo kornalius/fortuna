@@ -4,18 +4,18 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IOperation, IOperationSetupData } from './operation'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IOperation, IOperationData } from './operation'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IPushableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IRequirementsSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface IPushableData extends
+  INameData,
+  IIconData,
+  IRequirementsData,
+  IOperationData,
+  IActionsData
 {
   // is the object pushable
   pushable?: boolean
@@ -68,7 +68,7 @@ export const Pushable: IPushable = {
     requirements: [
       { name: 'push', str: 1 }
     ],
-  } as IPushableSetupData,
+  } as IPushableData,
 
   get isPushable(): boolean { return this.state.pushable },
   set pushable(value: boolean) { this.state.pushable = value },

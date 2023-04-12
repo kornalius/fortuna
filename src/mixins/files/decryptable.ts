@@ -3,22 +3,22 @@
  */
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { Entity, IEntitySetupData, State } from '@/entity'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IIcon, IIconSetupData } from '@/mixins/icon'
-import { IVersion, IVersionSetupData } from '@/mixins/version'
-import { IOperation, IOperationSetupData } from '@/mixins/operation'
-import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
-import { IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { Entity, IEntityData, State } from '@/entity'
+import { IName, INameData } from '@/mixins/name'
+import { IIcon, IIconData } from '@/mixins/icon'
+import { IVersion, IVersionData } from '@/mixins/version'
+import { IOperation, IOperationData } from '@/mixins/operation'
+import { IRequirements, IRequirementsData } from '@/mixins/requirements'
+import { IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDecryptableSetupData extends
-  IEntitySetupData,
-  INameSetupData,
-  IIconSetupData,
-  IVersionSetupData,
-  IOperationSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IDecryptableData extends
+  IEntityData,
+  INameData,
+  IIconData,
+  IVersionData,
+  IOperationData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object decryptable
   decryptable?: boolean
@@ -64,7 +64,7 @@ export const Decryptable: IDecryptable = {
           : undefined
       ),
     ],
-  } as IDecryptableSetupData,
+  } as IDecryptableData,
 
   get isDecryptable(): boolean { return this.state.decryptable },
   set decryptable(value: boolean) { this.state.decryptable = value },

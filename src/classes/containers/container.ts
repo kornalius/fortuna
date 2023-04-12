@@ -8,22 +8,22 @@ import { IHovered, Hovered } from '@/mixins/hovered'
 import { ILocation, Location } from '@/mixins/location'
 import { IActions, Actions } from '@/mixins/actions'
 import { IExaminable, Examinable } from '@/mixins/examinable'
-import { IOpenable, IOpenableSetupData, Openable } from '@/mixins/openable'
-import { ISearchable, ISearchableSetupData, Searchable } from '@/mixins/searchable'
-import { IUnlockable, IUnlockableSetupData, Unlockable } from '@/mixins/unlockable'
+import { IOpenable, IOpenableData, Openable } from '@/mixins/openable'
+import { ISearchable, ISearchableData, Searchable } from '@/mixins/searchable'
+import { IUnlockable, IUnlockableData, Unlockable } from '@/mixins/unlockable'
 import { IPushable, Pushable } from '@/mixins/pushable'
 import { IPullable, Pullable } from '@/mixins/pullable'
-import { IItems, IItemsSetupData, Items } from '@/mixins/items'
+import { IItems, IItemsData, Items } from '@/mixins/items'
 import { IRequirements, Requirements } from '@/mixins/requirements'
 import { ITooltip, Tooltip } from '@/mixins/tooltip'
-import { IItemSetupData, Item } from '@/classes/items/item'
+import { IItemData, Item } from '@/classes/items/item'
 
-export interface IContainerSetupData extends
-  IItemSetupData,
-  IOpenableSetupData,
-  ISearchableSetupData,
-  IUnlockableSetupData,
-  IItemsSetupData
+export interface IContainerData extends
+  IItemData,
+  IOpenableData,
+  ISearchableData,
+  IUnlockableData,
+  IItemsData
 {}
 
 export interface Container extends
@@ -46,7 +46,7 @@ export interface Container extends
 {}
 
 export class Container extends Item {
-  setupInstance(data?: IContainerSetupData): SetupData | undefined {
+  setupInstance(data?: IContainerData): SetupData | undefined {
     const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({

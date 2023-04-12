@@ -4,16 +4,16 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IOperation, IOperationSetupData } from './operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IOperation, IOperationData } from './operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IActivableSetupData extends
-  INameSetupData,
-  IActionsSetupData,
-  IOperationSetupData,
-  IRequirementsSetupData
+export interface IActivableData extends
+  INameData,
+  IActionsData,
+  IOperationData,
+  IRequirementsData
 {
   // is the item activable
   activable?: boolean
@@ -88,7 +88,7 @@ export const Activable: IActivable = {
       { name: 'activate', dex: 1 },
       { name: 'disactivate', dex: 1 },
     ],
-  } as IActivableSetupData,
+  } as IActivableData,
 
   get isActivable(): boolean { return this.state.activable },
   set activable(value: boolean) { this.state.activable = value },

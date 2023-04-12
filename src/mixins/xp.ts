@@ -3,10 +3,10 @@
  */
 
 import { State } from '@/entity'
-import { ILevel, ILevelSetupData } from './level'
+import { ILevel, ILevelData } from './level'
 
-export interface IXpSetupData extends
-  ILevelSetupData
+export interface IXpData extends
+  ILevelData
 {
   // current experience of the object
   xp?: number
@@ -25,7 +25,7 @@ export interface IXp extends
 export const Xp: IXp = {
   state: {
     xp: 0,
-  } as IXpSetupData,
+  } as IXpData,
 
   get xp(): number { return this.state.xp },
   set xp(value) { this.state.xp = Math.max(0, value) },

@@ -1,23 +1,23 @@
 import { mixin, registerClass } from '@/utils'
-import { IItemSetupData, Item } from '../items/item'
-import { IVersion, IVersionSetupData, Version } from '@/mixins/version'
-import { IViewable, IViewableSetupData, Viewable } from '@/mixins/files/viewable'
-import { IDeletable, IDeletableSetupData, Deletable } from '@/mixins/files/deletable'
-import { IDecryptable, IDecryptableSetupData, Decryptable } from '@/mixins/files/decryptable'
-import { IDownloadable, IDownloadableSetupData, Downloadable } from '@/mixins/files/downloadable'
-import { IUploadable, IUploadableSetupData, Uploadable } from '@/mixins/files/uploadable'
-import { IHidden, IHiddenSetupData, Hidden } from '@/mixins/hidden'
+import { IItemData, Item } from '../items/item'
+import { IVersion, IVersionData, Version } from '@/mixins/version'
+import { IViewable, IViewableData, Viewable } from '@/mixins/files/viewable'
+import { IDeletable, IDeletableData, Deletable } from '@/mixins/files/deletable'
+import { IDecryptable, IDecryptableData, Decryptable } from '@/mixins/files/decryptable'
+import { IDownloadable, IDownloadableData, Downloadable } from '@/mixins/files/downloadable'
+import { IUploadable, IUploadableData, Uploadable } from '@/mixins/files/uploadable'
+import { IHidden, IHiddenData, Hidden } from '@/mixins/hidden'
 import { SetupData } from '@/entity'
 
-export interface IFileSetupData extends
-  IItemSetupData,
-  IVersionSetupData,
-  IViewableSetupData,
-  IDeletableSetupData,
-  IDecryptableSetupData,
-  IDownloadableSetupData,
-  IUploadableSetupData,
-  IHiddenSetupData
+export interface IFileData extends
+  IItemData,
+  IVersionData,
+  IViewableData,
+  IDeletableData,
+  IDecryptableData,
+  IDownloadableData,
+  IUploadableData,
+  IHiddenData
 {
   // file size
   size?: number
@@ -35,11 +35,11 @@ export interface File extends
 {}
 
 export class File extends Item {
-  constructor(data?: IFileSetupData) {
+  constructor(data?: IFileData) {
     super(data)
   }
 
-  setupInstance(data?: IFileSetupData): SetupData | undefined {
+  setupInstance(data?: IFileData): SetupData | undefined {
     return super.setupInstance({
       name: 'File',
       icon: 'file',

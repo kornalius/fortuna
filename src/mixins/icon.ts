@@ -5,7 +5,7 @@
 import compact from 'lodash/compact'
 import { State } from '@/entity'
 
-export interface IIconSetupData {
+export interface IIconData {
   // icon name
   icon?: string | null
   // icon suffix
@@ -24,7 +24,7 @@ export const Icon: IIcon = {
   state: {
     icon: null,
     iconSuffix: null,
-  } as IIconSetupData,
+  } as IIconData,
 
   get icon(): string | null { return compact([this.state.icon, this.iconSuffix]).join('-') },
   set icon(value) { this.state.icon = value },

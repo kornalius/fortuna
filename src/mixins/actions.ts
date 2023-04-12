@@ -18,7 +18,7 @@ export interface IDropdownItem {
 
 export type ActionItem = ((item: any) => IDropdownItem | undefined) | IDropdownItem | undefined
 
-export interface IActionsSetupData {
+export interface IActionsData {
   // actions to be converted to dropdown menu items
   actions?: ActionItem[],
   // action orders
@@ -39,7 +39,7 @@ export const Actions: IActions = {
     actions: [],
     actionsOrder: [],
     omitActions: [],
-  } as IActionsSetupData,
+  } as IActionsData,
 
   get actions(): ActionItem[] { return this.state.actions },
 

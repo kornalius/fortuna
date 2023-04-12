@@ -4,18 +4,18 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IOpenable, IOpenableSetupData } from './openable'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IOpenable, IOpenableData } from './openable'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface ISearchableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IOpenableSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface ISearchableData extends
+  INameData,
+  IIconData,
+  IOpenableData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object searchable
   searchable?: boolean
@@ -64,7 +64,7 @@ export const Searchable: ISearchable = {
     requirements: [
       { name: 'search', int: 1 },
     ],
-  } as ISearchableSetupData,
+  } as ISearchableData,
 
   get isSearchable(): boolean { return this.state.searchable },
   set searchable(value: boolean) { this.state.searchable = value },

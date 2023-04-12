@@ -5,7 +5,7 @@
 import dayjs from 'dayjs'
 import { State } from '@/entity'
 
-export interface ITimeoutSetupData {
+export interface ITimeoutData {
   // when the timeout started (timestamp)
   timeoutStart?: number
   // length of the timeout in ms
@@ -29,7 +29,7 @@ export const Timeout: ITimeout = {
   state: {
     timeoutStart: 0,
     timeoutLength: 0,
-  } as ITimeoutSetupData,
+  } as ITimeoutData,
 
   get timeoutStart(): number { return this.state.timeoutStart },
   set timeoutStart(value) { this.state.timeoutStart = value },

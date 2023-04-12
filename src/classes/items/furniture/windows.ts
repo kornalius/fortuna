@@ -1,18 +1,18 @@
 import { registerClass, mixin } from '@/utils'
 import { Item } from '../item'
-import { IOpenable, IOpenableSetupData, Openable } from '@/mixins/openable'
+import { IOpenable, IOpenableData, Openable } from '@/mixins/openable'
 import { SetupData } from '@/entity'
 
-export interface IWindowsSetupData extends IOpenableSetupData {}
+export interface IWindowsData extends IOpenableData {}
 
 export interface Windows extends IOpenable {}
 
 export class Windows extends Item {
-  constructor(data?: IWindowsSetupData) {
+  constructor(data?: IWindowsData) {
     super(data)
   }
 
-  setupInstance(data?: IWindowsSetupData): SetupData | undefined {
+  setupInstance(data?: IWindowsData): SetupData | undefined {
     return super.setupInstance({
       name: 'Windows',
       icon: 'window',

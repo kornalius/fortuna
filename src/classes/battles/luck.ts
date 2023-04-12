@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { BattleItem, IBattleItemSetupData } from './battle-item'
+import { BattleItem, IBattleItemData } from './battle-item'
 import { SetupData } from '@/entity'
 
 export class Luck extends BattleItem {
-  setupInstance(data?: IBattleItemSetupData): SetupData | undefined {
+  setupInstance(data?: IBattleItemData): SetupData | undefined {
     return super.setupInstance({
       name: 'Luck',
       icon: 'luck',

@@ -1,15 +1,15 @@
-import { IItemSetupData, Item } from '../items/item'
+import { IItemData, Item } from '../items/item'
 import { can, LOG_WARN, registerClass } from '@/utils'
 import { SetupData } from '@/entity'
 
-export interface IBattleItemSetupData extends IItemSetupData {}
+export interface IBattleItemData extends IItemData {}
 
 export class BattleItem extends Item {
-  constructor(data?: IBattleItemSetupData) {
+  constructor(data?: IBattleItemData) {
     super(data)
   }
 
-  setupInstance(data?: IBattleItemSetupData): SetupData | undefined {
+  setupInstance(data?: IBattleItemData): SetupData | undefined {
     return super.setupInstance({
       usable: true,
       uses: 1,

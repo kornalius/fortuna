@@ -1,10 +1,10 @@
 import { registerClass } from '@/utils'
-import { Container, IContainerSetupData } from './container'
+import { Container, IContainerData } from './container'
 import { books } from '@/generators'
 import { SetupData } from '@/entity'
 
 export class BookShelf extends Container {
-  setupInstance(data?: IContainerSetupData): SetupData | undefined {
+  setupInstance(data?: IContainerData): SetupData | undefined {
     return super.setupInstance({
       name: 'BookShelf',
       icon: 'bookshelf',

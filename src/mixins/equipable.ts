@@ -4,11 +4,11 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IOperation, IOperationSetupData } from './operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IOperation, IOperationData } from './operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
 export type Slots = 'H' | 'Y' | 'T' | 'W' | 'D' | 'L' | 'FEET'
 
@@ -32,12 +32,12 @@ export const EquipableIcons = {
   [EquipableSlots.FEET]: 'char-feet',
 }
 
-export interface IEquipableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IRequirementsSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface IEquipableData extends
+  INameData,
+  IIconData,
+  IRequirementsData,
+  IOperationData,
+  IActionsData
 {
   // is the item equipable
   equipable?: boolean
@@ -101,7 +101,7 @@ export const Equipable: IEquipable = {
       ),
     ],
     requirements: [],
-  } as IEquipableSetupData,
+  } as IEquipableData,
 
   get isEquipable(): boolean { return this.state.equipable },
   set equipable(value: boolean) { this.state.equipable = value },

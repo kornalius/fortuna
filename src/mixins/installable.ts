@@ -4,20 +4,20 @@
 
 import { log, emit, can, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IWeight, IWeightSetupData } from './weight'
-import { IOperation, IOperationSetupData } from './operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IWeight, IWeightData } from './weight'
+import { IOperation, IOperationData } from './operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IInstallableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IRequirementsSetupData,
-  IWeightSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface IInstallableData extends
+  INameData,
+  IIconData,
+  IRequirementsData,
+  IWeightData,
+  IOperationData,
+  IActionsData
 {
   // is the object installable
   installable?: boolean
@@ -84,7 +84,7 @@ export const Installable: IInstallable = {
           : undefined
       ),
     ],
-  } as IInstallableSetupData,
+  } as IInstallableData,
 
   get isInstallable(): boolean { return this.state.installable },
   set installable(value: boolean) { this.state.installable = value },

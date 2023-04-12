@@ -5,7 +5,7 @@
 import { State } from '@/entity'
 import capitalize from 'lodash/capitalize'
 
-export interface INameSetupData {
+export interface INameData {
   // is the object renamable
   renameable?: boolean
   // object name
@@ -27,7 +27,7 @@ export const Name: IName = {
   state: {
     renameable: true,
     name: null,
-  } as INameSetupData,
+  } as INameData,
 
   get renameable(): boolean { return this.state.renameable },
   set renameable(value) { this.state.renameable = value },

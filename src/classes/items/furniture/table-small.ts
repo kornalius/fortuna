@@ -1,10 +1,10 @@
 import random from 'lodash/random'
 import { registerClass } from '@/utils'
-import { Table, ITableSetupData } from './table'
+import { Table, ITableData } from './table'
 import { SetupData } from '@/entity'
 
 export class SmallTable extends Table {
-  setupInstance(data?: ITableSetupData): SetupData | undefined {
+  setupInstance(data?: ITableData): SetupData | undefined {
     return super.setupInstance({
       name: 'Small table',
       icon: 'table-small',

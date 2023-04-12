@@ -4,7 +4,7 @@
 
 import { State } from '@/entity'
 
-export interface IImageSetupData {
+export interface IImageData {
   // image name
   img?: string | null,
 }
@@ -18,7 +18,7 @@ export interface IImage {
 export const Image: IImage = {
   state: {
     img: null,
-  } as IImageSetupData,
+  } as IImageData,
 
   get img(): string | null { return `images/${this.state.img}` },
   set img(value) { this.state.img = value },

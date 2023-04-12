@@ -1,33 +1,33 @@
 import flatten from 'lodash/flatten'
-import { Entity, IEntitySetupData, SetupData } from '@/entity'
+import { Entity, IEntityData, SetupData } from '@/entity'
 import { mixin, emit, registerClass, can, AnyData } from '@/utils'
 import { Direction, Directions, Door } from '@/classes/items/furniture/door'
-import { INpcSetupData, Npc } from '@/classes/npcs/npc'
+import { INpcData, Npc } from '@/classes/npcs/npc'
 import { Item } from '@/classes/items/item'
 import { Container } from '@/classes/containers/container'
-import { ICode, Code, ICodeSetupData } from '@/mixins/code'
-import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
-import { IName, INameSetupData, Name } from '@/mixins/name'
-import { IPosition, IPositionSetupData, Position } from '@/mixins/position'
-import { IIcon, Icon, IIconSetupData } from '@/mixins/icon'
-import { IImage, IImageSetupData, Image } from '@/mixins/image'
-import { IItems, IItemsSetupData, Items } from '@/mixins/items'
-import { IActions, Actions, IActionsSetupData } from '@/mixins/actions'
-import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
-import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+import { ICode, Code, ICodeData } from '@/mixins/code'
+import { ILocation, ILocationData, Location } from '@/mixins/location'
+import { IName, INameData, Name } from '@/mixins/name'
+import { IPosition, IPositionData, Position } from '@/mixins/position'
+import { IIcon, Icon, IIconData } from '@/mixins/icon'
+import { IImage, IImageData, Image } from '@/mixins/image'
+import { IItems, IItemsData, Items } from '@/mixins/items'
+import { IActions, Actions, IActionsData } from '@/mixins/actions'
+import { IVisitable, IVisitableData, Visitable } from '@/mixins/visitable'
+import { IRequirements, IRequirementsData, Requirements } from '@/mixins/requirements'
 
-export interface IRoomSetupData extends
-  IEntitySetupData,
-  INameSetupData,
-  IIconSetupData,
-  ICodeSetupData,
-  IPositionSetupData,
-  IImageSetupData,
-  IItemsSetupData,
-  IActionsSetupData,
-  IVisitableSetupData,
-  IRequirementsSetupData,
-  ILocationSetupData
+export interface IRoomData extends
+  IEntityData,
+  INameData,
+  IIconData,
+  ICodeData,
+  IPositionData,
+  IImageData,
+  IItemsData,
+  IActionsData,
+  IVisitableData,
+  IRequirementsData,
+  ILocationData
 {
   onEnter?: () => Promise<void>
   onExit?: (toRoom?: Room) => Promise<void>
@@ -47,11 +47,11 @@ export interface Room extends
 {}
 
 export class Room extends Entity {
-  constructor(data?: IRoomSetupData) {
+  constructor(data?: IRoomData) {
     super(data)
   }
 
-  setupInstance(data?: IRoomSetupData): SetupData | undefined {
+  setupInstance(data?: IRoomData): SetupData | undefined {
     const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({
@@ -113,7 +113,7 @@ export class Room extends Entity {
     return false
   }
 
-  addNpc(data: (Npc | INpcSetupData)[] | Npc | INpcSetupData): Npc[] | Npc {
+  addNpc(data: (Npc | INpcData)[] | Npc | INpcData): Npc[] | Npc {
     if (Array.isArray(data)) {
       return data.map(d => this.addNpc(d) as Npc)
     }

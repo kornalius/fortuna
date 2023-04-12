@@ -1,54 +1,54 @@
-import { Entity, IEntitySetupData, SetupData } from '@/entity'
+import { Entity, IEntityData, SetupData } from '@/entity'
 import { mixin, registerClass } from '@/utils'
-import { ICode, ICodeSetupData, Code } from '@/mixins/code'
-import { IName, INameSetupData, Name } from '@/mixins/name'
-import { IDescription, IDescriptionSetupData, Description } from '@/mixins/description'
-import { IIcon, IIconSetupData, Icon } from '@/mixins/icon'
-import { IWeight, IWeightSetupData, Weight } from '@/mixins/weight'
-import { IBuffs, IBuffsSetupData, Buffs } from '@/mixins/buffs'
-import { IQty, IQtySetupData, Qty } from '@/mixins/qty'
-import { IOperation, IOperationSetupData, Operation } from '@/mixins/operation'
-import { IHovered, IHoveredSetupData, Hovered } from '@/mixins/hovered'
-import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
-import { IActions, IActionsSetupData, Actions } from '@/mixins/actions'
-import { IPickable, IPickableSetupData, Pickable } from '@/mixins/pickable'
-import { IDropable, IDropableSetupData, Dropable } from '@/mixins/dropable'
-import { IUsable, IUsableSetupData, Usable } from '@/mixins/usable'
-import { IActivable, IActivableSetupData, Activable } from '@/mixins/activable'
-import { IConsumable, IConsumableSetupData, Consumable } from '@/mixins/consumable'
-import { IDestructable, IDestructableSetupData, Destructable } from '@/mixins/destructable'
-import { IExaminable, IExaminableSetupData, Examinable } from '@/mixins/examinable'
-import { IPushable, IPushableSetupData, Pushable } from '@/mixins/pushable'
-import { IPullable, IPullableSetupData, Pullable } from '@/mixins/pullable'
-import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
-import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
-import { ISelectable, ISelectableSetupData, Selectable } from '@/mixins/selectable'
+import { ICode, ICodeData, Code } from '@/mixins/code'
+import { IName, INameData, Name } from '@/mixins/name'
+import { IDescription, IDescriptionData, Description } from '@/mixins/description'
+import { IIcon, IIconData, Icon } from '@/mixins/icon'
+import { IWeight, IWeightData, Weight } from '@/mixins/weight'
+import { IBuffs, IBuffsData, Buffs } from '@/mixins/buffs'
+import { IQty, IQtyData, Qty } from '@/mixins/qty'
+import { IOperation, IOperationData, Operation } from '@/mixins/operation'
+import { IHovered, IHoveredData, Hovered } from '@/mixins/hovered'
+import { ILocation, ILocationData, Location } from '@/mixins/location'
+import { IActions, IActionsData, Actions } from '@/mixins/actions'
+import { IPickable, IPickableData, Pickable } from '@/mixins/pickable'
+import { IDropable, IDropableData, Dropable } from '@/mixins/dropable'
+import { IUsable, IUsableData, Usable } from '@/mixins/usable'
+import { IActivable, IActivableData, Activable } from '@/mixins/activable'
+import { IConsumable, IConsumableData, Consumable } from '@/mixins/consumable'
+import { IDestructable, IDestructableData, Destructable } from '@/mixins/destructable'
+import { IExaminable, IExaminableData, Examinable } from '@/mixins/examinable'
+import { IPushable, IPushableData, Pushable } from '@/mixins/pushable'
+import { IPullable, IPullableData, Pullable } from '@/mixins/pullable'
+import { IRequirements, IRequirementsData, Requirements } from '@/mixins/requirements'
+import { ITooltip, ITooltipData, Tooltip } from '@/mixins/tooltip'
+import { ISelectable, ISelectableData, Selectable } from '@/mixins/selectable'
 
-export interface IItemSetupData extends
-  IEntitySetupData,
-  ICodeSetupData,
-  INameSetupData,
-  IDescriptionSetupData,
-  IIconSetupData,
-  IQtySetupData,
-  IWeightSetupData,
-  IBuffsSetupData,
-  IOperationSetupData,
-  IHoveredSetupData,
-  ILocationSetupData,
-  IActionsSetupData,
-  IPickableSetupData,
-  IDropableSetupData,
-  IUsableSetupData,
-  IActivableSetupData,
-  IConsumableSetupData,
-  IDestructableSetupData,
-  IExaminableSetupData,
-  IPushableSetupData,
-  IPullableSetupData,
-  IRequirementsSetupData,
-  ITooltipSetupData,
-  ISelectableSetupData
+export interface IItemData extends
+  IEntityData,
+  ICodeData,
+  INameData,
+  IDescriptionData,
+  IIconData,
+  IQtyData,
+  IWeightData,
+  IBuffsData,
+  IOperationData,
+  IHoveredData,
+  ILocationData,
+  IActionsData,
+  IPickableData,
+  IDropableData,
+  IUsableData,
+  IActivableData,
+  IConsumableData,
+  IDestructableData,
+  IExaminableData,
+  IPushableData,
+  IPullableData,
+  IRequirementsData,
+  ITooltipData,
+  ISelectableData
 {}
 
 export interface Item extends
@@ -78,11 +78,11 @@ export interface Item extends
 {}
 
 export class Item extends Entity {
-  constructor(data?: IItemSetupData) {
+  constructor(data?: IItemData) {
     super(data)
   }
 
-  setupInstance(data?: IItemSetupData): SetupData | undefined {
+  setupInstance(data?: IItemData): SetupData | undefined {
     const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return {

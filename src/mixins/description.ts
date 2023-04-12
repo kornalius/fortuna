@@ -4,7 +4,7 @@
 
 import { State } from '@/entity'
 
-export interface IDescriptionSetupData {
+export interface IDescriptionData {
   // description
   description?: string | null
 }
@@ -18,7 +18,7 @@ export interface IDescription {
 export const Description: IDescription = {
   state: {
     description: null,
-  } as IDescriptionSetupData,
+  } as IDescriptionData,
 
   get description(): string { return this.state.description },
   set description(value) { this.state.description = value },

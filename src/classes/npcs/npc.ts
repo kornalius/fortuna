@@ -1,24 +1,24 @@
 import compact from 'lodash/compact'
-import { Entity, IEntitySetupData, SetupData } from '@/entity'
+import { Entity, IEntityData, SetupData } from '@/entity'
 import { Dialog } from '@/classes/dialog'
 import { Combat } from '@/classes/combat'
 import { AnyData, can, emit, mixin, registerClass } from '@/utils'
-import { ICode, Code, ICodeSetupData } from '@/mixins/code'
-import { IName, INameSetupData, Name } from '@/mixins/name'
-import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
-import { IActions, Actions, IDropdownItem, IActionsSetupData } from '@/mixins/actions'
-import { IImage, IImageSetupData, Image } from '@/mixins/image'
-import { IHovered, Hovered, IHoveredSetupData } from '@/mixins/hovered'
-import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
-import { ILevel, ILevelSetupData, Level } from '@/mixins/level'
-import { IBuffable, Buffable, IBuffableSetupData } from '@/mixins/buffable'
-import { IHp, Hp, IHpSetupData } from '@/mixins/hp'
-import { ICredits, Credits, ICreditsSetupData } from '@/mixins/credits'
-import { IItems, IItemsSetupData, Items } from '@/mixins/items'
-import { ICarry, Carry, ICarrySetupData } from '@/mixins/carry'
-import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
-import { ISleep, ISleepSetupData, Sleep } from '@/mixins/sleep'
-import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
+import { ICode, Code, ICodeData } from '@/mixins/code'
+import { IName, INameData, Name } from '@/mixins/name'
+import { IDescription, Description, IDescriptionData } from '@/mixins/description'
+import { IActions, Actions, IDropdownItem, IActionsData } from '@/mixins/actions'
+import { IImage, IImageData, Image } from '@/mixins/image'
+import { IHovered, Hovered, IHoveredData } from '@/mixins/hovered'
+import { ILocation, ILocationData, Location } from '@/mixins/location'
+import { ILevel, ILevelData, Level } from '@/mixins/level'
+import { IBuffable, Buffable, IBuffableData } from '@/mixins/buffable'
+import { IHp, Hp, IHpData } from '@/mixins/hp'
+import { ICredits, Credits, ICreditsData } from '@/mixins/credits'
+import { IItems, IItemsData, Items } from '@/mixins/items'
+import { ICarry, Carry, ICarryData } from '@/mixins/carry'
+import { IRequirements, IRequirementsData, Requirements } from '@/mixins/requirements'
+import { ISleep, ISleepData, Sleep } from '@/mixins/sleep'
+import { ITooltip, ITooltipData, Tooltip } from '@/mixins/tooltip'
 import { IDie } from '@/store/config'
 
 export interface Agenda {
@@ -30,24 +30,24 @@ export interface Agenda {
   expr: (npc: Npc, end: boolean) => Promise<void>
 }
 
-export interface INpcSetupData extends
-  IEntitySetupData,
-  ICodeSetupData,
-  INameSetupData,
-  IDescriptionSetupData,
-  IActionsSetupData,
-  IImageSetupData,
-  IHoveredSetupData,
-  ILocationSetupData,
-  ICreditsSetupData,
-  IItemsSetupData,
-  ILevelSetupData,
-  IBuffableSetupData,
-  IHpSetupData,
-  ICarrySetupData,
-  IRequirementsSetupData,
-  ISleepSetupData,
-  ITooltipSetupData
+export interface INpcData extends
+  IEntityData,
+  ICodeData,
+  INameData,
+  IDescriptionData,
+  IActionsData,
+  IImageData,
+  IHoveredData,
+  ILocationData,
+  ICreditsData,
+  IItemsData,
+  ILevelData,
+  IBuffableData,
+  IHpData,
+  ICarryData,
+  IRequirementsData,
+  ISleepData,
+  ITooltipData
 {
   // is the Npc female or male?
   female?: boolean
@@ -81,11 +81,11 @@ export interface Npc extends
 {}
 
 export class Npc extends Entity {
-  constructor(data?: INpcSetupData) {
+  constructor(data?: INpcData) {
     super(data)
   }
 
-  setupInstance(data?: INpcSetupData): SetupData | undefined {
+  setupInstance(data?: INpcData): SetupData | undefined {
     const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({
@@ -126,7 +126,7 @@ export class Npc extends Entity {
       // turns to skip during battle
       skipTurns: 0,
       ...(data || {})
-    }) as INpcSetupData
+    }) as INpcData
   }
 
   get isNpc(): boolean { return true }

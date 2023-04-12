@@ -3,7 +3,7 @@ import TestRoomPillsBottle from './pills-bottle'
 import { PillsBottle } from '@/classes/containers/pills-bottle'
 import { Keypad } from '@/classes/items/keypad'
 import { LightSwitch } from '@/classes/items/electronic/light-switch'
-import { IElectronicSetupData } from '@/classes/items/electronic/electronic'
+import { IElectronicData } from '@/classes/items/electronic/electronic'
 
 export default {
   usable: false,
@@ -44,4 +44,4 @@ export default {
       ])
     }
   },
-} as IElectronicSetupData
+} as IElectronicData

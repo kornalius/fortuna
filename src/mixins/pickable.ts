@@ -4,21 +4,21 @@
 
 import { can, emit, log, LOG_ERROR, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { ILocation, ILocationSetupData } from './location'
-import { IHovered, IHoveredSetupData } from './hovered'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { ILocation, ILocationData } from './location'
+import { IHovered, IHoveredData } from './hovered'
 import { Npc } from '@/classes/npcs/npc'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IPickableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IRequirementsSetupData,
-  IHoveredSetupData,
-  ILocationSetupData,
-  IActionsSetupData
+export interface IPickableData extends
+  INameData,
+  IIconData,
+  IRequirementsData,
+  IHoveredData,
+  ILocationData,
+  IActionsData
 {
   // is the object pickable
   pickable?: boolean
@@ -59,7 +59,7 @@ export const Pickable: IPickable = {
           : undefined
       ),
     ],
-  } as IPickableSetupData,
+  } as IPickableData,
 
   get isPickable(): boolean { return this.state.pickable },
   set pickable(value: boolean) { this.state.pickable = value },

@@ -12,24 +12,24 @@ import {
   randomFilename,
   registerClass
 } from '@/utils'
-import { IItemSetupData, Item } from '../items/item'
+import { IItemData, Item } from '../items/item'
 import { File } from './file'
 import { femaleNames, maleNames, passwords } from '@/words'
 import { SetupData } from '@/entity'
 import { Software } from '@/classes/softwares/software'
-import { IExaminable, Examinable, IExaminableSetupData } from '@/mixins/examinable'
-import { IVersion, IVersionSetupData, Version } from '@/mixins/version'
-import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
-import { ITimeout, ITimeoutSetupData, Timeout } from '@/mixins/timeout'
+import { IExaminable, Examinable, IExaminableData } from '@/mixins/examinable'
+import { IVersion, IVersionData, Version } from '@/mixins/version'
+import { IVisitable, IVisitableData, Visitable } from '@/mixins/visitable'
+import { ITimeout, ITimeoutData, Timeout } from '@/mixins/timeout'
 import { IOperationItem } from '@/mixins/operation'
 import { IDropdownItem } from '@/mixins/actions'
 
-export interface IServerSetupData extends
-  IItemSetupData,
-  IExaminableSetupData,
-  IVersionSetupData,
-  IVisitableSetupData,
-  ITimeoutSetupData
+export interface IServerData extends
+  IItemData,
+  IExaminableData,
+  IVersionData,
+  IVisitableData,
+  ITimeoutData
 {
   // current displayed lines
   display?: string[]
@@ -63,11 +63,11 @@ export interface Server extends
 export class Server extends Item {
   fileOrders: string[] = []
 
-  constructor(data?: IServerSetupData) {
+  constructor(data?: IServerData) {
     super(data)
   }
 
-  setupInstance(data?: IServerSetupData): SetupData | undefined {
+  setupInstance(data?: IServerData): SetupData | undefined {
     return super.setupInstance({
       name: 'Server',
       icon: 'server',
@@ -466,11 +466,11 @@ export class Server extends Item {
   canCrack(showMessage?: boolean) {
     return can(this, [
       {
-        expr: () => !!this.username,
+        expr: () => !this.username,
         log: () => `${this.nameProper} does not have any user assign to it`
       },
       {
-        expr: () => !!this.password,
+        expr: () => !this.password,
         log: () => `${this.nameProper} does not have any password assign to a user`
       },
       {

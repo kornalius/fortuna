@@ -1,8 +1,8 @@
-import { IItemSetupData, Item } from '../item'
+import { IItemData, Item } from '../item'
 import { can, emit, mixin, oppositeDirection, registerClass } from '@/utils'
 import { SetupData } from '@/entity'
-import { IOpenable, IOpenableSetupData, Openable } from '@/mixins/openable'
-import { IUnlockable, IUnlockableSetupData, Unlockable } from '@/mixins/unlockable'
+import { IOpenable, IOpenableData, Openable } from '@/mixins/openable'
+import { IUnlockable, IUnlockableData, Unlockable } from '@/mixins/unlockable'
 import { IUsable } from '@/mixins/usable'
 import { Room } from '@/classes/rooms/room'
 import compact from 'lodash/compact'
@@ -13,10 +13,10 @@ export type Direction = 'N' | 'S' | 'E' | 'W'
 // { roomId: Direction, ... }
 export type Directions = { [key: string]: Direction }
 
-export interface IDoorSetupData extends
-  IItemSetupData,
-  IOpenableSetupData,
-  IUnlockableSetupData
+export interface IDoorData extends
+  IItemData,
+  IOpenableData,
+  IUnlockableData
 {
   // which room ids are in which directions
   directions?: Directions
@@ -28,11 +28,11 @@ export interface Door extends
 {}
 
 export class Door extends Item {
-  constructor(data?: IDoorSetupData) {
+  constructor(data?: IDoorData) {
     super(data)
   }
 
-  setupInstance(data?: IDoorSetupData): SetupData | undefined {
+  setupInstance(data?: IDoorData): SetupData | undefined {
     return super.setupInstance({
       name: 'Door',
       icon: 'door',

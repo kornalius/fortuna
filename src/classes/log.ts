@@ -1,14 +1,14 @@
-import { Entity, IEntitySetupData, SetupData } from '../entity'
-import { IIconSetupData } from '@/mixins/icon'
+import { Entity, IEntityData, SetupData } from '../entity'
+import { IIconData } from '@/mixins/icon'
 
 export const LOG_IRRELEVANT = -1
 export const LOG_IMPORTANT = 1
 export const LOG_WARN = 2
 export const LOG_ERROR = 3
 
-export interface ILogSetupData extends
-  IEntitySetupData,
-  IIconSetupData
+export interface ILogData extends
+  IEntityData,
+  IIconData
 {
   timestamp?: number
   message?: string | null
@@ -16,11 +16,11 @@ export interface ILogSetupData extends
 }
 
 export class Log extends Entity {
-  constructor(data: ILogSetupData) {
+  constructor(data: ILogData) {
     super(data)
   }
 
-  setupInstance(data?: ILogSetupData): SetupData | undefined {
+  setupInstance(data?: ILogData): SetupData | undefined {
     return super.setupInstance({
       timestamp: Date.now(),
       message: '',

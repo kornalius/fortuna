@@ -1,31 +1,31 @@
-import { Entity, IEntitySetupData, SetupData } from '@/entity'
+import { Entity, IEntityData, SetupData } from '@/entity'
 import { mixin, emit, registerClass, can } from '@/utils'
-import { Building, IBuildingSetupData } from '@/classes/buildings/building'
-import { ICode, Code, ICodeSetupData } from '@/mixins/code'
-import { IName, INameSetupData, Name } from '@/mixins/name'
-import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
-import { IImage, IImageSetupData, Image } from '@/mixins/image'
-import { IPosition, IPositionSetupData, Position } from '@/mixins/position'
-import { IIcon, Icon, IIconSetupData } from '@/mixins/icon'
-import { IHidden, Hidden, IHiddenSetupData } from '@/mixins/hidden'
-import { IHovered, Hovered, IHoveredSetupData } from '@/mixins/hovered'
-import { IActions, Actions, IDropdownItem, IActionsSetupData } from '@/mixins/actions'
-import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
-import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+import { Building, IBuildingData } from '@/classes/buildings/building'
+import { ICode, Code, ICodeData } from '@/mixins/code'
+import { IName, INameData, Name } from '@/mixins/name'
+import { IDescription, Description, IDescriptionData } from '@/mixins/description'
+import { IImage, IImageData, Image } from '@/mixins/image'
+import { IPosition, IPositionData, Position } from '@/mixins/position'
+import { IIcon, Icon, IIconData } from '@/mixins/icon'
+import { IHidden, Hidden, IHiddenData } from '@/mixins/hidden'
+import { IHovered, Hovered, IHoveredData } from '@/mixins/hovered'
+import { IActions, Actions, IDropdownItem, IActionsData } from '@/mixins/actions'
+import { IVisitable, IVisitableData, Visitable } from '@/mixins/visitable'
+import { IRequirements, IRequirementsData, Requirements } from '@/mixins/requirements'
 
-export interface ICitySetupData extends
-  IEntitySetupData,
-  ICodeSetupData,
-  INameSetupData,
-  IDescriptionSetupData,
-  IPositionSetupData,
-  IIconSetupData,
-  IImageSetupData,
-  IHiddenSetupData,
-  IHoveredSetupData,
-  IActionsSetupData,
-  IVisitableSetupData,
-  IRequirementsSetupData
+export interface ICityData extends
+  IEntityData,
+  ICodeData,
+  INameData,
+  IDescriptionData,
+  IPositionData,
+  IIconData,
+  IImageData,
+  IHiddenData,
+  IHoveredData,
+  IActionsData,
+  IVisitableData,
+  IRequirementsData
 {
   // start building code when entering the city
   startBuildingCode?: string | null
@@ -48,11 +48,11 @@ export interface City extends
 {}
 
 export class City extends Entity {
-  constructor(data?: ICitySetupData) {
+  constructor(data?: ICityData) {
     super(data)
   }
 
-  setupInstance(data?: ICitySetupData): SetupData | undefined {
+  setupInstance(data?: ICityData): SetupData | undefined {
     return super.setupInstance({
       name: 'City',
       description: 'A city',
@@ -84,7 +84,7 @@ export class City extends Entity {
     return window.store.buildings.list.filter(i => i.location?.id === this.id)
   }
 
-  addBuilding(data: (Building | IBuildingSetupData)[] | Building | IBuildingSetupData): Building[] | Building {
+  addBuilding(data: (Building | IBuildingData)[] | Building | IBuildingData): Building[] | Building {
     if (Array.isArray(data)) {
       return data.map(d => this.addBuilding(d) as Building)
     }

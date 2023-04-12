@@ -1,5 +1,5 @@
 import { mixin, registerClass } from '@/utils'
-import { IItemSetupData, Item } from '../item'
+import { IItemData, Item } from '../item'
 import { IItems, Items } from '@/mixins/items'
 import { ISearchable, Searchable } from '@/mixins/searchable'
 import { SetupData } from '@/entity'
@@ -7,7 +7,7 @@ import { SetupData } from '@/entity'
 export interface RoundTable extends IItems, ISearchable {}
 
 export class RoundTable extends Item {
-  setupInstance(data?: IItemSetupData): SetupData | undefined {
+  setupInstance(data?: IItemData): SetupData | undefined {
     return super.setupInstance({
       name: 'Round table',
       icon: 'ic:sharp-table-bar',

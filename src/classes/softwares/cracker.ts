@@ -1,10 +1,10 @@
 import { can, emit, registerClass } from '@/utils'
-import { ISoftwareSetupData, Software } from '@/classes/softwares/software'
+import { ISoftwareData, Software } from '@/classes/softwares/software'
 import { SetupData } from '@/entity'
 import { IDropdownItem } from '@/mixins/actions'
 
 export class Cracker extends Software {
-  setupInstance(data?: ISoftwareSetupData): SetupData | undefined {
+  setupInstance(data?: ISoftwareData): SetupData | undefined {
     return super.setupInstance({
       name: 'Cracker',
       installType: 'cracker',
@@ -32,7 +32,7 @@ export class Cracker extends Software {
 
   get isCracker(): boolean { return true }
 
-  canCrack(showMessage?: boolean) {
+  canCrack(showMessage?: boolean): boolean {
     if (!can(this, [
       {
         expr: () => !window.store.player.server,
@@ -41,10 +41,10 @@ export class Cracker extends Software {
     ], showMessage)) {
       return false
     }
-    return window.store.player.server?.canCrack(showMessage)
+    return window.store.player.server?.canCrack(showMessage) || false
   }
 
-  async crack() {
+  async crack(): Promise<boolean> {
     if (!this.canCrack(true)) {
       return false
     }

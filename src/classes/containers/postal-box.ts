@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Container, IContainerSetupData } from './container'
+import { Container, IContainerData } from './container'
 import { SetupData } from '@/entity'
 
 export class PostalBox extends Container {
-  setupInstance(data?: IContainerSetupData): SetupData | undefined {
+  setupInstance(data?: IContainerData): SetupData | undefined {
     return super.setupInstance({
       name: 'PostalBox',
       icon: 'postal-box',

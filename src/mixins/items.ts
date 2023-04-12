@@ -1,12 +1,12 @@
 import { Entity, State } from '@/entity'
-import { IItemSetupData, Item } from '@/classes/items/item'
-import { ILocation, ILocationSetupData } from './location'
-import { IQty, IQtySetupData } from './qty'
+import { IItemData, Item } from '@/classes/items/item'
+import { ILocation, ILocationData } from './location'
+import { IQty, IQtyData } from './qty'
 import { AnyData } from '@/utils'
 
-export interface IItemsSetupData extends
-  ILocationSetupData,
-  IQtySetupData
+export interface IItemsData extends
+  ILocationData,
+  IQtyData
 {}
 
 /**
@@ -20,7 +20,7 @@ export interface IItems extends
   get items(): Item[]
   get(id?: string): Item | undefined
   has(id: string | AnyData): boolean
-  addItem(data: (Item | IItemSetupData)[] | Item | IItemSetupData): Item[] | Item
+  addItem(data: (Item | IItemData)[] | Item | IItemData): Item[] | Item
 }
 
 // @ts-ignore
@@ -57,7 +57,7 @@ export const Items: IItems = {
    * Add item to the location
    *
    */
-  addItem(data: (Item | IItemSetupData)[] | Item | IItemSetupData): Item[] | Item {
+  addItem(data: (Item | IItemData)[] | Item | IItemData): Item[] | Item {
     if (Array.isArray(data)) {
       return data.map(d => this.addItem(d) as Item)
     }

@@ -3,7 +3,7 @@ import { Ftp } from '@/classes/softwares/ftp'
 import { Viewer } from '@/classes/softwares/viewer'
 import { Deleter } from '@/classes/softwares/deleter'
 import { Cracker } from '@/classes/softwares/cracker'
-import { IServerSetupData, Server } from '@/classes/server/server'
+import { IServerData, Server } from '@/classes/server/server'
 
 export default {
   name: 'Test server',
@@ -63,4 +63,4 @@ export default {
       }),
     ])
   },
-} as IServerSetupData
+} as IServerData

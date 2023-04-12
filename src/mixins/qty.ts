@@ -5,7 +5,7 @@
 import { State } from '@/entity'
 import random from 'lodash/random'
 
-export interface IQtySetupData {
+export interface IQtyData {
   // code matching item in inventory
   stackableCode?: string | null
   // quantity
@@ -30,7 +30,7 @@ export const Qty: IQty = {
     randomQty: 0,
     // random qty onced set
     _randomQty: 0,
-  } as IQtySetupData,
+  } as IQtyData,
 
   get stackableCode(): string | null { return this.state.stackableCode },
   set stackableCode(value) { this.state.stackableCode = value },

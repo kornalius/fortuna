@@ -11,7 +11,7 @@ export interface IOperationItem {
   total: number
 }
 
-export interface IOperationSetupData {
+export interface IOperationData {
   // current running operation
   operation?: IOperationItem | null
   onOperation?: (operation: IOperationItem) => Promise<void>
@@ -29,7 +29,7 @@ export interface IOperation {
 export const Operation: IOperation = {
   state: {
     operation: null,
-  } as IOperationSetupData,
+  } as IOperationData,
 
   get isBusy(): boolean { return this.state.operation !== null },
   get operation(): IOperationItem | null { return this.state.operation },

@@ -5,16 +5,16 @@
 import random from 'lodash/random'
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IOperation, IOperationSetupData } from './operation'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IOperation, IOperationData } from './operation'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDestructableSetupData extends
-  INameSetupData,
-  IOperationSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IDestructableData extends
+  INameData,
+  IOperationData,
+  IRequirementsData,
+  IActionsData
 {
   // total to be destroyed
   destructable?: number
@@ -77,7 +77,7 @@ export const Destructable: IDestructable = {
     requirements: [
       { name: 'destroy', str: 1 },
     ],
-  } as IDestructableSetupData,
+  } as IDestructableData,
 
   get isDestructable(): boolean { return this.state.destructable > 0 },
   set destructable(value: boolean) { this.state.destructable = value },

@@ -6,10 +6,10 @@ import { pluralize } from '@capaj/pluralize'
 import { State } from '@/entity'
 import { AnyData, can, emit, log, LOG_WARN, registeredClasses } from '@/utils'
 import { Item } from '@/classes/items/item'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IIcon, IIconSetupData } from '@/mixins/icon'
-import { IOperation, IOperationSetupData } from '@/mixins/operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from '@/mixins/name'
+import { IIcon, IIconData } from '@/mixins/icon'
+import { IOperation, IOperationData } from '@/mixins/operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
 export interface ICombinableRecipe {
   // target item constructor name
@@ -22,11 +22,11 @@ export interface ICombinableRecipe {
   result_data?: AnyData
 }
 
-export interface ICombinableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface ICombinableData extends
+  INameData,
+  IIconData,
+  IOperationData,
+  IActionsData
 {
   // is the item combinable
   combinable?: boolean
@@ -75,7 +75,7 @@ export const Combinable: ICombinable = {
           : undefined
       ),
     ],
-  } as ICombinableSetupData,
+  } as ICombinableData,
 
   get isCombinable(): boolean { return this.state.combinable && (this as unknown as Item).isInInventory },
   set combinable(value: boolean) { this.state.combinable = value },

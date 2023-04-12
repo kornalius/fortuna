@@ -3,22 +3,22 @@
  */
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { Entity, IEntitySetupData, State } from '@/entity'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IIcon, IIconSetupData } from '@/mixins/icon'
-import { IWeight, IWeightSetupData } from '@/mixins/weight'
-import { IOperation, IOperationSetupData } from '@/mixins/operation'
-import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { Entity, IEntityData, State } from '@/entity'
+import { IName, INameData } from '@/mixins/name'
+import { IIcon, IIconData } from '@/mixins/icon'
+import { IWeight, IWeightData } from '@/mixins/weight'
+import { IOperation, IOperationData } from '@/mixins/operation'
+import { IRequirements, IRequirementsData } from '@/mixins/requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDeletableSetupData extends
-  IEntitySetupData,
-  INameSetupData,
-  IIconSetupData,
-  IWeightSetupData,
-  IOperationSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IDeletableData extends
+  IEntityData,
+  INameData,
+  IIconData,
+  IWeightData,
+  IOperationData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object deletable
   deletable?: boolean
@@ -60,7 +60,7 @@ export const Deletable: IDeletable = {
           : undefined
       ),
     ],
-  } as IDeletableSetupData,
+  } as IDeletableData,
 
   get isDeletable(): boolean { return this.state.deletable },
   set deletable(value: boolean) { this.state.deletable = value },

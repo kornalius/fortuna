@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Item, IItemSetupData } from '../item'
+import { Item, IItemData } from '../item'
 import { SetupData } from '@/entity'
 
 export class CD extends Item {
-  setupInstance(data?: IItemSetupData): SetupData | undefined {
+  setupInstance(data?: IItemData): SetupData | undefined {
     return super.setupInstance({
       name: 'CD',
       icon: 'cd',

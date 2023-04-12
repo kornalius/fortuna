@@ -1,16 +1,16 @@
 import { registerClass } from '@/utils'
-import { IItemSetupData, Item } from '../item'
+import { IItemData, Item } from '../item'
 import { SetupData } from '@/entity'
-import { IConsumableSetupData } from '@/mixins/consumable'
+import { IConsumableData } from '@/mixins/consumable'
 
-export interface IFoodSetupData extends IItemSetupData, IConsumableSetupData {}
+export interface IFoodData extends IItemData, IConsumableData {}
 
 export class Food extends Item {
-  constructor(data?: IFoodSetupData) {
+  constructor(data?: IFoodData) {
     super(data)
   }
 
-  setupInstance(data?: IFoodSetupData): SetupData | undefined {
+  setupInstance(data?: IFoodData): SetupData | undefined {
     return super.setupInstance({
       name: 'Food',
       consumable: 1,

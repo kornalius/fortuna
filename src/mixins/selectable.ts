@@ -5,12 +5,12 @@
 import { State } from '@/entity'
 import { can, emit } from '@/utils'
 import { Item } from '@/classes/items/item'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from '@/mixins/name'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface ISelectableSetupData extends
-  INameSetupData,
-  IActionsSetupData
+export interface ISelectableData extends
+  INameData,
+  IActionsData
 {
   // is the object selectable
   selectable?: boolean
@@ -53,7 +53,7 @@ export const Selectable: ISelectable = {
           : undefined
       ),
     ],
-  } as ISelectableSetupData,
+  } as ISelectableData,
 
   get isSelectable(): boolean { return this.state.selectable && (this as unknown as Item).isInInventory },
   set selectable(value: boolean) { this.state.selectable = value },

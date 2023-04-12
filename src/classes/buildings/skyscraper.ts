@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Building, IBuildingSetupData } from '@/classes/buildings/building'
+import { Building, IBuildingData } from '@/classes/buildings/building'
 import { SetupData } from '@/entity'
 
 export class Skyscraper extends Building {
-  setupInstance(data?: IBuildingSetupData): SetupData | undefined {
+  setupInstance(data?: IBuildingData): SetupData | undefined {
     return super.setupInstance({
       name: 'Skyscraper',
       icon: 'skyscraper',

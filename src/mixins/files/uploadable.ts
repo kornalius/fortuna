@@ -3,22 +3,22 @@
  */
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { Entity, IEntitySetupData, State } from '@/entity'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IIcon, IIconSetupData } from '@/mixins/icon'
-import { IWeight, IWeightSetupData } from '@/mixins/weight'
-import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
-import { IOperation, IOperationSetupData } from '@/mixins/operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { Entity, IEntityData, State } from '@/entity'
+import { IName, INameData } from '@/mixins/name'
+import { IIcon, IIconData } from '@/mixins/icon'
+import { IWeight, IWeightData } from '@/mixins/weight'
+import { IRequirements, IRequirementsData } from '@/mixins/requirements'
+import { IOperation, IOperationData } from '@/mixins/operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IUploadableSetupData extends
-  IEntitySetupData,
-  INameSetupData,
-  IIconSetupData,
-  IWeightSetupData,
-  IRequirementsSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface IUploadableData extends
+  IEntityData,
+  INameData,
+  IIconData,
+  IWeightData,
+  IRequirementsData,
+  IOperationData,
+  IActionsData
 {
   // is the object uploadable
   uploadable?: boolean
@@ -60,7 +60,7 @@ export const Uploadable: IUploadable = {
           : undefined
       ),
     ],
-  } as IUploadableSetupData,
+  } as IUploadableData,
 
   get isUploadable(): boolean { return this.state.uploadable },
   set uploadable(value: boolean) { this.state.uploadable = value },

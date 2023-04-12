@@ -7,7 +7,7 @@ import { Roll } from '@/classes/battles/roll'
 import { BookShelf } from '@/classes/containers/bookshelf'
 import { RandomNpc } from '@/classes/npcs/random-npc'
 import { BaseballCap } from '@/classes/items/clothing/baseball-cap'
-import { IRoomSetupData, Room } from '@/classes/rooms/room'
+import { IRoomData, Room } from '@/classes/rooms/room'
 import TestRoomServer from './servers'
 import TestRoomLightSwitch from './light-switch'
 import SimonSmith from './SimonSmith'
@@ -51,4 +51,4 @@ export default {
       'You lounge the wall until your fingers touch a bump that feels like metal about the size of a credit card.',
     ])
   },
-} as IRoomSetupData
+} as IRoomData

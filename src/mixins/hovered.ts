@@ -4,7 +4,7 @@
 
 import { State } from '@/entity'
 
-export interface IHoveredSetupData {
+export interface IHoveredData {
   // has the object been hovered with mouse
   hovered?: boolean
 }
@@ -18,7 +18,7 @@ export interface IHovered {
 export const Hovered: IHovered = {
   state: {
     hovered: false,
-  } as IHoveredSetupData,
+  } as IHoveredData,
 
   get isNew(): boolean { return !this.state.hovered },
   set hovered(value: boolean) { this.state.hovered = value },

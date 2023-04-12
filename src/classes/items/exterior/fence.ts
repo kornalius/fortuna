@@ -1,19 +1,19 @@
 import { mixin, registerClass } from '@/utils'
-import { IItemSetupData, Item } from '../item'
-import { IOpenable, IOpenableSetupData, Openable } from '@/mixins/openable'
-import { IUnlockable, IUnlockableSetupData, Unlockable } from '@/mixins/unlockable'
+import { IItemData, Item } from '../item'
+import { IOpenable, IOpenableData, Openable } from '@/mixins/openable'
+import { IUnlockable, IUnlockableData, Unlockable } from '@/mixins/unlockable'
 import { SetupData } from '@/entity'
 
-export interface IFenceSetupData extends IItemSetupData, IOpenableSetupData, IUnlockableSetupData {}
+export interface IFenceData extends IItemData, IOpenableData, IUnlockableData {}
 
 export interface Fence extends IOpenable, IUnlockable {}
 
 export class Fence extends Item {
-  constructor(data?: IFenceSetupData) {
+  constructor(data?: IFenceData) {
     super(data)
   }
 
-  setupInstance(data?: IFenceSetupData): SetupData | undefined {
+  setupInstance(data?: IFenceData): SetupData | undefined {
     return super.setupInstance({
       name: 'Fence',
       icon: 'fence',

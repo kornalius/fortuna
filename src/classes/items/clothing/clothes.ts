@@ -1,18 +1,18 @@
 import { registerClass, mixin } from '@/utils'
-import { IItemSetupData, Item } from '../item'
-import { IEquipable, IEquipableSetupData, Equipable } from '@/mixins/equipable'
+import { IItemData, Item } from '../item'
+import { IEquipable, IEquipableData, Equipable } from '@/mixins/equipable'
 import { SetupData } from '@/entity'
 
-export interface IClothesSetupData extends IItemSetupData, IEquipableSetupData {}
+export interface IClothesData extends IItemData, IEquipableData {}
 
 export interface Clothes extends IEquipable {}
 
 export class Clothes extends Item {
-  constructor(data?: IClothesSetupData) {
+  constructor(data?: IClothesData) {
     super(data)
   }
 
-  setupInstance(data?: IClothesSetupData): SetupData | undefined {
+  setupInstance(data?: IClothesData): SetupData | undefined {
     return super.setupInstance({
       name: 'Clothes',
       equipable: true,

@@ -1,18 +1,18 @@
 import { registerClass } from '@/utils'
-import { ISoftwareSetupData, Software } from '@/classes/softwares/software'
+import { ISoftwareData, Software } from '@/classes/softwares/software'
 import { SetupData } from '@/entity'
 
-export interface IViewerSetupData extends ISoftwareSetupData {
+export interface IViewerData extends ISoftwareData {
   // what type of files can you view
   viewerType?: string | null
 }
 
 export class Viewer extends Software {
-  constructor(data?: IViewerSetupData) {
+  constructor(data?: IViewerData) {
     super(data)
   }
 
-  setupInstance(data?: IViewerSetupData): SetupData | undefined {
+  setupInstance(data?: IViewerData): SetupData | undefined {
     return super.setupInstance({
       name: 'Viewer',
       installType: 'viewer',

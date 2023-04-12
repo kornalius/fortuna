@@ -4,22 +4,22 @@
 
 import isEmpty from 'lodash/isEmpty'
 import { can, checkSoftware, emit, logs } from '@/utils'
-import { Entity, IEntitySetupData, State } from '@/entity'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
-import { IOperation, IOperationSetupData } from '@/mixins/operation'
-import { IWeight, IWeightSetupData } from '@/mixins/weight'
-import { ILocation, ILocationSetupData } from '@/mixins/location'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { Entity, IEntityData, State } from '@/entity'
+import { IName, INameData } from '@/mixins/name'
+import { IRequirements, IRequirementsData } from '@/mixins/requirements'
+import { IOperation, IOperationData } from '@/mixins/operation'
+import { IWeight, IWeightData } from '@/mixins/weight'
+import { ILocation, ILocationData } from '@/mixins/location'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IViewableSetupData extends
-  IEntitySetupData,
-  INameSetupData,
-  IRequirementsSetupData,
-  IOperationSetupData,
-  ILocationSetupData,
-  IWeightSetupData,
-  IActionsSetupData
+export interface IViewableData extends
+  IEntityData,
+  INameData,
+  IRequirementsData,
+  IOperationData,
+  ILocationData,
+  IWeightData,
+  IActionsData
 {
   // is the object viewable
   viewed?: boolean
@@ -82,7 +82,7 @@ export const Viewable: IViewable = {
           : undefined
       ),
     ],
-  } as IViewableSetupData,
+  } as IViewableData,
 
   get isViewable(): boolean { return !isEmpty(this.state.content) },
 

@@ -5,7 +5,7 @@
 import { State } from '@/entity'
 import { AnyData } from '@/utils'
 
-export interface ILocationSetupData {
+export interface ILocationData {
   // id of the parent location object
   locationId?: string | null
   // store of the parent location object
@@ -27,7 +27,7 @@ export const Location: ILocation = {
   state: {
     locationId: null,
     locationStore: null,
-  } as ILocationSetupData,
+  } as ILocationData,
 
   get locationId(): string | null { return this.state.locationId },
   set locationId(value) { this.state.locationId = value },

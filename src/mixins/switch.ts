@@ -5,22 +5,22 @@
 import compact from 'lodash/compact'
 import { log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { ILocation, ILocationSetupData } from './location'
-import { IUsable, IUsableSetupData } from './usable'
-import { IExaminable, IExaminableSetupData } from './examinable'
-import { IPickableSetupData } from '@/mixins/pickable'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { ILocation, ILocationData } from './location'
+import { IUsable, IUsableData } from './usable'
+import { IExaminable, IExaminableData } from './examinable'
+import { IPickableData } from '@/mixins/pickable'
 
-export interface ISwitchSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IExaminableSetupData,
-  IUsableSetupData,
-  IRequirementsSetupData,
-  ILocationSetupData,
-  IPickableSetupData
+export interface ISwitchData extends
+  INameData,
+  IIconData,
+  IExaminableData,
+  IUsableData,
+  IRequirementsData,
+  ILocationData,
+  IPickableData
 {
   // is the object off
   off?: boolean
@@ -61,7 +61,7 @@ export const Switch: ISwitch = {
     usable: true,
     switchIconSuffix: true,
     pickable: false,
-  } as ISwitchSetupData,
+  } as ISwitchData,
 
   get isOn(): boolean { return !this.state.off },
   set isOn(value) { this.state.off = !value },

@@ -3,20 +3,20 @@
  */
 
 import { can, checkSoftware, emit, log, LOG_WARN } from '@/utils'
-import { Entity, IEntitySetupData, State } from '@/entity'
-import { IName, INameSetupData } from '@/mixins/name'
-import { IRequirements, IRequirementsSetupData } from '@/mixins/requirements'
-import { IWeight, IWeightSetupData } from '@/mixins/weight'
-import { IOperation, IOperationSetupData } from '@/mixins/operation'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { Entity, IEntityData, State } from '@/entity'
+import { IName, INameData } from '@/mixins/name'
+import { IRequirements, IRequirementsData } from '@/mixins/requirements'
+import { IWeight, IWeightData } from '@/mixins/weight'
+import { IOperation, IOperationData } from '@/mixins/operation'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDownloadableSetupData extends
-  IEntitySetupData,
-  INameSetupData,
-  IRequirementsSetupData,
-  IWeightSetupData,
-  IOperationSetupData,
-  IActionsSetupData
+export interface IDownloadableData extends
+  IEntityData,
+  INameData,
+  IRequirementsData,
+  IWeightData,
+  IOperationData,
+  IActionsData
 {
   // is the object downloadable
   downloadable?: boolean
@@ -57,7 +57,7 @@ export const Downloadable: IDownloadable = {
           : undefined
       ),
     ],
-  } as IDownloadableSetupData,
+  } as IDownloadableData,
 
   get isDownloadable(): boolean { return this.state.downloadable },
   set downloadable(value: boolean) { this.state.downloadable = value },

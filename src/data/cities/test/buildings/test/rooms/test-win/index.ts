@@ -1,5 +1,5 @@
 import { log } from '@/utils'
-import { IRoomSetupData, Room } from '@/classes/rooms/room'
+import { IRoomData, Room } from '@/classes/rooms/room'
 
 export default {
   name: 'Outside',
@@ -13,4 +13,4 @@ export default {
     log('Congratulations, you have won the game!!!')
     window.store.game.pause()
   },
-} as IRoomSetupData
+} as IRoomData

@@ -5,7 +5,7 @@
 import clamp from 'lodash/clamp'
 import { State } from '@/entity'
 
-export interface ILevelSetupData {
+export interface ILevelData {
   // level number
   lvl?: number
 }
@@ -20,7 +20,7 @@ export interface ILevel {
 export const Level: ILevel = {
   state: {
     lvl: 1,
-  } as ILevelSetupData,
+  } as ILevelData,
 
   get lvl(): number { return this.state.lvl },
   set lvl(value) { this.state.lvl = clamp(value, 1, this.highestLvl) },

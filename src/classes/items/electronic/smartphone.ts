@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { Electronic, IElectronicSetupData } from './electronic'
+import { Electronic, IElectronicData } from './electronic'
 import { SetupData } from '@/entity'
 
 export class Smartphone extends Electronic {
-  setupInstance(data?: IElectronicSetupData): SetupData | undefined {
+  setupInstance(data?: IElectronicData): SetupData | undefined {
     return super.setupInstance({
       name: 'Smartphone',
       icon: 'smartphone',

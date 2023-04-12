@@ -1,8 +1,8 @@
 import random from 'lodash/random'
 import anime from 'animejs'
-import { Entity, IEntitySetupData, SetupData } from '../entity'
+import { Entity, IEntityData, SetupData } from '../entity'
 import { emit, log, delay, mixin, registerClass, can, LOG_WARN, LOG_ERROR } from '@/utils'
-import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+import { IRequirements, IRequirementsData, Requirements } from '@/mixins/requirements'
 import { multiplier as multiplierParticles } from '@/particles'
 import { Npc } from '@/classes/npcs/npc'
 import { Dice, DiceIndexes } from '@/store/config'
@@ -25,7 +25,7 @@ export interface IBonusMultiplier {
   bonus: number
 }
 
-export interface ICombatSetupData extends IRequirementsSetupData, IEntitySetupData {
+export interface ICombatData extends IRequirementsData, IEntityData {
   // is the combat engine processing?
   processing?: boolean
   // npc id that we are fighting against
@@ -69,11 +69,11 @@ export interface ICombatSetupData extends IRequirementsSetupData, IEntitySetupDa
 export interface Combat extends IRequirements {}
 
 export class Combat extends Entity {
-  constructor(data?: ICombatSetupData) {
+  constructor(data?: ICombatData) {
     super(data)
   }
 
-  setupInstance(data?: ICombatSetupData): SetupData | undefined {
+  setupInstance(data?: ICombatData): SetupData | undefined {
     return super.setupInstance({
       processing: false,
       npcId: null,

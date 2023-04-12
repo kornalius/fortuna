@@ -5,18 +5,18 @@
 import random from 'lodash/random'
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State, Entity } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IOperation, IOperationSetupData } from './operation'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IOperation, IOperationData } from './operation'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IConsumableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IOperationSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IConsumableData extends
+  INameData,
+  IIconData,
+  IOperationData,
+  IRequirementsData,
+  IActionsData
 {
   // total to consume
   consumable?: number
@@ -83,7 +83,7 @@ export const Consumable: IConsumable = {
           : undefined
       ),
     ],
-  } as IConsumableSetupData,
+  } as IConsumableData,
 
   get isConsumable(): boolean { return this.state.consumable > 0 },
   set consumable(value: number) { this.state.consumable = value },

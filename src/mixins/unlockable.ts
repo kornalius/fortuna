@@ -4,14 +4,14 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IUnlockableSetupData extends
-  INameSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IUnlockableData extends
+  INameData,
+  IRequirementsData,
+  IActionsData
 {
   // if the object is unlockable
   unlockable?: boolean
@@ -70,7 +70,7 @@ export const Unlockable: IUnlockable = {
     requirements: [
       { name: 'unlock', dex: 1 },
     ],
-  } as IUnlockableSetupData,
+  } as IUnlockableData,
 
   get isUnlockable(): boolean { return this.state.unlockable },
   set unlockable(value: boolean) { this.state.unlockable = value },

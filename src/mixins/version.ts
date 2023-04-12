@@ -4,7 +4,7 @@
 
 import { State } from '@/entity'
 
-export interface IVersionSetupData {
+export interface IVersionData {
   // version of the object
   version?: number
 }

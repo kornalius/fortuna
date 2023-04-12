@@ -5,18 +5,18 @@
 import compact from 'lodash/compact'
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IUnlockable, IUnlockableSetupData } from './unlockable'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IUnlockable, IUnlockableData } from './unlockable'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IOpenableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IUnlockableSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IOpenableData extends
+  INameData,
+  IIconData,
+  IUnlockableData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object openable
   openable?: boolean
@@ -82,7 +82,7 @@ export const Openable: IOpenable = {
           : undefined
       ),
     ],
-  } as IOpenableSetupData,
+  } as IOpenableData,
 
   get isOpenable(): boolean { return this.state.openable },
   set openable(value: boolean) { this.state.openable = value },

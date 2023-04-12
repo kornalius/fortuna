@@ -1,7 +1,7 @@
 import random from 'lodash/random'
 import { pickRandom, registerClass } from '@/utils'
 import capitalize from 'lodash/capitalize'
-import { City, ICitySetupData } from '@/classes/city'
+import { City, ICityData } from '@/classes/city'
 import {
   cityAdjectives1,
   cityAdjectives2,
@@ -17,7 +17,7 @@ import {
 } from '@/words'
 import { SetupData } from '@/entity'
 
-export interface IRandomCitySetypData extends ICitySetupData {
+export interface IRandomCitySetypData extends ICityData {
   name?: string | null
   population?: string | null
   adj1?: string | null

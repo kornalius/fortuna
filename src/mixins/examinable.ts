@@ -4,16 +4,16 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IExaminableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IExaminableData extends
+  INameData,
+  IIconData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object examinable or not
   examinable?: boolean
@@ -61,7 +61,7 @@ export const Examinable: IExaminable = {
     actionsOrder: [
       'examine',
     ],
-  } as IExaminableSetupData,
+  } as IExaminableData,
 
   get isExaminable(): boolean { return this.state.examinable },
   set examinable(value: boolean) { this.state.examinable = value },

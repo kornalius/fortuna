@@ -4,14 +4,14 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { Entity, State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IName, INameData } from './name'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IUsableSetupData extends
-  INameSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IUsableData extends
+  INameData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object usable
   usable?: boolean
@@ -59,7 +59,7 @@ export const Usable: IUsable = {
     requirements: [
       { name: 'use', dex: 1 },
     ],
-  } as IUsableSetupData,
+  } as IUsableData,
 
   get isUsable(): boolean { return this.state.usable },
   set usable(value: boolean) { this.state.usable = value },

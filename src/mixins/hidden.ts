@@ -5,7 +5,7 @@
 import { emit } from '@/utils'
 import { State } from '@/entity'
 
-export interface IHiddenSetupData {
+export interface IHiddenData {
   // is the object hidden or not
   hidden?: boolean
   onShow?: () => Promise<void>
@@ -27,7 +27,7 @@ export interface IHidden {
 export const Hidden: IHidden = {
   state: {
     hidden: true,
-  } as IHiddenSetupData,
+  } as IHiddenData,
 
   get isVisible(): boolean { return !this.isHidden },
   get isHidden(): boolean { return this.state.hidden },

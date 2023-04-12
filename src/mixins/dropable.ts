@@ -4,22 +4,22 @@
 
 import { can, emit, log, LOG_WARN } from '@/utils'
 import { State } from '@/entity'
-import { IName, INameSetupData } from './name'
-import { IIcon, IIconSetupData } from './icon'
-import { ILocation, ILocationSetupData } from './location'
+import { IName, INameData } from './name'
+import { IIcon, IIconData } from './icon'
+import { ILocation, ILocationData } from './location'
 import { IInstallable } from './installable'
 import { IEquipable } from './equipable'
-import { IHovered, IHoveredSetupData } from './hovered'
-import { IRequirements, IRequirementsSetupData } from './requirements'
-import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
+import { IHovered, IHoveredData } from './hovered'
+import { IRequirements, IRequirementsData } from './requirements'
+import { IActions, IActionsData, IDropdownItem } from '@/mixins/actions'
 
-export interface IDropableSetupData extends
-  INameSetupData,
-  IIconSetupData,
-  IHoveredSetupData,
-  ILocationSetupData,
-  IRequirementsSetupData,
-  IActionsSetupData
+export interface IDropableData extends
+  INameData,
+  IIconData,
+  IHoveredData,
+  ILocationData,
+  IRequirementsData,
+  IActionsData
 {
   // is the object droppable or not
   dropable?: boolean
@@ -62,7 +62,7 @@ export const Dropable: IDropable = {
           : undefined
       ),
     ],
-  } as IDropableSetupData,
+  } as IDropableData,
 
   get isDropable(): boolean { return this.state.dropable },
   set dropable(value: boolean) { this.state.dropable = value },

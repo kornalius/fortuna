@@ -2,10 +2,10 @@ import random from 'lodash/random'
 import { registerClass } from '@/utils'
 import { Light } from './light'
 import { SetupData } from '@/entity'
-import { IItemSetupData } from '@/classes/items/item'
+import { IItemData } from '@/classes/items/item'
 
 export class DeskLamp extends Light {
-  setupInstance(data?: IItemSetupData): SetupData | undefined {
+  setupInstance(data?: IItemData): SetupData | undefined {
     return super.setupInstance({
       name: 'Desk lamp',
       icon: 'desk-lamp',

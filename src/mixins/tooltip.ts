@@ -4,7 +4,7 @@ import { State } from '@/entity'
  * Add a unique code
  */
 
-export interface ITooltipSetupData {
+export interface ITooltipData {
   tooltip?: () => string | undefined
 }
 
@@ -14,7 +14,7 @@ export interface ITooltip {
 }
 
 export const Tooltip: ITooltip = {
-  state: {} as ITooltipSetupData,
+  state: {} as ITooltipData,
 
   tooltip(): string | undefined { return undefined },
 }
