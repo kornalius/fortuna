@@ -28,6 +28,8 @@ export interface ISwitchSetupData extends
   usable?: boolean
   // if the icon should be suffixed with switch state -on or -off
   switchIconSuffix?: boolean
+  onUse?: () => Promise<void>
+  onExamine?: () => Promise<void>
 }
 
 export interface ISwitch extends

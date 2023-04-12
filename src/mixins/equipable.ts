@@ -47,6 +47,8 @@ export interface IEquipableSetupData extends
   equipSlot?: Slots | null
   // is the item equipped
   equipped?: boolean
+  onEquip?: () => Promise<void>
+  onUnequip?: () => Promise<void>
 }
 
 export interface IEquipable extends

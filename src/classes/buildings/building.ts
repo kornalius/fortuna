@@ -1,20 +1,46 @@
-import { mixin, emit, registerClass, can, AnyData } from '@/utils'
+import { mixin, emit, registerClass, can } from '@/utils'
 import compact from 'lodash/compact'
 import { Entity, SetupData } from '@/entity'
-import { Room } from '@/classes/rooms/room'
+import { IRoomSetupData, Room } from '@/classes/rooms/room'
 import { Npc } from '@/classes/npcs/npc'
-import { ILocation, Location } from '@/mixins/location'
-import { ICode, Code } from '@/mixins/code'
-import { IName, Name } from '@/mixins/name'
-import { IDescription, Description } from '@/mixins/description'
-import { IPosition, Position } from '@/mixins/position'
-import { IIcon, Icon } from '@/mixins/icon'
-import { IHidden, Hidden } from '@/mixins/hidden'
-import { IHovered, Hovered } from '@/mixins/hovered'
-import { IActions, Actions, IDropdownItem } from '@/mixins/actions'
-import { IVisitable, Visitable } from '@/mixins/visitable'
-import { IRequirements, Requirements } from '@/mixins/requirements'
-import { ITooltip, Tooltip } from '@/mixins/tooltip'
+import { ILocation, ILocationSetupData, Location } from '@/mixins/location'
+import { ICode, Code, ICodeSetupData } from '@/mixins/code'
+import { IName, INameSetupData, Name } from '@/mixins/name'
+import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
+import { IPosition, IPositionSetupData, Position } from '@/mixins/position'
+import { IIcon, Icon, IIconSetupData } from '@/mixins/icon'
+import { IHidden, Hidden, IHiddenSetupData } from '@/mixins/hidden'
+import { IHovered, Hovered, IHoveredSetupData } from '@/mixins/hovered'
+import { IActions, Actions, IDropdownItem, IActionsSetupData } from '@/mixins/actions'
+import { IVisitable, IVisitableSetupData, Visitable } from '@/mixins/visitable'
+import { IRequirements, IRequirementsSetupData, Requirements } from '@/mixins/requirements'
+import { ITooltip, ITooltipSetupData, Tooltip } from '@/mixins/tooltip'
+
+export type OpenHours = [string, string];
+
+export interface IBuildingSetupData extends
+  ICodeSetupData,
+  ILocationSetupData,
+  INameSetupData,
+  IDescriptionSetupData,
+  IPositionSetupData,
+  IIconSetupData,
+  IHiddenSetupData,
+  IHoveredSetupData,
+  IActionsSetupData,
+  IVisitableSetupData,
+  IRequirementsSetupData,
+  ITooltipSetupData
+{
+  // start room code to go to when entering the building
+  startRoomCode?: string | null
+  // opening hours [start_time, end_time]
+  hours?: OpenHours[]
+  // owner ids of this room
+  ownerIds?: string[]
+  onEnter?: () => Promise<void>
+  onExit?: (toBuilding?: Building) => Promise<void>
+}
 
 export interface Building extends
   ICode,
@@ -31,11 +57,13 @@ export interface Building extends
   ITooltip
 {}
 
-export type OpenHours = [string, string];
-
 export class Building extends Entity {
-  setupInstance(data?: SetupData): SetupData | undefined {
-    const { locationId, locationStore } = this.setupLocation(data)
+  constructor(data?: IBuildingSetupData) {
+    super(data)
+  }
+
+  setupInstance(data?: IBuildingSetupData): SetupData | undefined {
+    const { locationId, locationStore } = this.setupLocation(data as SetupData)
 
     return super.setupInstance({
       name: 'Building',
@@ -55,7 +83,6 @@ export class Building extends Entity {
           }
         ),
       ],
-      // opening hours [start_time, end_time]
       hours: null,
       // npc ids of owners
       ownerIds: [],
@@ -91,7 +118,7 @@ export class Building extends Entity {
     return false
   }
 
-  addRoom(data: (Room | AnyData)[] | Room | AnyData): Room[] | Room {
+  addRoom(data: (Room | IRoomSetupData)[] | Room | IRoomSetupData): Room[] | Room {
     if (Array.isArray(data)) {
       return data.map(d => this.addRoom(d) as Room)
     }

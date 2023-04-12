@@ -3,7 +3,7 @@ import omit from 'lodash/omit'
 import capitalize from 'lodash/capitalize'
 import compact from 'lodash/compact'
 import { pickRandom, registerClass } from '@/utils'
-import { Npc } from './npc'
+import { INpcSetupData, Npc } from './npc'
 import { SetupData } from '@/entity'
 import {
   adverbs,
@@ -69,8 +69,38 @@ const randomize = (sets: any[]) => {
   return pickRandom(sets[s])
 }
 
+export interface IRandomNpcSetupData extends INpcSetupData {
+  old?: boolean
+  kid?: boolean
+  color?: string | null
+  firstname?: string | null
+  lastname?: string | null
+  nickname?: string | null
+  age?: number
+  eyeColor?: string | null
+  hairColor?: string | null
+  skinColor?: string | null
+  build?: string | null
+  size?: string | null
+  strength?: string | null
+  status?: string | null
+  mood?: string | null
+  motives?: string | null
+  mind?: string | null
+  trait?: string | null
+  job?: string | null
+  jobLevel?: string | null
+  jobDomain?: string | null
+  buildAdv?: string | null
+  sizeAdv?: string | null
+  strengthAdv?: string | null
+  statusAdv?: string | null
+  moodAdv?: string | null
+  mindAdv?: string | null
+}
+
 export class RandomNpc extends Npc {
-  setupInstance(data?: SetupData): SetupData | undefined {
+  setupInstance(data?: IRandomNpcSetupData): SetupData | undefined {
     const { old, kid } = data || {}
     data = omit(data, ['old', 'kid'])
 

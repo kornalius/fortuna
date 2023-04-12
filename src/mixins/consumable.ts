@@ -28,6 +28,7 @@ export interface IConsumableSetupData extends
   consumed?: number
   // delete the object once consumed
   removeWhenConsumed?: boolean
+  onConsume?: (amount: number) => Promise<void>
 }
 
 export interface IConsumable extends

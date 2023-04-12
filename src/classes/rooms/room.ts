@@ -2,7 +2,7 @@ import flatten from 'lodash/flatten'
 import { Entity, SetupData } from '@/entity'
 import { mixin, emit, registerClass, can, AnyData } from '@/utils'
 import { Direction, Directions, Door } from '@/classes/items/furniture/door'
-import { Npc } from '@/classes/npcs/npc'
+import { INpcSetupData, Npc } from '@/classes/npcs/npc'
 import { Item } from '@/classes/items/item'
 import { Container } from '@/classes/containers/container'
 import { ICode, Code, ICodeSetupData } from '@/mixins/code'
@@ -27,7 +27,10 @@ export interface IRoomSetupData extends
   IVisitableSetupData,
   IRequirementsSetupData,
   ILocationSetupData
-{}
+{
+  onEnter?: () => Promise<void>
+  onExit?: (toRoom?: Room) => Promise<void>
+}
 
 export interface Room extends
   IName,
@@ -109,7 +112,7 @@ export class Room extends Entity {
     return false
   }
 
-  addNpc(data: (Npc | AnyData)[] | Npc | AnyData): Npc[] | Npc {
+  addNpc(data: (Npc | INpcSetupData)[] | Npc | INpcSetupData): Npc[] | Npc {
     if (Array.isArray(data)) {
       return data.map(d => this.addNpc(d) as Npc)
     }

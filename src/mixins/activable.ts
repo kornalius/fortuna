@@ -23,6 +23,8 @@ export interface IActivableSetupData extends
   activationDelay?: number
   // is the item active or not
   active?: boolean
+  onActivate?: () => Promise<void>
+  onDisactivate?: () => Promise<void>
 }
 
 export interface IActivable extends
@@ -44,9 +46,10 @@ export interface IActivable extends
   get disactivateLabel(): string
   canActivate(showMessage?: boolean): boolean
   activate(): Promise<boolean>
+  onActivate(): Promise<void>
   canDisactivate(showMessage?: boolean): boolean
   disactivate(): Promise<boolean>
-  onActivate(): Promise<void>
+  onDisactivate(): Promise<void>
   toggleActivate(): Promise<boolean>
 }
 
@@ -129,6 +132,8 @@ export const Activable: IActivable = {
     return true
   },
 
+  async onActivate(): Promise<void> {},
+
   canDisactivate(showMessage?: boolean): boolean {
     return can(this, [
       {
@@ -149,13 +154,13 @@ export const Activable: IActivable = {
     log(`Disactivating ${this.nameDisplay}...`, LOG_WARN, this.icon)
     await this.operate('disactivate', async () => {
       log(`You have disactivated ${this.nameDisplay}`, LOG_WARN, this.icon)
-      await emit(this, 'onActivate')
+      await emit(this, 'onDisactivate')
       return true
     }, this.activationDelay)
     return true
   },
 
-  async onActivate(): Promise<void> {},
+  async onDisactivate(): Promise<void> {},
 
   async toggleActivate(): Promise<boolean> {
     if (this.isActive) {

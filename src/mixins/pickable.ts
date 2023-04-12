@@ -22,6 +22,7 @@ export interface IPickableSetupData extends
 {
   // is the object pickable
   pickable?: boolean
+  onPickup?: () => Promise<void>
 }
 
 export interface IPickable extends

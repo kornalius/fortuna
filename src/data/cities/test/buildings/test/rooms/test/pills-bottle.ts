@@ -1,5 +1,5 @@
 import { log, LOG_WARN } from '@/utils'
-import { PillsBottle } from '@/classes/containers/pills-bottle'
+import { IPillsBottleSetupData } from '@/classes/containers/pills-bottle'
 
 export default {
   name: 'Bottle',
@@ -19,4 +19,4 @@ export default {
       log('A bottle of prescribed pills to your name', LOG_WARN, this.icon)
     }
   },
-} as PillsBottle
+} as IPillsBottleSetupData

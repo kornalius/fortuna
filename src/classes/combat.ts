@@ -33,7 +33,7 @@ export interface ICombatSetupData extends IRequirementsSetupData {
   // current turn
   turn?: number
   // current turn bonus to apply
-  bonus: {},
+  bonus?: { [key: string]: number }
   // rolls left for the turn
   rolls?: number
   // has the combat ended

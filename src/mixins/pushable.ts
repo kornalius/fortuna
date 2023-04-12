@@ -23,6 +23,7 @@ export interface IPushableSetupData extends
   pushDelay?: number
   // has the object been pushed
   pushed?: boolean
+  onPush?: () => Promise<void>
 }
 
 export interface IPushable extends

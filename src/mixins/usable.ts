@@ -17,6 +17,7 @@ export interface IUsableSetupData extends
   usable?: boolean
   // limit to the number of uses allowed, -1 means can be used as many times as wanted
   uses?: number
+  onUse?: () => Promise<void>
 }
 
 export interface IUsable extends

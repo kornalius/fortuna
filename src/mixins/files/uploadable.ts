@@ -21,6 +21,7 @@ export interface IUploadableSetupData extends
 {
   // is the object uploadable
   uploadable?: boolean
+  onUpload?: () => Promise<void>
 }
 
 export interface IUploadable extends

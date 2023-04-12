@@ -5,6 +5,7 @@ import { State } from '@/entity'
  */
 
 export interface ITooltipSetupData {
+  tooltip?: () => string | undefined
 }
 
 export interface ITooltip {

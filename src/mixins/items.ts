@@ -1,5 +1,5 @@
 import { Entity, State } from '@/entity'
-import { Item } from '@/classes/items/item'
+import { IItemSetupData, Item } from '@/classes/items/item'
 import { ILocation, ILocationSetupData } from './location'
 import { IQty, IQtySetupData } from './qty'
 import { AnyData } from '@/utils'
@@ -20,7 +20,7 @@ export interface IItems extends
   get items(): Item[]
   get(id?: string): Item | undefined
   has(id: string | AnyData): boolean
-  addItem(data: (Item | AnyData)[] | Item | AnyData): Item[] | Item
+  addItem(data: (Item | IItemSetupData)[] | Item | IItemSetupData): Item[] | Item
 }
 
 // @ts-ignore
@@ -57,7 +57,7 @@ export const Items: IItems = {
    * Add item to the location
    *
    */
-  addItem(data: (Item | AnyData)[] | Item | AnyData): Item[] | Item {
+  addItem(data: (Item | IItemSetupData)[] | Item | IItemSetupData): Item[] | Item {
     if (Array.isArray(data)) {
       return data.map(d => this.addItem(d) as Item)
     }
@@ -66,7 +66,7 @@ export const Items: IItems = {
     if (this.location?.isPlayer && data.stackableCode) {
       const i = this.items.find(i => i.code === data.stackableCode)
       if (i) {
-        i.qty += data.qty
+        i.qty += (data?.qty || 0)
         if (data instanceof Item) {
           data.remove()
         }

@@ -8,6 +8,8 @@ import { State } from '@/entity'
 export interface IHiddenSetupData {
   // is the object hidden or not
   hidden?: boolean
+  onShow?: () => Promise<void>
+  onHide?: () => Promise<void>
 }
 
 export interface IHidden {
@@ -16,7 +18,9 @@ export interface IHidden {
   get isHidden(): boolean
   set hidden(value: boolean)
   show(): Promise<boolean>
+  onShow(): Promise<void>
   hide(): Promise<boolean>
+  onHide(): Promise<void>
   toggleVisibility(): Promise<boolean>
 }
 
@@ -35,11 +39,15 @@ export const Hidden: IHidden = {
     return true
   },
 
+  async onShow(): Promise<void> {},
+
   async hide(): Promise<boolean> {
     this.hidden = true
     await emit(this, 'onHide')
     return true
   },
+
+  async onHide(): Promise<void> {},
 
   async toggleVisibility(): Promise<boolean> {
     if (this.isVisible) {

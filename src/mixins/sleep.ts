@@ -17,7 +17,10 @@ export interface ISleepSetupData extends
 {
   // is the object sleeping or not
   sleeping?: boolean
+  onSleep?: () => Promise<void>
+  onWake?: () => Promise<void>
 }
+
 export interface ISleep extends
   IName,
   IIcon,

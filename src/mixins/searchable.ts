@@ -21,6 +21,7 @@ export interface ISearchableSetupData extends
   searchable?: boolean
   // how many times the object has been searched
   searched?: number
+  onSearch?: () => Promise<void>
 }
 
 export interface ISearchable extends

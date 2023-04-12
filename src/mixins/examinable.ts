@@ -19,6 +19,7 @@ export interface IExaminableSetupData extends
   examinable?: boolean
   // how many times the object has been examined
   examined?: number
+  onExamine?: () => Promise<void>
 }
 
 export interface IExaminable extends

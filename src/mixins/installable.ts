@@ -25,6 +25,8 @@ export interface IInstallableSetupData extends
   installed?: boolean
   // type name of install (can only install one per type)
   installType?: string | null
+  onInstall?: () => Promise<void>
+  onUninstall?: () => Promise<void>
 }
 
 export interface IInstallable extends

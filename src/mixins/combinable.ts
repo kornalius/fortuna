@@ -34,6 +34,7 @@ export interface ICombinableSetupData extends
   recipes?: ICombinableRecipe[]
   // time is takes to combine an item
   combineDelay?: number
+  onCombine?: (target: Item, target_qty: number) => Promise<void>
 }
 
 export interface ICombinable extends

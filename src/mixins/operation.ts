@@ -14,6 +14,7 @@ export interface IOperationItem {
 export interface IOperationSetupData {
   // current running operation
   operation?: IOperationItem | null
+  onOperation?: (operation: IOperationItem) => Promise<void>
 }
 
 export interface IOperation {

@@ -21,6 +21,7 @@ export interface IDeletableSetupData extends
 {
   // is the object deletable
   deletable?: boolean
+  onDel?: () => Promise<void>
 }
 
 export interface IDeletable extends

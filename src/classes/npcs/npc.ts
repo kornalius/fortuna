@@ -58,31 +58,6 @@ export interface INpcSetupData extends
   aggresive?: boolean
   // fixed set of dice
   dice?: IDie[]
-  color?: string | null
-  firstname?: string | null
-  lastname?: string | null
-  nickname?: string | null
-  age?: number
-  eyeColor?: string | null
-  hairColor?: string | null
-  skinColor?: string | null
-  build?: string | null
-  size?: string | null
-  strength?: string | null
-  status?: string | null
-  mood?: string | null
-  motives?: string | null
-  mind?: string | null
-  trait?: string | null
-  job?: string | null
-  jobLevel?: string | null
-  jobDomain?: string | null
-  buildAdv?: string | null
-  sizeAdv?: string | null
-  strengthAdv?: string | null
-  statusAdv?: string | null
-  moodAdv?: string | null
-  mindAdv?: string | null
 }
 
 export interface Npc extends

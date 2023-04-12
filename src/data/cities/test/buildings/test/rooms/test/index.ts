@@ -1,13 +1,14 @@
 import { color, icon, log, LOG_IMPORTANT } from '@/utils'
-import { Server } from '@/classes/server/server'
+import { IServerSetupData, Server } from '@/classes/server/server'
 import { LightSwitch } from '@/classes/items/electronic/light-switch'
 import { Freeze } from '@/classes/battles/freeze'
 import { Kick } from '@/classes/battles/kick'
 import { Roll } from '@/classes/battles/roll'
 import { BookShelf } from '@/classes/containers/bookshelf'
-import { RandomNpc } from '@/classes/npcs/random-npc'
+import { IRandomNpcSetupData, RandomNpc } from '@/classes/npcs/random-npc'
 import { BaseballCap } from '@/classes/items/clothing/baseball-cap'
 import { Room } from '@/classes/rooms/room'
+import { IElectronicSetupData } from '@/classes/items/electronic/electronic'
 import TestRoomServer from './servers'
 import TestRoomLightSwitch from './light-switch'
 import SimonSmith from './SimonSmith'
@@ -21,11 +22,11 @@ export default {
   img: 'test-room.png',
 
   mounted(): void {
-    const npc = this.addNpc(new RandomNpc(SimonSmith))
+    const npc = this.addNpc(new RandomNpc(SimonSmith as unknown as IRandomNpcSetupData))
     this.location?.addOwner(npc)
     this.addItem(new BookShelf())
-    this.addItem(new LightSwitch(TestRoomLightSwitch))
-    this.addItem(new Server(TestRoomServer))
+    this.addItem(new LightSwitch(TestRoomLightSwitch as unknown as IElectronicSetupData))
+    this.addItem(new Server(TestRoomServer as unknown as IServerSetupData))
     this.addItem(new BaseballCap())
     this.addItem(new Freeze())
     this.addItem(new Kick())

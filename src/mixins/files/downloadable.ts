@@ -19,6 +19,7 @@ export interface IDownloadableSetupData extends
 {
   // is the object downloadable
   downloadable?: boolean
+  onDownload?: () => Promise<void>
 }
 
 export interface IDownloadable extends

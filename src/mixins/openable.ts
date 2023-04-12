@@ -26,6 +26,8 @@ export interface IOpenableSetupData extends
   closeable?: boolean
   // is the object opened
   opened?: boolean
+  onOpen?: () => Promise<void>
+  onClose?: () => Promise<void>
 }
 
 export interface IOpenable extends

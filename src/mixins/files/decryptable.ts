@@ -23,6 +23,7 @@ export interface IDecryptableSetupData extends
   decryptable?: boolean
   // is the object crypted
   crypted?: boolean
+  onDecrypt?: () => Promise<void>
 }
 
 export interface IDecryptable extends IName, IIcon, IVersion, IOperation, IRequirements {

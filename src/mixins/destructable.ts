@@ -26,6 +26,7 @@ export interface IDestructableSetupData extends
   destroyed?: number
   // delete object when destroyed
   removeWhenDestroyed?: boolean
+  onDestroy?: (amount: number) => Promise<void>
 }
 
 export interface IDestructable extends

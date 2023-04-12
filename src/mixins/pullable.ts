@@ -23,6 +23,7 @@ export interface IPullableSetupData extends
   pullDelay?: number
   // has the object been pulled
   pulled?: boolean
+  onPull?: () => Promise<void>
 }
 
 export interface IPullable extends

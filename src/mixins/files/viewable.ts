@@ -26,6 +26,7 @@ export interface IViewableSetupData extends
   content?: string | null
   // type of the object (filetype)
   type?: string
+  onView?: () => Promise<void>
 }
 
 export interface IViewable extends

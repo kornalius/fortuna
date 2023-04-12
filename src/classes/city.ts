@@ -1,6 +1,6 @@
 import { Entity, SetupData } from '@/entity'
-import { mixin, emit, registerClass, can, AnyData } from '@/utils'
-import { Building } from '@/classes/buildings/building'
+import { mixin, emit, registerClass, can } from '@/utils'
+import { Building, IBuildingSetupData } from '@/classes/buildings/building'
 import { ICode, Code, ICodeSetupData } from '@/mixins/code'
 import { IName, INameSetupData, Name } from '@/mixins/name'
 import { IDescription, Description, IDescriptionSetupData } from '@/mixins/description'
@@ -28,6 +28,8 @@ export interface ICitySetupData extends
 {
   // start building code when entering the city
   startBuildingCode?: string | null
+  onEnter?: () => Promise<void>
+  onExit?: (toCity?: City) => Promise<void>
 }
 
 export interface City extends
@@ -81,7 +83,7 @@ export class City extends Entity {
     return window.store.buildings.list.filter(i => i.location?.id === this.id)
   }
 
-  addBuilding(data: (Building | AnyData)[] | Building | AnyData): Building[] | Building {
+  addBuilding(data: (Building | IBuildingSetupData)[] | Building | IBuildingSetupData): Building[] | Building {
     if (Array.isArray(data)) {
       return data.map(d => this.addBuilding(d) as Building)
     }

@@ -13,6 +13,7 @@ export interface IVisitableSetupData extends
   visitable?: boolean
   // number of times the object has been visited
   visited?: number
+  onVisit?: () => Promise<void>
 }
 
 export interface IVisitable extends

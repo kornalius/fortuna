@@ -3,7 +3,7 @@
  */
 
 import { State } from '@/entity'
-import { can } from '@/utils'
+import { can, emit } from '@/utils'
 import { Item } from '@/classes/items/item'
 import { IName, INameSetupData } from '@/mixins/name'
 import { IActions, IActionsSetupData, IDropdownItem } from '@/mixins/actions'
@@ -14,6 +14,8 @@ export interface ISelectableSetupData extends
 {
   // is the object selectable
   selectable?: boolean
+  onSelect?: () => Promise<void>
+  onUnselect?: () => Promise<void>
 }
 
 export interface ISelectable extends
@@ -27,7 +29,9 @@ export interface ISelectable extends
   get selectLabel(): string
   canSelect(showMessage?: boolean): boolean
   select(): Promise<boolean>
+  onSelect(): Promise<void>
   unselect(): Promise<boolean>
+  onUnselect(): Promise<void>
   toggleSelect(): Promise<boolean>
 }
 
@@ -73,13 +77,19 @@ export const Selectable: ISelectable = {
       return false
     }
     window.store.game.selectedItem = (this as unknown as Item)
+    await emit(this, 'onSelect')
     return true
   },
 
+  async onSelect(): Promise<void> {},
+
   async unselect(): Promise<boolean> {
     window.store.game.selectedItem = null
+    await emit(this, 'onUnselect')
     return true
   },
+
+  async onUnselect(): Promise<void> {},
 
   async toggleSelect(): Promise<boolean> {
     return this.isSelected

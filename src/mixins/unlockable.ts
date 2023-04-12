@@ -21,6 +21,7 @@ export interface IUnlockableSetupData extends
   keyId?: string | null,
   // keypad code to open the door
   keypadCode?: string | null,
+  onUnlock?: () => Promise<void>
 }
 
 export interface IUnlockable extends

@@ -23,6 +23,7 @@ export interface IDropableSetupData extends
 {
   // is the object droppable or not
   dropable?: boolean
+  onDrop?: () => Promise<void>
 }
 
 export interface IDropable extends
