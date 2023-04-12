@@ -68,7 +68,7 @@ export const Activable: IActivable = {
             key: 'activate',
             icon: 'activate',
             disabled: !item.canActivate(),
-            click: item.activate,
+            click: () => item.activate(),
           }
         : undefined
       ),
@@ -79,7 +79,7 @@ export const Activable: IActivable = {
             key: 'disactivate',
             icon: 'disactivate',
             disabled: !item.canDisactivate(),
-            click: item.disactivate,
+            click: () => item.disactivate(),
           }
           : undefined
       ),

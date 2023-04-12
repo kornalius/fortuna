@@ -22,7 +22,7 @@
           strong
           @mouseover.once="() => value.hovered = true"
         >
-          <div class="flex flex-grow-1 flex-column" :class="{ selected }">
+          <div class="flex flex-grow-1 flex-column">
             <div class="flex flex-grow-1 items-center">
               <icon
                 v-if="value.icon"
@@ -152,7 +152,7 @@ const renderDropdownLabel = option => h('span', { class: 'flex self-center' }, [
 const handleSelect = async key => {
   const action = props.value.findAction(key)
   if (action && action.click) {
-    await action.click(this)
+    await action.click()
   }
 }
 
@@ -163,6 +163,9 @@ const buttonStyle = computed(() => {
   }
   if (props.value.isInInventory || props.value.isFile) {
     s.push('display: flex; width: 100%; justify-content: start;')
+  }
+  if (props.selected) {
+    s.push('border: 2px solid #F19936 !important;')
   }
   return s.join(' ')
 })
@@ -241,8 +244,5 @@ const groupedBuffs = computed(() => {
   background-color: #333;
   border-radius: 8px;
   color: #F19936;
-}
-.selected {
-  border: 2px solid #F19936;
 }
 </style>

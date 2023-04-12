@@ -15,7 +15,7 @@ export class Cracker extends Software {
             key: 'crack',
             icon: 'gearWhite',
             disabled: !item.canCrack(),
-            click: item.crack,
+            click: () => item.crack(),
           }
         ),
       ],

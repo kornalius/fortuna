@@ -53,7 +53,7 @@ export const Uploadable: IUploadable = {
             key: 'upload',
             icon: 'upload',
             disabled: !item.canUpload(),
-            click: item.upload,
+            click: () => item.upload(),
           }
           : undefined
       ),

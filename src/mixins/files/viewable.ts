@@ -75,7 +75,7 @@ export const Viewable: IViewable = {
             key: 'view',
             icon: 'view',
             disabled: !item.canView(),
-            click: item.view,
+            click: () => item.view(),
           }
           : undefined
       ),

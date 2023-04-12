@@ -78,7 +78,7 @@ export const Consumable: IConsumable = {
             key: 'consume',
             icon: 'consume',
             disabled: !item.canConsume(),
-            click: item.consume,
+            click: () => item.consume(),
           }
           : undefined
       ),

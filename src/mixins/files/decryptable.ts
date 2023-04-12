@@ -51,7 +51,7 @@ export const Decryptable: IDecryptable = {
               key: 'decrypt',
               icon: 'decrypt',
               disabled: !item.canDecrypt(),
-              click: item.decrypt,
+              click: () => item.decrypt(),
             }
           : undefined
       ),

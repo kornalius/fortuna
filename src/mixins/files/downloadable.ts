@@ -50,7 +50,7 @@ export const Downloadable: IDownloadable = {
             key: 'download',
             icon: 'download',
             disabled: !item.canDownload(),
-            click: item.download,
+            click: () => item.download(),
           }
           : undefined
       ),

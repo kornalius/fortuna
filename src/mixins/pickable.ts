@@ -54,7 +54,7 @@ export const Pickable: IPickable = {
             key: 'pickup',
             icon: 'pickup',
             disabled: !item.canPickup(),
-            click: item.pickup,
+            click: () => item.pickup(),
           }
           : undefined
       ),

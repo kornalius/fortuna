@@ -48,7 +48,7 @@ export const Selectable: ISelectable = {
             key: 'select',
             icon: 'select',
             disabled: !item.canSelect(),
-            click: item.toggleSelect,
+            click: () => item.toggleSelect(),
           }
           : undefined
       ),
@@ -69,11 +69,10 @@ export const Selectable: ISelectable = {
         log: () => `${this.nameProper} cannot be selected`
       },
     ], showMessage, 'select')
-
   },
 
   async select(): Promise<boolean> {
-    if (this.canSelect(true)) {
+    if (!this.canSelect(true)) {
       return false
     }
     window.store.game.selectedItem = (this as unknown as Item)
@@ -92,7 +91,7 @@ export const Selectable: ISelectable = {
   async onUnselect(): Promise<void> {},
 
   async toggleSelect(): Promise<boolean> {
-    return this.isSelected
+    return !this.isSelected
       ? this.select()
       : this.unselect()
   },

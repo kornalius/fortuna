@@ -62,7 +62,7 @@ export const Unlockable: IUnlockable = {
             key: 'unlock',
             icon: 'unlock',
             disabled: !item.canUnlock(),
-            click: item.unlock,
+            click: () => item.unlock(),
           }
           : undefined
       ),

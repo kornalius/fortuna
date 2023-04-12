@@ -53,7 +53,7 @@ export const Examinable: IExaminable = {
             icon: 'examine',
             disabled: !item.canExamine(),
             scale: 2,
-            click: item.examine,
+            click: () => item.examine(),
           }
           : undefined
       ),

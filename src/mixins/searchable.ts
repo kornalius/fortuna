@@ -56,7 +56,7 @@ export const Searchable: ISearchable = {
             key: 'search',
             icon: 'search',
             disabled: !item.canSearch(),
-            click: item.search,
+            click: () => item.search(),
           }
           : undefined
       ),

@@ -51,7 +51,7 @@ export const Usable: IUsable = {
             key: 'use',
             icon: 'use',
             disabled: !item.canUse(),
-            click: item.use,
+            click: () => item.use(),
           }
           : undefined
       ),

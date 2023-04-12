@@ -90,7 +90,7 @@ export class Server extends Item {
             key: 'connect',
             icon: 'connect',
             disabled: !item.canConnect(),
-            click: item.connect,
+            click: () => item.connect(),
           }
         ),
         (item: Server): IDropdownItem | undefined => (
@@ -99,7 +99,7 @@ export class Server extends Item {
             key: 'authenticate',
             icon: 'authenticate',
             disabled: !item.canAuthenticate(),
-            click: item.authenticate,
+            click: () => item.authenticate(),
           }
         ),
         (item: Server): IDropdownItem | undefined => (
@@ -108,7 +108,7 @@ export class Server extends Item {
             key: 'list',
             icon: 'listWhite',
             disabled: !item.canList(),
-            click: item.list,
+            click: () => item.list(),
           }
         ),
       ],

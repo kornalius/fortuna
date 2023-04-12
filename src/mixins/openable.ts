@@ -77,7 +77,7 @@ export const Openable: IOpenable = {
             key: item.openKey,
             icon: item.openIcon,
             disabled: !item.canOpen(),
-            click: item.openClick,
+            click: () => item.openClick(),
           }
           : undefined
       ),
@@ -128,7 +128,7 @@ export const Openable: IOpenable = {
   canOpen(showMessage?: boolean): boolean {
     return can(this, [
       {
-        expr: () => !this.isOpenable || !this.openDisabled,
+        expr: () => !this.isOpenable,
         log: () => `${this.nameProper} cannot be opened`
       },
       {

@@ -68,7 +68,7 @@ export const Installable: IInstallable = {
             key: 'install',
             icon: 'install',
             disabled: !item.canInstall(),
-            click: item.install,
+            click: () => item.install(),
           }
         : undefined
       ),
@@ -79,7 +79,7 @@ export const Installable: IInstallable = {
             key: 'uninstall',
             icon: 'uninstall',
             disabled: !item.canUninstall(),
-            click: item.uninstall,
+            click: () => item.uninstall(),
           }
           : undefined
       ),

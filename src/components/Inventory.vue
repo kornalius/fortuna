@@ -1,7 +1,7 @@
 <template>
   <n-card
     style="opacity: .95"
-    @click.stop="store.game.clearSelectedItem"
+    @click.stop="() => store.game.clearSelectedItem"
   >
     <div class="flex flex-column h-100">
       <div class="relative flex h-100">

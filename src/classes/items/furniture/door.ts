@@ -48,7 +48,7 @@ export class Door extends Item {
             key: 'use',
             icon: 'enter',
             disabled: !item.canUse(),
-            click: item.use,
+            click: () => item.use(),
           }
         ),
       ],

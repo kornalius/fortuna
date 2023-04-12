@@ -54,7 +54,7 @@ export const Deletable: IDeletable = {
             key: 'delete',
             icon: 'delete',
             disabled: !item.canDel(),
-            click: item.del,
+            click: () => item.del(),
           }
           : undefined
       ),

@@ -69,7 +69,7 @@ export const Destructable: IDestructable = {
             key: 'destroy',
             icon: 'destroy',
             disabled: !item.canDestroy(),
-            click: item.destroy,
+            click: () => item.destroy(),
           }
           : undefined
       ),

@@ -104,7 +104,7 @@ export class Npc extends Entity {
             key: 'talk',
             icon: 'talk',
             disabled: !item.canTalk(),
-            click: item.talk,
+            click: () => item.talk(),
           }
         ),
         (item: Npc): IDropdownItem | undefined => (
@@ -113,7 +113,7 @@ export class Npc extends Entity {
             key: 'combat',
             icon: 'combat',
             disabled: !item.canCombat(),
-            click: item.combat,
+            click: () => item.combat(),
           }
         ),
       ],

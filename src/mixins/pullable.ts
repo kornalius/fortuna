@@ -60,7 +60,7 @@ export const Pullable: IPullable = {
             key: 'pull',
             icon: 'pull',
             disabled: !item.canPull(),
-            click: item.pull,
+            click: () => item.pull(),
           }
           : undefined
       ),

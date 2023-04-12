@@ -60,7 +60,7 @@ export const Pushable: IPushable = {
             key: 'push',
             icon: 'push',
             disabled: !item.canPush(),
-            click: item.push,
+            click: () => item.push(),
           }
           : undefined
       ),

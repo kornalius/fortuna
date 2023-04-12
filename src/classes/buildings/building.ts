@@ -79,7 +79,7 @@ export class Building extends Entity {
             key: 'enter',
             icon: 'enter',
             disabled: !item.canEnter(),
-            click: item.enter,
+            click: () => item.enter(),
           }
         ),
       ],

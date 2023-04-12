@@ -95,7 +95,7 @@ export const Equipable: IEquipable = {
             key: item.equipKey,
             icon: item.equipIcon,
             disabled: item.equipDisabled,
-            click: item.equipClick,
+            click: () => item.equipClick(),
           }
           : undefined
       ),

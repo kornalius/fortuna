@@ -57,7 +57,7 @@ export const Dropable: IDropable = {
             key: 'drop',
             icon: 'drop',
             disabled: !item.canDrop(),
-            click: item.drop,
+            click: () => item.drop(),
           }
           : undefined
       ),
