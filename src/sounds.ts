@@ -122,4 +122,5 @@ export const soundFiles: { [key: string]: SoundFile } = {
   'hifi': { src: 'sfx/hifi.wav' },
   'call-bell': { src: 'sfx/call-bell.wav' },
   'fireplace': { src: 'sfx/fireplace.wav' },
+  'speaker': { src: 'sfx/speaker.wav' },
 }

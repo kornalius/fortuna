@@ -338,5 +338,5 @@ export default {
   'char-waist': 'char-waist',
   'char-legs': 'char-legs',
   'char-feet': 'char-feet',
-  'select': 'hand-point-white',
-} as { [key: string]: string }
+  'select': 'select',
+}

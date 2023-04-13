@@ -10105,6 +10105,21 @@
             "rotated": false
         },
         {
+            "idx": 987,
+            "name": "select",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                176,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 0,
             "name": "server",
             "origin": [
@@ -12730,7 +12745,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 848,
+    "regions_count": 849,
     "rotations": false,
     "using_grid": true,
     "width": 256

@@ -1,8 +1,8 @@
 import compact from 'lodash/compact'
 import { Entity, IEntityData, SetupData } from '@/entity'
-import { Dialog } from '@/classes/dialog'
+import { Dialog, IDialogData } from '@/classes/dialog'
 import { Combat } from '@/classes/combat'
-import { AnyData, can, emit, mixin, registerClass } from '@/utils'
+import { can, emit, mixin, registerClass } from '@/utils'
 import { ICode, Code, ICodeData } from '@/mixins/code'
 import { IName, INameData, Name } from '@/mixins/name'
 import { IDescription, Description, IDescriptionData } from '@/mixins/description'
@@ -21,7 +21,7 @@ import { ISleep, ISleepData, Sleep } from '@/mixins/sleep'
 import { ITooltip, ITooltipData, Tooltip } from '@/mixins/tooltip'
 import { IDie } from '@/store/config'
 
-export interface Agenda {
+export interface IAgenda {
   date: string
   start: string
   end: string
@@ -122,7 +122,7 @@ export class Npc extends Entity {
       // { start: '08:00', end: '16:00', roomId: 'id', expr: (npc, end?) => void },
       // { start: '16:01', end: '07:59', roomCode: 'Home', expr: (npc, end?) => void },
       // { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom', expr: (npc, end?) => void },
-      agenda: [] as Agenda[],
+      agenda: [] as IAgenda[],
       // turns to skip during battle
       skipTurns: 0,
       ...(data || {})
@@ -160,6 +160,10 @@ export class Npc extends Entity {
 
   get isAggresive(): boolean { return this.state.aggresive }
   set aggresive(value: boolean) { this.state.aggresive = value }
+
+  get ownedBuildings() { return window.store.buildings.ownedByNpc(this) }
+
+  get ownedRooms() { return window.store.rooms.ownedByNpc(this) }
 
   get dice(): IDie[] {
     const diff = this.state.dice.length - this.maxDice
@@ -210,14 +214,14 @@ export class Npc extends Entity {
     return this.shieldDice.map(d => this.dice.indexOf(d))
   }
 
-  get agenda(): Agenda[] { return this.state.agenda }
+  get agenda(): IAgenda[] { return this.state.agenda }
   set agenda(value) { this.state.agenda = value }
 
   getDialog(code: string): Dialog | undefined { return this.dialogs.find(d => d.code === code) }
 
   get startingDialog(): Dialog | undefined { return this.getDialog('start') }
 
-  addDialog(data: Dialog[] | AnyData[] | Dialog | AnyData): Dialog[] | Dialog {
+  addDialog(data: Dialog[] | IDialogData[] | Dialog | IDialogData): Dialog[] | Dialog {
     if (Array.isArray(data)) {
       return data.map(d => this.addDialog(d) as Dialog)
     }

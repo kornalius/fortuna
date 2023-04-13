@@ -9,7 +9,7 @@ export class Buildings extends Entities {
 
   get(id?: string | null): Building | undefined { return id ? this.state[id] : undefined }
 
-  // returns a list of buildings owner by the npc
+  // returns a list of buildings owned by the npc
   ownedByNpc(npc: Npc): Building[] {
     return this.list.filter(building => building.owners.includes(npc))
   }
