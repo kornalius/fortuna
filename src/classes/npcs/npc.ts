@@ -21,6 +21,9 @@ import { ISleep, ISleepData, Sleep } from '@/mixins/sleep'
 import { ITooltip, ITooltipData, Tooltip } from '@/mixins/tooltip'
 import { IDie } from '@/store/config'
 
+// { start: '08:00', end: '16:00', roomId: 'id', expr: (npc, end?) => void },
+// { start: '16:01', end: '07:59', roomCode: 'Home', expr: (npc, end?) => void },
+// { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom', expr: (npc, end?) => void },
 export interface IAgenda {
   date: string
   start: string
@@ -59,6 +62,10 @@ export interface INpcData extends
   aggresive?: boolean
   // fixed set of dice
   dice?: IDie[]
+  // agenda to follow
+  agenda?: IAgenda[]
+  // turns to skip during battle
+  skipTurns?: number
 }
 
 export interface Npc extends
@@ -118,15 +125,10 @@ export class Npc extends Entity {
           }
         ),
       ],
-      // Agenda to follow
-      // { start: '08:00', end: '16:00', roomId: 'id', expr: (npc, end?) => void },
-      // { start: '16:01', end: '07:59', roomCode: 'Home', expr: (npc, end?) => void },
-      // { date: '2157-03-01', start: '14:00', end: '20:00', roomCode: 'SpecialRoom', expr: (npc, end?) => void },
       agenda: [] as IAgenda[],
-      // turns to skip during battle
       skipTurns: 0,
       ...(data || {})
-    }) as INpcData
+    })
   }
 
   get isNpc(): boolean { return true }

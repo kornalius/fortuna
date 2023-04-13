@@ -1,10 +1,10 @@
 import { registerClass } from '@/utils'
 import random from 'lodash/random'
-import { IItemData, Item } from '../item'
 import { SetupData } from '@/entity'
+import { Transport, ITransportData } from './transport'
 
-export class Car extends Item {
-  setupInstance(data?: IItemData): SetupData | undefined {
+export class Car extends Transport {
+  setupInstance(data?: ITransportData): SetupData | undefined {
     return super.setupInstance({
       name: 'Car',
       icon: 'car',

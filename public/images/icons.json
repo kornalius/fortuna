@@ -5980,6 +5980,21 @@
             "rotated": false
         },
         {
+            "idx": 833,
+            "name": "gas-can",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                832,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 735,
             "name": "gas-pump",
             "origin": [
@@ -5989,21 +6004,6 @@
             "rect": [
                 240,
                 720,
-                16,
-                16
-            ],
-            "rotated": false
-        },
-        {
-            "idx": 833,
-            "name": "gascan",
-            "origin": [
-                8,
-                8
-            ],
-            "rect": [
-                16,
-                832,
                 16,
                 16
             ],

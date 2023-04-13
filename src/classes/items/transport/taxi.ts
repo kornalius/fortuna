@@ -1,9 +1,9 @@
 import { registerClass } from '@/utils'
-import { IItemData, Item } from '../item'
 import { SetupData } from '@/entity'
+import { Transport, ITransportData } from './transport'
 
-export class Taxi extends Item {
-  setupInstance(data?: IItemData): SetupData | undefined {
+export class Taxi extends Transport {
+  setupInstance(data?: ITransportData): SetupData | undefined {
     return super.setupInstance({
       name: 'Taxi',
       icon: 'taxi',

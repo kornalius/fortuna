@@ -1,15 +1,17 @@
 import { registerClass } from '@/utils'
+import { IItemData, Item } from '../item'
 import { SetupData } from '@/entity'
-import { Transport, ITransportData } from './transport'
 
-export class Helicopter extends Transport {
+export interface ITransportData extends IItemData {}
+
+export class Transport extends Item {
   setupInstance(data?: ITransportData): SetupData | undefined {
     return super.setupInstance({
-      name: 'Helicopter',
-      icon: 'helicopter',
+      pickable: false,
+      dropable: false,
       ...(data || {})
     })
   }
 }
 
-registerClass(Helicopter)
+registerClass(Transport)
