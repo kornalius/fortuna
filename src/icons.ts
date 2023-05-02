@@ -1,3 +1,5 @@
+import { AnyData } from '@/utils'
+
 export default {
   'xp': 'medal2',
   'lvl': 'trophy',
@@ -91,7 +93,10 @@ export default {
   'plant': 'plant',
   'cabinet': 'cabinet',
   'battery': 'battery',
-  'book': 'book1',
+  'book-yellow': 'book1-yellow',
+  'book-red': 'book1-red',
+  'book-blue': 'book1-blue',
+  'book-green': 'book1-green',
   'books': 'books',
   'fence': 'fence',
   'manhole': 'manhole',
@@ -350,4 +355,4 @@ export default {
   'toilet-paper': 'toilet-paper',
   'tissue-box': 'tissue-box',
   'extinguisher': 'extinguisher',
-}
+} as AnyData

@@ -99,8 +99,14 @@ export const mixin = (cl: Constructor, o: AnyData[] | AnyData): void => {
         writable: true,
         value: reactive(mixState(cl.prototype[k], d.value)),
       })
-    } else if (!cd) {
-      cl.prototype[k] = d?.value
+    } else if (typeof cd?.value === 'function' && typeof d?.value === 'function') {
+      const pr = cl.prototype[k]
+      cl.prototype[k] = function (...args: any[]) {
+        pr.apply(this, args)
+        d.value.apply(this, args)
+      }
+    } else if (!cd && d) {
+      cl.prototype[k] = d.value
     }
   })
 

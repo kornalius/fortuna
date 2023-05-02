@@ -11,7 +11,7 @@ export interface ILogData extends
   IIconData
 {
   timestamp?: number
-  message?: string | null
+  message?: (string | string[]) | null
   level?: number
 }
 

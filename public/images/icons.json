@@ -2,7 +2,7 @@
     "fill_rate": 0,
     "grid_height": 16,
     "grid_width": 16,
-    "height": 992,
+    "height": 1008,
     "image": "icons.png",
     "name": "icons",
     "padding_x": 0,
@@ -1345,8 +1345,53 @@
             "rotated": false
         },
         {
+            "idx": 988,
+            "name": "book1-blue",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                192,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 990,
+            "name": "book1-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                224,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 989,
+            "name": "book1-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                208,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 25,
-            "name": "book1",
+            "name": "book1-yellow",
             "origin": [
                 8,
                 8
@@ -1361,7 +1406,7 @@
         },
         {
             "idx": 26,
-            "name": "book2",
+            "name": "book2-blue",
             "origin": [
                 8,
                 8
@@ -1369,6 +1414,51 @@
             "rect": [
                 160,
                 16,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 991,
+            "name": "book2-green",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                240,
+                976,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 992,
+            "name": "book2-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                992,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 993,
+            "name": "book2-yellow",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                992,
                 16,
                 16
             ],
@@ -10420,6 +10510,36 @@
             "rotated": false
         },
         {
+            "idx": 960,
+            "name": "skirt-cyan",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                0,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
+            "idx": 961,
+            "name": "skirt-red",
+            "origin": [
+                8,
+                8
+            ],
+            "rect": [
+                16,
+                960,
+                16,
+                16
+            ],
+            "rotated": false
+        },
+        {
             "idx": 606,
             "name": "skull",
             "origin": [
@@ -12745,7 +12865,7 @@
             "rotated": false
         }
     ],
-    "regions_count": 849,
+    "regions_count": 857,
     "rotations": false,
     "using_grid": true,
     "width": 256

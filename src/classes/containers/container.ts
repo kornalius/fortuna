@@ -17,13 +17,15 @@ import { IItems, IItemsData, Items } from '@/mixins/items'
 import { IRequirements, Requirements } from '@/mixins/requirements'
 import { ITooltip, Tooltip } from '@/mixins/tooltip'
 import { IItemData, Item } from '@/classes/items/item'
+import { IRandomItems, IRandomItemsData, RandomItems } from '@/mixins/random-items'
 
 export interface IContainerData extends
   IItemData,
   IOpenableData,
   ISearchableData,
   IUnlockableData,
-  IItemsData
+  IItemsData,
+  IRandomItemsData
 {}
 
 export interface Container extends
@@ -42,7 +44,8 @@ export interface Container extends
   IPullable,
   IItems,
   IRequirements,
-  ITooltip
+  ITooltip,
+  IRandomItems
 {}
 
 export class Container extends Item {
@@ -91,6 +94,7 @@ mixin(Container, [
   Items,
   Requirements,
   Tooltip,
+  RandomItems
 ])
 
 registerClass(Container)

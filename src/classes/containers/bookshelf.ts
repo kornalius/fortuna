@@ -11,14 +11,11 @@ export class BookShelf extends Container {
       openable: false,
       pickable: false,
       dropable: false,
+      randomItems: [
+        ...books(0, 3)
+      ],
       ...(data || {})
     })
-  }
-
-  async onUse(): Promise<void> {
-    await super.onSearch()
-    // generate random books
-    this.addItem(books())
   }
 }
 

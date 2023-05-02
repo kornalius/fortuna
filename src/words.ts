@@ -79,11 +79,11 @@ export const bigAdjectives = [
 ]
 
 export const smallAdjectives = [
-  'little', 'miniature', 'petite', 'puny', 'scrawny', 'short', 'small', 'teeny', 'teeny-tiny', 'tiny',
+  'little', 'miniature', 'petite', 'puny', 'scrawny', 'short', 'small', 'teeny', 'teeny-tiny', 'tiny', 'micro',
 ]
 
 export const colorAdjectives = [
-  'light', 'pale', 'dark', 'deep',
+  'light', 'pale', 'dark', 'deep', 'shinny', 'soft', 'matted', 'blemished', 'waxy',
 ]
 
 export const adverbs = [
@@ -104,7 +104,7 @@ export const skinColors = [
 ]
 
 export const smallSizes = [
-  'skinny', 'lean', 'weak', 'little', 'tiny',
+  'skinny', 'lean', 'weak', 'little', 'tiny', 'thin',
 ]
 
 export const normalSizes = [
@@ -112,7 +112,7 @@ export const normalSizes = [
 ]
 
 export const largeSizes = [
-  'fat', 'obese', 'brawny', 'big', 'colossal', 'massive',
+  'fat', 'obese', 'brawny', 'big', 'colossal', 'massive', 'thick',
 ]
 
 export const short = [
@@ -175,41 +175,41 @@ export const badInterests = [
   'fighting', 'lying', 'drinking', 'stealing', 'vandalism', 'storms', 'slacking',
 ]
 
-export const happyMoods = [
+export const happy = [
   'cheerful', 'content', 'ecstatic', 'happy', 'joyful', 'jubilant', 'pleased', 'gentle', 'good', 'peaceful',
   'sympathetic', 'thoughtful',
 ]
 
-export const sadMoods = [
+export const sad = [
   'annoyed', 'apathetic', 'ashamed', 'bittersweet', 'bored', 'cynical', 'depressed', 'discontent', 'pessimistic',
   'sad',
 ]
 
-export const angryMoods = [
+export const angry = [
   'aggravated', 'angry', 'cranky', 'enraged', 'frustrated', 'grumpy', 'infuriated', 'irritated', 'mad',
 ]
 
-export const energeticMoods = [
+export const energetic = [
   'energetic', 'excited', 'high', 'hyper', 'intense', 'lively',
 ]
 
-export const tiredMoods = [
+export const tired = [
   'drained', 'exhausted', 'lazy', 'lethargic', 'morose', 'sleepy',
 ]
 
-export const dangerousMoods = [
+export const dangerous = [
   'chaotic', 'crazy', 'demented', 'predatory', 'psychotic',
 ]
 
-export const calmMoods = [
+export const calm = [
   'calm', 'chilled', 'relaxed',
 ]
 
-export const stressedMoods = [
+export const stressed = [
   'anxious', 'cautious', 'defensive', 'paranoid', 'scared', 'stressed', 'shocked',
 ]
 
-export const stateMoods = [
+export const attitudes = [
   'cold', 'confused', 'curious', 'delusional', 'dorky', 'empathetic', 'envious', 'fearful', 'impatient', 'indifferent',
   'melancholic', 'mellow', 'passionate', 'rebellious', 'rejected', 'strange', 'weird',
 ]
@@ -306,10 +306,19 @@ export const passwords = [
   'HfjQaruqTY', 'smabqqt7Na', 'Bhw92HVPdw', 'NuLJpVMMbw', 'uFzAXDpAd6', 'jagsgUkEve', 'VMegNYyLVt', 'LCMCfrBrQh',
 ]
 
+export const cityPrefixes = [
+  'Yellow', 'Grey', 'Long', 'Deep', 'Grime', 'Sleepy',
+]
+
 export const cityNames = [
   'Frankden', 'Rapinne', 'Baitas', 'Dannes', 'Carenna', 'Linoha', 'Shoturt', 'Yenville', 'Duklean', 'Drukfort',
   'Manward', 'Darkmuth', 'Easthom', 'Hartose', 'Luckstan', 'Blackmouth', 'Oxward', 'Domlaix', 'Milddem', 'Ponview',
   'Boldale', 'Ibeko',
+]
+
+export const citySuffixes = [
+  'Valley', 'Forked', 'Spire', 'Hole', 'Fang', 'Wind', 'Springs', 'Wood', 'Stretch', 'Stead', 'Fall', 'Hill', 'Rock',
+  'Way', 'Slope', 'Field', 'Hollow', 'Wall'
 ]
 
 export const cityAdjectives1 = [
@@ -372,7 +381,12 @@ export const cityQualities = [
   'business is booming', 'life is great', 'culture is rising', 'the quality of life is high', 'technology is thriving',
   'trade is at an all time high', 'recreation is impeccable', 'education is superb',
   'parks and gardens are flourishing', 'health and services are faultless', 'daily life isn\'t too stressful',
-  'science and development is flourishing', 'employment is tremendous',
+  'science and development is flourishing', 'employment is tremendous', 'cleanliness of the town',
+  'a large museum and library known worldwide', 'beauty of the women', 'flamboyance of local clothing',
+  'good manners of its citizens', 'hospitality to foreigners', 'architectural style', 'architectural feats',
+  'artists and poets', 'inventive cuisine', 'traditional cuisine', 'scholars', 'music and/or dance', 'street festivals',
+  'traditional dress', 'unusual dress', 'theater scene', 'delicious cuisine', 'rude people', 'greedy merchants',
+  'gambling', 'education',
 ]
 
 export const cityPlaces = [
@@ -382,21 +396,11 @@ export const cityPlaces = [
   'theaters', 'arcades', 'amusement parks',
 ]
 
-export const citySizes = [
-  'small village', 'village', 'town', 'city', 'metropole', 'megapole',
-]
-
 export const cityBuiltAround = [
   'a coastal harbor', 'a calm, coastal bay', 'a large freshwater lake',
   'a wide, navigable river', 'a river navigable by small craft', 'the mouth of a river or a river delta',
   'the confluence of two rivers', 'a series of natural springs', 'a well-traveled crossroads',
   'a water source and a well-traveled road',
-]
-
-export const cityKnownFor = [
-  'architectural style', 'architectural feats', 'artists and poets', 'inventive cuisine', 'traditional cuisine',
-  'gladiatorial games', 'scholars', 'music and/or dance', 'street festivals', 'traditional dress', 'unusual dress',
-  'theater scene', 'delicious cuisine', 'rude people', 'greedy merchants', 'gambling', 'education',
 ]
 
 export const cityGovernments = [

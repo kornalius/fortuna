@@ -9,38 +9,39 @@ export class Npcs extends Entities {
   get(id?: string | null): Npc | undefined { return id ? this.state[id] : undefined }
 
   async processAgendas(): Promise<void> {
+    const { game, rooms } = window.store
     await Promise.all(
       this.list.map(async n => {
         if (n.canMove()) {
           await Promise.all(
             n.agenda.map(async a => {
               const sd = [
-                a.date || window.store.game.date,
-                a.start || window.store.game.time,
+                a.date || game.date,
+                a.start || game.time,
               ].join(' ')
 
               const ed = [
-                a.date || window.store.game.date,
-                a.end || window.store.game.time,
+                a.date || game.date,
+                a.end || game.time,
               ].join(' ')
 
               // find the target room
               let room
               if (a.roomId) {
-                room = window.store.rooms.get(a.roomId)
+                room = rooms.get(a.roomId)
               }
               if (a.roomCode) {
-                room = window.store.rooms.findByCode(a.roomCode)
+                room = rooms.findByCode(a.roomCode)
               }
 
               // check if actual date + time is within the time range specified by the agenda
-              const isBetween = window.store.game.isBetween(sd, ed)
+              const isBetween = game.isBetween(sd, ed)
               if (isBetween && n.location !== room) {
                 n.location = room
               } else if (a.expr) {
                 const t = [
-                  window.store.game.date,
-                  window.store.game.time,
+                  game.date,
+                  game.time,
                 ].join(' ')
 
                 if (isBetween && (t === sd || t === ed)) {

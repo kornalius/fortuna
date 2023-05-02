@@ -1,5 +1,4 @@
 import { Room } from '@/classes/rooms/room'
-import { RandomLivingRoom } from '@/classes/rooms/random-livingroom'
 import { Building, IBuildingData } from '@/classes/buildings/building'
 import TestRoom from './rooms/test'
 import TestWinRoom from './rooms/test-win'
@@ -13,7 +12,7 @@ export default {
 
   mounted(this: Building): void {
     this.addRoom([
-      new RandomLivingRoom(TestRoom),
+      new Room(TestRoom),
       new Room(TestWinRoom),
     ])
   },
